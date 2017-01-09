@@ -1,0 +1,40 @@
+@import "../../_variables.scss";
+
+/* - - - - - - - - - - - -
+  Main
+- - - - - - - - - - - - */
+
+html {
+  font-size: 20px;
+}
+html, body {
+  height: 100%;
+}
+body {
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: transparent;
+}
+scss-style {
+  display: none;
+}
+#inject {
+  @include box;
+}
+#inject-inside {
+  padding: 1rem;
+}
+
+// testing
+
+.card {
+  margin: 0;
+  display: none;
+  &.active {
+    display: inline-block;
+  }
+}
+.card-block {
+  padding: 0 10px;
+  font-size: 14px;
+}

@@ -1,0 +1,317 @@
+<!-- http://ricostacruz.com/til/relative-paths-in-jekyll -->
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+        
+    <!-- meta -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+
+    <!-- seo -->
+    <title></title>
+    <meta name="description" content="Xtend" />
+
+    <!-- icons -->
+    <link rel="icon" href="../../assets/images/favicon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../../assets/images/apple-touch-icon.png" />
+
+    <!-- styles -->
+    <link rel="stylesheet" href="../../assets/bower_components/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../../assets/highlight/styles/github.css"> <!-- atom-one-light atom-one-dark github agate -->
+    <link rel="stylesheet" href="../../assets/xtend/xtend-base.css" />
+    <link rel="stylesheet" href="../../assets/xtend/xtend-theme.css" />
+    <link rel="stylesheet" href="../../assets/styles/icons/style.css" />
+    <link rel="stylesheet" href="../../assets/styles/main.css" />
+
+  </head>
+  <body>
+    
+    <header class="site-header">
+      
+      <nav class="site-header-top" role="navigation">
+        <div class="container">
+          
+          <div class="media">
+            <div class="d-flex align-self-center mr-3">
+              <a href="../../xtend/intro.html" class="logo" title="Home" data-xtend='{"target": ".site-main", "ajax": {"url": "href", "title": "Xtend intro", "h1": "Intro", "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a diam in mi interdum pulvinar vitae sit amet risus. Nam eu sem vel nisi lobortis sodales."}}'>
+                MINIMIT
+              </a>
+            </div>
+            <div class="media-body align-self-center">
+              <!--<a href="../../xtend/base.html" class="button color-white button__menu" data-xtend='{"target": ".site-main", "ajax": {"url": "href", "title": "Xtend base", "h1": "Base", "h2": "Lorem ipsum dolor sit amet."}}'>-->
+              <button type="button" class="button color-white button__menu" data-xtend='{"target": ".site-menu", "grouping": "site-menu", "min": 0}'>
+                <span class="icon-menu-custom right">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </span>
+                <span class="text"></span>
+              </a>
+            </div>
+          </div>
+    
+        </div>
+      </nav>
+      
+      <nav class="site-menu" role="navigation">
+      </nav>
+          
+      <div class="site-hero">
+              
+        <div class="container">
+          <div class="media">
+            <div class="media-body align-self-center">
+              <h1 class="h1"></h1>
+              <h2 class="h5" style="margin-bottom: 0;"></h2>
+            </div>
+            <div class="d-flex align-self-center ml-4">
+              
+              <img src="../../assets/images/test.png" />
+            
+            </div>
+          </div>
+        </div>
+              
+      </div>
+      
+      <nav class="site-breadcrumbs" role="navigation">
+        <div class="container">
+              
+            <div class="site-breadcrumbs-body">
+              <a href="../../xtend/intro.html" class="button color-white" data-xtend='{"target": ".site-main", "ajax": {"url": "href", "title": "Xtend intro", "h1": "Intro", "h2": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a diam in mi interdum pulvinar vitae sit amet risus. Nam eu sem vel nisi lobortis sodales"}}'>
+                Intro
+              </a>
+              <a href="../../xtend/base.html" class="button color-white" data-xtend='{"target": ".site-main", "ajax": {"url": "href", "title": "Xtend base", "h1": "Base", "h2": "Lorem ipsum dolor sit amet."}}'>
+                Base
+              </a>
+              <a href="../../xtend/components.html" class="button color-white" data-xtend='{"target": ".site-main", "ajax": {"url": "href", "title": "Xtend components", "h1": "Components", "h2": "Lorem ipsum dolor sit amet."}}'>
+                Components
+              </a>
+            </div>
+                
+            <div class="site-breadcrumbs-meta">
+              <a href="https://github.com/minimit" target="_blank" class="button color-white" data-toggle="tooltip" data-placement="top" title="Download source" data-template='<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner tooltip-inverse"></div></div>'>
+                <span class="icon-download"></span>
+              </a>
+              <a href="https://twitter.com/beaver82minimit" target="_blank" class="button color-white" data-toggle="tooltip" data-placement="top" title="View in github" data-template='<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner tooltip-inverse"></div></div>'>
+                <span class="icon-github"></span>
+              </a>
+            </div>
+              
+          </div>
+    
+        </div>
+      </nav>
+      
+    </header>
+    
+<article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Highlight.js</h1>
+  </header>
+
+  <div class="post-content">
+    <h1 id="highlightjs">Highlight.js</h1>
+
+<p>Highlight.js — это инструмент для подсветки синтаксиса, написанный на JavaScript. Он работает
+и в браузере, и на сервере. Он работает с практически любой HTML разметкой, не
+зависит от каких-либо фреймворков и умеет автоматически определять язык.</p>
+
+<h2 id="section">Начало работы</h2>
+
+<p>Минимум, что нужно сделать для использования highlight.js на веб-странице — это
+подключить библиотеку, CSS-стили и вызывать <a href="http://highlightjs.readthedocs.io/en/latest/api.html#inithighlightingonload"><code class="highlighter-rouge">initHighlightingOnLoad</code></a>:</p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"/path/to/styles/default.css"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/path/to/highlight.pack.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script&gt;</span><span class="nx">hljs</span><span class="p">.</span><span class="nx">initHighlightingOnLoad</span><span class="p">();</span><span class="nt">&lt;/script&gt;</span>
+</code></pre>
+</div>
+
+<p>Библиотека найдёт и раскрасит код внутри тегов <code class="highlighter-rouge">&lt;pre&gt;&lt;code&gt;</code>, попытавшись
+автоматически определить язык. Когда автоопределение не срабатывает, можно явно
+указать язык в атрибуте class:</p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;pre&gt;&lt;code</span> <span class="na">class=</span><span class="s">"html"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/code&gt;&lt;/pre&gt;</span>
+</code></pre>
+</div>
+
+<p>Список поддерживаемых классов языков доступен в <a href="http://highlightjs.readthedocs.io/en/latest/css-classes-reference.html">справочнике по классам</a>.
+Класс также можно предварить префиксами <code class="highlighter-rouge">language-</code> или <code class="highlighter-rouge">lang-</code>.</p>
+
+<p>Чтобы отключить подсветку для какого-то блока, используйте класс <code class="highlighter-rouge">nohighlight</code>:</p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;pre&gt;&lt;code</span> <span class="na">class=</span><span class="s">"nohighlight"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/code&gt;&lt;/pre&gt;</span>
+</code></pre>
+</div>
+
+<h2 id="section-1">Инициализация вручную</h2>
+
+<p>Чтобы иметь чуть больше контроля за инициализацией подсветки, вы можете
+использовать функции <a href="http://highlightjs.readthedocs.io/en/latest/api.html#highlightblock-block"><code class="highlighter-rouge">highlightBlock</code></a> и <a href="http://highlightjs.readthedocs.io/en/latest/api.html#configure-options"><code class="highlighter-rouge">configure</code></a>. Таким образом
+можно управлять тем, <em>что</em> и <em>когда</em> подсвечивать.</p>
+
+<p>Вот пример инициализации, эквивалентной вызову <a href="http://highlightjs.readthedocs.io/en/latest/api.html#inithighlightingonload"><code class="highlighter-rouge">initHighlightingOnLoad</code></a>, но
+с использованием jQuery:</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">$</span><span class="p">(</span><span class="s1">'pre code'</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">block</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">hljs</span><span class="p">.</span><span class="nx">highlightBlock</span><span class="p">(</span><span class="nx">block</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">});</span>
+</code></pre>
+</div>
+
+<p>Вы можете использовать любые теги разметки вместо <code class="highlighter-rouge">&lt;pre&gt;&lt;code&gt;</code>. Если
+используете контейнер, не сохраняющий переводы строк, вам нужно сказать
+highlight.js использовать для них тег <code class="highlighter-rouge">&lt;br&gt;</code>:</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">hljs</span><span class="p">.</span><span class="nx">configure</span><span class="p">({</span><span class="na">useBR</span><span class="p">:</span> <span class="kc">true</span><span class="p">});</span>
+
+<span class="nx">$</span><span class="p">(</span><span class="s1">'div.code'</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">block</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">hljs</span><span class="p">.</span><span class="nx">highlightBlock</span><span class="p">(</span><span class="nx">block</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre>
+</div>
+
+<p>Другие опции можно найти в документации функции <a href="http://highlightjs.readthedocs.io/en/latest/api.html#configure-options"><code class="highlighter-rouge">configure</code></a>.</p>
+
+<h2 id="web-workers">Web Workers</h2>
+
+<p>Подсветку можно запустить внутри web worker’а, чтобы окно
+браузера не подтормаживало при работе с большими кусками кода.</p>
+
+<p>В основном скрипте:</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'load'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">code</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'#code'</span><span class="p">);</span>
+  <span class="kd">var</span> <span class="nx">worker</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Worker</span><span class="p">(</span><span class="s1">'worker.js'</span><span class="p">);</span>
+  <span class="nx">worker</span><span class="p">.</span><span class="nx">onmessage</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span> <span class="nx">code</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="nx">event</span><span class="p">.</span><span class="nx">data</span><span class="p">;</span> <span class="p">}</span>
+  <span class="nx">worker</span><span class="p">.</span><span class="nx">postMessage</span><span class="p">(</span><span class="nx">code</span><span class="p">.</span><span class="nx">textContent</span><span class="p">);</span>
+<span class="p">})</span>
+</code></pre>
+</div>
+
+<p>В worker.js:</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">onmessage</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">importScripts</span><span class="p">(</span><span class="s1">'&lt;path&gt;/highlight.pack.js'</span><span class="p">);</span>
+  <span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">self</span><span class="p">.</span><span class="nx">hljs</span><span class="p">.</span><span class="nx">highlightAuto</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+  <span class="nx">postMessage</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h2 id="section-2">Установка библиотеки</h2>
+
+<p>Highlight.js можно использовать в браузере прямо с CDN хостинга или скачать
+индивидуальную сборку, а также установив модуль на сервере. На
+<a href="https://highlightjs.org/download/">странице загрузки</a> подробно описаны все варианты.</p>
+
+<p><strong>Не подключайте GitHub напрямую.</strong> Библиотека не предназначена для
+использования в виде исходного кода, а требует отдельной сборки. Если вам не
+подходит ни один из готовых вариантов, читайте <a href="http://highlightjs.readthedocs.io/en/latest/building-testing.html">документацию по сборке</a>.</p>
+
+<p><strong>Файл на CDN содержит не все языки.</strong> Иначе он будет слишком большого размера.
+Если нужного вам языка нет в <a href="https://highlightjs.org/download/">категории “Common”</a>, можно дообавить его
+вручную:</p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/languages/go.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+</code></pre>
+</div>
+
+<p><strong>Про Almond.</strong> Нужно задать имя модуля в оптимизаторе, например:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>r.js -o name=hljs paths.hljs=/path/to/highlight out=highlight.js
+</code></pre>
+</div>
+
+<h2 id="section-3">Лицензия</h2>
+
+<p>Highlight.js распространяется под лицензией BSD. Подробнее читайте файл
+<a href="https://github.com/isagalaev/highlight.js/blob/master/LICENSE">LICENSE</a>.</p>
+
+<h2 id="section-4">Ссылки</h2>
+
+<p>Официальный сайт билиотеки расположен по адресу <a href="https://highlightjs.org/">https://highlightjs.org/</a>.</p>
+
+<p>Более подробная документация по API и другим темам расположена на
+<a href="http://highlightjs.readthedocs.io/">http://highlightjs.readthedocs.io/</a>.</p>
+
+<p>Авторы и контрибьюторы перечислены в файле <a href="https://github.com/isagalaev/highlight.js/blob/master/AUTHORS.ru.txt">AUTHORS.ru.txt</a> file.</p>
+
+
+  </div>
+
+</article>
+
+
+    <footer class="site-footer">
+      <div class="container">
+        
+        <nav class="site-footer-top" role="navigation">
+          <div class="media">
+            <div class="media-body">
+              <a href="#" class="button color-white">
+                Home
+              </a>
+              <a href="#" class="button color-white">
+                Xtend
+              </a>
+              <a href="#" class="button color-white">
+                Playground
+              </a>
+              <a href="#" class="button color-white">
+                Articles
+              </a>
+              <a href="#" class="button color-white">
+                Inspirations
+              </a>
+            </div>
+            <div class="mr-3">
+              <a href="#" class="button color-white">
+                Privacy policy
+              </a>
+              <a href="#" class="button color-white">
+                license
+              </a>
+              <a href="#" class="button color-white">
+                contact
+              </a>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="site-footer-bottom">
+          <div class="media">
+            <div class="media-body">
+              Site and docs licensed <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank">CC BY 3.0</a> – Xtend licensed <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE" target="_blank">MIT</a>
+            </div>
+            <div class="mr-3">
+              <span>© 2016 – </span><span class="site-footer-bottom-year"></span> <span>Riccardo Caroli</span>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </footer>
+
+    <!-- scripts -->
+    <script src="../../assets//bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="../../assets//bower_components/tether/dist/js/tether.min.js"></script>
+    <script src="../../assets//bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../../assets//bower_components/clipboard/dist/clipboard.min.js"></script>
+    <script src="../../assets/highlight/highlight.pack.js"></script>
+    <script src="../../assets/xtend/xtend.js"></script>
+    <script src="../../assets/scripts/main.js"></script>
+
+  </body>
+</html>
