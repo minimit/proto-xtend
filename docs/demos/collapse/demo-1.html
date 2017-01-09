@@ -1,0 +1,165 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+        
+    <!-- meta -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+
+    <!-- seo -->
+    <title>Demo</title>
+    <meta name="description" content="Xtend" />
+
+    <!-- icons -->
+    <link rel="icon" href="../../assets/images/favicon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../../assets/images/apple-touch-icon.png" />
+
+    <!-- styles -->
+    <link rel="stylesheet" href="../../assets/styles/bootstrap.min.css" />
+    <link rel="stylesheet" href="../../assets/xtend/xtend-base.css" />
+    <link rel="stylesheet" href="../../assets/xtend/xtend-theme.css" />
+    <link rel="stylesheet" href="../../assets/styles/icons/style.css" />
+    <link rel="stylesheet" href="../../assets/styles/demo.css" />
+
+  </head>
+  <body>
+    
+<div id="inject">
+  <div id="inject-inside">
+<button class="button color-primary" data-xtend='{"target": ".card", "grouping": "unique"}'>
+  0
+</button>
+<button class="button color-primary" data-xtend='{"target": ".card", "grouping": "unique"}'>
+  1
+</button>
+<button class="button color-primary" data-xtend='{"target": ".card", "grouping": "unique"}'>
+  2
+</button>
+<div class="card">
+  <div class="card-block">
+    card 0
+  </div>
+</div>
+<div class="card">
+  <div class="card-block">
+    card 1
+  </div>
+</div>
+<div class="card">
+  <div class="card-block">
+    card 2
+  </div>
+</div>
+
+<br />
+
+<button class="button color-primary" data-xtend='{"target": ".card"}'>
+  0
+</button>
+<button class="button color-primary" data-xtend='{"target": ".card"}'>
+  1
+</button>
+<button class="button color-primary" data-xtend='{"target": ".card"}'>
+  2
+</button>
+<div class="card">
+  <div class="card-block">
+    card 0
+  </div>
+</div>
+<div class="card">
+  <div class="card-block">
+    card 1
+  </div>
+</div>
+<div class="card">
+  <div class="card-block">
+    card 2
+  </div>
+</div>
+
+<br />
+
+<div>
+  <button class="button color-primary" data-xtend='{"target": ".card"}'>
+    0
+  </button>
+  <button class="button color-primary" data-xtend='{"target": ".card"}'>
+    1
+  </button>
+  <button class="button color-primary" data-xtend='{"target": ".card"}'>
+    2
+  </button>
+  <div class="card">
+    <div class="card-block">
+      card 0
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-block">
+      card 1
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-block">
+      card 2
+    </div>
+  </div>
+</div>
+
+<br />
+
+<div id="target">
+  <button class="button color-primary" data-xtend='{"target": ".card", "group": "#target"}'>
+    0
+  </button>
+  <button class="button color-primary" data-xtend='{"target": ".card", "group": "#target"}'>
+    1
+  </button>
+  <button class="button color-primary" data-xtend='{"target": ".card", "group": "#target"}'>
+    2
+  </button>
+  <div class="card">
+    <div class="card-block">
+      card 0
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-block">
+      card 1
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-block">
+      card 2
+    </div>
+  </div>
+</div>
+  </div>
+</div>
+<style scoped>
+</style>
+<scss-style>
+</scss-style>
+
+      <!-- scripts -->
+      <script src="../../assets/scripts/jquery.min.js"></script>
+      <script src="../../assets/scripts/tether.min.js"></script>
+      <script src="../../assets/scripts/bootstrap.min.js"></script>
+      <script src="../../assets/xtend/xtend.js"></script>
+      
+      <script type="text/javascript">
+        $(document).ready( function() {
+          // add id
+          $('html').attr('id', document.location.href.match(/[^\/]+$/)[0]);
+        });
+      </script>
+      
+  </body>
+</html>

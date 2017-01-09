@@ -93,6 +93,7 @@ gulp.task('js:watch', function() {
 });
 gulp.task('js', ['js-dist'], function(cb) {
   pump([
+    /*
     gulp.src(['src/docs/assets/scripts/*.js', '!src/docs/assets/scripts/*.min.js']),
     uglify({
       preserveComments: 'license'
@@ -101,6 +102,7 @@ gulp.task('js', ['js-dist'], function(cb) {
       suffix: '.min'
     }),
     gulp.dest('src/docs/assets/scripts/')
+    */
   ], cb);
 });
 gulp.task('js-dist', function(cb) {

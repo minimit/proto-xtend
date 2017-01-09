@@ -1,6 +1,14 @@
 {% comment %} https://github.com/jekyll/jekyll/issues/332 {% endcomment %}
 {% assign base = "" %}{% assign canon = page.url | append: "page.html" | split: "/" %}{% for item in canon offset:2 %}{% assign base = base | append:"../" %}{% endfor %}
 
-{% include site-head.html %}
+{% include demos-head.html %}
+<div id="inject">
+  <div id="inject-inside">
 {{ content }}
-{% include site-foot.html %}
+  </div>
+</div>
+<style scoped>
+</style>
+<scss-style>
+</scss-style>
+{% include demos-foot.html %}
