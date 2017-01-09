@@ -1,0 +1,43 @@
+{
+  "name": "xtend",
+  "version": "0.0.3",
+  "description": "",
+  "homepage": "",
+  "license": "MIT",
+  "author": "Riccardo Caroli",
+  "keywords": [
+    "css",
+    "js",
+    "sass",
+    "front-end",
+    "framework",
+    "plugin"
+  ],
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "scripts": {
+    "build": "gulp build",
+    "watch": "gulp watch"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-flatmap": "^1.0.0",
+    "gulp-if": "^2.0.2",
+    "gulp-inject": "^4.2.0",
+    "gulp-inject-string": "^1.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.0.0",
+    "gulp-uglify": "^2.0.0",
+    "gulp-watch": "^4.3.11",
+    "gulp-webserver": "^0.9.1",
+    "gulp-wrap": "^0.13.0",
+    "pump": "^1.0.2",
+    "replace-ext": "^1.0.0",
+    "run-sequence": "^1.2.2"
+  }
+}
