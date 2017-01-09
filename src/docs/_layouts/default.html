@@ -1,11 +1,1 @@
-<!-- http://ricostacruz.com/til/relative-paths-in-jekyll -->
-{% assign base = '' %}
-{% assign depth = page.url | split: '/' | size | minus: 1 %}
-{% if    depth <= 1 %}{% assign base = '.' %}
-{% elsif depth == 2 %}{% assign base = '..' %}
-{% elsif depth == 3 %}{% assign base = '../..' %}
-{% elsif depth == 4 %}{% assign base = '../../..' %}{% endif %}
-
-{% include site-head.html %}
-{{ content }}
-{% include site-foot.html %}
+{% comment %}https://github.com/jekyll/jekyll/issues/332{% endcomment %}{% assign base = "" %}{% assign canon = page.url | append: "page.html" | split: "/" %}{% for item in canon offset:2 %}{% assign base = base | append:"../" %}{% endfor %}{% include site-head.html %}{{ content }}{% include site-foot.html %}
