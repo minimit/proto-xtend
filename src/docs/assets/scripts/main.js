@@ -170,7 +170,7 @@
       var $element = $(this);
       var id = $element.attr('id');
       if (id) {
-        $element.addClass('make-anchor').append('<span class="site-article-anchor"><a href="#' + id + '" class="button color-primary"><span class="icon-link" aria-hidden="true"></span></a></span>');
+        $element.addClass('make-anchor').append('<span class="site-article-anchor"><a href="#' + id + '" class="button color-text"><span class="icon-link" aria-hidden="true"></span></a></span>');
       }
     });
     
