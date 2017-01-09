@@ -34,5 +34,5 @@ exclude:
   - Gemfile.lock
 
 # Server
-source: src/docs
-destination: dist/docs
+source: src/docs/
+destination: docs/
