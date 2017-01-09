@@ -212,7 +212,7 @@
     // populate header
     $('.site-hero h1').html(object.settings.ajax.h1);
     $('.site-hero h2').html(object.settings.ajax.h2);
-    $('.site-header .button__menu .text').html(object.settings.ajax.h1);
+    $('.site-header .button__menu .text').html(object.settings.ajax.cat);
   });
   
 })(jQuery, window, document);
