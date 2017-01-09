@@ -1,0 +1,27 @@
+{
+  "name": "minimit",
+  "description": "",
+  "homepage": "http://www.minimit.com",
+  "license": "MIT",
+  "authors": [
+    "Riccardo Caroli <beaver82@gmail.com>"
+  ],
+  "keywords": [
+    "css",
+    "js",
+    "sass",
+    "front-end",
+    "framework",
+    "plugin"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/minimit/minimit.git"
+  },
+  "moduleType": "globals",
+  "main": [],
+  "dependencies": {
+    "jquery": "^3"
+  },
+  "devDependencies": {}
+}

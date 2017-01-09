@@ -1,10 +1,12 @@
 {
-  "name": "xtend",
+  "name": "minimit",
   "version": "0.0.3",
   "description": "",
-  "homepage": "",
+  "homepage": "http://www.minimit.com",
   "license": "MIT",
-  "author": "Riccardo Caroli",
+  "authors": [
+    "Riccardo Caroli <beaver82@gmail.com>"
+  ],
   "keywords": [
     "css",
     "js",

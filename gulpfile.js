@@ -24,7 +24,7 @@ gulp.task('default', ['build']);
 
 gulp.task('build', ['version'], function(done) {
   runSequence(['scss', 'js'], function(done) {
-    runSequence(['site', 'demos'], function(done) {
+    runSequence(['site'], function(done) {
       runSequence(['bower', 'serve']);
     });
   });
@@ -32,9 +32,9 @@ gulp.task('build', ['version'], function(done) {
 
 gulp.task('watch', ['version'], function(done) {
   runSequence(['scss', 'js'], function(done) {
-    runSequence(['site', 'demos'], function(done) {
+    runSequence(['site'], function(done) {
       runSequence(['bower', 'serve'], function(done) {
-        runSequence(['version:watch', 'site:watch', 'demos:watch', 'scss:watch', 'js:watch']);
+        runSequence(['version:watch', 'site:watch', 'scss:watch', 'js:watch']);
       });
     });
   });
@@ -135,27 +135,19 @@ gulp.task('version', function() {
 // site
 
 gulp.task('site:watch', function() {
+  require('child_process').exec('jekyll build --watch', function(err, stdout, stderr) {
+    console.log(stdout);
+  });
 });
-gulp.task('site-clean', function() {
-});
-gulp.task('site', ['site-clean'], function() {
-});
-
-// demos
-
-gulp.task('demos:watch', function() {
-});
-gulp.task('demos-clean', function() {
-});
-gulp.task('demos-styles', ['demos-clean'], function() {
-});
-gulp.task('demos', ['demos-styles'], function() {
+gulp.task('site', function() {
+  require('child_process').exec('jekyll build', function(err, stdout, stderr) {
+    console.log(stdout);
+  });
 });
 
 // inject bower
 
 gulp.task('bower', function() {
-  /*
   return gulp.src('bower.json')
     .pipe(inject(gulp.src(['dist/*.scss', 'dist/*.css', 'dist/*.js'], {read: false}), {
       starttag: '"main": [',
@@ -165,5 +157,4 @@ gulp.task('bower', function() {
       }
     }))
     .pipe(gulp.dest(''));
-  */
 });
