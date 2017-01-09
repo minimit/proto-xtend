@@ -3,12 +3,19 @@
       <script src="{{base}}assets/scripts/jquery.min.js"></script>
       <script src="{{base}}assets/scripts/tether.min.js"></script>
       <script src="{{base}}assets/scripts/bootstrap.min.js"></script>
+      <script src="{{base}}assets/scripts/ResizeSensor.min.js"></script>
+      <script src="{{base}}assets/scripts/ElementQueries.min.js"></script>
       <script src="{{base}}assets/xtend/xtend.js"></script>
       
       <script type="text/javascript">
         $(document).ready( function() {
           // add id
           $('html').attr('id', document.location.href.match(/[^\/]+$/)[0]);
+          // https://github.com/marcj/css-element-queries
+          var inject = document.getElementById('inject');
+          new ResizeSensor(inject, function() {
+            parent.resizeIframe(window.frameElement.getAttribute('id'));
+          });
         });
       </script>
       

@@ -8,24 +8,15 @@
     // demo
     //////////////////////
     
-    function resizeIframe($iframe) {
-      var oldH;
+    window.resizeIframe = function(id) {
+      var $iframe = $('#' + id);
+      var oldH = $iframe.data('iframeHeight');
       var h = $iframe.contents().find('#inject').height();
       if (h !== oldH) {
         $iframe.height(h);
+        $iframe.data('iframeHeight', h);
       }
-      /*
-      var oldH;
-      var timeout = $iframe.data('iframe-timeout');
-      clearTimeout(timeout);
-      setInterval( function($iframe){
-        var h = $iframe.contents().find('#inject').height();
-        if (h !== oldH) {
-          $iframe.height(h);
-        }
-      }, 500, $iframe);
-      */
-    }
+    };
     
     // populateDemo
     
@@ -62,14 +53,16 @@
           $container.addClass('demo-iframe');
           $demo.append('<iframe src="demos/' + $demo.attr('data-iframe') + '" frameborder="0"></iframe>');
           var $iframe = $demo.find('iframe');
+          var id = 'iframe' + i + k;
+          $iframe.attr('id', id);
           $iframe.on('load', function(e){
-            populateCode($demo, $iframe, i + k);
-            resizeIframe($iframe);
+            populateCode($demo, $iframe, id);
+            window.resizeIframe(id);
           });
           // iframe resize on show
           $demo.on('xtend.show', function(e, object) {
             var $iframe = $(this).find('iframe');
-            resizeIframe($iframe);
+            window.resizeIframe(id);
             //console.log($iframe.attr('src'), $iframe.contents().find('#inject').height());
           });
           // tabs
