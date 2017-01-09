@@ -19,3 +19,5 @@ kramdown:
   auto_ids: true
 
 # Custom vars
+github: "https://github.com/minimit/minimit"
+download: "https://github.com/minimit/minimit/archive/master.zip"
