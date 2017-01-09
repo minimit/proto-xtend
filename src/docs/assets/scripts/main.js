@@ -10,11 +10,21 @@
     
     function resizeIframe($iframe) {
       var oldH;
-      //setInterval( function(){}, 500);
       var h = $iframe.contents().find('#inject').height();
       if (h !== oldH) {
         $iframe.height(h);
       }
+      /*
+      var oldH;
+      var timeout = $iframe.data('iframe-timeout');
+      clearTimeout(timeout);
+      setInterval( function($iframe){
+        var h = $iframe.contents().find('#inject').height();
+        if (h !== oldH) {
+          $iframe.height(h);
+        }
+      }, 500, $iframe);
+      */
     }
     
     // populateDemo

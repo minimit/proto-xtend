@@ -91,21 +91,7 @@ gulp.task('scss-dist', function() {
 gulp.task('js:watch', function() {
   gulp.watch(['src/docs/assets/scripts/*.js', 'src/docs/assets/xtend/*.js'], ['js']);
 });
-gulp.task('js', ['js-dist'], function(cb) {
-  pump([
-    /*
-    gulp.src(['src/docs/assets/scripts/*.js', '!src/docs/assets/scripts/*.min.js']),
-    uglify({
-      preserveComments: 'license'
-    }),
-    rename({
-      suffix: '.min'
-    }),
-    gulp.dest('src/docs/assets/scripts/')
-    */
-  ], cb);
-});
-gulp.task('js-dist', function(cb) {
+gulp.task('js', function(cb) {
   pump([
     gulp.src(['src/docs/assets/xtend/*.js', '!src/docs/assets/xtend/*.min.js']),
     uglify({
