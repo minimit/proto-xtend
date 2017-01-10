@@ -19,16 +19,12 @@ description: test
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec efficitur, ipsum quis iaculis posuere, felis turpis faucibus nibh, nec tincidunt metus tortor sollicitudin massa. Vivamus ligula orci, venenatis ac purus a, fermentum lacinia mi. Proin ultricies erat ac blandit auctor.</p>
           <p>Praesent viverra blandit lectus, ut porta urna gravida ac. Sed libero sapien, auctor eget eros pellentesque, luctus ornare lacus. Duis est sem, mollis non dictum at, varius ac lectus. Proin vestibulum in est vel porttitor. Quisque enim quam, semper eget porttitor a, dapibus vel purus. Aliquam egestas bibendum quam, ac euismod justo dignissim malesuada. Aenean euismod lacinia eleifend. Fusce varius augue vel enim euismod, blandit aliquet dolor lacinia. Fusce vehicula metus et ipsum consectetur, vitae efficitur est suscipit.</p>
           
-          <p>Example inline pre code (needs escaped html tags):</p>
-          <div class="demo">
-            <div class="demo-item">
-              <div class="demo-source" data-lang="html">
+          <p>Example inline <code>&lt;pre&gt;&lt;code class="lang"&gt;&lt;/code&gt;&lt;/pre&gt;</code>, lang can be <code>'html'</code> <code>'js'</code> <code>'scss'</code> <code>'js'</code>:</p>
+          <pre><code class="html">
 &lt;script src=&quot;https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?autoload=true&amp;amp;skin=sunburst&amp;amp;lang=css&quot; defer=&quot;defer&quot;&gt;&lt;/script&gt;
-              </div>
-            </div>
-          </div>
+          </code></pre>
           
-          <p>Example demo [data-lang="js"]:</p>
+          <p>Example demo with <code>.demo-source[data-lang="lang"]</code>, lang can be <code>'html'</code> <code>'js'</code> <code>'scss'</code> <code>'js'</code>:</p>
           <div class="demo">
             <div class="demo-item">
               <div class="demo-source" data-lang="js">
@@ -55,7 +51,7 @@ $element.attr('data-xtend-namespace', settings.namespace);
             </div>
           </div>
           
-          <p>Example demo with .preview to show preview:</p>
+          <p>Example demo with <code>.demo-source.preview</code> to show preview:</p>
           <div class="demo">
             <div class="demo-item">
               <div class="demo-source preview" data-lang="html">
@@ -68,18 +64,18 @@ $element.attr('data-xtend-namespace', settings.namespace);
             </div>
           </div>
           
-          <p>Example [data-iframe]:</p>
+          <p>Example demo with <code>[data-iframe="path/inside/demos"]</code>:</p>
           <div class="demo">
             <div class="demo-item" data-iframe="collapse/demo-0.html"></div>
           </div>
           
-          <p>Example multiple [data-iframe]:</p>
+          <p>Example multiple demos with <code>[data-iframe]</code>:</p>
           <div class="demo">
             <div class="demo-item" data-iframe="collapse/demo-0.html"></div>
             <div class="demo-item" data-iframe="collapse/demo-1.html"></div>
           </div>
           
-          <p>Example multiple .demo-item:</p>
+          <p>Example multiple demos:</p>
           <div class="demo">
             <div class="demo-item">
               <div class="demo-source" data-lang="js">
@@ -104,7 +100,7 @@ $(element).each( function(i) {
             </div>
           </div>
           
-          <p>Example multiple .demo-item with [data-name]:</p>
+          <p>Example multiple demos with <code>[data-name="tab name"]</code>:</p>
           <div class="demo">
             <div class="demo-item" data-name="description">
               <div class="demo-source" data-lang="html">
