@@ -1,0 +1,137 @@
+---
+layout: default
+title: test
+description: test
+---
+<main class="site-main">
+  
+  <div class="container">
+    <div class="row justify-content-xs-center">
+      <div class="col-xs-12 col-lg-9">
+  
+        <article class="site-article">
+          
+          <h2 id="lorem-ipsum">Lorem ipsum</h2>
+          <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec efficitur, ipsum quis iaculis posuere, felis turpis faucibus nibh, nec tincidunt metus tortor sollicitudin massa.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec efficitur, ipsum quis iaculis posuere, felis turpis faucibus nibh, nec tincidunt metus tortor sollicitudin massa. Vivamus ligula orci, venenatis ac purus a, fermentum lacinia mi. Proin ultricies erat ac blandit auctor.</p>
+          
+          <h2 id="lorem-ipsum-dolor">Lorem ipsum dolor sit amet</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec efficitur, ipsum quis iaculis posuere, felis turpis faucibus nibh, nec tincidunt metus tortor sollicitudin massa. Vivamus ligula orci, venenatis ac purus a, fermentum lacinia mi. Proin ultricies erat ac blandit auctor.</p>
+          <p>Praesent viverra blandit lectus, ut porta urna gravida ac. Sed libero sapien, auctor eget eros pellentesque, luctus ornare lacus. Duis est sem, mollis non dictum at, varius ac lectus. Proin vestibulum in est vel porttitor. Quisque enim quam, semper eget porttitor a, dapibus vel purus. Aliquam egestas bibendum quam, ac euismod justo dignissim malesuada. Aenean euismod lacinia eleifend. Fusce varius augue vel enim euismod, blandit aliquet dolor lacinia. Fusce vehicula metus et ipsum consectetur, vitae efficitur est suscipit.</p>
+          
+          <p>Example inline pre code (needs escaped html tags):</p>
+          <div class="demo">
+            <div class="demo-item">
+              <div class="demo-source" data-lang="html">
+&lt;script src=&quot;https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?autoload=true&amp;amp;skin=sunburst&amp;amp;lang=css&quot; defer=&quot;defer&quot;&gt;&lt;/script&gt;
+              </div>
+            </div>
+          </div>
+          
+          <p>Example demo [data-lang="js"]:</p>
+          <div class="demo">
+            <div class="demo-item">
+              <div class="demo-source" data-lang="js">
+var object = this;
+var settings = this.settings;
+var element = this.element;
+var $element = $(this.element);
+// automatic $group and target
+if (settings.target && settings.group) {
+  settings.$group = $element.parents(settings.group);
+  settings.$target = settings.$group.find(settings.target);
+} else {
+  if (settings.target) {
+    settings.$target = $(settings.target);
+    settings.$group = settings.$target.parent();
+  } else {
+    settings.$group = $element.parent();
+  }
+}
+// set namespace
+settings.namespace = settings.grouping + '_' + settings.group;
+$element.attr('data-xtend-namespace', settings.namespace);
+              </div>
+            </div>
+          </div>
+          
+          <p>Example demo with .preview to show preview:</p>
+          <div class="demo">
+            <div class="demo-item">
+              <div class="demo-source preview" data-lang="html">
+<div class="spacer">
+  <a href="#" class="button color-primary">
+    lorem ipsum
+  </a>
+</div>
+              </div>
+            </div>
+          </div>
+          
+          <p>Example [data-iframe]:</p>
+          <div class="demo">
+            <div class="demo-item" data-iframe="collapse/demo-0.html"></div>
+          </div>
+          
+          <p>Example multiple [data-iframe]:</p>
+          <div class="demo">
+            <div class="demo-item" data-iframe="collapse/demo-0.html"></div>
+            <div class="demo-item" data-iframe="collapse/demo-1.html"></div>
+          </div>
+          
+          <p>Example multiple .demo-item:</p>
+          <div class="demo">
+            <div class="demo-item">
+              <div class="demo-source" data-lang="js">
+$(element).each( function(i) {
+  $(this).xtend({"grouping": i});
+});
+              </div>
+            </div>
+            <div class="demo-item">
+              <div class="demo-source" data-lang="html">
+&lt;script src=&quot;https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?autoload=true&amp;amp;skin=sunburst&amp;amp;lang=css&quot; defer=&quot;defer&quot;&gt;&lt;/script&gt;
+              </div>
+            </div>
+          </div>
+          
+          <div class="demo">
+            <div class="demo-item" data-iframe="collapse/demo-0.html"></div>
+            <div class="demo-item">
+              <div class="demo-source" data-lang="html">
+&lt;script src=&quot;https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?autoload=true&amp;amp;skin=sunburst&amp;amp;lang=css&quot; defer=&quot;defer&quot;&gt;&lt;/script&gt;
+              </div>
+            </div>
+          </div>
+          
+          <p>Example multiple .demo-item with [data-name]:</p>
+          <div class="demo">
+            <div class="demo-item" data-name="description">
+              <div class="demo-source" data-lang="html">
+&lt;script src=&quot;https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?autoload=true&amp;amp;skin=sunburst&amp;amp;lang=css&quot; defer=&quot;defer&quot;&gt;&lt;/script&gt;
+              </div>
+            </div>
+            <div class="demo-item" data-name="another description">
+              <div class="demo-source preview" data-lang="html">
+<div class="spacer">
+  <a href="#" class="button color-primary">
+    lorem ipsum
+  </a>
+</div>
+              </div>
+            </div>
+          </div>
+          
+        </article>
+        
+      </div>
+      <div class="col-xs-12 col-lg-3">
+        
+        <aside class="site-aside">
+        </aside>
+        
+      </div>
+    </div>
+  </div>
+          
+</main>

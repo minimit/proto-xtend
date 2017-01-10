@@ -23,10 +23,6 @@
     function populateDemo($element, i) {
       var $container = $element;
       var $items = $container.find('.demo-item');
-      // single element
-      if ($items.length === 1) {
-        $items.css('display', 'block');
-      }
       // multiple elements
       $container.prepend('<div class="box demo-tabs"><div class="box demo-tabs-inside"><div class="demo-tabs-left float-left"></div><div class="demo-code-tabs-right float-right"></div></div></div>');
       $container.find('.demo-code-tabs-right').append('<button class="button color-text button__fullscreen" data-toggle="tooltip" data-placement="top" title="Open fullscreen"><span class="icon-enlarge2"></span></button>');
@@ -34,6 +30,11 @@
         .on('mouseleave', function(e) {
           $(this).attr('data-original-title', 'Open fullscreen').tooltip('hide');
         });
+      // single element and no demo tabs
+      if ($items.length === 1 && !$container.find('.preview').length && !$container.find('[data-iframe]').length) {
+        $items.css('display', 'block');
+        $container.find('.demo-tabs').css('display', 'none');
+      }
       $items.each( function(k) {
         var $demo = $(this);
         // populate tabs
@@ -94,14 +95,14 @@
     // populateInline
     
     function populateInline($demo, id) {
-      var html = $demo.find('[lang="html"]').text();
-      // inject code
-      if (html) {
-        $demo.append('<div class="demo-source" data-lang="html">' + html + '</div>');
-      }
-      // populate
       var $sources = $demo.find('.demo-source');
-      populateSources($demo, $sources, id);
+      $sources.each( function(z) {
+        var $source = $(this);
+        populateSources($demo, $source, id, z);
+        if (!$source.hasClass('preview')) {
+          $source.css('display', 'none');
+        }
+      });
     }
     
     // populateIframe
@@ -119,26 +120,26 @@
       }
       // populate
       var $sources = $demo.find('.demo-source');
-      populateSources($demo, $sources, id);
+      $sources.each( function(z) {
+        var $source = $(this);
+        populateSources($demo, $source, id, z);
+      });
     }
     
     // populateSources
     
-    function populateSources($demo, $sources, id) {
-      $sources.each( function(z) {
-        var $source = $(this);
-        var lang = $source.data('lang');
-        // populate tabs
-        var $codeInside = $demo.find('.demo-code-body').append('<div class="demo-code-body-item"><pre><code></code></pre></div>').find('.demo-code-body-item').eq(z).find('pre code');
-        var $btnInside = $demo.find('.demo-code-tabs-left').append('<button class="button color-text">' + lang + '</button>').find('.button').eq(z);
-        $btnInside.xtend({"target": ".demo-code-body-item", "group": ".demo-code", "grouping": id});
-        // format code
-        if (!$codeInside.hasClass('hljs')) {
-          var text = formatCode($source);
-          $codeInside.html(text).removeClass().addClass(lang);
-          window.hljs.highlightBlock($codeInside[0]);
-        }
-      });
+    function populateSources($demo, $source, id, z) {
+      var lang = $source.data('lang');
+      // populate tabs
+      var $codeInside = $demo.find('.demo-code-body').append('<div class="demo-code-body-item"><pre><code></code></pre></div>').find('.demo-code-body-item').eq(z).find('pre code');
+      var $btnInside = $demo.find('.demo-code-tabs-left').append('<button class="button color-text">' + lang + '</button>').find('.button').eq(z);
+      $btnInside.xtend({"target": ".demo-code-body-item", "group": ".demo-code", "grouping": id});
+      // format code
+      if (!$codeInside.hasClass('hljs')) {
+        var text = formatCode($source);
+        $codeInside.html(text).removeClass().addClass(lang);
+        window.hljs.highlightBlock($codeInside[0]);
+      }
     }
     
     // formatCode
