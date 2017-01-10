@@ -50,6 +50,10 @@
         }
         var $btn = $container.find('.demo-tabs-left').append('<button class="button color-text">' + name + '</button>').find('.button').eq(k);
         $btn.xtend({"target": ".demo-item", "group": ".demo", "grouping": i});
+        // iframe append
+        if ($demo.attr('data-iframe')) {
+          $demo.append('<iframe src="demos/' + $demo.attr('data-iframe') + '" frameborder="0"></iframe>');
+        }
         // tabs
         var id = 'iframe' + i + k;
         $demo.append('<div class="demo-code"><div class="box demo-code-tabs"><div class="box demo-code-tabs-inside"><div class="demo-code-tabs-left float-left"></div><div class="demo-code-tabs-right float-right"><button class="button color-text button__clipboard" data-toggle="tooltip" data-placement="top" title="Copy to clipboard">copy</button></div></div></div><div class="box demo-code-body"></div></div>');
@@ -73,7 +77,6 @@
         // inject iframe
         if ($demo.attr('data-iframe')) {
           $container.addClass('demo-iframe');
-          $demo.prepend('<iframe src="demos/' + $demo.attr('data-iframe') + '" frameborder="0"></iframe>');
           var $iframe = $demo.find('> iframe');
           $iframe.attr('id', id);
           $iframe.on('load', function(e){

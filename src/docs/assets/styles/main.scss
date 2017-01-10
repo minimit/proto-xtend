@@ -347,13 +347,17 @@ pre code {
   line-height: 1.5;
   white-space: pre-wrap !important;
 }
-p code {
+p code,
+.demo-text code {
   margin: 0 .2rem;
   padding: .1rem .2rem;
   font-size: 80%;
   color: #d14;
   border-radius: 0;
   background: color(grey);
+}
+.demo-text code {
+  background: darken(color(grey), 4%);
 }
 
 /* .demo */
@@ -364,18 +368,6 @@ p code {
   margin-top: 0.618rem;
   margin-bottom: 0.618rem;
   background: color(grey);
-  // .hljs
-  pre {
-    margin-bottom: 0 !important;
-  }
-  .hljs {
-    margin-top: -1rem;
-  }
-  // iframe
-  iframe {
-    width: 100%;
-    height: 0;
-  }
   // code
   .demo-code {
     @include box;
@@ -396,12 +388,29 @@ p code {
   .demo-code-body {
     z-index: 1;
   }
+  // iframe
+  iframe {
+    width: 100%;
+    height: 0;
+  }
   // source
   .demo-source {
     padding: 1rem;
     &:not([data-lang="html"]) {
       display: none;
     }
+  }
+  // .hljs
+  pre {
+    margin-bottom: 0 !important;
+  }
+  .hljs {
+    margin-top: -1rem;
+  }
+  // .demo-text
+  .demo-text {
+    font-size: 0.809rem;
+    line-height: 1.4;
   }
 }
 
@@ -414,26 +423,28 @@ pre {
 }
 
 /* .demo paddings */
-$demo-padding: 1rem;
 .demo {
   .demo-tabs,
   .demo-code-tabs {
     z-index: 2;
     padding: 0 0.382rem;
     .button {
-      padding: 0.8rem 0.618rem;
+      padding: 0.809rem 0.618rem;
     }
   }
   .hljs {
-    padding-top: $demo-padding;
-    padding-left: $demo-padding;
-    padding-right: $demo-padding;
+    padding-top: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .demo-text {
+    padding: 0.809rem 1rem;
   }
 }
 
 /* .demo shadow style */
 .hljs {
-  padding: 0 $demo-padding;
+  padding: 0 1rem;
 }
 .demo {
   .hljs {
