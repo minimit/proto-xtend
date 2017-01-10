@@ -22,7 +22,7 @@
     
     function populateDemo($element, i) {
       var $container = $element;
-      var $items = $container.find('.demo-item');
+      var $items = $container.find('> .demo-item');
       // multiple elements
       $container.prepend('<div class="box demo-tabs"><div class="box demo-tabs-inside"><div class="demo-tabs-left float-left"></div><div class="demo-code-tabs-right float-right"></div></div></div>');
       $container.find('.demo-code-tabs-right').append('<button class="button color-text button__fullscreen" data-toggle="tooltip" data-placement="top" title="Open fullscreen"><span class="icon-enlarge2"></span></button>');
@@ -31,7 +31,7 @@
           $(this).attr('data-original-title', 'Open fullscreen').tooltip('hide');
         });
       // single element and no demo tabs
-      if ($items.length === 1 && !$container.find('.preview').length && !$container.find('[data-iframe]').length) {
+      if ($items.length === 1 && !$items.find('> .demo-source.preview').length && !$items.attr('data-iframe')) {
         $items.css('display', 'block');
         $container.find('.demo-tabs').css('display', 'none');
       }
@@ -74,7 +74,7 @@
         if ($demo.attr('data-iframe')) {
           $container.addClass('demo-iframe');
           $demo.prepend('<iframe src="demos/' + $demo.attr('data-iframe') + '" frameborder="0"></iframe>');
-          var $iframe = $demo.find('iframe');
+          var $iframe = $demo.find('> iframe');
           $iframe.attr('id', id);
           $iframe.on('load', function(e){
             populateIframe($demo, $iframe, id);
@@ -82,7 +82,7 @@
           });
           // iframe resize on show
           $demo.on('xtend.show', function(e, object) {
-            var $iframe = $(this).find('iframe');
+            var $iframe = $(this).find('> iframe');
             window.resizeIframe(id);
             //console.log($iframe.attr('src'), $iframe.contents().find('#inject').height());
           });
@@ -95,7 +95,7 @@
     // populateInline
     
     function populateInline($demo, id) {
-      var $sources = $demo.find('.demo-source');
+      var $sources = $demo.find('> .demo-source');
       $sources.each( function(z) {
         var $source = $(this);
         populateSources($demo, $source, id, z);
@@ -162,7 +162,6 @@
     }
     
     // init demo
-    
     $main.find('.demo').each( function(i) {
       populateDemo($(this), i);
     });
