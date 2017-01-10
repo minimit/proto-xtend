@@ -142,9 +142,9 @@
         }
         if (found) {
           // set ajaxified
-          var title = settings.ajax.title || document.title;
+          settings.ajax.title = settings.ajax.title ? settings.ajax.title : document.title;
           settings.$target.attr('data-xtend-ajaxified', settings.ajax.url);
-          this.pushstate(title);
+          this.pushstate();
           // then show
           this.show();
           // api
@@ -361,8 +361,8 @@
             settings.$target.html($html);
             // pushstate
             if (!skipstate) {
-              var title = settings.ajax.title || $data.find('title').text();
-              object.pushstate(title, true);
+              settings.ajax.title = settings.ajax.title ? settings.ajax.title : $data.find('title').text();
+              object.pushstate(true);
             }
             // api
             settings.$target.trigger('xtend.ajax.done', [object, $data]);
@@ -374,12 +374,13 @@
       }
     },
     
-    pushstate: function(title, triggered) {
+    pushstate: function(triggered) {
       var object = this;
       var settings = this.settings;
       var element = this.element;
       var $element = $(this.element);
       // if no state or if the state is new
+      var title = settings.ajax.title;
       if (!history.state || !history.state.url || history.state.url !== settings.ajax.url) {
         var url = settings.ajax.url;
         // push this object state

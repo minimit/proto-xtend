@@ -199,12 +199,14 @@
     
     // .site-article .site-article-anchor
     
-    $main.find('.site-article').find('h2, h3').each( function(i) {
+    jQuery.expr[':'].parents = function(a,i,m){
+      return jQuery(a).parents(m[3]).length < 1;
+    };
+    $main.find('.site-article').find('h2, h3').filter(':parents(.demo)').each( function(i) {
       var $element = $(this);
-      var id = $element.attr('id');
-      if (id) {
-        $element.addClass('make-anchor').append('<span class="site-article-anchor"><a href="#' + id + '" class="button color-text"><span class="icon-link" aria-hidden="true"></span></a></span>');
-      }
+      var id = $element.text().replace(/\s+/g, '-').toLowerCase();
+      $element.attr('id', id);
+      $element.addClass('make-anchor').append('<span class="site-article-anchor"><a href="#' + id + '" class="button color-text"><span class="icon-link" aria-hidden="true"></span></a></span>');
     });
     
     // tooltips
@@ -240,11 +242,11 @@
     */
   });
   
-  $('.site-main').on('xtend.ajax.init xtend.ajax.done', function(e, object) {
+  $('.site-main').on('xtend.ajax.init xtend.ajax.done', function(e, object, $data) {
     var $container = $(this);
     // populate header
-    $('.site-hero h1').html(object.settings.ajax.h1);
-    $('.site-hero h2').html(object.settings.ajax.h2);
+    $('.site-hero h1').html($data.find('.site-hero .h1').text());
+    $('.site-hero h2').html($data.find('.site-hero .h5').text());
     $('.site-header .button__menu .text').html(object.settings.ajax.cat);
   });
   
