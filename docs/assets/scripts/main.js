@@ -50,6 +50,15 @@
         }
         var $btn = $container.find('.demo-tabs-left').append('<button class="button color-text">' + name + '</button>').find('.button').eq(k);
         $btn.xtend({"target": ".demo-item", "group": ".demo", "grouping": i});
+        // disable fullscreen when not needed
+        $btn.on('xtend.show', function(e, object) {
+          console.log($(this).parents('.demo').find('.demo-item.active').attr('data-iframe'));
+          if ($(this).parents('.demo').find('.demo-item.active').attr('data-iframe')) {
+            $(this).parents('.demo').find('.button__fullscreen').css('display', 'block');
+          } else {
+            $(this).parents('.demo').find('.button__fullscreen').css('display', 'none');
+          }
+        });
         // iframe append
         if ($demo.attr('data-iframe')) {
           $demo.append('<iframe src="demos/' + $demo.attr('data-iframe') + '" frameborder="0"></iframe>');
@@ -64,7 +73,7 @@
           });
         var clipboard = new Clipboard('.button__clipboard', {
           target: function (trigger) {
-            return $(trigger).parents('.demo').find('.demo-code-body-item.active .hljs')[0];
+            return $(trigger).parents('.demo').find('.demo-item.active .demo-code-body-item.active .hljs')[0];
           }
         });
         clipboard.on('success', function(e) {
