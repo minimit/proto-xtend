@@ -28,7 +28,8 @@
         $items.css('display', 'block');
       }
       // multiple elements
-      $container.prepend('<div class="box demo-tabs"><div class="box demo-tabs-inside"><div class="demo-tabs-left float-left"></div><div class="demo-code-tabs-right float-right"><button class="button color-text button__fullscreen" data-toggle="tooltip" data-placement="top" title="Open fullscreen"><span class="icon-enlarge2"></span></button></div></div></div>');
+      $container.prepend('<div class="box demo-tabs"><div class="box demo-tabs-inside"><div class="demo-tabs-left float-left"></div><div class="demo-code-tabs-right float-right"></div></div></div>');
+      $container.find('.demo-code-tabs-right').append('<button class="button color-text button__fullscreen" data-toggle="tooltip" data-placement="top" title="Open fullscreen"><span class="icon-enlarge2"></span></button>');
       $container.find('.button__fullscreen').tooltip(/*{trigger: 'click'}*/)
         .on('mouseleave', function(e) {
           $(this).attr('data-original-title', 'Open fullscreen').tooltip('hide');
@@ -48,15 +49,34 @@
         }
         var $btn = $container.find('.demo-tabs-left').append('<button class="button color-text">' + name + '</button>').find('.button').eq(k);
         $btn.xtend({"target": ".demo-item", "group": ".demo", "grouping": i});
+        // tabs
+        var id = 'iframe' + i + k;
+        $demo.append('<div class="demo-code"><div class="box demo-code-tabs"><div class="box demo-code-tabs-inside"><div class="demo-code-tabs-left float-left"></div><div class="demo-code-tabs-right float-right"><button class="button color-text button__clipboard" data-toggle="tooltip" data-placement="top" title="Copy to clipboard">copy</button></div></div></div><div class="box demo-code-body"></div></div>');
+        // https://github.com/zenorocha/clipboard.js/
+        $demo.find('.button__clipboard').tooltip(/*{trigger: 'click'}*/)
+          .on('mouseleave', function(e) {
+            $(this).attr('data-original-title', 'Copy to clipboard').tooltip('hide');
+          });
+        var clipboard = new Clipboard('.button__clipboard', {
+          target: function (trigger) {
+            return $(trigger).parents('.demo').find('.demo-code-body-item.active .hljs')[0];
+          }
+        });
+        clipboard.on('success', function(e) {
+          e.clearSelection();
+          $(e.trigger).attr('data-original-title', 'Done').tooltip('show');
+        });
+        clipboard.on('error', function(e) {
+          $(e.trigger).attr('data-original-title', 'Error: copy manually').tooltip('show');
+        });
         // inject iframe
         if ($demo.attr('data-iframe')) {
           $container.addClass('demo-iframe');
-          $demo.append('<iframe src="demos/' + $demo.attr('data-iframe') + '" frameborder="0"></iframe>');
+          $demo.prepend('<iframe src="demos/' + $demo.attr('data-iframe') + '" frameborder="0"></iframe>');
           var $iframe = $demo.find('iframe');
-          var id = 'iframe' + i + k;
           $iframe.attr('id', id);
           $iframe.on('load', function(e){
-            populateCode($demo, $iframe, id);
+            populateIframe($demo, $iframe, id);
             window.resizeIframe(id);
           });
           // iframe resize on show
@@ -65,43 +85,28 @@
             window.resizeIframe(id);
             //console.log($iframe.attr('src'), $iframe.contents().find('#inject').height());
           });
-          // tabs
-          $demo.append('<div class="demo-code"><div class="box demo-code-tabs"><div class="box demo-code-tabs-inside"><div class="demo-code-tabs-left float-left"></div><div class="demo-code-tabs-right float-right"><button class="button color-text button__clipboard" data-toggle="tooltip" data-placement="top" title="Copy to clipboard">copy</button></div></div></div><div class="box demo-code-body"></div></div>');
-          // https://github.com/zenorocha/clipboard.js/
-          $demo.find('.button__clipboard').tooltip(/*{trigger: 'click'}*/)
-            .on('mouseleave', function(e) {
-              $(this).attr('data-original-title', 'Copy to clipboard').tooltip('hide');
-            });
-          var clipboard = new Clipboard('.button__clipboard', {
-            target: function (trigger) {
-              return $(trigger).parents('.demo').find('.demo-code-body-item.active .hljs')[0];
-            }
-          });
-          clipboard.on('success', function(e) {
-            e.clearSelection();
-            $(e.trigger).attr('data-original-title', 'Done').tooltip('show');
-          });
-          clipboard.on('error', function(e) {
-            $(e.trigger).attr('data-original-title', 'Error: copy manually').tooltip('show');
-          });
         } else {
-          $demo.append('<div class="demo-code"><div class="box demo-code-body"><pre><code></code></pre></div></div>');
-          // format code
-          var $code = $demo.find('pre code');
-          var $source = $demo.find('.demo-source');
-          var text = formatCode($source);
-          $code.html(text);
-          if (!$code.hasClass('hljs')) {
-            window.hljs.highlightBlock($code[0]);
-          }
-          $source.remove();
+          populateInline($demo, id);
         }
       });
     }
     
-    // populateCode
+    // populateInline
     
-    function populateCode($demo, $iframe, num) {
+    function populateInline($demo, id) {
+      var html = $demo.find('[lang="html"]').text();
+      // inject code
+      if (html) {
+        $demo.append('<div class="demo-source" data-lang="html">' + html + '</div>');
+      }
+      // populate
+      var $sources = $demo.find('.demo-source');
+      populateSources($demo, $sources, id);
+    }
+    
+    // populateIframe
+    
+    function populateIframe($demo, $iframe, id) {
       var html = $('body #inject-inside', $iframe[0].contentWindow.document).html();
       var scss = $('body scss-style', $iframe[0].contentWindow.document).html();
       var css = $('body style[scoped]', $iframe[0].contentWindow.document).html();
@@ -114,22 +119,33 @@
       }
       // populate
       var $sources = $demo.find('.demo-source');
+      populateSources($demo, $sources, id);
+    }
+    
+    // populateSources
+    
+    function populateSources($demo, $sources, id) {
       $sources.each( function(z) {
         var $source = $(this);
         var lang = $source.data('lang');
         // populate tabs
-        var $code = $demo.find('.demo-code-body').append('<div class="demo-code-body-item"><pre><code></code></pre></div>').find('.demo-code-body-item').eq(z).find('pre code');
-        var $btn = $demo.find('.demo-code-tabs-left').append('<button class="button color-text">' + lang + '</button>').find('.button').eq(z);
-        $btn.xtend({"target": ".demo-code-body-item", "group": ".demo-code", "grouping": num});
+        var $codeInside = $demo.find('.demo-code-body').append('<div class="demo-code-body-item"><pre><code></code></pre></div>').find('.demo-code-body-item').eq(z).find('pre code');
+        var $btnInside = $demo.find('.demo-code-tabs-left').append('<button class="button color-text">' + lang + '</button>').find('.button').eq(z);
+        $btnInside.xtend({"target": ".demo-code-body-item", "group": ".demo-code", "grouping": id});
         // format code
-        var text = formatCode($source);
-        $code.html(text).removeClass().addClass(lang);
-        window.hljs.highlightBlock($code[0]);
+        if (!$codeInside.hasClass('hljs')) {
+          var text = formatCode($source);
+          $codeInside.html(text).removeClass().addClass(lang);
+          window.hljs.highlightBlock($codeInside[0]);
+        }
       });
-      $sources.remove();
     }
+    
+    // formatCode
+    
     function formatCode($source) {
-      var text = $source.html();
+      var $clone = $source.clone();
+      var text = $clone.html();
       if (text.match(/[&<>]/g)) {
         // replace entities
         text = text.replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g, '>');
@@ -139,7 +155,9 @@
         text = text.replace(/&quot;:/g,'&quot;: '); // add spacing for white-space: pre-wrap;
         text = text.replace(/&quot;/g,'"');
       }
-      return $source.text(text).html();
+      text = $clone.text(text).html();
+      $clone.remove();
+      return text;
     }
     
     // init demo

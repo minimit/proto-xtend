@@ -357,11 +357,6 @@ code {
   margin-bottom: 0.618rem;
   background: color(grey);
   line-height: 0;
-  .demo-source {
-    display: none;
-    font-size: 1rem;
-    line-height: 1.7;
-  }
   // .hljs
   pre {
     margin-bottom: 0 !important;
@@ -379,6 +374,7 @@ code {
     @include box;
   }
   .demo-item {
+    @include box;
     display: none;
     &.active {
       display: block;
@@ -393,13 +389,20 @@ code {
   .demo-code-body {
     z-index: 1;
   }
+  // source
+  .demo-source {
+    padding: 1rem;
+    &:not([data-lang="html"]) {
+      display: none;
+    }
+  }
 }
 
 /* .demo max height */
 pre {
   max-height: 325px;
 }
-.demo-code-tabs ~ .demo-code-body {
+.demo:not(.demo-inline) + .demo-code .demo-code-body {
   height: 325px;
 }
 
