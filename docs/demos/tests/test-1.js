@@ -1,3 +1,3 @@
 $('.button').on('click', function(e) {
-  alert('test-1 button clicked');
+  console.log('test-1 button clicked');
 });
