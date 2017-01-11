@@ -58,7 +58,7 @@
         });
         // iframe append
         if ($item.attr('data-iframe')) {
-          $item.append('<iframe src="demos/' + $item.attr('data-iframe') + '" frameborder="0"></iframe>');
+          $item.append('<iframe src="' + $item.attr('data-iframe') + '" frameborder="0"></iframe>');
         }
         // tabs
         var id = 'iframe' + i + k;
