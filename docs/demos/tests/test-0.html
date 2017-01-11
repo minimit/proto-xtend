@@ -26,7 +26,30 @@
     <link rel="stylesheet" href="../../assets/xtend/xtend-theme.css" />
     <link rel="stylesheet" href="../../assets/styles/icons/style.css" />
     <link rel="stylesheet" href="../../assets/styles/demo.css" />
-
+    
+    <!-- scripts -->
+    <script src="../../assets/scripts/jquery.min.js"></script>
+    <script src="../../assets/scripts/tether.min.js"></script>
+    <script src="../../assets/scripts/bootstrap.min.js"></script>
+    <script src="../../assets/xtend/xtend.js"></script>
+    
+    <!-- demo scripts -->
+    <script src="../../assets/scripts/ResizeSensor.min.js"></script>
+    <script src="../../assets/scripts/ElementQueries.min.js"></script>
+    <script type="text/javascript">
+      $.fn.xtend.manualInit = true;
+      function init() {
+        // init xtend
+        $('[data-xtend]').xtend();
+        // add id
+        $('html').attr('id', document.location.href.match(/[^\/]+$/)[0]);
+        // https://github.com/marcj/css-element-queries
+        new ResizeSensor(document.getElementById('inject'), function() {
+          parent.resizeIframe(window.frameElement.getAttribute('id'));
+        });
+      }
+    </script>
+    
   </head>
   <body>
     
@@ -102,28 +125,14 @@ button.active {
 
 
 
-      <!-- scripts -->
-      <script src="../../assets/scripts/jquery.min.js"></script>
-      <script src="../../assets/scripts/tether.min.js"></script>
-      <script src="../../assets/scripts/bootstrap.min.js"></script>
-      <script src="../../assets/xtend/xtend.js"></script>
-      
-      <!-- demo scripts -->
-      <script src="../../assets/scripts/ResizeSensor.min.js"></script>
-      <script src="../../assets/scripts/ElementQueries.min.js"></script>
-      <script type="text/javascript">
-        $.fn.xtend.manualInit = true;
-        function init() {
-          // init xtend
-          $('[data-xtend]').xtend();
-          // add id
-          $('html').attr('id', document.location.href.match(/[^\/]+$/)[0]);
-          // https://github.com/marcj/css-element-queries
-          new ResizeSensor(document.getElementById('inject'), function() {
-            parent.resizeIframe(window.frameElement.getAttribute('id'));
-          });
-        }
-      </script>
-      
+<script scoped>
+$('.button').on('click', function(e) {
+  alert('test-0 button clicked');
+});
+
+</script>
+
+
+
   </body>
 </html>

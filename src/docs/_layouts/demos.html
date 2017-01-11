@@ -20,4 +20,11 @@
 </scss-style>
 {% endif %}
 
+{% if page.js %}
+<script scoped>
+{% include_relative {{page.js}} %}
+
+</script>
+{% endif %}
+
 {% include demos-foot.html %}

@@ -128,18 +128,22 @@
       var html = $('body #inject-inside', $iframe[0].contentWindow.document).html();
       var scss = $('body scss-style', $iframe[0].contentWindow.document).html();
       var css = $('body style[scoped]', $iframe[0].contentWindow.document).html();
+      var js = $('body script[scoped]', $iframe[0].contentWindow.document).html();
       // inject code
       if (html) {
         $iframe.append('<div class="demo-source" data-lang="html">' + html + '</div>');
       }
-      if (scss && scss.indexOf('<!--') === -1) {
+      if (scss) {
         $iframe.append('<div class="demo-source" data-lang="scss">' + scss + '</div>');
       }
       /*
-      if (css && css.indexOf('<!--') === -1) {
+      if (css) {
         $iframe.append('<div class="demo-source" data-lang="css">' + css + '</div>');
       }
       */
+      if (js) {
+        $iframe.append('<div class="demo-source" data-lang="js">' + js + '</div>');
+      }
       // populate
       var $sources = $demo.find('.demo-source');
       $sources.each( function(z) {
