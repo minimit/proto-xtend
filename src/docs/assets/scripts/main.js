@@ -19,7 +19,6 @@
     };
     
     // populateDemo
-    
     function populateDemo($element, i) {
       var $container = $element;
       var $items = $container.find('> .demo-item');
@@ -52,7 +51,6 @@
         $btn.xtend({"target": ".demo-item", "group": ".demo", "grouping": i});
         // disable fullscreen when not needed
         $btn.on('xtend.show', function(e, object) {
-          console.log($(this).parents('.demo').find('.demo-item.active').attr('data-iframe'));
           if ($(this).parents('.demo').find('.demo-item.active').attr('data-iframe')) {
             $(this).parents('.demo').find('.button__fullscreen').css('display', 'block');
           } else {
@@ -91,6 +89,11 @@
           $iframe.on('load', function(e){
             populateIframe($demo, $iframe, id);
             window.resizeIframe(id);
+            $iframe[0].contentWindow.init();
+            // .populated fix scroll
+            setTimeout( function($demo) {
+              $demo.addClass('populated');
+            }, 0, $demo);
           });
           // iframe resize on show
           $demo.on('xtend.show', function(e, object) {
@@ -100,12 +103,15 @@
           });
         } else {
           populateInline($demo, id);
+          // .populated fix scroll
+          setTimeout( function($demo) {
+            $demo.addClass('populated');
+          }, 0, $demo);
         }
       });
     }
     
     // populateInline
-    
     function populateInline($demo, id) {
       var $sources = $demo.find('> .demo-source');
       $sources.each( function(z) {
@@ -118,7 +124,6 @@
     }
     
     // populateIframe
-    
     function populateIframe($demo, $iframe, id) {
       var html = $('body #inject-inside', $iframe[0].contentWindow.document).html();
       var scss = $('body scss-style', $iframe[0].contentWindow.document).html();
@@ -130,9 +135,11 @@
       if (scss && scss.indexOf('<!--') === -1) {
         $iframe.append('<div class="demo-source" data-lang="scss">' + scss + '</div>');
       }
+      /*
       if (css && css.indexOf('<!--') === -1) {
         $iframe.append('<div class="demo-source" data-lang="css">' + css + '</div>');
       }
+      */
       // populate
       var $sources = $demo.find('.demo-source');
       $sources.each( function(z) {
@@ -142,7 +149,6 @@
     }
     
     // populateSources
-    
     function populateSources($demo, $source, id, z) {
       var lang = $source.data('lang');
       // populate tabs
@@ -158,7 +164,6 @@
     }
     
     // formatCode
-    
     function formatCode($source) {
       var $clone = $source.clone();
       var text = $clone.html();
@@ -186,22 +191,18 @@
     //////////////////////
 
     // .box-wrapper
-
     $main.find('.site-header, .site-main, .site-footer').wrapAll('<div class="box-wrapper">');
     $main.find('.site-main, .site-footer').wrapAll('<div class="box-wrapper-inside">');
     
     // syntax
-    
     $main.find('pre code').each( function(i) {
       window.hljs.highlightBlock(this);
     });
     
     // .site-article .make-line
-    
     $main.find('.site-article').find('h2, h3').addClass('make-line').wrapInner('<span class="line"></span>').wrapInner('<div class="line-container"></div>');
     
     // .site-article .site-article-anchor
-    
     jQuery.expr[':'].parents = function(a,i,m){
       return jQuery(a).parents(m[3]).length < 1;
     };
@@ -213,11 +214,9 @@
     });
     
     // tooltips
-    
     $main.find('[data-toggle="tooltip"]').tooltip(/*{trigger: 'click'}*/);
     
     // .site-footer-bottom-year
-    
     var year = new Date().getFullYear();
     $('.site-footer-bottom-year').html(year);
     
@@ -230,9 +229,10 @@
   main($('html'));
   
   //////////////////////
-  // xtend events
+  // xtend
   //////////////////////
   
+  // on done
   $('.site-main').on('xtend.ajax.done', function(e, object, $data) {
     var $container = $(this);
     // main on ajax
@@ -245,6 +245,7 @@
     */
   });
   
+  // on ajax
   $('.site-main').on('xtend.ajax.init xtend.ajax.done', function(e, object, $data) {
     var $container = $(this);
     // populate header

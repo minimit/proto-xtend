@@ -94,7 +94,10 @@
       }
       // set namespace
       settings.namespace = settings.grouping + '_' + settings.group;
-      $element.attr('data-xtend-namespace', settings.namespace);
+      $element.attr('data-xtend-button', settings.namespace);
+      if (settings.target) {
+        settings.$target.attr('data-xtend-target', settings.namespace);
+      }
     },
     
     setup: function() {
@@ -184,7 +187,7 @@
       var element = this.element;
       var $element = $(this.element);
       // get $buttons on $group based on namespace
-      var $buttons = settings.$group.find('[data-xtend-namespace="' + settings.namespace + '"]');
+      var $buttons = settings.$group.find('[data-xtend-button="' + settings.namespace + '"]');
       return $buttons;
     },
     
@@ -430,7 +433,6 @@
   //////////////////////
   
   // onpopstate trigger window.pushstate
-  
   window.onpopstate = function(history) {
     if (history.state && history.state.url) {
       document.title = history.state.title;
@@ -443,7 +445,6 @@
   };
   
   // https://www.paulirish.com/2011/requestanimationframe-for-smart-animating/
-  
   window.requestAnimFrame = (function() {
     return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || function(callback) {
       window.setTimeout(callback, 1000 / 60);
@@ -451,16 +452,16 @@
   })();
   
   // http://stackoverflow.com/questions/13281897/how-to-preserve-order-of-items-added-to-jquery-matched-set
-  
   $.fn.pushElement = function($element) {
     Array.prototype.push.apply(this, $element);
     return this;
   };
   
   // init if not manualInit
-  
-  if (!$.fn[pluginName].manualInit) {
-    $('[data-' + [pluginName] + ']')[pluginName]();
-  }
+  $(document).ready(function () {
+    if (!$.fn[pluginName].manualInit) {
+      $('[data-' + [pluginName] + ']')[pluginName]();
+    }
+  });
 
 })(jQuery, window, document);

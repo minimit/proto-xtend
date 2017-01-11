@@ -379,7 +379,7 @@ p code,
       display: block;
     }
   }
-  .demo-code-body-item {
+  .demo-item.populated .demo-code-body-item {
     display: none;
     &.active {
       display: block;
@@ -422,7 +422,7 @@ p code,
 pre {
   max-height: 325px;
 }
-.demo:not(.demo-inline) + .demo-code .demo-code-body {
+.demo-item:not(.populated) .demo-code-body {
   height: 325px;
 }
 

@@ -153,19 +153,21 @@
       <script src="../../assets/scripts/bootstrap.min.js"></script>
       <script src="../../assets/xtend/xtend.js"></script>
       
-      <!-- demo stuff -->
+      <!-- demo scripts -->
       <script src="../../assets/scripts/ResizeSensor.min.js"></script>
       <script src="../../assets/scripts/ElementQueries.min.js"></script>
       <script type="text/javascript">
-        $(document).ready( function() {
+        $.fn.xtend.manualInit = true;
+        function init() {
+          // init xtend
+          $('[data-xtend]').xtend();
           // add id
           $('html').attr('id', document.location.href.match(/[^\/]+$/)[0]);
           // https://github.com/marcj/css-element-queries
-          var inject = document.getElementById('inject');
-          new ResizeSensor(inject, function() {
+          new ResizeSensor(document.getElementById('inject'), function() {
             parent.resizeIframe(window.frameElement.getAttribute('id'));
           });
-        });
+        }
       </script>
       
   </body>

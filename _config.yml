@@ -12,7 +12,7 @@ exclude:
   - "*.psd"
   - "*.scss"
   - "demos/**/*.css"
-  
+
 # Dependencies
 highlighter: rouge
 markdown: kramdown
