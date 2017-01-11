@@ -130,6 +130,9 @@
       if (scss && scss.indexOf('<!--') === -1) {
         $iframe.append('<div class="demo-source" data-lang="scss">' + scss + '</div>');
       }
+      if (css && css.indexOf('<!--') === -1) {
+        $iframe.append('<div class="demo-source" data-lang="css">' + css + '</div>');
+      }
       // populate
       var $sources = $demo.find('.demo-source');
       $sources.each( function(z) {

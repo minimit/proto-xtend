@@ -4,11 +4,20 @@
 {% include demos-head.html %}
 <div id="inject">
   <div id="inject-inside">
-{{ content }}
+{{content}}
   </div>
 </div>
+
+{% if page.scss %}
+{% assign css = page.scss | replace: '.scss', '.css' %}
 <style scoped>
+{% include_relative {{css}} %}
+
 </style>
 <scss-style>
+{% include_relative {{page.scss}} %}
+
 </scss-style>
+{% endif %}
+
 {% include demos-foot.html %}

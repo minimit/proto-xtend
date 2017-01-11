@@ -59,12 +59,19 @@ gulp.task('serve', function() {
 gulp.task('scss:watch', function() {
   gulp.watch(['src/docs/assets/styles/*.scss', 'src/docs/assets/xtend/*.scss'], ['scss']);
 });
-gulp.task('scss', ['scss-dist'], function() {
+gulp.task('scss', ['scss-demos'], function() {
   return gulp.src('src/docs/assets/styles/*.scss')
     .pipe(sass({
       outputStyle: 'compressed'
     }))
     .pipe(gulp.dest('src/docs/assets/styles/'));
+});
+gulp.task('scss-demos', ['scss-dist'], function() {
+  return gulp.src('src/docs/demos/**/*.scss')
+    .pipe(sass({
+      outputStyle: 'nested'
+    }))
+    .pipe(gulp.dest('src/docs/demos/'));
 });
 gulp.task('scss-dist', function() {
   /*
