@@ -19,8 +19,7 @@
     };
     
     // populateDemo
-    function populateDemo($element, i) {
-      var $container = $element;
+    function populateDemo($container, i) {
       var $items = $container.find('> .demo-item');
       // multiple elements
       $container.prepend('<div class="box demo-tabs"><div class="box demo-tabs-inside"><div class="demo-tabs-left float-left"></div><div class="demo-code-tabs-right float-right"></div></div></div>');
@@ -35,15 +34,15 @@
         $container.find('.demo-tabs').css('display', 'none');
       }
       $items.each( function(k) {
-        var $demo = $(this);
+        var $item = $(this);
         // populate tabs
-        var name = $demo.attr('data-name');
+        var name = $item.attr('data-name');
         if ($items.length === 1) {
-          if (!$demo.attr('data-name')) {
+          if (!$item.attr('data-name')) {
             name = 'demo';
           }
         } else {
-          if (!$demo.attr('data-name')) {
+          if (!$item.attr('data-name')) {
             name = 'demo #' + k;
           }
         }
@@ -58,14 +57,14 @@
           }
         });
         // iframe append
-        if ($demo.attr('data-iframe')) {
-          $demo.append('<iframe src="demos/' + $demo.attr('data-iframe') + '" frameborder="0"></iframe>');
+        if ($item.attr('data-iframe')) {
+          $item.append('<iframe src="demos/' + $item.attr('data-iframe') + '" frameborder="0"></iframe>');
         }
         // tabs
         var id = 'iframe' + i + k;
-        $demo.append('<div class="demo-code"><div class="box demo-code-tabs"><div class="box demo-code-tabs-inside"><div class="demo-code-tabs-left float-left"></div><div class="demo-code-tabs-right float-right"><button class="button color-text button__clipboard" data-toggle="tooltip" data-placement="top" title="Copy to clipboard">copy</button></div></div></div><div class="box demo-code-body"></div></div>');
+        $item.append('<div class="demo-code"><div class="box demo-code-tabs"><div class="box demo-code-tabs-inside"><div class="demo-code-tabs-left float-left"></div><div class="demo-code-tabs-right float-right"><button class="button color-text button__clipboard" data-toggle="tooltip" data-placement="top" title="Copy to clipboard">copy</button></div></div></div><div class="box demo-code-body"></div></div>');
         // https://github.com/zenorocha/clipboard.js/
-        $demo.find('.button__clipboard').tooltip(/*{trigger: 'click'}*/)
+        $item.find('.button__clipboard').tooltip(/*{trigger: 'click'}*/)
           .on('mouseleave', function(e) {
             $(this).attr('data-original-title', 'Copy to clipboard').tooltip('hide');
           });
@@ -82,41 +81,41 @@
           $(e.trigger).attr('data-original-title', 'Error: copy manually').tooltip('show');
         });
         // inject iframe
-        if ($demo.attr('data-iframe')) {
+        if ($item.attr('data-iframe')) {
           $container.addClass('demo-iframe');
-          var $iframe = $demo.find('> iframe');
+          var $iframe = $item.find('> iframe');
           $iframe.attr('id', id);
           $iframe.on('load', function(e){
-            populateIframe($demo, $iframe, id);
+            populateIframe($item, $iframe, id);
             window.resizeIframe(id);
             $iframe[0].contentWindow.init();
             // .populated fix scroll
-            setTimeout( function($demo) {
-              $demo.addClass('populated');
-            }, 0, $demo);
+            setTimeout( function($item) {
+              $item.addClass('populated');
+            }, 0, $item);
           });
           // iframe resize on show
-          $demo.on('xtend.show', function(e, object) {
+          $item.on('xtend.show', function(e, object) {
             var $iframe = $(this).find('> iframe');
             window.resizeIframe(id);
             //console.log($iframe.attr('src'), $iframe.contents().find('#inject').height());
           });
         } else {
-          populateInline($demo, id);
+          populateInline($item, id);
           // .populated fix scroll
-          setTimeout( function($demo) {
-            $demo.addClass('populated');
-          }, 0, $demo);
+          setTimeout( function($item) {
+            $item.addClass('populated');
+          }, 0, $item);
         }
       });
     }
     
     // populateInline
-    function populateInline($demo, id) {
-      var $sources = $demo.find('> .demo-source');
+    function populateInline($item, id) {
+      var $sources = $item.find('> .demo-source');
       $sources.each( function(z) {
         var $source = $(this);
-        populateSources($demo, $source, id, z);
+        populateSources($item, $source, id, z);
         if (!$source.hasClass('preview')) {
           $source.css('display', 'none');
         }
@@ -124,7 +123,7 @@
     }
     
     // populateIframe
-    function populateIframe($demo, $iframe, id) {
+    function populateIframe($item, $iframe, id) {
       var html = $('body #inject-inside', $iframe[0].contentWindow.document).html();
       var scss = $('body scss-style', $iframe[0].contentWindow.document).html();
       var css = $('body style[scoped]', $iframe[0].contentWindow.document).html();
@@ -149,19 +148,19 @@
         $iframe.append('<div class="demo-source" data-lang="js">' + js + '</div>');
       }
       // populate
-      var $sources = $demo.find('.demo-source');
+      var $sources = $item.find('.demo-source');
       $sources.each( function(z) {
         var $source = $(this);
-        populateSources($demo, $source, id, z);
+        populateSources($item, $source, id, z);
       });
     }
     
     // populateSources
-    function populateSources($demo, $source, id, z) {
+    function populateSources($item, $source, id, z) {
       var lang = $source.data('lang');
       // populate tabs
-      var $codeInside = $demo.find('.demo-code-body').append('<div class="demo-code-body-item"><pre><code></code></pre></div>').find('.demo-code-body-item').eq(z).find('pre code');
-      var $btnInside = $demo.find('.demo-code-tabs-left').append('<button class="button color-text">' + lang + '</button>').find('.button').eq(z);
+      var $codeInside = $item.find('.demo-code-body').append('<div class="demo-code-body-item"><pre><code></code></pre></div>').find('.demo-code-body-item').eq(z).find('pre code');
+      var $btnInside = $item.find('.demo-code-tabs-left').append('<button class="button color-text">' + lang + '</button>').find('.button').eq(z);
       $btnInside.xtend({"target": ".demo-code-body-item", "group": ".demo-code", "grouping": id});
       // format code
       if (!$codeInside.hasClass('hljs')) {
