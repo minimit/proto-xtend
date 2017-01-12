@@ -17,20 +17,29 @@ gulp.task('default', ['build']);
 
 gulp.task('build', ['version'], function(done) {
   runSequence(['scss', 'js'], function(done) {
-    runSequence(['bower'], function(done) {
-      runSequence(['site']);
+    runSequence(['copy-dist'], function(done) {
+      runSequence(['bower'], function(done) {
+        runSequence(['site']);
+      });
     });
   });
 });
 
 gulp.task('watch', ['version'], function(done) {
   runSequence(['scss', 'js'], function(done) {
-    runSequence(['bower'], function(done) {
-      runSequence(['site'], function(done) {
-        runSequence(['version:watch', 'scss:watch', 'js:watch']);
+    runSequence(['copy-dist'], function(done) {
+      runSequence(['bower'], function(done) {
+        runSequence(['site-serve', 'version:watch', 'scss:watch', 'js:watch']);
       });
     });
   });
+});
+
+// copy-dist
+
+gulp.task('copy-dist', function() {
+  return gulp.src('src/docs/assets/xtend/*')
+    .pipe(gulp.dest('dist/'));
 });
 
 // scss
@@ -59,11 +68,6 @@ gulp.task('scss-demos', function() {
       outputStyle: 'nested'
     }))
     .pipe(gulp.dest('src/docs/demos/'));
-});
-
-gulp.task('dist', function() {
-  return gulp.src('src/docs/assets/xtend/*')
-    .pipe(gulp.dest('dist/'));
 });
 
 // js
@@ -108,6 +112,11 @@ gulp.task('version', function() {
 // site
 
 gulp.task('site', function() {
+  require('child_process').exec('jekyll build', function(err, stdout, stderr) {
+    console.log(stdout);
+  });
+});
+gulp.task('site-serve', function() {
   require('child_process').exec('jekyll serve', function(err, stdout, stderr) {
     console.log(stdout);
   });
