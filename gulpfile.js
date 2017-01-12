@@ -4,7 +4,6 @@ var gulp = require('gulp');
 var fs = require('fs');
 var pump = require('pump');
 var sass = require('gulp-sass');
-var gulpif = require('gulp-if');
 var watch = require('gulp-watch');
 var rename = require('gulp-rename');
 var uglify = require('gulp-uglify');
@@ -18,16 +17,16 @@ gulp.task('default', ['build']);
 
 gulp.task('build', ['version'], function(done) {
   runSequence(['scss', 'js'], function(done) {
-    runSequence(['site'], function(done) {
-      runSequence(['bower']);
+    runSequence(['bower'], function(done) {
+      runSequence(['site']);
     });
   });
 });
 
 gulp.task('watch', ['version'], function(done) {
   runSequence(['scss', 'js'], function(done) {
-    runSequence(['site'], function(done) {
-      runSequence(['bower'], function(done) {
+    runSequence(['bower'], function(done) {
+      runSequence(['site'], function(done) {
         runSequence(['version:watch', 'scss:watch', 'js:watch']);
       });
     });
@@ -37,40 +36,34 @@ gulp.task('watch', ['version'], function(done) {
 // scss
 
 gulp.task('scss:watch', function() {
-  gulp.watch(['src/docs/assets/styles/*.scss', 'src/docs/assets/xtend/*.scss'], ['scss']);
+  gulp.watch(['src/docs/assets/xtend/*.scss'], ['scss']);
+  gulp.watch(['src/docs/assets/styles/*.scss'], ['scss-site']);
 });
-gulp.task('scss', ['scss-demos'], function() {
+gulp.task('scss', ['scss-site'], function() {
+  return gulp.src('src/docs/assets/xtend/*.scss')
+    .pipe(sass({
+      outputStyle: 'compressed'
+    }))
+    .pipe(gulp.dest('src/docs/assets/xtend/'));
+});
+gulp.task('scss-site', ['scss-demos'], function() {
   return gulp.src('src/docs/assets/styles/*.scss')
     .pipe(sass({
       outputStyle: 'compressed'
     }))
     .pipe(gulp.dest('src/docs/assets/styles/'));
 });
-gulp.task('scss-demos', ['scss-dist'], function() {
+gulp.task('scss-demos', function() {
   return gulp.src('src/docs/demos/**/*.scss')
     .pipe(sass({
       outputStyle: 'nested'
     }))
     .pipe(gulp.dest('src/docs/demos/'));
 });
-gulp.task('scss-dist', function() {
-  /*
-  var condition = function (f) {
-    return /xtend-theme/.test(f.path);
-  }
-  return gulp.src('dist/*.scss')
-    .pipe(gulpif(condition, sass({
-      outputStyle: 'nested'
-    }), sass({
-      outputStyle: 'compressed'
-    })))
+
+gulp.task('dist', function() {
+  return gulp.src('src/docs/assets/xtend/*')
     .pipe(gulp.dest('dist/'));
-  */
-  return gulp.src('src/docs/assets/xtend/*.scss')
-    .pipe(sass({
-      outputStyle: 'compressed'
-    }))
-    .pipe(gulp.dest('src/docs/assets/xtend/'));
 });
 
 // js
