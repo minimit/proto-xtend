@@ -1,28 +1,25 @@
-{% comment %} https://github.com/jekyll/jekyll/issues/332 {% endcomment %}
-{% assign base = "" %}{% assign canon = page.url | append: "page.html" | split: "/" %}{% for item in canon offset:2 %}{% assign base = base | append:"../" %}{% endfor %}
-
 {% include demos-head.html %}
 <div id="inject">
   <div id="inject-inside">
-{{content}}
+{{ content }}
   </div>
 </div>
 
 {% if page.scss %}
 {% assign css = page.scss | replace: '.scss', '.css' %}
 <style scoped>
-{% include_relative {{css}} %}
+{% include_relative {{ css }} %}
 
 </style>
 <scss-style>
-{% include_relative {{page.scss}} %}
+{% include_relative {{ page.scss }} %}
 
 </scss-style>
 {% endif %}
 
 {% if page.js %}
 <script type="text/javascript">
-{% include_relative {{page.js}} %}
+{% include_relative {{ page.js }} %}
 
 </script>
 {% endif %}

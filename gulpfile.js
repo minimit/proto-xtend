@@ -36,7 +36,7 @@ gulp.task('watch', ['version'], function(done) {
   runSequence(['scss', 'js'], function(done) {
     runSequence(['site'], function(done) {
       runSequence(['bower', 'serve'], function(done) {
-        runSequence(['version:watch', 'site:watch', 'scss:watch', 'js:watch']);
+        runSequence(['version:watch', 'scss:watch', 'js:watch']);
       });
     });
   });
@@ -131,13 +131,8 @@ gulp.task('version', function() {
 
 // site
 
-gulp.task('site:watch', function() {
-  require('child_process').exec('jekyll build --watch', function(err, stdout, stderr) {
-    console.log(stdout);
-  });
-});
 gulp.task('site', function() {
-  require('child_process').exec('jekyll build', function(err, stdout, stderr) {
+  require('child_process').exec('jekyll serve', function(err, stdout, stderr) {
     console.log(stdout);
   });
 });

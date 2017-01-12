@@ -7,18 +7,29 @@ url: "http://www.minimit.com"
 # settings
 source: src/docs/
 destination: docs/
-baseurl: ""
+baseurl: "/"
 exclude:
   - "*.psd"
   - "*.scss"
   - "demos/**/*.css"
-
+  
+# collections
+collections:
+  xtend:
+    output: true
+    test: 'ciccio'
+    links:
+      github: "https://github.com/minimit/minimit"
+      download: "https://github.com/minimit/minimit/archive/master.zip"
+defaults:
+  - scope:
+      path: ""
+      type: xtend
+    values:
+      layout: default
+      
 # Dependencies
 highlighter: rouge
 markdown: kramdown
 kramdown:
   auto_ids: true
-
-# Custom vars
-github: "https://github.com/minimit/minimit"
-download: "https://github.com/minimit/minimit/archive/master.zip"

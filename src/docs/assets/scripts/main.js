@@ -197,10 +197,6 @@
     // others
     //////////////////////
 
-    // .box-wrapper
-    $main.find('.site-header, .site-main, .site-footer').wrapAll('<div class="box-wrapper">');
-    $main.find('.site-main, .site-footer').wrapAll('<div class="box-wrapper-inside">');
-    
     // syntax
     $main.find('pre code').each( function(i) {
       window.hljs.highlightBlock(this);
@@ -236,25 +232,25 @@
   //////////////////////
   
   // on done
-  $('.site-main').on('xtend.ajax.done', function(e, object, $data) {
+  $('.site-wrapper').on('xtend.ajax.done', function(e, object, $data) {
     var $container = $(this);
     // main on ajax
     main($container);
-    // populate breadcrumbs and reinit
-    /*
-    var $html = $data.find('.site-breadcrumbs');
-    $('.site-breadcrumbs').html($html);
-    $('.site-breadcrumbs').find('[data-xtend]').xtend();
-    */
   });
   
   // on ajax
-  $('.site-main').on('xtend.ajax.init xtend.ajax.done', function(e, object, $data) {
+  $('.site-wrapper').on('xtend.ajax.init xtend.ajax.done', function(e, object, $data) {
     var $container = $(this);
     // populate header
+    /*
     $('.site-hero h1').html($data.find('.site-hero .h1').text());
     $('.site-hero h2').html($data.find('.site-hero .h5').text());
     $('.site-header .button__menu .text').html(object.settings.ajax.cat);
+    */
+    // populate breadcrumbs and reinit
+    //$('.site-breadcrumbs').html($data.find('.site-breadcrumbs'));
+    // init breadcrumbs
+    $('.site-breadcrumbs').find('[data-xtend]').xtend();
   });
   
 })(jQuery, window, document);

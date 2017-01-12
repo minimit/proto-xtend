@@ -360,7 +360,7 @@
             var $data = $('<div />').html(data);
             settings.$target.attr('data-xtend-ajaxified', settings.ajax.url);
             // populate
-            var $html = $data.find(settings.target);
+            var $html = $data.find(settings.target).contents();
             settings.$target.html($html);
             // pushstate
             if (!skipstate) {
