@@ -73,7 +73,7 @@ gulp.task('scss-demos', function() {
 // js
 
 gulp.task('js:watch', function() {
-  gulp.watch(['src/docs/assets/scripts/*.js', 'src/docs/assets/xtend/*.js'], ['js']);
+  gulp.watch(['src/docs/assets/xtend/*.js'], ['js']);
 });
 gulp.task('js', function(cb) {
   pump([
@@ -94,7 +94,9 @@ gulp.task('version:watch', function() {
   gulp.watch(['package.json'], ['version-changed']);
 });
 gulp.task('version-changed', ['version'], function(done) {
-  runSequence(['scss', 'js']);
+  runSequence(['scss', 'js'], function(done) {
+    runSequence(['copy-dist']);
+  });
 });
 gulp.task('version', function() {
   var version = JSON.parse(fs.readFileSync('package.json')).version;
@@ -104,9 +106,9 @@ gulp.task('version', function() {
     .pipe(gulp.dest(''));
   // inject scss and js
   var banner = "/*! xtend v" + version + " (http://)\n" + "@copyright (c) 2016 - 2017 Riccardo Caroli\n" + "@license MIT (https://github.com/minimit/xtend/blob/master/LICENSE) */";
-  return gulp.src(['dist/*.scss', 'dist/*.js'])
+  return gulp.src(['src/docs/assets/xtend/*.scss', 'src/docs/assets/xtend/*.js'])
     .pipe(injectString.replace(/\/\*\![^\*]+\*\//, banner))
-    .pipe(gulp.dest('dist/'));
+    .pipe(gulp.dest('src/docs/assets/xtend/'));
 });
 
 // site
