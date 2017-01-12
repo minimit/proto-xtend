@@ -1,10 +1,114 @@
----
-layout: default
-title: Test Demos
-description: How to highlight code and show previews or import iframes
-h1: Test Demos
-h5: How to highlight code and show previews or import iframes
----
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+        
+    <!-- meta -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+
+    <!-- seo -->
+    <title>Tests • minimit</title>
+    <meta name="description" content="" />
+
+    <!-- icons -->
+    <link rel="icon" href="assets/images/favicon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png" />
+    
+    <!-- styles -->
+    <link rel="stylesheet" href="assets/styles/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/styles/highlight/github.css"> <!-- atom-one-light atom-one-dark github agate -->
+    <link rel="stylesheet" href="assets/styles/icons/style.css" />
+    <link rel="stylesheet" href="assets/xtend/xtend-base.css" />
+    <link rel="stylesheet" href="assets/xtend/xtend-theme.css" />
+    <link rel="stylesheet" href="assets/styles/main.css" />
+
+  </head>
+  <body>
+    
+    <header class="site-header">
+      
+      <nav class="site-header-top" role="navigation">
+        <div class="container">
+          
+          <div class="media">
+            <div class="d-flex align-self-center mr-3">
+              <a href="./" class="logo" title="Home" data-xtend='{"target": ".site-main", "ajax": {"url": "href", "cat": "Home"}}'>
+                MINIMIT
+              </a>
+            </div>
+            <div class="media-body align-self-center">
+              <button type="button" class="button color-white button__menu" data-xtend='{"target": ".site-menu", "grouping": "site-menu", "min": 0}'>
+                <span class="icon-menu-custom right">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </span>
+                <span class="text"></span>
+              </a>
+            </div>
+          </div>
+    
+        </div>
+      </nav>
+      
+      <nav class="site-menu" role="navigation">
+      </nav>
+          
+      <div class="site-hero">
+              
+        <div class="container">
+          <div class="media">
+            <div class="media-body align-self-center">
+              <h1 class="h1">Tests</h1>
+              <h2 class="h5" style="margin-bottom: 0;"></h2>
+            </div>
+            <div class="d-flex align-self-center ml-4">
+              
+              <img src="assets/images/test.png" />
+            
+            </div>
+          </div>
+        </div>
+              
+      </div>
+      
+      <nav class="site-breadcrumbs" role="navigation">
+        <div class="container">
+              
+            <div class="site-breadcrumbs-body">
+              <a href="xtend-intro.html" class="button color-white" data-xtend='{"target": ".site-main", "ajax": {"url": "href", "cat": "Xtend"}}'>
+                Intro
+              </a>
+              <a href="xtend-base.html" class="button color-white" data-xtend='{"target": ".site-main", "ajax": {"url": "href", "cat": "Xtend"}}'>
+                Base
+              </a>
+              <a href="xtend-components.html" class="button color-white" data-xtend='{"target": ".site-main", "ajax": {"url": "href", "cat": "Xtend"}}'>
+                Components
+              </a>
+            </div>
+                
+            <div class="site-breadcrumbs-meta">
+              <a href="https://github.com/minimit/minimit/archive/master.zip" target="_blank" class="button color-white" data-toggle="tooltip" data-placement="top" title="Download source" data-template='<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner tooltip-inverse"></div></div>'>
+                <span class="icon-download"></span>
+              </a>
+              <a href="https://github.com/minimit/minimit" target="_blank" class="button color-white" data-toggle="tooltip" data-placement="top" title="View in github" data-template='<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner tooltip-inverse"></div></div>'>
+                <span class="icon-github"></span>
+              </a>
+            </div>
+              
+          </div>
+    
+        </div>
+      </nav>
+      
+    </header>
+    
 <main class="site-main">
   
   <div class="container">
@@ -13,7 +117,8 @@ h5: How to highlight code and show previews or import iframes
   
         <article class="site-article">
           
-          <h2>Markup</h2>
+          <h2>Code and demos</h2>
+          <p class="lead">How to highlight code and show previews or import iframes</p>
           <p>The 'lang' value can be <code>'html'</code> <code>'js'</code> <code>'scss'</code> <code>'js'</code>.</p>
           
           <h3>Inline</h3>
@@ -109,7 +214,7 @@ h5: How to highlight code and show previews or import iframes
             </div>
           </div>
           
-          <h2>Tests</h2>
+          <h3>Demo test</h3>
           <p class="lead">Testing of all the different options of preview markup.</p>
           
           <div class="demo">
@@ -264,7 +369,13 @@ function formatCode($source) {
               </div>
           </div>
           
-          <h3>test</h3>
+          <h2>Lorem ipsum</h2>
+          <h3>Lorem ipsum</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas dictum velit condimentum efficitur feugiat. Sed sit amet leo nunc. Sed consectetur lectus a erat commodo, id facilisis metus sagittis. Morbi ullamcorper massa vel diam commodo, eget fermentum nisi aliquam. Vivamus gravida bibendum diam.</p>
+          <p>Nulla facilisis tempus risus sed pharetra. Integer varius purus ut sapien finibus, eu vulputate arcu consectetur. Praesent ante purus, ornare quis malesuada sit amet, consequat ac magna. Fusce ultricies velit eget est finibus, viverra tincidunt felis vestibulum.</p>
+          <h2>Lorem ipsum</h2>
+          <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas dictum velit condimentum efficitur feugiat.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas dictum velit condimentum efficitur feugiat. Sed sit amet leo nunc. Sed consectetur lectus a erat commodo, id facilisis metus sagittis. Morbi ullamcorper massa vel diam commodo, eget fermentum nisi aliquam. Vivamus gravida bibendum diam.</p>
           
         </article>
         
@@ -279,3 +390,58 @@ function formatCode($source) {
   </div>
           
 </main>
+
+
+    <footer class="site-footer">
+      <div class="container">
+        
+        <nav class="site-footer-top" role="navigation">
+          <div class="media">
+            <div class="media-body">
+              <a href="#" class="button color-white">
+                Home
+              </a>
+              <a href="#" class="button color-white">
+                Xtend
+              </a>
+              <a href="#" class="button color-white">
+                Playground
+              </a>
+              <a href="#" class="button color-white">
+                Articles
+              </a>
+              <a href="#" class="button color-white">
+                Inspirations
+              </a>
+            </div>
+            <div class="mr-3">
+              
+            </div>
+          </div>
+        </nav>
+        
+        <div class="site-footer-bottom">
+          <div class="media">
+            <div class="media-body">
+              Site and docs licensed <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank">CC BY 3.0</a> <span class="separator">–</span> Xtend licensed <a href="https://github.com/minimit/minimit/blob/master/LICENSE" target="_blank">MIT</a>
+            </div>
+            <div class="mr-3">
+              <span>© 2016 <span class="separator">–</span> </span><span class="site-footer-bottom-year"></span> <span>Riccardo Caroli</span>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </footer>
+
+    <!-- scripts -->
+    <script src="assets/scripts/jquery.min.js"></script>
+    <script src="assets/scripts/tether.min.js"></script>
+    <script src="assets/scripts/bootstrap.min.js"></script>
+    <script src="assets/scripts/clipboard.min.js"></script>
+    <script src="assets/scripts/highlight.pack.js"></script>
+    <script src="assets/xtend/xtend.js"></script>
+    <script src="assets/scripts/main.js"></script>
+
+  </body>
+</html>
