@@ -203,7 +203,8 @@
     });
     
     // .site-article .make-line
-    $main.find('.site-article').find('h2, h3').addClass('make-line').wrapInner('<span class="line"></span>').wrapInner('<div class="line-container"></div>');
+    $main.find('.site-article').find('h2, h3').addClass('make-line');
+    $main.find('.make-line').wrapInner('<span class="line"></span>').wrapInner('<div class="line-container"></div>');
     
     // .site-article .site-article-anchor
     jQuery.expr[':'].parents = function(a,i,m){
@@ -250,7 +251,7 @@
     // populate breadcrumbs and reinit
     //$('.site-breadcrumbs').html($data.find('.site-breadcrumbs'));
     // init breadcrumbs
-    $('.site-breadcrumbs').find('[data-xtend]').xtend();
+    $('.site-header').find('[data-xtend]').xtend();
   });
   
 })(jQuery, window, document);

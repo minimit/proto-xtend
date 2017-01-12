@@ -74,12 +74,6 @@
 // sctructure
 //////////////////////
 
-.site-header,
-.site-main,
-.site-footer {
-  @include box;
-}
-
 // sticky footer flex
 
 .site-wrapper,
@@ -130,8 +124,51 @@ a.logo {
 /* .site-header-top */
 .site-header-top {
   @include box;
+  z-index: 6;
   background: color(primary);
   color: color(white);
+}
+
+/*.site-menu */
+.site-menu {
+  position: fixed;
+  z-index: 5;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: color(primary);
+  color: color(white);
+  .site-menu-content {
+    width: 100%;
+    height: 100%;
+  }
+  // content
+  .button {
+    width: 100%;
+    @include font(sans-regular, !important);
+    font-size: 2.619rem;
+    color: color(white);
+    text-align: left;
+    text-transform: capitalize;
+    .line-container {
+      .line {
+        background: color(primary);
+      }
+      .line:after {
+        background: color(white);
+      }
+    }
+    #{$hover},
+    #{$active} {
+      color: color(white);
+    }
+  }
+  // animations
+  display: none;
+  .button__menu__open & {
+    display: block;
+  }
 }
 
 /* .site-hero */

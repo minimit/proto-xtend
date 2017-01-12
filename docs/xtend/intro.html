@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
 
     <!-- seo -->
-    <title>Base • minimit</title>
+    <title>Intro • minimit</title>
     <meta name="description" content="Lorem ipsum" />
 
     <!-- icons -->
@@ -42,7 +42,7 @@
                 </a>
               </div>
               <div class="media-body align-self-center">
-                <button type="button" class="button button__menu" data-xtend='{"target": ".site-menu", "grouping": "site-menu", "min": 0}'>
+                <button type="button" class="button button__menu" data-xtend='{"target": ".site-menu", "grouping": "site-menu", "min": 0, "htmlClass": "button__menu__open"}'>
                   <span class="icon-menu-custom right">
                     <span></span>
                     <span></span>
@@ -57,6 +57,42 @@
         </nav>
         
         <nav class="site-menu" role="navigation">
+          <div class="site-menu-content d-flex">
+            <div class="container align-self-center">
+            
+              <div class="row justify-content-center">
+                <div class="col-xs-12 col-md-10 col-lg-8">
+                  
+                  <a href="/" class="button make-line">Home</a>
+                  
+                  
+                    
+                  
+                    
+                      
+                      <a href="/xtend/intro.html" class="button make-line">xtend</a>
+                      <!--
+                      
+                        
+                          Base
+                        
+                      
+                        
+                          Components
+                        
+                      
+                        
+                          Intro
+                        
+                      
+                      -->
+                    
+                  
+                </div>
+              </div>
+              
+            </div>
+          </div>
         </nav>
             
         <div class="site-hero">
@@ -64,7 +100,7 @@
           <div class="container">
             <div class="media">
               <div class="media-body align-self-center">
-                <h1 class="h1">Base</h1>
+                <h1 class="h1">Intro</h1>
                 <h2 class="h5" style="margin-bottom: 0;">Lorem ipsum</h2>
               </div>
               <div class="d-flex align-self-center ml-4">
@@ -87,21 +123,22 @@
               
                 <div class="site-breadcrumbs-body">
                   
+                  
                     
-                    <a href="/xtend/xtend-base.html" class="button" data-xtend='{"target": ".site-wrapper", "ajax": {"url": "href"}}'>
+                    <a href="/xtend/intro.html" class="button" data-xtend='{"target": ".site-wrapper", "ajax": {"url": "href"}}'>
+                      Intro
+                    </a>
+                    
+                  
+                    
+                    <a href="/xtend/base.html" class="button" data-xtend='{"target": ".site-wrapper", "ajax": {"url": "href"}}'>
                       Base
                     </a>
                     
                   
                     
-                    <a href="/xtend/xtend-components.html" class="button" data-xtend='{"target": ".site-wrapper", "ajax": {"url": "href"}}'>
+                    <a href="/xtend/components.html" class="button" data-xtend='{"target": ".site-wrapper", "ajax": {"url": "href"}}'>
                       Components
-                    </a>
-                    
-                  
-                    
-                    <a href="/xtend/xtend-intro.html" class="button" data-xtend='{"target": ".site-wrapper", "ajax": {"url": "href"}}'>
-                      Intro
                     </a>
                     
                   
@@ -125,29 +162,6 @@
               
             
             
-            <!--
-            <div class="site-breadcrumbs-body">
-              <a href="xtend-intro.html" class="button" data-xtend='{"target": ".site-wrapper", "ajax": {"url": "href", "cat": "Xtend"}}'>
-                Intro
-              </a>
-              <a href="xtend-base.html" class="button" data-xtend='{"target": ".site-wrapper", "ajax": {"url": "href", "cat": "Xtend"}}'>
-                Base
-              </a>
-              <a href="xtend-components.html" class="button" data-xtend='{"target": ".site-wrapper", "ajax": {"url": "href", "cat": "Xtend"}}'>
-                Components
-              </a>
-            </div>
-                
-            <div class="site-breadcrumbs-meta">
-              <a href="" target="_blank" class="button" data-toggle="tooltip" data-placement="top" title="Download source" data-template='<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner tooltip-inverse"></div></div>'>
-                <span class="icon-download"></span>
-              </a>
-              <a href="" target="_blank" class="button" data-toggle="tooltip" data-placement="top" title="View in github" data-template='<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner tooltip-inverse"></div></div>'>
-                <span class="icon-github"></span>
-              </a>
-            </div>
-            -->
-                
           </div>
         </nav>
         
@@ -164,7 +178,133 @@
   
         <article class="site-article">
           
-          test
+          <h2 id="setup">Setup</h2>
+          <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          
+          <h2 id="spacer">Spacer</h2>
+          <p>Group a series of buttons together on a single line with the button group. Add on optional JavaScript radio and checkbox style behavior with our buttons plugin.</p>
+          
+          <div class="demo">
+            <div class="demo-item demo-preview">
+              <div class="demo-source" data-lang="html">
+<div class="spacer">
+  <a href="#" class="button color-primary">
+    lorem ipsum
+  </a>
+  <a href="#" class="button color-primary">
+    lorem ipsum
+  </a>
+  <a href="#" class="button color-primary">
+    lorem ipsum
+  </a>
+  <a href="#" class="button color-primary">
+    lorem ipsum
+  </a>
+</div>
+              </div>
+            </div>
+          </div>
+          
+          <h2 id="buttons">Buttons</h2>
+          <p>Use Bootstrap’s custom button styles for actions in forms, dialogs, and more. Includes support for a handful of contextual variations, sizes, states, and more.</p>
+
+          <h3 id="button-styles">Button styles</h3>
+          <p>Bootstrap includes six predefined button styles, each serving its own semantic purpose.</p>
+          <p>Bootstrap includes six predefined button styles, each serving its own semantic purpose.</p>
+          <div class="demo">
+            <div class="demo-item demo-preview">
+              <div class="demo-source" data-lang="html">
+<div class="spacer">
+  <a href="#" class="button">
+    default
+  </a>
+  <a href="#" class="button color-primary">
+    lorem ipsum
+  </a>
+  <a href="#" class="button color-text">
+    lorem ipsum
+  </a>
+  <a href="#" class="button color-white">
+    lorem ipsum
+  </a>
+</div>
+              </div>
+            </div>
+          </div>
+          
+          <h3 id="button-sizes">Button sizes</h3>
+          <p>Fancy larger or smaller buttons? Add .btn-lg or .btn-sm for additional sizes.</p>
+          <div class="demo">
+            <div class="demo-item demo-preview">
+              <div class="demo-source" data-lang="html">
+<div class="spacer">
+  <a href="#" class="button">
+    default
+  </a>
+  <a href="#" class="button size-xs">
+    size-xs
+  </a>
+  <a href="#" class="button size-sm">
+    size-sm
+  </a>
+  <a href="#" class="button size-md">
+    size-md
+  </a>
+  <a href="#" class="button size-lg">
+    size-lg
+  </a>
+</div>
+              </div>
+            </div>
+          </div>
+          
+          <h3 id="button-icons">Button icons</h3>
+          <div class="demo">
+            <div class="demo-item demo-preview">
+              <div class="demo-source" data-lang="html">
+<div class="spacer">
+  <a href="#" class="button color-primary">
+    <span class="icon-github left"></span>
+    <span class="text">lorem<br>ipsum</span>
+  </a>
+  <a href="#" class="button color-primary">
+    <span class="icon-twitter left"></span>
+    <span class="text">lorem<br>ipsum</span>
+  </a>
+  <a href="#" class="button color-primary">
+    <span class="icon-github left"></span>
+    <span class="icon-twitter right"></span>
+    <span class="text">lorem<br>ipsum</span>
+  </a>
+  <a href="#" class="button color-primary">
+    <span class="icon-github left"></span>
+    <span class="icon-twitter right"></span>
+    <span class="text">lorem<br>ipsum</span>
+  </a>
+</div>
+
+<div class="spacer">
+  <a href="#" class="button color-primary">
+    <span class="icon-github left"></span>
+    lorem ipsum
+  </a>
+  <a href="#" class="button color-primary">
+    <span class="icon-twitter left"></span>
+    lorem ipsum
+  </a>
+  <a href="#" class="button color-primary">
+    <span class="icon-github left"></span>
+    <span class="text">lorem ipsum</span>
+  </a>
+  <a href="#" class="button color-primary">
+    <span class="icon-twitter left"></span>
+    <span class="text">lorem ipsum</span>
+  </a>
+</div>
+              </div>
+            </div>
+          </div>
           
         </article>
         

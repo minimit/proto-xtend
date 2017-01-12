@@ -18,7 +18,6 @@ exclude:
 collections:
   xtend:
     output: true
-    test: 'ciccio'
     links:
       github: "https://github.com/minimit/minimit"
       download: "https://github.com/minimit/minimit/archive/master.zip"

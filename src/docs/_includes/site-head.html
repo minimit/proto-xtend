@@ -37,12 +37,12 @@
             
             <div class="media">
               <div class="d-flex align-self-center mr-3">
-                <a href="/" class="logo" title="Home" data-xtend='{"target": ".site-wrapper", "ajax": {"url": "href", "cat": "Home"}}'>
+                <a href="{{ site.baseurl }}" class="logo" title="Home" data-xtend='{"target": ".site-wrapper", "ajax": {"url": "href", "cat": "Home"}}'>
                   MINIMIT
                 </a>
               </div>
               <div class="media-body align-self-center">
-                <button type="button" class="button button__menu" data-xtend='{"target": ".site-menu", "grouping": "site-menu", "min": 0}'>
+                <button type="button" class="button button__menu" data-xtend='{"target": ".site-menu", "grouping": "site-menu", "min": 0, "htmlClass": "button__menu__open"}'>
                   <span class="icon-menu-custom right">
                     <span></span>
                     <span></span>
@@ -57,6 +57,32 @@
         </nav>
         
         <nav class="site-menu" role="navigation">
+          <div class="site-menu-content d-flex">
+            <div class="container align-self-center">
+            
+              <div class="row justify-content-center">
+                <div class="col-xs-12 col-md-10 col-lg-8">
+                  
+                  <a href="{{ site.baseurl }}" class="button make-line">Home</a>
+                  
+                  {% for collection in site.collections %}
+                    {% if site.[collection.label].size > 0 %}
+                      {% assign sorted = (site.[collection.label] | sort: 'order') %}
+                      <a href="{{ sorted[0].url }}" class="button make-line">{{ collection.label }}</a>
+                      <!--
+                      {% for page in site.[collection.label] %}
+                        {% unless page.published == false %}
+                          {{ page.title }}
+                        {% endunless %}
+                      {% endfor %}
+                      -->
+                    {% endif %}
+                  {% endfor %}
+                </div>
+              </div>
+              
+            </div>
+          </div>
         </nav>
             
         <div class="site-hero">
@@ -84,7 +110,8 @@
               {% if collection.label == page.collection %}
               
                 <div class="site-breadcrumbs-body">
-                  {% for page in site.[collection.label] %}
+                  {% assign sorted = (site.[collection.label] | sort: 'order') %}
+                  {% for page in sorted %}
                     {% unless page.published == false %}
                     <a href="{{ page.url }}" class="button" data-xtend='{"target": ".site-wrapper", "ajax": {"url": "href"}}'>
                       {{ page.title }}
@@ -111,29 +138,6 @@
               {% endif %}
             {% endfor %}
             
-            <!--
-            <div class="site-breadcrumbs-body">
-              <a href="xtend-intro.html" class="button" data-xtend='{"target": ".site-wrapper", "ajax": {"url": "href", "cat": "Xtend"}}'>
-                Intro
-              </a>
-              <a href="xtend-base.html" class="button" data-xtend='{"target": ".site-wrapper", "ajax": {"url": "href", "cat": "Xtend"}}'>
-                Base
-              </a>
-              <a href="xtend-components.html" class="button" data-xtend='{"target": ".site-wrapper", "ajax": {"url": "href", "cat": "Xtend"}}'>
-                Components
-              </a>
-            </div>
-                
-            <div class="site-breadcrumbs-meta">
-              <a href="{{ site.download }}" target="_blank" class="button" data-toggle="tooltip" data-placement="top" title="Download source" data-template='<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner tooltip-inverse"></div></div>'>
-                <span class="icon-download"></span>
-              </a>
-              <a href="{{ site.github }}" target="_blank" class="button" data-toggle="tooltip" data-placement="top" title="View in github" data-template='<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner tooltip-inverse"></div></div>'>
-                <span class="icon-github"></span>
-              </a>
-            </div>
-            -->
-                
           </div>
         </nav>
         
