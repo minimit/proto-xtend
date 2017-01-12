@@ -94,7 +94,7 @@ gulp.task('version:watch', function() {
   gulp.watch(['package.json'], ['version-changed']);
 });
 gulp.task('version-changed', ['version'], function(done) {
-  runSequence(['scss', 'js'], function(done) {
+  runSequence(['scss', 'js', 'site'], function(done) {
     runSequence(['copy-dist']);
   });
 });
