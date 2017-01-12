@@ -43,7 +43,7 @@
               </a>
             </div>
             <div class="media-body align-self-center">
-              <button type="button" class="button color-white button__menu" data-xtend='{"target": ".site-menu", "grouping": "site-menu", "min": 0}'>
+              <button type="button" class="button button__menu" data-xtend='{"target": ".site-menu", "grouping": "site-menu", "min": 0}'>
                 <span class="icon-menu-custom right">
                   <span></span>
                   <span></span>
@@ -66,7 +66,7 @@
           <div class="media">
             <div class="media-body align-self-center">
               <h1 class="h1">Tests</h1>
-              <h2 class="h5" style="margin-bottom: 0;"></h2>
+              <h2 class="h5" style="margin-bottom: 0;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas dictum velit condimentum efficitur feugiat. Sed sit amet leo nunc.</h2>
             </div>
             <div class="d-flex align-self-center ml-4">
               
@@ -82,22 +82,22 @@
         <div class="container">
               
             <div class="site-breadcrumbs-body">
-              <a href="xtend-intro.html" class="button color-white" data-xtend='{"target": ".site-main", "ajax": {"url": "href", "cat": "Xtend"}}'>
+              <a href="xtend-intro.html" class="button" data-xtend='{"target": ".site-main", "ajax": {"url": "href", "cat": "Xtend"}}'>
                 Intro
               </a>
-              <a href="xtend-base.html" class="button color-white" data-xtend='{"target": ".site-main", "ajax": {"url": "href", "cat": "Xtend"}}'>
+              <a href="xtend-base.html" class="button" data-xtend='{"target": ".site-main", "ajax": {"url": "href", "cat": "Xtend"}}'>
                 Base
               </a>
-              <a href="xtend-components.html" class="button color-white" data-xtend='{"target": ".site-main", "ajax": {"url": "href", "cat": "Xtend"}}'>
+              <a href="xtend-components.html" class="button" data-xtend='{"target": ".site-main", "ajax": {"url": "href", "cat": "Xtend"}}'>
                 Components
               </a>
             </div>
                 
             <div class="site-breadcrumbs-meta">
-              <a href="https://github.com/minimit/minimit/archive/master.zip" target="_blank" class="button color-white" data-toggle="tooltip" data-placement="top" title="Download source" data-template='<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner tooltip-inverse"></div></div>'>
+              <a href="https://github.com/minimit/minimit/archive/master.zip" target="_blank" class="button" data-toggle="tooltip" data-placement="top" title="Download source" data-template='<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner tooltip-inverse"></div></div>'>
                 <span class="icon-download"></span>
               </a>
-              <a href="https://github.com/minimit/minimit" target="_blank" class="button color-white" data-toggle="tooltip" data-placement="top" title="View in github" data-template='<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner tooltip-inverse"></div></div>'>
+              <a href="https://github.com/minimit/minimit" target="_blank" class="button" data-toggle="tooltip" data-placement="top" title="View in github" data-template='<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner tooltip-inverse"></div></div>'>
                 <span class="icon-github"></span>
               </a>
             </div>
@@ -158,11 +158,11 @@
               </div>
             </div>
             <div class="demo-item" data-name="preview">
-              <div class="demo-text">Use the class <code>.preview</code> to show the preview.</div>
+              <div class="demo-text">Use the class <code>.demo-preview</code> to show the preview.</div>
               <div class="demo-source" data-lang="html">
 &lt;div class="demo"&gt;
-  &lt;div class="demo-item"&gt;
-    &lt;div class="demo-source preview" data-lang="html"&gt;
+  &lt;div class="demo-item demo-preview"&gt;
+    &lt;div class="demo-source" data-lang="html"&gt;
 &lt;!-- code here --&gt;
     &lt;/div&gt;
   &lt;/div&gt;
@@ -186,8 +186,8 @@
 &lt;!-- code here --&gt;
     &lt;/div&gt;
   &lt;/div&gt;
-  &lt;div class="demo-item"&gt;
-    &lt;div class="demo-source preview" data-lang="html"&gt;
+  &lt;div class="demo-item demo-preview"&gt;
+    &lt;div class="demo-source" data-lang="html"&gt;
 &lt;!-- code here --&gt;
     &lt;/div&gt;
   &lt;/div&gt;
@@ -239,8 +239,8 @@
           </div>
           
           <div class="demo">
-            <div class="demo-item">
-              <div class="demo-source preview" data-lang="html">
+            <div class="demo-item demo-preview">
+              <div class="demo-source" data-lang="html">
 <button type="button" class="button" data-xtend='{"min": 0}'>
   Test
 </button>
@@ -249,9 +249,9 @@
           </div>
           
           <div class="demo">
-            <div class="demo-item">
+            <div class="demo-item demo-preview">
               <div class="demo-text">Lorem ipsum dolor sit amet, <code>consectetur adipiscing</code> elit. Sed vestibulum ipsum et elementum porttitor. Pellentesque eu lorem ac lectus tristique consectetur consequat id eros.</div>
-              <div class="demo-source preview" data-lang="html">
+              <div class="demo-source" data-lang="html">
 <button type="button" class="button" data-xtend='{"min": 0}'>
   Test
 </button>
@@ -260,9 +260,9 @@
           </div>
           
           <div class="demo">
-            <div class="demo-item" data-name="tab name">
+            <div class="demo-item demo-preview" data-name="tab name">
               <div class="demo-text">Lorem ipsum dolor sit amet, <code>consectetur adipiscing</code> elit. Sed vestibulum ipsum et elementum porttitor. Pellentesque eu lorem ac lectus tristique consectetur consequat id eros.</div>
-              <div class="demo-source preview" data-lang="html">
+              <div class="demo-source" data-lang="html">
 <a href="#" class="button">
   test
 </a>
@@ -302,8 +302,8 @@ function formatCode($source) {
 &lt;script src=&quot;https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?autoload=true&amp;amp;skin=sunburst&amp;amp;lang=css&quot; defer=&quot;defer&quot;&gt;&lt;/script&gt;
               </div>
             </div>
-              <div class="demo-item">
-                <div class="demo-source preview" data-lang="html">
+              <div class="demo-item demo-preview">
+                <div class="demo-source" data-lang="html">
   <a href="#" class="button">
     test
   </a>
@@ -338,9 +338,9 @@ function formatCode($source) {
             <div class="demo-item" data-iframe="demos/tests/test-1.html">
               <div class="demo-text">Lorem ipsum dolor sit amet.</div>
             </div>
-              <div class="demo-item">
+              <div class="demo-item demo-preview">
                 <div class="demo-text">Lorem ipsum dolor sit amet, <code>consectetur adipiscing</code> elit. Sed vestibulum ipsum et elementum porttitor. Pellentesque eu lorem ac lectus tristique consectetur consequat id eros.</div>
-                <div class="demo-source preview" data-lang="html">
+                <div class="demo-source" data-lang="html">
   <a href="#" class="button">
     test
   </a>
@@ -426,7 +426,7 @@ function formatCode($source) {
               Site and docs licensed <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank">CC BY 3.0</a> <span class="separator">–</span> Xtend licensed <a href="https://github.com/minimit/minimit/blob/master/LICENSE" target="_blank">MIT</a>
             </div>
             <div class="mr-3">
-              <span>© 2016 <span class="separator">–</span> </span><span class="site-footer-bottom-year"></span> <span>Riccardo Caroli</span>
+              <span>© 2016 <span class="separator">–</span> 2017 <span>Riccardo Caroli</span>
             </div>
           </div>
         </div>

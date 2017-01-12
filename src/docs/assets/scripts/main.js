@@ -23,13 +23,13 @@
       var $items = $container.find('> .demo-item');
       // multiple elements
       $container.prepend('<div class="box demo-tabs"><div class="box demo-tabs-inside"><div class="demo-tabs-left float-left"></div><div class="demo-code-tabs-right float-right"></div></div></div>');
-      $container.find('.demo-code-tabs-right').append('<button class="button color-text button__fullscreen" data-toggle="tooltip" data-placement="top" title="Open fullscreen"><span class="icon-enlarge2"></span></button>');
+      $container.find('.demo-code-tabs-right').append('<button class="button button__fullscreen" data-toggle="tooltip" data-placement="top" title="Open fullscreen"><span class="icon-enlarge2"></span></button>');
       $container.find('.button__fullscreen').tooltip(/*{trigger: 'click'}*/)
         .on('mouseleave', function(e) {
           $(this).attr('data-original-title', 'Open fullscreen').tooltip('hide');
         });
       // single element and no demo tabs
-      if ($items.length === 1 && !$items.find('> .demo-source.preview').length && !$items.attr('data-iframe')) {
+      if ($items.length === 1 && !$items.hasClass('demo-preview') && !$items.attr('data-iframe')) {
         $items.css('display', 'block');
         $container.find('.demo-tabs').css('display', 'none');
       }
@@ -46,7 +46,7 @@
             name = 'demo #' + k;
           }
         }
-        var $btn = $container.find('.demo-tabs-left').append('<button class="button color-text">' + name + '</button>').find('.button').eq(k);
+        var $btn = $container.find('.demo-tabs-left').append('<button class="button">' + name + '</button>').find('.button').eq(k);
         $btn.xtend({"target": ".demo-item", "group": ".demo", "grouping": i});
         // disable fullscreen when not needed
         $btn.on('xtend.show', function(e, object) {
@@ -62,7 +62,7 @@
         }
         // tabs
         var id = 'iframe' + i + k;
-        $item.append('<div class="demo-code"><div class="box demo-code-tabs"><div class="box demo-code-tabs-inside"><div class="demo-code-tabs-left float-left"></div><div class="demo-code-tabs-right float-right"><button class="button color-text button__clipboard" data-toggle="tooltip" data-placement="top" title="Copy to clipboard">copy</button></div></div></div><div class="box demo-code-body"></div></div>');
+        $item.append('<div class="demo-code"><div class="box demo-code-tabs"><div class="box demo-code-tabs-inside"><div class="demo-code-tabs-left float-left"></div><div class="demo-code-tabs-right float-right"><button class="button button__clipboard" data-toggle="tooltip" data-placement="top" title="Copy to clipboard">copy</button></div></div></div><div class="box demo-code-body"></div></div>');
         // https://github.com/zenorocha/clipboard.js/
         $item.find('.button__clipboard').tooltip(/*{trigger: 'click'}*/)
           .on('mouseleave', function(e) {
@@ -82,7 +82,7 @@
         });
         // inject iframe
         if ($item.attr('data-iframe')) {
-          $container.addClass('demo-iframe');
+          $item.addClass('demo-iframe');
           var $iframe = $item.find('> iframe');
           $iframe.attr('id', id);
           $iframe.on('load', function(e){
@@ -116,7 +116,7 @@
       $sources.each( function(z) {
         var $source = $(this);
         populateSources($item, $source, id, z);
-        if (!$source.hasClass('preview')) {
+        if (!$item.hasClass('demo-preview')) {
           $source.css('display', 'none');
         }
       });
@@ -160,7 +160,7 @@
       var lang = $source.data('lang');
       // populate tabs
       var $codeInside = $item.find('.demo-code-body').append('<div class="demo-code-body-item"><pre><code></code></pre></div>').find('.demo-code-body-item').eq(z).find('pre code');
-      var $btnInside = $item.find('.demo-code-tabs-left').append('<button class="button color-text">' + lang + '</button>').find('.button').eq(z);
+      var $btnInside = $item.find('.demo-code-tabs-left').append('<button class="button">' + lang + '</button>').find('.button').eq(z);
       $btnInside.xtend({"target": ".demo-code-body-item", "group": ".demo-code", "grouping": id});
       // format code
       if (!$codeInside.hasClass('hljs')) {
@@ -217,15 +217,11 @@
       var $element = $(this);
       var id = $element.text().replace(/\s+/g, '-').toLowerCase();
       $element.attr('id', id);
-      $element.addClass('make-anchor').append('<span class="site-article-anchor"><a href="#' + id + '" class="button color-text"><span class="icon-link" aria-hidden="true"></span></a></span>');
+      $element.addClass('make-anchor').append('<span class="site-article-anchor"><a href="#' + id + '" class="button"><span class="icon-link" aria-hidden="true"></span></a></span>');
     });
     
     // tooltips
     $main.find('[data-toggle="tooltip"]').tooltip(/*{trigger: 'click'}*/);
-    
-    // .site-footer-bottom-year
-    var year = new Date().getFullYear();
-    $('.site-footer-bottom-year').html(year);
     
     //////////////////////
     

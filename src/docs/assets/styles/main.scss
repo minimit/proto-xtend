@@ -5,7 +5,6 @@
 //////////////////////
 
 .button {
-  /* sizes */
   /* styles */
   & {
     #{$active} {
@@ -13,20 +12,29 @@
       box-shadow: none;
     }
   }
-  &.color-primary {
-    border: 0;
-    border-radius: 0;
-    background: transparent;
-    @include font(alt-bold);
-    color: color(primary);
-    text-transform: uppercase;
-    #{$hover} {
-      color: color(white);
-      background: rgba(color(primary), 0.75);
-    }
+  /* color-white */
+  .site-header & {
+    padding: 8px 12px;
+    font-size: 12px;
+    line-height: 1.4;
+    background: transparent !important;
+    color: rgba(color(white), 0.75);
+    #{$hover},
     #{$active} {
       color: color(white);
-      background: color(primary);
+    }
+  }
+  /* color-text */
+  .demo-tabs &,
+  .demo-code-tabs & {
+    padding: 6px 10px;
+    font-size: 11px;
+    line-height: 1.4;
+    background: transparent !important;
+    color: color(primary);
+    #{$hover},
+    #{$active} {
+      color: color(text);
     }
   }
 }
@@ -306,11 +314,16 @@ a.logo {
   .button {
     width: 25px;
     height: 25px;
-    padding: 6px;
+    padding: 2px;
+    background: transparent !important;
+    font-size: 20px;
+    color: color(primary);
     line-height: 1;
     [class^="icon-"],
     [class*=" icon-"] {
-      font-size: 20px;
+    }
+    #{$hover},
+    #{$active} {
       color: color(primary);
     }
   }
@@ -444,6 +457,12 @@ pre {
   .demo-text {
     padding: 0.809rem 1rem;
   }
+  .demo-preview .demo-text {
+    padding-bottom: 0;
+  }
+  .demo-iframe .demo-text {
+    padding-bottom: 0;
+  }
 }
 
 /* .demo shadow style */
@@ -460,16 +479,3 @@ pre {
   background: darken(color(grey), 4%);
   background: linear-gradient(to right, darken(color(grey), 4%) 0%, darken(color(grey), 0%) 100%);
 }
-
-/* .demo line style */
-/*
-.demo-tabs {
-  border-bottom: 2px solid color(white);
-}
-.demo-code-tabs {
-  border-top: 2px solid color(white);
-}
-.demo-code-tabs ~ .demo-code-body .hljs {
-  padding-top: 0;
-}
-*/

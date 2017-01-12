@@ -2,21 +2,23 @@
 
 var gulp = require('gulp');
 var fs = require('fs');
-var del = require('del');
 var pump = require('pump');
 var sass = require('gulp-sass');
-var wrap = require("gulp-wrap");
 var gulpif = require('gulp-if');
 var watch = require('gulp-watch');
-var clean = require('gulp-clean');
 var rename = require('gulp-rename');
 var uglify = require('gulp-uglify');
 var inject = require('gulp-inject');
-var flatmap = require('gulp-flatmap');
-var replaceExt = require('replace-ext');
 var webserver = require('gulp-webserver');
 var runSequence = require('run-sequence');
 var injectString = require('gulp-inject-string');
+/*
+var del = require('del');
+var wrap = require("gulp-wrap");
+var clean = require('gulp-clean');
+var flatmap = require('gulp-flatmap');
+var replaceExt = require('replace-ext');
+*/
 
 // main
 
