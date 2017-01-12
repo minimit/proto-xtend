@@ -1,0 +1,119 @@
+/* xtend v0.0.3 (http://)
+@copyright (c) 2016 - 2017 Riccardo Caroli
+@license MIT (https://github.com/minimit/xtend/blob/master/LICENSE) */
+
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400|Roboto:500');
+
+//////////////////////
+// custom variables
+//////////////////////
+
+// @TODO ratios
+
+/* ratios
+0.618
+0.809
+1
+1.238
+2.619
+3.224
+*/
+
+// usage: background: color(background);
+$colors: (
+  text: #000000,
+  background: #ffffff,
+  white: #ffffff,
+  grey: #f8f8f8,
+  primary: #2ed4c6,
+  primary-light: #f9fefb,
+);
+
+// usage: @include font(sans-regular);
+$fonts: (
+  sans-regular: (
+    font-family: unquote('"Lato", "Helvetica Neue", Helvetica, Arial, sans-serif'),
+    font-weight: 300,
+    font-style: normal,
+  ),
+  sans-medium: (
+    font-family: unquote('"Lato", "Helvetica Neue", Helvetica, Arial, sans-serif'),
+    font-weight: 400,
+    font-style: normal,
+  ),
+  alt-bold: (
+    font-family: unquote('"Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif'),
+    font-weight: 500,
+    font-style: normal,
+    letter-spacing: 1px
+  ),
+);
+
+// @TODO spacing
+
+// @include h1-h3-spacing;
+@mixin h1-h3-spacing {
+  margin-top: 1.238rem;
+  margin-bottom: 0.618rem;
+  &:first-child {
+    margin-top: 0 !important;
+  }
+}
+
+// @include h4-h6-spacing;
+@mixin h4-h6-spacing {
+  margin-top: 0.618rem;
+  margin-bottom: 0.618rem;
+  &:first-child {
+    margin-top: 0 !important;
+  }
+}
+
+// @include text-spacing;
+@mixin text-spacing {
+  margin-bottom: 0.618rem;
+  &:last-child {
+    margin-bottom: 0 !important;
+  }
+}
+
+//////////////////////
+// mixins
+//////////////////////
+
+// #{$hover} {}
+$hover: "&:hover:not(.active), &.hover:not(.active)";
+
+// #{$active} {}
+$active: "&:active, &.active, &:active:focus, &:active.focus, &.active:focus, &.active.focus";
+
+// #{$focus} {}
+$focus: "&:focus, &.focus";
+
+// @include box;
+@mixin box {
+  position: relative;
+  float: left;
+  width: 100%;
+}
+
+//////////////////////
+// utils
+//////////////////////
+
+// colors
+@function color($value) {
+  @return map-get($colors, $value);
+}
+
+// fonts
+@mixin font($key, $important:false){
+  $map: map-get($fonts, $key);
+  @each $property, $value in $map {
+    @if $important == !important {
+      #{$property}: $value !important;
+    } @else {
+      #{$property}: $value;
+    }
+  }
+}

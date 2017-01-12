@@ -9,16 +9,8 @@ var watch = require('gulp-watch');
 var rename = require('gulp-rename');
 var uglify = require('gulp-uglify');
 var inject = require('gulp-inject');
-var webserver = require('gulp-webserver');
 var runSequence = require('run-sequence');
 var injectString = require('gulp-inject-string');
-/*
-var del = require('del');
-var wrap = require("gulp-wrap");
-var clean = require('gulp-clean');
-var flatmap = require('gulp-flatmap');
-var replaceExt = require('replace-ext');
-*/
 
 // main
 
@@ -27,7 +19,7 @@ gulp.task('default', ['build']);
 gulp.task('build', ['version'], function(done) {
   runSequence(['scss', 'js'], function(done) {
     runSequence(['site'], function(done) {
-      runSequence(['bower', 'serve']);
+      runSequence(['bower']);
     });
   });
 });
@@ -35,25 +27,11 @@ gulp.task('build', ['version'], function(done) {
 gulp.task('watch', ['version'], function(done) {
   runSequence(['scss', 'js'], function(done) {
     runSequence(['site'], function(done) {
-      runSequence(['bower', 'serve'], function(done) {
+      runSequence(['bower'], function(done) {
         runSequence(['version:watch', 'scss:watch', 'js:watch']);
       });
     });
   });
-});
-
-// serve
-
-gulp.task('serve', function() {
-  /*
-  gulp.src('dist/')
-    .pipe(webserver({
-      root: 'dist/',
-      open: 'docs/',
-      port: 8080,
-      livereload: false
-    }));
-    */
 });
 
 // scss
@@ -123,9 +101,14 @@ gulp.task('version-changed', ['version'], function(done) {
 });
 gulp.task('version', function() {
   var version = JSON.parse(fs.readFileSync('package.json')).version;
+  // inject _config.yml
+  gulp.src('_config.yml')
+    .pipe(injectString.replace(/version: (.*)/, 'version: ' + version))
+    .pipe(gulp.dest(''));
+  // inject scss and js
   var banner = "/*! xtend v" + version + " (http://)\n" + "@copyright (c) 2016 - 2017 Riccardo Caroli\n" + "@license MIT (https://github.com/minimit/xtend/blob/master/LICENSE) */";
   return gulp.src(['dist/*.scss', 'dist/*.js'])
-    .pipe(injectString.replace(/\/\*\![^-\*]+\*\//, banner))
+    .pipe(injectString.replace(/\/\*\![^\*]+\*\//, banner))
     .pipe(gulp.dest('dist/'));
 });
 

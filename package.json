@@ -33,7 +33,6 @@
     "gulp-sass": "^3.0.0",
     "gulp-uglify": "^2.0.0",
     "gulp-watch": "^4.3.11",
-    "gulp-webserver": "^0.9.1",
     "pump": "^1.0.2",
     "run-sequence": "^1.2.2"
   }
