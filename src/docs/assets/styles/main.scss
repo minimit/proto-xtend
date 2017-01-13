@@ -123,20 +123,13 @@ a.logo {
 
 /* .site-header-top */
 .site-header-top {
-  @include box;
-  z-index: 6;
   background: color(primary);
   color: color(white);
 }
 
 /*.site-menu */
 .site-menu {
-  position: fixed;
-  z-index: 5;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  display: none;
   background: color(primary);
   color: color(white);
   .site-menu-content {
@@ -163,11 +156,6 @@ a.logo {
     #{$active} {
       color: color(white);
     }
-  }
-  // animations
-  display: none;
-  .button__menu__open & {
-    display: block;
   }
 }
 
@@ -290,6 +278,37 @@ a.logo {
     }
   }
 }
+
+/*.site-menu .button__menu__open */
+/*
+.site-menu {
+  z-index: 5;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  margin-top: 56px;
+  .site-menu-content {
+    padding-top: 3.224rem;
+    padding-bottom: 3.224rem;
+  }
+}
+html.button__menu__open {
+  &,
+  body {
+    overflow: hidden;
+  }
+  .site-menu {
+    display: block;
+  }
+  .site-header-top {
+    
+  }
+}
+*/
 
 //////////////////////
 // footer
