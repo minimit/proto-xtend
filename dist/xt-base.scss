@@ -1,0 +1,82 @@
+/*! xtend v0.0.5 (http://)
+@copyright (c) 2016 - 2017 Riccardo Caroli
+@license MIT (https://github.com/minimit/xtend/blob/master/LICENSE) */
+
+@import "_xt-variables.scss";
+
+//////////////////////
+// reset
+//////////////////////
+
+a,
+.button {
+  // focus outline
+  #{$focus} {
+    outline: 0;
+  }
+}
+
+//////////////////////
+// structure
+//////////////////////
+
+html,
+body {
+  height: 100%;
+}
+html {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+body {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
+//////////////////////
+// boxes
+//////////////////////
+
+.box {
+  @include box;
+}
+
+//////////////////////
+// buttons
+//////////////////////
+
+.buttons {
+  cursor: default;
+}
+
+//////////////////////
+// button
+//////////////////////
+
+.button {
+  cursor: pointer;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+  text-decoration: none;
+  #{$hover},
+  #{$active},
+  #{$focus} {
+    text-decoration: none;
+  }
+  // content
+  .left {
+    float: left;
+    top: 0.2em; // vertical fix
+  }
+  .right {
+    float: right;
+    top: 0.2em; // vertical fix
+  }
+  .text {
+    display: block;
+    overflow: hidden;
+  }
+}

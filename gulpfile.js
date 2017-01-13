@@ -38,22 +38,22 @@ gulp.task('watch', ['version'], function(done) {
 // copy-dist
 
 gulp.task('copy-dist', function() {
-  return gulp.src('src/docs/assets/xtend/*')
+  return gulp.src('src/docs/assets/xt/*')
     .pipe(gulp.dest('dist/'));
 });
 
 // scss
 
 gulp.task('scss:watch', function() {
-  gulp.watch(['src/docs/assets/xtend/*.scss'], ['scss']);
+  gulp.watch(['src/docs/assets/xt/*.scss'], ['scss']);
   gulp.watch(['src/docs/assets/styles/*.scss'], ['scss-site']);
 });
 gulp.task('scss', ['scss-site'], function() {
-  return gulp.src('src/docs/assets/xtend/*.scss')
+  return gulp.src('src/docs/assets/xt/*.scss')
     .pipe(sass({
       outputStyle: 'compressed'
     }))
-    .pipe(gulp.dest('src/docs/assets/xtend/'));
+    .pipe(gulp.dest('src/docs/assets/xt/'));
 });
 gulp.task('scss-site', ['scss-demos'], function() {
   return gulp.src('src/docs/assets/styles/*.scss')
@@ -73,18 +73,18 @@ gulp.task('scss-demos', function() {
 // js
 
 gulp.task('js:watch', function() {
-  gulp.watch(['src/docs/assets/xtend/*.js'], ['js']);
+  gulp.watch(['src/docs/assets/xt/*.js'], ['js']);
 });
 gulp.task('js', function(cb) {
   pump([
-    gulp.src(['src/docs/assets/xtend/*.js', '!src/docs/assets/xtend/*.min.js']),
+    gulp.src(['src/docs/assets/xt/*.js', '!src/docs/assets/xt/*.min.js']),
     uglify({
       preserveComments: 'license'
     }),
     rename({
       suffix: '.min'
     }),
-    gulp.dest('src/docs/assets/xtend/')
+    gulp.dest('src/docs/assets/xt/')
     ], cb);
 });
 
@@ -106,9 +106,9 @@ gulp.task('version', function() {
     .pipe(gulp.dest(''));
   // inject scss and js
   var banner = "/*! xtend v" + version + " (http://)\n" + "@copyright (c) 2016 - 2017 Riccardo Caroli\n" + "@license MIT (https://github.com/minimit/xtend/blob/master/LICENSE) */";
-  return gulp.src(['src/docs/assets/xtend/*.scss', 'src/docs/assets/xtend/*.js'])
+  return gulp.src(['src/docs/assets/xt/*.scss', 'src/docs/assets/xt/*.js'])
     .pipe(injectString.replace(/\/\*\![^\*]+\*\//, banner))
-    .pipe(gulp.dest('src/docs/assets/xtend/'));
+    .pipe(gulp.dest('src/docs/assets/xt/'));
 });
 
 // site

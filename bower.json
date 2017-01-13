@@ -19,7 +19,7 @@
     "url": "https://github.com/minimit/minimit.git"
   },
   "moduleType": "globals",
-  "main": ["/dist/xtend-base.scss", "/dist/xtend-theme.scss", "/dist/_variables.scss", "/dist/xtend-base.css", "/dist/xtend-theme.css", "/dist/xtend.js", "/dist/xtend.min.js"],
+  "main": ["/dist/xt-base.scss", "/dist/xt-theme.scss", "/dist/_xt-variables.scss", "/dist/xt-base.css", "/dist/xt-theme.css", "/dist/xt.js", "/dist/xt.min.js"],
   "dependencies": {
     "jquery": "^3"
   },
