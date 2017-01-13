@@ -10,21 +10,19 @@
   // settings
   //////////////////////
   
-  var pluginName = 'xtend';
+  var pluginName = 'xt';
   var defaults = {
+    'mode': null,
     'on': 'click',
     'target': '',
     'toggle': 'active',
     'htmlClass': '',
     'group': '',
-    'grouping': 'xtend',
+    'grouping': 'xt',
     'min': 1,
     'max': 1,
-    // 'ajax': 'href' for having ajax populate 'target' with [href] url
-    // you can't have min and max with ajax
     'ajax': null,
     'url': null,
-    // utils
     'groupIndex': null,
   };
   
@@ -50,11 +48,31 @@
       var element = this.element;
       var $element = $(this.element);
       // override
-      var override = $element.data('xtend');
-      $.extend(settings, override);
-      // [data-xtend] required
-      if (!$element.attr('data-xtend')) {
-        $element.attr('data-xtend', '');
+      var override = $element.data('xt');
+      // override with mode settings
+      if (override && override.mode) {
+        if (override.mode === "ajax") {
+          $.extend(settings, {
+            'ajax': {
+              'url': 'href',
+            },
+          });
+          $.extend(settings, $element.data('xt-ajax'));
+        } else if (override.mode === "toggle") {
+          $.extend(settings, {
+            'min': 0,
+            'max': 1,
+          });
+          $.extend(settings, $element.data('xt-toggle'));
+        }
+      }
+      // override with html settings
+      if ($element.is('[data-xt]')) {
+        $.extend(settings, override);
+      }
+      // [data-xt] required
+      if (!$element.attr('data-xt')) {
+        $element.attr('data-xt', '');
       }
       // debug
       if ($element.attr('debug') || $element.attr('debug') === '') {
@@ -94,9 +112,9 @@
       }
       // set namespace
       settings.namespace = settings.grouping + '_' + settings.group;
-      $element.attr('data-xtend-button', settings.namespace);
+      $element.attr('data-xt-button', settings.namespace);
       if (settings.target) {
-        settings.$target.attr('data-xtend-target', settings.namespace);
+        settings.$target.attr('data-xt-target', settings.namespace);
       }
     },
     
@@ -108,6 +126,7 @@
       // ajax url
       if (settings.ajax && settings.ajax.url === 'href') {
         settings.ajax.url = $element.attr('href');
+        console.log(settings.ajax.url);
       }
       // $buttons based on $group and namespace
       var $buttons = this.getButtons();
@@ -127,8 +146,8 @@
       }
       // automatic init
       if (settings.ajax) {
-        // register data-xtend-pushstate on element
-        $element.attr('data-xtend-pushstate', 'true');
+        // register data-xt-pushstate on element
+        $element.attr('data-xt-pushstate', 'true');
         // init with settings.ajax.url
         var found;
         if (history.state && history.state.url) {
@@ -146,12 +165,12 @@
         if (found) {
           // set ajaxified
           settings.ajax.title = settings.ajax.title ? settings.ajax.title : document.title;
-          settings.$target.attr('data-xtend-ajaxified', settings.ajax.url);
+          settings.$target.attr('data-xt-ajaxified', settings.ajax.url);
           this.pushstate();
           // then show
           this.show();
           // api
-          settings.$target.trigger('xtend.ajax.init', [object]);
+          settings.$target.trigger('xt.ajax.init', [object]);
         }
       } else {
         // init if $shown < min
@@ -187,7 +206,7 @@
       var element = this.element;
       var $element = $(this.element);
       // get $buttons on $group based on namespace
-      var $buttons = settings.$group.find('[data-xtend-button="' + settings.namespace + '"]');
+      var $buttons = settings.$group.find('[data-xt-button="' + settings.namespace + '"]');
       return $buttons;
     },
     
@@ -228,9 +247,9 @@
       }
       // api
       if (!triggered) {
-        $element.trigger('xtend.toggle', [object]);
+        $element.trigger('xt.toggle', [object]);
         if (settings.target) {
-          settings.$target.trigger('xtend.toggle', [object]);
+          settings.$target.trigger('xt.toggle', [object]);
         }
       }
     },
@@ -264,7 +283,7 @@
           // hide max or differents
           var max = settings.max;
           if ($currents.length > max) {
-            var old = $currents.first().data('plugin_xtend');
+            var old = $currents.first().data('plugin_xt');
             if (old) {
               old.hide();
             }
@@ -272,9 +291,9 @@
         }
         // api
         if (!triggered) {
-          $element.trigger('xtend.show', [object]);
+          $element.trigger('xt.show', [object]);
           if (settings.target) {
-            settings.$target.trigger('xtend.show', [object]);
+            settings.$target.trigger('xt.show', [object]);
           }
         }
         // TESTING
@@ -310,9 +329,9 @@
         }
         // api
         if (!triggered) {
-          $element.trigger('xtend.hide', [object]);
+          $element.trigger('xt.hide', [object]);
           if (settings.target) {
-            settings.$target.trigger('xtend.hide', [object]);
+            settings.$target.trigger('xt.hide', [object]);
           }
         }
         // TESTING
@@ -352,13 +371,13 @@
       var element = this.element;
       var $element = $(this.element);
       // do ajax only one time
-      if (settings.$target.attr('data-xtend-ajaxified') !== settings.ajax.url) {
+      if (settings.$target.attr('data-xt-ajaxified') !== settings.ajax.url) {
         $.ajax({
           type: 'GET',
           url: settings.ajax.url,
           success: function(data, textStatus, jqXHR) {
             var $data = $('<div />').html(data);
-            settings.$target.attr('data-xtend-ajaxified', settings.ajax.url);
+            settings.$target.attr('data-xt-ajaxified', settings.ajax.url);
             // populate
             var $html = $data.find(settings.target).contents();
             settings.$target.html($html);
@@ -368,7 +387,7 @@
               object.pushstate(true);
             }
             // api
-            settings.$target.trigger('xtend.ajax.done', [object, $data]);
+            settings.$target.trigger('xt.ajax.done', [object, $data]);
           },
           error: function(jqXHR, textStatus, errorThrown) {
             console.error('ajax error url:' + settings.ajax.url + ' ' + errorThrown);
@@ -388,10 +407,10 @@
         var url = settings.ajax.url;
         // push this object state
         history.pushState({'url': url, 'title': title}, title, url);
-        // trigger on registered data-xtend-pushstate
-        $(document).find('[data-xtend-pushstate]').each( function(i) {
-          var xtend = $(this).data('plugin_xtend');
-          xtend.pushstateListener(url, triggered);
+        // trigger on registered data-xt-pushstate
+        $(document).find('[data-xt-pushstate]').each( function(i) {
+          var xt = $(this).data('plugin_xt');
+          xt.pushstateListener(url, triggered);
         });
       }
       document.title = title; // also when no history.state
@@ -436,10 +455,10 @@
   window.onpopstate = function(history) {
     if (history.state && history.state.url) {
       document.title = history.state.title;
-      // trigger on registered data-xtend-pushstate
-      $(document).find('[data-xtend-pushstate]').each( function(i, element) {
-        var xtend = $(this).data('plugin_xtend');
-        xtend.pushstateListener(history.state.url, false);
+      // trigger on registered data-xt-pushstate
+      $(document).find('[data-xt-pushstate]').each( function(i, element) {
+        var xt = $(this).data('plugin_xt');
+        xt.pushstateListener(history.state.url, false);
       });
     }
   };

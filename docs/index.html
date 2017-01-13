@@ -21,8 +21,8 @@
     <link rel="stylesheet" href="/assets/styles/bootstrap.min.css" />
     <link rel="stylesheet" href="/assets/styles/highlight/github.css?v=0.0.5"> <!-- atom-one-light atom-one-dark github agate -->
     <link rel="stylesheet" href="/assets/styles/icons/style.css?v=0.0.5" />
-    <link rel="stylesheet" href="/assets/xtend/xtend-base.css?v=0.0.5" />
-    <link rel="stylesheet" href="/assets/xtend/xtend-theme.css?v=0.0.5" />
+    <link rel="stylesheet" href="/assets/xt/xt-base.css?v=0.0.5" />
+    <link rel="stylesheet" href="/assets/xt/xt-theme.css?v=0.0.5" />
     <link rel="stylesheet" href="/assets/styles/main.css?v=0.0.5" />
 
   </head>
@@ -38,12 +38,12 @@
             
             <div class="media">
               <div class="d-flex align-self-center mr-3">
-                <a href="/" class="logo" title="Home" data-xtend='{"target": ".site-wrapper", "ajax": {"url": "href"}}'>
+                <a href="/" class="logo" title="Home" data-xt='{"mode": "ajax", "target": ".site-wrapper"}'>
                   MINIMIT
                 </a>
               </div>
               <div class="media-body align-self-center">
-                <button type="button" class="button button__menu" data-xtend='{"target": ".site-menu", "grouping": "site-menu", "min": 0, "htmlClass": "button__menu__open"}'>
+                <button type="button" class="button button__menu" data-xt='{"mode": "toggle", "target": ".site-menu", "grouping": "site-menu", "min": 0, "htmlClass": "button__menu__open"}'>
                   <span class="icon-menu-custom right">
                     <span></span>
                     <span></span>
@@ -225,7 +225,7 @@
     <script src="/assets/scripts/bootstrap.min.js"></script>
     <script src="/assets/scripts/clipboard.min.js"></script>
     <script src="/assets/scripts/highlight.pack.js"></script>
-    <script src="/assets/xtend/xtend.js?v=0.0.5"></script>
+    <script src="/assets/xt/xt.js?v=0.0.5"></script>
     <script src="/assets/scripts/main.js?v=0.0.5"></script>
 
   </body>

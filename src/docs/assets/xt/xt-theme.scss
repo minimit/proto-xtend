@@ -2,7 +2,7 @@
 @copyright (c) 2016 - 2017 Riccardo Caroli
 @license MIT (https://github.com/minimit/xtend/blob/master/LICENSE) */
 
-@import "_variables.scss";
+@import "_xt-variables.scss";
 
 //////////////////////
 // structure
@@ -241,10 +241,10 @@ a:not(.button) {
 }
 
 //////////////////////
-// data-xtend
+// data-xt
 //////////////////////
 
-[data-xtend][disabled] {
+[data-xt][disabled] {
   cursor: default;
   opacity: 1;
 }

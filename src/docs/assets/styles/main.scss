@@ -1,4 +1,4 @@
-@import "../xtend/_variables.scss";
+@import "../xt/_xt-variables.scss";
 
 //////////////////////
 // xtend-theme
@@ -129,7 +129,6 @@ a.logo {
 
 /*.site-menu */
 .site-menu {
-  display: none;
   background: color(primary);
   color: color(white);
   .site-menu-content {
@@ -280,14 +279,22 @@ a.logo {
 }
 
 /*.site-menu .button__menu__open */
-/*
+.site-header-top .container {
+  z-index: 6;
+}
 .site-menu {
+  display: none;
+  html.button__menu__open & {
+    display: block;
+  }
+  position: fixed;
   z-index: 5;
-  position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
+  /*
+  z-index: 5;
   overflow-x: hidden;
   overflow-y: scroll;
   margin-top: 56px;
@@ -295,7 +302,9 @@ a.logo {
     padding-top: 3.224rem;
     padding-bottom: 3.224rem;
   }
+  */
 }
+/*
 html.button__menu__open {
   &,
   body {

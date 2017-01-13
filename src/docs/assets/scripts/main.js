@@ -47,9 +47,9 @@
           }
         }
         var $btn = $container.find('.demo-tabs-left').append('<button class="button">' + name + '</button>').find('.button').eq(k);
-        $btn.xtend({"target": ".demo-item", "group": ".demo", "grouping": i});
+        $btn.xt({"target": ".demo-item", "group": ".demo", "grouping": i});
         // disable fullscreen when not needed
-        $btn.on('xtend.show', function(e, object) {
+        $btn.on('xt.show', function(e, object) {
           if ($(this).parents('.demo').find('.demo-item.active').attr('data-iframe')) {
             $(this).parents('.demo').find('.button__fullscreen').css('display', 'block');
           } else {
@@ -95,7 +95,7 @@
             }, 0, $item);
           });
           // iframe resize on show
-          $item.on('xtend.show', function(e, object) {
+          $item.on('xt.show', function(e, object) {
             var $iframe = $(this).find('> iframe');
             window.resizeIframe(id);
             //console.log($iframe.attr('src'), $iframe.contents().find('#inject').height());
@@ -161,7 +161,7 @@
       // populate tabs
       var $codeInside = $item.find('.demo-code-body').append('<div class="demo-code-body-item"><pre><code></code></pre></div>').find('.demo-code-body-item').eq(z).find('pre code');
       var $btnInside = $item.find('.demo-code-tabs-left').append('<button class="button">' + lang + '</button>').find('.button').eq(z);
-      $btnInside.xtend({"target": ".demo-code-body-item", "group": ".demo-code", "grouping": id});
+      $btnInside.xt({"target": ".demo-code-body-item", "group": ".demo-code", "grouping": id});
       // format code
       if (!$codeInside.hasClass('hljs')) {
         var text = formatCode($source);
@@ -233,14 +233,14 @@
   //////////////////////
   
   // on done
-  $('.site-wrapper').on('xtend.ajax.done', function(e, object, $data) {
+  $('.site-wrapper').on('xt.ajax.done', function(e, object, $data) {
     var $container = $(this);
     // main on ajax
     main($container);
   });
   
   // on ajax
-  $('.site-wrapper').on('xtend.ajax.init xtend.ajax.done', function(e, object, $data) {
+  $('.site-wrapper').on('xt.ajax.init xt.ajax.done', function(e, object, $data) {
     var $container = $(this);
     // populate header
     /*
@@ -251,7 +251,7 @@
     // populate breadcrumbs and reinit
     //$('.site-breadcrumbs').html($data.find('.site-breadcrumbs'));
     // init breadcrumbs
-    $('.site-header').find('[data-xtend]').xtend();
+    $('.site-header').find('[data-xt], [data-xt-toggle], [data-xt-ajax]').xt();
   });
   
 })(jQuery, window, document);

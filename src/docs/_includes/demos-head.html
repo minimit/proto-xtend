@@ -20,8 +20,8 @@
 
     <!-- styles -->
     <link rel="stylesheet" href="/assets/styles/bootstrap.min.css" />
-    <link rel="stylesheet" href="/assets/xtend/xtend-base.css?v={{ site.version }}" />
-    <link rel="stylesheet" href="/assets/xtend/xtend-theme.css?v={{ site.version }}" />
+    <link rel="stylesheet" href="/assets/xt/xt-base.css?v={{ site.version }}" />
+    <link rel="stylesheet" href="/assets/xt/xt-theme.css?v={{ site.version }}" />
     <link rel="stylesheet" href="/assets/styles/icons/style.css?v={{ site.version }}" />
     <link rel="stylesheet" href="/assets/styles/demo.css?v={{ site.version }}" />
     
@@ -29,16 +29,16 @@
     <script src="/assets/scripts/jquery.min.js"></script>
     <script src="/assets/scripts/tether.min.js"></script>
     <script src="/assets/scripts/bootstrap.min.js"></script>
-    <script src="/assets/xtend/xtend.js?v={{ site.version }}"></script>
+    <script src="/assets/xt/xt.js?v={{ site.version }}"></script>
     
     <!-- demo scripts -->
     <script src="/assets/scripts/ResizeSensor.min.js"></script>
     <script src="/assets/scripts/ElementQueries.min.js"></script>
     <script type="text/javascript">
-      $.fn.xtend.manualInit = true;
+      $.fn.xt.manualInit = true; // xt manual init set before $(document).ready
       function init() {
-        // init xtend
-        $('[data-xtend]').xtend();
+        // init xt
+        $('[data-xt]').xt();
         // add id
         $('html').attr('id', document.location.href.match(/[^\/]+$/)[0]);
         // https://github.com/marcj/css-element-queries
