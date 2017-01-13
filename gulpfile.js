@@ -35,45 +35,40 @@ gulp.task('watch', ['version'], function(done) {
   });
 });
 
-// copy-dist
+// compile scss and js
 
-gulp.task('copy-dist', function() {
+gulp.task('copy-dist', ['scss', 'js'], function() {
   return gulp.src('src/docs/assets/xt/*')
     .pipe(gulp.dest('dist/'));
 });
 
-// scss
-
 gulp.task('scss:watch', function() {
-  gulp.watch(['src/docs/assets/xt/*.scss'], ['scss']);
-  gulp.watch(['src/docs/assets/styles/*.scss'], ['scss-site']);
+  gulp.watch(['src/docs/assets/xt/*.scss', 'src/docs/assets/styles/*.scss'], ['copy-dist']);
 });
-gulp.task('scss', ['scss-site'], function() {
-  return gulp.src('src/docs/assets/xt/*.scss')
-    .pipe(sass({
-      outputStyle: 'compressed'
-    }))
-    .pipe(gulp.dest('src/docs/assets/xt/'));
-});
-gulp.task('scss-site', ['scss-demos'], function() {
+gulp.task('scss', ['scss-demos'], function() {
   return gulp.src('src/docs/assets/styles/*.scss')
     .pipe(sass({
       outputStyle: 'compressed'
     }))
     .pipe(gulp.dest('src/docs/assets/styles/'));
 });
-gulp.task('scss-demos', function() {
+gulp.task('scss-demos', ['scss-xt'], function() {
   return gulp.src('src/docs/demos/**/*.scss')
     .pipe(sass({
       outputStyle: 'nested'
     }))
     .pipe(gulp.dest('src/docs/demos/'));
 });
-
-// js
+gulp.task('scss-xt', function() {
+  return gulp.src('src/docs/assets/xt/*.scss')
+    .pipe(sass({
+      outputStyle: 'compressed'
+    }))
+    .pipe(gulp.dest('src/docs/assets/xt/'));
+});
 
 gulp.task('js:watch', function() {
-  gulp.watch(['src/docs/assets/xt/*.js'], ['js']);
+  gulp.watch(['src/docs/assets/xt/*.js'], ['copy-dist']);
 });
 gulp.task('js', function(cb) {
   pump([

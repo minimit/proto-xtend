@@ -23,55 +23,52 @@ body {
 // headers
 //////////////////////
 
+h1, .h1,
+h2, .h2,
+h3, .h3 {
+  @include spacing-headers;
+  @include font(sans-regular);
+  line-height: 1.1;
+}
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+  @include spacing-headers;
+  @include font(sans-regular);
+  line-height: 1.4;
+}
 h1, .h1 {
-    @include h1-h3-spacing;
-    @include font(sans-regular);
-    font-size: 3.224rem;
-    line-height: 1.4;
-    text-transform: none;
+  font-size: 3.224rem;
 }
 h2, .h2 {
-    @include h1-h3-spacing;
-    @include font(sans-regular);
-    font-size: 2.619rem;
-    line-height: 1.4;
-    text-transform: none;
+  font-size: 2.619rem;
 }
 h3, .h3 {
-    @include h1-h3-spacing;
-    @include font(sans-regular);
-    font-size: 1.619rem;
-    line-height: 1.4;
-    text-transform: none;
+  font-size: 1.619rem;
 }
 h4, .h4 {
-    @include h4-h6-spacing;
-    @include font(sans-regular);
-    font-size: 1.238rem;
-    line-height: 1.4;
-    text-transform: none;
+  font-size: 1.238rem;
 }
 h5, .h5 {
-    @include h4-h6-spacing;
-    @include font(sans-regular);
-    font-size: 1rem;
-    line-height: 1.4;
-    text-transform: none;
+  font-size: 1rem;
+}
+h6, .h6 {
+  font-size: 0.809rem;
 }
 
 //////////////////////
 // typography
 //////////////////////
 
+p {
+  @include spacing-text;
+}
 .lead {
   @include font(sans-medium);
   font-size: 1rem;
 }
 strong {
   @include font(sans-medium);
-}
-p {
-  @include text-spacing;
 }
 
 //////////////////////

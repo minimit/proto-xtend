@@ -374,6 +374,9 @@ html.button__menu__open {
 /* .make-line */
 .make-line {
   @include box;
+  .make-line + & {
+    margin-top: 0 !important;
+  }
   .line-container {
     @include box;
     overflow: hidden;
@@ -386,14 +389,16 @@ html.button__menu__open {
       content: "";
       position: absolute;
       z-index: -1;
-      bottom: 0.53em;
+      bottom: 0.38em;
       left: 0;
       width: 100%;
-      height: 2px;
+      height: 1px;
       background: rgba(color(primary), 0.75);
       background: linear-gradient(to right, rgba(color(primary), 0.75) 0%, rgba(color(primary), 0) 100%);
-      @at-root h3#{&} {
-        height: 1px;
+      @at-root {
+        h2#{&} {
+          height: 2px;
+        }
       }
     }
   }

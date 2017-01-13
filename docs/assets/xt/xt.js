@@ -126,7 +126,6 @@
       // ajax url
       if (settings.ajax && settings.ajax.url === 'href') {
         settings.ajax.url = $element.attr('href');
-        console.log(settings.ajax.url);
       }
       // $buttons based on $group and namespace
       var $buttons = this.getButtons();
