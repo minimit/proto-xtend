@@ -32,16 +32,10 @@
     }
   }
   /* sizes */
-  .site-breadcrumbs & {
-    padding: 8px 12px;
-    font-size: 12px;
-    line-height: 1.4;
-  }
   .demo-tabs &,
   .demo-code-tabs & {
-    padding: 6px 10px;
-    font-size: 11px;
-    line-height: 1.4;
+    padding: 16px 12px;
+    font-size: 12px;
   }
 }
 
@@ -51,12 +45,10 @@
   padding: 6px 10px;
   border-radius: 0;
   background: color(primary);
-  @include font(alt-bold);
+  @include font(sans-bold);
   font-size: 11px;
   color: color(white);
-  line-height: 1.4;
   text-align: center;
-  text-transform: uppercase;
   &:before {
     border-top-color: color(primary) !important;
   }
@@ -107,7 +99,7 @@
 a.logo {
   @include box;
   margin: 14px 0;
-  @include font(alt-bold);
+  @include font(sans-bold);
   color: rgba(color(white), 0.75);
   font-size: 1rem;
   letter-spacing: 0;
@@ -204,14 +196,14 @@ a.logo {
 .button__menu {
   float: right;
   @include font(sans-regular, !important);
-  font-size: 1em;
+  font-size: 1rem;
   text-transform: none !important;
   /* .icon-menu-custom */
   .icon-menu-custom {
     position: relative;
     width: 21px;
     height: 15px;
-    top: 8px;
+    top: 6px;
     span {
       display: block;
       position: absolute;
@@ -345,9 +337,7 @@ html.button__menu__open {
 .site-footer-bottom {
   margin-top: 0.618rem;
   margin-bottom: 1.238rem;
-  @include font(sans-medium);
   font-size: 13px;
-  line-height: 1.4;
   color: rgba(color(white), 0.75);
   a:not(.button) {
     color: color(white);
@@ -389,7 +379,7 @@ html.button__menu__open {
       content: "";
       position: absolute;
       z-index: -1;
-      bottom: 0.38em;
+      bottom: 0.5em;
       left: 0;
       width: 100%;
       height: 1px;
@@ -467,15 +457,17 @@ pre {
 }
 pre code {
   float: left;
-  font-size: 0.618rem !important;
-  line-height: 1.5;
+  @include font(sans-mono);
+  font-size: 12px !important;
+  line-height: 1.6;
   white-space: pre-wrap !important;
 }
 p code,
 .demo-text code {
   margin: 0 .2rem;
-  padding: .1rem .2rem;
-  font-size: 80%;
+  padding: .2rem .2rem;
+  @include font(sans-mono);
+  font-size: 12px;
   color: #d14;
   border-radius: 0;
   background: color(grey);
@@ -533,8 +525,8 @@ p code,
   }
   // .demo-text
   .demo-text {
-    font-size: 0.809rem;
-    line-height: 1.4;
+    font-size: 14px;
+    line-height: 1.6;
   }
   // others
   .button__fullscreen {
@@ -556,9 +548,6 @@ pre {
   .demo-code-tabs {
     z-index: 2;
     padding: 0 0.382rem;
-    .button {
-      padding: 0.809rem 0.618rem;
-    }
   }
   .hljs {
     padding-top: 1rem;

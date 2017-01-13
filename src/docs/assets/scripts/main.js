@@ -203,7 +203,7 @@
     });
     
     // .site-article .make-line
-    $main.find('.site-article').find('h2, h3').addClass('make-line');
+    $main.find('.site-article').find('h1, h2, h3').addClass('make-line');
     $main.find('.make-line').wrapInner('<span class="line"></span>').wrapInner('<div class="line-container"></div>');
     
     // .site-article .site-article-anchor

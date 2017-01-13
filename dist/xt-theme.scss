@@ -14,8 +14,8 @@ html {
 body {
   background: color(background);
   @include font(sans-regular);
-  font-size: 1rem;
-  line-height: 1.4;
+  font-size: 0.809rem;
+  line-height: 1.8;
   color: color(text);
 }
 
@@ -28,7 +28,7 @@ h2, .h2,
 h3, .h3 {
   @include spacing-headers;
   @include font(sans-regular);
-  line-height: 1.1;
+  line-height: 1.238;
 }
 h4, .h4,
 h5, .h5,
@@ -64,11 +64,12 @@ p {
   @include spacing-text;
 }
 .lead {
-  @include font(sans-medium);
-  font-size: 1rem;
+  @include spacing-headers;
+  @include font(sans-bold);
+  font-size: 0.809rem;
 }
 strong {
-  @include font(sans-medium);
+  @include font(sans-bold);
 }
 
 //////////////////////
@@ -175,7 +176,7 @@ a:not(.button) {
   /* sizes */
   padding: 8px 12px;
   font-size: 12px;
-  line-height: 1.4;
+  line-height: 1.238;
   &.size-xs {
     padding: 4px 8px;
     font-size: 10px;
@@ -195,8 +196,7 @@ a:not(.button) {
   /* styles */
   border: 0;
   border-radius: 0;
-  @include font(alt-bold);
-  text-transform: uppercase;
+  @include font(sans-bold);
   & {
     background: darken(color(white), 10%);
     color: color(text);
