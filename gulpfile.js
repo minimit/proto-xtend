@@ -43,7 +43,7 @@ gulp.task('copy-dist', ['scss', 'js'], function() {
 });
 
 gulp.task('scss:watch', function() {
-  gulp.watch(['src/docs/assets/xt/*.scss', 'src/docs/assets/styles/*.scss'], ['copy-dist']);
+  gulp.watch(['src/docs/assets/xt/*.scss', 'src/docs/assets/styles/*.scss', 'src/docs/demos/**/*.scss'], ['copy-dist']);
 });
 gulp.task('scss', ['scss-demos'], function() {
   return gulp.src('src/docs/assets/styles/*.scss')

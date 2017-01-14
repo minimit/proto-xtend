@@ -12,7 +12,6 @@ baseurl: "/"
 exclude:
   - "*.psd"
   - "*.scss"
-  - "demos/**/*.css"
   
 # collections
 collections:

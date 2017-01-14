@@ -1,4 +1,11 @@
-$color: #000000;
-button.active {
-  border: 1px solid $color;
+$color-primary: #ff0000;
+@import "../../assets/xt/xt-theme.scss";
+
+.button {
+  &.color-primary {
+    #{$hover},
+    #{$active} {
+      border: 1px solid $color-black;
+    }
+  }
 }

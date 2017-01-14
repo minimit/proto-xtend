@@ -1,8 +1,6 @@
 //////////////////////
-// custom variables
+// ratios
 //////////////////////
-
-// @TODO ratios
 
 /* ratios
 0.618
@@ -13,15 +11,23 @@
 3.224
 */
 
-// usage: background: color(background);
-$xt-colors: (
-  text: #000000,
-  background: #ffffff,
-  white: #ffffff,
-  grey: #f8f8f8,
-  primary: #2ed4c6,
-  primary-light: #f9fefb,
-) !default;
+//////////////////////
+// colors
+//////////////////////
+
+$color-primary: #2ed4c6 !default;
+$color-primary-light: #f9fefb !default;
+
+$color-text: #000000 !default;
+$color-background: #ffffff !default;
+
+$color-white: #ffffff !default;
+$color-grey: #f8f8f8 !default;
+$color-black: #000000 !default;
+
+//////////////////////
+// fonts
+//////////////////////
 
 // usage: @include font(sans-regular);
 $xt-fonts: (
@@ -36,6 +42,22 @@ $xt-fonts: (
     font-style: normal,
   ),
 ) !default;
+
+// export fonts
+@mixin font($key, $important:false){
+  $map: map-get($xt-fonts, $key);
+  @each $property, $value in $map {
+    @if $important == !important {
+      #{$property}: $value !important;
+    } @else {
+      #{$property}: $value;
+    }
+  }
+}
+
+//////////////////////
+// spacing
+//////////////////////
 
 // @include spacing-headers;
 @mixin spacing-headers {
@@ -67,6 +89,13 @@ $xt-fonts: (
 // mixins
 //////////////////////
 
+// @include box;
+@mixin box {
+  position: relative;
+  float: left;
+  width: 100%;
+}
+
 // #{$hover} {}
 $hover: "&:hover:not(.active), &.hover:not(.active)";
 
@@ -75,31 +104,3 @@ $active: "&:active, &.active, &:active:focus, &:active.focus, &.active:focus, &.
 
 // #{$focus} {}
 $focus: "&:focus, &.focus";
-
-// @include box;
-@mixin box {
-  position: relative;
-  float: left;
-  width: 100%;
-}
-
-//////////////////////
-// utils
-//////////////////////
-
-// colors
-@function color($value) {
-  @return map-get($xt-colors, $value);
-}
-
-// fonts
-@mixin font($key, $important:false){
-  $map: map-get($xt-fonts, $key);
-  @each $property, $value in $map {
-    @if $important == !important {
-      #{$property}: $value !important;
-    } @else {
-      #{$property}: $value;
-    }
-  }
-}

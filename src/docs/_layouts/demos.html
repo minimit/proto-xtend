@@ -1,27 +1,77 @@
-{% include demos-head.html %}
-<div id="inject">
-  <div id="inject-inside">
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+        
+    <!-- meta -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="robots" content="noindex, nofollow">
+
+    <!-- seo -->
+    <title>Demo</title>
+    <meta name="description" content="Demo" />
+
+    <!-- icons -->
+    <link rel="icon" href="/assets/images/favicon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png" />
+
+    <!-- styles -->
+    <link rel="stylesheet" href="/assets/styles/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400|Roboto+Mono:400" />
+    <link rel="stylesheet" href="/assets/styles/icons/style.css?v={{ site.version }}" />
+    <link rel="stylesheet" href="/assets/styles/demo.css?v={{ site.version }}" />
+    {% if page.scss %}
+    <link rel="stylesheet" href="{{ page.name | replace: '.html', '.css' }}?v={{ site.version }}" />
+    {% endif %}
+    
+    <!-- scripts -->
+    <script src="/assets/scripts/jquery.min.js"></script>
+    <script src="/assets/scripts/tether.min.js"></script>
+    <script src="/assets/scripts/bootstrap.min.js"></script>
+    <script src="/assets/xt/xt.js?v={{ site.version }}"></script>
+    
+    <!-- demo scripts -->
+    <script src="/assets/scripts/ResizeSensor.min.js"></script>
+    <script src="/assets/scripts/ElementQueries.min.js"></script>
+    <script type="text/javascript">
+      $.fn.xt.manualInit = true; // xt manual init set before $(document).ready
+      function init() {
+        // init xt
+        $('[data-xt]').xt();
+        // add id
+        $('html').attr('id', document.location.href.match(/[^\/]+$/)[0]);
+        // https://github.com/marcj/css-element-queries
+        new ResizeSensor(document.getElementById('inject'), function() {
+          parent.resizeIframe(window.frameElement.getAttribute('id'));
+        });
+      }
+    </script>
+    
+  </head>
+  <body>
+    
+    <div id="inject">
+      <div id="inject-inside">
 {{ content }}
-  </div>
-</div>
+      </div>
+    </div>
 
-{% if page.scss %}
-{% assign css = page.scss | replace: '.scss', '.css' %}
-<style scoped>
-{% include_relative {{ css }} %}
+    {% if page.scss %}
+    <scss-style>
+{% include_relative {{ page.name | replace: '.html', '.scss' }} %}
 
-</style>
-<scss-style>
-{% include_relative {{ page.scss }} %}
+    </scss-style>
+    {% endif %}
 
-</scss-style>
-{% endif %}
+    {% if page.js %}
+    <script type="text/javascript">
+{% include_relative {{ page.name | replace: '.html', '.js' }} %}
 
-{% if page.js %}
-<script type="text/javascript">
-{% include_relative {{ page.js }} %}
+    </script>
+    {% endif %}
 
-</script>
-{% endif %}
-
-{% include demos-foot.html %}
+  </body>
+</html>
