@@ -180,7 +180,6 @@
           this.show();
         }
       }
-      // TESTING
       //console.log(':setup', $element.text().replace(/(\r\n|\n|\r)/gm,"").replace(/^\s+|\s+$|\s+(?=\s)/g, ""), $element.hasClass(settings.class));
     },
     
@@ -194,13 +193,15 @@
         // scroll events
         if (!settings.$clone) {
           $element.wrap($('<div class="box xt-container"></div>'));
-          settings.$clone = $element.clone().addClass('box xt-ignore').css('visibility', 'hidden');
+          settings.$clone = $element.clone().addClass('box xt-ignore').css('visibility', 'hidden').css('display', 'none');
           $.each(settings.$clone.data(), function (i) {
             settings.$clone.removeAttr("data-" + i);
           });
           settings.$clone.insertAfter($element);
         }
-        $(window).on('scroll.xt', function() {
+        var scrollNamespace = 'scroll.xt.' + settings.namespace;
+        $(window).off(scrollNamespace);
+        $(window).on(scrollNamespace, function() {
           var $container = $(this);
           var top = $container.scrollTop();
           var min = $element.parents('.xt-container').offset().top;
@@ -218,9 +219,14 @@
             object.hide();
             settings.$clone.css('display', 'none');
           }
-          //console.log(top, min, max);
+          //console.log(':scroll.xt', $element.text().replace(/(\r\n|\n|\r)/gm,"").replace(/^\s+|\s+$|\s+(?=\s)/g, ""), top, min, max);
         });
-        $(window).trigger('scroll.xt');
+        // fix multiple class
+        clearTimeout(window[scrollNamespace]);
+        window[scrollNamespace] = window.setTimeout( function() {
+          // call one time
+          $(window).trigger(scrollNamespace);
+        }, 0);
       } else {
         // toggle events
         $element.on(settings.on, function(e) {
@@ -266,7 +272,7 @@
     
     // toggle
     
-    toggle: function(triggered, skipState) {
+    toggle: function(triggered, isSync, skipState) {
       var object = this;
       var settings = this.settings;
       var element = this.element;
@@ -274,24 +280,24 @@
       // choose based on state
       var $buttons = this.getButtons();
       if (!$element.hasClass(settings.class)) {
-        this.show(triggered, skipState);
+        this.show(triggered, isSync, skipState);
         if (!settings.ajax) {
           // xt sync
           $buttons.each( function(i) {
             var xt = $(this).data('plugin_xt');
             if (xt.settings.$target.is(settings.$target)) {
-              xt.show(triggered, skipState, true);
+              xt.show(triggered, true, skipState);
             }
           });
         }
       } else {
         if (!settings.ajax) {
-          this.hide(triggered, skipState);
+          this.hide(triggered, isSync, skipState);
           // xt sync
           $buttons.each( function(i) {
             var xt = $(this).data('plugin_xt');
             if (xt.settings.$target.is(settings.$target)) {
-              xt.hide(triggered, skipState, true);
+              xt.hide(triggered, true, skipState);
             }
           });
         }
@@ -305,7 +311,7 @@
       }
     },
     
-    show: function(triggered, skipState, isSync) {
+    show: function(triggered, isSync, skipState) {
       var object = this;
       var settings = this.settings;
       var element = this.element;
@@ -313,10 +319,12 @@
       // filter
       if (!$element.hasClass(settings.class)) {
         var $currents = this.getCurrents();
+        var triggerTarget;
         // show and add in $currents
         $element.addClass(settings.class);
         $currents = this.setCurrents($currents.pushElement($element));
-        if (!isSync && settings.target) {
+        if (settings.$target.length && !settings.$target.hasClass(settings.class)) {
+          triggerTarget = true;
           settings.$target.addClass(settings.class);
         }
         // control over activated
@@ -324,7 +332,7 @@
           // [disabled]
           this.checkDisabled('disable');
           // ajax
-          object.ajax(skipState);
+          object.ajax(triggered, isSync, skipState);
         } else {
           // [disabled]
           this.checkDisabled();
@@ -341,16 +349,15 @@
         // api
         if (!triggered) {
           $element.trigger('show.xt', [object]);
-          if (!isSync && settings.target) {
+          if (triggerTarget) {
             settings.$target.trigger('show.xt', [object]);
           }
         }
-        // TESTING
         //console.log(':show', $element.text().replace(/(\r\n|\n|\r)/gm,"").replace(/^\s+|\s+$|\s+(?=\s)/g, ""), $element.hasClass(settings.class));
       }
     },
     
-    hide: function(triggered, skipState, isSync) {
+    hide: function(triggered, isSync, skipState) {
       var object = this;
       var settings = this.settings;
       var element = this.element;
@@ -358,16 +365,18 @@
       // filter
       if ($element.hasClass(settings.class)) {
         var $currents = this.getCurrents();
+        var triggerTarget;
         // hide and remove from $currents
         if (isSync || settings.ajax || $currents.length > settings.min) {
           $element.removeClass(settings.class);
           $currents = this.setCurrents($currents.not(element));
-          if (!isSync && settings.target) {
+          if (settings.$target.length && settings.$target.hasClass(settings.class)) {
+            triggerTarget = true;
             settings.$target.removeClass(settings.class);
           }
         }
         // [disabled]
-        if (settings.ajax) {
+        if (isSync || settings.ajax) {
           this.checkDisabled('enable');
         } else {
           this.checkDisabled();
@@ -375,11 +384,10 @@
         // api
         if (!triggered) {
           $element.trigger('hide.xt', [object]);
-          if (!isSync && settings.target) {
+          if (triggerTarget) {
             settings.$target.trigger('hide.xt', [object]);
           }
         }
-        // TESTING
         //console.log(':hide', $element.text().replace(/(\r\n|\n|\r)/gm,"").replace(/^\s+|\s+$|\s+(?=\s)/g, ""), $element.hasClass(settings.class));
       }
     },
@@ -410,22 +418,29 @@
     
     // ajax and pushstate
     
-    ajax: function(skipState) {
+    ajax: function(triggered, isSync, skipState) {
       var object = this;
       var settings = this.settings;
       var element = this.element;
       var $element = $(this.element);
       // do ajax only one time
       if (settings.$target.attr('data-xt-ajaxified') !== settings.ajax.url) {
+        // ajax
         $.ajax({
           type: 'GET',
           url: settings.ajax.url,
           success: function(data, textStatus, jqXHR) {
+            // [data-xt-resetonajax] reset toggles
+            $(document).find('[data-xt-resetonajax]').filter(':parents(.xt-ignore)').each( function(i) {
+              var xt = $(this).data('plugin_xt');
+              xt.hide(true, false, true);
+              //console.log(':[data-xt-resetonajax]', $(xt.element).text().replace(/(\r\n|\n|\r)/gm,"").replace(/^\s+|\s+$|\s+(?=\s)/g, ""), $(xt.element).hasClass(settings.class), xt.settings.$target,xt.settings.$target.hasClass(settings.class));
+            });
             var $data = $('<div />').html(data);
-            settings.$target.attr('data-xt-ajaxified', settings.ajax.url);
             // populate
             var $html = $data.find(settings.target).contents();
             settings.$target.html($html);
+            settings.$target.attr('data-xt-ajaxified', settings.ajax.url);
             // pushstate
             if (!skipState) {
               settings.ajax.title = settings.ajax.title ? settings.ajax.title : $data.find('title').text();
@@ -468,12 +483,10 @@
       var $element = $(this.element);
       // triggered pushstate
       if (settings.ajax.url === url) {
-        object.show(triggered, true);
-        // TESTING
+        object.show(triggered, false, true);
         //console.log(':push:show', $element.text().replace(/(\r\n|\n|\r)/gm,"").replace(/^\s+|\s+$|\s+(?=\s)/g, ""), $element.hasClass(settings.class));
       } else {
-        object.hide(triggered, true);
-        // TESTING
+        object.hide(triggered, false, true);
         //console.log(':push:hide', $element.text().replace(/(\r\n|\n|\r)/gm,"").replace(/^\s+|\s+$|\s+(?=\s)/g, ""), $element.hasClass(settings.class));
       }
     },
@@ -503,7 +516,7 @@
       // trigger on registered data-xt-pushstate
       $(document).find('[data-xt-pushstate]').filter(':parents(.xt-ignore)').each( function(i, element) {
         var xt = $(this).data('plugin_xt');
-        xt.pushstateListener(history.state.url, false);
+        xt.pushstateListener(history.state.url);
       });
     }
   };
