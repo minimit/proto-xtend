@@ -46,41 +46,46 @@
       var settings = this.settings;
       var element = this.element;
       var $element = $(this.element);
-      // override
-      var override = $element.data('xt');
-      // override with type settings
-      if (override && override.type) {
-        if (override.type === "ajax") {
-          $.extend(settings, {
-            'ajax': {
-              'url': 'href',
-            },
-          });
-          $.extend(settings, $element.data('xt-ajax'));
-        } else if (override.type === "toggle") {
-          $.extend(settings, {
-            'min': 0,
-            'max': 1,
-          });
-          $.extend(settings, $element.data('xt-toggle'));
-        }
-      }
-      // override with html settings
-      if ($element.is('[data-xt]')) {
-        $.extend(settings, override);
-      }
-      // [data-xt] required
-      if (!$element.attr('data-xt')) {
-        $element.attr('data-xt', '');
-      }
-      // debug
+      // variables
       if ($element.attr('debug') || $element.attr('debug') === '') {
         settings.debug = true;
       }
-      // scoping before setup
+      // override
+      var override = $element.data('xt');
+      if (override) {
+        // override with type settings
+        if (override.type) {
+          if (override.type === "ajax") {
+            $.extend(settings, {
+              'ajax': {
+                'url': 'href',
+              },
+            });
+            $.extend(settings, $element.data('xt-ajax'));
+          } else if (override.type === "toggle") {
+            $.extend(settings, {
+              'min': 0,
+              'max': 1,
+            });
+            $.extend(settings, $element.data('xt-toggle'));
+          } else if (override.type === "scroll") {
+            $.extend(settings, {
+              'min': 0,
+              'max': 1,
+            });
+            $.extend(settings, $element.data('xt-scroll'));
+          }
+        }
+        // override with html settings
+        $.extend(settings, override);
+      } else {
+        // [data-xt] required
+        $element.attr('data-xt', '');
+      }
+      // scoping and events before setup
       object.scoping();
       object.events();
-      // setup and events when groups are formed
+      // setup
       window.requestAnimFrame( function() {
         object.setup();
       });
@@ -91,7 +96,7 @@
       var settings = this.settings;
       var element = this.element;
       var $element = $(this.element);
-      // automatic $group and target
+      // $group and target
       if (settings.target && settings.group) {
         settings.$group = $element.parents(settings.group);
         settings.$target = settings.$group.find(settings.target);
@@ -168,7 +173,7 @@
           // then show
           this.show();
           // api
-          settings.$target.trigger('xt.ajax.init', [object]);
+          settings.$target.trigger('ajax.init.xt', [object]);
         }
       } else {
         // init if $shown < min
@@ -194,6 +199,24 @@
           e.preventDefault();
         }
       });
+      // scroll events
+      if (settings.type === "scroll") {
+        settings.space = $('<div class="xt-space"></div>');
+        settings.space.insertAfter($element);
+        $(window).on('scroll.xt', function() {
+          var $container = $(this);
+          var top = $container.scrollTop();
+          if (top > $(settings.scrollTop).offset().top && top < $(settings.scrollBottom).offset().top) {
+            object.show();
+            settings.space.css('display', 'block').height($element.height());
+          } else {
+            object.hide();
+            settings.space.css('display', 'none').height($element.height());
+          }
+          //console.log(top);
+        });
+        $(window).trigger('scroll.xt');
+      }
     },
     
     // methods
@@ -245,9 +268,9 @@
       }
       // api
       if (!triggered) {
-        $element.trigger('xt.toggle', [object]);
+        $element.trigger('toggle.xt', [object]);
         if (settings.target) {
-          settings.$target.trigger('xt.toggle', [object]);
+          settings.$target.trigger('toggle.xt', [object]);
         }
       }
     },
@@ -286,9 +309,9 @@
         }
         // api
         if (!triggered) {
-          $element.trigger('xt.show', [object]);
+          $element.trigger('show.xt', [object]);
           if (settings.target) {
-            settings.$target.trigger('xt.show', [object]);
+            settings.$target.trigger('show.xt', [object]);
           }
         }
         // TESTING
@@ -321,9 +344,9 @@
         }
         // api
         if (!triggered) {
-          $element.trigger('xt.hide', [object]);
+          $element.trigger('hide.xt', [object]);
           if (settings.target) {
-            settings.$target.trigger('xt.hide', [object]);
+            settings.$target.trigger('hide.xt', [object]);
           }
         }
         // TESTING
@@ -379,7 +402,7 @@
               object.pushstate(true);
             }
             // api
-            settings.$target.trigger('xt.ajax.done', [object, $data]);
+            settings.$target.trigger('ajax.done.xt', [object, $data]);
           },
           error: function(jqXHR, textStatus, errorThrown) {
             console.error('ajax error url:' + settings.ajax.url + ' ' + errorThrown);

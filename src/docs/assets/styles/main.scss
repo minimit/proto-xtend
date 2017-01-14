@@ -160,10 +160,43 @@ a.logo {
 }
 
 // DA METTERE IN BASE
+.site-hero {
+  z-index: 5;
+}
+.site-header-top {
+  z-index: 6;
+}
+.site-breadcrumbs {
+  z-index: 7;
+}
+
 .site-menu {
   display: none;
-  html.button__menu__open & {
+}
+html.button__menu__open {
+  .site-header-top {
+    z-index: 8;
+  }
+  .site-menu {
     display: block;
+  }
+}
+
+html.site-header-top-scroll {
+  .site-header-top {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+}
+
+html.site-breadcrumbs-scroll {
+  .site-breadcrumbs {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
   }
 }
 /*

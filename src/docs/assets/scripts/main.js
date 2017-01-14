@@ -49,7 +49,7 @@
         var $btn = $container.find('.demo-tabs-left').append('<button class="button">' + name + '</button>').find('.button').eq(k);
         $btn.xt({"target": ".demo-item", "group": ".demo", "grouping": i});
         // disable fullscreen when not needed
-        $btn.on('xt.show', function(e, object) {
+        $btn.on('show.xt', function(e, object) {
           if ($(this).parents('.demo').find('.demo-item.active').attr('data-iframe')) {
             $(this).parents('.demo').find('.button__fullscreen').css('display', 'block');
           } else {
@@ -95,7 +95,7 @@
             }, 0, $item);
           });
           // iframe resize on show
-          $item.on('xt.show', function(e, object) {
+          $item.on('show.xt', function(e, object) {
             var $iframe = $(this).find('> iframe');
             window.resizeIframe(id);
             $iframe[0].contentWindow.resize(); // fix scrollbars
@@ -226,14 +226,14 @@
   //////////////////////
   
   // on done
-  $('.site-wrapper').on('xt.ajax.done', function(e, object, $data) {
+  $('.site-wrapper').on('ajax.done.xt', function(e, object, $data) {
     var $container = $(this);
     // main on ajax
     main($container);
   });
   
   // on ajax
-  $('.site-wrapper').on('xt.ajax.init xt.ajax.done', function(e, object, $data) {
+  $('.site-wrapper').on('ajax.init.xt ajax.done.xt', function(e, object, $data) {
     var $container = $(this);
     // populate header
     /*
