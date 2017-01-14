@@ -12,11 +12,10 @@
   
   var pluginName = 'xt';
   var defaults = {
-    'mode': null,
+    'type': null,
     'on': 'click',
     'target': '',
-    'toggle': 'active',
-    'htmlClass': '',
+    'class': 'active',
     'group': '',
     'grouping': 'xt',
     'min': 1,
@@ -49,16 +48,16 @@
       var $element = $(this.element);
       // override
       var override = $element.data('xt');
-      // override with mode settings
-      if (override && override.mode) {
-        if (override.mode === "ajax") {
+      // override with type settings
+      if (override && override.type) {
+        if (override.type === "ajax") {
           $.extend(settings, {
             'ajax': {
               'url': 'href',
             },
           });
           $.extend(settings, $element.data('xt-ajax'));
-        } else if (override.mode === "toggle") {
+        } else if (override.type === "toggle") {
           $.extend(settings, {
             'min': 0,
             'max': 1,
@@ -140,7 +139,7 @@
         settings.$target = settings.$target.eq(settings.groupIndex);
       }
       // init if has class
-      if ($element.hasClass(settings.toggle)) {
+      if ($element.hasClass(settings.class)) {
         this.show();
       }
       // automatic init
@@ -174,13 +173,13 @@
       } else {
         // init if $shown < min
         var min = settings.min;
-        var $shown = $buttons.filter('.' + settings.toggle);
+        var $shown = $buttons.filter('.' + settings.class);
         if ($shown.length < min) {
           this.show();
         }
       }
       // TESTING
-      //console.log(':setup', $element.text().replace(/(\r\n|\n|\r)/gm,"").replace(/^\s+|\s+$|\s+(?=\s)/g, ""), $element.hasClass(settings.toggle));
+      //console.log(':setup', $element.text().replace(/(\r\n|\n|\r)/gm,"").replace(/^\s+|\s+$|\s+(?=\s)/g, ""), $element.hasClass(settings.class));
     },
     
     events: function() {
@@ -237,7 +236,7 @@
       var element = this.element;
       var $element = $(this.element);
       // choose based on state
-      if (!$element.hasClass(settings.toggle)) {
+      if (!$element.hasClass(settings.class)) {
         this.show(triggered, skipstate);
       } else {
         if (!settings.ajax) {
@@ -259,16 +258,13 @@
       var element = this.element;
       var $element = $(this.element);
       // filter
-      if (!$element.hasClass(settings.toggle)) {
+      if (!$element.hasClass(settings.class)) {
         var $currents = this.getCurrents();
         // show and add in $currents
-        $element.addClass(settings.toggle);
+        $element.addClass(settings.class);
         $currents = this.setCurrents($currents.pushElement($element));
         if (settings.$target) {
-          settings.$target.addClass(settings.toggle);
-        }
-        if (settings.htmlClass) {
-          $('html').addClass(settings.htmlClass);
+          settings.$target.addClass(settings.class);
         }
         // control over activated
         if (settings.ajax) {
@@ -296,7 +292,7 @@
           }
         }
         // TESTING
-        //console.log(':show', $element.text().replace(/(\r\n|\n|\r)/gm,"").replace(/^\s+|\s+$|\s+(?=\s)/g, ""), $element.hasClass(settings.toggle));
+        //console.log(':show', $element.text().replace(/(\r\n|\n|\r)/gm,"").replace(/^\s+|\s+$|\s+(?=\s)/g, ""), $element.hasClass(settings.class));
       }
     },
     
@@ -306,18 +302,15 @@
       var element = this.element;
       var $element = $(this.element);
       // filter
-      if ($element.hasClass(settings.toggle)) {
+      if ($element.hasClass(settings.class)) {
         var $currents = this.getCurrents();
         // hide and remove from $currents
         var min = settings.min;
         if ($currents.length > min || settings.ajax) {
-          $element.removeClass(settings.toggle);
+          $element.removeClass(settings.class);
           $currents = this.setCurrents($currents.not(element));
           if (settings.$target) {
-            settings.$target.removeClass(settings.toggle);
-          }
-          if (settings.htmlClass) {
-            $('html').removeClass(settings.htmlClass);
+            settings.$target.removeClass(settings.class);
           }
         }
         // [disabled]
@@ -334,7 +327,7 @@
           }
         }
         // TESTING
-        //console.log(':hide', $element.text().replace(/(\r\n|\n|\r)/gm,"").replace(/^\s+|\s+$|\s+(?=\s)/g, ""), $element.hasClass(settings.toggle));
+        //console.log(':hide', $element.text().replace(/(\r\n|\n|\r)/gm,"").replace(/^\s+|\s+$|\s+(?=\s)/g, ""), $element.hasClass(settings.class));
       }
     },
     
@@ -424,11 +417,11 @@
       if (settings.ajax.url === url) {
         object.show(triggered, true);
         // TESTING
-        //console.log(':push:show', $element.text().replace(/(\r\n|\n|\r)/gm,"").replace(/^\s+|\s+$|\s+(?=\s)/g, ""), $element.hasClass(settings.toggle));
+        //console.log(':push:show', $element.text().replace(/(\r\n|\n|\r)/gm,"").replace(/^\s+|\s+$|\s+(?=\s)/g, ""), $element.hasClass(settings.class));
       } else {
         object.hide(triggered, true);
         // TESTING
-        //console.log(':push:hide', $element.text().replace(/(\r\n|\n|\r)/gm,"").replace(/^\s+|\s+$|\s+(?=\s)/g, ""), $element.hasClass(settings.toggle));
+        //console.log(':push:hide', $element.text().replace(/(\r\n|\n|\r)/gm,"").replace(/^\s+|\s+$|\s+(?=\s)/g, ""), $element.hasClass(settings.class));
       }
     },
     

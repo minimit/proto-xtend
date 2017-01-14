@@ -159,47 +159,52 @@ a.logo {
   }
 }
 
-/* .site-hero */
-.site-hero {
-  @include box;
-  background: $color-primary;
-  color: $color-white;
-  .media {
-    min-height: 300px;
-  }
-  .h1 {
-    margin-top: -0.43em !important;
-  }
-  .lead {
-    color: rgba($color-white, 0.75);
+// DA METTERE IN BASE
+.site-menu {
+  display: none;
+  html.button__menu__open & {
+    display: block;
   }
 }
-
-/* .site-breadcrumbs */
-.site-breadcrumbs {
-  cursor: default;
-  @include box;
-  background: $color-primary;
-  color: $color-white;
+/*
+.site-menu {
+  position: fixed;
+  z-index: 5;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
-.site-breadcrumbs-body {
-  float: left;
-  margin-left: -12px;
-  margin-right: -12px;
-  .button {
-    padding: 20px 12px;
-    font-size: 13px;
+.site-header-top .container {
+  z-index: 6;
+}
+*/
+/*
+.site-menu {
+  z-index: 5;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  margin-top: 56px;
+  .site-menu-content {
+    padding-top: 3.224rem;
+    padding-bottom: 3.224rem;
   }
 }
-.site-breadcrumbs-meta {
-  float: right;
-  margin-left: -8px;
-  margin-right: -8px;
-  .button {
-    padding: 18px 8px;
-    font-size: 16px;
+*/
+/*
+html.button__menu__open {
+  &,
+  body {
+    overflow: hidden;
+  }
+  .site-menu {
+    display: block;
+  }
+  .site-header-top {
+    
   }
 }
+*/
 
 /* .button__menu */
 .button__menu {
@@ -243,7 +248,7 @@ a.logo {
       transform-origin: left center;
     }
   }
-  &.active {
+  html.button__menu__open & {
     .icon-menu-custom {
       span:nth-child(1) {
         -webkit-transform: rotate(45deg);
@@ -279,46 +284,47 @@ a.logo {
   }
 }
 
-/*.site-menu .button__menu__open */
-.site-header-top .container {
-  z-index: 6;
-}
-.site-menu {
-  display: none;
-  html.button__menu__open & {
-    display: block;
+/* .site-hero */
+.site-hero {
+  @include box;
+  background: $color-primary;
+  color: $color-white;
+  .media {
+    min-height: 300px;
   }
-  position: fixed;
-  z-index: 5;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  /*
-  z-index: 5;
-  overflow-x: hidden;
-  overflow-y: scroll;
-  margin-top: 56px;
-  .site-menu-content {
-    padding-top: 3.224rem;
-    padding-bottom: 3.224rem;
+  .h1 {
+    margin-top: -0.43em !important;
   }
-  */
-}
-/*
-html.button__menu__open {
-  &,
-  body {
-    overflow: hidden;
-  }
-  .site-menu {
-    display: block;
-  }
-  .site-header-top {
-    
+  .lead {
+    color: rgba($color-white, 0.75);
   }
 }
-*/
+
+/* .site-breadcrumbs */
+.site-breadcrumbs {
+  cursor: default;
+  @include box;
+  background: $color-primary;
+  color: $color-white;
+}
+.site-breadcrumbs-body {
+  float: left;
+  margin-left: -12px;
+  margin-right: -12px;
+  .button {
+    padding: 20px 12px;
+    font-size: 13px;
+  }
+}
+.site-breadcrumbs-meta {
+  float: right;
+  margin-left: -8px;
+  margin-right: -8px;
+  .button {
+    padding: 18px 8px;
+    font-size: 16px;
+  }
+}
 
 //////////////////////
 // footer
