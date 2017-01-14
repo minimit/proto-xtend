@@ -62,8 +62,7 @@
   </head>
   <body>
     
-    <div id="body-inside">
-<div class="spacer">
+    <div id="body-inside"><div class="spacer">
 
   <button class="button color-primary" data-xt='{"min": 0, "grouping": "test"}'>
     Lorem Ipsum
@@ -111,12 +110,10 @@
     </div>
   </div>
 
-</div>
-    </div>
+</div></div>
 
     
-    <scss-style>
-$color-primary: #ff0000;
+    <scss-style>$color-primary: #ff0000;
 
 @import "../../assets/xt/xt-theme.scss"; // ignore if customizing xt-theme.scss
 
@@ -127,16 +124,13 @@ $color-primary: #ff0000;
       border: 1px solid $color-black;
     }
   }
-}
-    </scss-style>
+}</scss-style>
     
 
     
-    <script type="text/javascript">
-$('.button').on('click', function(e) {
+    <script type="text/javascript">$('.button').on('click', function(e) {
   console.log('test-0 button clicked');
-});
-    </script>
+});</script>
     
 
   </body>

@@ -62,8 +62,7 @@
   </head>
   <body>
     
-    <div id="body-inside">
-<button class="button color-primary" data-xt='{"target": ".card", "grouping": "unique"}'>
+    <div id="body-inside"><button class="button color-primary" data-xt='{"target": ".card", "grouping": "unique"}'>
   0
 </button>
 <button class="button color-primary" data-xt='{"target": ".card", "grouping": "unique"}'>
@@ -171,12 +170,10 @@
       card 2
     </div>
   </div>
-</div>
-    </div>
+</div></div>
 
     
-    <scss-style>
-@import "../../assets/xt/xt-theme.scss"; // ignore if customizing xt-theme.scss
+    <scss-style>@import "../../assets/xt/xt-theme.scss"; // ignore if customizing xt-theme.scss
 
 .button {
   &.color-primary {
@@ -185,16 +182,13 @@
       border: 1px solid $color-black;
     }
   }
-}
-    </scss-style>
+}</scss-style>
     
 
     
-    <script type="text/javascript">
-$(window).on('scroll', function() {
+    <script type="text/javascript">$(window).on('scroll', function() {
   console.log($(window).scrollTop());
-});
-    </script>
+});</script>
     
 
   </body>

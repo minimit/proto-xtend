@@ -131,21 +131,12 @@
       var js = $('body script', $iframe[0].contentWindow.document).html();
       // inject code
       if (html) {
-        //html = html.replace(/^\s+|\s+$/g, '');
         $iframe.append('<div class="demo-source" data-lang="html">' + html + '</div>');
       }
       if (scss) {
-        //scss = scss.replace(/^\s+|\s+$/g, '');
         $iframe.append('<div class="demo-source" data-lang="scss">' + scss + '</div>');
       }
-      /*
-      if (css) {
-        //css = css.replace(/^\s+|\s+$/g, '');
-        $iframe.append('<div class="demo-source" data-lang="css">' + css + '</div>');
-      }
-      */
       if (js) {
-        //js = js.replace(/^\s+|\s+$/g, '');
         $iframe.append('<div class="demo-source" data-lang="js">' + js + '</div>');
       }
       // populate
@@ -166,6 +157,7 @@
       // format code
       if (!$codeInside.hasClass('hljs')) {
         var text = formatCode($source);
+        text = text.replace(/^\s+|\s+$/g, ''); // remove newline at start and end
         $codeInside.html(text).removeClass().addClass(lang);
         window.hljs.highlightBlock($codeInside[0]);
       }

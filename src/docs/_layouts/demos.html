@@ -62,20 +62,14 @@
   </head>
   <body>
     
-    <div id="body-inside">
-{{ content }}
-    </div>
+    <div id="body-inside">{{ content }}</div>
 
     {% if page.scss %}
-    <scss-style>
-{% include_relative {{ page.name | replace: '.html', '.scss' }} %}
-    </scss-style>
+    <scss-style>{% include_relative {{ page.name | replace: '.html', '.scss' }} %}</scss-style>
     {% endif %}
 
     {% if page.js %}
-    <script type="text/javascript">
-{% include_relative {{ page.name | replace: '.html', '.js' }} %}
-    </script>
+    <script type="text/javascript">{% include_relative {{ page.name | replace: '.html', '.js' }} %}</script>
     {% endif %}
 
   </body>
