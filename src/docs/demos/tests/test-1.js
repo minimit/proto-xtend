@@ -1,3 +1,3 @@
-$('.button').on('click', function(e) {
-  console.log('test-1 button clicked');
+$(window).on('scroll', function() {
+  console.log($(window).scrollTop());
 });

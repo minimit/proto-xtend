@@ -1,32 +1,22 @@
 //////////////////////
-// xtend variables
-//////////////////////
-
-// override variables
-@import "../xt/_xt-variables.scss";
-
-//////////////////////
 // main
 //////////////////////
 
-html {
-  font-size: 20px;
-}
-html, body {
-  height: 100%;
-}
 body {
-  overflow: hidden;
   background: transparent;
+}
+html:not(.full) {
+  body {
+    overflow: hidden;
+  }
+}
+html.full {
+  #body-inside {
+    max-height: 100px; /* 370px; */
+  }
 }
 scss-style {
   display: none;
-}
-#inject {
-  @include box;
-}
-#inject-inside {
-  padding: 1rem;
 }
 
 // testing

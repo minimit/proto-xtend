@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="">
   <head>
         
     <!-- meta -->
@@ -22,8 +22,8 @@
     <link rel="stylesheet" href="/assets/styles/bootstrap.min.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400|Roboto+Mono:400" />
     <link rel="stylesheet" href="/assets/styles/icons/style.css?v=0.0.5" />
-    <link rel="stylesheet" href="/assets/styles/demo.css?v=0.0.5" />
     
+    <link rel="stylesheet" href="/assets/styles/demo.css?v=0.0.5" />
     
     <!-- scripts -->
     <script src="/assets/scripts/jquery.min.js"></script>
@@ -35,24 +35,32 @@
     <script src="/assets/scripts/ResizeSensor.min.js"></script>
     <script src="/assets/scripts/ElementQueries.min.js"></script>
     <script type="text/javascript">
+    
       $.fn.xt.manualInit = true; // xt manual init set before $(document).ready
+      
       function init() {
         // init xt
         $('[data-xt]').xt();
         // add id
         $('html').attr('id', document.location.href.match(/[^\/]+$/)[0]);
         // https://github.com/marcj/css-element-queries
-        new ResizeSensor(document.getElementById('inject'), function() {
-          parent.resizeIframe(window.frameElement.getAttribute('id'));
-        });
+        if (!$('html').hasClass('full')) {
+          new ResizeSensor(document.getElementById('body-inside'), function() {
+            parent.resizeIframe(window.frameElement.getAttribute('id'));
+          });
+        }
       }
+      
+      function resize() {
+        $('#body-inside').hide().show(0);
+      }
+      
     </script>
     
   </head>
   <body>
     
-    <div id="inject">
-      <div id="inject-inside">
+    <div id="body-inside">
 <button class="button color-primary" data-xt='{"target": ".card", "grouping": "unique"}'>
   0
 </button>
@@ -162,7 +170,6 @@
     </div>
   </div>
 </div>
-      </div>
     </div>
 
     

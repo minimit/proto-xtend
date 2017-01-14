@@ -1,1 +1,1 @@
-html{font-size:20px}html,body{height:100%}body{overflow:hidden;background:transparent}scss-style{display:none}#inject{position:relative;float:left;width:100%}#inject-inside{padding:1rem}.card{margin:0;display:none}.card.active{display:inline-block}.card-block{padding:0 10px;font-size:14px}
+body{background:transparent}html:not(.full) body{overflow:hidden}html.full #body-inside{max-height:100px}scss-style{display:none}.card{margin:0;display:none}.card.active{display:inline-block}.card-block{padding:0 10px;font-size:14px}

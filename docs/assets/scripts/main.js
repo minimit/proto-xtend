@@ -11,7 +11,7 @@
     window.resizeIframe = function(id) {
       var $iframe = $('#' + id);
       var oldH = $iframe.data('iframeHeight');
-      var h = $iframe.contents().find('#inject').height();
+      var h = $iframe.contents().find('#body-inside').height();
       if (h !== oldH) {
         $iframe.height(h);
         $iframe.data('iframeHeight', h);
@@ -98,7 +98,8 @@
           $item.on('xt.show', function(e, object) {
             var $iframe = $(this).find('> iframe');
             window.resizeIframe(id);
-            //console.log($iframe.attr('src'), $iframe.contents().find('#inject').height());
+            $iframe[0].contentWindow.resize(); // fix scrollbars
+            //console.log($iframe.attr('src'), $iframe.contents().find('#body-inside').height());
           });
         } else {
           populateInline($item, id);
@@ -124,7 +125,7 @@
     
     // populateIframe
     function populateIframe($item, $iframe, id) {
-      var html = $('body #inject-inside', $iframe[0].contentWindow.document).html();
+      var html = $('body #body-inside', $iframe[0].contentWindow.document).html();
       var scss = $('body scss-style', $iframe[0].contentWindow.document).html();
       var css = $('body style[scoped]', $iframe[0].contentWindow.document).html();
       var js = $('body script', $iframe[0].contentWindow.document).html();
