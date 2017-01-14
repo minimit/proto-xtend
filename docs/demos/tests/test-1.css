@@ -54,12 +54,6 @@ body {
     display: block;
     overflow: hidden; }
 
-.xt-space {
-  display: none;
-  position: relative;
-  float: left;
-  width: 100%; }
-
 html {
   font-size: 20px; }
 

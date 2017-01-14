@@ -201,19 +201,33 @@
       });
       // scroll events
       if (settings.type === "scroll") {
-        settings.space = $('<div class="xt-space"></div>');
-        settings.space.insertAfter($element);
+        if (!settings.$clone) {
+          $element.wrap($('<div class="box xt-container"></div>'));
+          settings.$clone = $element.clone().addClass('box xt-clone').css('visibility', 'hidden');
+          $.each(settings.$clone.data(), function (i) {
+            settings.$clone.removeAttr("data-" + i);
+          });
+          settings.$clone.insertAfter($element);
+        }
         $(window).on('scroll.xt', function() {
           var $container = $(this);
           var top = $container.scrollTop();
-          if (top > $(settings.scrollTop).offset().top && top < $(settings.scrollBottom).offset().top) {
+          var min = $element.parents('.xt-container').offset().top;
+          var max = $(window).height();
+          if (settings.scrollTop) {
+            min = $(settings.scrollTop).offset().top;
+          }
+          if (settings.scrollBottom) {
+            max = $(settings.scrollBottom).offset().top;
+          }
+          if (top > min && top < max) {
             object.show();
-            settings.space.css('display', 'block').height($element.height());
+            settings.$clone.css('display', 'block');
           } else {
             object.hide();
-            settings.space.css('display', 'none').height($element.height());
+            settings.$clone.css('display', 'none');
           }
-          //console.log(top);
+          //console.log(top, min, max);
         });
         $(window).trigger('scroll.xt');
       }
