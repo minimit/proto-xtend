@@ -1,7 +1,3 @@
-/* xtend v0.0.3 (http://)
-@copyright (c) 2016 - 2017 Riccardo Caroli
-@license MIT (https://github.com/minimit/xtend/blob/master/LICENSE) */
-
 //////////////////////
 // custom variables
 //////////////////////
@@ -25,21 +21,21 @@ $xt-colors: (
   grey: #f8f8f8,
   primary: #2ed4c6,
   primary-light: #f9fefb,
-)!default;
+) !default;
 
 // usage: @include font(sans-regular);
 $xt-fonts: (
   sans-regular: (
-    font-family: unquote('Arial, "Helvetica Neue", Helvetica, sans-serif'),
+    font-family: unquote('"Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif'),
     font-weight: 300,
     font-style: normal,
   ),
   sans-bold: (
-    font-family: unquote('Arial, "Helvetica Neue", Helvetica, sans-serif'),
+    font-family: unquote('"Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif'),
     font-weight: 400,
     font-style: normal,
   ),
-)!default;
+) !default;
 
 // @include spacing-headers;
 @mixin spacing-headers {

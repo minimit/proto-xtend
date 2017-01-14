@@ -62,7 +62,14 @@ gulp.task('scss-demos', ['scss-xt'], function() {
 gulp.task('scss-xt', function() {
   return gulp.src('src/docs/assets/xt/*.scss')
     .pipe(sass({
+      outputStyle: 'expanded'
+    }))
+    .pipe(gulp.dest('src/docs/assets/xt/'))
+    .pipe(sass({
       outputStyle: 'compressed'
+    }))
+    .pipe(rename({
+      suffix: '.min'
     }))
     .pipe(gulp.dest('src/docs/assets/xt/'));
 });
