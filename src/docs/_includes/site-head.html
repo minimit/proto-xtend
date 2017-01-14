@@ -31,7 +31,7 @@
       
       <header class="site-header">
         
-        <nav class="site-header-top" role="navigation" data-xt='{"type": "scroll", "target": "html", "class": "site-header-top-scroll", "scrollTop": ".site-header", "scrollBottom": ".site-breadcrumbs"}'>
+        <nav class="site-header-top" role="navigation" data-xt='{"type": "scroll", "target": "html", "grouping": "site-header-top", "class": "site-header-top-scroll", "scrollTop": ".site-header", "scrollBottom": ".site-breadcrumbs"}'>
           
           <div class="container">
             
@@ -42,7 +42,7 @@
                 </a>
               </div>
               <div class="media-body align-self-center">
-                <button type="button" class="button button__menu" data-xt='{"type": "toggle", "target": "html", "grouping": "site-menu", "class": "button__menu__open", "min": 0}'>
+                <button type="button" class="button button__menu float-right" data-xt='{"type": "toggle", "target": "html", "grouping": "button__menu", "class": "button__menu__open"}'>
                   <span class="icon-menu-custom right">
                     <span></span>
                     <span></span>
@@ -110,7 +110,7 @@
             {% for collection in site.collections %}
               {% if collection.label == page.collection %}
               
-                <div class="site-breadcrumbs-body">
+                <div class="site-breadcrumbs-body float-left spacer">
                   {% assign sorted = (site.[collection.label] | sort: 'order') %}
                   {% for page in sorted %}
                     {% unless page.published == false %}
@@ -121,8 +121,7 @@
                   {% endfor %}
                 </div>
                 
-                {% if collection.links.size > 0 %}
-                <div class="site-breadcrumbs-meta">
+                <div class="site-breadcrumbs-meta float-right spacer">
                   {% if collection.links.download %}
                     <a href="{{ collection.links.download }}" target="_blank" class="button" data-toggle="tooltip" data-placement="top" title="Download source" data-template='<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner tooltip-inverse"></div></div>'>
                       <span class="icon-download"></span>
@@ -133,8 +132,16 @@
                       <span class="icon-github"></span>
                     </a>
                   {% endif %}
+                  
+                  <button type="button" class="button button__menu float-right show-scroll" data-xt='{"type": "toggle", "target": "html", "grouping": "button__menu", "class": "button__menu__open"}'>
+                    <span class="icon-menu-custom right">
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                    </span>
+                    <span class="text">{{ page.categories }}</span>
+                  </button>
                 </div>
-                {% endif %}
                 
               {% endif %}
             {% endfor %}

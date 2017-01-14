@@ -200,9 +200,6 @@
     $main.find('.make-line').wrapInner('<span class="line"></span>').wrapInner('<div class="line-container"></div>');
     
     // .site-article .site-article-anchor
-    jQuery.expr[':'].parents = function(a,i,m){
-      return jQuery(a).parents(m[3]).length < 1;
-    };
     $main.find('.site-article').find('h2, h3').filter(':parents(.demo)').each( function(i) {
       var $element = $(this);
       var id = $element.text().replace(/\s+/g, '-').toLowerCase();

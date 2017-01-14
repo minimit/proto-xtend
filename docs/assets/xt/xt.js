@@ -117,9 +117,6 @@
       // set namespace
       settings.namespace = settings.grouping + '_' + settings.group;
       $element.attr('data-xt-button', settings.namespace);
-      if (settings.target) {
-        settings.$target.attr('data-xt-target', settings.namespace);
-      }
     },
     
     setup: function() {
@@ -192,18 +189,12 @@
       var settings = this.settings;
       var element = this.element;
       var $element = $(this.element);
-      // toggle events
-      $element.on(settings.on, function(e) {
-        object.toggle();
-        if (settings.ajax) {
-          e.preventDefault();
-        }
-      });
-      // scroll events
+      // events
       if (settings.type === "scroll") {
+        // scroll events
         if (!settings.$clone) {
           $element.wrap($('<div class="box xt-container"></div>'));
-          settings.$clone = $element.clone().addClass('box xt-clone').css('visibility', 'hidden');
+          settings.$clone = $element.clone().addClass('box xt-ignore').css('visibility', 'hidden');
           $.each(settings.$clone.data(), function (i) {
             settings.$clone.removeAttr("data-" + i);
           });
@@ -213,7 +204,7 @@
           var $container = $(this);
           var top = $container.scrollTop();
           var min = $element.parents('.xt-container').offset().top;
-          var max = $(window).height();
+          var max = Infinity;
           if (settings.scrollTop) {
             min = $(settings.scrollTop).offset().top;
           }
@@ -230,6 +221,14 @@
           //console.log(top, min, max);
         });
         $(window).trigger('scroll.xt');
+      } else {
+        // toggle events
+        $element.on(settings.on, function(e) {
+          object.toggle();
+          if (settings.ajax) {
+            e.preventDefault();
+          }
+        });
       }
     },
     
@@ -241,7 +240,7 @@
       var element = this.element;
       var $element = $(this.element);
       // get $buttons on $group based on namespace
-      var $buttons = settings.$group.find('[data-xt-button="' + settings.namespace + '"]');
+      var $buttons = settings.$group.find('[data-xt-button="' + settings.namespace + '"]').filter(':parents(.xt-ignore)');
       return $buttons;
     },
     
@@ -267,17 +266,34 @@
     
     // toggle
     
-    toggle: function(triggered, skipstate) {
+    toggle: function(triggered, skipState) {
       var object = this;
       var settings = this.settings;
       var element = this.element;
       var $element = $(this.element);
       // choose based on state
+      var $buttons = this.getButtons();
       if (!$element.hasClass(settings.class)) {
-        this.show(triggered, skipstate);
+        this.show(triggered, skipState);
+        if (!settings.ajax) {
+          // xt sync
+          $buttons.each( function(i) {
+            var xt = $(this).data('plugin_xt');
+            if (xt.settings.$target.is(settings.$target)) {
+              xt.show(triggered, skipState, true);
+            }
+          });
+        }
       } else {
         if (!settings.ajax) {
-          this.hide(triggered, skipstate);
+          this.hide(triggered, skipState);
+          // xt sync
+          $buttons.each( function(i) {
+            var xt = $(this).data('plugin_xt');
+            if (xt.settings.$target.is(settings.$target)) {
+              xt.hide(triggered, skipState, true);
+            }
+          });
         }
       }
       // api
@@ -289,7 +305,7 @@
       }
     },
     
-    show: function(triggered, skipstate) {
+    show: function(triggered, skipState, isSync) {
       var object = this;
       var settings = this.settings;
       var element = this.element;
@@ -300,7 +316,7 @@
         // show and add in $currents
         $element.addClass(settings.class);
         $currents = this.setCurrents($currents.pushElement($element));
-        if (settings.$target) {
+        if (!isSync && settings.target) {
           settings.$target.addClass(settings.class);
         }
         // control over activated
@@ -308,23 +324,24 @@
           // [disabled]
           this.checkDisabled('disable');
           // ajax
-          object.ajax(skipstate);
+          object.ajax(skipState);
         } else {
           // [disabled]
           this.checkDisabled();
           // hide max or differents
-          var max = settings.max;
-          if ($currents.length > max) {
-            var old = $currents.first().data('plugin_xt');
-            if (old) {
-              old.hide();
+          if (!isSync) {
+            if ($currents.length > settings.max) {
+              var xt = $currents.first().data('plugin_xt');
+              if (xt) {
+                xt.hide();
+              }
             }
           }
         }
         // api
         if (!triggered) {
           $element.trigger('show.xt', [object]);
-          if (settings.target) {
+          if (!isSync && settings.target) {
             settings.$target.trigger('show.xt', [object]);
           }
         }
@@ -333,7 +350,7 @@
       }
     },
     
-    hide: function(triggered, skipstate) {
+    hide: function(triggered, skipState, isSync) {
       var object = this;
       var settings = this.settings;
       var element = this.element;
@@ -342,11 +359,10 @@
       if ($element.hasClass(settings.class)) {
         var $currents = this.getCurrents();
         // hide and remove from $currents
-        var min = settings.min;
-        if ($currents.length > min || settings.ajax) {
+        if (isSync || settings.ajax || $currents.length > settings.min) {
           $element.removeClass(settings.class);
           $currents = this.setCurrents($currents.not(element));
-          if (settings.$target) {
+          if (!isSync && settings.target) {
             settings.$target.removeClass(settings.class);
           }
         }
@@ -359,7 +375,7 @@
         // api
         if (!triggered) {
           $element.trigger('hide.xt', [object]);
-          if (settings.target) {
+          if (!isSync && settings.target) {
             settings.$target.trigger('hide.xt', [object]);
           }
         }
@@ -394,7 +410,7 @@
     
     // ajax and pushstate
     
-    ajax: function(skipstate) {
+    ajax: function(skipState) {
       var object = this;
       var settings = this.settings;
       var element = this.element;
@@ -411,7 +427,7 @@
             var $html = $data.find(settings.target).contents();
             settings.$target.html($html);
             // pushstate
-            if (!skipstate) {
+            if (!skipState) {
               settings.ajax.title = settings.ajax.title ? settings.ajax.title : $data.find('title').text();
               object.pushstate(true);
             }
@@ -437,7 +453,7 @@
         // push this object state
         history.pushState({'url': url, 'title': title}, title, url);
         // trigger on registered data-xt-pushstate
-        $(document).find('[data-xt-pushstate]').each( function(i) {
+        $(document).find('[data-xt-pushstate]').filter(':parents(.xt-ignore)').each( function(i) {
           var xt = $(this).data('plugin_xt');
           xt.pushstateListener(url, triggered);
         });
@@ -485,7 +501,7 @@
     if (history.state && history.state.url) {
       document.title = history.state.title;
       // trigger on registered data-xt-pushstate
-      $(document).find('[data-xt-pushstate]').each( function(i, element) {
+      $(document).find('[data-xt-pushstate]').filter(':parents(.xt-ignore)').each( function(i, element) {
         var xt = $(this).data('plugin_xt');
         xt.pushstateListener(history.state.url, false);
       });
@@ -500,9 +516,18 @@
   })();
   
   // http://stackoverflow.com/questions/13281897/how-to-preserve-order-of-items-added-to-jquery-matched-set
+  // push jquery element inside jquery query, use $([]) for empty query
+  // usage: $elements.pushElement($element)
   $.fn.pushElement = function($element) {
     Array.prototype.push.apply(this, $element);
     return this;
+  };
+  
+  // http://stackoverflow.com/questions/965816/what-jquery-selector-excludes-items-with-a-parent-that-matches-a-given-selector
+  // filter out $elements with :parents(.classname)
+  // usage: $elements.filter(':parents(.xt-ignore)')
+  $.expr[':'].parents = function(a, i, m){
+    return $(a).parents(m[3]).length < 1;
   };
   
   // init if not manualInit

@@ -12,6 +12,24 @@
 // custom theme
 //////////////////////
 
+.spacer {
+  &.site-breadcrumbs-body {
+    margin-left: -12px;
+    margin-right: -12px;
+    margin-bottom: 0;
+    > * + * {
+      margin-left: 0;
+    }
+  }
+  &.site-breadcrumbs-meta {
+    margin-left: -8px;
+    margin-right: -8px;
+    margin-bottom: 0;
+    > * + * {
+      margin-left: 0;
+    }
+  }
+}
 .button {
   /* styles */
   & {
@@ -19,6 +37,20 @@
       -webkit-box-shadow: none;
       box-shadow: none;
     }
+  }
+  /* sizes */
+  .demo-tabs &,
+  .demo-code-tabs & {
+    padding: 16px 12px;
+    font-size: 12px;
+  }
+  .site-breadcrumbs-body & {
+    padding: 20px 12px;
+    font-size: 13px;
+  }
+  .site-breadcrumbs-meta & {
+    padding: 18px 8px;
+    font-size: 16px;
   }
   /* color-white */
   .site-header & {
@@ -38,12 +70,6 @@
     #{$active} {
       color: $color-text;
     }
-  }
-  /* sizes */
-  .demo-tabs &,
-  .demo-code-tabs & {
-    padding: 16px 12px;
-    font-size: 12px;
   }
 }
 
@@ -179,8 +205,12 @@ a.logo {
   display: none;
 }
 html.button__menu__open {
-  .site-header-top {
+  .site-header-top:not(.xt-ignore) {
     z-index: 8;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
   }
   .site-menu {
     display: block;
@@ -188,20 +218,27 @@ html.button__menu__open {
 }
 
 html.site-header-top-scroll {
-  .site-header-top:not(.xt-clone) {
+  .site-header-top:not(.xt-ignore) {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
   }
 }
-
+.site-breadcrumbs {
+  .show-scroll {
+    display: none;
+  }
+}
 html.site-breadcrumbs-scroll {
-  .site-breadcrumbs:not(.xt-clone) {
+  .site-breadcrumbs:not(.xt-ignore) {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
+    .show-scroll {
+      display: block;
+    }
   }
 }
 
@@ -218,21 +255,21 @@ html.site-breadcrumbs-scroll {
 }
 
 /* .button__menu */
+$button__menu_pixels: 1px;
 .button__menu {
-  float: right;
   @include font(sans-regular, !important);
   font-size: 1rem;
   text-transform: none !important;
   /* .icon-menu-custom */
   .icon-menu-custom {
     position: relative;
-    width: 21px;
-    height: 15px;
-    top: 6px;
+    width: 1em;
+    height: 0.5em;
+    margin-top: 0.1em;
     span {
       display: block;
       position: absolute;
-      height: 1px;
+      height: $button__menu_pixels;
       width: 100%;
       background: rgba($color-white, 0.75);
       border-radius: 0;
@@ -244,28 +281,28 @@ html.site-breadcrumbs-scroll {
       will-change: transform;
     }
     span:nth-child(1) {
-      top: 0px;
+      top: 0;
       -webkit-transform-origin: left center;
       transform-origin: left center;
     }
     span:nth-child(2) {
-      top: 7px;
+      top: calc(0.41em - #{$button__menu_pixels} * 1);
       -webkit-transform-origin: left center;
       transform-origin: left center;
     }
     span:nth-child(3) {
-      top: 14px;
+      top: calc(0.82em - #{$button__menu_pixels} * 2);
       -webkit-transform-origin: left center;
       transform-origin: left center;
     }
   }
-  html.button__menu__open & {
+  &.button__menu__open {
     .icon-menu-custom {
       span:nth-child(1) {
         -webkit-transform: rotate(45deg);
         transform: rotate(45deg);
-        top: 0px;
-        left: 2px;
+        top: 0;
+        left: 0;
       }
       span:nth-child(2) {
         width: 0%;
@@ -274,8 +311,8 @@ html.site-breadcrumbs-scroll {
       span:nth-child(3) {
         -webkit-transform: rotate(-45deg);
         transform: rotate(-45deg);
-        top: 14px;
-        left: 2px;
+        top: calc(0.82em - #{$button__menu_pixels} * 2);
+        left: 0;
       }
     }
   }
@@ -317,24 +354,6 @@ html.site-breadcrumbs-scroll {
   @include box;
   background: $color-primary;
   color: $color-white;
-}
-.site-breadcrumbs-body {
-  float: left;
-  margin-left: -12px;
-  margin-right: -12px;
-  .button {
-    padding: 20px 12px;
-    font-size: 13px;
-  }
-}
-.site-breadcrumbs-meta {
-  float: right;
-  margin-left: -8px;
-  margin-right: -8px;
-  .button {
-    padding: 18px 8px;
-    font-size: 16px;
-  }
 }
 
 //////////////////////
