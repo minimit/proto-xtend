@@ -71,7 +71,7 @@
                     <a href="{{ site.baseurl }}" class="button make-line" data-xt='{"type": "ajax", "target": ".site-wrapper"}'>
                       Home
                     </a>
-                    <a href="/tests/" class="button make-line">
+                    <a href="/tests/" class="button make-line" data-xt='{"type": "ajax", "target": ".site-wrapper"}'>
                       Tests
                     </a>
                     
@@ -83,6 +83,7 @@
                         </a>
                       {% endif %}
                     {% endfor %}
+                    
                   </div>
                 </div>
                 
@@ -156,7 +157,13 @@
                   <span></span>
                   <span></span>
                 </span>
-                <span class="text">{{ page.collection || page.categories[0] | capitalize }}</span>
+                <span class="text">
+                  {% if page.collection %}
+                      {{ page.collection | capitalize }}
+                  {% else %}
+                    {{ page.title | capitalize }}
+                  {% endif %}
+                </span>
               </button>
               
             </div>

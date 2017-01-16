@@ -262,13 +262,17 @@ $button__menu_pixels: 1px;
 .button__menu {
   @include font(sans-regular, !important);
   font-size: 1rem;
+  line-height: 1.2;
   text-transform: none !important;
+  .site-breadcrumbs & {
+    font-size: 17px;
+  }
   /* .icon-menu-custom */
   .icon-menu-custom {
     position: relative;
     width: 1em;
-    height: 0.5em;
-    margin-top: 0.1em;
+    height: 0.75em;
+    margin-top: 0.05em;
     span {
       display: block;
       position: absolute;
