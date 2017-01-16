@@ -210,6 +210,17 @@
     // tooltips
     $main.find('[data-toggle="tooltip"]').tooltip(/*{trigger: 'click'}*/);
     
+    // .site-aside-text
+    
+    $main.find('.site-aside-text > .button.current').each( function(i) {
+      var $container = $(this).parent();
+      var $sub = $('<div class="site-aside-text-sub"></div>');
+      $main.find('.site-article').find('h1, h2, h3').each( function(z) {
+        $sub.append($('<a href="#' + $(this).attr('id') + '" class="button">' + $(this).text() + '</a>'));
+      });
+      $sub.appendTo($container);
+    });
+    
     //////////////////////
     
   };

@@ -77,7 +77,7 @@
                     
                     {% for collection in site.collections %}
                       {% if site.[collection.label].size > 0 %}
-                        {% assign sorted = (site.[collection.label] | sort: 'order') %}
+                        {% assign sorted = site.[collection.label] | sort: 'order' %}
                         <a href="{{ sorted[0].url }}" class="button make-line" data-xt='{"type": "ajax", "target": ".site-wrapper"}'>
                           {{ collection.label }}
                         </a>
@@ -118,7 +118,7 @@
               {% if collection.label == page.collection %}
               
                 <div class="site-breadcrumbs-body float-left spacer">
-                  {% assign sorted = (site.[collection.label] | sort: 'order') %}
+                  {% assign sorted = site.[collection.label] | sort: 'order' %}
                   {% for p in sorted %}
                     {% if p.categories[0] == collection.label %}
                       <a href="{{ p.url }}" class="button" data-xt='{"type": "ajax", "target": ".site-wrapper"}'>

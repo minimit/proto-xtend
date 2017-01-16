@@ -17,14 +17,17 @@
           {% for collection in site.collections %}
             {% if collection.label == page.collection %}
             
-              {% for p in site.[collection.label] %}
-                {% if p.categories[0] == page.title %}
-                  <a href="{{ p.url }}" class="button" data-xt='{"type": "ajax", "target": ".site-wrapper"}'>
+              {% assign filter = page.categories[0] %}
+              {% assign sorted = site.[collection.label] | where: 'categories', filter | sort: 'order' %}
+              
+              {% for p in sorted %}
+                <div class="site-aside-text">
+                  <a href="{{ p.url }}" class="button{% if page.title == p.title %} current{% endif %}" data-xt='{"type": "ajax", "target": ".site-wrapper"}'>
                     {{ p.title }}
                   </a>
-                {% endif %}
+                </div>
               {% endfor %}
-            
+              
             {% endif %}
           {% endfor %}
           

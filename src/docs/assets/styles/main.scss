@@ -38,6 +38,7 @@
       box-shadow: none;
     }
   }
+  @include font(sans-bold);
   /* sizes */
   .demo-tabs &,
   .demo-code-tabs & {
@@ -419,6 +420,42 @@ $button__menu_pixels: 1px;
   @include box;
   margin-top: 2.619rem;
   margin-bottom: 2.619rem;
+}
+.site-aside-text {
+  > .button {
+    padding: 0;
+    font-size: 1rem;
+    width: 100%;
+    background: transparent !important;
+    color: $color-text;
+    text-align: left;
+    text-transform: none;
+    #{$hover},
+    #{$active} {
+      color: $color-text;
+    }
+    &:not(.current) {
+      display: none;
+    }
+  }
+  .site-aside-text + & {
+    //margin-top: 0.618rem;
+  }
+  .site-aside-text-sub {
+    margin-top: 0.618rem;
+    > .button {
+      padding: 0;
+      width: 100%;
+      font-size: 0.618rem;
+      background: transparent !important;
+      color: $color-text;
+      text-align: left;
+      #{$hover},
+      #{$active} {
+        color: $color-primary;
+      }
+    }
+  }
 }
 
 /* .make-line */
