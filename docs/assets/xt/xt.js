@@ -137,7 +137,7 @@
         }
       });
       // automatic $target based on groupIndex
-      if (settings.$target && settings.$target.length > 1) {
+      if (settings.target && settings.$target.length > 1) {
         settings.$target = settings.$target.eq(settings.groupIndex);
       }
       // init if has class
@@ -323,7 +323,7 @@
         // show and add in $currents
         $element.addClass(settings.class);
         $currents = this.setCurrents($currents.pushElement($element));
-        if (settings.$target.length && !settings.$target.hasClass(settings.class)) {
+        if (settings.target && !settings.$target.hasClass(settings.class)) {
           triggerTarget = true;
           settings.$target.addClass(settings.class);
         }
@@ -370,7 +370,7 @@
         if (isSync || settings.ajax || $currents.length > settings.min) {
           $element.removeClass(settings.class);
           $currents = this.setCurrents($currents.not(element));
-          if (settings.$target.length && settings.$target.hasClass(settings.class)) {
+          if (settings.target && settings.$target.hasClass(settings.class)) {
             triggerTarget = true;
             settings.$target.removeClass(settings.class);
           }

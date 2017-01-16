@@ -10,9 +10,10 @@
     
     window.resizeIframe = function(id) {
       var $iframe = $('#' + id);
-      var oldH = $iframe.data('iframeHeight');
-      var h = $iframe.contents().find('#body-inside').height();
-      if (h !== oldH) {
+      var $target = $iframe.contents().find('#body-inside');
+      $target.hide().show(0); // fix scrollbars disappearing
+      var h = $target.height();
+      if (h !== $iframe.data('iframeHeight')) {
         $iframe.height(h);
         $iframe.data('iframeHeight', h);
       }
@@ -98,7 +99,6 @@
           $item.on('show.xt', function(e, object) {
             var $iframe = $(this).find('> iframe');
             window.resizeIframe(id);
-            $iframe[0].contentWindow.resize(); // fix scrollbars
             //console.log($iframe.attr('src'), $iframe.contents().find('#body-inside').height());
           });
         } else {
