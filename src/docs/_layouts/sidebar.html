@@ -1,0 +1,42 @@
+{% include site-head.html %}
+
+<main class="site-main">
+  <div class="container">
+    <div class="row justify-content-xs-center">
+      <div class="col-xs-12 col-lg-9">
+  
+        <article class="site-article">
+          {{ content }}
+        </article>
+
+      </div>
+      <div class="col-xs-12 col-lg-3">
+
+        <aside class="site-aside">
+          
+          {% for collection in site.collections %}
+            {% if collection.label == page.collection %}
+            
+              {% for p in site.[collection.label] %}
+                {% if p.categories[0] == page.title %}
+                  <a href="{{ p.url }}">{{ p.title }}</a>
+                {% endif %}
+              {% endfor %}
+            
+            {% endif %}
+          {% endfor %}
+          
+          <!--
+          {% for category in page.categories %}
+            sdfsdf{{ category }}
+          {% endfor %}
+        -->
+        </aside>
+
+      </div>
+    </div>
+  </div>
+
+</main>
+
+{% include site-foot.html %}

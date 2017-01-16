@@ -48,7 +48,13 @@
                     <span></span>
                     <span></span>
                   </span>
-                  <span class="text">{{ page.categories }}</span>
+                  <span class="text">
+                    {% if page.collection %}
+                        {{ page.collection | capitalize }}
+                    {% else %}
+                      {{ page.title | capitalize }}
+                    {% endif %}
+                  </span>
                 </button>
               </div>
             </div>
@@ -75,13 +81,6 @@
                         <a href="{{ sorted[0].url }}" class="button make-line" data-xt='{"type": "ajax", "target": ".site-wrapper"}'>
                           {{ collection.label }}
                         </a>
-                        <!--
-                        {% for page in site.[collection.label] %}
-                          {% unless page.published == false %}
-                            {{ page.title }}
-                          {% endunless %}
-                        {% endfor %}
-                        -->
                       {% endif %}
                     {% endfor %}
                   </div>
@@ -119,12 +118,12 @@
               
                 <div class="site-breadcrumbs-body float-left spacer">
                   {% assign sorted = (site.[collection.label] | sort: 'order') %}
-                  {% for page in sorted %}
-                    {% unless page.published == false %}
-                    <a href="{{ page.url }}" class="button" data-xt='{"type": "ajax", "target": ".site-wrapper"}'>
-                      {{ page.title }}
-                    </a>
-                    {% endunless %}
+                  {% for p in sorted %}
+                    {% if p.categories[0] == collection.label %}
+                      <a href="{{ p.url }}" class="button" data-xt='{"type": "ajax", "target": ".site-wrapper"}'>
+                        {{ p.title }}
+                      </a>
+                    {% endif %}
                   {% endfor %}
                 </div>
                 
@@ -157,7 +156,7 @@
                   <span></span>
                   <span></span>
                 </span>
-                <span class="text">{{ page.categories }}</span>
+                <span class="text">{{ page.collection || page.categories[0] | capitalize }}</span>
               </button>
               
             </div>
