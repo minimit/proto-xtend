@@ -242,6 +242,7 @@
     //$('.site-breadcrumbs').html($data.find('.site-breadcrumbs'));
     // init breadcrumbs
     $('.site-header').find('[data-xt], [data-xt-toggle], [data-xt-ajax]').xt();
+    $('.site-main').find('[data-xt], [data-xt-toggle], [data-xt-ajax]').xt();
   });
   
 })(jQuery, window, document);

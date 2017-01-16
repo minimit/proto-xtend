@@ -19,7 +19,9 @@
             
               {% for p in site.[collection.label] %}
                 {% if p.categories[0] == page.title %}
-                  <a href="{{ p.url }}">{{ p.title }}</a>
+                  <a href="{{ p.url }}" data-xt='{"type": "ajax", "target": ".site-wrapper"}'>
+                    {{ p.title }}
+                  </a>
                 {% endif %}
               {% endfor %}
             
