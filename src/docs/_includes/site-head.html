@@ -132,16 +132,25 @@
             {% endfor %}
               
             <div class="site-breadcrumbs-meta float-right spacer">
-              {% if collection.links.download %}
-                <a href="{{ collection.links.download }}" target="_blank" class="button" data-toggle="tooltip" data-placement="top" title="Download source" data-template='<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner tooltip-inverse"></div></div>'>
-                  <span class="icon-download"></span>
-                </a>
-              {% endif %}
-              {% if collection.links.github %}
-                <a href="{{ collection.links.github }}" target="_blank" class="button" data-toggle="tooltip" data-placement="top" title="View in github" data-template='<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner tooltip-inverse"></div></div>'>
-                  <span class="icon-github"></span>
-                </a>
-              {% endif %}
+              
+              {% for collection in site.collections %}
+                {% if collection.label == page.collection %}
+                
+                  {% if collection.links.download %}
+                    <a href="{{ page.collection.links.download }}" target="_blank" class="button" data-toggle="tooltip" data-placement="top" title="Download source" data-template='<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner tooltip-inverse"></div></div>'>
+                      <span class="icon-download"></span>
+                    </a>
+                  {% endif %}
+                  
+                  {% if collection.links.github %}
+                    <a href="{{ page.collection.links.github }}" target="_blank" class="button" data-toggle="tooltip" data-placement="top" title="View in github" data-template='<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner tooltip-inverse"></div></div>'>
+                      <span class="icon-github"></span>
+                    </a>
+                  {% endif %}
+                  
+                {% endif %}
+              {% endfor %}
+              
               <button type="button" class="button button__menu float-right show-scroll" data-xt='{"type": "toggle", "target": "html", "grouping": "button__menu", "class": "button__menu__open"}'>
                 <span class="icon-menu-custom right">
                   <span></span>
@@ -150,6 +159,7 @@
                 </span>
                 <span class="text">{{ page.categories }}</span>
               </button>
+              
             </div>
             
           </div>
