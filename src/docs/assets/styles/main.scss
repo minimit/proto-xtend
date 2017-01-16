@@ -144,10 +144,10 @@ a.logo {
   color: rgba($color-white, 0.75);
   font-size: 1rem;
   text-decoration: none !important;
-  #{$hover} {
+  #{$hover},
+  #{$active} {
     color: $color-white;
   }
-  #{$active},
   #{$focus} {
     color: rgba($color-white, 0.75);
   }
@@ -184,9 +184,11 @@ a.logo {
         background: linear-gradient(to right, rgba($color-white, 0.75) 0%, rgba($color-white, 0.5) 100%);
       }
     }
+    opacity: 0.75;
     #{$hover},
     #{$active} {
       color: $color-white;
+      opacity: 1;
     }
   }
 }
@@ -449,8 +451,7 @@ $button__menu_pixels: 1px;
     -webkit-animation: line-fadeout 0.6s cubic-bezier(0.19, 1, 0.22, 1);
     animation: line-fadeout 0.6s cubic-bezier(0.19, 1, 0.22, 1);
   }
-  #{$hover},
-  #{$active} {
+  #{$hover} {
     .line:after {
       left: 0;
       width: 100%;
@@ -460,9 +461,6 @@ $button__menu_pixels: 1px;
       -webkit-animation: line-fadein 0.6s cubic-bezier(0.19, 1, 0.22, 1);
       animation: line-fadein 0.6s cubic-bezier(0.19, 1, 0.22, 1);
     }
-  }
-  #{$active} {
-    opacity: 0.75;
   }
 }
 @-webkit-keyframes line-fadeout {
