@@ -156,9 +156,10 @@
             found = true;
           }
         } else {
-          // detect from url location
+          // detect from url location (absolute url without domain name)
           var loc = window.location.href.split('#')[0];
-          if (loc.match(settings.ajax.url + '$')) {
+          loc = loc.replace(/https?:\/\/[^\/]+/i, '');
+          if (loc === settings.ajax.url) {
             found = true;
           }
         }

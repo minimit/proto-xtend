@@ -413,6 +413,14 @@ $button__menu_pixels: 1px;
   margin-bottom: 2.619rem;
 }
 
+/* .site-aside */
+
+.site-aside {
+  @include box;
+  margin-top: 2.619rem;
+  margin-bottom: 2.619rem;
+}
+
 /* .make-line */
 .make-line {
   @include box;
@@ -507,7 +515,6 @@ $button__menu_pixels: 1px;
     width: 100%;
   }
 }
-
 
 /* .site-article-anchor */
 .make-anchor {
