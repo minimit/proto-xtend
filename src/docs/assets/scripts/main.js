@@ -48,9 +48,9 @@
           }
         }
         var $btn = $container.find('.demo-tabs-left').append('<button class="button">' + name + '</button>').find('.button').eq(k);
-        $btn.xt({"type": "collapse", "target": ".demo-item", "group": ".demo", "grouping": i});
+        $btn.xtCollapse({"target": ".demo-item", "group": ".demo", "grouping": i});
         // disable fullscreen when not needed
-        $btn.on('show.xt', function(e, object) {
+        $btn.on('show.xt', function(e, obj) {
           if ($(this).parents('.demo').find('.demo-item.active').attr('data-iframe')) {
             $(this).parents('.demo').find('.button__fullscreen').css('display', 'block');
           } else {
@@ -96,7 +96,7 @@
             }, 0, $item);
           });
           // iframe resize on show
-          $item.on('show.xt', function(e, object) {
+          $item.on('show.xt', function(e, obj) {
             var $iframe = $(this).find('> iframe');
             window.resizeIframe(id);
             //console.log($iframe.attr('src'), $iframe.contents().find('#body-inside').height());
@@ -153,7 +153,7 @@
       // populate tabs
       var $codeInside = $item.find('.demo-code-body').append('<div class="demo-code-body-item"><pre><code></code></pre></div>').find('.demo-code-body-item').eq(z).find('pre code');
       var $btnInside = $item.find('.demo-code-tabs-left').append('<button class="button">' + lang + '</button>').find('.button').eq(z);
-      $btnInside.xt({"type": "collapse", "target": ".demo-code-body-item", "group": ".demo-code", "grouping": id});
+      $btnInside.xtCollapse({"target": ".demo-code-body-item", "group": ".demo-code", "grouping": id});
       // format code
       if (!$codeInside.hasClass('hljs')) {
         var text = formatCode($source);
@@ -234,7 +234,7 @@
   //////////////////////
   
   // on done
-  $('.site-wrapper').on('ajax.done.xt', function(e, object, $data) {
+  $('.site-wrapper').on('ajax.done.xt', function(e, obj, $data) {
     var $container = $(this);
     // main on ajax
     main($container);
@@ -242,13 +242,13 @@
     /*
     $('.site-hero h1').html($data.find('.site-hero .h1').text());
     $('.site-hero h2').html($data.find('.site-hero .h5').text());
-    $('.site-header .button__menu .text').html(object.settings.ajax.cat);
+    $('.site-header .button__menu .text').html(obj.settings.ajax.cat);
     */
     // populate breadcrumbs and reinit
     //$('.site-breadcrumbs').html($data.find('.site-breadcrumbs'));
     // init xtend
-    $('.site-header').find('[data-xt], [data-xt-toggle], [data-xt-ajax], [data-xt-scroll]').xt();
-    $('.site-main').find('[data-xt], [data-xt-toggle], [data-xt-ajax], [data-xt-scroll]').xt();
+    $('.site-header').xtInit();
+    $('.site-main').xtInit();
   });
   
 })(jQuery, window, document);

@@ -41,10 +41,10 @@
       $.fn.xt.manualInit = true; // xt manual init set before $(document).ready
       
       function init() {
-        // init xt
-        $('[data-xt]').xt();
         // add id
         $('html').attr('id', document.location.href.match(/[^\/]+$/)[0]);
+        // init xt
+        $('html').xtInit();
         // https://github.com/marcj/css-element-queries
         if (!$('html').hasClass('full')) {
           new ResizeSensor(document.getElementById('body-inside'), function() {
@@ -64,11 +64,11 @@
     
     <div id="body-inside"><div class="spacer">
 
-  <button class="button color-primary" data-xt='{"min": 0, "grouping": "test"}'>
+  <button class="button color-primary" data-xt='{"grouping": "test"}'>
     Lorem Ipsum
   </button>
 
-  <button class="button color-primary" data-xt='{"target": "#card", "min": 0}'>
+  <button class="button color-primary" data-xt='{"target": "#card"}'>
     Lorem Ipsum
   </button>
   <div class="card" id="card">
@@ -78,7 +78,7 @@
   </div>
 
   <div>
-    <button class="button color-primary" data-xt='{"target": ".card", "min": 0}'>
+    <button class="button color-primary" data-xt='{"target": ".card"}'>
       Lorem Ipsum
     </button>
     <div class="card">
@@ -89,7 +89,7 @@
   </div>
 
   <div id="toggle-group">
-    <button class="button color-primary" data-xt='{"target": ".card", "group": "#toggle-group", "min": 0}'>
+    <button class="button color-primary" data-xt='{"target": ".card", "group": "#toggle-group"}'>
       Lorem Ipsum
     </button>
     <div class="card">
@@ -100,7 +100,7 @@
   </div>
 
   <div class="toggle-group">
-    <button class="button color-primary" data-xt='{"target": ".card", "group": ".toggle-group", "min": 0}'>
+    <button class="button color-primary" data-xt='{"target": ".card", "group": ".toggle-group"}'>
       Lorem Ipsum
     </button>
     <div class="card">

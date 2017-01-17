@@ -265,6 +265,9 @@ $button__menu_pixels: 1px;
   font-size: 1rem;
   line-height: 1.2;
   text-transform: none !important;
+  .site-header-top & {
+    padding: 0;
+  }
   .site-breadcrumbs & {
     font-size: 17px;
   }

@@ -41,10 +41,10 @@
       $.fn.xt.manualInit = true; // xt manual init set before $(document).ready
       
       function init() {
-        // init xt
-        $('[data-xt]').xt();
         // add id
         $('html').attr('id', document.location.href.match(/[^\/]+$/)[0]);
+        // init xt
+        $('html').xtInit();
         // https://github.com/marcj/css-element-queries
         if (!$('html').hasClass('full')) {
           new ResizeSensor(document.getElementById('body-inside'), function() {
