@@ -48,7 +48,7 @@
           }
         }
         var $btn = $container.find('.demo-tabs-left').append('<button class="button">' + name + '</button>').find('.button').eq(k);
-        $btn.xt({"target": ".demo-item", "group": ".demo", "grouping": i});
+        $btn.xt({"type": "toggle", "target": ".demo-item", "group": ".demo", "grouping": i});
         // disable fullscreen when not needed
         $btn.on('show.xt', function(e, object) {
           if ($(this).parents('.demo').find('.demo-item.active').attr('data-iframe')) {
@@ -153,7 +153,7 @@
       // populate tabs
       var $codeInside = $item.find('.demo-code-body').append('<div class="demo-code-body-item"><pre><code></code></pre></div>').find('.demo-code-body-item').eq(z).find('pre code');
       var $btnInside = $item.find('.demo-code-tabs-left').append('<button class="button">' + lang + '</button>').find('.button').eq(z);
-      $btnInside.xt({"target": ".demo-code-body-item", "group": ".demo-code", "grouping": id});
+      $btnInside.xt({"type": "toggle", "target": ".demo-code-body-item", "group": ".demo-code", "grouping": id});
       // format code
       if (!$codeInside.hasClass('hljs')) {
         var text = formatCode($source);

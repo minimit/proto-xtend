@@ -2,7 +2,7 @@
 @copyright (c) 2016 - 2017 Riccardo Caroli
 @license MIT (https://github.com/minimit/xtend/blob/master/LICENSE) */
 
-;(function($, window, document, undefined) {
+;( function($, window, document, undefined) {
 
   'use strict';
   
@@ -29,7 +29,7 @@
   // constructor
   //////////////////////
   
-  function Plugin (element, options) {
+  function Plugin(element, options) {
     this.element = element;
     this.settings = $.extend({}, defaults, options);
     this._defaults = defaults;
@@ -495,18 +495,6 @@
   });
   
   //////////////////////
-  // jquery plugin
-  //////////////////////
-  
-  $.fn[pluginName] = function(options) {
-    return this.each( function() {
-      if (!$.data(this, 'plugin_' + pluginName)) {
-        $.data(this, 'plugin_' + pluginName, new Plugin(this, options));
-      }
-    });
-  };
-  
-  //////////////////////
   // utils
   //////////////////////
   
@@ -523,7 +511,7 @@
   };
   
   // https://www.paulirish.com/2011/requestanimationframe-for-smart-animating/
-  window.requestAnimFrame = (function() {
+  window.requestAnimFrame = ( function() {
     return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || function(callback) {
       window.setTimeout(callback, 1000 / 60);
     };
@@ -544,8 +532,20 @@
     return $(a).parents(m[3]).length < 1;
   };
   
+  //////////////////////
+  // jquery plugin
+  //////////////////////
+  
+  $.fn[pluginName] = function(options) {
+    return this.each( function() {
+      if (!$.data(this, 'plugin_' + pluginName)) {
+        $.data(this, 'plugin_' + pluginName, new Plugin(this, options));
+      }
+    });
+  };
+  
   // init if not manualInit
-  $(document).ready(function () {
+  $(document).ready( function() {
     if (!$.fn[pluginName].manualInit) {
       $('[data-' + [pluginName] + ']')[pluginName]();
     }
