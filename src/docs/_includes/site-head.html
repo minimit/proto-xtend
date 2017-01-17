@@ -121,17 +121,19 @@
                   {% assign sorted = site.[collection.label] | sort: 'order' %}
                   {% for p in sorted %}
                     {% if p.categories[0] == collection.label %}
-                      <a href="{{ p.url }}" class="button" data-xt='{"type": "ajax", "target": ".site-wrapper"}'>
-                        {{ p.title }}
-                      </a>
-                      <!--
-                      {% assign subsorted = site.[collection.label] | where: 'categories', p.title | sort: 'order' %}
-                      {% for pa in subsorted %}
-                      <a href="{{ pa.url }}" class="button site-breadcrumbs-body-sub" data-xt='{"type": "ajax", "target": ".site-wrapper"}'>
-                        {{ pa.title }}
-                      </a>
-                      {% endfor %}
-                      -->
+                      <div class="site-breadcrumbs-body-main">
+                        <a href="{{ p.url }}" class="button" data-xt='{"type": "ajax", "target": ".site-wrapper"}'>
+                          {{ p.title }}
+                        </a>
+                        <div class="site-breadcrumbs-body-sub">
+                          {% assign subsorted = site.[collection.label] | where: 'categories', p.title | sort: 'order' %}
+                          {% for pa in subsorted %}
+                          <a href="{{ pa.url }}" class="button" data-xt='{"type": "ajax", "target": ".site-wrapper"}'>
+                            {{ pa.title }}
+                          </a>
+                          {% endfor %}
+                        </div>
+                      </div>
                     {% endif %}
                   {% endfor %}
                   

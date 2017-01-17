@@ -14,8 +14,8 @@
 
 .spacer {
   &.site-breadcrumbs-body {
-    margin-left: -12px;
-    margin-right: -12px;
+    margin-left: -8px;
+    margin-right: -8px;
     margin-bottom: 0;
     > * + * {
       margin-left: 0;
@@ -46,7 +46,7 @@
     font-size: 12px;
   }
   .site-breadcrumbs-body & {
-    padding: 20px 12px;
+    padding: 20px 8px;
     font-size: 13px;
   }
   .site-breadcrumbs-meta & {
@@ -363,6 +363,11 @@ $button__menu_pixels: 1px;
   background: $color-primary;
   color: $color-white;
 }
+.site-breadcrumbs-body-main {
+}
+.site-breadcrumbs-body-sub {
+  display: none;
+}
 
 //////////////////////
 // footer
@@ -422,13 +427,15 @@ $button__menu_pixels: 1px;
   margin-bottom: 2.619rem;
 }
 .site-aside-text {
+  line-height: 0;
   > .button {
-    padding: 0;
+    padding: 6px 0;
     font-size: 1rem;
     width: 100%;
     background: transparent !important;
-    color: $color-text;
+    color: rgba($color-text, 0.75);
     text-align: left;
+    letter-spacing: 0;
     text-transform: none;
     #{$hover},
     #{$active} {
@@ -442,17 +449,19 @@ $button__menu_pixels: 1px;
     //margin-top: 0.618rem;
   }
   .site-aside-text-sub {
-    margin-top: 0.618rem;
+    margin-top: 0.309rem;
     > .button {
-      padding: 0;
+      padding: 6px 0;
       width: 100%;
       font-size: 0.618rem;
       background: transparent !important;
-      color: $color-text;
+      color: rgba($color-text, 0.75);
       text-align: left;
+      letter-spacing: 0;
+      text-transform: none;
       #{$hover},
       #{$active} {
-        color: $color-primary;
+        color: $color-text;
       }
     }
   }
