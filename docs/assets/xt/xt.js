@@ -14,12 +14,12 @@
   var Xt = function(element, options, defaults) {
     this.element = element;
     this.settings = $.extend({}, defaults, options);
-    this._defaults = defaults;
     this.init();
   };
   $.fn.xt = function(options) {
     var defaults = {
-      'type': 'xt',
+      'name': 'xt',
+      'type': 'plugin_xt',
       'on': 'click',
       'target': '',
       'class': 'active',
@@ -29,8 +29,8 @@
       'max': 1,
     };
     return this.each( function() {
-      if (!$.data(this, 'xt_xt')) {
-        $.data(this, 'xt_xt', new Xt(this, options, defaults));
+      if (!$.data(this, 'plugin_xt')) {
+        $.data(this, 'plugin_xt', new Xt(this, options, defaults));
       }
     });
   };
@@ -43,7 +43,8 @@
   XtAjax.prototype.constructor = XtAjax;
   $.fn.xtAjax = function(options) {
     var defaults = {
-      'type': 'ajax',
+      'name': 'xt-ajax',
+      'type': 'plugin_xtAjax',
       'on': 'click',
       'target': '',
       'class': 'active',
@@ -52,8 +53,8 @@
       'url': 'href',
     };
     return this.each( function() {
-      if (!$.data(this, 'xt_ajax')) {
-        $.data(this, 'xt_ajax', new XtAjax(this, options, defaults));
+      if (!$.data(this, 'plugin_xtAjax')) {
+        $.data(this, 'plugin_xtAjax', new XtAjax(this, options, defaults));
       }
     });
   };
@@ -66,7 +67,8 @@
   XtToggle.prototype.constructor = XtToggle;
   $.fn.xtToggle = function(options) {
     var defaults = {
-      'type': 'toggle',
+      'name': 'xt-toggle',
+      'type': 'plugin_xtToggle',
       'on': 'click',
       'target': '',
       'class': 'active',
@@ -76,8 +78,8 @@
       'max': 1,
     };
     return this.each( function() {
-      if (!$.data(this, 'xt_toggle')) {
-        $.data(this, 'xt_toggle', new XtToggle(this, options, defaults));
+      if (!$.data(this, 'plugin_xtToggle')) {
+        $.data(this, 'plugin_xtToggle', new XtToggle(this, options, defaults));
       }
     });
   };
@@ -90,7 +92,8 @@
   XtCollapse.prototype.constructor = XtCollapse;
   $.fn.xtCollapse = function(options) {
     var defaults = {
-      'type': 'collapse',
+      'name': 'xt-collapse',
+      'type': 'plugin_xtCollapse',
       'on': 'click',
       'target': '',
       'class': 'active',
@@ -100,8 +103,8 @@
       'max': 1,
     };
     return this.each( function() {
-      if (!$.data(this, 'xt_collapse')) {
-        $.data(this, 'xt_collapse', new XtCollapse(this, options, defaults));
+      if (!$.data(this, 'plugin_xtCollapse')) {
+        $.data(this, 'plugin_xtCollapse', new XtCollapse(this, options, defaults));
       }
     });
   };
@@ -114,7 +117,8 @@
   XtScroll.prototype.constructor = XtScroll;
   $.fn.xtScroll = function(options) {
     var defaults = {
-      'type': 'scroll',
+      'name': 'xt-scroll',
+      'type': 'plugin_xtScroll',
       'on': 'scroll',
       'target': '',
       'class': 'active',
@@ -125,8 +129,8 @@
       '$clone': null,
     };
     return this.each( function() {
-      if (!$.data(this, 'xt_scroll')) {
-        $.data(this, 'xt_scroll', new XtScroll(this, options, defaults));
+      if (!$.data(this, 'plugin_xtScroll')) {
+        $.data(this, 'plugin_xtScroll', new XtScroll(this, options, defaults));
       }
     });
   };
@@ -135,8 +139,25 @@
   // jquery init
   //////////////////////
   
-  $.fn.xtInit = function() {
+  // xtInitAll jQuery
+  // usage: $('html').xtInitAll();
+  $.fn.xtInitAll = function() {
     return this.each( function() {
+      if ($(this).is('[data-xt]')) {
+        $(this).xt();
+      }
+      if ($(this).is('[data-xt-ajax]')) {
+        $(this).xtAjax();
+      }
+      if ($(this).is('[data-xt-toggle]')) {
+        $(this).xtToggle();
+      }
+      if ($(this).is('[data-xt-collapse]')) {
+        $(this).xtCollapse();
+      }
+      if ($(this).is('[data-xt-scroll]')) {
+        $(this).xtScroll();
+      }
       $(this).find('[data-xt]').xt();
       $(this).find('[data-xt-ajax]').xtAjax();
       $(this).find('[data-xt-toggle]').xtToggle();
@@ -145,10 +166,10 @@
     });
   };
   
+  // automatic xtInitAll if not xtInitManual
   $(document).ready( function() {
-    // init if not manualInit
-    if (!$.fn.xt.manualInit) {
-      $('html').xtInit();
+    if (!$.fn.xtInitManual) {
+      $('html').xtInitAll();
     }
   });
   
@@ -167,13 +188,7 @@
       settings.debug = true;
     }
     // override with html settings
-    var override = $element.data('xt-' + settings.type);
-    if (settings.type === 'xt') {
-      override = $element.data('xt');
-    }
-    if (override) {
-      $.extend(settings, override);
-    }
+    $.extend(settings, $element.data(settings.name));
     // scoping and events before setup
     this.scoping();
     this.events();
@@ -283,7 +298,7 @@
     var element = this.element;
     var $element = $(this.element);
     // events
-    if (settings.type === 'scroll') {
+    if (settings.name === 'xt-scroll') {
       // scroll events
       if (!settings.$clone) {
         $element.wrap($('<div class="box xt-container"></div>'));
@@ -295,7 +310,7 @@
       }
       var scrollNamespace = 'scroll.xt.' + settings.namespace;
       $(window).off(scrollNamespace);
-      $(window).on(scrollNamespace, function() {
+      $(window).on(scrollNamespace, function(e) {
         var $container = $(this);
         var top = $container.scrollTop();
         var min = $element.parents('.xt-container').offset().top;
@@ -316,6 +331,11 @@
         //console.log(':scroll.xt', $element.text().replace(/(\r\n|\n|\r)/gm,"").replace(/^\s+|\s+$|\s+(?=\s)/g, ""), top, min, max);
       });
       $(window).trigger(scrollNamespace);
+      // on remove
+      $element.off('xtRemoved');
+      $element.on('xtRemoved', function(e) {
+        $(window).off(scrollNamespace);
+      });
     } else {
       // toggle events
       $element.on(settings.on, function(e) {
@@ -382,7 +402,7 @@
       if (!settings.url) {
         // xt sync
         $buttons.each( function(i) {
-          var xt = $(this).data('xt_' + settings.type);
+          var xt = $(this).data(settings.type);
           if (xt.settings.$target && xt.settings.$target.is(settings.$target)) {
             xt.show(triggered, true, skipState);
           }
@@ -393,7 +413,7 @@
         this.hide(triggered, isSync, skipState);
         // xt sync
         $buttons.each( function(i) {
-          var xt = $(this).data('xt_' + settings.type);
+          var xt = $(this).data(settings.type);
           if (xt.settings.$target && xt.settings.$target.is(settings.$target)) {
             xt.hide(triggered, true, skipState);
           }
@@ -437,7 +457,7 @@
         // hide max or differents
         if (!isSync) {
           if ($currents.length > settings.max) {
-            var xt = $currents.first().data('xt_' + settings.type);
+            var xt = $currents.first().data(settings.type);
             if (xt) {
               xt.hide();
             }
@@ -563,7 +583,7 @@
       history.pushState({'url': url, 'title': title}, title, url);
       // trigger on registered data-xt-pushstate
       $(document).find('[data-xt-pushstate]').filter(':parents(.xt-ignore)').each( function(i) {
-        var xt = $(this).data('xt_' + settings.type);
+        var xt = $(this).data(settings.type);
         xt.pushstateListener(url, triggered);
       });
       //console.log(':pushstate', $element.text().replace(/(\r\n|\n|\r)/gm,"").replace(/^\s+|\s+$|\s+(?=\s)/g, ""), $element.hasClass(settings.class));
@@ -596,7 +616,7 @@
       document.title = history.state.title;
       // trigger on registered data-xt-pushstate
       $(document).find('[data-xt-pushstate]').filter(':parents(.xt-ignore)').each( function(i, element) {
-        var xt = $(this).data('xt_ajax');
+        var xt = $(this).data('plugin_xtAjax');
         xt.pushstateListener(history.state.url);
       });
     }
@@ -615,6 +635,14 @@
   $.fn.pushElement = function($element) {
     Array.prototype.push.apply(this, $element);
     return this;
+  };
+  
+  // http://stackoverflow.com/questions/2200494/jquery-trigger-event-when-an-element-is-removed-from-the-dom
+  // xtRemoved event fired when an element is removed from DOM
+  $.event.special.xtRemoved = {
+    remove: function(o) {
+      if (o.handler) { o.handler(); }
+    }
   };
   
   // http://stackoverflow.com/questions/965816/what-jquery-selector-excludes-items-with-a-parent-that-matches-a-given-selector

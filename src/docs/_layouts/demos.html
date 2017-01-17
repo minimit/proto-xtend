@@ -38,13 +38,13 @@
     <script src="/assets/scripts/ElementQueries.min.js"></script>
     <script type="text/javascript">
     
-      $.fn.xt.manualInit = true; // xt manual init set before $(document).ready
+      $.fn.xtInitManual = true; // manual init or html gets populated with data attributes
       
       function init() {
         // add id
         $('html').attr('id', document.location.href.match(/[^\/]+$/)[0]);
         // init xt
-        $('html').xtInit();
+        $('html').xtInitAll();
         // https://github.com/marcj/css-element-queries
         if (!$('html').hasClass('full')) {
           new ResizeSensor(document.getElementById('body-inside'), function() {

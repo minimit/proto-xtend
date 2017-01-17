@@ -238,17 +238,8 @@
     var $container = $(this);
     // main on ajax
     main($container);
-    // populate header
-    /*
-    $('.site-hero h1').html($data.find('.site-hero .h1').text());
-    $('.site-hero h2').html($data.find('.site-hero .h5').text());
-    $('.site-header .button__menu .text').html(obj.settings.ajax.cat);
-    */
-    // populate breadcrumbs and reinit
-    //$('.site-breadcrumbs').html($data.find('.site-breadcrumbs'));
     // init xtend
-    $('.site-header').xtInit();
-    $('.site-main').xtInit();
+    $('.site-wrapper').xtInitAll();
   });
   
   //if ($('html').attr('id') === 'test-0.html') { console.log(this.settings); }
