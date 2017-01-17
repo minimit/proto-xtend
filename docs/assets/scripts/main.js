@@ -251,4 +251,6 @@
     $('.site-main').xtInit();
   });
   
+  //if ($('html').attr('id') === 'test-0.html') { console.log(this.settings); }
+  
 })(jQuery, window, document);

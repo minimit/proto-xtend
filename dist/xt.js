@@ -11,13 +11,12 @@
   //////////////////////
   
   // super class
-  function Xt(element, options, defaults) {
+  var Xt = function(element, options, defaults) {
     this.element = element;
     this.settings = $.extend({}, defaults, options);
     this._defaults = defaults;
     this.init();
-    //if ($('html').attr('id') === 'test-0.html') { console.log(this.settings); }
-  }
+  };
   $.fn.xt = function(options) {
     var defaults = {
       'type': 'xt',
@@ -37,10 +36,11 @@
   };
   
   // subclass ajax
-  function XtAjax(element, options, defaults) {
+  var XtAjax = function(element, options, defaults) {
     Xt.call(this, element, options, defaults);
-  }
-  XtAjax.prototype = Object.create(Xt.prototype);  
+  };
+  XtAjax.prototype = Object.create(Xt.prototype);
+  XtAjax.prototype.constructor = XtAjax;
   $.fn.xtAjax = function(options) {
     var defaults = {
       'type': 'ajax',
@@ -59,10 +59,11 @@
   };
   
   // subclass toggle
-  function XtToggle(element, options, defaults) {
+  var XtToggle = function(element, options, defaults) {
     Xt.call(this, element, options, defaults);
-  }
-  XtToggle.prototype = Object.create(Xt.prototype);  
+  };
+  XtToggle.prototype = Object.create(Xt.prototype);
+  XtToggle.prototype.constructor = XtToggle;
   $.fn.xtToggle = function(options) {
     var defaults = {
       'type': 'toggle',
@@ -82,10 +83,11 @@
   };
   
   // subclass collapse
-  function XtCollapse(element, options, defaults) {
+  var XtCollapse = function(element, options, defaults) {
     Xt.call(this, element, options, defaults);
-  }
-  XtCollapse.prototype = Object.create(Xt.prototype);  
+  };
+  XtCollapse.prototype = Object.create(Xt.prototype);
+  XtCollapse.prototype.constructor = XtCollapse;
   $.fn.xtCollapse = function(options) {
     var defaults = {
       'type': 'collapse',
@@ -105,10 +107,11 @@
   };
   
   // subclass scroll
-  function XtScroll(element, options, defaults) {
+  var XtScroll = function(element, options, defaults) {
     Xt.call(this, element, options, defaults);
-  }
-  XtScroll.prototype = Object.create(Xt.prototype);  
+  };
+  XtScroll.prototype = Object.create(Xt.prototype);
+  XtScroll.prototype.constructor = XtScroll;
   $.fn.xtScroll = function(options) {
     var defaults = {
       'type': 'scroll',
