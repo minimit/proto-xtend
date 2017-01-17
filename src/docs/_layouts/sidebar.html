@@ -17,16 +17,29 @@
           {% for collection in site.collections %}
             {% if collection.label == page.collection %}
             
-              {% assign filter = page.categories[0] %}
-              {% assign sorted = site.[collection.label] | where: 'categories', filter | sort: 'order' %}
+              {% if page.categories[0] == collection.label %}
               
-              {% for p in sorted %}
-                <div class="site-aside-text">
-                  <a href="{{ p.url }}" class="button{% if page.title == p.title %} current{% endif %}" data-xt='{"type": "ajax", "target": ".site-wrapper"}'>
-                    {{ p.title }}
-                  </a>
-                </div>
-              {% endfor %}
+                {% assign sorted = site.[collection.label] | where: 'categories', page.title | sort: 'order' %}
+                {% for p in sorted %}
+                  <div class="site-aside-text">
+                    <a href="{{ p.url }}" class="button current" data-xt='{"type": "ajax", "target": ".site-wrapper"}'>
+                      {{ p.title }}
+                    </a>
+                  </div>
+                {% endfor %}
+              
+              {% else %}
+              
+                {% assign sorted = site.[collection.label] | where: 'categories', page.categories[0] | sort: 'order' %}
+                {% for p in sorted %}
+                  <div class="site-aside-text">
+                    <a href="{{ p.url }}" class="button{% if page.title == p.title %} current{% endif %}" data-xt='{"type": "ajax", "target": ".site-wrapper"}'>
+                      {{ p.title }}
+                    </a>
+                  </div>
+                {% endfor %}
+              
+              {% endif %}
               
             {% endif %}
           {% endfor %}
