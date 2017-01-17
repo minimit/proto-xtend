@@ -78,7 +78,7 @@
                     
                       
                         
-                        <a href="/xtend/intro/" class="button make-line" data-xt='{"type": "ajax", "target": ".site-wrapper"}'>
+                        <a href="/xtend/intro.html" class="button make-line" data-xt='{"type": "ajax", "target": ".site-wrapper"}'>
                           xtend
                         </a>
                       
@@ -211,10 +211,10 @@
     </div>
   </div>
   <div class="demo-item" data-name="iframe">
-    <div class="demo-text">Use the attribute <code>[data-iframe="path/to/file.html"]</code> to import a html.</div>
+    <div class="demo-text">Use the attribute <code>[data-iframe="/path/to/file.html"]</code> to import a html.</div>
     <div class="demo-source" data-lang="html">
 &lt;div class="demo"&gt;
-  &lt;div class="demo-item" data-iframe="path/to/file.html"&gt;&lt;/div&gt;
+  &lt;div class="demo-item" data-iframe="/path/to/file.html"&gt;&lt;/div&gt;
 &lt;/div&gt;
     </div>
   </div>
@@ -232,7 +232,7 @@
 &lt;!-- code here --&gt;
     &lt;/div&gt;
   &lt;/div&gt;
-  &lt;div class="demo-item" data-iframe="path/to/file.html"&gt;&lt;/div&gt;
+  &lt;div class="demo-item" data-iframe="/path/to/file.html"&gt;&lt;/div&gt;
 &lt;/div&gt;
     </div>
   </div>
@@ -333,11 +333,11 @@ function formatCode($source) {
 </div>
 
 <div class="demo">
-  <div class="demo-item" data-iframe="demos/tests/test-0.html"></div>
+  <div class="demo-item" data-iframe="/demos/tests/test-0.html"></div>
 </div>
 
 <div class="demo">
-  <div class="demo-item" data-iframe="demos/tests/test-0.html"></div>
+  <div class="demo-item" data-iframe="/demos/tests/test-0.html"></div>
   <div class="demo-item">
     <div class="demo-source" data-lang="html">
 &lt;script src=&quot;https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?autoload=true&amp;amp;skin=sunburst&amp;amp;lang=css&quot; defer=&quot;defer&quot;&gt;&lt;/script&gt;
@@ -373,10 +373,10 @@ function formatCode($source) {
 </div>
 
 <div class="demo">
-  <div class="demo-item" data-iframe="demos/tests/test-0.html">
+  <div class="demo-item" data-iframe="/demos/tests/test-0.html">
     <div class="demo-text">Lorem ipsum dolor sit amet, <code>consectetur adipiscing</code> elit. Sed vestibulum ipsum et elementum porttitor. Pellentesque eu lorem ac lectus tristique consectetur consequat id eros.</div>
     </div>
-    <div class="demo-item" data-iframe="demos/tests/test-1.html">
+    <div class="demo-item" data-iframe="/demos/tests/test-1.html">
       <div class="demo-text">Lorem ipsum dolor sit amet.</div>
     </div>
     <div class="demo-item demo-preview">

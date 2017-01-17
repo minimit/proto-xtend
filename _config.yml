@@ -12,7 +12,6 @@ baseurl: "/"
 exclude:
   - "*.psd"
   - "*.scss"
-permalink: pretty
   
 # collections
 collections:
