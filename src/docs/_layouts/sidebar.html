@@ -16,31 +16,24 @@
           
           {% for collection in site.collections %}
             {% if collection.label == page.collection %}
-            
+          
               {% if page.categories[0] == collection.label %}
-              
-                {% assign sorted = site.[collection.label] | where: 'categories', page.title | sort: 'order' %}
-                {% for p in sorted %}
-                  <div class="site-aside-text">
-                    <a href="{{ p.url }}" class="button current" data-xt='{"type": "ajax", "target": ".site-wrapper"}'>
-                      {{ p.title }}
-                    </a>
-                  </div>
-                {% endfor %}
-              
+                {% assign filter = page.title %}
+                {% assign different = '' %}
               {% else %}
-              
-                {% assign sorted = site.[collection.label] | where: 'categories', page.categories[0] | sort: 'order' %}
-                {% for p in sorted %}
-                  <div class="site-aside-text">
-                    <a href="{{ p.url }}" class="button{% if page.title == p.title %} current{% endif %}" data-xt='{"type": "ajax", "target": ".site-wrapper"}'>
-                      {{ p.title }}
-                    </a>
-                  </div>
-                {% endfor %}
-              
+                {% assign filter = page.categories[0] %}
+                {% assign different = ' different' %}
               {% endif %}
-              
+            
+              {% assign sorted = site.[collection.label] | where: 'categories', filter | sort: 'order' %}
+              {% for p in sorted %}
+                <div class="site-aside-text">
+                  <a href="{{ p.url }}" class="button{% if page.title != p.title %}{{ different }}{% endif %}" data-xt='{"type": "ajax", "target": ".site-wrapper"}'>
+                    {{ p.title }}
+                  </a>
+                </div>
+              {% endfor %}
+    
             {% endif %}
           {% endfor %}
           

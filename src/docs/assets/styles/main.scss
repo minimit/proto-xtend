@@ -434,7 +434,7 @@ $button__menu_pixels: 1px;
     #{$active} {
       color: $color-text;
     }
-    &:not(.current) {
+    &.different {
       display: none;
     }
   }
