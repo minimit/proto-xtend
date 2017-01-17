@@ -50,32 +50,46 @@
       if ($element.attr('debug') || $element.attr('debug') === '') {
         settings.debug = true;
       }
+      // set type
+      if ($element.data('xt')) {
+        settings.type = 'default';
+      }
+      if ($element.data('xt-ajax')) {
+        settings.type = 'ajax';
+      }
+      if ($element.data('xt-toggle')) {
+        settings.type = 'toggle';
+      }
+      if ($element.data('xt-collapse')) {
+        settings.type = 'collapse';
+      }
+      if ($element.data('xt-scroll')) {
+        settings.type = 'scroll';
+      }
+      // override with type settings
+      if (settings.type === "ajax") {
+        $.extend(settings, {
+          'ajax': {
+            'url': 'href',
+          },
+        });
+        $.extend(settings, $element.data('xt-ajax'));
+      } else if (settings.type === "toggle") {
+        $.extend(settings, {
+          'min': 0,
+          'max': 1,
+        });
+        $.extend(settings, $element.data('xt-toggle'));
+      } else if (settings.type === "scroll") {
+        $.extend(settings, {
+          'min': 0,
+          'max': 1,
+        });
+        $.extend(settings, $element.data('xt-scroll'));
+      }
       // override
       var override = $element.data('xt');
       if (override) {
-        // override with type settings
-        if (override.type) {
-          if (override.type === "ajax") {
-            $.extend(settings, {
-              'ajax': {
-                'url': 'href',
-              },
-            });
-            $.extend(settings, $element.data('xt-ajax'));
-          } else if (override.type === "toggle") {
-            $.extend(settings, {
-              'min': 0,
-              'max': 1,
-            });
-            $.extend(settings, $element.data('xt-toggle'));
-          } else if (override.type === "scroll") {
-            $.extend(settings, {
-              'min': 0,
-              'max': 1,
-            });
-            $.extend(settings, $element.data('xt-scroll'));
-          }
-        }
         // override with html settings
         $.extend(settings, override);
       } else {
@@ -545,8 +559,11 @@
   };
   
   // init if not manualInit
-  $(document).ready( function() {
+  $(document).ready(function () {
     if (!$.fn[pluginName].manualInit) {
+      $('[data-xt-ajax]')[pluginName]();
+      $('[data-xt-toggle]')[pluginName]();
+      $('[data-xt-scroll]')[pluginName]();
       $('[data-' + [pluginName] + ']')[pluginName]();
     }
   });

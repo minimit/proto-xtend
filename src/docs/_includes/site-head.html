@@ -31,18 +31,18 @@
       
       <header class="site-header">
         
-        <nav class="site-header-top" role="navigation" data-xt='{"type": "scroll", "target": "html", "grouping": "site-header-top", "class": "site-header-top-scroll", "scrollTop": ".site-header", "scrollBottom": ".site-breadcrumbs"}'>
+        <nav class="site-header-top" role="navigation" data-xt-scroll='{"target": "html", "grouping": "site-header-top", "class": "site-header-top-scroll", "scrollTop": ".site-header", "scrollBottom": ".site-breadcrumbs"}'>
           
           <div class="container">
             
             <div class="media">
               <div class="d-flex align-self-center mr-3">
-                <a href="{{ site.baseurl }}" class="logo" title="Home" data-xt='{"type": "ajax", "target": ".site-wrapper"}'>
+                <a href="{{ site.baseurl }}" class="logo" title="Home" data-xt-ajax='{"target": ".site-wrapper"}'>
                   MINIMIT
                 </a>
               </div>
               <div class="media-body align-self-center">
-                <button type="button" class="button button__menu float-right" data-xt='{"type": "toggle", "target": "html", "grouping": "button__menu", "class": "button__menu__open"}' data-xt-resetonajax>
+                <button type="button" class="button button__menu float-right" data-xt-toggle='{"target": "html", "grouping": "button__menu", "class": "button__menu__open"}' data-xt-resetonajax>
                   <span class="icon-menu-custom right">
                     <span></span>
                     <span></span>
@@ -68,7 +68,7 @@
                 <div class="row justify-content-center">
                   <div class="col-xs-12 col-md-10 col-lg-8">
                     
-                    <a href="{{ site.baseurl }}" class="button make-line" data-xt='{"type": "ajax", "target": ".site-wrapper"}'>
+                    <a href="{{ site.baseurl }}" class="button make-line" data-xt-ajax='{"target": ".site-wrapper"}'>
                       Home
                     </a>
                     <a href="/tests/" class="button make-line">
@@ -78,7 +78,7 @@
                     {% for collection in site.collections %}
                       {% if site.[collection.label].size > 0 %}
                         {% assign sorted = site.[collection.label] | sort: 'order' %}
-                        <a href="{{ sorted[0].url }}" class="button make-line" data-xt='{"type": "ajax", "target": ".site-wrapper"}'>
+                        <a href="{{ sorted[0].url }}" class="button make-line" data-xt-ajax='{"target": ".site-wrapper"}'>
                           {{ collection.label }}
                         </a>
                       {% endif %}
@@ -111,7 +111,7 @@
                 
         </div>
         
-        <nav class="site-breadcrumbs" role="navigation" data-xt='{"type": "scroll", "target": "html", "class": "site-breadcrumbs-scroll"}'>
+        <nav class="site-breadcrumbs" role="navigation" data-xt-scroll='{"target": "html", "class": "site-breadcrumbs-scroll"}'>
           <div class="container">
             
             {% for collection in site.collections %}
@@ -122,13 +122,16 @@
                   {% for p in sorted %}
                     {% if p.categories[0] == collection.label %}
                       <div class="site-breadcrumbs-body-main">
-                        <a href="{{ p.url }}" class="button" data-xt='{"type": "ajax", "target": ".site-wrapper"}'>
+                        <a href="{{ p.url }}" class="button" data-xt-ajax='{"target": ".site-wrapper"}'>
+                        <!--
+                        <a href="{{ p.url }}" class="button" data-xt-ajax='{"target": ".site-wrapper"}' data-xt-toggle='{"target": ".site-breadcrumbs-body-main", "on": "mouseenter", "off": "mouseleave"}'>
+                        -->
                           {{ p.title }}
                         </a>
                         <div class="site-breadcrumbs-body-sub">
                           {% assign subsorted = site.[collection.label] | where: 'categories', p.title | sort: 'order' %}
                           {% for pa in subsorted %}
-                          <a href="{{ pa.url }}" class="button" data-xt='{"type": "ajax", "target": ".site-wrapper"}'>
+                          <a href="{{ pa.url }}" class="button">
                             {{ pa.title }}
                           </a>
                           {% endfor %}
@@ -161,7 +164,7 @@
                 {% endif %}
               {% endfor %}
               
-              <button type="button" class="button button__menu float-right show-scroll" data-xt='{"type": "toggle", "target": "html", "grouping": "button__menu", "class": "button__menu__open"}'>
+              <button type="button" class="button button__menu float-right show-scroll" data-xt-toggle='{"target": "html", "grouping": "button__menu", "class": "button__menu__open"}'>
                 <span class="icon-menu-custom right">
                   <span></span>
                   <span></span>
