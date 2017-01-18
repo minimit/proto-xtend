@@ -120,28 +120,28 @@ h1, .h1 {
 
 h2, .h2 {
   font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 400;
+  font-weight: 500;
   font-style: normal;
   font-size: 2.619rem;
 }
 
 h3, .h3 {
   font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 400;
+  font-weight: 500;
   font-style: normal;
   font-size: 1.619rem;
 }
 
 h4, .h4 {
   font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 300;
+  font-weight: 400;
   font-style: normal;
   font-size: 1.238rem;
 }
 
 h5, .h5, .lead {
   font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 300;
+  font-weight: 400;
   font-style: normal;
   font-size: 1rem;
 }
@@ -165,7 +165,7 @@ p:last-child {
 
 strong {
   font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 400;
+  font-weight: 500;
   font-style: normal;
 }
 
@@ -271,7 +271,7 @@ a:not(.button):hover:not(.active), a:not(.button).hover:not(.active), a:not(.but
   border: 0;
   border-radius: 0;
   font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 400;
+  font-weight: 500;
   font-style: normal;
   letter-spacing: 1px;
   text-transform: uppercase;

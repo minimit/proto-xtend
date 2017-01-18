@@ -38,7 +38,6 @@
       box-shadow: none;
     }
   }
-  @include font(sans-bold);
   /* sizes */
   .demo-tabs &,
   .demo-code-tabs & {
@@ -80,7 +79,7 @@
   padding: 6px 10px;
   border-radius: 0;
   background: $color-primary;
-  @include font(sans-bold);
+  @include font(sans-medium);
   font-size: 12px;
   color: $color-white;
   text-align: center;
@@ -141,7 +140,7 @@
 a.logo {
   @include box;
   margin: 10px 0;
-  @include font(sans-bold);
+  @include font(sans-medium);
   color: rgba($color-white, 0.75);
   font-size: 1rem;
   text-decoration: none !important;
@@ -171,7 +170,7 @@ a.logo {
   // content
   .button {
     width: 100%;
-    @include font(sans-regular, !important);
+    @include font(sans-light, !important);
     font-size: 2.619rem;
     color: $color-white;
     text-align: left;
@@ -261,7 +260,7 @@ html.site-breadcrumbs-scroll {
 /* .button__menu */
 $button__menu_pixels: 1px;
 .button__menu {
-  @include font(sans-regular, !important);
+  @include font(sans-light, !important);
   font-size: 1rem;
   line-height: 1.2;
   text-transform: none !important;
@@ -356,6 +355,7 @@ $button__menu_pixels: 1px;
     margin-top: -0.43em !important;
   }
   .lead {
+    @include font(sans-light);
     color: rgba($color-white, 0.75);
   }
 }
