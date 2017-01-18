@@ -1,5 +1,7 @@
 .idea
 .DS_store
 Thumbs.db
+Gemfile.lock
 node_modules
-bower_components
+
+/docs
