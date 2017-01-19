@@ -170,11 +170,11 @@ strong {
 }
 
 a:not(.button) {
-  color: #2ecad4;
+  color: #00B0FF;
 }
 
 a:not(.button):hover:not(.active), a:not(.button).hover:not(.active), a:not(.button):active, a:not(.button).active, a:not(.button):active:focus, a:not(.button):active.focus, a:not(.button).active:focus, a:not(.button).active.focus, a:not(.button):focus, a:not(.button).focus {
-  color: #2ecad4;
+  color: #00B0FF;
   text-decoration: underline;
 }
 
@@ -313,18 +313,18 @@ a:not(.button):hover:not(.active), a:not(.button).hover:not(.active), a:not(.but
 }
 
 .button.color-primary {
-  background: #2ecad4;
+  background: #00B0FF;
   color: #ffffff;
 }
 
 .button.color-primary:hover:not(.active), .button.color-primary.hover:not(.active), .button.color-primary:active, .button.color-primary.active, .button.color-primary:active:focus, .button.color-primary:active.focus, .button.color-primary.active:focus, .button.color-primary.active.focus {
-  background: #28b8c1;
+  background: #009ee6;
   color: #ffffff;
 }
 
 .button.color-text {
   background: transparent !important;
-  color: #2ecad4;
+  color: #00B0FF;
 }
 
 .button.color-text:hover:not(.active), .button.color-text.hover:not(.active), .button.color-text:active, .button.color-text.active, .button.color-text:active:focus, .button.color-text:active.focus, .button.color-text.active:focus, .button.color-text.active.focus {

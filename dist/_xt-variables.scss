@@ -15,14 +15,23 @@
 // colors
 //////////////////////
 
-$color-primary: #2ecad4 !default;
-$color-primary-light: #f9fefb !default;
+$color-primary: #00B0FF !default;
+$color-primary-dark: darken($color-primary, 15%) !default;
+$color-primary-darker: darken($color-primary, 30%) !default;
+$color-primary-light: lighten($color-primary, 15%) !default;
+$color-primary-lighter: lighten($color-primary, 30%) !default;
 
 $color-text: #000000 !default;
+$color-text-light: lighten($color-text, 50%) !default;
+
 $color-background: #ffffff !default;
 
 $color-white: #ffffff !default;
+$color-white-light: rgba($color-white, 0.75) !default;
+$color-white-lighter: rgba($color-white, 0.5) !default;
+
 $color-grey: #f8f8f8 !default;
+
 $color-black: #000000 !default;
 
 //////////////////////

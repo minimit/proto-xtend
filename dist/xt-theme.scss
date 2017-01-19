@@ -237,7 +237,7 @@ a:not(.button) {
   }
   &.color-white {
     background: transparent !important;
-    color: rgba($color-white, 0.75);
+    color: $color-white-light;
     #{$hover},
     #{$active} {
       color: $color-white;

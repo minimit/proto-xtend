@@ -137,9 +137,9 @@ strong {
   font-style: normal; }
 
 a:not(.button) {
-  color: #2ecad4; }
+  color: #00B0FF; }
   a:not(.button):hover:not(.active), a:not(.button).hover:not(.active), a:not(.button):active, a:not(.button).active, a:not(.button):active:focus, a:not(.button):active.focus, a:not(.button).active:focus, a:not(.button).active.focus, a:not(.button):focus, a:not(.button).focus {
-    color: #2ecad4;
+    color: #00B0FF;
     text-decoration: underline; }
 
 /* .icon- */
@@ -233,14 +233,14 @@ a:not(.button) {
       -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); }
   .button.color-primary {
-    background: #2ecad4;
+    background: #00B0FF;
     color: #ffffff; }
     .button.color-primary:hover:not(.active), .button.color-primary.hover:not(.active), .button.color-primary:active, .button.color-primary.active, .button.color-primary:active:focus, .button.color-primary:active.focus, .button.color-primary.active:focus, .button.color-primary.active.focus {
-      background: #28b8c1;
+      background: #009ee6;
       color: #ffffff; }
   .button.color-text {
     background: transparent !important;
-    color: #2ecad4; }
+    color: #00B0FF; }
     .button.color-text:hover:not(.active), .button.color-text.hover:not(.active), .button.color-text:active, .button.color-text.active, .button.color-text:active:focus, .button.color-text:active.focus, .button.color-text.active:focus, .button.color-text.active.focus {
       color: #000000; }
   .button.color-white {
