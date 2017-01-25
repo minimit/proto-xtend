@@ -166,7 +166,7 @@
   
   // xtInitAll jQuery
   // usage: $('html').xtInitAll();
-  $.fn.xtInitAll = function() {
+  $.fn.xtInitAll = function(deep) {
     return this.each( function() {
       if ($(this).is('[data-xt]')) {
         $(this).xt();
@@ -186,19 +186,21 @@
       if ($(this).is('[data-xt-scroll]')) {
         $(this).xtScroll();
       }
-      $(this).find('[data-xt]').xt();
-      $(this).find('[data-xt-ajax]').xtAjax();
-      $(this).find('[data-xt-toggle]').xtToggle();
-      $(this).find('[data-xt-collapse]').xtCollapse();
-      $(this).find('[data-xt-menu]').xtMenu();
-      $(this).find('[data-xt-scroll]').xtScroll();
+      if (deep) {
+        $(this).find('[data-xt]').xt();
+        $(this).find('[data-xt-ajax]').xtAjax();
+        $(this).find('[data-xt-toggle]').xtToggle();
+        $(this).find('[data-xt-collapse]').xtCollapse();
+        $(this).find('[data-xt-menu]').xtMenu();
+        $(this).find('[data-xt-scroll]').xtScroll();
+      }
     });
   };
   
   // automatic xtInitAll if not xtInitManual
   $(document).ready( function() {
     if (!$.fn.xtInitManual) {
-      $('html').xtInitAll();
+      $('html').xtInitAll(true);
     }
   });
   

@@ -1,4 +1,17 @@
 //////////////////////
+// bootstrap
+//////////////////////
+
+@import "bootstrap.min";
+
+.collapse {
+  display: none !important;
+}
+.collapse.active {
+  display: block !important;
+}
+
+//////////////////////
 // xtend theme
 //////////////////////
 
@@ -17,16 +30,18 @@
     margin-left: -8px;
     margin-right: -8px;
     margin-bottom: 0;
-    > * + * {
+    > * {
       margin-left: 0;
+      margin-bottom: 0;
     }
   }
   &.site-breadcrumbs-meta {
     margin-left: -8px;
     margin-right: -8px;
     margin-bottom: 0;
-    > * + * {
+    > * {
       margin-left: 0;
+      margin-bottom: 0;
     }
   }
 }
@@ -79,8 +94,8 @@
   padding: 6px 10px;
   border-radius: 0;
   background: $color-primary;
-  @include font(sans-medium);
-  font-size: 12px;
+  @include font(sans-light);
+  font-size: 0.809rem;
   color: $color-white;
   text-align: center;
   letter-spacing: 1px;
@@ -142,7 +157,7 @@ a.logo {
   margin: 10px 0;
   @include font(sans-medium);
   color: $color-white-light;
-  font-size: 1rem;
+  font-size: 1.238rem;
   text-decoration: none !important;
   #{$hover},
   #{$active} {
@@ -180,8 +195,8 @@ a.logo {
         background: $color-primary;
       }
       .line:after {
-        background: $color-white;
-        background: linear-gradient(to right, $color-white-light 0%, $color-white-lighter 100%);
+        background: $color-white-light;
+        //background: linear-gradient(to right, $color-white-light 0%, $color-white-lighter 100%);
       }
     }
     opacity: 0.75;
@@ -198,14 +213,13 @@ a.logo {
   @include box;
   color: $color-white;
   .media {
-    min-height: 300px;
+    min-height: 250px;
   }
   .h1 {
-    margin-top: -0.43em !important;
+    margin-top: -0.4em !important;
   }
   .lead {
-    @include font(sans-light);
-    color: $color-white-light;
+    color: $color-white;
   }
 }
 
@@ -226,7 +240,7 @@ a.logo {
 $button__menu_pixels: 1px;
 .button__menu {
   @include font(sans-light, !important);
-  font-size: 1rem;
+  font-size: 1.238rem;
   line-height: 1.2;
   text-transform: none !important;
   .site-header-top & {
@@ -241,7 +255,6 @@ $button__menu_pixels: 1px;
     position: relative;
     width: 1em;
     height: 0.75em;
-    margin-top: 0.05em;
     span {
       display: block;
       position: absolute;
@@ -332,8 +345,8 @@ $button__menu_pixels: 1px;
 
 /* .site-footer-bottom */
 .site-footer-bottom {
-  margin-top: 0.618rem;
-  margin-bottom: 1.238rem;
+  margin-top: 0;
+  margin-bottom: 1rem;
   font-size: 13px;
   color: $color-white-light;
   a:not(.button) {
@@ -369,9 +382,10 @@ $button__menu_pixels: 1px;
   line-height: 0;
   > .button {
     padding: 6px 0;
-    font-size: 1rem;
     width: 100%;
     background: transparent !important;
+    @include font(sans-regular);
+    font-size: 1.238rem;
     color: $color-text-light;
     text-align: left;
     letter-spacing: 0;
@@ -392,8 +406,9 @@ $button__menu_pixels: 1px;
     > .button {
       padding: 6px 0;
       width: 100%;
-      font-size: 0.618rem;
       background: transparent !important;
+      @include font(sans-regular);
+      font-size: 13px;
       color: $color-text-light;
       text-align: left;
       letter-spacing: 0;
@@ -427,11 +442,11 @@ $button__menu_pixels: 1px;
       bottom: 0.468em;
       left: 0;
       width: 100%;
-      height: 2px;
+      height: 1px;
       background: $color-primary-light;
-      background: linear-gradient(to right, $color-primary-light 0%, $color-primary-lighter 100%);
+      //background: linear-gradient(to right,  lighten($color-primary, 15%) 0%,  lighten($color-primary, 30%) 100%);
       @at-root {
-        h3#{&} {
+        h2#{&} {
           height: 1px;
         }
       }
@@ -545,7 +560,9 @@ $button__menu_pixels: 1px;
 .hljs {
   padding: 0;
   width: 100%;
+  margin-top: -0.238rem;
   padding: 0 1rem;
+  padding-bottom: 1rem;
 }
 pre {
   position: relative;
@@ -632,6 +649,7 @@ p code,
     margin-bottom: 0 !important;
   }
   .hljs {
+    margin: 0;
     padding: 0;
   }
   // .demo-text

@@ -16,13 +16,10 @@
 //////////////////////
 
 $color-primary: #00B0FF !default;
-$color-primary-dark: darken($color-primary, 15%) !default;
-$color-primary-darker: darken($color-primary, 30%) !default;
-$color-primary-light: lighten($color-primary, 15%) !default;
-$color-primary-lighter: lighten($color-primary, 30%) !default;
+$color-primary-light: lighten($color-primary, 25%) !default;
 
 $color-text: #000000 !default;
-$color-text-light: lighten($color-text, 50%) !default;
+$color-text-light: lighten($color-text, 65%) !default;
 
 $color-background: #ffffff !default;
 
@@ -41,22 +38,27 @@ $color-black: #000000 !default;
 // usage: @include font(sans-regular);
 $xt-fonts: (
   sans-light: (
-    font-family: unquote('"Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif'),
+    font-family: unquote('"Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif'),
     font-weight: 300,
     font-style: normal,
   ),
   sans-regular: (
-    font-family: unquote('"Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif'),
+    font-family: unquote('"Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif'),
     font-weight: 400,
     font-style: normal,
   ),
   sans-medium: (
-    font-family: unquote('"Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif'),
-    font-weight: 500,
+    font-family: unquote('"Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif'),
+    font-weight: 600,
     font-style: normal,
   ),
 ) !default;
-
+/*
+font-family: 'PT Sans', sans-serif;
+font-family: 'Lato', sans-serif;
+font-family: 'Open Sans', sans-serif;
+font-family: 'Fira Sans Condensed', sans-serif;
+*/
 // export fonts
 @mixin font($key, $important:false) {
   $map: map-get($xt-fonts, $key);
@@ -76,7 +78,7 @@ $xt-fonts: (
 // @include spacing-headers;
 @mixin spacing-headers {
   margin-top: 1.238rem;
-  margin-bottom: 0.809rem;
+  margin-bottom: 1rem;
   &:first-child {
     margin-top: 0 !important;
   }
@@ -84,8 +86,8 @@ $xt-fonts: (
 
 // @include spacing-headers-small;
 @mixin spacing-headers-small {
-  margin-top: 0.809rem;
-  margin-bottom: 0.618rem;
+  margin-top: 1rem;
+  margin-bottom: 0.809rem;
   &:first-child {
     margin-top: 0 !important;
   }
@@ -93,7 +95,7 @@ $xt-fonts: (
 
 // @include spacing-text;
 @mixin spacing-text {
-  margin-bottom: 0.618rem;
+  margin-bottom: 0.809rem;
   &:last-child {
     margin-bottom: 0 !important;
   }

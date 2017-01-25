@@ -6,6 +6,12 @@
 2.619
 3.224
 */
+/*
+font-family: 'PT Sans', sans-serif;
+font-family: 'Lato', sans-serif;
+font-family: 'Open Sans', sans-serif;
+font-family: 'Fira Sans Condensed', sans-serif;
+*/
 /*! xtend v0.0.5 (http://)
 @copyright (c) 2016 - 2017 Riccardo Caroli
 @license MIT (https://github.com/minimit/xtend/blob/master/LICENSE) */
@@ -74,15 +80,15 @@ body {
 }
 
 html {
-  font-size: 20px;
+  font-size: 16px;
 }
 
 body {
   background: #ffffff;
-  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 300;
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 400;
   font-style: normal;
-  font-size: 0.809rem;
+  font-size: 1rem;
   line-height: 1.8;
   color: #000000;
 }
@@ -91,8 +97,11 @@ h1, .h1,
 h2, .h2,
 h3, .h3 {
   margin-top: 1.238rem;
-  margin-bottom: 0.809rem;
-  line-height: 1.238;
+  margin-bottom: 1rem;
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  line-height: 1.3;
 }
 
 h1:first-child, .h1:first-child,
@@ -104,9 +113,12 @@ h3:first-child, .h3:first-child {
 h4, .h4,
 h5, .h5, .lead,
 h6, .h6 {
-  margin-top: 0.809rem;
-  margin-bottom: 0.618rem;
-  line-height: 1.4;
+  margin-top: 1rem;
+  margin-bottom: 0.809rem;
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  line-height: 1.3;
 }
 
 h4:first-child, .h4:first-child,
@@ -116,51 +128,37 @@ h6:first-child, .h6:first-child {
 }
 
 h1, .h1 {
-  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 300;
-  font-style: normal;
   font-size: 3.224rem;
 }
 
 h2, .h2 {
-  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 500;
-  font-style: normal;
   font-size: 2.619rem;
 }
 
 h3, .h3 {
-  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 500;
-  font-style: normal;
   font-size: 1.619rem;
 }
 
 h4, .h4 {
-  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 1.238rem;
+  font-size: 1.619rem;
 }
 
 h5, .h5, .lead {
-  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 1rem;
+  font-size: 1.238rem;
 }
 
 h6, .h6 {
-  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 0.809rem;
+  font-size: 1rem;
   letter-spacing: 1px;
   text-transform: uppercase;
 }
 
+.lead {
+  opacity: 0.75;
+}
+
 p {
-  margin-bottom: 0.618rem;
+  margin-bottom: 0.809rem;
 }
 
 p:last-child {
@@ -168,8 +166,8 @@ p:last-child {
 }
 
 strong {
-  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 500;
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 600;
   font-style: normal;
 }
 
@@ -203,8 +201,10 @@ a:not(.button):hover:not(.active), a:not(.button).hover:not(.active), a:not(.but
 }
 
 .spacer {
+  cursor: default;
   /* spacing */
-  margin-bottom: 0.618rem;
+  margin-left: -0.618rem;
+  margin-bottom: -0.618rem;
   /* expand to .button sizes */
   /*
   &.expand {
@@ -226,40 +226,49 @@ a:not(.button):hover:not(.active), a:not(.button).hover:not(.active), a:not(.but
   display: inline-block;
 }
 
-.spacer > * + * {
+.spacer > * {
   margin-left: 0.618rem;
+  margin-bottom: 0.618rem;
 }
 
 .spacer.spacer-xs {
+  margin-left: 0;
   margin-bottom: 0;
 }
 
-.spacer.spacer-xs > * + * {
+.spacer.spacer-xs > * {
   margin-left: 0;
+  margin-bottom: 0;
 }
 
 .spacer.spacer-sm {
+  margin-left: -0.5rem;
+  margin-bottom: -0.5rem;
+}
+
+.spacer.spacer-sm > * {
+  margin-left: 0.5rem;
   margin-bottom: 0.5rem;
 }
 
-.spacer.spacer-sm > * + * {
-  margin-left: 0.5rem;
+.spacer.spacer-md {
+  margin-left: -1.238rem;
+  margin-bottom: -1.238rem;
 }
 
-.spacer.spacer-md {
+.spacer.spacer-md > * {
+  margin-left: 1.238rem;
   margin-bottom: 1.238rem;
 }
 
-.spacer.spacer-md > * + * {
-  margin-left: 1.238rem;
-}
-
 .spacer.spacer-lg {
-  margin-bottom: 2.619rem;
+  margin-left: -2.619rem;
+  margin-bottom: -2.619rem;
 }
 
-.spacer.spacer-lg > * + * {
+.spacer.spacer-lg > * {
   margin-left: 2.619rem;
+  margin-bottom: 2.619rem;
 }
 
 .spacer:last-child {
@@ -274,8 +283,8 @@ a:not(.button):hover:not(.active), a:not(.button).hover:not(.active), a:not(.but
   /* styles */
   border: 0;
   border-radius: 0;
-  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 500;
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 400;
   font-style: normal;
   letter-spacing: 1px;
   text-transform: uppercase;

@@ -1,4 +1,17 @@
 //////////////////////
+// bootstrap
+//////////////////////
+
+@import "bootstrap.min";
+
+.collapse {
+  display: none !important;
+}
+.collapse.active {
+  display: block !important;
+}
+
+//////////////////////
 // main
 //////////////////////
 
@@ -17,18 +30,4 @@ html.full {
 }
 scss-style {
   display: none;
-}
-
-// testing
-
-.card {
-  margin: 0;
-  display: none;
-  &.active {
-    display: inline-block;
-  }
-}
-.card-block {
-  padding: 0 10px;
-  font-size: 14px;
 }

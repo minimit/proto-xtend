@@ -11,12 +11,12 @@
 //////////////////////
 
 html {
-  font-size: 20px;
+  font-size: 16px;
 }
 body {
   background: $color-background;
-  @include font(sans-light);
-  font-size: 0.809rem;
+  @include font(sans-regular);
+  font-size: 1rem;
   line-height: 1.8;
   color: $color-text;
 }
@@ -29,37 +29,33 @@ h1, .h1,
 h2, .h2,
 h3, .h3 {
   @include spacing-headers;
-  line-height: 1.238;
+  @include font(sans-medium);
+  line-height: 1.3;
 }
 h4, .h4,
 h5, .h5,
 h6, .h6 {
   @include spacing-headers-small;
-  line-height: 1.4;
+  @include font(sans-light);
+  line-height: 1.3;
 }
 h1, .h1 {
-  @include font(sans-light);
   font-size: 3.224rem;
 }
 h2, .h2 {
-  @include font(sans-medium);
   font-size: 2.619rem;
 }
 h3, .h3 {
-  @include font(sans-medium);
   font-size: 1.619rem;
 }
 h4, .h4 {
-  @include font(sans-regular);
-  font-size: 1.238rem;
+  font-size: 1.619rem;
 }
 h5, .h5 {
-  @include font(sans-regular);
-  font-size: 1rem;
+  font-size: 1.238rem;
 }
 h6, .h6 {
-  @include font(sans-regular);
-  font-size: 0.809rem;
+  font-size: 1rem;
   letter-spacing: 1px;
   text-transform: uppercase;
 }
@@ -70,6 +66,7 @@ h6, .h6 {
 
 .lead {
   @extend .h5;
+  opacity: 0.75;
 }
 p {
   @include spacing-text;
@@ -122,36 +119,47 @@ a:not(.button) {
 
 .spacer {
   //@include text-spacing;
+  cursor: default;
   > * {
     display: inline-block;
   }
   /* spacing */
-  margin-bottom: 0.618rem;
-  > * + * {
+  margin-left: -0.618rem;
+  margin-bottom: -0.618rem;
+  > * {
     margin-left: 0.618rem;
+    margin-bottom: 0.618rem;
   }
   &.spacer-xs {
+    margin-left: 0;
     margin-bottom: 0;
-    > * + * {
+    > * {
       margin-left: 0;
+      margin-bottom: 0;
     }
   }
   &.spacer-sm {
-    margin-bottom: 0.5rem;
-    > * + * {
+    margin-left: -0.5rem;
+    margin-bottom: -0.5rem;
+    > * {
       margin-left: 0.5rem;
+      margin-bottom: 0.5rem;
     }
   }
   &.spacer-md {
-    margin-bottom: 1.238rem;
-    > * + * {
+    margin-left: -1.238rem;
+    margin-bottom: -1.238rem;
+    > * {
       margin-left: 1.238rem;
+      margin-bottom: 1.238rem;
     }
   }
   &.spacer-lg {
-    margin-bottom: 2.619rem;
-    > * + * {
+    margin-left: -2.619rem;
+    margin-bottom: -2.619rem;
+    > * {
       margin-left: 2.619rem;
+      margin-bottom: 2.619rem;
     }
   }
   &:last-child {
@@ -202,7 +210,7 @@ a:not(.button) {
   /* styles */
   border: 0;
   border-radius: 0;
-  @include font(sans-medium);
+  @include font(sans-regular);
   letter-spacing: 1px;
   text-transform: uppercase;
   & {
