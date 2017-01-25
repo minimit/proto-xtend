@@ -86,8 +86,8 @@ body {
 @mixin xt-menu($item, $class:'.menu') {
   #{$item} {
     display: none;
+    z-index: 80;
     position: fixed;
-    z-index: 5;
     top: 0;
     left: 0;
     right: 0;
@@ -108,10 +108,12 @@ body {
   display: none !important;
 }
 @mixin xt-scroll($item, $class:'.scroll') {
+  #{$item} {
+    z-index: 70;
+  }
   html#{$class} {
     #{$item}:not(.xt-ignore) {
       position: fixed;
-      z-index: 6;
       top: 0;
       left: 0;
       right: 0;

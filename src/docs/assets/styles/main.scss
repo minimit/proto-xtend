@@ -698,73 +698,15 @@ pre {
 // xt
 //////////////////////
 
-// xt-menu
-@include xt-menu('.site-menu');
-html.menu {
-  .site-header-top .container {
-    z-index: 6;
-  }
-  .site-header-top {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 7;
-  }
-}
-/*
-.site-menu {
-  display: none;
-}
-html.menu {
-  .site-header-top:not(.xt-ignore) {
-    z-index: 7;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-  }
-  .site-menu {
-    display: block;
-  }
-}
-*/
+/* xt-scroll */
+@include xt-scroll('.site-header-top'); // html default class .scroll, default z-index 70
+@include xt-scroll('.site-breadcrumbs', '.scroll-breadcrumbs'); // html custom class .scroll-breadcrumbs, default z-index 70
 
-// xt-scroll
-@include xt-scroll('.site-header-top');
-@include xt-scroll('.site-breadcrumbs', '.scroll-breadcrumbs');
-.site-header-top {
-  z-index: 7;
-}
-/*
-.site-header-top {
-  z-index: 6;
-}
-.site-breadcrumbs {
-  z-index: 6;
-}
-html.scroll {
-  .site-header-top:not(.xt-ignore) {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
+/* xt-menu */
+@include xt-menu('.site-menu'); // html default class .menu, default z-index 80
+html.menu {
+  @extend html.scroll; // show .site-header-top as if html.scroll
+  .site-header-top {
+    z-index: 81; // show above .site-menu
   }
 }
-.site-breadcrumbs {
-  .scroll-show {
-    display: none;
-  }
-}
-html.scroll-breadcrumbs {
-  .site-breadcrumbs:not(.xt-ignore) {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    .scroll-show {
-      display: block;
-    }
-  }
-}
-*/
