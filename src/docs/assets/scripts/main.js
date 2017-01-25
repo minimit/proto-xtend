@@ -173,7 +173,7 @@
         // replace json quotes
         text = text.replace(/("{)/g, '\'{').replace(/(}")/g, '}\'');
         // replace quote entities 
-        text = text.replace(/&quot;:/g,'&quot;: '); // add spacing for white-space: pre-wrap;
+        text = text.replace(/&quot;:/g,'&quot;:'); // add spacing for white-space: pre-wrap;
         text = text.replace(/&quot;/g,'"');
       }
       text = $clone.text(text).html();
