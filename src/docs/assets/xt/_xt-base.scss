@@ -78,3 +78,46 @@ body {
     overflow: hidden;
   }
 }
+
+//////////////////////
+// xt-menu
+//////////////////////
+
+@mixin xt-menu($item, $class:'.menu') {
+  #{$item} {
+    display: none;
+    position: fixed;
+    z-index: 5;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+  html#{$class} {
+    #{$item} {
+      display: block;
+    }
+  }
+}
+
+//////////////////////
+// xt-scroll
+//////////////////////
+
+.scroll-show {
+  display: none !important;
+}
+@mixin xt-scroll($item, $class:'.scroll') {
+  html#{$class} {
+    #{$item}:not(.xt-ignore) {
+      position: fixed;
+      z-index: 6;
+      top: 0;
+      left: 0;
+      right: 0;
+      .scroll-show {
+        display: block !important;
+      }
+    }
+  }
+}

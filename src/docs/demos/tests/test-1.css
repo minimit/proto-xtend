@@ -54,6 +54,9 @@ body {
     display: block;
     overflow: hidden; }
 
+.scroll-show {
+  display: none !important; }
+
 html {
   font-size: 20px; }
 

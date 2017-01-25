@@ -31,7 +31,7 @@
       
       <header class="site-header">
         
-        <nav class="site-header-top" role="navigation" data-xt-scroll='{"target": "html", "grouping": "site-header-top", "class": "site-header-top-scroll", "scrollTop": ".site-header", "scrollBottom": ".site-breadcrumbs"}'>
+        <nav class="site-header-top" role="navigation" data-xt-scroll='{"grouping": "site-header-top", "scrollTop": ".site-header", "scrollBottom": ".site-breadcrumbs"}'>
           
           <div class="container">
             
@@ -42,7 +42,7 @@
                 </a>
               </div>
               <div class="media-body align-self-center">
-                <button type="button" class="button button__menu float-right" data-xt-toggle='{"target": "html", "grouping": "button__menu", "class": "button__menu__open"}' data-xt-resetonajax>
+                <button type="button" class="button button__menu float-right" data-xt-menu='{"grouping": "button__menu"}' data-xt-resetonajax>
                   <span class="icon-menu-custom right">
                     <span></span>
                     <span></span>
@@ -111,7 +111,7 @@
                 
         </div>
         
-        <nav class="site-breadcrumbs" role="navigation" data-xt-scroll='{"target": "html", "class": "site-breadcrumbs-scroll"}'>
+        <nav class="site-breadcrumbs" role="navigation" data-xt-scroll='{"class": "scroll-breadcrumbs"}'>
           <div class="container">
             
             {% for collection in site.collections %}
@@ -164,7 +164,7 @@
                 {% endif %}
               {% endfor %}
               
-              <button type="button" class="button button__menu float-right show-scroll" data-xt-toggle='{"target": "html", "grouping": "button__menu", "class": "button__menu__open"}'>
+              <button type="button" class="button button__menu float-right scroll-show" data-xt-menu='{"grouping": "button__menu"}'>
                 <span class="icon-menu-custom right">
                   <span></span>
                   <span></span>

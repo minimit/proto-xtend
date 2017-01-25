@@ -110,6 +110,31 @@
   };
   
   // subclass scroll
+  var XtMenu = function(element, options, defaults) {
+    Xt.call(this, element, options, defaults);
+  };
+  XtMenu.prototype = Object.create(Xt.prototype);
+  XtMenu.prototype.constructor = XtMenu;
+  $.fn.xtMenu = function(options) {
+    var defaults = {
+      'name': 'xt-menu',
+      'type': 'plugin_xtMenu',
+      'on': 'click',
+      'target': 'html',
+      'class': 'menu',
+      'group': '',
+      'grouping': 'xt',
+      'min': 0,
+      'max': 1,
+    };
+    return this.each( function() {
+      if (!$.data(this, 'plugin_xtMenu')) {
+        $.data(this, 'plugin_xtMenu', new XtMenu(this, options, defaults));
+      }
+    });
+  };
+  
+  // subclass scroll
   var XtScroll = function(element, options, defaults) {
     Xt.call(this, element, options, defaults);
   };
@@ -120,8 +145,8 @@
       'name': 'xt-scroll',
       'type': 'plugin_xtScroll',
       'on': 'scroll',
-      'target': '',
-      'class': 'active',
+      'target': 'html',
+      'class': 'scroll',
       'group': '',
       'grouping': 'xt',
       'min': 0,
@@ -155,6 +180,9 @@
       if ($(this).is('[data-xt-collapse]')) {
         $(this).xtCollapse();
       }
+      if ($(this).is('[data-xt-menu]')) {
+        $(this).xtMenu();
+      }
       if ($(this).is('[data-xt-scroll]')) {
         $(this).xtScroll();
       }
@@ -162,6 +190,7 @@
       $(this).find('[data-xt-ajax]').xtAjax();
       $(this).find('[data-xt-toggle]').xtToggle();
       $(this).find('[data-xt-collapse]').xtCollapse();
+      $(this).find('[data-xt-menu]').xtMenu();
       $(this).find('[data-xt-scroll]').xtScroll();
     });
   };

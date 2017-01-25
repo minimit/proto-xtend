@@ -58,7 +58,7 @@ $xt-fonts: (
 ) !default;
 
 // export fonts
-@mixin font($key, $important:false){
+@mixin font($key, $important:false) {
   $map: map-get($xt-fonts, $key);
   @each $property, $value in $map {
     @if $important == !important {
