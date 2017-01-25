@@ -77,8 +77,8 @@ font-family: 'Fira Sans Condensed', sans-serif;
 
 // @include spacing-headers;
 @mixin spacing-headers {
-  margin-top: 1.238rem;
-  margin-bottom: 1rem;
+  margin-top: 2.619rem;
+  margin-bottom: 1.238rem;
   &:first-child {
     margin-top: 0 !important;
   }
@@ -86,8 +86,8 @@ font-family: 'Fira Sans Condensed', sans-serif;
 
 // @include spacing-headers-small;
 @mixin spacing-headers-small {
-  margin-top: 1rem;
-  margin-bottom: 0.809rem;
+  margin-top: 1.238rem;
+  margin-bottom: 1rem;
   &:first-child {
     margin-top: 0 !important;
   }
@@ -95,7 +95,7 @@ font-family: 'Fira Sans Condensed', sans-serif;
 
 // @include spacing-text;
 @mixin spacing-text {
-  margin-bottom: 0.809rem;
+  margin-bottom: 1rem;
   &:last-child {
     margin-bottom: 0 !important;
   }

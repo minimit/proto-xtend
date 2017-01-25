@@ -7,39 +7,153 @@ order: 2
 ---
 
 <h2>Usage</h2>
-<p class="lead">Generic usage for all javascript components.</p>
-<p>All components are initialized automatically on document ready, if you want to disable it and initialize manually just set this variable before document ready <code>$.fn.xtInitManual = true;</code>.</p>
-<p>Just assign the attribute <code>data-xt</code> to an element. It is initialized with defaults settings, you can specify settings in the attribute with a json format: <code>data-xt='{"class": "custom-class", "target": "#custom-target", "min": 1, "max": 3}'</code>.</p>
-
-<p>You can initialize any element with component data- attributes via javascript:</p>
-<pre><code class="js">
-// init only $(element)
-$(element).xtInitAll();
-// init $(element) and all descendants
-$(element).xtInitAll(true);
+<p class="lead">Usage for all javascript components.</p>
+<h3>Markup</h3>
+<p>Assign <code>data-xt</code> attribute to the element, this will extend the plugin's default settings with your own settings.</p>
+<pre><code class="html">
+&lt;button class="button color-primary" data-xt='{"target": ".collapse"}'&gt;toggle&lt;/button&gt;
 </code></pre>
+<div class="alert alert-danger">
+  <strong>Important:</strong> the plugin's attributes <strong>must be a valid json format</strong>, so with double quotes inside.
+</div>
 
-<p>You have the option to initialize manually in javascript this way:</p>
+<h3>Javascript (optional)</h3>
+<p>If you want to disable auto initialization just set <code>$.fn.xtInitManual = true;</code> before document ready.</p>
+<p>You can initialize all the elements:</p>
+<pre><code class="js">
+$(element).xtInitAll(); // init only $(element)
+$(element).xtInitAll(true); // init $(element) and all descendants
+</code></pre>
+<p>Or one by one:</p>
 <pre><code class="js">
 $('[data-xt]').xt();
-$('[data-xt-ajax]').xtAjax();
-$('[data-xt-toggle]').xtToggle();
-$('[data-xt-collapse]').xtCollapse();
-$('[data-xt-menu]').xtMenu();
-$('[data-xt-scroll]').xtScroll();
+$('[data-xt]').xt({"target": "#collapse", "min": 1, "max": 3}); // arguments are the same as json data- arguments
 </code></pre>
 
-<p>Manual initialization arguments are the same as json data- arguments:</p>
-<pre><code class="js">
-$(this).find('[data-xt]').xt({
-  "class": "custom-class",
-  "target": "#custom-target",
-  "min": 1,
-  "max": 3
-});
-</code></pre>
+<h3>Activation</h3>
 
-<h3>Target</h3>
+<div class="demo">
+  <div class="demo-item demo-preview" data-name="class">
+    <div class="demo-text"><strong>Xtend</strong> activates both <strong>element</strong> and <strong>target</strong> with the a choosen <code>"class": "name"</code>.</div>
+    <div class="demo-source" data-lang="html">
+<div class="spacer">
+  <button class="button color-primary" data-xt='{"class": "example-class", "target": ".collapse"}'>
+    toggle
+  </button>
+  <div class="collapse">
+    <div class="card card-block">
+      Target
+    </div>
+  </div>
+</div>
+    </div>
+    <div class="demo-source" data-lang="css">
+<style scoped>
+button.example-class {
+  border: 1px solid red;
+}
+.collapse.example-class {
+  display: block !important;
+}
+</style>
+    </div>
+  </div>
+  <div class="demo-item demo-preview" data-name="active">
+    <div class="demo-text">The default class is <code>active</code>.</div>
+    <div class="demo-source" data-lang="html">
+<div class="spacer">
+  <button class="button color-primary" data-xt='{"target": ".collapse"}'>
+    toggle
+  </button>
+  <div class="collapse">
+    <div class="card card-block">
+      Target
+    </div>
+  </div>
+</div>
+    </div>
+  </div>
+  <div class="demo-item demo-preview" data-name="min and max">
+    <div class="demo-text">Set activation's <code>"min": number</code> and <code>"max": number</code>.</div>
+    <div class="demo-source" data-lang="html">
+<div class="spacer">
+  <button class="button color-primary" data-xt='{"target": ".collapse", "min": 2, "max": 2}'>
+    toggle 0
+  </button>
+  <button class="button color-primary" data-xt='{"target": ".collapse", "min": 2, "max": 2}'>
+    toggle 1
+  </button>
+  <button class="button color-primary" data-xt='{"target": ".collapse", "min": 2, "max": 2}'>
+    toggle 2
+  </button>
+  <button class="button color-primary" data-xt='{"target": ".collapse", "min": 2, "max": 2}'>
+    toggle 3
+  </button>
+  <div class="collapse">
+    <div class="card card-block">
+      Target 0
+    </div>
+  </div>
+  <div class="collapse">
+    <div class="card card-block">
+      Target 1
+    </div>
+  </div>
+  <div class="collapse">
+    <div class="card card-block">
+      Target 2
+    </div>
+  </div>
+  <div class="collapse">
+    <div class="card card-block">
+      Target 3
+    </div>
+  </div>
+</div>
+    </div>
+  </div>
+  <div class="demo-item demo-preview" data-name="initial">
+    <div class="demo-text">If <strong>min</strong> > 0 we activate the <strong>.active</strong> elements (or any other <strong>class</strong> used), and the minimum amount required.</div>
+    <div class="demo-source" data-lang="html">
+  <div class="spacer">
+    <button class="button color-primary" data-xt='{"target": ".collapse", "min": 2, "max": 2}'>
+      toggle 0
+    </button>
+    <button class="button color-primary" data-xt='{"target": ".collapse", "min": 2, "max": 2}'>
+      toggle 1
+    </button>
+    <button class="button color-primary" data-xt='{"target": ".collapse", "min": 2, "max": 2}'>
+      toggle 2
+    </button>
+    <button class="button color-primary active" data-xt='{"target": ".collapse", "min": 2, "max": 2}'>
+      toggle 3
+    </button>
+    <div class="collapse">
+      <div class="card card-block">
+        Target 0
+      </div>
+    </div>
+    <div class="collapse">
+      <div class="card card-block">
+        Target 1
+      </div>
+    </div>
+    <div class="collapse">
+      <div class="card card-block">
+        Target 2
+      </div>
+    </div>
+    <div class="collapse">
+      <div class="card card-block">
+        Target 3
+      </div>
+    </div>
+  </div>
+    </div>
+  </div>
+</div>
+
+<h3>Scope</h3>
 
 <div class="demo">
   <div class="demo-item demo-preview" data-name="target">
@@ -160,112 +274,6 @@ $(this).find('[data-xt]').xt({
     </div>
   </div>
 </div>
-
-<h3>Activation</h3>
-
-<div class="demo">
-  <div class="demo-item demo-preview" data-name="class">
-    <div class="demo-text">By default the class activated on <strong>both the element and the target</strong> is <code>.active</code>. You can set a custom one with <code>"class": "name"</code>.</div>
-    <div class="demo-source" data-lang="html">
-<div class="spacer">
-  <button class="button color-primary" data-xt='{"class": "example-class"}'>
-    toggle
-  </button>
-</div>
-    </div>
-    <div class="demo-source" data-lang="css">
-<style scoped>
-button.example-class {
-  border: 1px solid #ff0000;
-}
-.collapse.example-class {
-  display: block !important;
-}
-</style>
-    </div>
-  </div>
-  <div class="demo-item demo-preview" data-name="min and max">
-    <div class="demo-text">Set activation's <code>"min": number</code> and <code>"max": number</code>.</div>
-    <div class="demo-source" data-lang="html">
-<div class="spacer">
-  <button class="button color-primary" data-xt='{"target": ".collapse", "min": 2, "max": 3}'>
-    toggle 0
-  </button>
-  <button class="button color-primary" data-xt='{"target": ".collapse", "min": 2, "max": 3}'>
-    toggle 1
-  </button>
-  <button class="button color-primary" data-xt='{"target": ".collapse", "min": 2, "max": 3}'>
-    toggle 2
-  </button>
-  <button class="button color-primary" data-xt='{"target": ".collapse", "min": 2, "max": 3}'>
-    toggle 3
-  </button>
-  <div class="collapse">
-    <div class="card card-block">
-      Target 0
-    </div>
-  </div>
-  <div class="collapse">
-    <div class="card card-block">
-      Target 1
-    </div>
-  </div>
-  <div class="collapse">
-    <div class="card card-block">
-      Target 2
-    </div>
-  </div>
-  <div class="collapse">
-    <div class="card card-block">
-      Target 3
-    </div>
-  </div>
-</div>
-    </div>
-  </div>
-  <div class="demo-item demo-preview" data-name="initial">
-    <div class="demo-text">If <strong>min</strong> > 0 we activate the <strong>.active</strong> elements (or any other <strong>class</strong> used), and the minimum amount required.</div>
-    <div class="demo-source" data-lang="html">
-  <div class="spacer">
-    <button class="button color-primary" data-xt='{"target": ".collapse", "min": 2, "max": 3}'>
-      toggle 0
-    </button>
-    <button class="button color-primary" data-xt='{"target": ".collapse", "min": 2, "max": 3}'>
-      toggle 1
-    </button>
-    <button class="button color-primary active" data-xt='{"target": ".collapse", "min": 2, "max": 3}'>
-      toggle 2
-    </button>
-    <button class="button color-primary" data-xt='{"target": ".collapse", "min": 2, "max": 3}'>
-      toggle 3
-    </button>
-    <div class="collapse">
-      <div class="card card-block">
-        Target 0
-      </div>
-    </div>
-    <div class="collapse">
-      <div class="card card-block">
-        Target 1
-      </div>
-    </div>
-    <div class="collapse">
-      <div class="card card-block">
-        Target 2
-      </div>
-    </div>
-    <div class="collapse">
-      <div class="card card-block">
-        Target 3
-      </div>
-    </div>
-  </div>
-    </div>
-  </div>
-</div>
-
-<h3>Scoping</h3>
-
 
 <h2>Toggle</h2>
 <p>Generic javascript component to toggle a <strong>class</strong>. It's a subclass of <code>data-xt</code> so it behaves in the same way, it only have different default options.</p>

@@ -222,9 +222,10 @@
     $.extend(settings, $element.data(settings.name));
     // setup
     this.scoping(); // scoping before setup
+    this.setup();
+    this.events(); // events after setup
     window.requestAnimFrame( function() {
-      object.setup();
-      object.events(); // events after setup
+      object.activation(); // after to have concurrent grouping and scoping
     });
     //console.log(':init', $element.text().replace(/(\r\n|\n|\r)/gm,"").replace(/^\s+|\s+$|\s+(?=\s)/g, ""), $element.hasClass(settings.class));
   };
@@ -235,8 +236,8 @@
     var element = this.element;
     var $element = $(this.element);
     // $group and $target
-    if (settings.target === 'html') {
-      // special case 'html'
+    if (settings.target === 'html' || settings.name === 'xt-ajax') {
+      // special case 'html' or ajax
       settings.$target = $(settings.target);
       settings.$group = settings.$target;
     } else if (settings.group) {
@@ -281,7 +282,6 @@
     // reinit if has class
     if ($element.hasClass(settings.class)) {
       $element.removeClass(settings.class);
-      console.log($element);
       this.show();
     }
     // automatic init
@@ -313,7 +313,18 @@
         // api
         settings.$target.trigger('ajax.init.xt', [object]);
       }
-    } else {
+    }
+    //console.log(':setup', $element.text().replace(/(\r\n|\n|\r)/gm,"").replace(/^\s+|\s+$|\s+(?=\s)/g, ""), $element.hasClass(settings.class));
+  };
+  
+  Xt.prototype.activation = function() {
+    var object = this;
+    var settings = this.settings;
+    var element = this.element;
+    var $element = $(this.element);
+    // concurrent activation
+    if (!settings.url) {
+      var $buttons = this.getButtons();
       // init if $shown < min
       var min = settings.min;
       var $shown = $buttons.filter('.' + settings.class);
@@ -321,7 +332,7 @@
         this.show();
       }
     }
-    //console.log(':setup', $element.text().replace(/(\r\n|\n|\r)/gm,"").replace(/^\s+|\s+$|\s+(?=\s)/g, ""), $element.hasClass(settings.class));
+    //console.log(':activation', $element.text().replace(/(\r\n|\n|\r)/gm,"").replace(/^\s+|\s+$|\s+(?=\s)/g, ""), $element.hasClass(settings.class));
   };
   
   Xt.prototype.events = function() {

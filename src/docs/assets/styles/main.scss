@@ -25,6 +25,7 @@
 // custom theme
 //////////////////////
 
+/* spacer */
 .spacer {
   &.site-breadcrumbs-body {
     margin-left: -8px;
@@ -45,6 +46,8 @@
     }
   }
 }
+
+/* buttons */
 .button {
   /* styles */
   & {
@@ -88,8 +91,7 @@
   }
 }
 
-// .tooltip
-
+/* .tooltip */
 .tooltip-inner {
   padding: 6px 10px;
   border-radius: 0;
@@ -111,6 +113,18 @@
       border-top-color: $color-white !important;
     }
   }
+}
+
+/* alert */
+.alert {
+  position: relative;
+  width: 100%;
+  @include spacing-text;
+  padding: 0.618rem 0.809rem;
+  border: 1px solid transparent;
+  border-radius: 0;
+  font-size: 14px;
+  line-height: 1.6;
 }
 
 //////////////////////
@@ -423,12 +437,13 @@ $button__menu_pixels: 1px;
 
 /* .make-line */
 .make-line {
-  @include box;
+  position: relative;
   .make-line + & {
     margin-top: 0 !important;
   }
   .line-container {
-    @include box;
+    position: relative;
+    width: 100%;
     overflow: hidden;
     .line {
       display: inline-block;
@@ -566,10 +581,9 @@ $button__menu_pixels: 1px;
 }
 pre {
   position: relative;
-  float: left;
   width: 100%;
   line-height: 0;
-  margin-top: 0.618rem;
+  margin-top: 1rem;
   margin-bottom: 1.238rem;
   .demo & {
     margin-top: 0;
@@ -603,7 +617,7 @@ p code,
   position: relative;
   width: 100%;
   margin-top: 0.618rem;
-  margin-bottom: 0.618rem;
+  margin-bottom: 0rem;
   background: $color-grey;
   // code
   .demo-code {
