@@ -35,30 +35,6 @@
     });
   };
   
-  // subclass ajax
-  var XtAjax = function(element, options, defaults) {
-    Xt.call(this, element, options, defaults);
-  };
-  XtAjax.prototype = Object.create(Xt.prototype);
-  XtAjax.prototype.constructor = XtAjax;
-  $.fn.xtAjax = function(options) {
-    var defaults = {
-      'name': 'xt-ajax',
-      'type': 'plugin_xtAjax',
-      'on': 'click',
-      'target': '',
-      'class': 'active',
-      'group': '',
-      'grouping': 'xt',
-      'url': 'href',
-    };
-    return this.each( function() {
-      if (!$.data(this, 'plugin_xtAjax')) {
-        $.data(this, 'plugin_xtAjax', new XtAjax(this, options, defaults));
-      }
-    });
-  };
-  
   // subclass toggle
   var XtToggle = function(element, options, defaults) {
     Xt.call(this, element, options, defaults);
@@ -160,6 +136,30 @@
     });
   };
   
+  // subclass ajax
+  var XtAjax = function(element, options, defaults) {
+    Xt.call(this, element, options, defaults);
+  };
+  XtAjax.prototype = Object.create(Xt.prototype);
+  XtAjax.prototype.constructor = XtAjax;
+  $.fn.xtAjax = function(options) {
+    var defaults = {
+      'name': 'xt-ajax',
+      'type': 'plugin_xtAjax',
+      'on': 'click',
+      'target': '',
+      'class': 'active',
+      'group': '',
+      'grouping': 'xt',
+      'url': 'href',
+    };
+    return this.each( function() {
+      if (!$.data(this, 'plugin_xtAjax')) {
+        $.data(this, 'plugin_xtAjax', new XtAjax(this, options, defaults));
+      }
+    });
+  };
+  
   //////////////////////
   // jquery init
   //////////////////////
@@ -170,9 +170,6 @@
     return this.each( function() {
       if ($(this).is('[data-xt]')) {
         $(this).xt();
-      }
-      if ($(this).is('[data-xt-ajax]')) {
-        $(this).xtAjax();
       }
       if ($(this).is('[data-xt-toggle]')) {
         $(this).xtToggle();
@@ -186,13 +183,16 @@
       if ($(this).is('[data-xt-scroll]')) {
         $(this).xtScroll();
       }
+      if ($(this).is('[data-xt-ajax]')) {
+        $(this).xtAjax();
+      }
       if (deep) {
         $(this).find('[data-xt]').xt();
-        $(this).find('[data-xt-ajax]').xtAjax();
         $(this).find('[data-xt-toggle]').xtToggle();
         $(this).find('[data-xt-collapse]').xtCollapse();
         $(this).find('[data-xt-menu]').xtMenu();
         $(this).find('[data-xt-scroll]').xtScroll();
+        $(this).find('[data-xt-ajax]').xtAjax();
       }
     });
   };
@@ -220,12 +220,11 @@
     }
     // override with html settings
     $.extend(settings, $element.data(settings.name));
-    // scoping and events before setup
-    this.scoping();
-    this.events();
     // setup
+    this.scoping(); // scoping before setup
     window.requestAnimFrame( function() {
       object.setup();
+      object.events(); // events after setup
     });
     //console.log(':init', $element.text().replace(/(\r\n|\n|\r)/gm,"").replace(/^\s+|\s+$|\s+(?=\s)/g, ""), $element.hasClass(settings.class));
   };
@@ -235,25 +234,25 @@
     var settings = this.settings;
     var element = this.element;
     var $element = $(this.element);
-    // $group and target
-    if (settings.target && settings.group) {
+    // $group and $target
+    if (settings.target === 'html') {
+      // special case 'html'
+      settings.$target = $(settings.target);
+      settings.$group = settings.$target;
+    } else if (settings.group) {
+      // if 'group'
       settings.$group = $element.parents(settings.group);
-      settings.$target = settings.$group.find(settings.target);
-    } else {
-      /* @TODO not sure if with or without
-      if ($element.closest('[id]')) {
-        settings.$group = $element.closest('[id]');
-        settings.$target = settings.$group.find(settings.target);
-      } else {*/
       if (settings.target) {
-        settings.$target = $(settings.target);
-        settings.$group = settings.$target.parent();
-      } else {
-        settings.$group = $element.parent();
+        settings.$target = settings.$group.find(settings.target);
       }
-      //}
+    } else {
+      // if not 'group' we use parent
+      settings.$group = $element.parent();
+      if (settings.target) {
+        settings.$target = settings.$group.find(settings.target);
+      }
     }
-    // set namespace
+    // grouping and set namespace
     settings.namespace = settings.grouping + '_' + settings.group;
     $element.attr('data-xt-button', settings.namespace);
   };
@@ -279,8 +278,10 @@
     if (settings.target && settings.$target.length > 1) {
       settings.$target = settings.$target.eq(settings.groupIndex);
     }
-    // init if has class
+    // reinit if has class
     if ($element.hasClass(settings.class)) {
+      $element.removeClass(settings.class);
+      console.log($element);
       this.show();
     }
     // automatic init

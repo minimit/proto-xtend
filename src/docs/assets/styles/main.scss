@@ -611,7 +611,6 @@ p code,
   }
   .demo-item {
     @include box;
-    line-height: 0;
     display: none;
     &.active {
       display: block;
@@ -653,6 +652,7 @@ p code,
     padding: 0;
   }
   // .demo-text
+  .demo-source p,
   .demo-text {
     font-size: 14px;
     line-height: 1.6;

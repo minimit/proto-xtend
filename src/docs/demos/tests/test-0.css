@@ -161,7 +161,6 @@ a:not(.button) {
   cursor: default;
   /* spacing */
   margin-left: -0.618rem;
-  margin-bottom: -0.618rem;
   /* expand to .button sizes */
   /*
   &.expand {
@@ -179,6 +178,8 @@ a:not(.button) {
   */ }
   .spacer > * {
     display: inline-block; }
+  .spacer:last-child {
+    margin-bottom: -0.618rem; }
   .spacer > * {
     margin-left: 0.618rem;
     margin-bottom: 0.618rem; }
@@ -189,25 +190,26 @@ a:not(.button) {
       margin-left: 0;
       margin-bottom: 0; }
   .spacer.spacer-sm {
-    margin-left: -0.5rem;
-    margin-bottom: -0.5rem; }
+    margin-left: -0.5rem; }
+    .spacer.spacer-sm:last-child {
+      margin-bottom: -0.5rem; }
     .spacer.spacer-sm > * {
       margin-left: 0.5rem;
       margin-bottom: 0.5rem; }
   .spacer.spacer-md {
-    margin-left: -1.238rem;
-    margin-bottom: -1.238rem; }
+    margin-left: -1.238rem; }
+    .spacer.spacer-md:last-child {
+      margin-bottom: -1.238rem; }
     .spacer.spacer-md > * {
       margin-left: 1.238rem;
       margin-bottom: 1.238rem; }
   .spacer.spacer-lg {
-    margin-left: -2.619rem;
-    margin-bottom: -2.619rem; }
+    margin-left: -2.619rem; }
+    .spacer.spacer-lg:last-child {
+      margin-bottom: -2.619rem; }
     .spacer.spacer-lg > * {
       margin-left: 2.619rem;
       margin-bottom: 2.619rem; }
-  .spacer:last-child {
-    margin-bottom: 0 !important; }
 
 .button {
   /* sizes */
