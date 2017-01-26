@@ -399,12 +399,9 @@
         //console.log(':scroll.xt', $element.text().replace(/(\r\n|\n|\r)/gm,"").replace(/^\s+|\s+$|\s+(?=\s)/g, ""), top, min, max);
       });
       $(window).trigger(scrollNamespace);
-      // on remove
-      $element.off('xtRemoved');
+      // remove window event on remove
       $element.on('xtRemoved', function(e) {
         $(window).off(scrollNamespace);
-        var $currents = object.getCurrents();
-        object.setCurrents($currents.not(element));
       });
     } else {
       // toggle events
@@ -417,12 +414,12 @@
       $element.on(settings.off, function(e) {
         object.toggle();
       });
-      // [data-xt-resetonajax] hides on ajax
-      if ($element.is('[data-xt-resetonajax]')) {
-        $(document).on('ajax.success.xt', function(e, obj, $data) {
-          object.hide(true, false, true);
-        });
-      }
+    }
+    // remove html classes on remove
+    if ($element.is('[data-xt-reset]') || settings.target === 'html') {
+      $element.on('xtRemoved', function(e) {
+        object.hide(false, true, true);
+      });
     }
     //console.log(':events', $element.text().replace(/(\r\n|\n|\r)/gm,"").replace(/^\s+|\s+$|\s+(?=\s)/g, ""), $element.hasClass(settings.class));
   };
@@ -528,7 +525,9 @@
         if (!isSync) {
           if ($currents.length > settings.max) {
             var xt = $currents.first().data(settings.type);
-            xt.hide();
+            if (xt) {
+              xt.hide();
+            }
           }
         }
       }

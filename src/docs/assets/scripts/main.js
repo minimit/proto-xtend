@@ -226,6 +226,8 @@
     
     //////////////////////
     
+    $main.find('.button__menu').xtMenu();
+    
   };
   
   // init main
