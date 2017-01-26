@@ -249,9 +249,8 @@
   
   // xt-ajax
   $('.site-wrapper').on('ajax.done.xt', function(e, obj, $data) {
-    // custom function on ajax
-    main($(this));
-    console.log('ajax.done.xt');
+    main($(this)); // custom function on ajax
+    //console.log('ajax.done.xt');
   });
   
   //if ($('html').attr('id') === 'test-0.html') { console.log(this.settings); }

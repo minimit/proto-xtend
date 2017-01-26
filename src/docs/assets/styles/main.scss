@@ -168,7 +168,7 @@
 /* .logo */
 a.logo {
   @include box;
-  margin: 10px 0 9px 0;
+  margin: 11px 0 10px 0;
   @include font(sans-medium);
   color: $color-white-light;
   font-size: 1.238rem;
@@ -254,19 +254,23 @@ a.logo {
 $button__menu_pixels: 1px;
 .button__menu {
   @include font(sans-light, !important);
-  font-size: 1.238rem;
+  font-size: 20px !important;
   line-height: 1.2;
   text-transform: none !important;
   .site-header-top & {
+    margin-top: 1px;
+    margin-bottom: 1px;
     padding-left: 0;
     padding-right: 0;
   }
   .site-breadcrumbs & {
-    font-size: 17px;
+    margin-top: -2px;
+    margin-bottom: -2px;
   }
   /* .icon-menu-custom */
   .icon-menu-custom {
     position: relative;
+    font-size: 20px;
     width: 1em;
     height: 0.75em;
     span {
