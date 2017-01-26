@@ -28,7 +28,7 @@
               {% assign sorted = site.[collection.label] | where: 'categories', filter | sort: 'order' %}
               {% for p in sorted %}
                 <div class="site-aside-text">
-                  <a href="{{ p.url }}" class="button{% if page.title != p.title %}{{ different }}{% endif %}" data-xt-ajax='{"target": ".site-wrapper"}'>
+                  <a href="{{ p.url }}" class="button{% if page.title != p.title %}{{ different }}{% endif %}">
                     {{ p.title }}
                   </a>
                 </div>

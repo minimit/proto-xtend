@@ -236,12 +236,18 @@
   // xtend
   //////////////////////
   
+  // ajax links
+  $('a[href]').xtAjax({"target": ".site-wrapper"});
+  $('.site-wrapper').on('ajax.done.xt', function(e, obj, $data) {
+    $(this).find('a[href]').xtAjax({"target": ".site-wrapper"});
+  });
+  
   // on done
   $('.site-wrapper').on('ajax.done.xt', function(e, obj, $data) {
     var $container = $(this);
     // main on ajax
     main($container);
-    // init xtend
+    // init xt
     $('.site-wrapper').xtInitAll(true);
   });
   
