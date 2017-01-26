@@ -127,9 +127,6 @@ h6, .h6 {
   letter-spacing: 1px;
   text-transform: uppercase; }
 
-.lead {
-  opacity: 0.75; }
-
 p {
   margin-bottom: 1rem; }
   p:last-child {

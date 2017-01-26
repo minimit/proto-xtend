@@ -49,11 +49,12 @@ $('[data-xt]').xt({"target": "#collapse", "min": 1, "max": 3}); // arguments are
     </div>
     <div class="demo-source" data-lang="css">
 <style scoped>
-button.example-class {
+.button.example-class {
   border: 1px solid red;
 }
 .collapse.example-class {
   display: block !important;
+  border: 1px solid red;
 }
 </style>
     </div>
@@ -77,16 +78,16 @@ button.example-class {
     <div class="demo-text">Set activation's <code>"min": number</code> and <code>"max": number</code>.</div>
     <div class="demo-source" data-lang="html">
 <div class="spacer">
-  <button class="button color-primary" data-xt='{"target": ".collapse", "min": 2, "max": 3}'>
+  <button class="button color-primary" data-xt='{"target": ".collapse", "min": 2, "max": 2}'>
     toggle 0
   </button>
-  <button class="button color-primary" data-xt='{"target": ".collapse", "min": 2, "max": 3}'>
+  <button class="button color-primary" data-xt='{"target": ".collapse", "min": 2, "max": 2}'>
     toggle 1
   </button>
-  <button class="button color-primary" data-xt='{"target": ".collapse", "min": 2, "max": 3}'>
+  <button class="button color-primary" data-xt='{"target": ".collapse", "min": 2, "max": 2}'>
     toggle 2
   </button>
-  <button class="button color-primary" data-xt='{"target": ".collapse", "min": 2, "max": 3}'>
+  <button class="button color-primary" data-xt='{"target": ".collapse", "min": 2, "max": 2}'>
     toggle 3
   </button>
   <div class="collapse">
@@ -116,16 +117,16 @@ button.example-class {
     <div class="demo-text">If <strong>min</strong> > 0 we activate the <strong>.active</strong> elements (or any other <strong>class</strong> used), and the minimum amount required.</div>
     <div class="demo-source" data-lang="html">
   <div class="spacer">
-    <button class="button color-primary" data-xt='{"target": ".collapse", "min": 2, "max": 3}'>
+    <button class="button color-primary" data-xt='{"target": ".collapse", "min": 2, "max": 2}'>
       toggle 0
     </button>
-    <button class="button color-primary" data-xt='{"target": ".collapse", "min": 2, "max": 3}'>
+    <button class="button color-primary" data-xt='{"target": ".collapse", "min": 2, "max": 2}'>
       toggle 1
     </button>
-    <button class="button color-primary" data-xt='{"target": ".collapse", "min": 2, "max": 3}'>
+    <button class="button color-primary" data-xt='{"target": ".collapse", "min": 2, "max": 2}'>
       toggle 2
     </button>
-    <button class="button color-primary active" data-xt='{"target": ".collapse", "min": 2, "max": 3}'>
+    <button class="button color-primary active" data-xt='{"target": ".collapse", "min": 2, "max": 2}'>
       toggle 3
     </button>
     <div class="collapse">

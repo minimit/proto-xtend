@@ -156,7 +156,7 @@
       $btnInside.xtCollapse({"target": ".demo-code-body-item", "group": ".demo-code", "grouping": id});
       // format code
       if (!$codeInside.hasClass('hljs')) {
-        var text = formatCode($source);
+        var text = formatCode($source, lang);
         text = text.replace(/^\s+|\s+$/g, ''); // remove newline at start and end
         $codeInside.html(text).removeClass().addClass(lang);
         window.hljs.highlightBlock($codeInside[0]);
@@ -164,9 +164,12 @@
     }
     
     // formatCode
-    function formatCode($source) {
+    function formatCode($source, lang) {
       var $clone = $source.clone();
       var text = $clone.html();
+      if (lang === 'css' || lang === 'js') {
+        text = text.replace(/<[^>]*>/g, '');
+      }
       if (text.match(/[&<>]/g)) {
         // replace entities
         text = text.replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g, '>');
