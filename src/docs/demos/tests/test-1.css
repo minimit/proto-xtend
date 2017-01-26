@@ -39,8 +39,12 @@ body {
   float: left;
   width: 100%; }
 
-.buttons {
-  cursor: default; }
+.spacer {
+  cursor: default;
+  padding-right: 4px; }
+  .spacer > * {
+    display: inline-block;
+    margin-right: -4px; }
 
 .button {
   cursor: pointer;
@@ -158,7 +162,6 @@ a:not(.button) {
     margin-left: 0.7em; }
 
 .spacer {
-  cursor: default;
   /* spacing */
   margin-left: -0.618rem;
   /* expand to .button sizes */
@@ -176,8 +179,6 @@ a:not(.button) {
     margin-right: -12px;
   }
   */ }
-  .spacer > * {
-    display: inline-block; }
   .spacer:last-child {
     margin-bottom: -0.618rem; }
   .spacer > * {

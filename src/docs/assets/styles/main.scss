@@ -121,7 +121,7 @@
   width: 100%;
   @include spacing-text;
   padding: 0.618rem 0.809rem;
-  border: 1px solid transparent;
+  border: 0;
   border-radius: 0;
   font-size: 14px;
   line-height: 1.6;
@@ -613,11 +613,12 @@ p code,
 
 /* .demo */
 .demo {
-  display: inline-block;
+  @include clearfix;
+  display: block;
   position: relative;
   width: 100%;
-  margin-top: 0.618rem;
-  margin-bottom: 0rem;
+  margin-top: 1.238rem;
+  margin-bottom: 1.238rem;
   background: $color-grey;
   // code
   .demo-code {

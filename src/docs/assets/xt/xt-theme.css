@@ -44,8 +44,14 @@ body {
   width: 100%;
 }
 
-.buttons {
+.spacer {
   cursor: default;
+  padding-right: 4px;
+}
+
+.spacer > * {
+  display: inline-block;
+  margin-right: -4px;
 }
 
 .button {
@@ -201,7 +207,6 @@ a:not(.button):hover:not(.active), a:not(.button).hover:not(.active), a:not(.but
 }
 
 .spacer {
-  cursor: default;
   /* spacing */
   margin-left: -0.618rem;
   /* expand to .button sizes */
@@ -219,10 +224,6 @@ a:not(.button):hover:not(.active), a:not(.button).hover:not(.active), a:not(.but
     margin-right: -12px;
   }
   */
-}
-
-.spacer > * {
-  display: inline-block;
 }
 
 .spacer:last-child {

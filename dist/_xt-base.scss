@@ -42,11 +42,17 @@ body {
 }
 
 //////////////////////
-// buttons
+// spacer
 //////////////////////
 
-.buttons {
+.spacer {
+  //@include text-spacing;
   cursor: default;
+  padding-right: 4px; // fix spacing inline-block spacing
+  > * {
+    display: inline-block;
+    margin-right: -4px; // fix inline-block spacing
+  }
 }
 
 //////////////////////

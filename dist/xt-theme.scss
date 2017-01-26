@@ -118,11 +118,6 @@ a:not(.button) {
 //////////////////////
 
 .spacer {
-  //@include text-spacing;
-  cursor: default;
-  > * {
-    display: inline-block;
-  }
   /* spacing */
   margin-left: -0.618rem;
   &:last-child {
