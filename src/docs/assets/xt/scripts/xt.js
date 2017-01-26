@@ -49,7 +49,7 @@
       'target': '',
       'class': 'active',
       'group': '',
-      'grouping': 'xt',
+      'grouping': 'xtToggle',
       'min': 0,
       'max': 1,
     };
@@ -74,7 +74,7 @@
       'target': '',
       'class': 'active',
       'group': '',
-      'grouping': 'xt',
+      'grouping': 'xtCollapse',
       'min': 1,
       'max': 1,
     };
@@ -99,7 +99,7 @@
       'target': 'html',
       'class': 'menu',
       'group': '',
-      'grouping': 'xt',
+      'grouping': 'xtMenu',
       'min': 0,
       'max': 1,
     };
@@ -124,7 +124,7 @@
       'target': 'html',
       'class': 'scroll',
       'group': '',
-      'grouping': 'xt',
+      'grouping': 'xtScroll',
       'min': 0,
       'max': 1,
       '$clone': null,
@@ -150,7 +150,7 @@
       'target': '',
       'class': 'active',
       'group': '',
-      'grouping': 'xt',
+      'grouping': 'xtAjax',
       'url': 'href',
     };
     return this.each( function() {
@@ -161,7 +161,7 @@
   };
   
   //////////////////////
-  // jquery init
+  // init
   //////////////////////
   
   // xtInitAll jQuery
@@ -197,12 +197,39 @@
     });
   };
   
-  // automatic xtInitAll if not xtInitManual
+  // automatic xtInitAll
   $(document).ready( function() {
-    if (!$.fn.xtInitManual) {
+    if (!$.fn.xt.manualInit) {
       $('html').xtInitAll(true);
     }
   });
+  
+  // automatic ajax
+  $(document).ready( function() {
+    var options = $.fn.xt.automaticAjax;
+    if (options) {
+      // ajax links
+      $('a[href^="' + options.baseurl + '"]').xtAjax({'target': options.target});
+      // on ajax.done.xt
+      $(options.target).on('ajax.done.xt', function(e, obj, $data) {
+        // ajax links
+        $(this).find('a[href^="' + options.baseurl + '"]').xtAjax({'target': options.target});
+        // automatic xtInitAll
+        if (!$.fn.xt.manualInit) {
+          $(options.target).xtInitAll(true);
+        }
+      });
+    }
+  });
+  /* manual ajax
+  var ajaxBaseUrl = '/';
+  $('a[href^="' + ajaxBaseUrl + '"]').xtAjax({"target": ".site-wrapper"});
+  $('.site-wrapper').on('ajax.done.xt', function(e, obj, $data) {
+    $(this).find('a[href^="' + ajaxBaseUrl + '"]').xtAjax({"target": ".site-wrapper"});
+    console.log('ajax done');
+    $('.site-wrapper').xtInitAll(true); // reinit xtend
+  });
+  */
   
   //////////////////////
   // methods
@@ -254,7 +281,7 @@
       }
     }
     // grouping and set namespace
-    settings.namespace = settings.grouping + '_' + settings.group;
+    settings.namespace = settings.grouping + '_' + settings.group + '_' + settings.class;
     $element.attr('data-xt-button', settings.namespace);
   };
   

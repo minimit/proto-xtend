@@ -37,12 +37,13 @@
     <script src="{{ site.baseurl }}assets/scripts/ElementQueries.min.js"></script>
     <script type="text/javascript">
     
-      $.fn.xtInitManual = true; // manual init or html gets populated with data attributes
+      // manualInit
+      $.fn.xt.manualInit = true;
       
       function init() {
         // add id
         $('html').attr('id', document.location.href.match(/[^\/]+$/)[0]);
-        // init xt
+        // xtInitAll
         $('html').xtInitAll(true);
         // https://github.com/marcj/css-element-queries
         if (!$('html').hasClass('full')) {

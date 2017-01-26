@@ -236,19 +236,20 @@
   // xtend
   //////////////////////
   
-  // ajax links
-  $('a[href]').xtAjax({"target": ".site-wrapper"});
-  $('.site-wrapper').on('ajax.done.xt', function(e, obj, $data) {
-    $(this).find('a[href]').xtAjax({"target": ".site-wrapper"});
-  });
+  // manualInit
+  // $.fn.xt.manualInit = true;
   
-  // on done
+  // automaticAjax
+  $.fn.xt.automaticAjax = {
+    'baseurl': '/',
+    'target': '.site-wrapper',
+  };
+  
+  // xt-ajax
   $('.site-wrapper').on('ajax.done.xt', function(e, obj, $data) {
-    var $container = $(this);
-    // main on ajax
-    main($container);
-    // init xt
-    $('.site-wrapper').xtInitAll(true);
+    // custom function on ajax
+    main($(this));
+    console.log('ajax.done.xt');
   });
   
   //if ($('html').attr('id') === 'test-0.html') { console.log(this.settings); }
