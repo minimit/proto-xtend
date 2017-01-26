@@ -64,6 +64,10 @@ body {
     display: block;
     overflow: hidden; }
 
+[disabled] {
+  cursor: default;
+  opacity: 1; }
+
 .scroll-show {
   display: none !important; }
 
@@ -259,10 +263,6 @@ a:not(.button) {
     color: rgba(255, 255, 255, 0.75); }
     .button.color-white:hover:not(.active), .button.color-white.hover:not(.active), .button.color-white:active, .button.color-white.active, .button.color-white:active:focus, .button.color-white:active.focus, .button.color-white.active:focus, .button.color-white.active.focus {
       color: #ffffff; }
-
-[data-xt][disabled] {
-  cursor: default;
-  opacity: 1; }
 
 .button.color-primary:hover:not(.active), .button.color-primary.hover:not(.active), .button.color-primary:active, .button.color-primary.active, .button.color-primary:active:focus, .button.color-primary:active.focus, .button.color-primary.active:focus, .button.color-primary.active.focus {
   border: 1px solid #000000; }

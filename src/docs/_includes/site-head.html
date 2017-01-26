@@ -104,9 +104,7 @@
                 <p class="lead">{{ page.description }}</p>
               </div>
               <div class="d-flex align-self-center ml-4">
-                <!--
-                <img src="https://placehold.it/330x132/2ecad4/ffffff/?text=Advertise" />
-                -->
+                <img src="https://placehold.it/330x132/ffffff/00B0FF/?text=ads" />
               </div>
             </div>
           </div>
@@ -116,9 +114,9 @@
         <nav class="site-breadcrumbs" role="navigation" data-xt-scroll='{"class": "scroll-breadcrumbs"}'>
           <div class="container">
             
-            {% for collection in site.collections %}
-              {% if collection.label == page.collection %}
-                <div class="site-breadcrumbs-body float-left spacer">
+            <div class="site-breadcrumbs-body float-left spacer">
+              {% for collection in site.collections %}
+                {% if collection.label == page.collection %}
               
                   {% assign sorted = site.[collection.label] | sort: 'order' %}
                   {% for p in sorted %}
@@ -142,11 +140,20 @@
                     {% endif %}
                   {% endfor %}
                   
-                </div>
-              {% endif %}
-            {% endfor %}
+                {% endif %}
+              {% endfor %}
+            </div>
 
             <div class="site-breadcrumbs-meta float-right spacer">
+              
+              {% if page.collection == null %}
+                <a href="{{ site.twitter }}" target="_blank" class="button" data-toggle="tooltip" data-placement="top" title="Twitter" data-template='<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner tooltip-inverse"></div></div>'>
+                  <span class="icon-twitter"></span>
+                </a>
+                <a href="{{ site.google }}" target="_blank" class="button" data-toggle="tooltip" data-placement="top" title="Google+" data-template='<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner tooltip-inverse"></div></div>'>
+                  <span class="icon-google"></span>
+                </a>
+              {% endif %}
               
               {% for collection in site.collections %}
                 {% if collection.label == page.collection %}

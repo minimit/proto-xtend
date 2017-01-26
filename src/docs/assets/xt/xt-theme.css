@@ -81,6 +81,11 @@ body {
   overflow: hidden;
 }
 
+[disabled] {
+  cursor: default;
+  opacity: 1;
+}
+
 .scroll-show {
   display: none !important;
 }
@@ -356,9 +361,4 @@ a:not(.button):hover:not(.active), a:not(.button).hover:not(.active), a:not(.but
 
 .button.color-white:hover:not(.active), .button.color-white.hover:not(.active), .button.color-white:active, .button.color-white.active, .button.color-white:active:focus, .button.color-white:active.focus, .button.color-white.active:focus, .button.color-white.active.focus {
   color: #ffffff;
-}
-
-[data-xt][disabled] {
-  cursor: default;
-  opacity: 1;
 }

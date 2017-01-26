@@ -28,8 +28,8 @@
 /* spacer */
 .spacer {
   &.site-breadcrumbs-body {
-    margin-left: -8px;
-    margin-right: -8px;
+    margin-left: -12px;
+    margin-right: -12px;
     margin-bottom: 0;
     > * {
       margin-left: 0;
@@ -59,11 +59,11 @@
   /* sizes */
   .demo-tabs &,
   .demo-code-tabs & {
-    padding: 16px 12px;
+    padding: 16px 12px 14px 12px;
     font-size: 12px;
   }
   .site-breadcrumbs-body & {
-    padding: 20px 8px;
+    padding: 20px 12px;
     font-size: 13px;
   }
   .site-breadcrumbs-meta & {
@@ -168,7 +168,7 @@
 /* .logo */
 a.logo {
   @include box;
-  margin: 10px 0;
+  margin: 10px 0 9px 0;
   @include font(sans-medium);
   color: $color-white-light;
   font-size: 1.238rem;
@@ -352,7 +352,7 @@ $button__menu_pixels: 1px;
   margin-left: -12px;
   margin-right: -12px;
   .button {
-    padding: 20px 12px;
+    padding: 18px 12px;
     font-size: 13px;
   }
 }

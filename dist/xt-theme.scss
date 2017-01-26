@@ -251,12 +251,3 @@ a:not(.button) {
     }
   }
 }
-
-//////////////////////
-// data-xt
-//////////////////////
-
-[data-xt][disabled] {
-  cursor: default;
-  opacity: 1;
-}
