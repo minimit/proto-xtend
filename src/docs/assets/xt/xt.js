@@ -2,14 +2,6 @@
 @copyright (c) 2016 - 2017 Riccardo Caroli
 @license MIT (https://github.com/minimit/xtend/blob/master/LICENSE) */
 
-/* xt-ajax
-@copyright (c) 2016 - 2017 Riccardo Caroli
-@license MIT (https://github.com/minimit/xtend/blob/master/LICENSE) */
-
-/* xt-toggle
-@copyright (c) 2016 - 2017 Riccardo Caroli
-@license MIT (https://github.com/minimit/xtend/blob/master/LICENSE) */
-
 ;( function($, window, document, undefined) {
 
   'use strict';
@@ -292,6 +284,14 @@
       $element.removeClass(settings.class);
       this.show();
     }
+    //console.log(':setup', $element.text().replace(/(\r\n|\n|\r)/gm,"").replace(/^\s+|\s+$|\s+(?=\s)/g, ""), $element.hasClass(settings.class));
+  };
+  
+  Xt.prototype.activation = function() {
+    var object = this;
+    var settings = this.settings;
+    var element = this.element;
+    var $element = $(this.element);
     // automatic init
     if (settings.url) {
       // register data-xt-pushstate on element
@@ -321,17 +321,7 @@
         // api
         settings.$target.trigger('ajax.init.xt', [object]);
       }
-    }
-    //console.log(':setup', $element.text().replace(/(\r\n|\n|\r)/gm,"").replace(/^\s+|\s+$|\s+(?=\s)/g, ""), $element.hasClass(settings.class));
-  };
-  
-  Xt.prototype.activation = function() {
-    var object = this;
-    var settings = this.settings;
-    var element = this.element;
-    var $element = $(this.element);
-    // concurrent activation
-    if (!settings.url) {
+    } else {
       var $buttons = this.getButtons();
       // init if $shown < min
       var min = settings.min;
@@ -386,6 +376,8 @@
       $element.off('xtRemoved');
       $element.on('xtRemoved', function(e) {
         $(window).off(scrollNamespace);
+        var $currents = object.getCurrents();
+        object.setCurrents($currents.not(element));
       });
     } else {
       // toggle events
@@ -565,21 +557,23 @@
     var element = this.element;
     var $element = $(this.element);
     // manage [disabled] attribute
-    var $currents = this.getCurrents();
-    if (!force) {
-      // automatic based on max
-      var min = settings.min;
-      if ($currents.length === min) {
-        $currents.attr('disabled', '');
-      } else {
-        $currents.removeAttr('disabled');
+    if (settings.on === 'click') {
+      if (!force) {
+        // automatic based on max
+        var $currents = this.getCurrents();
+        var min = settings.min;
+        if ($currents.length === min) {
+          $currents.attr('disabled', '');
+        } else {
+          $currents.removeAttr('disabled');
+        }
+      } else if (force === 'disable') {
+        // force disable
+        $element.attr('disabled', '');
+      } else if (force === 'enable') {
+        // force enable
+        $element.removeAttr('disabled');
       }
-    } else if (force === 'disable') {
-      // force disable
-      $element.attr('disabled', '');
-    } else if (force === 'enable') {
-      // force enable
-      $element.removeAttr('disabled');
     }
   };
   
@@ -702,3 +696,10 @@
   };
 
 })(jQuery, window, document);
+/* xt-ajax
+@copyright (c) 2016 - 2017 Riccardo Caroli
+@license MIT (https://github.com/minimit/xtend/blob/master/LICENSE) */
+
+/* xt-toggle
+@copyright (c) 2016 - 2017 Riccardo Caroli
+@license MIT (https://github.com/minimit/xtend/blob/master/LICENSE) */
