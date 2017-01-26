@@ -289,12 +289,12 @@ $button__menu_pixels: 1px;
       transform-origin: left center;
     }
     span:nth-child(2) {
-      top: calc(0.41em - #{$button__menu_pixels} * 1);
+      top: calc(0.4em - #{$button__menu_pixels} * 1);
       -webkit-transform-origin: left center;
       transform-origin: left center;
     }
     span:nth-child(3) {
-      top: calc(0.82em - #{$button__menu_pixels} * 2);
+      top: calc(0.8em - #{$button__menu_pixels} * 2);
       -webkit-transform-origin: left center;
       transform-origin: left center;
     }
@@ -314,7 +314,7 @@ $button__menu_pixels: 1px;
       span:nth-child(3) {
         -webkit-transform: rotate(-45deg);
         transform: rotate(-45deg);
-        top: calc(0.82em - #{$button__menu_pixels} * 2);
+        top: calc(0.8em - #{$button__menu_pixels} * 2);
         left: 0;
       }
     }
