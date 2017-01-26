@@ -113,7 +113,7 @@ gulp.task('version', function() {
     .pipe(injectString.replace(/version: (.*)/, 'version: ' + version))
     .pipe(gulp.dest(''));
   // inject scss and js
-  var banner = "/*! xtend v" + version + " (http://)\n" + "@copyright (c) 2016 - 2017 Riccardo Caroli\n" + "@license MIT (https://github.com/minimit/xtend/blob/master/LICENSE) */";
+  var banner = "/*! xtend v" + version + " (http://www.minimit.com/xtend/)\n" + "@copyright (c) 2016 - 2017 Riccardo Caroli\n" + "@license MIT (https://github.com/minimit/xtend/blob/master/LICENSE) */";
   return gulp.src(['src/docs/assets/xt/**/*.scss', 'src/docs/assets/xt/**/*.js'])
     .pipe(injectString.replace(/\/\*\![^\*]+\*\//, banner))
     .pipe(gulp.dest('src/docs/assets/xt/'));

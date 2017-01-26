@@ -16,7 +16,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/minimit/minimit.git"
+    "url": ""
   },
   "moduleType": "globals",
   "main": ["/dist/xt-theme.scss", "/dist/_xt-base.scss", "/dist/_xt-variables.scss", "/dist/xt-theme.css", "/dist/xt-theme.min.css", "/dist/xt.js", "/dist/xt.min.js"],
