@@ -294,7 +294,7 @@ a:not(.button):hover:not(.active), a:not(.button).hover:not(.active), a:not(.but
   font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 400;
   font-style: normal;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
   text-transform: uppercase;
 }
 

@@ -501,9 +501,7 @@
         if (!isSync) {
           if ($currents.length > settings.max) {
             var xt = $currents.first().data(settings.type);
-            if (xt) {
-              xt.hide();
-            }
+            xt.hide();
           }
         }
       }

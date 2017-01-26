@@ -216,7 +216,7 @@ a:not(.button) {
   border: 0;
   border-radius: 0;
   @include font(sans-regular);
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
   text-transform: uppercase;
   & {
     background: darken($color-white, 10%);
