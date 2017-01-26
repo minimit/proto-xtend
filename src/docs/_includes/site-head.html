@@ -14,17 +14,17 @@
     <meta name="description" content="{{ page.description }}" />
 
     <!-- icons -->
-    <link rel="icon" href="/assets/images/favicon.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png" />
+    <link rel="icon" href="{{ site.baseurl }}assets/images/favicon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ site.baseurl }}assets/images/apple-touch-icon.png" />
     
     <!-- styles -->
-    <link rel="stylesheet" href="/assets/styles/highlight/github.css?v={{ site.version }}"> <!-- atom-one-light github agate -->
+    <link rel="stylesheet" href="{{ site.baseurl }}assets/styles/highlight/github.css?v={{ site.version }}"> <!-- atom-one-light github agate -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" />
-    <link rel="stylesheet" href="/assets/styles/icons/style.css?v={{ site.version }}" />
-    <link rel="stylesheet" href="/assets/styles/main.css?v={{ site.version }}" />
+    <link rel="stylesheet" href="{{ site.baseurl }}assets/styles/icons/style.css?v={{ site.version }}" />
+    <link rel="stylesheet" href="{{ site.baseurl }}assets/styles/main.css?v={{ site.version }}" />
     
     <!-- scripts -->
-    <script src="/assets/scripts/jquery.min.js"></script>
+    <script src="{{ site.baseurl }}assets/scripts/jquery.min.js"></script>
 
   </head>
   <body>
@@ -75,7 +75,7 @@
                   <a href="{{ site.baseurl }}" class="button make-line" data-xt-ajax='{"target": ".site-wrapper"}'>
                     Home
                   </a>
-                  <a href="/tests/" class="button make-line">
+                  <a href="{{ site.baseurl }}tests/" class="button make-line">
                     Tests
                   </a>
                   
