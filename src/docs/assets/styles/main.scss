@@ -766,11 +766,9 @@ pre {
 }
 
 @include xt-scroll('.site-breadcrumbs', '.scroll-breadcrumbs', 'absolute'); // html custom class .scroll-breadcrumbs, default z-index 70
-html.scroll-down {
-  .site-breadcrumbs .show-scroll {
-    -webkit-animation: left-fadein 0.6s cubic-bezier(0.19, 1, 0.22, 1);
-    animation: left-fadein 0.6s cubic-bezier(0.19, 1, 0.22, 1);
-  }
+.site-breadcrumbs.scroll-show-down .show-scroll {
+  -webkit-animation: left-fadein 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+  animation: left-fadein 0.6s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 /* xt-menu */
