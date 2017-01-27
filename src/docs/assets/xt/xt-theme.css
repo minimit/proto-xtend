@@ -64,8 +64,11 @@ body {
   vertical-align: top;
 }
 
-.button {
+a, button {
   cursor: pointer;
+}
+
+.button {
   display: inline-block;
   vertical-align: middle;
   text-align: center;

@@ -54,8 +54,10 @@ body {
     margin-right: -4px;
     vertical-align: top; }
 
+a, button {
+  cursor: pointer; }
+
 .button {
-  cursor: pointer;
   display: inline-block;
   vertical-align: middle;
   text-align: center;
