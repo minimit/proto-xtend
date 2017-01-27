@@ -204,14 +204,15 @@
     }
   });
   
-  // automatic ajax
-  $(document).ready( function() {
+  // initAjax
+  $.fn.xt.initAjax = function() {
     var options = $.fn.xt.automaticAjax;
     if (options) {
       // ajax links
       $('a[href^="' + options.baseurl + '"]').xtAjax({'target': options.target});
       // on ajax.done.xt
-      $(options.target).on('ajax.done.xt', function(e, obj, $data) {
+      $(options.target).off('ajax.done.xt.populate');
+      $(options.target).on('ajax.done.xt.populate', function(e, obj, $data) {
         // ajax links
         $(this).find('a[href^="' + options.baseurl + '"]').xtAjax({'target': options.target});
         // automatic xtInitAll
@@ -220,16 +221,10 @@
         }
       });
     }
+  };
+  $(document).ready( function() {
+    $.fn.xt.initAjax();
   });
-  /* manual ajax
-  var ajaxBaseUrl = '/';
-  $('a[href^="' + ajaxBaseUrl + '"]').xtAjax({"target": ".site-wrapper"});
-  $('.site-wrapper').on('ajax.done.xt', function(e, obj, $data) {
-    $(this).find('a[href^="' + ajaxBaseUrl + '"]').xtAjax({"target": ".site-wrapper"});
-    console.log('ajax done');
-    $('.site-wrapper').xtInitAll(true); // reinit xtend
-  });
-  */
   
   //////////////////////
   // methods

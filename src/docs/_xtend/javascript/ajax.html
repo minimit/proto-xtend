@@ -1,0 +1,34 @@
+---
+title: Ajax
+description: Ajax component
+
+categories: [Javascript]
+order: 3
+---
+
+<h2>Usage</h2>
+
+<h3>Automatic</h3>
+<p class="lead">Automatic initialization of ajax component.</p>
+<p>Just assign <code>$.fn.xt.automaticAjax</code> before document ready, <code>'baseurl'</code> is the prefix of links that have ajax activated (<code>'baseurl': '/'</code> activates ajax on all links that starts with '/'), <code>'target'</code> is the document selector to replace on each ajax call.</p>
+<pre><code class="js">
+$.fn.xt.automaticAjax = {
+  'baseurl': '/',
+  'target': '.site-wrapper',
+};
+</code></pre>
+<p>If you want to reinit ajax use this function <code>$.fn.xt.initAjax();</code></p>
+
+<h3>Manual</h3>
+<p class="lead">Manual initialization of ajax component.</p>
+
+<p>You can call <strong>xtAjax</strong> manually on the links you want to ajaxify.</p>
+<pre><code class="js">
+var ajaxBaseUrl = '/';
+var ajaxTarget = '.site-wrapper';
+$('a[href^="' + ajaxBaseUrl + '"]').xtAjax({"target": ajaxTarget});
+$(ajaxTarget).on('ajax.done.xt', function(e, obj, $data) {
+  $(this).find('a[href^="' + ajaxBaseUrl + '"]').xtAjax({"target": ajaxTarget});
+  $(ajaxTarget).xtInitAll(true); // reinit xtend
+});
+</code></pre>

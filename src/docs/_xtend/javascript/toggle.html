@@ -1,14 +1,15 @@
 ---
 title: Toggle
-description: Toggle components
+description: Toggle component
 
 categories: [Javascript]
-order: 2
+order: 1
 ---
 
 <h2>Usage</h2>
 <p class="lead">Usage for all javascript components.</p>
-<h3>Markup</h3>
+
+<h3>Automatic</h3>
 <p>Assign <code>data-xt</code> attribute to the element, this will extend the plugin's default settings with your own settings.</p>
 <pre><code class="html">
 &lt;button class="button color-primary" data-xt='{"target": ".collapse"}'&gt;toggle&lt;/button&gt;
@@ -17,7 +18,7 @@ order: 2
   <strong>Important:</strong> the plugin's attributes <strong>must be a valid json format</strong>, so with double quotes inside.
 </div>
 
-<h3>Javascript (optional)</h3>
+<h3>Manual (optional)</h3>
 <p>If you want to disable auto initialization just set <code>$.fn.xt.manualInit = true;</code> before document ready.</p>
 <p>You can initialize all the elements:</p>
 <pre><code class="js">
@@ -30,8 +31,10 @@ $('[data-xt]').xt();
 $('[data-xt]').xt({"target": "#collapse", "min": 1, "max": 3}); // arguments are the same as json data- arguments
 </code></pre>
 
-<h3>Activation</h3>
+<h2>Options</h2>
+<p class="lead">Options for all javascript components.</p>
 
+<h3>Activation</h3>
 <div class="demo">
   <div class="demo-item demo-preview" data-name="class">
     <div class="demo-text"><strong>Xtend</strong> activates both <strong>element</strong> and <strong>target</strong> with the a choosen <code>"class": "name"</code>.</div>
