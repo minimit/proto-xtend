@@ -95,10 +95,6 @@ body {
   opacity: 1;
 }
 
-.show-scroll {
-  display: none !important;
-}
-
 html {
   font-size: 16px;
 }

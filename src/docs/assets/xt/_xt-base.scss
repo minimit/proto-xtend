@@ -126,15 +126,24 @@ body {
 // xt-scroll
 //////////////////////
 
-.show-scroll {
-  display: none !important;
-}
-@mixin xt-scroll($item, $class:'.scroll') {
+@mixin xt-scroll($item, $class:'.scroll', $position:false) {
+  @if $position == 'absolute' {
+    #{$item}.xt-scroll:not(.xt-ignore) {
+      position: absolute;
+    }
+    #{$item}.xt-ignore {
+      display: block;
+    }
+  } @else {
+    #{$item}.xt-ignore {
+      display: none;
+    }
+  }
   #{$item} {
     z-index: 70;
-  }
-  #{$item}.xt-ignore {
-    display: none;
+    .show-scroll {
+      display: none;
+    }
   }
   html#{$class} {
     #{$item}.xt-ignore {
@@ -146,10 +155,10 @@ body {
       left: 0;
       right: 0;
       .show-scroll {
-        display: block !important;
+        display: block;
       }
       .hide-scroll {
-        display: none !important;
+        display: none;
       }
     }
   }

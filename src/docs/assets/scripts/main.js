@@ -207,7 +207,8 @@
       var $element = $(this);
       var id = $element.text().replace(/\s+/g, '-').toLowerCase();
       $element.attr('id', id);
-      $element.addClass('make-anchor').append('<span class="site-article-anchor"><a href="#' + id + '" class="button"><span class="icon-link" aria-hidden="true"></span></a></span>');
+      $element.wrapInner('<a href="#' + id + '"></a>');
+      $element.addClass('make-anchor').append('<span class="site-article-anchor"><div class="button"><span class="icon-link" aria-hidden="true"></span></div></span>');
     });
     
     // tooltips

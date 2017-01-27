@@ -367,6 +367,8 @@
     var element = this.element;
     var $element = $(this.element);
     // events
+    if (settings.name === 'xt-menu') {
+    }
     if (settings.name === 'xt-scroll') {
       // scroll events
       if (!settings.$clone) {
@@ -382,6 +384,7 @@
       $(window).on(scrollNamespace, function(e) {
         var $container = $(this);
         var top = $container.scrollTop();
+        // show or hide
         var min = $element.parents('.xt-container').offset().top;
         var max = Infinity;
         if (settings.scrollTop) {
@@ -391,10 +394,41 @@
           max = $(settings.scrollBottom).offset().top;
         }
         if (top > min && top < max) {
-          object.show();
+          if (!$element.hasClass(settings.class)) {
+            object.show();
+            // direction classes
+            $element.removeClass('scroll-hide-up scroll-hide-down');
+            if (settings.scrollOld > top) {
+              $element.removeClass('scroll-show-down');
+              $element.addClass('scroll-show-up');
+            } else {
+              $element.removeClass('scroll-show-up');
+              $element.addClass('scroll-show-down');
+            }
+          }
         } else {
-          object.hide();
+          if ($element.hasClass(settings.class)) {
+            object.hide();
+            // direction classes
+            $element.removeClass('scroll-show-up scroll-show-down');
+            if (settings.scrollOld > top) {
+              $element.removeClass('scroll-hide-down');
+              $element.addClass('scroll-hide-up');
+            } else {
+              $element.removeClass('scroll-hide-up');
+              $element.addClass('scroll-hide-down');
+            }
+          }
         }
+        // direction classes
+        if (settings.scrollOld > top) {
+          settings.$target.removeClass('scroll-down');
+          settings.$target.addClass('scroll-up');
+        } else {
+          settings.$target.removeClass('scroll-up');
+          settings.$target.addClass('scroll-down');
+        }
+        settings.scrollOld = top;
         //console.log(':scroll.xt', $element.text().replace(/(\r\n|\n|\r)/gm,"").replace(/^\s+|\s+$|\s+(?=\s)/g, ""), top, min, max);
       });
       $(window).trigger(scrollNamespace);
