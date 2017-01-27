@@ -39,6 +39,12 @@ body {
   float: left;
   width: 100%; }
 
+.hide {
+  display: none !important; }
+
+.show {
+  display: block !important; }
+
 .spacer {
   cursor: default;
   padding-right: 4px; }
@@ -68,7 +74,7 @@ body {
   cursor: default;
   opacity: 1; }
 
-.scroll-show {
+.show-scroll {
   display: none !important; }
 
 html {

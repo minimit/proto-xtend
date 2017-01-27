@@ -714,6 +714,17 @@ pre {
 }
 
 //////////////////////
+// developer-mode
+//////////////////////
+
+.developer {
+  display: none !important;
+}
+.developer-show {
+  display: inline-block !important;
+}
+
+//////////////////////
 // xt
 //////////////////////
 

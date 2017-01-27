@@ -5,12 +5,17 @@
             <nav class="site-footer-top" role="navigation">
               <div class="media">
                 <div class="media-body">
-                  <a href="#" class="button color-white">
+                  <a href="{{ site.baseurl }}" class="button color-white">
                     Home
                   </a>
-                  <a href="#" class="button color-white">
-                    Xtend
-                  </a>
+                  {% for collection in site.collections %}
+                    {% if site.[collection.label].size > 0 %}
+                      {% assign sorted = site.[collection.label] | sort: 'order' %}
+                      <a href="{{ sorted[0].url }}" class="button color-white">
+                        {{ collection.label }}
+                      </a>
+                    {% endif %}
+                  {% endfor %}
                   <a href="#" class="button color-white">
                     Playground
                   </a>
@@ -22,6 +27,12 @@
                   </a>
                 </div>
                 <div class="mr-3">
+                  <a href="{{ site.baseurl }}tests/" class="button color-white developer">
+                    Tests
+                  </a>
+                  <button class="button color-white button__developer">
+                    <span class="icon-embed2"></span>
+                  </button>
                   {% comment %}
                   <a href="#" class="button color-white">
                     Privacy policy

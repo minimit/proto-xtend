@@ -225,14 +225,43 @@
     });
     
     //////////////////////
-    
+    // xtend
+    //////////////////////
+
     $main.find('.button__menu').xtMenu();
+    
+    //////////////////////
     
   };
   
   // init main
   
   main($('html'));
+  
+  //////////////////////
+  // developer
+  //////////////////////
+  
+  window.developer = false;
+  function developerInit() {
+    // state
+    if (window.developer) {
+      $('.button__developer').addClass('active');
+      $('.developer').addClass('developer-show');
+    }
+    // init
+    $('.button__developer').xtToggle().on('show.xt', function(e) {
+      window.developer = true;
+      $('.developer').addClass('developer-show');
+    }).on('hide.xt', function(e) {
+      window.developer = false;
+      $('.developer').removeClass('developer-show');
+    });
+  }
+  $('.site-wrapper').on('ajax.done.xt', function(e, obj, $data) {
+    developerInit();
+  });
+  developerInit();
   
   //////////////////////
   // xtend

@@ -40,6 +40,12 @@ body {
 .box {
   @include box;
 }
+.hide {
+  display: none !important;
+}
+.show {
+  display: block !important;
+}
 
 //////////////////////
 // spacer
@@ -119,7 +125,7 @@ body {
 // xt-scroll
 //////////////////////
 
-.scroll-show {
+.show-scroll {
   display: none !important;
 }
 @mixin xt-scroll($item, $class:'.scroll') {
@@ -132,10 +138,10 @@ body {
       top: 0;
       left: 0;
       right: 0;
-      .scroll-show {
+      .show-scroll {
         display: block !important;
       }
-      .scroll-hide {
+      .hide-scroll {
         display: none !important;
       }
     }
