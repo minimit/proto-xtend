@@ -57,6 +57,7 @@ body {
   padding-right: 4px; // fix spacing inline-block spacing
   > * {
     display: inline-block;
+    position: relative;
     margin-right: -4px; // fix inline-block spacing
   }
 }
@@ -132,7 +133,13 @@ body {
   #{$item} {
     z-index: 70;
   }
+  #{$item}.xt-ignore {
+    display: none;
+  }
   html#{$class} {
+    #{$item}.xt-ignore {
+      display: block;
+    }
     #{$item}:not(.xt-ignore) {
       position: fixed;
       top: 0;

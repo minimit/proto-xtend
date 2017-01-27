@@ -248,6 +248,7 @@
     this.events(); // events after setup
     window.requestAnimFrame( function() {
       object.activation(); // after to have concurrent grouping and scoping
+      $element.addClass(settings.name); // add xt name class
     });
     //console.log(':init', $element.text().replace(/(\r\n|\n|\r)/gm,"").replace(/^\s+|\s+$|\s+(?=\s)/g, ""), $element.hasClass(settings.class));
   };
@@ -273,6 +274,11 @@
       settings.$group = $element.parent();
       if (settings.target) {
         settings.$target = settings.$group.find(settings.target);
+        // if not child $target we search parents
+        if (!settings.$target.length) {
+          settings.$target = $element.parents(settings.target);
+          settings.$group = settings.$target;
+        }
       }
     }
     // grouping and set namespace
@@ -365,7 +371,7 @@
       // scroll events
       if (!settings.$clone) {
         $element.wrap($('<div class="box xt-container"></div>'));
-        settings.$clone = $element.clone().addClass('box xt-ignore').css('visibility', 'hidden').css('display', 'none');
+        settings.$clone = $element.clone().addClass('box xt-ignore').css('visibility', 'hidden');
         $.each(settings.$clone.data(), function (i) {
           settings.$clone.removeAttr("data-" + i);
         });
@@ -386,10 +392,8 @@
         }
         if (top > min && top < max) {
           object.show();
-          settings.$clone.css('display', 'block');
         } else {
           object.hide();
-          settings.$clone.css('display', 'none');
         }
         //console.log(':scroll.xt', $element.text().replace(/(\r\n|\n|\r)/gm,"").replace(/^\s+|\s+$|\s+(?=\s)/g, ""), top, min, max);
       });

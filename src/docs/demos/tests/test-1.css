@@ -50,6 +50,7 @@ body {
   padding-right: 4px; }
   .spacer > * {
     display: inline-block;
+    position: relative;
     margin-right: -4px; }
 
 .button {
@@ -233,7 +234,7 @@ a:not(.button) {
   letter-spacing: 0.5px;
   text-transform: uppercase; }
   .button.size-xs {
-    padding: 4px 8px;
+    padding: 5px 8px;
     font-size: 10px; }
   .button.size-sm {
     padding: 6px 10px;

@@ -63,11 +63,11 @@
     font-size: 12px;
   }
   .site-breadcrumbs-body & {
-    padding: 20px 12px;
+    padding: 15px 12px;
     font-size: 13px;
   }
   .site-breadcrumbs-meta & {
-    padding: 18px 8px;
+    padding: 13px 8px;
     font-size: 16px;
   }
   /* color-white */
@@ -241,13 +241,36 @@ a.logo {
 .site-breadcrumbs {
   cursor: default;
   @include box;
+  padding-top: 5px;
+  padding-bottom: 5px;
   background: $color-primary;
   color: $color-white;
 }
 .site-breadcrumbs-body-main {
-}
-.site-breadcrumbs-body-sub {
-  display: none;
+  .site-breadcrumbs-body-sub {
+    display: none;
+    position: relative;
+    z-index: 1;
+    background: $color-primary;
+    .button {
+      float: left;
+      clear: both;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      font-size: 10px;
+      &:first-child {
+        padding-top: 0;
+      }
+      &:last-child {
+        padding-bottom: 1rem;
+      }
+    }
+  }
+  &.hover {
+    .site-breadcrumbs-body-sub {
+      display: block;
+    }
+  }
 }
 
 /* .button__menu */
@@ -355,6 +378,7 @@ $button__menu_pixels: 1px;
 .site-footer-top {
   margin-left: -12px;
   margin-right: -12px;
+  font-size: 0;
   .button {
     padding: 18px 12px;
     font-size: 13px;
@@ -732,6 +756,12 @@ pre {
 @include xt-scroll('.site-header-top'); // html default class .scroll, default z-index 70
 @include xt-scroll('.site-breadcrumbs', '.scroll-breadcrumbs'); // html custom class .scroll-breadcrumbs, default z-index 70
 
+.site-breadcrumbs.xt-scroll:not(.xt-ignore) {
+  position: absolute;
+}
+.site-breadcrumbs.xt-ignore {
+  display: block;
+}
 /* xt-menu */
 @include xt-menu('.site-menu'); // html default class .menu, default z-index 80
 html.menu {

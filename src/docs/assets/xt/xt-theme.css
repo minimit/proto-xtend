@@ -59,6 +59,7 @@ body {
 
 .spacer > * {
   display: inline-block;
+  position: relative;
   margin-right: -4px;
 }
 
@@ -309,7 +310,7 @@ a:not(.button):hover:not(.active), a:not(.button).hover:not(.active), a:not(.but
 }
 
 .button.size-xs {
-  padding: 4px 8px;
+  padding: 5px 8px;
   font-size: 10px;
 }
 

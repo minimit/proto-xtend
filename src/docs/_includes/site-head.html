@@ -126,13 +126,7 @@
                   {% assign sorted = site.[collection.label] | sort: 'order' %}
                   {% for p in sorted %}
                     {% if p.categories[0] == collection.label %}
-                      <div class="site-breadcrumbs-body-main">
-                        <!--
-                        <a href="{{ p.url }}" class="button" data-xt-ajax='{"target": ".site-wrapper"}'>
-                        -->
-                        <!--
-                        <a href="{{ p.url }}" class="button" data-xt-toggle='{"target": ".site-breadcrumbs-body-main", "class": "hover", "on": "mouseenter", "off": "mouseleave"}'>
-                        -->
+                      <div class="site-breadcrumbs-body-main" data-xt-toggle='{"class": "hover", "on": "mouseenter", "off": "mouseleave"}'>
                         <a href="{{ p.url }}" class="button">
                           {{ p.title }}
                         </a>

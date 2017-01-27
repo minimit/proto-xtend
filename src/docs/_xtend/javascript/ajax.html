@@ -9,7 +9,7 @@ order: 3
 <h2>Usage</h2>
 
 <h3>Automatic</h3>
-<p class="lead">Automatic initialization of ajax component.</p>
+<p class="lead">Automatic initialization of all ajax links.</p>
 <p>Just assign <code>$.fn.xt.automaticAjax</code> before document ready, <code>'baseurl'</code> is the prefix of links that have ajax activated (<code>'baseurl': '/'</code> activates ajax on all links that starts with '/'), <code>'target'</code> is the document selector to replace on each ajax call.</p>
 <pre><code class="js">
 $.fn.xt.automaticAjax = {
@@ -19,8 +19,15 @@ $.fn.xt.automaticAjax = {
 </code></pre>
 <p>If you want to reinit ajax use this function <code>$.fn.xt.initAjax();</code></p>
 
-<h3>Manual</h3>
-<p class="lead">Manual initialization of ajax component.</p>
+<h3>Manual Markup</h3>
+<p class="lead">Manual initialization of ajax link via markup.</p>
+
+<pre><code class="html">
+&lt;a href="/link" data-xt-ajax='{"target": ".site-wrapper"}'&gt;Link&lt;/a&gt;
+</code></pre>
+
+<h3>Manual Javascript</h3>
+<p class="lead">Manual initialization of all ajax links via javascript.</p>
 
 <p>You can call <strong>xtAjax</strong> manually on the links you want to ajaxify.</p>
 <pre><code class="js">
