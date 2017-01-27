@@ -4,6 +4,13 @@
 
 @import "bootstrap.min";
 
+.card {
+  width: 332px;
+}
+.card-block {
+  position: relative;
+  background: #ffffff;
+}
 .collapse {
   display: none !important;
 }
@@ -282,7 +289,7 @@ a.logo {
 $button__menu_pixels: 1px;
 .button__menu {
   @include font(sans-light, !important);
-  font-size: 20px !important;
+  font-size: 19px !important;
   line-height: 1.2;
   text-transform: none !important;
   .site-header-top & {

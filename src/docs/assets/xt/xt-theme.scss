@@ -251,3 +251,23 @@ a:not(.button) {
     }
   }
 }
+
+//////////////////////
+// xt-height
+//////////////////////
+
+.xt-height {
+  -webkit-transition: height 0.3s cubic-bezier(.63,.36,0,.97);
+  transition: height 0.3s cubic-bezier(.63,.36,0,.97);
+  will-change: height;
+}
+.xt-height-top {
+  -webkit-transition: margin-bottom 0.3s cubic-bezier(.63,.36,0,.97);
+  transition: margin-bottom 0.3s cubic-bezier(.63,.36,0,.97);
+  will-change: margin-bottom;
+}
+.xt-height-bottom {
+  -webkit-transition: margin-top 0.3s cubic-bezier(.63,.36,0,.97);
+  transition: margin-top 0.3s cubic-bezier(.63,.36,0,.97);
+  will-change: margin-top;
+}

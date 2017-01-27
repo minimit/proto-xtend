@@ -270,14 +270,19 @@
         settings.$target = settings.$group.find(settings.target);
       }
     } else {
-      // if not 'group' we use parent
-      settings.$group = $element.parent();
+      // we search from $element
+      settings.$group = $element;
       if (settings.target) {
         settings.$target = settings.$group.find(settings.target);
-        // if not child $target we search parents
+        // if not found we search from $element.parent()
         if (!settings.$target.length) {
-          settings.$target = $element.parents(settings.target);
-          settings.$group = settings.$target;
+          settings.$group = $element.parent();
+          settings.$target = settings.$group.find(settings.target);
+          // if not found we search parents for $target
+          if (!settings.$target.length) {
+            settings.$target = $element.parents(settings.target);
+            settings.$group = settings.$target;
+          }
         }
       }
     }
@@ -306,6 +311,10 @@
     // automatic $target based on groupIndex
     if (settings.target && settings.$target.length > 1) {
       settings.$target = settings.$target.eq(settings.groupIndex);
+    }
+    // xt-height
+    if (settings.target && settings.$target.hasClass('xt-height')) {
+      settings.$target.wrapInner('<div class="xt-height-inside"></div>');
     }
     // reinit if has class
     if ($element.hasClass(settings.class)) {
@@ -367,8 +376,6 @@
     var element = this.element;
     var $element = $(this.element);
     // events
-    if (settings.name === 'xt-menu') {
-    }
     if (settings.name === 'xt-scroll') {
       // scroll events
       if (!settings.$clone) {
@@ -544,6 +551,12 @@
       if (settings.target && !settings.$target.hasClass(settings.class)) {
         triggerTarget = true;
         settings.$target.addClass(settings.class);
+        if (settings.$target.hasClass('xt-height')) {
+          var h = settings.$target.find('.xt-height-inside').outerHeight();
+          settings.$target.css("height", h);
+          $element.find('.xt-height-top').css("margin-bottom", -h);
+          $element.find('.xt-height-bottom').css("margin-top", -h);
+        }
       }
       // control over activated
       if (settings.url) {
@@ -591,6 +604,11 @@
         if (settings.target && settings.$target.hasClass(settings.class)) {
           triggerTarget = true;
           settings.$target.removeClass(settings.class);
+          if (settings.$target.hasClass('xt-height')) {
+            settings.$target.css("height", 0);
+            $element.find('.xt-height-top').css("margin-bottom", 0);
+            $element.find('.xt-height-bottom').css("margin-top", 0);
+          }
         }
       }
       // [disabled]

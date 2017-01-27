@@ -126,19 +126,17 @@
                   {% assign sorted = site.[collection.label] | sort: 'order' %}
                   {% for p in sorted %}
                     {% if p.categories[0] == collection.label %}
-                      <div class="site-breadcrumbs-body-main" data-xt-toggle='{"class": "hover", "on": "mouseenter", "off": "mouseleave"}'>
+                      <div class="site-breadcrumbs-body-main" data-xt-toggle='{"target": ".site-breadcrumbs-body-sub", "on": "mouseenter", "off": "mouseleave"}'>
                         <a href="{{ p.url }}" class="button">
                           {{ p.title }}
                         </a>
-                        <div class="site-breadcrumbs-body-sub dynamic-height" data-dynamic-height-source=".site-breadcrumbs-body-main">
-                          <div class="dynamic-height-inside">
-                            {% assign subsorted = site.[collection.label] | where: 'categories', p.title | sort: 'order' %}
-                            {% for pa in subsorted %}
-                            <a href="{{ pa.url }}" class="button">
-                              {{ pa.title }}
-                            </a>
-                            {% endfor %}
-                          </div>
+                        <div class="site-breadcrumbs-body-sub xt-height">
+                          {% assign subsorted = site.[collection.label] | where: 'categories', p.title | sort: 'order' %}
+                          {% for pa in subsorted %}
+                          <a href="{{ pa.url }}" class="button">
+                            {{ pa.title }}
+                          </a>
+                          {% endfor %}
                         </div>
                       </div>
                     {% endif %}
