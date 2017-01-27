@@ -123,6 +123,103 @@ body {
 }
 
 //////////////////////
+// xt-height
+//////////////////////
+
+.dynamic-height-container {
+  vertical-align: top;
+}
+.dynamic-height {
+  overflow: hidden;
+  height: 0;
+  -webkit-transition: height 0.3s cubic-bezier(.63,.36,0,.97) !important;
+  transition: height 0.3s cubic-bezier(.63,.36,0,.97) !important;
+  will-change: height;
+} 
+.dynamic-height-inside {
+  display: block;
+  float: left;
+  width: 100%;
+}
+
+/*
+<a href="#" class="box box-listing-grey">
+    <img class="img-responsive dynamic-height-remove" src="images/content/box-listing-grey-0.jpg">
+    <div class="box box-listing-grey-inside">
+        <div class="vline vline-sm vline-infinite">
+            <h6 class="h6">progetti</h6>
+            <h2 class="h2">Museo Egizio di Torino</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.</p>
+            <div class="dynamic-height" data-dynamic-height-source=".box-listing-grey">
+                <div class="dynamic-height-inside">
+                    <div class="btn btn-default-empty">
+                        scopri
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</a>
+*/
+/*
+// settings
+
+.dynamic-height-inside {
+    display: block;
+    float: left;
+    width: 100%;
+}
+
+// animations
+
+.dynamic-height-container {
+    .dynamic-height-remove {
+        -webkit-transition: margin-bottom 0.45s @bezier-4 !important;
+        transition: margin-bottom 0.45s @bezier-4 !important;
+        will-change: margin-bottom;
+        // custom
+        .box-category-item & {
+            @media @max-sm {
+                margin-bottom: 0 !important; // disable on mobile
+            }
+        }
+    }
+    .dynamic-height {
+        overflow: hidden;
+        height: 0;
+        -webkit-transition: height 0.45s @bezier-4 !important;
+        transition: height 0.45s @bezier-4 !important;
+        will-change: height;
+        // custom
+        .box-category-item & {
+            @media @max-sm {
+                height: 0 !important; // disable on mobile
+            }
+        }
+    }
+    &.dynamic-height-hover {
+        .dynamic-height-remove {
+            -webkit-transition: margin-bottom 0.45s @bezier-4 !important;
+            transition: margin-bottom 0.45s @bezier-4 !important;
+        }
+        .dynamic-height {
+            -webkit-transition: height 0.45s @bezier-4 !important;
+            transition: height 0.45s @bezier-4 !important;
+        }
+    }
+    // fix position absolute instead of .dynamic-height-remove
+    &.box-category-item {
+        padding-bottom: 93px;
+        .box-category-item-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+    }
+}
+*/
+
+//////////////////////
 // xt-scroll
 //////////////////////
 

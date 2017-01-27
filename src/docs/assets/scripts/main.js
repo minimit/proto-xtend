@@ -226,6 +226,35 @@
     });
     
     //////////////////////
+    // xt-height v2 beta ()
+    // Copyright 2014-2016 Riccardo Caroli
+    //////////////////////
+
+    $main.find(".dynamic-height").each( function(i) {
+      var $element = $(this);
+      var $inside = $element.find(".dynamic-height-inside");
+      var target = $element.data("dynamic-height-source");
+      var $container = $element.parents(target);
+      var $remove = $container.find(".dynamic-height-remove");
+      $container.addClass("dynamic-height-container");
+      $container.on("mouseenter", function(e) {
+        clearTimeout($container.dynamicHeightTimeout);
+        var h = $inside.outerHeight();
+        $element.css("height", h);
+        $remove.css("margin-bottom", -h);
+        $container.addClass("dynamic-height-hover");
+      });
+      $container.on("mouseleave", function(e) {
+        clearTimeout($container.dynamicHeightTimeout);
+        $container.dynamicHeightTimeout = window.setTimeout( function($element, $remove) {
+          $element.css("height", 0);
+          $remove.css("margin-bottom", 0);
+          $container.removeClass("dynamic-height-hover");
+        }, 100, $element, $remove);
+      });
+    });
+    
+    //////////////////////
     // xtend
     //////////////////////
 

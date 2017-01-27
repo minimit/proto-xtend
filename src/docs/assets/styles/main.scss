@@ -248,15 +248,15 @@ a.logo {
 }
 .site-breadcrumbs-body-main {
   .site-breadcrumbs-body-sub {
-    display: none;
+    display: block;
     position: relative;
     z-index: 1;
     background: $color-primary;
     .button {
       float: left;
       clear: both;
-      padding-top: 5px;
-      padding-bottom: 5px;
+      padding-top: 4px;
+      padding-bottom: 4px;
       font-size: 10px;
       &:first-child {
         padding-top: 0;
@@ -266,11 +266,16 @@ a.logo {
       }
     }
   }
+  /*
+  .site-breadcrumbs-body-sub {
+    display: none;
+  }
   &.hover {
     .site-breadcrumbs-body-sub {
       display: block;
     }
   }
+  */
 }
 
 /* .button__menu */

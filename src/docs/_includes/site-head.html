@@ -130,13 +130,15 @@
                         <a href="{{ p.url }}" class="button">
                           {{ p.title }}
                         </a>
-                        <div class="site-breadcrumbs-body-sub">
-                          {% assign subsorted = site.[collection.label] | where: 'categories', p.title | sort: 'order' %}
-                          {% for pa in subsorted %}
-                          <a href="{{ pa.url }}" class="button">
-                            {{ pa.title }}
-                          </a>
-                          {% endfor %}
+                        <div class="site-breadcrumbs-body-sub dynamic-height" data-dynamic-height-source=".site-breadcrumbs-body-main">
+                          <div class="dynamic-height-inside">
+                            {% assign subsorted = site.[collection.label] | where: 'categories', p.title | sort: 'order' %}
+                            {% for pa in subsorted %}
+                            <a href="{{ pa.url }}" class="button">
+                              {{ pa.title }}
+                            </a>
+                            {% endfor %}
+                          </div>
                         </div>
                       </div>
                     {% endif %}
