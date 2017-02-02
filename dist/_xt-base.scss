@@ -150,6 +150,16 @@ a, button {
     #{$item}.xt-ignore {
       display: block;
     }
+  } @elseif $position == 'fixed' {
+    #{$item}.xt-scroll:not(.xt-ignore) {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+    }
+    #{$item}.xt-ignore {
+      display: block;
+    }
   } @else {
     #{$item}.xt-ignore {
       display: none;

@@ -1,0 +1,47 @@
+---
+title: Scroll
+description: Scroll component
+
+categories: [Javascript]
+order: 5
+---
+
+<h2>Usage</h2>
+
+<h3>Markup</h3>
+<p class="lead">Markup initialization of scroll via markup.</p>
+
+<p>The scroll plugin adds to the "element" and body the <code>.scroll</code> class when the windows is scrollTop reach the element.</p>
+<pre><code class="html">
+&lt;div data-xt-scroll&gt;&lt;/div&gt;
+</code></pre>
+<p>The plugin clones the "element" and hides it, so it adds the space of the "element" also if it's <code>position: fixed;</code>, it works with responsive automatically.</p>
+<p>You can set custom class, start position with <code>scrollTop</code>, end position with <code>scrollBottom</code>.</p>
+<pre><code class="html">
+&lt;div data-xt-scroll='{"class": "scroll-custom", "scrollTop": ".element", "scrollBottom": ".element"}'&gt;&lt;/div&gt;
+</code></pre>
+
+<p>You can use the scss mixin to style the scroll "element".</p>
+<pre><code class="scss">
+// html default class .scroll, default z-index 70
+@include xt-scroll('.card[data-xt-scroll]');
+// html custom class .scroll-card, default z-index 70, absolute when not scrolling
+@include xt-scroll('.card[data-xt-scroll]', '.scroll-card', 'absolute');
+</code></pre>
+
+<h3>Demos</h3>
+
+<div class="demo">
+  <div class="demo-item" data-iframe="{{ site.baseurl }}demos/xtend/scroll-0.html" data-name="basic">
+    <div class="demo-text">Just add <code>[data-xt-scroll]</code> to the "element".</div>
+  </div>
+  <div class="demo-item" data-iframe="{{ site.baseurl }}demos/xtend/scroll-1.html" data-name="animations">
+    <div class="demo-text">Use the classes <code>.scroll-show-up, .scroll-show-down, .scroll-hide-up, .scroll-hide-down</code> to add animations when the element show or hide in the specific direction.</div>
+  </div>
+  <div class="demo-item" data-iframe="{{ site.baseurl }}demos/xtend/scroll-2.html" data-name="custom">
+    <div class="demo-text">You can set custom class, start position with <code>scrollTop</code>, end position with <code>scrollBottom</code>.</div>
+  </div>
+  <div class="demo-item" data-iframe="{{ site.baseurl }}demos/xtend/scroll-3.html" data-name="fixed">
+    <div class="demo-text">To have the "element" fixed or absolute when not scrolling, specify it in the mixin. The space is added automatically by the cloned "element".</div>
+  </div>
+</div>
