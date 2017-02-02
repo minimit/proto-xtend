@@ -59,7 +59,7 @@
         });
         // iframe append
         if ($item.attr('data-iframe')) {
-          $item.append('<iframe src="' + $item.attr('data-iframe') + '" frameborder="0"></iframe>');
+          $item.append('<iframe data-src="' + $item.attr('data-iframe') + '" frameborder="0"></iframe>');
         }
         // tabs
         var id = 'iframe' + i + k;
@@ -83,23 +83,33 @@
         });
         // inject iframe
         if ($item.attr('data-iframe')) {
-          $item.addClass('demo-iframe');
           var $iframe = $item.find('> iframe');
-          $iframe.attr('id', id);
-          $iframe.on('load', function(e){
-            populateIframe($item, $iframe, id);
-            window.resizeIframe(id);
-            $iframe[0].contentWindow.init();
-            // .populated fix scroll
-            setTimeout( function($item) {
-              $item.addClass('populated');
-            }, 0, $item);
-          });
+          var initIframe = function() {
+            if (!$iframe.attr('src')) {
+              $item.addClass('demo-iframe');
+              $iframe.attr('id', id);
+              $iframe.attr('src', $iframe.attr('data-src'));
+              $iframe.on('load', function(e){
+                populateIframe($item, $iframe, id);
+                window.resizeIframe(id);
+                $iframe[0].contentWindow.init();
+                // .populated fix scroll
+                setTimeout( function($item) {
+                  $item.addClass('populated');
+                }, 0, $item);
+              });
+            }
+          };
+          if (k === 0) {
+            initIframe();
+          }
           // iframe resize on show
           $item.on('show.xt', function(e, obj) {
-            var $iframe = $(this).find('> iframe');
             window.resizeIframe(id);
             //console.log($iframe.attr('src'), $iframe.contents().find('#body-inside').height());
+            if (k !== 0) {
+              initIframe();
+            }
           });
         } else {
           populateInline($item, id);
