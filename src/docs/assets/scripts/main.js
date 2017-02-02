@@ -229,11 +229,13 @@
     $main.find('.site-aside-text > .button:not(.different)').each( function(i) {
       var $container = $(this).parent();
       $main.find('.site-article').find('h2, h3').each( function(z) {
+        var $element = $(this);
         if ($(this).is('h3')) {
           $container.append($('<a href="#' + $(this).attr('id') + '" class="button site-aside-subsub">' + $(this).text() + '</a>'));
         } else {
           $container.append($('<a href="#' + $(this).attr('id') + '" class="button site-aside-sub">' + $(this).text() + '</a>'));
         }
+        //$element.xtScroll();
       });
     });
     

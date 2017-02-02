@@ -246,10 +246,7 @@
     this.scoping(); // scoping before setup
     this.setup();
     this.events(); // events after setup
-    window.requestAnimFrame( function() {
-      object.activation(); // after to have concurrent grouping and scoping
-      $element.addClass(settings.name); // add xt name class
-    });
+    $element.addClass(settings.name); // add xt name class
     //console.log(':init', $element.text().replace(/(\r\n|\n|\r)/gm,"").replace(/^\s+|\s+$|\s+(?=\s)/g, ""), $element.hasClass(settings.class));
   };
   
@@ -316,19 +313,6 @@
     if (settings.target && settings.$target.hasClass('xt-height')) {
       settings.$target.wrapInner('<div class="xt-height-inside"></div>');
     }
-    // reinit if has class
-    if ($element.hasClass(settings.class)) {
-      $element.removeClass(settings.class);
-      this.show();
-    }
-    //console.log(':setup', $element.text().replace(/(\r\n|\n|\r)/gm,"").replace(/^\s+|\s+$|\s+(?=\s)/g, ""), $element.hasClass(settings.class));
-  };
-  
-  Xt.prototype.activation = function() {
-    var object = this;
-    var settings = this.settings;
-    var element = this.element;
-    var $element = $(this.element);
     // automatic init
     if (settings.url) {
       // register data-xt-pushstate on element
@@ -359,15 +343,26 @@
         settings.$target.trigger('ajax.init.xt', [object]);
       }
     } else {
-      var $buttons = this.getButtons();
-      // init if $shown < min
-      var min = settings.min;
-      var $shown = $buttons.filter('.' + settings.class);
-      if ($shown.length < min) {
+      if ($element.hasClass(settings.class)) {
+        // reinit if has class
+        $element.removeClass(settings.class);
         this.show();
       }
+      // after concurrent
+      window.requestAnimFrame( function() {
+        $buttons = object.getButtons();
+        // init if $shown < min
+        var min = settings.min;
+        var $shown = $buttons.filter('.' + settings.class);
+        if (settings.max === 3) {
+          console.log($shown.length);
+        }
+        if ($shown.length < min) {
+          object.show();
+        }
+      });
     }
-    //console.log(':activation', $element.text().replace(/(\r\n|\n|\r)/gm,"").replace(/^\s+|\s+$|\s+(?=\s)/g, ""), $element.hasClass(settings.class));
+    //console.log(':setup', $element.text().replace(/(\r\n|\n|\r)/gm,"").replace(/^\s+|\s+$|\s+(?=\s)/g, ""), $element.hasClass(settings.class));
   };
   
   Xt.prototype.events = function() {
@@ -389,8 +384,7 @@
       var scrollNamespace = 'scroll.xt.' + settings.namespace;
       $(window).off(scrollNamespace);
       $(window).on(scrollNamespace, function(e) {
-        var $container = $(this);
-        var top = $container.scrollTop();
+        var top = $(this).scrollTop();
         // show or hide
         var min = $element.parents('.xt-container').offset().top;
         var max = Infinity;

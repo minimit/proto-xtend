@@ -58,7 +58,7 @@
   </head>
   <body>
     
-    <div id="body-inside">{{ content }}</div>
+    <div id="body-inside"><div>{{ content }}</div></div>
 
     {% if page.scss %}
     <scss-style>{% include_relative {{ page.name | replace: '.html', '.scss' }} %}</scss-style>

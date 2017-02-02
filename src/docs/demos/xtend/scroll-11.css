@@ -111,6 +111,32 @@ h3, .h3 {
   h2:first-child, .h2:first-child,
   h3:first-child, .h3:first-child {
     margin-top: 0 !important; }
+  h1 + h1, .h1 + h1,
+  h2 + h1, .h2 + h1,
+  h3 + h1, .h3 + h1, h1 + .h1, .h1 + .h1,
+  h2 + .h1, .h2 + .h1,
+  h3 + .h1, .h3 + .h1, h1 +
+  h2, .h1 +
+  h2,
+  h2 +
+  h2, .h2 +
+  h2,
+  h3 +
+  h2, .h3 +
+  h2, h1 + .h2, .h1 + .h2,
+  h2 + .h2, .h2 + .h2,
+  h3 + .h2, .h3 + .h2, h1 +
+  h3, .h1 +
+  h3,
+  h2 +
+  h3, .h2 +
+  h3,
+  h3 +
+  h3, .h3 +
+  h3, h1 + .h3, .h1 + .h3,
+  h2 + .h3, .h2 + .h3,
+  h3 + .h3, .h3 + .h3 {
+    margin-top: 1.238rem; }
 
 h4, .h4,
 h5, .h5, .lead,
@@ -125,6 +151,40 @@ h6, .h6 {
   h5:first-child, .h5:first-child, .lead:first-child,
   h6:first-child, .h6:first-child {
     margin-top: 0 !important; }
+  h4 + h4, .h4 + h4,
+  h5 + h4, .h5 + h4, .lead + h4,
+  h6 + h4, .h6 + h4, h4 + .h4, .h4 + .h4,
+  h5 + .h4, .h5 + .h4, .lead + .h4,
+  h6 + .h4, .h6 + .h4, h4 +
+  h5, .h4 +
+  h5,
+  h5 +
+  h5,
+  .h5 +
+  h5,
+  .lead +
+  h5,
+  h6 +
+  h5, .h6 +
+  h5, h4 + .h5, h4 + .lead, .h4 + .h5, .h4 + .lead,
+  h5 + .h5,
+  h5 + .lead, .h5 + .h5, .lead + .h5, .h5 + .lead, .lead + .lead,
+  h6 + .h5,
+  h6 + .lead, .h6 + .h5, .h6 + .lead, h4 +
+  h6, .h4 +
+  h6,
+  h5 +
+  h6,
+  .h5 +
+  h6,
+  .lead +
+  h6,
+  h6 +
+  h6, .h6 +
+  h6, h4 + .h6, .h4 + .h6,
+  h5 + .h6, .h5 + .h6, .lead + .h6,
+  h6 + .h6, .h6 + .h6 {
+    margin-top: 1rem; }
 
 h1, .h1 {
   font-size: 3.224rem; }

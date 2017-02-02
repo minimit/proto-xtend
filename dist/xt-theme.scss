@@ -31,6 +31,9 @@ h3, .h3 {
   @include spacing-headers;
   @include font(sans-medium);
   line-height: 1.3;
+  & + & {
+    margin-top: 1.238rem;
+  }
 }
 h4, .h4,
 h5, .h5,
@@ -38,6 +41,9 @@ h6, .h6 {
   @include spacing-headers-small;
   @include font(sans-light);
   line-height: 1.3;
+  & + & {
+    margin-top: 1rem;
+  }
 }
 h1, .h1 {
   font-size: 3.224rem;
