@@ -305,13 +305,13 @@ a:not(.button) {
     display: none; }
 
 /* scroll */
-.card[data-xt-scroll].scroll-card.xt-ignore {
+.card[data-xt-scroll].scroll.xt-ignore {
   display: block; }
 
-.card[data-xt-scroll].scroll-card:not(.xt-ignore) {
+.card[data-xt-scroll].scroll:not(.xt-ignore) {
   position: fixed;
-  top: 0; }
-  .card[data-xt-scroll].scroll-card:not(.xt-ignore) .show-scroll {
+  bottom: 30px; }
+  .card[data-xt-scroll].scroll:not(.xt-ignore) .show-scroll {
     display: block; }
-  .card[data-xt-scroll].scroll-card:not(.xt-ignore) .hide-scroll {
+  .card[data-xt-scroll].scroll:not(.xt-ignore) .hide-scroll {
     display: none; }

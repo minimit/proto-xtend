@@ -33,10 +33,13 @@ order: 5
 
 <div class="demo">
   <div class="demo-item" data-iframe="{{ site.baseurl }}demos/xtend/scroll-0.html" data-name="basic">
-    <div class="demo-text">Just add <code>[data-xt-scroll]</code> to the "element".</div>
+    <div class="demo-text">Just add <code>[data-xt-scroll]</code> to the "element". Elements inside the scrolling item with class <code>.show-scroll</code> will be shown only when scrolling, with class <code>.hide-scroll</code> will be hidden only when scrolling.</div>
   </div>
-  <div class="demo-item" data-iframe="{{ site.baseurl }}demos/xtend/scroll-10.html" data-name="fixed">
-    <div class="demo-text">To have the "element" fixed or absolute when not scrolling, specify it in the mixin. The space is added automatically by the cloned "element".</div>
+  <div class="demo-item" data-iframe="{{ site.baseurl }}demos/xtend/scroll-10.html" data-name="start">
+    <div class="demo-text">To have the "element" fixed or absolute when not scrolling, specify it in the mixin $start. The space is added automatically by the cloned "element".</div>
+  </div>
+  <div class="demo-item" data-iframe="{{ site.baseurl }}demos/xtend/scroll-11.html" data-name="position">
+    <div class="demo-text">By default the position on scroll is <code>top: 0</code> if you want a <code>bottom: 0</code> or a value, specify it in the mixin $position and $pos.</div>
   </div>
   <div class="demo-item" data-iframe="{{ site.baseurl }}demos/xtend/scroll-20.html" data-name="custom">
     <div class="demo-text">You can set custom class, start position with <code>scrollTop</code>, end position with <code>scrollBottom</code>.</div>

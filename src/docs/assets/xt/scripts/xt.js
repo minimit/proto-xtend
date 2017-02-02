@@ -403,6 +403,7 @@
         if (top > min && top < max) {
           if (!$element.hasClass(settings.class)) {
             object.show();
+            settings.$clone.addClass(settings.class);
             // direction classes
             $element.removeClass('scroll-hide-up scroll-hide-down');
             if (settings.scrollOld > top) {
@@ -420,6 +421,7 @@
         } else {
           if ($element.hasClass(settings.class)) {
             object.hide();
+            settings.$clone.removeClass(settings.class);
             // direction classes
             $element.removeClass('scroll-show-up scroll-show-down');
             if (settings.scrollOld > top) {

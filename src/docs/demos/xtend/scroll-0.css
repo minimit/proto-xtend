@@ -294,23 +294,24 @@ a:not(.button) {
   transition: margin-bottom 0.3s cubic-bezier(0.63, 0.36, 0, 0.97);
   will-change: margin-bottom; }
 
+/* settings */
 .card[data-xt-scroll].xt-ignore {
   display: none; }
 
+/* default */
 .card[data-xt-scroll] {
   z-index: 70; }
   .card[data-xt-scroll] .show-scroll {
     display: none; }
 
-html.scroll .card[data-xt-scroll].xt-ignore {
+/* scroll */
+.card[data-xt-scroll].scroll.xt-ignore {
   display: block; }
 
-html.scroll .card[data-xt-scroll]:not(.xt-ignore) {
+.card[data-xt-scroll].scroll:not(.xt-ignore) {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0; }
-  html.scroll .card[data-xt-scroll]:not(.xt-ignore) .show-scroll {
+  top: 0; }
+  .card[data-xt-scroll].scroll:not(.xt-ignore) .show-scroll {
     display: block; }
-  html.scroll .card[data-xt-scroll]:not(.xt-ignore) .hide-scroll {
+  .card[data-xt-scroll].scroll:not(.xt-ignore) .hide-scroll {
     display: none; }

@@ -427,7 +427,6 @@ $button__menu_pixels: 1px;
 /* .site-aside */
 
 .site-aside {
-  @include box;
   margin-top: 2.619rem;
   margin-bottom: 2.619rem;
 }
@@ -769,6 +768,9 @@ pre {
 
 /* xt-scroll */
 @include xt-scroll('.site-header-top'); // html default class .scroll, default z-index 70
+.site-header-top {
+  width: 100%;
+}
 .site-header-top.scroll-show-up {
   -webkit-animation: top-fadein 0.6s cubic-bezier(0.19, 1, 0.22, 1);
   animation: top-fadein 0.6s cubic-bezier(0.19, 1, 0.22, 1);
@@ -779,13 +781,18 @@ pre {
   -webkit-animation: left-fadein 0.6s cubic-bezier(0.19, 1, 0.22, 1);
   animation: left-fadein 0.6s cubic-bezier(0.19, 1, 0.22, 1);
 }
+@include xt-scroll('.site-aside', '.scroll-aside', false, 'top', 56px);
+.site-aside.scroll-show-down .show-scroll {
+  -webkit-animation: left-fadein 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+  animation: left-fadein 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+}
 
 /* xt-menu */
 @include xt-menu('.site-menu'); // html default class .menu, default z-index 80
 html.menu {
-  @extend html.scroll; // show .site-header-top as if html.scroll
   .site-header-top {
     z-index: 81; // show above .site-menu
+    @extend .site-header-top.scroll; // show as if scrolling
   }
 }
 

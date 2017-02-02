@@ -105,10 +105,11 @@
           }
           // iframe resize on show
           $item.on('show.xt', function(e, obj) {
-            window.resizeIframe(id);
-            //console.log($iframe.attr('src'), $iframe.contents().find('#body-inside').height());
-            if (k !== 0) {
-              initIframe();
+            if (e.target === this) {
+              window.resizeIframe(id);
+              if (k !== 0) {
+                initIframe();
+              }
             }
           });
         } else {
