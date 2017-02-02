@@ -407,10 +407,14 @@
             $element.removeClass('scroll-hide-up scroll-hide-down');
             if (settings.scrollOld > top) {
               $element.removeClass('scroll-show-down');
-              $element.addClass('scroll-show-up');
+              window.requestAnimFrame( function() {
+                $element.addClass('scroll-show-up');
+              });
             } else {
               $element.removeClass('scroll-show-up');
-              $element.addClass('scroll-show-down');
+              window.requestAnimFrame( function() {
+                $element.addClass('scroll-show-down');
+              });
             }
           }
         } else {
@@ -420,10 +424,14 @@
             $element.removeClass('scroll-show-up scroll-show-down');
             if (settings.scrollOld > top) {
               $element.removeClass('scroll-hide-down');
-              $element.addClass('scroll-hide-up');
+              window.requestAnimFrame( function() {
+                $element.addClass('scroll-hide-up');
+              });
             } else {
               $element.removeClass('scroll-hide-up');
-              $element.addClass('scroll-hide-down');
+              window.requestAnimFrame( function() {
+                $element.addClass('scroll-hide-down');
+              });
             }
           }
         }

@@ -1,10 +1,12 @@
 @import "../../assets/xt/xt-theme.scss"; // ignore if customizing xt-theme.scss
 
 @include xt-scroll('.card[data-xt-scroll]');
-.card.scroll-show-down {
+.card.scroll-show-down,
+.card.scroll-hide-down {
   -webkit-animation: top-fadein 0.6s cubic-bezier(0.19, 1, 0.22, 1);
   animation: top-fadein 0.6s cubic-bezier(0.19, 1, 0.22, 1);
 }
+.card.scroll-show-up,
 .card.scroll-hide-up {
   -webkit-animation: bottom-fadein 0.6s cubic-bezier(0.19, 1, 0.22, 1);
   animation: bottom-fadein 0.6s cubic-bezier(0.19, 1, 0.22, 1);
