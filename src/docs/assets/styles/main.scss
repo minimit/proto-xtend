@@ -579,22 +579,28 @@ $button__menu_pixels: 1px;
     opacity: 0;
     -webkit-transition: opacity 1s cubic-bezier(0.19, 1, 0.22, 1);
     transition: opacity 1s cubic-bezier(0.19, 1, 0.22, 1);
+    -webkit-transition-delay: 0.2s;
+    transition-delay: 0.2s;
   }
   #{$hover},
   #{$active} {
     .site-article-anchor {
       opacity: 1;
+      -webkit-transition-delay: 0s;
+      transition-delay: 0s;
     }
   }
 }
 .site-article-anchor {
   position: absolute;
-  bottom: 0;
-  left: -50px;
-  padding: 1px 20px;
+  bottom: -1px;
+  right: 12px;
   .button {
-    padding: 0;
-    background: transparent !important;
+    padding: 7px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: $color-white !important;
     font-size: 17px;
     color: $color-primary;
     line-height: 1;
