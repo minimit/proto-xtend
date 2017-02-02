@@ -285,14 +285,14 @@ a:not(.button) {
   will-change: height; }
 
 .xt-height-top {
-  -webkit-transition: margin-bottom 0.3s cubic-bezier(0.63, 0.36, 0, 0.97);
-  transition: margin-bottom 0.3s cubic-bezier(0.63, 0.36, 0, 0.97);
-  will-change: margin-bottom; }
-
-.xt-height-bottom {
   -webkit-transition: margin-top 0.3s cubic-bezier(0.63, 0.36, 0, 0.97);
   transition: margin-top 0.3s cubic-bezier(0.63, 0.36, 0, 0.97);
   will-change: margin-top; }
+
+.xt-height-bottom {
+  -webkit-transition: margin-bottom 0.3s cubic-bezier(0.63, 0.36, 0, 0.97);
+  transition: margin-bottom 0.3s cubic-bezier(0.63, 0.36, 0, 0.97);
+  will-change: margin-bottom; }
 
 .button.color-primary:hover:not(.active), .button.color-primary.hover:not(.active), .button.color-primary:active, .button.color-primary.active, .button.color-primary:active:focus, .button.color-primary:active.focus, .button.color-primary.active:focus, .button.color-primary.active.focus {
   border: 1px solid #000000; }

@@ -554,8 +554,8 @@
         if (settings.$target.hasClass('xt-height')) {
           var h = settings.$target.find('.xt-height-inside').outerHeight();
           settings.$target.css("height", h);
-          $element.find('.xt-height-top').css("margin-bottom", -h);
-          $element.find('.xt-height-bottom').css("margin-top", -h);
+          settings.$target.parents('.xt-height-top').css("margin-top", -h);
+          settings.$target.parents('.xt-height-bottom').css("margin-bottom", -h);
         }
       }
       // control over activated
@@ -606,8 +606,8 @@
           settings.$target.removeClass(settings.class);
           if (settings.$target.hasClass('xt-height')) {
             settings.$target.css("height", 0);
-            $element.find('.xt-height-top').css("margin-bottom", 0);
-            $element.find('.xt-height-bottom').css("margin-top", 0);
+            settings.$target.parents('.xt-height-top').css("margin-top", 0);
+            settings.$target.parents('.xt-height-bottom').css("margin-bottom", 0);
           }
         }
       }

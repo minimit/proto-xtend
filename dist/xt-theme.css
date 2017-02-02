@@ -389,13 +389,13 @@ a:not(.button):hover:not(.active), a:not(.button).hover:not(.active), a:not(.but
 }
 
 .xt-height-top {
-  -webkit-transition: margin-bottom 0.3s cubic-bezier(0.63, 0.36, 0, 0.97);
-  transition: margin-bottom 0.3s cubic-bezier(0.63, 0.36, 0, 0.97);
-  will-change: margin-bottom;
-}
-
-.xt-height-bottom {
   -webkit-transition: margin-top 0.3s cubic-bezier(0.63, 0.36, 0, 0.97);
   transition: margin-top 0.3s cubic-bezier(0.63, 0.36, 0, 0.97);
   will-change: margin-top;
+}
+
+.xt-height-bottom {
+  -webkit-transition: margin-bottom 0.3s cubic-bezier(0.63, 0.36, 0, 0.97);
+  transition: margin-bottom 0.3s cubic-bezier(0.63, 0.36, 0, 0.97);
+  will-change: margin-bottom;
 }
