@@ -14,6 +14,14 @@
 
         <aside class="site-aside">
           
+          {% if page.collection == null %}
+            <div class="site-aside-text">
+              <a href="{{ page.url }}" class="button">
+                {{ page.title }}
+              </a>
+            </div>
+          {% endif %}
+          
           {% for collection in site.collections %}
             {% if collection.label == page.collection %}
           

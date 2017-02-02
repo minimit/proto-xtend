@@ -209,11 +209,11 @@
     });
     
     // .site-article .make-line
-    $main.find('.site-article').find('h1, h2, h3').addClass('make-line');
+    $main.find('.site-article').find('h2, h3').addClass('make-line');
     $main.find('.make-line').wrapInner('<span class="line"></span>').wrapInner('<div class="line-container"></div>');
     
     // .site-article .site-article-anchor
-    $main.find('.site-article').find('h1, h2, h3').filter(':parents(.demo)').each( function(i) {
+    $main.find('.site-article').find('h2, h3').filter(':parents(.demo)').each( function(i) {
       var $element = $(this);
       var id = $element.text().replace(/\s+/g, '-').toLowerCase();
       $element.attr('id', id);
@@ -225,14 +225,15 @@
     $main.find('[data-toggle="tooltip"]').tooltip(/*{trigger: 'click'}*/);
     
     // .site-aside-text
-    
     $main.find('.site-aside-text > .button:not(.different)').each( function(i) {
       var $container = $(this).parent();
-      var $sub = $('<div class="site-aside-text-sub"></div>');
-      $main.find('.site-article').find('h1, h2, h3').each( function(z) {
-        $sub.append($('<a href="#' + $(this).attr('id') + '" class="button">' + $(this).text() + '</a>'));
+      $main.find('.site-article').find('h2, h3').each( function(z) {
+        if ($(this).is('h3')) {
+          $container.append($('<a href="#' + $(this).attr('id') + '" class="button site-aside-subsub">' + $(this).text() + '</a>'));
+        } else {
+          $container.append($('<a href="#' + $(this).attr('id') + '" class="button site-aside-sub">' + $(this).text() + '</a>'));
+        }
       });
-      $sub.appendTo($container);
     });
     
     //////////////////////
