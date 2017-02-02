@@ -78,7 +78,19 @@ gulp.task('scss-xt', function() {
 gulp.task('js:watch', function() {
   gulp.watch(['src/docs/assets/xt/scripts/*.js'], ['copy-dist']);
 });
-gulp.task('js', ['js-concat'], function(cb) {
+gulp.task('js', ['js-xt'], function(cb) {
+  pump([
+    gulp.src(['src/docs/assets/scripts/*.js', '!src/docs/assets/scripts/*.min.js']),
+    uglify({
+      preserveComments: 'license'
+    }),
+    rename({
+      suffix: '.min'
+    }),
+    gulp.dest('src/docs/assets/scripts/')
+    ], cb);
+});
+gulp.task('js-xt', ['js-concat'], function(cb) {
   pump([
     gulp.src(['src/docs/assets/xt/*.js', '!src/docs/assets/xt/*.min.js']),
     uglify({
