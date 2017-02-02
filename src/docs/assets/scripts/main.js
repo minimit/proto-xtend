@@ -51,10 +51,16 @@
         $btn.xtCollapse({"target": ".demo-item", "group": ".demo", "grouping": i});
         // disable fullscreen when not needed
         $btn.on('show.xt', function(e, obj) {
-          if ($(this).parents('.demo').find('.demo-item.active').attr('data-iframe')) {
-            $(this).parents('.demo').find('.button__fullscreen').css('display', 'block');
+          var $fullscreen = $(this).parents('.demo').find('.button__fullscreen');
+          var iframe = $(this).parents('.demo').find('.demo-item.active').attr('data-iframe');
+          if (iframe) {
+            $fullscreen.css('display', 'block');
+            $fullscreen.off('click');
+            $fullscreen.on('click', function() {
+              window.open(iframe, '_blank');
+            });
           } else {
-            $(this).parents('.demo').find('.button__fullscreen').css('display', 'none');
+            $fullscreen.css('display', 'none');
           }
         });
         // iframe append

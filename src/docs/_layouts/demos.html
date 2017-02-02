@@ -36,8 +36,10 @@
     <script src="{{ site.baseurl }}assets/scripts/ResizeSensor.min.js"></script>
     <script src="{{ site.baseurl }}assets/scripts/ElementQueries.min.js"></script>
     <script type="text/javascript">
-      // manualInit
-      $.fn.xt.manualInit = true;
+      // inside iframe
+      if (window.self !== window.top) {
+        $.fn.xt.manualInit = true;
+      }
       function init() {
         // add id
         $('html').attr('id', document.location.href.match(/[^\/]+$/)[0]);
