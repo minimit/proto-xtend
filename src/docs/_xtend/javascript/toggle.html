@@ -325,6 +325,9 @@ $('[data-xt]').xt({"target": "#collapse", "min": 1, "max": 3}); // arguments are
   <button class="button color-primary" data-xt-toggle>
     toggle
   </button>
+  <button class="button color-primary" data-xt-toggle>
+    toggle
+  </button>
 </div>
     </div>
   </div>
@@ -332,10 +335,10 @@ $('[data-xt]').xt({"target": "#collapse", "min": 1, "max": 3}); // arguments are
     <div class="demo-text">By default it has <code>min: 0</code> and <code>max: 1</code>.</div>
     <div class="demo-source" data-lang="html">
 <div class="spacer">
-  <button class="button color-primary" data-xt-toggle>
+  <button class="button color-primary" data-xt-toggle='{"group": ".spacer"}'>
     toggle
   </button>
-  <button class="button color-primary" data-xt-toggle>
+  <button class="button color-primary" data-xt-toggle='{"group": ".spacer"}'>
     toggle
   </button>
 </div>
