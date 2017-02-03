@@ -48,7 +48,7 @@
           }
         }
         var $btn = $container.find('.demo-tabs-left').append('<button class="button">' + name + '</button>').find('.button').eq(k);
-        $btn.xtCollapse({"target": ".demo-item", "group": ".demo", "grouping": i});
+        $btn.xtToggle({"target": ".demo-item", "group": ".demo", "grouping": i, "min": 1});
         // disable fullscreen when not needed
         $btn.on('show.xt', function(e, obj) {
           var $fullscreen = $(this).parents('.demo').find('.button__fullscreen');
@@ -170,7 +170,7 @@
       // populate tabs
       var $codeInside = $item.find('.demo-code-body').append('<div class="demo-code-body-item"><pre><code></code></pre></div>').find('.demo-code-body-item').eq(z).find('pre code');
       var $btnInside = $item.find('.demo-code-tabs-left').append('<button class="button">' + lang + '</button>').find('.button').eq(z);
-      $btnInside.xtCollapse({"target": ".demo-code-body-item", "group": ".demo-code", "grouping": id});
+      $btnInside.xtToggle({"target": ".demo-code-body-item", "group": ".demo-code", "grouping": id, "min": 1});
       // format code
       if (!$codeInside.hasClass('hljs')) {
         var text = formatCode($source, lang);

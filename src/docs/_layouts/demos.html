@@ -38,7 +38,9 @@
     <script type="text/javascript">
       // outside iframe
       if (window.self === window.top) {
-        $('html').xtInitAll(true);
+        $(document).ready( function() {
+          $('html').xtInitAll(true);
+        });
       }
       // inside iframe
       function init() {

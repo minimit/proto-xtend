@@ -60,31 +60,6 @@
     });
   };
   
-  // subclass collapse
-  var XtCollapse = function(element, options, defaults) {
-    Xt.call(this, element, options, defaults);
-  };
-  XtCollapse.prototype = Object.create(Xt.prototype);
-  XtCollapse.prototype.constructor = XtCollapse;
-  $.fn.xtCollapse = function(options) {
-    var defaults = {
-      'name': 'xt-collapse',
-      'type': 'plugin_xtCollapse',
-      'on': 'click',
-      'target': '',
-      'class': 'active',
-      'group': '',
-      'grouping': 'xtCollapse',
-      'min': 1,
-      'max': 1,
-    };
-    return this.each( function() {
-      if (!$.data(this, 'plugin_xtCollapse')) {
-        $.data(this, 'plugin_xtCollapse', new XtCollapse(this, options, defaults));
-      }
-    });
-  };
-  
   // subclass scroll
   var XtMenu = function(element, options, defaults) {
     Xt.call(this, element, options, defaults);
@@ -174,9 +149,6 @@
       if ($(this).is('[data-xt-toggle]')) {
         $(this).xtToggle();
       }
-      if ($(this).is('[data-xt-collapse]')) {
-        $(this).xtCollapse();
-      }
       if ($(this).is('[data-xt-menu]')) {
         $(this).xtMenu();
       }
@@ -189,7 +161,6 @@
       if (deep) {
         $(this).find('[data-xt]').xt();
         $(this).find('[data-xt-toggle]').xtToggle();
-        $(this).find('[data-xt-collapse]').xtCollapse();
         $(this).find('[data-xt-menu]').xtMenu();
         $(this).find('[data-xt-scroll]').xtScroll();
         $(this).find('[data-xt-ajax]').xtAjax();
@@ -767,6 +738,10 @@
 
 })(jQuery, window, document);
 /* xt-ajax
+@copyright (c) 2016 - 2017 Riccardo Caroli
+@license MIT (https://github.com/minimit/xtend/blob/master/LICENSE) */
+
+/* xt-toggle
 @copyright (c) 2016 - 2017 Riccardo Caroli
 @license MIT (https://github.com/minimit/xtend/blob/master/LICENSE) */
 
