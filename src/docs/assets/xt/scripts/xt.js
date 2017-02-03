@@ -197,13 +197,6 @@
     });
   };
   
-  // automatic xtInitAll
-  $(document).ready( function() {
-    if (!$.fn.xt.manualInit) {
-      $('html').xtInitAll(true);
-    }
-  });
-  
   // initAjax
   $.fn.xt.initAjax = function() {
     var options = $.fn.xt.automaticAjax;
@@ -215,10 +208,6 @@
       $(options.target).on('ajax.done.xt.populate', function(e, obj, $data) {
         // ajax links
         $(this).find('a[href^="' + options.baseurl + '"]').xtAjax({'target': options.target});
-        // automatic xtInitAll
-        if (!$.fn.xt.manualInit) {
-          $(options.target).xtInitAll(true);
-        }
       });
     }
   };

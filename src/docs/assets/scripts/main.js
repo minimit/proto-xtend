@@ -246,6 +246,31 @@
     });
     
     //////////////////////
+    // developer
+    //////////////////////
+    
+    window.developer = false;
+    function developerInit() {
+      // state
+      if (window.developer) {
+        $('.button__developer').addClass('active');
+        $('.developer').addClass('developer-show');
+      }
+      // init
+      $('.button__developer').xtToggle().on('show.xt', function(e) {
+        window.developer = true;
+        $('.developer').addClass('developer-show');
+      }).on('hide.xt', function(e) {
+        window.developer = false;
+        $('.developer').removeClass('developer-show');
+      });
+    }
+    $main.find('.site-wrapper').on('ajax.done.xt', function(e, obj, $data) {
+      developerInit();
+    });
+    developerInit();
+    
+    //////////////////////
     // xtend
     //////////////////////
 
@@ -260,36 +285,11 @@
   main($('html'));
   
   //////////////////////
-  // developer
-  //////////////////////
-  
-  window.developer = false;
-  function developerInit() {
-    // state
-    if (window.developer) {
-      $('.button__developer').addClass('active');
-      $('.developer').addClass('developer-show');
-    }
-    // init
-    $('.button__developer').xtToggle().on('show.xt', function(e) {
-      window.developer = true;
-      $('.developer').addClass('developer-show');
-    }).on('hide.xt', function(e) {
-      window.developer = false;
-      $('.developer').removeClass('developer-show');
-    });
-  }
-  $('.site-wrapper').on('ajax.done.xt', function(e, obj, $data) {
-    developerInit();
-  });
-  developerInit();
-  
-  //////////////////////
   // xtend
   //////////////////////
   
-  // manualInit
-  // $.fn.xt.manualInit = true;
+  // init xt
+  $('html').xtInitAll(true);
   
   // automaticAjax
   $.fn.xt.automaticAjax = {
@@ -300,6 +300,7 @@
   // xt-ajax
   $('.site-wrapper').on('ajax.done.xt', function(e, obj, $data) {
     main($(this)); // custom function on ajax
+    $(this).xtInitAll(true); // init xt
     //console.log('ajax.done.xt');
   });
   
