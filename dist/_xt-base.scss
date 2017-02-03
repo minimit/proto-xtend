@@ -142,7 +142,7 @@ a, button {
 // xt-scroll
 //////////////////////
 
-@mixin xt-scroll($item, $class:'.scroll', $start:false, $position:'top', $pos:false) {
+@mixin xt-scroll($item, $start:false, $position:'top', $pos:false) {
   /* settings */
   @if $start == 'absolute' {
     #{$item}.xt-scroll:not(.xt-ignore) {
@@ -153,7 +153,7 @@ a, button {
     }
   } @elseif $start == 'fixed' {
     #{$item}.xt-scroll {
-      @extend #{$item}#{$class}; // show as if scrolling
+      @extend #{$item}.scroll; // show as if scrolling
     }
   } @else {
     #{$item}.xt-ignore {
@@ -168,10 +168,10 @@ a, button {
     }
   }
   /* scroll */
-  #{$item}#{$class}.xt-ignore {
+  #{$item}.scroll.xt-ignore {
     display: block;
   }
-  #{$item}#{$class}:not(.xt-ignore) {
+  #{$item}.scroll:not(.xt-ignore) {
     position: fixed;
     @if $position == 'top' {
       @if $pos {

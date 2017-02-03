@@ -96,13 +96,12 @@
       'name': 'xt-scroll',
       'type': 'plugin_xtScroll',
       'on': 'scroll',
-      'target': 'html',
+      'target': '',
       'class': 'scroll',
       'group': '',
       'grouping': 'xtScroll',
       'min': 0,
       'max': 1,
-      '$clone': null,
     };
     return this.each( function() {
       if (!$.data(this, 'plugin_xtScroll')) {
@@ -216,7 +215,15 @@
     var element = this.element;
     var $element = $(this.element);
     // $group and $target
-    if (settings.target === 'html' || settings.name === 'xt-ajax') {
+    if (settings.name === 'xt-scroll') {
+      $element.wrap($('<div class="box xt-container"></div>'));
+      settings.$target = $element.clone().addClass('box xt-ignore').css('visibility', 'hidden');
+      $.each(settings.$target.data(), function (i) {
+        settings.$target.removeAttr("data-" + i);
+      });
+      settings.$target.insertAfter($element);
+      settings.$group = $element.parents('.xt-container');
+    } else if (settings.target === 'html' || settings.name === 'xt-ajax') {
       // special case 'html' or ajax
       settings.$target = $(settings.target);
       settings.$group = settings.$target;
@@ -243,8 +250,12 @@
         }
       }
     }
+    // $group unique id
+		window.uuid = window.uuid ? window.uuid : 0;
+    var uuid = settings.$group.attr('id') ? settings.$group.attr('id') : 'xt-id-' + window.uuid++;
+    settings.$group.attr('id', uuid);
     // grouping and set namespace
-    settings.namespace = settings.grouping + '_' + settings.group + '_' + settings.class;
+    settings.namespace = settings.grouping + '_' + uuid + '_' + settings.class;
     $element.attr('data-xt-button', settings.namespace);
   };
   
@@ -266,11 +277,11 @@
       }
     });
     // automatic $target based on groupIndex
-    if (settings.target && settings.$target.length > 1) {
+    if (settings.$target && settings.$target.length > 1) {
       settings.$target = settings.$target.eq(settings.groupIndex);
     }
     // xt-height
-    if (settings.target && settings.$target.hasClass('xt-height')) {
+    if (settings.$target && settings.$target.hasClass('xt-height')) {
       settings.$target.wrapInner('<div class="xt-height-inside"></div>');
     }
     // automatic init
@@ -333,14 +344,6 @@
     // events
     if (settings.name === 'xt-scroll') {
       // scroll events
-      if (!settings.$clone) {
-        $element.wrap($('<div class="box xt-container"></div>'));
-        settings.$clone = $element.clone().addClass('box xt-ignore').css('visibility', 'hidden');
-        $.each(settings.$clone.data(), function (i) {
-          settings.$clone.removeAttr("data-" + i);
-        });
-        settings.$clone.insertAfter($element);
-      }
       var scrollNamespace = 'scroll.xt.' + settings.namespace;
       $(window).off(scrollNamespace);
       $(window).on(scrollNamespace, function(e) {
@@ -357,7 +360,6 @@
         if (top > min && top < max) {
           if (!$element.hasClass(settings.class)) {
             object.show();
-            settings.$clone.addClass(settings.class);
             // direction classes
             $element.removeClass('scroll-hide-up scroll-hide-down');
             if (settings.scrollOld > top) {
@@ -375,7 +377,6 @@
         } else {
           if ($element.hasClass(settings.class)) {
             object.hide();
-            settings.$clone.removeClass(settings.class);
             // direction classes
             $element.removeClass('scroll-show-up scroll-show-down');
             if (settings.scrollOld > top) {
@@ -390,14 +391,6 @@
               });
             }
           }
-        }
-        // direction classes
-        if (settings.scrollOld > top) {
-          settings.$target.removeClass('scroll-down');
-          settings.$target.addClass('scroll-up');
-        } else {
-          settings.$target.removeClass('scroll-up');
-          settings.$target.addClass('scroll-down');
         }
         settings.scrollOld = top;
         //console.log(':scroll.xt', $element.text().replace(/(\r\n|\n|\r)/gm,"").replace(/^\s+|\s+$|\s+(?=\s)/g, ""), top, min, max);
@@ -494,7 +487,7 @@
     // api
     if (!triggered) {
       $element.trigger('toggle.xt', [object]);
-      if (settings.target) {
+      if (settings.$target) {
         settings.$target.trigger('toggle.xt', [object]);
       }
     }
@@ -512,7 +505,7 @@
       // show and add in $currents
       $element.addClass(settings.class);
       $currents = this.setCurrents($currents.pushElement($element));
-      if (settings.target && !settings.$target.hasClass(settings.class)) {
+      if (settings.$target && !settings.$target.hasClass(settings.class)) {
         triggerTarget = true;
         settings.$target.addClass(settings.class);
         if (settings.$target.hasClass('xt-height')) {
@@ -565,7 +558,7 @@
       if (isSync || settings.url || $currents.length > settings.min) {
         $element.removeClass(settings.class);
         $currents = this.setCurrents($currents.not(element));
-        if (settings.target && settings.$target.hasClass(settings.class)) {
+        if (settings.$target && settings.$target.hasClass(settings.class)) {
           triggerTarget = true;
           settings.$target.removeClass(settings.class);
           if (settings.$target.hasClass('xt-height')) {

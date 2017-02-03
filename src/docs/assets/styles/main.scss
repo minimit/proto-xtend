@@ -772,12 +772,12 @@ pre {
   animation: top-fadein 0.6s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
-@include xt-scroll('.site-breadcrumbs', '.scroll-breadcrumbs', 'absolute'); // html custom class .scroll-breadcrumbs, default z-index 70
+@include xt-scroll('.site-breadcrumbs', 'absolute'); // html custom class .scroll-breadcrumbs, default z-index 70
 .site-breadcrumbs.scroll-show-down .show-scroll {
   -webkit-animation: left-fadein 0.6s cubic-bezier(0.19, 1, 0.22, 1);
   animation: left-fadein 0.6s cubic-bezier(0.19, 1, 0.22, 1);
 }
-@include xt-scroll('.site-aside', '.scroll-aside', false, 'top', 56px);
+@include xt-scroll('.site-aside', false, 'top', 56px);
 .site-aside.scroll-show-down .show-scroll {
   -webkit-animation: left-fadein 0.6s cubic-bezier(0.19, 1, 0.22, 1);
   animation: left-fadein 0.6s cubic-bezier(0.19, 1, 0.22, 1);
