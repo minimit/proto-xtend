@@ -12,12 +12,13 @@ order: 10
 <p class="lead">Automatic initialization of all ajax links.</p>
 <p>Just assign <code>$.fn.xt.automaticAjax</code> before document ready, <code>'baseurl'</code> is the prefix of links that have ajax activated (<code>'baseurl': '/'</code> activates ajax on all links that starts with '/'), <code>'target'</code> is the document selector to replace on each ajax call.</p>
 <pre><code class="js">
-$.fn.xt.automaticAjax = {
-  'baseurl': '/',
-  'target': '.site-wrapper',
-};
+$(document).ready( function() {
+  $.fn.xt.initAjax({
+    'baseurl': '/',
+    'target': 'body',
+  });
+});
 </code></pre>
-<p>If you want to reinit ajax use this function <code>$.fn.xt.initAjax();</code></p>
 
 <h3>Manual Markup</h3>
 <p class="lead">Manual initialization of ajax link via markup.</p>

@@ -292,10 +292,12 @@
   $('html').xtInitAll(true);
   
   // automaticAjax
-  $.fn.xt.automaticAjax = {
-    'baseurl': '/',
-    'target': '.site-wrapper',
-  };
+  $(document).ready( function() {
+    $.fn.xt.initAjax({
+      'baseurl': '/',
+      'target': '.site-wrapper',
+    });
+  });
   
   // xt-ajax
   $('.site-wrapper').on('ajax.done.xt', function(e, obj, $data) {

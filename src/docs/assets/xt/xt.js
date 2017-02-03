@@ -168,22 +168,16 @@
   };
   
   // initAjax
-  $.fn.xt.initAjax = function() {
-    var options = $.fn.xt.automaticAjax;
-    if (options) {
+  $.fn.xt.initAjax = function(options) {
+    // ajax links
+    $('a[href^="' + options.baseurl + '"]').xtAjax({'target': options.target});
+    // on ajax.done.xt
+    $(options.target).off('ajax.done.xt.populate');
+    $(options.target).on('ajax.done.xt.populate', function(e, obj, $data) {
       // ajax links
-      $('a[href^="' + options.baseurl + '"]').xtAjax({'target': options.target});
-      // on ajax.done.xt
-      $(options.target).off('ajax.done.xt.populate');
-      $(options.target).on('ajax.done.xt.populate', function(e, obj, $data) {
-        // ajax links
-        $(this).find('a[href^="' + options.baseurl + '"]').xtAjax({'target': options.target});
-      });
-    }
+      $(this).find('a[href^="' + options.baseurl + '"]').xtAjax({'target': options.target});
+    });
   };
-  $(document).ready( function() {
-    $.fn.xt.initAjax();
-  });
   
   //////////////////////
   // methods
