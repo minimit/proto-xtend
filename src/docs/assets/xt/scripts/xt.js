@@ -21,9 +21,9 @@
       'name': 'xt',
       'type': 'plugin_xt',
       'on': 'click',
-      'target': '',
+      'target': null,
       'class': 'active',
-      'group': '',
+      'group': null,
       'grouping': 'xt',
       'min': 0,
       'max': 1,
@@ -46,9 +46,9 @@
       'name': 'xt-toggle',
       'type': 'plugin_xtToggle',
       'on': 'click',
-      'target': '',
+      'target': null,
       'class': 'active',
-      'group': '',
+      'group': null,
       'grouping': 'xtToggle',
       'min': 0,
       'max': 1,
@@ -73,7 +73,7 @@
       'on': 'click',
       'target': 'html',
       'class': 'menu',
-      'group': '',
+      'group': null,
       'grouping': 'xtMenu',
       'min': 0,
       'max': 1,
@@ -96,9 +96,9 @@
       'name': 'xt-scroll',
       'type': 'plugin_xtScroll',
       'on': 'scroll',
-      'target': '',
+      'target': null,
       'class': 'scroll',
-      'group': '',
+      'group': null,
       'grouping': 'xtScroll',
       'min': 0,
       'max': 1,
@@ -121,11 +121,11 @@
       'name': 'xt-ajax',
       'type': 'plugin_xtAjax',
       'on': 'click',
-      'target': '',
+      'target': null,
       'class': 'active',
-      'group': '',
+      'group': null,
       'grouping': 'xtAjax',
-      'url': 'href',
+      'url': null,
     };
     return this.each( function() {
       if (!$.data(this, 'plugin_xtAjax')) {
@@ -171,9 +171,9 @@
   $.fn.xt.initAjax = function(options) {
     // ajax links
     $('a[href^="' + options.baseurl + '"]').xtAjax({'target': options.target});
-    // on ajax.done.xt
-    $(options.target).off('ajax.done.xt.populate');
-    $(options.target).on('ajax.done.xt.populate', function(e, obj, $data) {
+    // on ajax.populated.xt
+    $(options.target).off('ajax.populated.xt.populate');
+    $(options.target).on('ajax.populated.xt.populate', function(e, obj, $data) {
       // ajax links
       $(this).find('a[href^="' + options.baseurl + '"]').xtAjax({'target': options.target});
     });
@@ -199,7 +199,6 @@
     this.scoping(); // scoping before setup
     this.setup();
     this.events(); // events after setup
-    $element.addClass(settings.name); // add xt name class
     //console.log(':init', $element.text().replace(/(\r\n|\n|\r)/gm,"").replace(/^\s+|\s+$|\s+(?=\s)/g, ""), $element.hasClass(settings.class));
   };
   
@@ -244,13 +243,15 @@
         }
       }
     }
+    // initialized
+    $element.attr('data-xt-initialized', settings.name);
     // $group unique id
 		window.uuid = window.uuid ? window.uuid : 0;
     var uuid = settings.$group.attr('id') ? settings.$group.attr('id') : 'xt-id-' + window.uuid++;
     settings.$group.attr('id', uuid);
     // grouping and set namespace
     settings.namespace = settings.grouping + '_' + uuid + '_' + settings.class;
-    $element.attr('data-xt-button', settings.namespace);
+    $element.attr('data-xt-element-' + settings.name, settings.namespace);
   };
   
   Xt.prototype.setup = function() {
@@ -259,7 +260,7 @@
     var element = this.element;
     var $element = $(this.element);
     // ajax url
-    if (settings.url === 'href') {
+    if (settings.name === 'xt-ajax') {
       settings.url = $element.attr('href');
     }
     // $buttons based on $group and namespace
@@ -280,8 +281,6 @@
     }
     // automatic init
     if (settings.url) {
-      // register data-xt-pushstate on element
-      $element.attr('data-xt-pushstate', 'true');
       // init with settings.url
       var found;
       if (history.state && history.state.url) {
@@ -406,6 +405,23 @@
         object.toggle();
       });
     }
+    // triggers
+    $element.on('toggle.xt', function(e, obj, triggered) {
+      if (!triggered && e.target === this) {
+        object.toggle(true);
+        console.log($element.text().replace(/(\r\n|\n|\r)/gm,"").replace(/^\s+|\s+$|\s+(?=\s)/g, ""));
+      }
+    });
+    $element.on('show.xt', function(e, obj, triggered) {
+      if (!triggered && e.target === this) {
+        object.show(true);
+      }
+    });
+    $element.on('hide.xt', function(e, obj, triggered) {
+      if (!triggered && e.target === this) {
+        object.hide(true);
+      }
+    });
     // remove html classes on remove
     if ($element.is('[data-xt-reset]') || settings.target === 'html') {
       $element.on('xtRemoved', function(e) {
@@ -423,7 +439,7 @@
     var element = this.element;
     var $element = $(this.element);
     // get $buttons on $group based on namespace
-    var $buttons = settings.$group.find('[data-xt-button="' + settings.namespace + '"]').filter(':parents(.xt-ignore)');
+    var $buttons = settings.$group.find('[data-xt-element-' + settings.name + '="' + settings.namespace + '"]').filter(':parents(.xt-ignore)');
     return $buttons;
   };
   
@@ -480,9 +496,9 @@
     }
     // api
     if (!triggered) {
-      $element.trigger('toggle.xt', [object]);
+      $element.trigger('toggle.xt', [object, true]);
       if (settings.$target) {
-        settings.$target.trigger('toggle.xt', [object]);
+        settings.$target.trigger('toggle.xt', [object, true]);
       }
     }
   };
@@ -530,9 +546,9 @@
       }
       // api
       if (!triggered) {
-        $element.trigger('show.xt', [object]);
+        $element.trigger('show.xt', [object, true]);
         if (triggerTarget) {
-          settings.$target.trigger('show.xt', [object]);
+          settings.$target.trigger('show.xt', [object, true]);
         }
       }
       //console.log(':show', $element.text().replace(/(\r\n|\n|\r)/gm,"").replace(/^\s+|\s+$|\s+(?=\s)/g, ""), $element.hasClass(settings.class));
@@ -570,9 +586,9 @@
       }
       // api
       if (!triggered) {
-        $element.trigger('hide.xt', [object]);
+        $element.trigger('hide.xt', [object, true]);
         if (triggerTarget) {
-          settings.$target.trigger('hide.xt', [object]);
+          settings.$target.trigger('hide.xt', [object, true]);
         }
       }
       //console.log(':hide', $element.text().replace(/(\r\n|\n|\r)/gm,"").replace(/^\s+|\s+$|\s+(?=\s)/g, ""), $element.hasClass(settings.class));
@@ -632,7 +648,7 @@
             object.pushstate(true);
           }
           // api
-          settings.$target.trigger('ajax.done.xt', [object, $data]);
+          settings.$target.trigger('ajax.populated.xt', [object, $data]);
         },
         error: function(jqXHR, textStatus, errorThrown) {
           console.error('ajax error url:' + settings.url + ' ' + errorThrown);
@@ -652,10 +668,12 @@
       var url = settings.url;
       // push this object state
       history.pushState({'url': url, 'title': title}, title, url);
-      // trigger on registered data-xt-pushstate
-      $(document).find('[data-xt-pushstate]').filter(':parents(.xt-ignore)').each( function(i) {
+      // trigger on registered
+      $(document).find('[data-xt-initialized="xt-ajax"]').filter(':parents(.xt-ignore)').each( function(i) {
         var xt = $(this).data(settings.type);
-        xt.pushstateListener(url, triggered);
+        if (xt) {
+          xt.pushstateListener(url, triggered);
+        }
       });
       //console.log(':pushstate', $element.text().replace(/(\r\n|\n|\r)/gm,"").replace(/^\s+|\s+$|\s+(?=\s)/g, ""), $element.hasClass(settings.class));
     }
@@ -685,8 +703,8 @@
   window.onpopstate = function(history) {
     if (history.state && history.state.url) {
       document.title = history.state.title;
-      // trigger on registered data-xt-pushstate
-      $(document).find('[data-xt-pushstate]').filter(':parents(.xt-ignore)').each( function(i, element) {
+      // trigger on registered
+      $(document).find('[data-xt-initialized="xt-ajax"]').filter(':parents(.xt-ignore)').each( function(i, element) {
         var xt = $(this).data('plugin_xtAjax');
         xt.pushstateListener(history.state.url);
       });

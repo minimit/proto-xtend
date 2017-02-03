@@ -265,7 +265,7 @@
         $('.developer').removeClass('developer-show');
       });
     }
-    $main.find('.site-wrapper').on('ajax.done.xt', function(e, obj, $data) {
+    $main.find('.site-wrapper').on('ajax.populated.xt', function(e, obj, $data) {
       developerInit();
     });
     developerInit();
@@ -300,10 +300,16 @@
   });
   
   // xt-ajax
-  $('.site-wrapper').on('ajax.done.xt', function(e, obj, $data) {
+  $('.site-wrapper').on('ajax.populated.xt', function(e, obj, $data) {
     main($(this)); // custom function on ajax
     $(this).xtInitAll(true); // init xt
-    //console.log('ajax.done.xt');
+    //console.log('ajax.populated.xt');
+  });
+  
+  // api tests
+  $(document).ready( function() {
+    //$('.site-breadcrumbs-body-main').trigger('toggle.xt');
+    //$('a[href="/"]').filter(':parents(.xt-ignore)').trigger('toggle.xt');
   });
   
   //if ($('html').attr('id') === 'test-0.html') { console.log(this.settings); }

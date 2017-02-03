@@ -362,13 +362,13 @@ a:not(.button) {
     display: none; }
 
 /* scroll */
-.card[data-xt-scroll].scroll.xt-ignore, .xt-ignore.card[data-xt-scroll].xt-scroll {
+.card[data-xt-scroll].scroll.xt-ignore, .xt-ignore.card[data-xt-scroll][data-xt-initialized] {
   display: block; }
 
-.card[data-xt-scroll].scroll:not(.xt-ignore), .card[data-xt-scroll].xt-scroll:not(.xt-ignore) {
+.card[data-xt-scroll].scroll:not(.xt-ignore), .card[data-xt-scroll][data-xt-initialized]:not(.xt-ignore) {
   position: fixed;
   top: 0; }
-  .card[data-xt-scroll].scroll:not(.xt-ignore) .show-scroll, .card[data-xt-scroll].xt-scroll:not(.xt-ignore) .show-scroll {
+  .card[data-xt-scroll].scroll:not(.xt-ignore) .show-scroll, .card[data-xt-scroll][data-xt-initialized]:not(.xt-ignore) .show-scroll {
     display: block; }
-  .card[data-xt-scroll].scroll:not(.xt-ignore) .hide-scroll, .card[data-xt-scroll].xt-scroll:not(.xt-ignore) .hide-scroll {
+  .card[data-xt-scroll].scroll:not(.xt-ignore) .hide-scroll, .card[data-xt-scroll][data-xt-initialized]:not(.xt-ignore) .hide-scroll {
     display: none; }
