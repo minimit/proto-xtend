@@ -16,24 +16,6 @@
     this.settings = $.extend({}, defaults, options);
     this.init();
   };
-  $.fn.xt = function(options) {
-    var defaults = {
-      'name': 'xt',
-      'type': 'plugin_xt',
-      'on': 'click',
-      'target': null,
-      'class': 'active',
-      'group': null,
-      'grouping': 'xt',
-      'min': 0,
-      'max': 1,
-    };
-    return this.each( function() {
-      if (!$.data(this, 'plugin_xt')) {
-        $.data(this, 'plugin_xt', new Xt(this, options, defaults));
-      }
-    });
-  };
   
   // subclass toggle
   var XtToggle = function(element, options, defaults) {
@@ -49,13 +31,12 @@
       'target': null,
       'class': 'active',
       'group': null,
-      'grouping': 'xtToggle',
       'min': 0,
       'max': 1,
     };
     return this.each( function() {
-      if (!$.data(this, 'plugin_xtToggle')) {
-        $.data(this, 'plugin_xtToggle', new XtToggle(this, options, defaults));
+      if (!$.data(this, defaults.type)) {
+        $.data(this, defaults.type, new XtToggle(this, options, defaults));
       }
     });
   };
@@ -74,13 +55,12 @@
       'target': 'html',
       'class': 'menu',
       'group': null,
-      'grouping': 'xtMenu',
       'min': 0,
       'max': 1,
     };
     return this.each( function() {
-      if (!$.data(this, 'plugin_xtMenu')) {
-        $.data(this, 'plugin_xtMenu', new XtMenu(this, options, defaults));
+      if (!$.data(this, defaults.type)) {
+        $.data(this, defaults.type, new XtMenu(this, options, defaults));
       }
     });
   };
@@ -96,16 +76,14 @@
       'name': 'xt-scroll',
       'type': 'plugin_xtScroll',
       'on': 'scroll',
-      'target': null,
       'class': 'scroll',
       'group': null,
-      'grouping': 'xtScroll',
       'min': 0,
       'max': 1,
     };
     return this.each( function() {
-      if (!$.data(this, 'plugin_xtScroll')) {
-        $.data(this, 'plugin_xtScroll', new XtScroll(this, options, defaults));
+      if (!$.data(this, defaults.type)) {
+        $.data(this, defaults.type, new XtScroll(this, options, defaults));
       }
     });
   };
@@ -124,7 +102,6 @@
       'target': null,
       'class': 'active',
       'group': null,
-      'grouping': 'xtAjax',
       'url': null,
     };
     return this.each( function() {
@@ -142,9 +119,6 @@
   // usage: $('html').xtInitAll();
   $.fn.xtInitAll = function(deep) {
     return this.each( function() {
-      if ($(this).is('[data-xt]')) {
-        $(this).xt();
-      }
       if ($(this).is('[data-xt-toggle]')) {
         $(this).xtToggle();
       }
@@ -158,7 +132,6 @@
         $(this).xtAjax();
       }
       if (deep) {
-        $(this).find('[data-xt]').xt();
         $(this).find('[data-xt-toggle]').xtToggle();
         $(this).find('[data-xt-menu]').xtMenu();
         $(this).find('[data-xt-scroll]').xtScroll();
@@ -168,7 +141,7 @@
   };
   
   // initAjax
-  $.fn.xt.initAjax = function(options) {
+  $.fn.xtAjax.initAjax = function(options) {
     // ajax links
     $('a[href^="' + options.baseurl + '"]').xtAjax({'target': options.target});
     // on ajax.populated.xt
@@ -249,8 +222,8 @@
 		window.uuid = window.uuid ? window.uuid : 0;
     var uuid = settings.$group.attr('id') ? settings.$group.attr('id') : 'xt-id-' + window.uuid++;
     settings.$group.attr('id', uuid);
-    // grouping and set namespace
-    settings.namespace = settings.grouping + '_' + uuid + '_' + settings.class;
+    // namespace
+    settings.namespace = settings.name + '_' + uuid + '_' + settings.class;
     $element.attr('data-xt-element-' + settings.name, settings.namespace);
   };
   
@@ -740,16 +713,5 @@
   $.expr[':'].parents = function(a, i, m){
     return $(a).parents(m[3]).length < 1;
   };
-
+  
 })(jQuery, window, document);
-/* xt-ajax
-@copyright (c) 2016 - 2017 Riccardo Caroli
-@license MIT (https://github.com/minimit/xtend/blob/master/LICENSE) */
-
-/* xt-toggle
-@copyright (c) 2016 - 2017 Riccardo Caroli
-@license MIT (https://github.com/minimit/xtend/blob/master/LICENSE) */
-
-/* xt-toggle
-@copyright (c) 2016 - 2017 Riccardo Caroli
-@license MIT (https://github.com/minimit/xtend/blob/master/LICENSE) */

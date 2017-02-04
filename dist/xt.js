@@ -740,16 +740,5 @@
   $.expr[':'].parents = function(a, i, m){
     return $(a).parents(m[3]).length < 1;
   };
-
+  
 })(jQuery, window, document);
-/* xt-ajax
-@copyright (c) 2016 - 2017 Riccardo Caroli
-@license MIT (https://github.com/minimit/xtend/blob/master/LICENSE) */
-
-/* xt-toggle
-@copyright (c) 2016 - 2017 Riccardo Caroli
-@license MIT (https://github.com/minimit/xtend/blob/master/LICENSE) */
-
-/* xt-toggle
-@copyright (c) 2016 - 2017 Riccardo Caroli
-@license MIT (https://github.com/minimit/xtend/blob/master/LICENSE) */

@@ -92,7 +92,7 @@ gulp.task('js', ['js-xt'], function(cb) {
     ], cb);
 });
 */
-gulp.task('js', ['js-concat'], function(cb) {
+gulp.task('js', function(cb) {
   pump([
     gulp.src(['src/docs/assets/xt/*.js', '!src/docs/assets/xt/*.min.js']),
     uglify({
@@ -104,11 +104,13 @@ gulp.task('js', ['js-concat'], function(cb) {
     gulp.dest('src/docs/assets/xt/')
     ], cb);
 });
+/*
 gulp.task('js-concat', function(cb) {
   return gulp.src(['src/docs/assets/xt/scripts/xt.js', 'src/docs/assets/xt/scripts/*.js'])
     .pipe(concat('xt.js'))
     .pipe(gulp.dest('src/docs/assets/xt/'));
 });
+*/
 
 // version
 

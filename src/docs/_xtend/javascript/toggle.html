@@ -12,7 +12,7 @@ order: 1
 <h3>Automatic</h3>
 <p>Assign <code>data-xt</code> attribute to the element, this will extend the plugin's default settings with your own settings.</p>
 <pre><code class="html">
-&lt;button class="button color-primary" data-xt='{"target": ".collapse"}'&gt;toggle&lt;/button&gt;
+&lt;button class="button color-primary" data-xt-toggle='{"target": ".collapse"}'&gt;toggle&lt;/button&gt;
 </code></pre>
 <div class="alert alert-danger">
   <strong>Important:</strong> the plugin's attributes <strong>must be a valid json format</strong>, so with double quotes inside.
@@ -26,8 +26,8 @@ $(element).xtInitAll(true); // init $(element) and all descendants
 </code></pre>
 <p>Or one by one:</p>
 <pre><code class="js">
-$('[data-xt]').xt();
-$('[data-xt]').xt({"target": "#collapse", "min": 1, "max": 3}); // arguments are the same as json data- arguments
+$('[data-xt]').xtToggle();
+$('[data-xt]').xtToggle({"target": "#collapse", "min": 1, "max": 3}); // arguments are the same as json data- arguments
 </code></pre>
 
 <h2>Options</h2>
@@ -39,7 +39,7 @@ $('[data-xt]').xt({"target": "#collapse", "min": 1, "max": 3}); // arguments are
     <div class="demo-text"><strong>Xtend</strong> activates both <strong>element</strong> and <strong>target</strong> with the a choosen <code>"class": "name"</code>.</div>
     <div class="demo-source" data-lang="html">
 <div class="spacer">
-  <button class="button color-primary" data-xt='{"class": "example-class", "target": ".collapse"}'>
+  <button class="button color-primary" data-xt-toggle='{"class": "example-class", "target": ".collapse"}'>
     toggle
   </button>
   <div class="collapse">
@@ -65,7 +65,7 @@ $('[data-xt]').xt({"target": "#collapse", "min": 1, "max": 3}); // arguments are
     <div class="demo-text">The default class is <code>active</code>.</div>
     <div class="demo-source" data-lang="html">
 <div class="spacer">
-  <button class="button color-primary" data-xt='{"target": ".collapse"}'>
+  <button class="button color-primary" data-xt-toggle='{"target": ".collapse"}'>
     toggle
   </button>
   <div class="collapse">
@@ -80,16 +80,16 @@ $('[data-xt]').xt({"target": "#collapse", "min": 1, "max": 3}); // arguments are
     <div class="demo-text">Set activation's <code>"min": number</code> and <code>"max": number</code>.</div>
     <div class="demo-source" data-lang="html">
 <div class="spacer">
-  <button class="button color-primary" data-xt='{"target": ".collapse", "min": 2, "max": 2}'>
+  <button class="button color-primary" data-xt-toggle='{"target": ".collapse", "min": 2, "max": 2}'>
     toggle 0
   </button>
-  <button class="button color-primary" data-xt='{"target": ".collapse", "min": 2, "max": 2}'>
+  <button class="button color-primary" data-xt-toggle='{"target": ".collapse", "min": 2, "max": 2}'>
     toggle 1
   </button>
-  <button class="button color-primary" data-xt='{"target": ".collapse", "min": 2, "max": 2}'>
+  <button class="button color-primary" data-xt-toggle='{"target": ".collapse", "min": 2, "max": 2}'>
     toggle 2
   </button>
-  <button class="button color-primary" data-xt='{"target": ".collapse", "min": 2, "max": 2}'>
+  <button class="button color-primary" data-xt-toggle='{"target": ".collapse", "min": 2, "max": 2}'>
     toggle 3
   </button>
   <div class="collapse">
@@ -119,16 +119,16 @@ $('[data-xt]').xt({"target": "#collapse", "min": 1, "max": 3}); // arguments are
     <div class="demo-text">If <strong>min</strong> > 0 we activate the <strong>.active</strong> elements (or any other <strong>class</strong> used), and the minimum amount required.</div>
     <div class="demo-source" data-lang="html">
 <div class="spacer">
-  <button class="button color-primary" data-xt='{"target": ".collapse", "min": 2, "max": 2}'>
+  <button class="button color-primary" data-xt-toggle='{"target": ".collapse", "min": 2, "max": 2}'>
     toggle 0
   </button>
-  <button class="button color-primary" data-xt='{"target": ".collapse", "min": 2, "max": 2}'>
+  <button class="button color-primary" data-xt-toggle='{"target": ".collapse", "min": 2, "max": 2}'>
     toggle 1
   </button>
-  <button class="button color-primary" data-xt='{"target": ".collapse", "min": 2, "max": 2}'>
+  <button class="button color-primary" data-xt-toggle='{"target": ".collapse", "min": 2, "max": 2}'>
     toggle 2
   </button>
-  <button class="button color-primary active" data-xt='{"target": ".collapse", "min": 2, "max": 2}'>
+  <button class="button color-primary active" data-xt-toggle='{"target": ".collapse", "min": 2, "max": 2}'>
     toggle 3
   </button>
   <div class="collapse">
@@ -153,16 +153,16 @@ $('[data-xt]').xt({"target": "#collapse", "min": 1, "max": 3}); // arguments are
   </div>
 </div>
 <div class="spacer">
-  <button class="button color-primary" data-xt='{"target": ".collapse", "min": 2, "max": 2}'>
+  <button class="button color-primary" data-xt-toggle='{"target": ".collapse", "min": 2, "max": 2}'>
     toggle 0
   </button>
-  <button class="button color-primary active" data-xt='{"target": ".collapse", "min": 2, "max": 2}'>
+  <button class="button color-primary active" data-xt-toggle='{"target": ".collapse", "min": 2, "max": 2}'>
     toggle 1
   </button>
-  <button class="button color-primary active" data-xt='{"target": ".collapse", "min": 2, "max": 2}'>
+  <button class="button color-primary active" data-xt-toggle='{"target": ".collapse", "min": 2, "max": 2}'>
     toggle 2
   </button>
-  <button class="button color-primary active" data-xt='{"target": ".collapse", "min": 2, "max": 2}'>
+  <button class="button color-primary active" data-xt-toggle='{"target": ".collapse", "min": 2, "max": 2}'>
     toggle 3
   </button>
   <div class="collapse">
@@ -197,7 +197,7 @@ $('[data-xt]').xt({"target": "#collapse", "min": 1, "max": 3}); // arguments are
     <div class="demo-text">Assign target with a selector <code>"target": ".selector"</code>.</div>
     <div class="demo-source" data-lang="html">
 <div class="spacer">
-  <button class="button color-primary" data-xt='{"target": ".collapse"}'>
+  <button class="button color-primary" data-xt-toggle='{"target": ".collapse"}'>
     toggle
   </button>
   <div class="collapse">
@@ -212,13 +212,13 @@ $('[data-xt]').xt({"target": "#collapse", "min": 1, "max": 3}); // arguments are
     <div class="demo-text">With multiple targets the <strong>group</strong> is on the element's parent.</div>
     <div class="demo-source" data-lang="html">
 <div class="spacer">
-  <button class="button color-primary" data-xt='{"target": ".collapse"}'>
+  <button class="button color-primary" data-xt-toggle='{"target": ".collapse"}'>
     toggle 0
   </button>
-  <button class="button color-primary" data-xt='{"target": ".collapse"}'>
+  <button class="button color-primary" data-xt-toggle='{"target": ".collapse"}'>
     toggle 1
   </button>
-  <button class="button color-primary" data-xt='{"target": ".collapse"}'>
+  <button class="button color-primary" data-xt-toggle='{"target": ".collapse"}'>
     toggle 2
   </button>
   <div class="collapse">
@@ -240,13 +240,13 @@ $('[data-xt]').xt({"target": "#collapse", "min": 1, "max": 3}); // arguments are
 
 <p>For more control on the order use <strong>ids</strong> for <strong>targets</strong>.</p>
 <div class="spacer">
-  <button class="button color-primary" data-xt='{"target": "#collapse-1"}'>
+  <button class="button color-primary" data-xt-toggle='{"target": "#collapse-1"}'>
     toggle 1
   </button>
-  <button class="button color-primary" data-xt='{"target": "#collapse-2"}'>
+  <button class="button color-primary" data-xt-toggle='{"target": "#collapse-2"}'>
     toggle 2
   </button>
-  <button class="button color-primary" data-xt='{"target": "#collapse-0"}'>
+  <button class="button color-primary" data-xt-toggle='{"target": "#collapse-0"}'>
     toggle 0
   </button>
   <div class="collapse" id="collapse-0">
@@ -272,10 +272,10 @@ $('[data-xt]').xt({"target": "#collapse", "min": 1, "max": 3}); // arguments are
     <div class="demo-source" data-lang="html">
 <div class="group">
   <div class="spacer">
-    <button class="button color-primary" data-xt='{"target": ".collapse", "group": ".group"}'>
+    <button class="button color-primary" data-xt-toggle='{"target": ".collapse", "group": ".group"}'>
       toggle 0
     </button>
-    <button class="button color-primary" data-xt='{"target": ".collapse", "group": ".group"}'>
+    <button class="button color-primary" data-xt-toggle='{"target": ".collapse", "group": ".group"}'>
       toggle 1
     </button>
     <div class="collapse">
@@ -290,10 +290,10 @@ $('[data-xt]').xt({"target": "#collapse", "min": 1, "max": 3}); // arguments are
     </div>
   </div>
   <div class="spacer">
-    <button class="button color-primary" data-xt='{"target": ".collapse", "group": ".group"}'>
+    <button class="button color-primary" data-xt-toggle='{"target": ".collapse", "group": ".group"}'>
       toggle 2
     </button>
-    <button class="button color-primary" data-xt='{"target": ".collapse", "group": ".group"}'>
+    <button class="button color-primary" data-xt-toggle='{"target": ".collapse", "group": ".group"}'>
       toggle 3
     </button>
     <div class="collapse">
@@ -353,7 +353,7 @@ $('[data-xt]').xt({"target": "#collapse", "min": 1, "max": 3}); // arguments are
     <div class="demo-text">Just add the class <code>.xt-height</code> to the "target". With theme's css <strong>.xt-height</strong> animation.</div>
     <div class="demo-source" data-lang="html">
 <div class="spacer">
-  <button class="button color-primary" data-xt='{"target": ".collapse"}'>
+  <button class="button color-primary" data-xt-toggle='{"target": ".collapse"}'>
     toggle
   </button>
   <div class="collapse xt-height">
@@ -375,7 +375,7 @@ $('[data-xt]').xt({"target": "#collapse", "min": 1, "max": 3}); // arguments are
     <div class="demo-text">Example with <code>mouseenter</code> and <code>mouseleave</code> events.</div>
     <div class="demo-source" data-lang="html">
 <div class="spacer">
-  <div class="button color-primary" data-xt='{"target": ".collapse", "on": "mouseenter", "off": "mouseleave"}'>
+  <div class="button color-primary" data-xt-toggle='{"target": ".collapse", "on": "mouseenter", "off": "mouseleave"}'>
     toggle
   </div>
   <div class="collapse xt-height">
@@ -390,7 +390,7 @@ $('[data-xt]').xt({"target": "#collapse", "min": 1, "max": 3}); // arguments are
     <div class="demo-text">Example inside a <code>.card</code>.</div>
     <div class="demo-source" data-lang="html">
 <div class="spacer">
-  <div class="card" data-xt='{"target": ".collapse", "on": "mouseenter", "off": "mouseleave"}'>
+  <div class="card" data-xt-toggle='{"target": ".collapse", "on": "mouseenter", "off": "mouseleave"}'>
     <img src="https://placehold.it/330x132/f8f8f8/00B0FF/?text=Image" />
     <div class="card-block">
       <h5 class="card-title">Card title</h5>
@@ -406,7 +406,7 @@ $('[data-xt]').xt({"target": "#collapse", "min": 1, "max": 3}); // arguments are
     <div class="demo-text">Just add the class <code>.xt-height-top</code> or <code>.xt-height-bottom</code> to the target's parents element you want to resize. With theme's css <strong>.xt-height-top</strong> and <strong>.xt-height-bottom</strong> animation.</div>
     <div class="demo-source" data-lang="html">
 <div class="spacer">
-  <div class="card" data-xt='{"target": ".collapse", "on": "mouseenter", "off": "mouseleave"}'>
+  <div class="card" data-xt-toggle='{"target": ".collapse", "on": "mouseenter", "off": "mouseleave"}'>
     <img src="https://placehold.it/330x132/f8f8f8/00B0FF/?text=Image" />
     <div class="card-block xt-height-top">
       <h5 class="card-title">Card title</h5>
@@ -415,7 +415,7 @@ $('[data-xt]').xt({"target": "#collapse", "min": 1, "max": 3}); // arguments are
       </div>
     </div>
   </div>
-  <div class="card" data-xt='{"target": ".collapse", "on": "mouseenter", "off": "mouseleave"}'>
+  <div class="card" data-xt-toggle='{"target": ".collapse", "on": "mouseenter", "off": "mouseleave"}'>
     <div class="card-block xt-height-bottom">
       <h5 class="card-title">Card title</h5>
       <div class="collapse xt-height">
