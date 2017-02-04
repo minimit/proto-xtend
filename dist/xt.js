@@ -10,34 +10,14 @@
   // constructor
   //////////////////////
   
-  // super class
-  var Xt = function(element, options, defaults) {
-    this.element = element;
+  var Xt = function(group, options, defaults) {
+    this.group = group;
     this.settings = $.extend({}, defaults, options);
     this.init();
   };
-  $.fn.xt = function(options) {
-    var defaults = {
-      'name': 'xt',
-      'type': 'plugin_xt',
-      'on': 'click',
-      'target': null,
-      'class': 'active',
-      'group': null,
-      'grouping': 'xt',
-      'min': 0,
-      'max': 1,
-    };
-    return this.each( function() {
-      if (!$.data(this, 'plugin_xt')) {
-        $.data(this, 'plugin_xt', new Xt(this, options, defaults));
-      }
-    });
-  };
   
-  // subclass toggle
-  var XtToggle = function(element, options, defaults) {
-    Xt.call(this, element, options, defaults);
+  var XtToggle = function(group, options, defaults) {
+    Xt.call(this, group, options, defaults);
   };
   XtToggle.prototype = Object.create(Xt.prototype);
   XtToggle.prototype.constructor = XtToggle;
@@ -45,24 +25,23 @@
     var defaults = {
       'name': 'xt-toggle',
       'type': 'plugin_xtToggle',
-      'on': 'click',
-      'target': null,
+      'elements': null,
+      'targets': null,
       'class': 'active',
-      'group': null,
-      'grouping': 'xtToggle',
+      'on': 'click',
+      'off': null,
       'min': 0,
       'max': 1,
     };
     return this.each( function() {
-      if (!$.data(this, 'plugin_xtToggle')) {
-        $.data(this, 'plugin_xtToggle', new XtToggle(this, options, defaults));
+      if (!$.data(this, defaults.type)) {
+        $.data(this, defaults.type, new XtToggle(this, options, defaults));
       }
     });
   };
   
-  // subclass scroll
-  var XtMenu = function(element, options, defaults) {
-    Xt.call(this, element, options, defaults);
+  var XtMenu = function(group, options, defaults) {
+    Xt.call(this, group, options, defaults);
   };
   XtMenu.prototype = Object.create(Xt.prototype);
   XtMenu.prototype.constructor = XtMenu;
@@ -70,24 +49,21 @@
     var defaults = {
       'name': 'xt-menu',
       'type': 'plugin_xtMenu',
+      'targets': 'html',
       'on': 'click',
-      'target': 'html',
       'class': 'menu',
-      'group': null,
-      'grouping': 'xtMenu',
       'min': 0,
       'max': 1,
     };
     return this.each( function() {
-      if (!$.data(this, 'plugin_xtMenu')) {
-        $.data(this, 'plugin_xtMenu', new XtMenu(this, options, defaults));
+      if (!$.data(this, defaults.type)) {
+        $.data(this, defaults.type, new XtMenu(this, options, defaults));
       }
     });
   };
   
-  // subclass scroll
-  var XtScroll = function(element, options, defaults) {
-    Xt.call(this, element, options, defaults);
+  var XtScroll = function(group, options, defaults) {
+    Xt.call(this, group, options, defaults);
   };
   XtScroll.prototype = Object.create(Xt.prototype);
   XtScroll.prototype.constructor = XtScroll;
@@ -95,24 +71,21 @@
     var defaults = {
       'name': 'xt-scroll',
       'type': 'plugin_xtScroll',
+      'targets': '$clone',
       'on': 'scroll',
-      'target': null,
       'class': 'scroll',
-      'group': null,
-      'grouping': 'xtScroll',
       'min': 0,
       'max': 1,
     };
     return this.each( function() {
-      if (!$.data(this, 'plugin_xtScroll')) {
-        $.data(this, 'plugin_xtScroll', new XtScroll(this, options, defaults));
+      if (!$.data(this, defaults.type)) {
+        $.data(this, defaults.type, new XtScroll(this, options, defaults));
       }
     });
   };
   
-  // subclass ajax
-  var XtAjax = function(element, options, defaults) {
-    Xt.call(this, element, options, defaults);
+  var XtAjax = function(group, options, defaults) {
+    Xt.call(this, group, options, defaults);
   };
   XtAjax.prototype = Object.create(Xt.prototype);
   XtAjax.prototype.constructor = XtAjax;
@@ -120,11 +93,9 @@
     var defaults = {
       'name': 'xt-ajax',
       'type': 'plugin_xtAjax',
+      'targets': null,
       'on': 'click',
-      'target': null,
       'class': 'active',
-      'group': null,
-      'grouping': 'xtAjax',
       'url': null,
     };
     return this.each( function() {
@@ -142,9 +113,6 @@
   // usage: $('html').xtInitAll();
   $.fn.xtInitAll = function(deep) {
     return this.each( function() {
-      if ($(this).is('[data-xt]')) {
-        $(this).xt();
-      }
       if ($(this).is('[data-xt-toggle]')) {
         $(this).xtToggle();
       }
@@ -158,7 +126,6 @@
         $(this).xtAjax();
       }
       if (deep) {
-        $(this).find('[data-xt]').xt();
         $(this).find('[data-xt-toggle]').xtToggle();
         $(this).find('[data-xt-menu]').xtMenu();
         $(this).find('[data-xt-scroll]').xtScroll();
@@ -168,14 +135,14 @@
   };
   
   // initAjax
-  $.fn.xt.initAjax = function(options) {
+  $.fn.xtAjax.initAjax = function(options) {
     // ajax links
-    $('a[href^="' + options.baseurl + '"]').xtAjax({'target': options.target});
+    $('a[href^="' + options.baseurl + '"]').xtAjax({'targets': options.targets});
     // on ajax.populated.xt
-    $(options.target).off('ajax.populated.xt.populate');
-    $(options.target).on('ajax.populated.xt.populate', function(e, obj, $data) {
+    $(options.targets).off('ajax.populated.xt.populate');
+    $(options.targets).on('ajax.populated.xt.populate', function(e, obj, $data) {
       // ajax links
-      $(this).find('a[href^="' + options.baseurl + '"]').xtAjax({'target': options.target});
+      $(this).find('a[href^="' + options.baseurl + '"]').xtAjax({'targets': options.targets});
     });
   };
   
@@ -187,97 +154,68 @@
   Xt.prototype.init = function() {
     var object = this;
     var settings = this.settings;
-    var element = this.element;
-    var $element = $(this.element);
+    var group = this.group;
+    var $group = $(this.group);
     // variables
-    if ($element.attr('debug') || $element.attr('debug') === '') {
+    if ($group.attr('debug') || $group.attr('debug') === '') {
       settings.debug = true;
     }
     // override with html settings
-    $.extend(settings, $element.data(settings.name));
+    $.extend(settings, $group.data(settings.name));
     // setup
     this.scoping(); // scoping before setup
     this.setup();
     this.events(); // events after setup
-    //console.log(':init', $element.text().replace(/(\r\n|\n|\r)/gm,"").replace(/^\s+|\s+$|\s+(?=\s)/g, ""), $element.hasClass(settings.class));
+    //console.log(':init', $group.text().replace(/(\r\n|\n|\r)/gm,"").replace(/^\s+|\s+$|\s+(?=\s)/g, ""), $group.hasClass(settings.class));
   };
   
   Xt.prototype.scoping = function() {
     var object = this;
     var settings = this.settings;
-    var element = this.element;
-    var $element = $(this.element);
-    // $group and $target
-    if (settings.name === 'xt-scroll') {
-      $element.wrap($('<div class="box xt-container"></div>'));
-      settings.$target = $element.clone().addClass('box xt-ignore').css('visibility', 'hidden');
-      $.each(settings.$target.data(), function (i) {
-        settings.$target.removeAttr("data-" + i);
-      });
-      settings.$target.insertAfter($element);
-      settings.$group = $element.parents('.xt-container');
-    } else if (settings.target === 'html' || settings.name === 'xt-ajax') {
-      // special case 'html' or ajax
-      settings.$target = $(settings.target);
-      settings.$group = settings.$target;
-    } else if (settings.group) {
-      // if 'group'
-      settings.$group = $element.parents(settings.group);
-      if (settings.target) {
-        settings.$target = settings.$group.find(settings.target);
-      }
+    var group = this.group;
+    var $group = $(this.group);
+    // $elements
+    if (settings.elements) {
+      settings.$elements = $group.find(settings.elements);
     } else {
-      // we search from $element
-      settings.$group = $element;
-      if (settings.target) {
-        settings.$target = settings.$group.find(settings.target);
-        // if not found we search from $element.parent()
-        if (!settings.$target.length) {
-          settings.$group = $element.parent();
-          settings.$target = settings.$group.find(settings.target);
-          // if not found we search parents for $target
-          if (!settings.$target.length) {
-            settings.$target = $element.parents(settings.target);
-            settings.$group = settings.$target;
-          }
-        }
-      }
+      settings.$elements = $group;
+    }
+    // $targets
+    if (settings.targets === '$clone') {
+      $group.wrap($('<div class="box xt-container"></div>'));
+      settings.$targets = $group.clone().addClass('box xt-ignore').css('visibility', 'hidden');
+      $.each(settings.$targets.data(), function (i) {
+        settings.$targets.removeAttr("data-" + i);
+      });
+      settings.$targets.insertAfter($group);
+    } else if (settings.targets === 'html' || settings.name === 'xt-ajax') {
+      settings.$targets = $(settings.targets);
+    } else {
+      settings.$targets = $group.find(settings.targets);
     }
     // initialized
-    $element.attr('data-xt-initialized', settings.name);
+    $group.attr('data-xt-initialized', settings.name);
     // $group unique id
 		window.uuid = window.uuid ? window.uuid : 0;
-    var uuid = settings.$group.attr('id') ? settings.$group.attr('id') : 'xt-id-' + window.uuid++;
-    settings.$group.attr('id', uuid);
-    // grouping and set namespace
-    settings.namespace = settings.grouping + '_' + uuid + '_' + settings.class;
-    $element.attr('data-xt-element-' + settings.name, settings.namespace);
+    var uuid = $group.attr('id') ? $group.attr('id') : 'xt-id-' + window.uuid++;
+    $group.attr('id', uuid);
+    // namespace
+    settings.namespace = settings.name + '_' + uuid + '_' + settings.class;
+    $group.attr('data-xt-group-' + settings.name, settings.namespace);
   };
   
   Xt.prototype.setup = function() {
     var object = this;
     var settings = this.settings;
-    var element = this.element;
-    var $element = $(this.element);
+    var group = this.group;
+    var $group = $(this.group);
     // ajax url
     if (settings.name === 'xt-ajax') {
-      settings.url = $element.attr('href');
-    }
-    // $buttons based on $group and namespace
-    var $buttons = this.getButtons();
-    // groupIndex based on $buttons
-    $buttons.each( function(i) {
-      if ($(this).is($element)) {
-        settings.groupIndex = i;
-      }
-    });
-    // automatic $target based on groupIndex
-    if (settings.$target && settings.$target.length > 1) {
-      settings.$target = settings.$target.eq(settings.groupIndex);
+      settings.url = $group.attr('href');
     }
     // xt-height
-    if (settings.$target && settings.$target.hasClass('xt-height')) {
-      settings.$target.wrapInner('<div class="xt-height-inside"></div>');
+    if (settings.$targets && settings.$targets.hasClass('xt-height')) {
+      settings.$targets.wrapInner('<div class="xt-height-inside"></div>');
     }
     // automatic init
     if (settings.url) {
@@ -299,41 +237,41 @@
       if (found) {
         // set ajaxified
         settings.title = settings.title ? settings.title : document.title;
-        settings.$target.attr('data-xt-ajaxified', settings.url);
+        settings.$targets.attr('data-xt-ajaxified', settings.url);
         this.pushstate();
         // then show
         this.show();
         // api
-        settings.$target.trigger('ajax.init.xt', [object]);
+        settings.$targets.trigger('ajax.init.xt', [object]);
       }
     } else {
-      if ($element.hasClass(settings.class)) {
-        // reinit if has class
-        $element.removeClass(settings.class);
-        this.show();
+      // reinit if has class
+      if (settings.$elements) {
+        settings.$elements.each( function() {
+          if ($(this).hasClass(settings.class)) {
+            $(this).removeClass(settings.class);
+            object.show($(this));
+          }
+        });
+        // after concurrent
+        window.requestAnimFrame( function() {
+          // init if $shown < min
+          var min = settings.min;
+          var $shown = settings.$elements.filter('.' + settings.class);
+          if ($shown.length < min) {
+            object.show(settings.$elements.eq(0));
+          }
+        });
       }
-      // after concurrent
-      window.requestAnimFrame( function() {
-        $buttons = object.getButtons();
-        // init if $shown < min
-        var min = settings.min;
-        var $shown = $buttons.filter('.' + settings.class);
-        if (settings.max === 3) {
-          console.log($shown.length);
-        }
-        if ($shown.length < min) {
-          object.show();
-        }
-      });
     }
-    //console.log(':setup', $element.text().replace(/(\r\n|\n|\r)/gm,"").replace(/^\s+|\s+$|\s+(?=\s)/g, ""), $element.hasClass(settings.class));
+    //console.log(':setup', $group.text().replace(/(\r\n|\n|\r)/gm,"").replace(/^\s+|\s+$|\s+(?=\s)/g, ""), $group.hasClass(settings.class));
   };
   
   Xt.prototype.events = function() {
     var object = this;
     var settings = this.settings;
-    var element = this.element;
-    var $element = $(this.element);
+    var group = this.group;
+    var $group = $(this.group);
     // events
     if (settings.name === 'xt-scroll') {
       // scroll events
@@ -342,7 +280,7 @@
       $(window).on(scrollNamespace, function(e) {
         var top = $(this).scrollTop();
         // show or hide
-        var min = $element.parents('.xt-container').offset().top;
+        var min = $group.parents('.xt-container').offset().top;
         var max = Infinity;
         if (settings.scrollTop) {
           min = $(settings.scrollTop).offset().top;
@@ -351,255 +289,281 @@
           max = $(settings.scrollBottom).offset().top;
         }
         if (top > min && top < max) {
-          if (!$element.hasClass(settings.class)) {
-            object.show();
+          if (!$group.hasClass(settings.class)) {
+            object.show($group);
             // direction classes
-            $element.removeClass('scroll-hide-up scroll-hide-down');
+            $group.removeClass('scroll-hide-up scroll-hide-down');
             if (settings.scrollOld > top) {
-              $element.removeClass('scroll-show-down');
+              $group.removeClass('scroll-show-down');
               window.requestAnimFrame( function() {
-                $element.addClass('scroll-show-up');
+                $group.addClass('scroll-show-up');
               });
             } else {
-              $element.removeClass('scroll-show-up');
+              $group.removeClass('scroll-show-up');
               window.requestAnimFrame( function() {
-                $element.addClass('scroll-show-down');
+                $group.addClass('scroll-show-down');
               });
             }
           }
         } else {
-          if ($element.hasClass(settings.class)) {
-            object.hide();
+          if ($group.hasClass(settings.class)) {
+            object.hide($group);
             // direction classes
-            $element.removeClass('scroll-show-up scroll-show-down');
+            $group.removeClass('scroll-show-up scroll-show-down');
             if (settings.scrollOld > top) {
-              $element.removeClass('scroll-hide-down');
+              $group.removeClass('scroll-hide-down');
               window.requestAnimFrame( function() {
-                $element.addClass('scroll-hide-up');
+                $group.addClass('scroll-hide-up');
               });
             } else {
-              $element.removeClass('scroll-hide-up');
+              $group.removeClass('scroll-hide-up');
               window.requestAnimFrame( function() {
-                $element.addClass('scroll-hide-down');
+                $group.addClass('scroll-hide-down');
               });
             }
           }
         }
         settings.scrollOld = top;
-        //console.log(':scroll.xt', $element.text().replace(/(\r\n|\n|\r)/gm,"").replace(/^\s+|\s+$|\s+(?=\s)/g, ""), top, min, max);
+        //console.log(':scroll.xt', $group.text().replace(/(\r\n|\n|\r)/gm,"").replace(/^\s+|\s+$|\s+(?=\s)/g, ""), top, min, max);
       });
       $(window).trigger(scrollNamespace);
       // remove window event on remove
-      $element.on('xtRemoved', function(e) {
+      $group.on('xtRemoved', function(e) {
         $(window).off(scrollNamespace);
       });
     } else {
-      // toggle events
-      $element.on(settings.on, function(e) {
-        object.toggle();
-        if (settings.url) {
-          e.preventDefault();
+      // $elements events
+      if (settings.$elements) {
+        // on off events
+        if (settings.on) {
+          settings.$elements.on(settings.on, function(e) {
+            object.toggle($(this));
+            if (settings.url) {
+              e.preventDefault();
+            }
+          });
         }
-      });
-      $element.on(settings.off, function(e) {
-        object.toggle();
-      });
+        if (settings.off) {
+          settings.$elements.on(settings.off, function(e) {
+            object.toggle($(this));
+          });
+        }
+        // remove html classes on remove
+        settings.$elements.on('xtRemoved', function(e) {
+          if ($(this).is('[data-xt-reset]') || settings.targets === 'html') {
+            object.hide($(this), false, true, true);
+          }
+        });
+      }
     }
     // triggers
-    $element.on('toggle.xt', function(e, obj, triggered) {
+    /*
+    settings.$elements.on('toggle.xt', function(e, obj, triggered) {
       if (!triggered && e.target === this) {
-        object.toggle(true);
-        console.log($element.text().replace(/(\r\n|\n|\r)/gm,"").replace(/^\s+|\s+$|\s+(?=\s)/g, ""));
+        object.toggle($(this), true);
+        console.log($(this).text().replace(/(\r\n|\n|\r)/gm,"").replace(/^\s+|\s+$|\s+(?=\s)/g, ""));
       }
     });
-    $element.on('show.xt', function(e, obj, triggered) {
+    settings.$elements.on('show.xt', function(e, obj, triggered) {
       if (!triggered && e.target === this) {
-        object.show(true);
+        object.show($(this), true);
       }
     });
-    $element.on('hide.xt', function(e, obj, triggered) {
+    settings.$elements.on('hide.xt', function(e, obj, triggered) {
       if (!triggered && e.target === this) {
-        object.hide(true);
+        object.hide($(this), true);
       }
     });
-    // remove html classes on remove
-    if ($element.is('[data-xt-reset]') || settings.target === 'html') {
-      $element.on('xtRemoved', function(e) {
-        object.hide(false, true, true);
-      });
-    }
-    //console.log(':events', $element.text().replace(/(\r\n|\n|\r)/gm,"").replace(/^\s+|\s+$|\s+(?=\s)/g, ""), $element.hasClass(settings.class));
+    */
+    //console.log(':events', $group.text().replace(/(\r\n|\n|\r)/gm,"").replace(/^\s+|\s+$|\s+(?=\s)/g, ""), $group.hasClass(settings.class));
   };
   
   // methods
   
-  Xt.prototype.getButtons = function() {
-    var object = this;
-    var settings = this.settings;
-    var element = this.element;
-    var $element = $(this.element);
-    // get $buttons on $group based on namespace
-    var $buttons = settings.$group.find('[data-xt-element-' + settings.name + '="' + settings.namespace + '"]').filter(':parents(.xt-ignore)');
-    return $buttons;
-  };
-  
   Xt.prototype.getCurrents = function() {
     var object = this;
     var settings = this.settings;
-    var element = this.element;
-    var $element = $(this.element);
+    var group = this.group;
+    var $group = $(this.group);
     // get $currents on $group data
-    var $currents = settings.$group.data('$currents_' + settings.namespace) || $([]);
+    var $currents = $group.data('$currents_' + settings.namespace) || $([]);
     return $currents;
   };
   
   Xt.prototype.setCurrents = function($currents) {
     var object = this;
     var settings = this.settings;
-    var element = this.element;
-    var $element = $(this.element);
+    var group = this.group;
+    var $group = $(this.group);
     // set $currents on $group data
-    settings.$group.data('$currents_' + settings.namespace, $currents);
+    $group.data('$currents_' + settings.namespace, $currents);
     return $currents;
   };
   
   // toggle
-  Xt.prototype.toggle = function(triggered, isSync, skipState) {
+  Xt.prototype.toggle = function($element, triggered, isSync, skipState) {
     var object = this;
     var settings = this.settings;
-    var element = this.element;
-    var $element = $(this.element);
+    var group = this.group;
+    var $group = $(this.group);
     // choose based on state
-    var $buttons = this.getButtons();
     if (!$element.hasClass(settings.class)) {
-      this.show(triggered, isSync, skipState);
+      this.show($element, triggered, isSync, skipState);
+      /*
       if (!settings.url) {
         // xt sync
-        $buttons.each( function(i) {
+        settings.$elements.each( function(i) {
           var xt = $(this).data(settings.type);
-          if (xt.settings.$target && xt.settings.$target.is(settings.$target)) {
-            xt.show(triggered, true, skipState);
+          if (xt.settings.$targets && xt.settings.$targets.is(settings.$targets)) {
+            this.show($element, triggered, true, skipState);
           }
         });
       }
+      */
     } else {
       if (!settings.url) {
-        this.hide(triggered, isSync, skipState);
+        this.hide($element, triggered, isSync, skipState);
+        /*
         // xt sync
-        $buttons.each( function(i) {
+        settings.$elements.each( function(i) {
           var xt = $(this).data(settings.type);
-          if (xt.settings.$target && xt.settings.$target.is(settings.$target)) {
-            xt.hide(triggered, true, skipState);
+          if (xt.settings.$targets && xt.settings.$targets.is(settings.$targets)) {
+            xt.hide($element, triggered, true, skipState);
           }
         });
+        */
       }
     }
     // api
     if (!triggered) {
       $element.trigger('toggle.xt', [object, true]);
-      if (settings.$target) {
-        settings.$target.trigger('toggle.xt', [object, true]);
+      if (settings.$targets) {
+        settings.$targets.trigger('toggle.xt', [object, true]);
       }
     }
   };
   
-  Xt.prototype.show = function(triggered, isSync, skipState) {
+  Xt.prototype.show = function($element, triggered, isSync, skipState) {
     var object = this;
     var settings = this.settings;
-    var element = this.element;
-    var $element = $(this.element);
-    // filter
-    if (!$element.hasClass(settings.class)) {
-      var $currents = this.getCurrents();
-      var triggerTarget;
+    var group = this.group;
+    var $group = $(this.group);
+    // activate $element
+    if ($element) {
       // show and add in $currents
-      $element.addClass(settings.class);
-      $currents = this.setCurrents($currents.pushElement($element));
-      if (settings.$target && !settings.$target.hasClass(settings.class)) {
-        triggerTarget = true;
-        settings.$target.addClass(settings.class);
-        if (settings.$target.hasClass('xt-height')) {
-          var h = settings.$target.find('.xt-height-inside').outerHeight();
-          settings.$target.css("height", h);
-          settings.$target.parents('.xt-height-top').css("margin-top", -h);
-          settings.$target.parents('.xt-height-bottom').css("margin-bottom", -h);
-        }
-      }
-      // control over activated
-      if (settings.url) {
-        // [disabled]
-        this.checkDisabled('disable');
-        // ajax
-        object.ajax(triggered, isSync, skipState);
-      } else {
-        // [disabled]
-        this.checkDisabled();
-        // hide max or differents
-        if (!isSync) {
-          if ($currents.length > settings.max) {
-            var xt = $currents.first().data(settings.type);
-            if (xt) {
-              xt.hide();
+      if (!$element.hasClass(settings.class)) {
+        var $currents = this.getCurrents();
+        $element.addClass(settings.class);
+        $currents = this.setCurrents($currents.pushElement($element));
+        // control over activated
+        if (settings.url) {
+          // [disabled]
+          this.checkDisabled($element, 'disable');
+          // ajax
+          object.ajax(triggered, isSync, skipState);
+        } else {
+          // [disabled]
+          this.checkDisabled($element);
+          // hide max or differents
+          if (!isSync) {
+            if ($currents.length > settings.max) {
+              this.hide($currents.first());
             }
           }
         }
+        // api
+        if (!triggered) {
+          $element.trigger('show.xt', [object, true]);
+        }
+      }
+    }
+    // activate $target
+    if (settings.$targets) {
+      var index = this.getIndex(settings.$elements, $element);
+      index = index >= settings.$targets.length ? settings.$targets.length - 1 : index;
+      var $target = settings.$targets.eq(index);
+      if (!$target.hasClass(settings.class)) {
+        $target.addClass(settings.class);
+        if ($target.hasClass('xt-height')) {
+          var h = $target.find('.xt-height-inside').outerHeight();
+          $target.css("height", h);
+          $target.parents('.xt-height-top').css("margin-top", -h);
+          $target.parents('.xt-height-bottom').css("margin-bottom", -h);
+        }
+        // api
+        if (!triggered) {
+          $target.trigger('show.xt', [object, true]);
+        }
+      }
+    }
+    //console.log(':show', $group.text().replace(/(\r\n|\n|\r)/gm,"").replace(/^\s+|\s+$|\s+(?=\s)/g, ""), $group.hasClass(settings.class));
+  };
+  
+  Xt.prototype.hide = function($element, triggered, isSync, skipState) {
+    var object = this;
+    var settings = this.settings;
+    var group = this.group;
+    var $group = $(this.group);
+    // activate $element
+    if ($element) {
+      if ($element.hasClass(settings.class)) {
+        var $currents = this.getCurrents();
+        // hide and remove from $currents
+        if (isSync || settings.url || $currents.length > settings.min) {
+          $element.removeClass(settings.class);
+          $currents = this.setCurrents($currents.not($element.get(0)));
+        }
+        // [disabled]
+        if (isSync || settings.url) {
+          this.checkDisabled($element, 'enable');
+        } else {
+          this.checkDisabled($element);
+        }
+        // api
+        if (!triggered) {
+          $element.trigger('hide.xt', [object, true]);
+        }
+      }
+    }
+    // activate $target
+    if (settings.$targets) {
+      var index = this.getIndex(settings.$elements, $element);
+      index = index >= settings.$targets.length ? settings.$targets.length - 1 : index;
+      var $target = settings.$targets.eq(index);
+      if ($target.hasClass(settings.class)) {
+        $target.removeClass(settings.class);
+        if ($target.hasClass('xt-height')) {
+          $target.css("height", 0);
+          $target.parents('.xt-height-top').css("margin-top", 0);
+          $target.parents('.xt-height-bottom').css("margin-bottom", 0);
+        }
       }
       // api
       if (!triggered) {
-        $element.trigger('show.xt', [object, true]);
-        if (triggerTarget) {
-          settings.$target.trigger('show.xt', [object, true]);
-        }
+        $target.trigger('hide.xt', [object, true]);
       }
-      //console.log(':show', $element.text().replace(/(\r\n|\n|\r)/gm,"").replace(/^\s+|\s+$|\s+(?=\s)/g, ""), $element.hasClass(settings.class));
     }
+    //console.log(':hide', $group.text().replace(/(\r\n|\n|\r)/gm,"").replace(/^\s+|\s+$|\s+(?=\s)/g, ""), $group.hasClass(settings.class));
   };
   
-  Xt.prototype.hide = function(triggered, isSync, skipState) {
-    var object = this;
-    var settings = this.settings;
-    var element = this.element;
-    var $element = $(this.element);
-    // filter
-    if ($element.hasClass(settings.class)) {
-      var $currents = this.getCurrents();
-      var triggerTarget;
-      // hide and remove from $currents
-      if (isSync || settings.url || $currents.length > settings.min) {
-        $element.removeClass(settings.class);
-        $currents = this.setCurrents($currents.not(element));
-        if (settings.$target && settings.$target.hasClass(settings.class)) {
-          triggerTarget = true;
-          settings.$target.removeClass(settings.class);
-          if (settings.$target.hasClass('xt-height')) {
-            settings.$target.css("height", 0);
-            settings.$target.parents('.xt-height-top').css("margin-top", 0);
-            settings.$target.parents('.xt-height-bottom').css("margin-bottom", 0);
-          }
+  Xt.prototype.getIndex = function($elements, $element) {
+    var index = 0;
+    if ($elements && $element) {
+      $elements.each( function(i) {
+        if ($(this).is($element.get(0))) {
+          index = i;
+          return false;
         }
-      }
-      // [disabled]
-      if (isSync || settings.url) {
-        this.checkDisabled('enable');
-      } else {
-        this.checkDisabled();
-      }
-      // api
-      if (!triggered) {
-        $element.trigger('hide.xt', [object, true]);
-        if (triggerTarget) {
-          settings.$target.trigger('hide.xt', [object, true]);
-        }
-      }
-      //console.log(':hide', $element.text().replace(/(\r\n|\n|\r)/gm,"").replace(/^\s+|\s+$|\s+(?=\s)/g, ""), $element.hasClass(settings.class));
+      });
     }
+    return index;
   };
   
-  Xt.prototype.checkDisabled = function(force) {
+  Xt.prototype.checkDisabled = function($element, force) {
     var object = this;
     var settings = this.settings;
-    var element = this.element;
-    var $element = $(this.element);
+    var group = this.group;
+    var $group = $(this.group);
     // manage [disabled] attribute
     if (settings.on === 'click') {
       if (!force) {
@@ -626,10 +590,10 @@
   Xt.prototype.ajax = function(triggered, isSync, skipState) {
     var object = this;
     var settings = this.settings;
-    var element = this.element;
-    var $element = $(this.element);
+    var group = this.group;
+    var $group = $(this.group);
     // do ajax only one time
-    if (settings.$target.attr('data-xt-ajaxified') !== settings.url) {
+    if (settings.$targets.attr('data-xt-ajaxified') !== settings.url) {
       // ajax
       $.ajax({
         type: 'GET',
@@ -637,18 +601,18 @@
         success: function(data, textStatus, jqXHR) {
           var $data = $('<div />').html(data);
           // api
-          settings.$target.trigger('ajax.success.xt', [object, $data]);
+          settings.$targets.trigger('ajax.success.xt', [object, $data]);
           // populate
-          var $html = $data.find(settings.target).contents();
-          settings.$target.html($html);
-          settings.$target.attr('data-xt-ajaxified', settings.url);
+          var $html = $data.find(settings.targets).contents();
+          settings.$targets.html($html);
+          settings.$targets.attr('data-xt-ajaxified', settings.url);
           // pushstate
           if (!skipState) {
             settings.title = settings.title ? settings.title : $data.find('title').text();
             object.pushstate(true);
           }
           // api
-          settings.$target.trigger('ajax.populated.xt', [object, $data]);
+          settings.$targets.trigger('ajax.populated.xt', [object, $data]);
         },
         error: function(jqXHR, textStatus, errorThrown) {
           console.error('ajax error url:' + settings.url + ' ' + errorThrown);
@@ -660,8 +624,8 @@
   Xt.prototype.pushstate = function(triggered) {
     var object = this;
     var settings = this.settings;
-    var element = this.element;
-    var $element = $(this.element);
+    var group = this.group;
+    var $group = $(this.group);
     // if no state or if the state is new
     var title = settings.title;
     if (!history.state || !history.state.url || history.state.url !== settings.url) {
@@ -675,7 +639,7 @@
           xt.pushstateListener(url, triggered);
         }
       });
-      //console.log(':pushstate', $element.text().replace(/(\r\n|\n|\r)/gm,"").replace(/^\s+|\s+$|\s+(?=\s)/g, ""), $element.hasClass(settings.class));
+      //console.log(':pushstate', $group.text().replace(/(\r\n|\n|\r)/gm,"").replace(/^\s+|\s+$|\s+(?=\s)/g, ""), $group.hasClass(settings.class));
     }
     document.title = title; // also when no history.state
   };
@@ -683,15 +647,15 @@
   Xt.prototype.pushstateListener = function(url, triggered) {
     var object = this;
     var settings = this.settings;
-    var element = this.element;
-    var $element = $(this.element);
+    var group = this.group;
+    var $group = $(this.group);
     // triggered pushstate
     if (settings.url === url) {
       object.show(triggered, false, true);
-      //console.log(':push:show', $element.text().replace(/(\r\n|\n|\r)/gm,"").replace(/^\s+|\s+$|\s+(?=\s)/g, ""), $element.hasClass(settings.class));
+      //console.log(':push:show', $group.text().replace(/(\r\n|\n|\r)/gm,"").replace(/^\s+|\s+$|\s+(?=\s)/g, ""), $group.hasClass(settings.class));
     } else {
       object.hide(triggered, false, true);
-      //console.log(':push:hide', $element.text().replace(/(\r\n|\n|\r)/gm,"").replace(/^\s+|\s+$|\s+(?=\s)/g, ""), $element.hasClass(settings.class));
+      //console.log(':push:hide', $group.text().replace(/(\r\n|\n|\r)/gm,"").replace(/^\s+|\s+$|\s+(?=\s)/g, ""), $group.hasClass(settings.class));
     }
   };
 
@@ -704,7 +668,7 @@
     if (history.state && history.state.url) {
       document.title = history.state.title;
       // trigger on registered
-      $(document).find('[data-xt-initialized="xt-ajax"]').filter(':parents(.xt-ignore)').each( function(i, element) {
+      $(document).find('[data-xt-initialized="xt-ajax"]').filter(':parents(.xt-ignore)').each( function(i, group) {
         var xt = $(this).data('plugin_xtAjax');
         xt.pushstateListener(history.state.url);
       });
@@ -719,15 +683,15 @@
   })();
   
   // http://stackoverflow.com/questions/13281897/how-to-preserve-order-of-items-added-to-jquery-matched-set
-  // push jquery element inside jquery query, use $([]) for empty query
-  // usage: $elements.pushElement($element)
-  $.fn.pushElement = function($element) {
-    Array.prototype.push.apply(this, $element);
+  // push jquery group inside jquery query, use $([]) for empty query
+  // usage: $groups.pushElement($group)
+  $.fn.pushElement = function($group) {
+    Array.prototype.push.apply(this, $group);
     return this;
   };
   
-  // http://stackoverflow.com/questions/2200494/jquery-trigger-event-when-an-element-is-removed-from-the-dom
-  // xtRemoved event fired when an element is removed from DOM
+  // http://stackoverflow.com/questions/2200494/jquery-trigger-event-when-an-group-is-removed-from-the-dom
+  // xtRemoved event fired when an group is removed from DOM
   $.event.special.xtRemoved = {
     remove: function(o) {
       if (o.handler) { o.handler(); }
@@ -735,8 +699,8 @@
   };
   
   // http://stackoverflow.com/questions/965816/what-jquery-selector-excludes-items-with-a-parent-that-matches-a-given-selector
-  // filter out $elements with :parents(.classname)
-  // usage: $elements.filter(':parents(.xt-ignore)')
+  // filter out $groups with :parents(.classname)
+  // usage: $groups.filter(':parents(.xt-ignore)')
   $.expr[':'].parents = function(a, i, m){
     return $(a).parents(m[3]).length < 1;
   };

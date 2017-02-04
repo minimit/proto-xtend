@@ -48,21 +48,6 @@
           }
         }
         var $btn = $container.find('.demo-tabs-left').append('<button class="button">' + name + '</button>').find('.button').eq(k);
-        $btn.xtToggle({"target": ".demo-item", "group": ".demo", "min": 1});
-        // disable fullscreen when not needed
-        $btn.on('show.xt', function(e, obj) {
-          var $fullscreen = $(this).parents('.demo').find('.button__fullscreen');
-          var iframe = $(this).parents('.demo').find('.demo-item.active').attr('data-iframe');
-          if (iframe) {
-            $fullscreen.css('display', 'block');
-            $fullscreen.off('click');
-            $fullscreen.on('click', function() {
-              window.open(iframe, '_blank');
-            });
-          } else {
-            $fullscreen.css('display', 'none');
-          }
-        });
         // iframe append
         if ($item.attr('data-iframe')) {
           $item.append('<iframe data-src="' + $item.attr('data-iframe') + '" frameborder="0"></iframe>');
@@ -138,6 +123,7 @@
           $source.css('display', 'none');
         }
       });
+      $item.xtToggle({"elements": ".demo-code-tabs-left .button", "targets": ".demo-code-body-item", "min": 1});
     }
     
     // populateIframe
@@ -162,6 +148,7 @@
         var $source = $(this);
         populateSources($item, $source, id, z);
       });
+      $item.xtToggle({"elements": ".demo-code-tabs-left .button", "targets": ".demo-code-body-item", "min": 1});
     }
     
     // populateSources
@@ -170,7 +157,6 @@
       // populate tabs
       var $codeInside = $item.find('.demo-code-body').append('<div class="demo-code-body-item"><pre><code></code></pre></div>').find('.demo-code-body-item').eq(z).find('pre code');
       var $btnInside = $item.find('.demo-code-tabs-left').append('<button class="button">' + lang + '</button>').find('.button').eq(z);
-      $btnInside.xtToggle({"target": ".demo-code-body-item", "group": ".demo-code", "min": 1});
       // format code
       if (!$codeInside.hasClass('hljs')) {
         var text = formatCode($source, lang);
@@ -203,7 +189,25 @@
     
     // init demo
     $main.find('.demo').each( function(i) {
-      populateDemo($(this), i);
+      var $demo = $(this);
+      populateDemo($demo, i);
+      // demo tabs
+      $demo.xtToggle({"elements":".demo-tabs-left .button", "targets": ".demo-item", "min": 1});
+      // disable fullscreen when not needed
+      $demo.find('.demo-tabs-left .button').on('show.xt', function(e, obj) {
+        var $fullscreen = $(this).parents('.demo').find('.button__fullscreen');
+        var iframe = $(this).parents('.demo').find('.demo-item.active').attr('data-iframe');
+        if (iframe) {
+          $fullscreen.css('display', 'block');
+          $fullscreen.off('click');
+          $fullscreen.on('click', function() {
+            window.open(iframe, '_blank');
+          });
+        } else {
+          $fullscreen.css('display', 'none');
+        }
+      });
+      
     });
     
     //////////////////////
@@ -274,7 +278,7 @@
     // xtend
     //////////////////////
 
-    $main.find('.button__menu').xtMenu();
+    $main.find('.site-header').xtMenu({"elements": ".button__menu"});
     
     //////////////////////
     
@@ -290,20 +294,12 @@
   
   // init xt
   $('html').xtInitAll(true);
-  
-  // automaticAjax
-  $(document).ready( function() {
-    $.fn.xtAjax.initAjax({
-      'baseurl': '/',
-      'target': '.site-wrapper',
-    });
-  });
+  $('html').xtAjax({'elements': 'a[href^="/"]', 'targets': '.site-wrapper'});
   
   // xt-ajax
   $('.site-wrapper').on('ajax.populated.xt', function(e, obj, $data) {
     main($(this)); // custom function on ajax
     $(this).xtInitAll(true); // init xt
-    //console.log('ajax.populated.xt');
   });
   
   // api tests

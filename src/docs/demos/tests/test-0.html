@@ -4,16 +4,27 @@ scss: true
 js: true
 full: false
 ---
-<div class="spacer">
+<div class="spacer" data-xt-toggle='{"elements": ".button", "targets": ".collapse"}'>
 
-  <button class="button color-primary" data-xt-toggle>
+  <button class="button color-primary">
     Lorem Ipsum
   </button>
 
-  <button class="button color-primary" data-xt-toggle='{"target": "#collapse"}'>
+  <a href="#collapse" class="button color-primary">
     Lorem Ipsum
-  </button>
+  </a>
   <div class="collapse" id="collapse">
+    <div class="card">
+      <div class="card-block">
+        Lorem Ipsum
+      </div>
+    </div>
+  </div>
+  
+  <button class="button color-primary">
+    Lorem Ipsum
+  </button>
+  <div class="collapse">
     <div class="card">
       <div class="card-block">
         Lorem Ipsum
@@ -22,7 +33,7 @@ full: false
   </div>
 
   <div>
-    <button class="button color-primary" data-xt-toggle='{"target": ".collapse"}'>
+    <button class="button color-primary">
       Lorem Ipsum
     </button>
     <div class="collapse">
@@ -34,8 +45,8 @@ full: false
     </div>
   </div>
 
-  <div id="toggle-group">
-    <button class="button color-primary" data-xt-toggle='{"target": ".collapse", "group": "#toggle-group"}'>
+  <div data-xt-toggle='{"elements": ".button", "targets": ".collapse"}'>
+    <button class="button color-primary">
       Lorem Ipsum
     </button>
     <div class="collapse">
@@ -48,7 +59,7 @@ full: false
   </div>
 
   <div class="toggle-group">
-    <button class="button color-primary" data-xt-toggle='{"target": ".collapse", "group": ".toggle-group"}'>
+    <button class="button color-primary">
       Lorem Ipsum
     </button>
     <div class="collapse">

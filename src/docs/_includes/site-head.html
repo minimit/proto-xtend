@@ -33,7 +33,7 @@
       
       <header class="site-header">
         
-        <nav class="site-header-top" role="navigation" data-xt-scroll='{"scrollTop": ".site-header", "scrollBottom": ".site-breadcrumbs"}'>
+        <nav class="site-header-top" role="navigation">
           
           <div class="container">
             
@@ -119,14 +119,14 @@
         <nav class="site-breadcrumbs" role="navigation" data-xt-scroll>
           <div class="container">
             
-            <div class="site-breadcrumbs-body float-left spacer">
+            <div class="site-breadcrumbs-body float-left spacer" data-xt-toggle='{"elements": ".site-breadcrumbs-body-main", "targets": ".site-breadcrumbs-body-sub", "on": "mouseenter", "off": "mouseleave"}'>
               {% for collection in site.collections %}
                 {% if collection.label == page.collection %}
               
                   {% assign sorted = site.[collection.label] | sort: 'order' %}
                   {% for p in sorted %}
                     {% if p.categories[0] == collection.label %}
-                      <div class="site-breadcrumbs-body-main" data-xt-toggle='{"target": ".site-breadcrumbs-body-sub", "on": "mouseenter", "off": "mouseleave"}'>
+                      <div class="site-breadcrumbs-body-main">
                         <a href="{{ p.url }}" class="button">
                           {{ p.title }}
                         </a>

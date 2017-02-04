@@ -105,6 +105,19 @@ a, button {
 }
 
 //////////////////////
+// xt-height
+//////////////////////
+
+.xt-height {
+  display: block !important; // must be visible to get height
+  overflow: hidden;
+  height: 0;
+} 
+.xt-height-inside {
+  float: left;
+}
+
+//////////////////////
 // xt-menu
 //////////////////////
 
@@ -123,19 +136,6 @@ a, button {
       display: block;
     }
   }
-}
-
-//////////////////////
-// xt-height
-//////////////////////
-
-.xt-height {
-  display: block !important; // must be visible to get height
-  overflow: hidden;
-  height: 0;
-} 
-.xt-height-inside {
-  float: left;
 }
 
 //////////////////////
