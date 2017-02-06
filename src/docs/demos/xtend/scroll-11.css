@@ -12,6 +12,43 @@ font-family: 'Lato', sans-serif;
 font-family: 'Open Sans', sans-serif;
 font-family: 'Fira Sans Condensed', sans-serif;
 */
+.xt-menu {
+  display: none; }
+  html.menu .xt-menu {
+    display: block;
+    z-index: 80;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0; }
+
+.xt-scroll-absolute[data-xt-initialized]:not(.xt-ignore) {
+  position: absolute; }
+
+.xt-scroll-absolute.xt-ignore {
+  display: block !important;
+  visibility: hidden; }
+
+.xt-scroll {
+  z-index: 70;
+  /* settings */
+  /* .scroll */ }
+  .xt-scroll .show-scroll {
+    display: none; }
+  .xt-scroll.xt-ignore {
+    display: none; }
+  .xt-scroll.scroll.xt-ignore {
+    display: block !important;
+    visibility: hidden; }
+  .xt-scroll.scroll:not(.xt-ignore) {
+    position: fixed;
+    top: 0; }
+    .xt-scroll.scroll:not(.xt-ignore) .show-scroll {
+      display: block; }
+    .xt-scroll.scroll:not(.xt-ignore) .hide-scroll {
+      display: none; }
+
 /*! xtend v0.0.6 (http://www.minimit.com/xtend/)
 @copyright (c) 2016 - 2017 Riccardo Caroli
 @license MIT (https://github.com/minimit/xtend/blob/master/LICENSE) */
@@ -354,17 +391,14 @@ a:not(.button) {
   transition: margin-bottom 0.3s cubic-bezier(0.63, 0.36, 0, 0.97);
   will-change: margin-bottom; }
 
-/* settings */
 .card[data-xt-scroll].xt-ignore {
   display: none; }
 
-/* default */
 .card[data-xt-scroll] {
   z-index: 70; }
   .card[data-xt-scroll] .show-scroll {
     display: none; }
 
-/* scroll */
 .card[data-xt-scroll].scroll.xt-ignore {
   display: block; }
 

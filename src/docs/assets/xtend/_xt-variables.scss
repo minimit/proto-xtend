@@ -137,6 +137,20 @@ $focus: "&:focus, &.focus";
 // xt-menu
 //////////////////////
 
+.xt-menu {
+  display: none;
+  html.menu & {
+    display: block;
+    z-index: 80;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    //@extend .site-header-top.scroll; // needed if not 'fixed'
+  }
+}
+
 @mixin xt-menu($item, $class:'.menu') {
   #{$item} {
     display: none;
@@ -158,8 +172,43 @@ $focus: "&:focus, &.focus";
 // xt-scroll
 //////////////////////
 
-@mixin xt-scroll($item, $start:false, $position:'top', $pos:false) {
+.xt-scroll-absolute {
+  &[data-xt-initialized]:not(.xt-ignore) {
+    position: absolute;
+  }
+  &.xt-ignore {
+    display: block !important;
+    visibility: hidden;
+  }
+}
+.xt-scroll {
+  z-index: 70;
+  .show-scroll {
+    display: none;
+  }
   /* settings */
+  &.xt-ignore {
+    display: none;
+  }
+  /* .scroll */
+  &.scroll.xt-ignore {
+    display: block !important;
+    visibility: hidden;
+  }
+  &.scroll:not(.xt-ignore) {
+    position: fixed;
+    top: 0;
+    .show-scroll {
+      display: block;
+    }
+    .hide-scroll {
+      display: none;
+    }
+  }
+}
+
+@mixin xt-scroll($item, $start:false, $position:'top', $pos:false) {
+
   @if $start == 'absolute' {
     #{$item}[data-xt-initialized]:not(.xt-ignore) {
       position: absolute;
@@ -176,14 +225,14 @@ $focus: "&:focus, &.focus";
       display: none;
     }
   }
-  /* default */
+  
   #{$item} {
     z-index: 70;
     .show-scroll {
       display: none;
     }
   }
-  /* scroll */
+  
   #{$item}.scroll.xt-ignore {
     display: block;
   }

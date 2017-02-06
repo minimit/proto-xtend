@@ -168,7 +168,7 @@
     // $targets
     if (settings.targets === '$clone') {
       $group.wrap($('<div class="box xt-container"></div>'));
-      settings.$targets = $group.clone().addClass('box xt-ignore').css('visibility', 'hidden');
+      settings.$targets = $group.clone().addClass('box xt-ignore').css('display', 'none');
       $.each(settings.$targets.data(), function (i) {
         settings.$targets.removeAttr("data-" + i);
       });
