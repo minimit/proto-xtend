@@ -200,6 +200,8 @@ a.logo {
   background: $color-primary;
   color: $color-white;
   .site-menu-content {
+    padding-top: 100px;
+    padding-bottom: 100px;
     width: 100%;
     height: 100%;
   }
@@ -762,11 +764,16 @@ pre {
 // xt
 //////////////////////
 
-//.min-md { // test media query
-
+@media (min-width: 1200px) {
+  
+  // scroll styles
+  @include xt-scroll('.site-header-top', 'fixed');
+  // full width
   .site-header-top {
     width: 100%;
-    @extend .xt-scroll;
+  }
+  // animations
+  .site-header-top {
     &.scroll-on-top,
     &.scroll-on-bottom {
       -webkit-animation: top-fadein 0.6s cubic-bezier(0.19, 1, 0.22, 1);
@@ -774,16 +781,10 @@ pre {
     }  
   }
   
-  .site-aside {
-    @extend .xt-scroll;
-    &.scroll {
-      top: 56px !important;
-    }
-  }
-  
+  // scroll styles
+  @include xt-scroll('.site-breadcrumbs', 'absolute');
+  // animations
   .site-breadcrumbs {
-    @extend .xt-scroll;
-    @extend .xt-scroll-absolute;
     &.scroll-on-top,
     &.scroll-on-bottom {
       .show-scroll {
@@ -793,51 +794,30 @@ pre {
     }
   }
   
-//}
-
-.site-menu {
-  @extend .xt-menu;
-}
-html.menu {
-  .site-header-top {
-    z-index: 81;
-    @extend .site-header-top.scroll; // needed if not 'fixed'
-  }
-}
-/*
-@include xt-scroll('.site-header-top', 'fixed');
-.site-header-top {
-  width: 100%;
-}
-.site-header-top {
-  &.scroll-on-top,
-  &.scroll-on-bottom {
-    -webkit-animation: top-fadein 0.6s cubic-bezier(0.19, 1, 0.22, 1);
-    animation: top-fadein 0.6s cubic-bezier(0.19, 1, 0.22, 1);
-  }  
+  // scroll styles
+  @include xt-scroll('.site-aside', false, 'top', 56px);
+  
 }
 
-@include xt-scroll('.site-breadcrumbs', 'absolute');
-.site-breadcrumbs {
-  &.scroll-on-top,
-  &.scroll-on-bottom {
-    .show-scroll {
-      -webkit-animation: left-fadein 0.6s cubic-bezier(0.19, 1, 0.22, 1);
-      animation: left-fadein 0.6s cubic-bezier(0.19, 1, 0.22, 1);
-    }
-  }
+// test media query
+ 
+@media (max-width: 1999px) {
+
+  @include xt-scroll('.site-aside', false, 'bottom');
+  
 }
+  
 
-@include xt-scroll('.site-aside', false, 'top', 56px);
-
+// menu styles
 @include xt-menu('.site-menu');
+// .site-header-top z-index
 html.menu {
   .site-header-top {
+    position: relative !important;
     z-index: 81;
-    //@extend .site-header-top.scroll; // needed if not 'fixed'
+    width: 100%;
   }
 }
-*/
 
 //////////////////////
 // animations

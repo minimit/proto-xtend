@@ -137,21 +137,7 @@ $focus: "&:focus, &.focus";
 // xt-menu
 //////////////////////
 
-.xt-menu {
-  display: none;
-  html.menu & {
-    display: block;
-    z-index: 80;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    //@extend .site-header-top.scroll; // needed if not 'fixed'
-  }
-}
-
-@mixin xt-menu($item, $class:'.menu') {
+@mixin xt-menu($item, $class:'.menu', $direction:'vertical') {
   #{$item} {
     display: none;
     z-index: 80;
@@ -166,75 +152,58 @@ $focus: "&:focus, &.focus";
       display: block;
     }
   }
+  @if $direction == 'vertical' {
+    html#{$class} {
+      &, & body {
+        overflow-y: hidden;
+      }
+      #{$item} {
+        overflow-y: scroll;
+      }
+    }
+  } @elseif $direction == 'horizontal' {
+    html#{$class} {
+      &, & body {
+        overflow-x: hidden;
+      }
+      #{$item} {
+        overflow-x: scroll;
+      }
+    }
+  }
 }
 
 //////////////////////
 // xt-scroll
 //////////////////////
 
-.xt-scroll-absolute {
-  &[data-xt-initialized]:not(.xt-ignore) {
-    position: absolute;
-  }
-  &.xt-ignore {
-    display: block !important;
-    visibility: hidden;
-  }
-}
-.xt-scroll {
-  z-index: 70;
-  .show-scroll {
-    display: none;
-  }
-  /* settings */
-  &.xt-ignore {
-    display: none;
-  }
-  /* .scroll */
-  &.scroll.xt-ignore {
-    display: block !important;
-    visibility: hidden;
-  }
-  &.scroll:not(.xt-ignore) {
-    position: fixed;
-    top: 0;
-    .show-scroll {
-      display: block;
-    }
-    .hide-scroll {
-      display: none;
-    }
-  }
-}
-
 @mixin xt-scroll($item, $start:false, $position:'top', $pos:false) {
-
-  @if $start == 'absolute' {
-    #{$item}[data-xt-initialized]:not(.xt-ignore) {
-      position: absolute;
-    }
-    #{$item}.xt-ignore {
-      display: block;
-    }
-  } @elseif $start == 'fixed' {
-    #{$item}[data-xt-initialized] {
-      @extend #{$item}.scroll; // show as if scrolling
-    }
-  } @else {
-    #{$item}.xt-ignore {
-      display: none;
-    }
-  }
-  
+  /* defaults */
   #{$item} {
     z-index: 70;
     .show-scroll {
       display: none;
     }
   }
-  
+  /* $start */
+  @if $start == 'absolute' {
+    #{$item}[data-xt-initialized]:not(.xt-ignore) {
+      position: absolute;
+    }
+    #{$item}.xt-ignore {
+      display: block !important;
+    }
+  } @elseif $start == 'fixed' {
+    #{$item}[data-xt-initialized] {
+      @extend #{$item}.scroll; // show as if scrolling
+    }
+    #{$item}.xt-ignore {
+      display: block !important;
+    }
+  }
+  /* .scroll */
   #{$item}.scroll.xt-ignore {
-    display: block;
+    display: block !important;
   }
   #{$item}.scroll:not(.xt-ignore) {
     position: fixed;

@@ -162,13 +162,16 @@
     // $elements
     if (settings.elements) {
       settings.$elements = $group.find(settings.elements).filter(':parents(.xt-ignore)');
+      if (!settings.$elements.length) {
+        settings.$elements = $(settings.elements).filter(':parents(.xt-ignore)');
+      }
     } else {
       settings.$elements = $group;
     }
     // $targets
     if (settings.targets === '$clone') {
       $group.wrap($('<div class="box xt-container"></div>'));
-      settings.$targets = $group.clone().addClass('box xt-ignore').css('display', 'none');
+      settings.$targets = $group.clone().addClass('box xt-ignore').css('display', 'none').css('visibility', 'hidden');
       $.each(settings.$targets.data(), function (i) {
         settings.$targets.removeAttr("data-" + i);
       });
@@ -389,6 +392,7 @@
   };
   
   // toggle
+  
   Xt.prototype.toggle = function($element, triggered, isSync, skipState) {
     var object = this;
     var settings = this.settings;
@@ -621,6 +625,19 @@
     if (!history.state || !history.state.url || history.state.url !== url) {
       history.pushState({'url': url, 'title': title}, title, url);
     }
+  };
+  
+  // utils
+  
+  Xt.prototype.getScrollbarWidth = function($el) {
+    var parent, child, width;
+    if(width === undefined) {
+      parent = $('<div style="width:50px;height:50px;overflow:auto"><div/></div>').appendTo($el);
+      child = parent.children();
+      width = child.innerWidth() - child.height(99).innerWidth();
+      parent.remove();
+    }
+    return width;
   };
 
   //////////////////////

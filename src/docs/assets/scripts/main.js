@@ -277,7 +277,13 @@
     // xtend
     //////////////////////
 
-    $main.find('.site-header').xtMenu({"elements": ".button__menu"});
+    $main.find('.site-menu').xtMenu({"elements": ".button__menu"});
+    $('.button__menu').on('show.xt hide.xt', function(e, obj, $data) {
+      if (obj.settings.name === 'xt-menu') {
+        var w = obj.getScrollbarWidth('.site-menu');
+        $('.site-header-top').parents('.xt-container').css('padding-right', w);
+      }
+    });
     
     //////////////////////
     
