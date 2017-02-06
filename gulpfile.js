@@ -7,8 +7,8 @@ var sass = require('gulp-sass');
 var watch = require('gulp-watch');
 var concat = require('gulp-concat');
 var rename = require('gulp-rename');
-var uglify = require('gulp-uglify');
 var inject = require('gulp-inject');
+var uglify = require('gulp-uglify');
 var runSequence = require('run-sequence');
 var injectString = require('gulp-inject-string');
 
@@ -39,12 +39,12 @@ gulp.task('watch', ['version'], function(done) {
 // compile scss and js
 
 gulp.task('copy-dist', ['scss', 'js'], function() {
-  return gulp.src('src/docs/assets/xt/*')
+  return gulp.src('src/docs/assets/xtend/*')
     .pipe(gulp.dest('dist/'));
 });
 
 gulp.task('scss:watch', function() {
-  gulp.watch(['src/docs/assets/xt/*.scss', 'src/docs/assets/styles/*.scss', 'src/docs/demos/**/*.scss'], ['copy-dist']);
+  gulp.watch(['src/docs/assets/xtend/*.scss', 'src/docs/assets/styles/*.scss', 'src/docs/demos/**/*.scss'], ['copy-dist']);
 });
 gulp.task('scss', ['scss-demos'], function() {
   return gulp.src('src/docs/assets/styles/*.scss')
@@ -61,22 +61,22 @@ gulp.task('scss-demos', ['scss-xt'], function() {
     .pipe(gulp.dest('src/docs/demos/'));
 });
 gulp.task('scss-xt', function() {
-  return gulp.src('src/docs/assets/xt/*.scss')
+  return gulp.src('src/docs/assets/xtend/*.scss')
     .pipe(sass({
       outputStyle: 'expanded'
     }))
-    .pipe(gulp.dest('src/docs/assets/xt/'))
+    .pipe(gulp.dest('src/docs/assets/xtend/'))
     .pipe(sass({
       outputStyle: 'compressed'
     }))
     .pipe(rename({
       suffix: '.min'
     }))
-    .pipe(gulp.dest('src/docs/assets/xt/'));
+    .pipe(gulp.dest('src/docs/assets/xtend/'));
 });
 
 gulp.task('js:watch', function() {
-  gulp.watch(['src/docs/assets/xt/scripts/*.js'], ['copy-dist']);
+  gulp.watch(['src/docs/assets/xtend/*.js', '!src/docs/assets/xtend/*.min.js'], ['copy-dist']);
 });
 /*
 gulp.task('js', ['js-xt'], function(cb) {
@@ -92,23 +92,21 @@ gulp.task('js', ['js-xt'], function(cb) {
     ], cb);
 });
 */
-gulp.task('js', function(cb) {
-  pump([
-    gulp.src(['src/docs/assets/xt/*.js', '!src/docs/assets/xt/*.min.js']),
-    uglify({
+gulp.task('js', function() {
+  return gulp.src(['src/docs/assets/xtend/*.js', '!src/docs/assets/xtend/*.min.js'])
+    .pipe(uglify({
       preserveComments: 'license'
-    }),
-    rename({
+    }))
+    .pipe(rename({
       suffix: '.min'
-    }),
-    gulp.dest('src/docs/assets/xt/')
-    ], cb);
+    }))
+    .pipe(gulp.dest('src/docs/assets/xtend/'));
 });
 /*
 gulp.task('js-concat', function(cb) {
-  return gulp.src(['src/docs/assets/xt/scripts/xt.js', 'src/docs/assets/xt/scripts/*.js'])
+  return gulp.src(['src/docs/assets/xtend/scripts/xt.js', 'src/docs/assets/xtend/scripts/*.js'])
     .pipe(concat('xt.js'))
-    .pipe(gulp.dest('src/docs/assets/xt/'));
+    .pipe(gulp.dest('src/docs/assets/xtend/'));
 });
 */
 
@@ -130,9 +128,9 @@ gulp.task('version', function() {
     .pipe(gulp.dest(''));
   // inject scss and js
   var banner = "/*! xtend v" + version + " (http://www.minimit.com/xtend/)\n" + "@copyright (c) 2016 - 2017 Riccardo Caroli\n" + "@license MIT (https://github.com/minimit/xtend/blob/master/LICENSE) */";
-  return gulp.src(['src/docs/assets/xt/**/*.scss', 'src/docs/assets/xt/**/*.js'])
+  return gulp.src(['src/docs/assets/xtend/**/*.scss', 'src/docs/assets/xtend/**/*.js'])
     .pipe(injectString.replace(/\/\*\![^\*]+\*\//, banner))
-    .pipe(gulp.dest('src/docs/assets/xt/'));
+    .pipe(gulp.dest('src/docs/assets/xtend/'));
 });
 
 // site

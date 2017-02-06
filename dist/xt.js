@@ -338,6 +338,20 @@
             object.hide($(this), false, true, true);
           }
         });
+        // api
+        settings.$elements.on('show.xt', function(e, obj, triggered) {
+          if (settings.$elements.hasClass('site-breadcrumbs-body-main')) {
+            console.log('cccc');
+          }
+          if (!triggered && e.target === this) {
+            object.show($(this), true);
+          }
+        });
+        settings.$elements.on('hide.xt', function(e, obj, triggered) {
+          if (!triggered && e.target === this) {
+            object.hide($(this), true);
+          }
+        });
       }
       if (settings.name === 'xt-ajax') {
         // onpopstate
@@ -348,25 +362,6 @@
         };
       }
     }
-    // triggers
-    /*
-    settings.$elements.on('toggle.xt', function(e, obj, triggered) {
-      if (!triggered && e.target === this) {
-        object.toggle($(this), true);
-        console.log($(this).text().replace(/(\r\n|\n|\r)/gm,"").replace(/^\s+|\s+$|\s+(?=\s)/g, ""));
-      }
-    });
-    settings.$elements.on('show.xt', function(e, obj, triggered) {
-      if (!triggered && e.target === this) {
-        object.show($(this), true);
-      }
-    });
-    settings.$elements.on('hide.xt', function(e, obj, triggered) {
-      if (!triggered && e.target === this) {
-        object.hide($(this), true);
-      }
-    });
-    */
     //console.log(':events', $group.text().replace(/(\r\n|\n|\r)/gm,"").replace(/^\s+|\s+$|\s+(?=\s)/g, ""), $group.hasClass(settings.class));
   };
   
