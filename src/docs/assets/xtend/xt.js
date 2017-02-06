@@ -200,8 +200,12 @@
     var group = this.group;
     var $group = $(this.group);
     // xt-height
-    if (settings.$targets && settings.$targets.hasClass('xt-height')) {
-      settings.$targets.wrapInner('<div class="xt-height-inside"></div>');
+    if (settings.$targets) {
+      settings.$targets.each( function() {
+        if ($(this).hasClass('xt-height')) {
+          $(this).wrapInner('<div class="xt-height-inside"></div>');
+        }
+      });
     }
     // initial activations
     if (settings.name === 'xt-ajax') {
@@ -260,30 +264,30 @@
       var scrollNamespace = 'scroll.xt.' + settings.namespace;
       $(window).off(scrollNamespace);
       $(window).on(scrollNamespace, function(e) {
-        var top = $(this).scrollTop();
+        var scrollTop = $(this).scrollTop();
         // show or hide
-        var min = $group.parents('.xt-container').offset().top;
-        var max = Infinity;
-        if (settings.scrollTop) {
-          min = $(settings.scrollTop).offset().top;
+        var top = $group.parents('.xt-container').offset().top;
+        var bottom = Infinity;
+        if (settings.top) {
+          top = $(settings.top).offset().top;
         }
-        if (settings.scrollBottom) {
-          max = $(settings.scrollBottom).offset().top;
+        if (settings.bottom) {
+          bottom = $(settings.bottom).offset().top;
         }
-        if (top > min && top < max) {
+        if (scrollTop > top && scrollTop < bottom) {
           if (!$group.hasClass(settings.class)) {
             object.show($group);
             // direction classes
-            $group.removeClass('scroll-hide-up scroll-hide-down');
-            if (settings.scrollOld > top) {
-              $group.removeClass('scroll-show-down');
+            $group.removeClass('scroll-hide-start scroll-hide-end');
+            if (settings.scrollTopOld > scrollTop) {
+              $group.removeClass('scroll-show-start');
               window.requestAnimFrame( function() {
-                $group.addClass('scroll-show-up');
+                $group.addClass('scroll-show-end');
               });
             } else {
-              $group.removeClass('scroll-show-up');
+              $group.removeClass('scroll-show-end');
               window.requestAnimFrame( function() {
-                $group.addClass('scroll-show-down');
+                $group.addClass('scroll-show-start');
               });
             }
           }
@@ -291,21 +295,21 @@
           if ($group.hasClass(settings.class)) {
             object.hide($group);
             // direction classes
-            $group.removeClass('scroll-show-up scroll-show-down');
-            if (settings.scrollOld > top) {
-              $group.removeClass('scroll-hide-down');
+            $group.removeClass('scroll-show-start scroll-show-end');
+            if (settings.scrollTopOld > scrollTop) {
+              $group.removeClass('scroll-hide-start');
               window.requestAnimFrame( function() {
-                $group.addClass('scroll-hide-up');
+                $group.addClass('scroll-hide-end');
               });
             } else {
-              $group.removeClass('scroll-hide-up');
+              $group.removeClass('scroll-hide-end');
               window.requestAnimFrame( function() {
-                $group.addClass('scroll-hide-down');
+                $group.addClass('scroll-hide-start');
               });
             }
           }
         }
-        settings.scrollOld = top;
+        settings.scrollTopOld = scrollTop;
       });
       $(window).trigger(scrollNamespace);
       // remove window event on remove

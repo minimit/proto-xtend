@@ -355,6 +355,9 @@ a:not(.button) {
   will-change: margin-bottom; }
 
 /* settings */
+.card[data-xt-scroll].xt-ignore {
+  display: none; }
+
 /* default */
 .card[data-xt-scroll] {
   z-index: 70; }
@@ -362,13 +365,13 @@ a:not(.button) {
     display: none; }
 
 /* scroll */
-.card[data-xt-scroll].scroll.xt-ignore, .xt-ignore.card[data-xt-scroll][data-xt-initialized] {
+.card[data-xt-scroll].scroll.xt-ignore {
   display: block; }
 
-.card[data-xt-scroll].scroll:not(.xt-ignore), .card[data-xt-scroll][data-xt-initialized]:not(.xt-ignore) {
+.card[data-xt-scroll].scroll:not(.xt-ignore) {
   position: fixed;
-  top: 0; }
-  .card[data-xt-scroll].scroll:not(.xt-ignore) .show-scroll, .card[data-xt-scroll][data-xt-initialized]:not(.xt-ignore) .show-scroll {
+  top: 30px; }
+  .card[data-xt-scroll].scroll:not(.xt-ignore) .show-scroll {
     display: block; }
-  .card[data-xt-scroll].scroll:not(.xt-ignore) .hide-scroll, .card[data-xt-scroll][data-xt-initialized]:not(.xt-ignore) .hide-scroll {
+  .card[data-xt-scroll].scroll:not(.xt-ignore) .hide-scroll {
     display: none; }

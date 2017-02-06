@@ -767,18 +767,18 @@ pre {
 .site-header-top {
   width: 100%;
 }
-.site-header-top.scroll-show-up {
+.site-header-top.scroll-show-end {
   -webkit-animation: top-fadein 0.6s cubic-bezier(0.19, 1, 0.22, 1);
   animation: top-fadein 0.6s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 @include xt-scroll('.site-breadcrumbs', 'absolute'); // html custom class .scroll-breadcrumbs, default z-index 70
-.site-breadcrumbs.scroll-show-down .show-scroll {
+.site-breadcrumbs.scroll-show-start .show-scroll {
   -webkit-animation: left-fadein 0.6s cubic-bezier(0.19, 1, 0.22, 1);
   animation: left-fadein 0.6s cubic-bezier(0.19, 1, 0.22, 1);
 }
 @include xt-scroll('.site-aside', false, 'top', 56px);
-.site-aside.scroll-show-down .show-scroll {
+.site-aside.scroll-show-start .show-scroll {
   -webkit-animation: left-fadein 0.6s cubic-bezier(0.19, 1, 0.22, 1);
   animation: left-fadein 0.6s cubic-bezier(0.19, 1, 0.22, 1);
 }

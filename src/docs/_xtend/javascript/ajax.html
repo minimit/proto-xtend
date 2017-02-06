@@ -3,12 +3,22 @@ title: Ajax
 description: Ajax component
 
 categories: [Javascript]
-order: 10
+order: 40
 ---
 
 <h2>Usage</h2>
 
-<h3>Automatic</h3>
+<h3>Settings</h3>
+<pre><code class="js">
+$('html').xtAjax({'elements': 'a[href^="/"]', 'targets': '.site-wrapper'});
+</code></pre>
+<pre><code class="js">
+$('.site-wrapper').on('ajax.populated.xt', function(e, obj, $data) {
+  main($(this)); // custom function on ajax
+  $(this).xtInitAll(true); // init xt
+});
+</code></pre>
+<!--
 <p class="lead">Automatic initialization of all ajax links.</p>
 <p>Just assign <code>$.fn.xt.automaticAjax</code> before document ready, <code>'baseurl'</code> is the prefix of links that have ajax activated (<code>'baseurl': '/'</code> activates ajax on all links that starts with '/'), <code>'target'</code> is the document selector to replace on each ajax call.</p>
 <pre><code class="js">
@@ -40,3 +50,4 @@ $(ajaxTarget).on('ajax.done.xt', function(e, obj, $data) {
   $(ajaxTarget).xtInitAll(true); // reinit xtend
 });
 </code></pre>
+-->
