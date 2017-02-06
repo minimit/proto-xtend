@@ -24,7 +24,6 @@
   $.fn.xtToggle = function(options) {
     var defaults = {
       'name': 'xt-toggle',
-      'type': 'plugin_xtToggle',
       'elements': null,
       'targets': null,
       'multiple': false,
@@ -35,8 +34,8 @@
       'max': 1,
     };
     return this.each( function() {
-      if (!$.data(this, defaults.type)) {
-        $.data(this, defaults.type, new XtToggle(this, options, defaults));
+      if (!$.data(this, defaults.name)) {
+        $.data(this, defaults.name, new XtToggle(this, options, defaults));
       }
     });
   };
@@ -49,7 +48,6 @@
   $.fn.xtMenu = function(options) {
     var defaults = {
       'name': 'xt-menu',
-      'type': 'plugin_xtMenu',
       'targets': 'html',
       'multiple': true,
       'on': 'click',
@@ -58,8 +56,8 @@
       'max': 1,
     };
     return this.each( function() {
-      if (!$.data(this, defaults.type)) {
-        $.data(this, defaults.type, new XtMenu(this, options, defaults));
+      if (!$.data(this, defaults.name)) {
+        $.data(this, defaults.name, new XtMenu(this, options, defaults));
       }
     });
   };
@@ -72,7 +70,6 @@
   $.fn.xtScroll = function(options) {
     var defaults = {
       'name': 'xt-scroll',
-      'type': 'plugin_xtScroll',
       'targets': '$clone',
       'on': 'scroll',
       'class': 'scroll',
@@ -80,8 +77,8 @@
       'max': 1,
     };
     return this.each( function() {
-      if (!$.data(this, defaults.type)) {
-        $.data(this, defaults.type, new XtScroll(this, options, defaults));
+      if (!$.data(this, defaults.name)) {
+        $.data(this, defaults.name, new XtScroll(this, options, defaults));
       }
     });
   };
@@ -94,15 +91,14 @@
   $.fn.xtAjax = function(options) {
     var defaults = {
       'name': 'xt-ajax',
-      'type': 'plugin_xtAjax',
       'targets': null,
       'on': 'click',
       'class': 'active',
       'url': null,
     };
     return this.each( function() {
-      if (!$.data(this, 'plugin_xtAjax')) {
-        $.data(this, 'plugin_xtAjax', new XtAjax(this, options, defaults));
+      if (!$.data(this, defaults.name)) {
+        $.data(this, defaults.name, new XtAjax(this, options, defaults));
       }
     });
   };
