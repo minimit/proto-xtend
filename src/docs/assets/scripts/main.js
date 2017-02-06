@@ -191,9 +191,7 @@
     $main.find('.demo').each( function(i) {
       var $demo = $(this);
       populateDemo($demo, i);
-      // demo tabs
-      $demo.xtToggle({"elements":".demo-tabs-left .button", "targets": ".demo-item", "min": 1});
-      // disable fullscreen when not needed
+      // enable fullscreen
       $demo.find('.demo-tabs-left .button').on('show.xt', function(e, obj) {
         var $fullscreen = $(this).parents('.demo').find('.button__fullscreen');
         var iframe = $(this).parents('.demo').find('.demo-item.active').attr('data-iframe');
@@ -207,7 +205,8 @@
           $fullscreen.css('display', 'none');
         }
       });
-      
+      // demo tabs
+      $demo.xtToggle({"elements":".demo-tabs-left .button", "targets": ".demo-item", "min": 1});
     });
     
     //////////////////////
@@ -307,6 +306,7 @@
     //$('.site-breadcrumbs-body-main').trigger('show.xt');
     //$('a[href="/"]').filter(':parents(.xt-ignore)').trigger('show.xt');
     //if ($('html').atr('id') === 'test-0.html') { console.log(this.settings); }
+    //$('.demo-item').on('show.xt', function(e, obj) { console.log($(e.target)); });
   });
   
   

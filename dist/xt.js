@@ -416,9 +416,11 @@
     var group = this.group;
     var $group = $(this.group);
     // activate $element
+    var triggerElement;
     if ($element) {
       // show and add in $currents
       if (!$element.hasClass(settings.class)) {
+        triggerElement = true;
         var $currents = this.getCurrents();
         $element.addClass(settings.class);
         $currents = this.setCurrents($currents.pushElement($element));
@@ -438,18 +440,17 @@
             }
           }
         }
-        // api
-        if (!triggered) {
-          $element.trigger('show.xt', [object, true]);
-        }
       }
     }
     // activate $target
+    var $target;
+    var triggerTarget;
     if (settings.$targets) {
       var index = this.getIndex(settings.$elements, $element);
       index = index >= settings.$targets.length ? settings.$targets.length - 1 : index;
-      var $target = settings.$targets.eq(index);
+      $target = settings.$targets.eq(index);
       if (!$target.hasClass(settings.class)) {
+        triggerTarget = true;
         $target.addClass(settings.class);
         if ($target.hasClass('xt-height')) {
           var h = $target.find('.xt-height-inside').outerHeight();
@@ -457,10 +458,15 @@
           $target.parents('.xt-height-top').css("margin-top", -h);
           $target.parents('.xt-height-bottom').css("margin-bottom", -h);
         }
-        // api
-        if (!triggered) {
-          $target.trigger('show.xt', [object, true]);
-        }
+      }
+    }
+    // api
+    if (!triggered) {
+      if (triggerElement) {
+        $element.trigger('show.xt', [object, true]);
+      }
+      if (triggerTarget) {
+        $target.trigger('show.xt', [object, true]);
       }
     }
   };
@@ -471,10 +477,12 @@
     var group = this.group;
     var $group = $(this.group);
     // activate $element
+    var triggerElement;
     if ($element) {
       if ($element.hasClass(settings.class)) {
         var $currents = this.getCurrents();
         if (isSync || settings.name === 'xt-ajax' || $currents.length > settings.min) {
+          triggerElement = true;
           $element.removeClass(settings.class);
           $currents = this.setCurrents($currents.not($element.get(0)));
         }
@@ -491,11 +499,14 @@
       }
     }
     // activate $target
+    var $target;
+    var triggerTarget;
     if (settings.$targets) {
       var index = this.getIndex(settings.$elements, $element);
       index = index >= settings.$targets.length ? settings.$targets.length - 1 : index;
-      var $target = settings.$targets.eq(index);
+      $target = settings.$targets.eq(index);
       if ($target.hasClass(settings.class)) {
+        triggerTarget = true;
         $target.removeClass(settings.class);
         if ($target.hasClass('xt-height')) {
           $target.css("height", 0);
@@ -503,8 +514,13 @@
           $target.parents('.xt-height-bottom').css("margin-bottom", 0);
         }
       }
-      // api
-      if (!triggered) {
+    }
+    // api
+    if (!triggered) {
+      if (triggerElement) {
+        $element.trigger('hide.xt', [object, true]);
+      }
+      if (triggerTarget) {
         $target.trigger('hide.xt', [object, true]);
       }
     }
