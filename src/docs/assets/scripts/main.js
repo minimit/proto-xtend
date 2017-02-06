@@ -304,8 +304,8 @@
   
   // api tests
   $(document).ready( function() {
-    //$('.site-breadcrumbs-body-main').trigger('toggle.xt');
-    //$('a[href="/"]').filter(':parents(.xt-ignore)').trigger('toggle.xt');
+    //$('.site-breadcrumbs-body-main').trigger('show.xt');
+    //$('a[href="/"]').filter(':parents(.xt-ignore)').trigger('show.xt');
   });
   
   //if ($('html').attr('id') === 'test-0.html') { console.log(this.settings); }
