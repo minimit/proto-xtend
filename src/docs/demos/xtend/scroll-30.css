@@ -376,13 +376,11 @@ a:not(.button) {
   .card[data-xt-scroll].scroll:not(.xt-ignore) .hide-scroll {
     display: none; }
 
-.card.scroll-show-start,
-.card.scroll-hide-start {
+.card.scroll-on-top, .card.scroll-off-top {
   -webkit-animation: top-fadein 0.6s cubic-bezier(0.19, 1, 0.22, 1);
   animation: top-fadein 0.6s cubic-bezier(0.19, 1, 0.22, 1); }
 
-.card.scroll-show-end,
-.card.scroll-hide-end {
+.card.scroll-on-bottom, .card.scroll-off-bottom {
   -webkit-animation: bottom-fadein 0.6s cubic-bezier(0.19, 1, 0.22, 1);
   animation: bottom-fadein 0.6s cubic-bezier(0.19, 1, 0.22, 1); }
 

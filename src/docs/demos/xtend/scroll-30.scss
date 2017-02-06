@@ -1,15 +1,19 @@
 @import "../../assets/xtend/xt-theme.scss"; // ignore if customizing xt-theme.scss
 
 @include xt-scroll('.card[data-xt-scroll]');
-.card.scroll-show-start,
-.card.scroll-hide-start {
-  -webkit-animation: top-fadein 0.6s cubic-bezier(0.19, 1, 0.22, 1);
-  animation: top-fadein 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+.card {
+  &.scroll-on-top,
+  &.scroll-off-top {
+    -webkit-animation: top-fadein 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+    animation: top-fadein 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+  }
 }
-.card.scroll-show-end,
-.card.scroll-hide-end {
-  -webkit-animation: bottom-fadein 0.6s cubic-bezier(0.19, 1, 0.22, 1);
-  animation: bottom-fadein 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+.card {
+  &.scroll-on-bottom,
+  &.scroll-off-bottom {
+    -webkit-animation: bottom-fadein 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+    animation: bottom-fadein 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+  }
 }
 @-webkit-keyframes top-fadein {
   0% {

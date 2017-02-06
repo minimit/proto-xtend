@@ -265,25 +265,33 @@
         var top = $group.parents('.xt-container').offset().top;
         var bottom = Infinity;
         if (settings.top) {
-          top = $(settings.top).offset().top;
+          if (!isNaN(parseFloat(settings.top))) {
+            top = settings.top;
+          } else {
+            top = $(settings.top).offset().top;
+          }
         }
         if (settings.bottom) {
-          bottom = $(settings.bottom).offset().top;
+          if (!isNaN(parseFloat(settings.bottom))) {
+            bottom = settings.bottom;
+          } else {
+            bottom = $(settings.bottom).offset().top;
+          }
         }
         if (scrollTop > top && scrollTop < bottom) {
           if (!$group.hasClass(settings.class)) {
             object.show($group);
             // direction classes
-            $group.removeClass('scroll-hide-start scroll-hide-end');
+            $group.removeClass('scroll-off-top scroll-off-bottom');
             if (settings.scrollTopOld > scrollTop) {
-              $group.removeClass('scroll-show-start');
+              $group.removeClass('scroll-on-top');
               window.requestAnimFrame( function() {
-                $group.addClass('scroll-show-end');
+                $group.addClass('scroll-on-bottom');
               });
             } else {
-              $group.removeClass('scroll-show-end');
+              $group.removeClass('scroll-on-bottom');
               window.requestAnimFrame( function() {
-                $group.addClass('scroll-show-start');
+                $group.addClass('scroll-on-top');
               });
             }
           }
@@ -291,16 +299,16 @@
           if ($group.hasClass(settings.class)) {
             object.hide($group);
             // direction classes
-            $group.removeClass('scroll-show-start scroll-show-end');
+            $group.removeClass('scroll-on-top scroll-on-bottom');
             if (settings.scrollTopOld > scrollTop) {
-              $group.removeClass('scroll-hide-start');
+              $group.removeClass('scroll-off-top');
               window.requestAnimFrame( function() {
-                $group.addClass('scroll-hide-end');
+                $group.addClass('scroll-off-bottom');
               });
             } else {
-              $group.removeClass('scroll-hide-end');
+              $group.removeClass('scroll-off-bottom');
               window.requestAnimFrame( function() {
-                $group.addClass('scroll-hide-start');
+                $group.addClass('scroll-off-top');
               });
             }
           }
