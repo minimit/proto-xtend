@@ -156,7 +156,6 @@
     this.scoping(); // scoping before setup
     this.setup();
     this.events(); // events after setup
-    //console.log(':init', $group.text().replace(/(\r\n|\n|\r)/gm,"").replace(/^\s+|\s+$|\s+(?=\s)/g, ""), $group.hasClass(settings.class));
   };
   
   Xt.prototype.scoping = function() {
@@ -248,7 +247,6 @@
         }
       }
     }
-    //console.log(':setup', $group.text().replace(/(\r\n|\n|\r)/gm,"").replace(/^\s+|\s+$|\s+(?=\s)/g, ""), $group.hasClass(settings.class));
   };
   
   Xt.prototype.events = function() {
@@ -308,7 +306,6 @@
           }
         }
         settings.scrollOld = top;
-        //console.log(':scroll.xt', $group.text().replace(/(\r\n|\n|\r)/gm,"").replace(/^\s+|\s+$|\s+(?=\s)/g, ""), top, min, max);
       });
       $(window).trigger(scrollNamespace);
       // remove window event on remove
@@ -340,9 +337,6 @@
         });
         // api
         settings.$elements.on('show.xt', function(e, obj, triggered) {
-          if (settings.$elements.hasClass('site-breadcrumbs-body-main')) {
-            console.log('cccc');
-          }
           if (!triggered && e.target === this) {
             object.show($(this), true);
           }
@@ -362,7 +356,6 @@
         };
       }
     }
-    //console.log(':events', $group.text().replace(/(\r\n|\n|\r)/gm,"").replace(/^\s+|\s+$|\s+(?=\s)/g, ""), $group.hasClass(settings.class));
   };
   
   // methods
@@ -466,7 +459,6 @@
         }
       }
     }
-    //console.log(':show', $group.text().replace(/(\r\n|\n|\r)/gm,"").replace(/^\s+|\s+$|\s+(?=\s)/g, ""), $group.hasClass(settings.class));
   };
   
   Xt.prototype.hide = function($element, triggered, isSync, skipState) {
@@ -512,7 +504,6 @@
         $target.trigger('hide.xt', [object, true]);
       }
     }
-    //console.log(':hide', $group.text().replace(/(\r\n|\n|\r)/gm,"").replace(/^\s+|\s+$|\s+(?=\s)/g, ""), $group.hasClass(settings.class));
   };
   
   Xt.prototype.getIndex = function($elements, $element) {
@@ -606,7 +597,6 @@
     if (!history.state || !history.state.url || history.state.url !== url) {
       history.pushState({'url': url, 'title': title}, title, url);
     }
-    //console.log(':pushstate', $group.text().replace(/(\r\n|\n|\r)/gm,"").replace(/^\s+|\s+$|\s+(?=\s)/g, ""), $group.hasClass(settings.class));
   };
 
   //////////////////////

@@ -302,12 +302,12 @@
     $(this).xtInitAll(true); // init xt
   });
   
-  // api tests
+  // tests
   $(document).ready( function() {
     //$('.site-breadcrumbs-body-main').trigger('show.xt');
     //$('a[href="/"]').filter(':parents(.xt-ignore)').trigger('show.xt');
+    //if ($('html').atr('id') === 'test-0.html') { console.log(this.settings); }
   });
   
-  //if ($('html').attr('id') === 'test-0.html') { console.log(this.settings); }
   
 })(jQuery, window, document);
