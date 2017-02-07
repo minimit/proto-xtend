@@ -1,6 +1,6 @@
 ---
-title: Menu
-description: Menu component
+title: Overlay
+description: Overlay component
 
 categories: [Javascript]
 order: 40
@@ -12,7 +12,7 @@ order: 40
 
 <p class="lead">Html Initialization</p>
 <pre><code class="html">
-&lt;div class="element" data-xt-menu='{"elements": ".button"}'&gt;
+&lt;div class="element" data-xt-overlay='{"elements": ".button"}'&gt;
   &lt;div class="button"&gt;&lt;/div&gt;
 &lt;/div&gt;
 </code></pre>
@@ -28,13 +28,13 @@ $('html').xtInitAll(true); // init 'html' and all descendants
 
 <p class="lead">Js Initialization</p>
 <pre><code class="js">
-$('.element').xtMenu({"elements": ".element"});
+$('.element').xtOverlay({"elements": ".element"});
 </code></pre>
 
 <h3>Scss</h3>
-<p>@TODO @mixin xt-menu</p>
+<p>@TODO @mixin xt-overlay</p>
 <pre><code class="scss">
-@include xt-menu('.element');
+@include xt-overlay('.element');
 </code></pre>
 
 <h2>Demos</h2>

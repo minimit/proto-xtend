@@ -40,24 +40,24 @@
     });
   };
   
-  var XtMenu = function(group, options, defaults) {
+  var XtOverlay = function(group, options, defaults) {
     Xt.call(this, group, options, defaults);
   };
-  XtMenu.prototype = Object.create(Xt.prototype);
-  XtMenu.prototype.constructor = XtMenu;
-  $.fn.xtMenu = function(options) {
+  XtOverlay.prototype = Object.create(Xt.prototype);
+  XtOverlay.prototype.constructor = XtOverlay;
+  $.fn.xtOverlay = function(options) {
     var defaults = {
-      'name': 'xt-menu',
+      'name': 'xt-overlay',
       'targets': 'html',
       'multiple': true,
       'on': 'click',
-      'class': 'menu',
+      'class': 'overlay',
       'min': 0,
       'max': 1,
     };
     return this.each( function() {
       if (!$.data(this, defaults.name)) {
-        $.data(this, defaults.name, new XtMenu(this, options, defaults));
+        $.data(this, defaults.name, new XtOverlay(this, options, defaults));
       }
     });
   };
@@ -114,8 +114,8 @@
       if ($(this).is('[data-xt-toggle]')) {
         $(this).xtToggle();
       }
-      if ($(this).is('[data-xt-menu]')) {
-        $(this).xtMenu();
+      if ($(this).is('[data-xt-overlay]')) {
+        $(this).xtOverlay();
       }
       if ($(this).is('[data-xt-scroll]')) {
         $(this).xtScroll();
@@ -125,7 +125,7 @@
       }
       if (deep) {
         $(this).find('[data-xt-toggle]').xtToggle();
-        $(this).find('[data-xt-menu]').xtMenu();
+        $(this).find('[data-xt-overlay]').xtOverlay();
         $(this).find('[data-xt-scroll]').xtScroll();
         $(this).find('[data-xt-ajax]').xtAjax();
       }

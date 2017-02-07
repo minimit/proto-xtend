@@ -277,7 +277,7 @@
     // xtend
     //////////////////////
 
-    $main.find('.site-menu').xtMenu({"elements": ".button__menu"});
+    $main.find('.site-menu').xtOverlay({"elements": ".button__menu"});
     
     //////////////////////
     

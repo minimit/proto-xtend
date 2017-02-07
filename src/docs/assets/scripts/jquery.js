@@ -4878,7 +4878,7 @@ var documentElement = document.documentElement;
 
 var
 	rkeyEvent = /^key/,
-	rmouseEvent = /^(?:mouse|pointer|contextmenu|drag|drop)|click/,
+	rmouseEvent = /^(?:mouse|pointer|contextOverlay|drag|drop)|click/,
 	rtypenamespace = /^([^.]*)(?:\.(.+)|)/;
 
 function returnTrue() {
@@ -8250,7 +8250,7 @@ jQuery.fn.extend( {
 
 jQuery.each( ( "blur focus focusin focusout resize scroll click dblclick " +
 	"mousedown mouseup mousemove mouseover mouseout mouseenter mouseleave " +
-	"change select submit keydown keypress keyup contextmenu" ).split( " " ),
+	"change select submit keydown keypress keyup contextOverlay" ).split( " " ),
 	function( i, name ) {
 
 	// Handle event binding

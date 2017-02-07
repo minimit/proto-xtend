@@ -134,10 +134,10 @@ $active: "&:active, &.active, &:active:focus, &:active.focus, &.active:focus, &.
 $focus: "&:focus, &.focus";
 
 //////////////////////
-// xt-menu
+// xt-overlay
 //////////////////////
 
-@mixin xt-menu($item, $class:'.menu', $direction:'vertical') {
+@mixin xt-overlay($item, $class:'.overlay', $direction:'vertical') {
   #{$item} {
     display: none;
     z-index: 80;

@@ -808,10 +808,10 @@ pre {
 }
   
 
-// menu styles
-@include xt-menu('.site-menu');
+// overlay styles
+@include xt-overlay('.site-menu');
 // .site-header-top z-index
-html.menu {
+html.overlay {
   .site-header-top {
     z-index: 81;
     width: 100%;
