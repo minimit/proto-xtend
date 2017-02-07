@@ -2,7 +2,7 @@
 @copyright (c) 2016 - 2017 Riccardo Caroli
 @license MIT (https://github.com/minimit/xtend/blob/master/LICENSE) */
 
-;( function($, window, document, undefined) {
+;(function($, window, document, undefined) {
 
   'use strict';
   
@@ -103,12 +103,11 @@
     });
   };
   
+  
   //////////////////////
   // init
   //////////////////////
   
-  // xtInitAll jQuery
-  // usage: $('html').xtInitAll();
   $.fn.xtInitAll = function(deep) {
     return this.each( function() {
       if ($(this).is('[data-xt-toggle]')) {
@@ -185,11 +184,11 @@
     // initialized
     $group.attr('data-xt-initialized', settings.name);
     // $group unique id
-		window.uuid = window.uuid ? window.uuid : 0;
-    var uuid = $group.attr('id') ? $group.attr('id') : 'xt-id-' + window.uuid++;
-    $group.attr('id', uuid);
+		window.xtUniqueId = window.xtUniqueId ? window.xtUniqueId : 0;
+    var xtUniqueId = $group.attr('id') ? $group.attr('id') : 'xtUniqueId' + window.xtUniqueId++;
+    $group.attr('id', xtUniqueId);
     // namespace
-    settings.namespace = settings.name + '_' + uuid + '_' + settings.class;
+    settings.namespace = settings.name + '_' + xtUniqueId + '_' + settings.class;
     $group.attr('data-xt-group-' + settings.name, settings.namespace);
   };
   
@@ -288,12 +287,12 @@
             $group.removeClass('scroll-off-top scroll-off-bottom');
             if (settings.scrollTopOld > scrollTop) {
               $group.removeClass('scroll-on-top');
-              window.requestAnimFrame( function() {
+              window.xtRequestAnimationFrame( function() {
                 $group.addClass('scroll-on-bottom');
               });
             } else {
               $group.removeClass('scroll-on-bottom');
-              window.requestAnimFrame( function() {
+              window.xtRequestAnimationFrame( function() {
                 $group.addClass('scroll-on-top');
               });
             }
@@ -305,12 +304,12 @@
             $group.removeClass('scroll-on-top scroll-on-bottom');
             if (settings.scrollTopOld > scrollTop) {
               $group.removeClass('scroll-off-top');
-              window.requestAnimFrame( function() {
+              window.xtRequestAnimationFrame( function() {
                 $group.addClass('scroll-off-bottom');
               });
             } else {
               $group.removeClass('scroll-off-bottom');
-              window.requestAnimFrame( function() {
+              window.xtRequestAnimationFrame( function() {
                 $group.addClass('scroll-off-top');
               });
             }
@@ -431,7 +430,7 @@
         triggerElement = true;
         var $currents = this.getCurrents();
         $element.addClass(settings.class);
-        $currents = this.setCurrents($currents.pushElement($element));
+        $currents = this.setCurrents($currents.xtPushElement($element));
         // control over activated
         if (settings.name === 'xt-ajax') {
           // [disabled]
@@ -627,25 +626,24 @@
     }
   };
   
+  //////////////////////
   // utils
+  //////////////////////
   
-  Xt.prototype.getScrollbarWidth = function($el) {
+  // xtScrollbarWidth
+  window.xtScrollbarWidth = function($el) {
     var parent, child, width;
     if(width === undefined) {
-      parent = $('<div style="width:50px;height:50px;overflow:auto"><div/></div>').appendTo($el);
+      parent = $('<div style="width:50px; height:50px; overflow:auto;"><div /></div>').appendTo($el);
       child = parent.children();
       width = child.innerWidth() - child.height(99).innerWidth();
       parent.remove();
     }
     return width;
   };
-
-  //////////////////////
-  // utils
-  //////////////////////
   
   // https://www.paulirish.com/2011/requestanimationframe-for-smart-animating/
-  window.requestAnimFrame = ( function() {
+  window.xtRequestAnimationFrame = ( function() {
     return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || function(callback) {
       window.setTimeout(callback, 1000 / 60);
     };
@@ -653,9 +651,9 @@
   
   // http://stackoverflow.com/questions/13281897/how-to-preserve-order-of-items-added-to-jquery-matched-set
   // push jquery group inside jquery query, use $([]) for empty query
-  // usage: $groups.pushElement($group)
-  $.fn.pushElement = function($group) {
-    Array.prototype.push.apply(this, $group);
+  // usage: $groups.xtPushElement($group)
+  $.fn.xtPushElement = function($el) {
+    Array.prototype.push.apply(this, $el);
     return this;
   };
   

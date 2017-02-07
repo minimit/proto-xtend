@@ -764,7 +764,7 @@ pre {
 // xt
 //////////////////////
 
-@media (min-width: 1200px) {
+@media (min-width: 768px) {
   
   // scroll styles
   @include xt-scroll('.site-header-top', 'fixed');
@@ -793,26 +793,21 @@ pre {
       }
     }
   }
-  
+}
+
+@media (min-width: 992px) {
+
   // scroll styles
   @include xt-scroll('.site-aside', false, 'top', 56px);
   
 }
-
-// test media query
- 
-@media (max-width: 1999px) {
-
-  @include xt-scroll('.site-aside', false, 'bottom');
-  
-}
-  
 
 // overlay styles
 @include xt-overlay('.site-menu');
 // .site-header-top z-index
 html.overlay {
   .site-header-top {
+    position: fixed;
     z-index: 81;
     width: 100%;
   }
