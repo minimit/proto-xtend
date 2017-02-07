@@ -105,6 +105,11 @@ a, button {
   width: 100%;
 }
 
+.xt-clone {
+  display: none;
+  visibility: hidden;
+}
+
 .xt-height {
   display: block !important;
   overflow: hidden;

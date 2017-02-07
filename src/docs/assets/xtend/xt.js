@@ -70,7 +70,6 @@
   $.fn.xtScroll = function(options) {
     var defaults = {
       'name': 'xt-scroll',
-      'targets': '$clone',
       'on': 'scroll',
       'class': 'scroll',
       'min': 0,
@@ -158,6 +157,11 @@
     var settings = this.settings;
     var group = this.group;
     var $group = $(this.group);
+    // $group
+    if (settings.name === 'xt-scroll') {
+      $group.wrap($('<div class="xt-container"></div>'));
+      $group.addClass('xt-fixed');
+    }
     // $elements
     if (settings.elements) {
       settings.$elements = $group.find(settings.elements).filter(':parents(.xt-ignore)');
@@ -168,8 +172,7 @@
       settings.$elements = $group;
     }
     // $targets
-    if (settings.targets === '$clone') {
-      $group.wrap($('<div class="xt-container"></div>'));
+    if (settings.name === 'xt-scroll') {
       settings.$targets = $group.clone().addClass('xt-clone xt-ignore');
       $.each(settings.$targets.data(), function (i) {
         settings.$targets.removeAttr("data-" + i);
@@ -258,114 +261,144 @@
     var $group = $(this.group);
     // events
     if (settings.name === 'xt-scroll') {
-      // scroll events
-      var scrollNamespace = 'scroll.xt.' + settings.namespace;
-      $(window).off(scrollNamespace);
-      $(window).on(scrollNamespace, function(e) {
-        var scrollTop = $(this).scrollTop();
-        // show or hide
-        var top = $group.parents('.xt-container').offset().top;
-        var bottom = Infinity;
-        if (settings.top) {
-          if (!isNaN(parseFloat(settings.top))) {
-            top = settings.top;
-          } else {
-            top = $(settings.top).offset().top;
-          }
-        }
-        if (settings.bottom) {
-          if (!isNaN(parseFloat(settings.bottom))) {
-            bottom = settings.bottom;
-          } else {
-            bottom = $(settings.bottom).offset().top;
-          }
-        }
-        if (scrollTop > top && scrollTop < bottom) {
-          if (!$group.hasClass(settings.class)) {
-            object.show($group);
-            // direction classes
-            $group.removeClass('scroll-off-top scroll-off-bottom');
-            if (settings.scrollTopOld > scrollTop) {
-              $group.removeClass('scroll-on-top');
-              window.xtRequestAnimationFrame( function() {
-                $group.addClass('scroll-on-bottom');
-              });
-            } else {
-              $group.removeClass('scroll-on-bottom');
-              window.xtRequestAnimationFrame( function() {
-                $group.addClass('scroll-on-top');
-              });
-            }
-          }
-        } else {
-          if ($group.hasClass(settings.class)) {
-            object.hide($group);
-            // direction classes
-            $group.removeClass('scroll-on-top scroll-on-bottom');
-            if (settings.scrollTopOld > scrollTop) {
-              $group.removeClass('scroll-off-top');
-              window.xtRequestAnimationFrame( function() {
-                $group.addClass('scroll-off-bottom');
-              });
-            } else {
-              $group.removeClass('scroll-off-bottom');
-              window.xtRequestAnimationFrame( function() {
-                $group.addClass('scroll-off-top');
-              });
-            }
-          }
-        }
-        settings.scrollTopOld = scrollTop;
-      });
-      $(window).trigger(scrollNamespace);
-      // remove window event on remove
-      $group.on('xtRemoved', function(e) {
-        $(window).off(scrollNamespace);
-      });
+      this.eventsScroll();
     } else {
-      // $elements events
-      if (settings.$elements) {
-        // on off events
-        if (settings.on) {
-          settings.$elements.on(settings.on, function(e) {
-            object.toggle($(this));
-            if (settings.name === 'xt-ajax') {
-              e.preventDefault();
-            }
-          });
-        }
-        if (settings.off) {
-          settings.$elements.on(settings.off, function(e) {
-            object.toggle($(this));
-          });
-        }
-        // remove html classes on remove
-        settings.$elements.on('xtRemoved', function(e) {
-          if ($(this).is('[data-xt-reset]') || settings.targets === 'html') {
-            object.hide($(this), false, true, true);
-          }
-        });
-        // api
-        settings.$elements.on('show.xt', function(e, obj, triggered) {
-          if (!triggered && e.target === this) {
-            object.show($(this), true);
-          }
-        });
-        settings.$elements.on('hide.xt', function(e, obj, triggered) {
-          if (!triggered && e.target === this) {
-            object.hide($(this), true);
+      this.eventsDefault();
+    }
+  };
+  
+  Xt.prototype.eventsDefault = function() {
+    var object = this;
+    var settings = this.settings;
+    var group = this.group;
+    var $group = $(this.group);
+    // $elements events
+    if (settings.$elements) {
+      // on off events
+      if (settings.on) {
+        settings.$elements.on(settings.on, function(e) {
+          object.toggle($(this));
+          if (settings.name === 'xt-ajax') {
+            e.preventDefault();
           }
         });
       }
-      if (settings.name === 'xt-ajax') {
-        // onpopstate
-        window.onpopstate = function(history) {
-          if (history.state && history.state.url) {
-            object.ajax(history.state.url, history.state.title);
+      if (settings.off) {
+        settings.$elements.on(settings.off, function(e) {
+          object.toggle($(this));
+        });
+      }
+      // remove html classes on remove
+      settings.$elements.on('xtRemoved', function(e) {
+        if ($(this).is('[data-xt-reset]') || settings.targets === 'html') {
+          object.hide($(this), false, true, true);
+        }
+      });
+      // api
+      settings.$elements.on('show.xt', function(e, obj, triggered) {
+        if (!triggered && e.target === this) {
+          object.show($(this), true);
+        }
+      });
+      settings.$elements.on('hide.xt', function(e, obj, triggered) {
+        if (!triggered && e.target === this) {
+          object.hide($(this), true);
+        }
+      });
+    }
+    // $targets events
+    if (settings.$targets) {
+      // .xt-fixed scrollbar padding
+      if (settings.name === 'xt-overlay') {
+        settings.$targets.on('show.xt hide.xt', function(e, obj, $data) {
+          if (e.target === this) {
+            $(this).find('.xt-fixed').css('padding-right', window.xtScrollbarWidth($group));
           }
-        };
+        });
       }
     }
+    // custom events
+    if (settings.name === 'xt-ajax') {
+      // onpopstate
+      $(window).off('popstate.xt.' + settings.namespace);
+      $(window).on('popstate.xt.' + settings.namespace, function(e) {
+        if (history.state && history.state.url) {
+          object.ajax(history.state.url, history.state.title);
+          console.log(history.state.url);
+        }
+      });
+    }
+  };
+  
+  Xt.prototype.eventsScroll = function() {
+    var object = this;
+    var settings = this.settings;
+    var group = this.group;
+    var $group = $(this.group);
+    // scroll events
+    var scrollNamespace = 'scroll.xt.' + settings.namespace;
+    $(window).off(scrollNamespace);
+    $(window).on(scrollNamespace, function(e) {
+      var scrollTop = $(this).scrollTop();
+      // show or hide
+      var top = settings.$targets.offset().top;
+      var bottom = Infinity;
+      if (settings.top) {
+        if (!isNaN(parseFloat(settings.top))) {
+          top = settings.top;
+        } else {
+          top = $(settings.top).offset().top;
+        }
+      }
+      if (settings.bottom) {
+        if (!isNaN(parseFloat(settings.bottom))) {
+          bottom = settings.bottom;
+        } else {
+          bottom = $(settings.bottom).offset().top;
+        }
+      }
+      if (scrollTop > top && scrollTop < bottom) {
+        if (!$group.hasClass(settings.class)) {
+          object.show($group);
+          // direction classes
+          $group.removeClass('scroll-off-top scroll-off-bottom');
+          if (settings.scrollTopOld > scrollTop) {
+            $group.removeClass('scroll-on-top');
+            window.xtRequestAnimationFrame( function() {
+              $group.addClass('scroll-on-bottom');
+            });
+          } else {
+            $group.removeClass('scroll-on-bottom');
+            window.xtRequestAnimationFrame( function() {
+              $group.addClass('scroll-on-top');
+            });
+          }
+        }
+      } else {
+        if ($group.hasClass(settings.class)) {
+          object.hide($group);
+          // direction classes
+          $group.removeClass('scroll-on-top scroll-on-bottom');
+          if (settings.scrollTopOld > scrollTop) {
+            $group.removeClass('scroll-off-top');
+            window.xtRequestAnimationFrame( function() {
+              $group.addClass('scroll-off-bottom');
+            });
+          } else {
+            $group.removeClass('scroll-off-bottom');
+            window.xtRequestAnimationFrame( function() {
+              $group.addClass('scroll-off-top');
+            });
+          }
+        }
+      }
+      settings.scrollTopOld = scrollTop;
+    });
+    $(window).trigger(scrollNamespace);
+    // remove window event on remove
+    $group.on('xtRemoved', function(e) {
+      $(window).off(scrollNamespace);
+    });
   };
   
   // methods

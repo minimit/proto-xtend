@@ -83,6 +83,10 @@ a, button {
   float: left;
   width: 100%; }
 
+.xt-clone {
+  display: none;
+  visibility: hidden; }
+
 .xt-height {
   display: block !important;
   overflow: hidden;
@@ -367,13 +371,13 @@ a:not(.button) {
 
 /* $start */
 /* .scroll */
-.card[data-xt-scroll].scroll.xt-ignore {
-  display: block !important; }
+.card[data-xt-scroll].scroll.xt-clone {
+  display: block; }
 
-.card[data-xt-scroll].scroll:not(.xt-ignore) {
+.card[data-xt-scroll].scroll:not(.xt-clone) {
   position: fixed;
   top: 30px; }
-  .card[data-xt-scroll].scroll:not(.xt-ignore) .show-scroll {
+  .card[data-xt-scroll].scroll:not(.xt-clone) .show-scroll {
     display: block; }
-  .card[data-xt-scroll].scroll:not(.xt-ignore) .hide-scroll {
+  .card[data-xt-scroll].scroll:not(.xt-clone) .hide-scroll {
     display: none; }

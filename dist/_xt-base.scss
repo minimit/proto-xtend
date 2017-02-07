@@ -103,8 +103,17 @@ a, button {
   cursor: default;
   opacity: 1;
 }
+
+//////////////////////
+// xt
+//////////////////////
+
 .xt-container {
   @include box;
+}
+.xt-clone {
+  display: none;
+  visibility: hidden;
 }
 
 //////////////////////

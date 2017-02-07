@@ -339,7 +339,7 @@ $button__menu_pixels: 1px;
       transform-origin: left center;
     }
   }
-  &.menu {
+  &.overlay {
     .icon-menu-custom {
       span:nth-child(1) {
         -webkit-transform: rotate(45deg);
@@ -774,7 +774,6 @@ pre {
   }
   // animations
   .site-header-top {
-    &.scroll-on-top,
     &.scroll-on-bottom {
       -webkit-animation: top-fadein 0.6s cubic-bezier(0.19, 1, 0.22, 1);
       animation: top-fadein 0.6s cubic-bezier(0.19, 1, 0.22, 1);
