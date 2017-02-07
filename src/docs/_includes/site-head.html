@@ -149,10 +149,10 @@
             <div class="site-breadcrumbs-meta float-right spacer">
               
               {% if page.collection == null %}
-                <a href="{{ site.twitter }}" target="_blank" class="button hide-scroll" data-toggle="tooltip" data-placement="top" title="Twitter" data-template='<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner tooltip-inverse"></div></div>'>
+                <a href="{{ site.twitter }}" target="_blank" class="button" data-toggle="tooltip" data-placement="top" title="Twitter" data-template='<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner tooltip-inverse"></div></div>'>
                   <span class="icon-twitter"></span>
                 </a>
-                <a href="{{ site.google }}" target="_blank" class="button hide-scroll" data-toggle="tooltip" data-placement="top" title="Google+" data-template='<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner tooltip-inverse"></div></div>'>
+                <a href="{{ site.google }}" target="_blank" class="button" data-toggle="tooltip" data-placement="top" title="Google+" data-template='<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner tooltip-inverse"></div></div>'>
                   <span class="icon-google"></span>
                 </a>
               {% endif %}
@@ -161,13 +161,13 @@
                 {% if collection.label == page.collection %}
                 
                   {% if collection.links.download %}
-                    <a href="{{ collection.links.download }}" target="_blank" class="button hide-scroll" data-toggle="tooltip" data-placement="top" title="Download source" data-template='<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner tooltip-inverse"></div></div>'>
+                    <a href="{{ collection.links.download }}" target="_blank" class="button" data-toggle="tooltip" data-placement="top" title="Download source" data-template='<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner tooltip-inverse"></div></div>'>
                       <span class="icon-download"></span>
                     </a>
                   {% endif %}
                   
                   {% if collection.links.github %}
-                    <a href="{{ collection.links.github }}" target="_blank" class="button hide-scroll" data-toggle="tooltip" data-placement="top" title="View in github" data-template='<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner tooltip-inverse"></div></div>'>
+                    <a href="{{ collection.links.github }}" target="_blank" class="button" data-toggle="tooltip" data-placement="top" title="View in github" data-template='<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner tooltip-inverse"></div></div>'>
                       <span class="icon-github"></span>
                     </a>
                   {% endif %}

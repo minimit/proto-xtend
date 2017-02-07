@@ -308,8 +308,9 @@
     }
     // $targets events
     if (settings.$targets) {
-      // .xt-fixed scrollbar padding
+      // custom events
       if (settings.name === 'xt-overlay') {
+        // .xt-fixed scrollbar padding
         settings.$targets.on('show.xt hide.xt', function(e, obj, $data) {
           if (e.target === this) {
             $(this).find('.xt-fixed').css('padding-right', window.xtScrollbarWidth($group));
@@ -317,9 +318,9 @@
         });
       }
     }
-    // custom events
+    // ajax events
     if (settings.name === 'xt-ajax') {
-      // onpopstate
+      // popstate
       $(window).off('popstate.xt.' + settings.namespace);
       $(window).on('popstate.xt.' + settings.namespace, function(e) {
         if (history.state && history.state.url) {

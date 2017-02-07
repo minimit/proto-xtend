@@ -34,8 +34,8 @@ html {
 body {
   overflow-x: hidden;
   overflow-y: scroll;
-  -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .box {
@@ -425,7 +425,6 @@ a:not(.button):hover:not(.active), a:not(.button).hover:not(.active), a:not(.but
 }
 
 .button:active, .button.active, .button:active:focus, .button:active.focus, .button.active:focus, .button.active.focus {
-  -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
@@ -458,19 +457,16 @@ a:not(.button):hover:not(.active), a:not(.button).hover:not(.active), a:not(.but
 }
 
 .xt-height {
-  -webkit-transition: height 0.3s cubic-bezier(0.63, 0.36, 0, 0.97);
   transition: height 0.3s cubic-bezier(0.63, 0.36, 0, 0.97);
   will-change: height;
 }
 
 .xt-height-top {
-  -webkit-transition: margin-top 0.3s cubic-bezier(0.63, 0.36, 0, 0.97);
   transition: margin-top 0.3s cubic-bezier(0.63, 0.36, 0, 0.97);
   will-change: margin-top;
 }
 
 .xt-height-bottom {
-  -webkit-transition: margin-bottom 0.3s cubic-bezier(0.63, 0.36, 0, 0.97);
   transition: margin-bottom 0.3s cubic-bezier(0.63, 0.36, 0, 0.97);
   will-change: margin-bottom;
 }

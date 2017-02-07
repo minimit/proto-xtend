@@ -59,7 +59,6 @@
   /* styles */
   & {
     #{$active} {
-      -webkit-box-shadow: none;
       box-shadow: none;
     }
   }
@@ -303,6 +302,7 @@ $button__menu_pixels: 1px;
   .site-breadcrumbs & {
     margin-top: -2px;
     margin-bottom: -2px;
+    margin-left: 8px;
   }
   /* .icon-menu-custom */
   .icon-menu-custom {
@@ -318,31 +318,25 @@ $button__menu_pixels: 1px;
       background: $color-white-light;
       border-radius: 0;
       left: 0;
-      -webkit-transform: rotate(0deg);
       transform: rotate(0deg);
-      -webkit-transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
       transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
     }
     span:nth-child(1) {
       top: 0;
-      -webkit-transform-origin: left center;
       transform-origin: left center;
     }
     span:nth-child(2) {
       top: calc(0.4em - #{$button__menu_pixels} * 1);
-      -webkit-transform-origin: left center;
       transform-origin: left center;
     }
     span:nth-child(3) {
       top: calc(0.8em - #{$button__menu_pixels} * 2);
-      -webkit-transform-origin: left center;
       transform-origin: left center;
     }
   }
   &.overlay {
     .icon-menu-custom {
       span:nth-child(1) {
-        -webkit-transform: rotate(45deg);
         transform: rotate(45deg);
         top: 0;
         left: 0;
@@ -352,7 +346,6 @@ $button__menu_pixels: 1px;
         opacity: 0;
       }
       span:nth-child(3) {
-        -webkit-transform: rotate(-45deg);
         transform: rotate(-45deg);
         top: calc(0.8em - #{$button__menu_pixels} * 2);
         left: 0;
@@ -505,9 +498,7 @@ $button__menu_pixels: 1px;
     left: 100%;
     width: 0;
     opacity: 0;
-    -webkit-transition: opacity 0.6s cubic-bezier(0.19, 1, 0.22, 1) 0.1s;
     transition: opacity 0.6s cubic-bezier(0.19, 1, 0.22, 1) 0.1s;
-    -webkit-animation: line-fadeout 0.6s cubic-bezier(0.19, 1, 0.22, 1);
     animation: line-fadeout 0.6s cubic-bezier(0.19, 1, 0.22, 1);
   }
   #{$hover} {
@@ -515,21 +506,9 @@ $button__menu_pixels: 1px;
       left: 0;
       width: 100%;
       opacity: 1;
-      -webkit-transition: opacity 0.6s cubic-bezier(0.19, 1, 0.22, 1) 0.1s;
       transition: opacity 0.6s cubic-bezier(0.19, 1, 0.22, 1) 0.1s;
-      -webkit-animation: line-fadein 0.6s cubic-bezier(0.19, 1, 0.22, 1);
       animation: line-fadein 0.6s cubic-bezier(0.19, 1, 0.22, 1);
     }
-  }
-}
-@-webkit-keyframes line-fadeout {
-  0% {
-    left: 0;
-    width: 100%;
-  }
-  100% {
-    left: 100%;
-    width: 0;
   }
 }
 @keyframes line-fadeout {
@@ -540,16 +519,6 @@ $button__menu_pixels: 1px;
   100% {
     left: 100%;
     width: 0;
-  }
-}
-@-webkit-keyframes line-fadein {
-  0% {
-    left: 0;
-    width: 0;
-  }
-  100% {
-    left: 0;
-    width: 100%;
   }
 }
 @keyframes line-fadein {
@@ -571,16 +540,13 @@ $button__menu_pixels: 1px;
   }
   .site-article-anchor {
     opacity: 0;
-    -webkit-transition: opacity 1s cubic-bezier(0.19, 1, 0.22, 1);
     transition: opacity 1s cubic-bezier(0.19, 1, 0.22, 1);
-    -webkit-transition-delay: 0.2s;
     transition-delay: 0.2s;
   }
   #{$hover},
   #{$active} {
     .site-article-anchor {
       opacity: 1;
-      -webkit-transition-delay: 0s;
       transition-delay: 0s;
     }
   }
@@ -775,7 +741,6 @@ pre {
   // animations
   .site-header-top {
     &.scroll-on-bottom {
-      -webkit-animation: top-fadein 0.6s cubic-bezier(0.19, 1, 0.22, 1);
       animation: top-fadein 0.6s cubic-bezier(0.19, 1, 0.22, 1);
     }  
   }
@@ -786,12 +751,13 @@ pre {
   .site-breadcrumbs {
     &.scroll-on-top,
     &.scroll-on-bottom {
+      .site-breadcrumbs-meta,
       .show-scroll {
-        -webkit-animation: left-fadein 0.6s cubic-bezier(0.19, 1, 0.22, 1);
-        animation: left-fadein 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+        animation: right-fadein 0.6s cubic-bezier(0.19, 1, 0.22, 1);
       }
     }
   }
+  
 }
 
 @media (min-width: 992px) {
@@ -816,16 +782,6 @@ html.overlay {
 // animations
 //////////////////////
 
-@-webkit-keyframes top-fadein {
-  0% {
-    opacity: 0;
-    -webkit-transform: translateY(-0.618rem);
-  }
-  100% {
-    opacity: 1;
-    -webkit-transform: translateY(0px);
-  }
-}
 @keyframes top-fadein {
   0% {
     opacity: 0;
@@ -836,21 +792,10 @@ html.overlay {
     transform: translateY(0px);
   }
 }
-
-@-webkit-keyframes left-fadein {
+@keyframes right-fadein {
   0% {
     opacity: 0;
-    -webkit-transform: translateX(-0.618rem);
-  }
-  100% {
-    opacity: 1;
-    -webkit-transform: translateX(0px);
-  }
-}
-@keyframes left-fadein {
-  0% {
-    opacity: 0;
-    transform: translateX(-0.618rem);
+    transform: translateX(0.618rem);
   }
   100% {
     opacity: 1;
