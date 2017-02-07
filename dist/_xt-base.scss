@@ -103,6 +103,9 @@ a, button {
   cursor: default;
   opacity: 1;
 }
+.xt-container {
+  @include box;
+}
 
 //////////////////////
 // xt-height

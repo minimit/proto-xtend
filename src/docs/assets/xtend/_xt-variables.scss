@@ -187,25 +187,25 @@ $focus: "&:focus, &.focus";
   }
   /* $start */
   @if $start == 'absolute' {
-    #{$item}[data-xt-initialized]:not(.xt-ignore) {
+    #{$item}[data-xt-initialized]:not(.xt-clone) {
       position: absolute;
     }
-    #{$item}.xt-ignore {
-      display: block !important;
+    #{$item}.xt-clone {
+      display: block;
     }
   } @elseif $start == 'fixed' {
     #{$item}[data-xt-initialized] {
       @extend #{$item}.scroll; // show as if scrolling
     }
-    #{$item}.xt-ignore {
-      display: block !important;
+    #{$item}.xt-clone {
+      display: block;
     }
   }
   /* .scroll */
-  #{$item}.scroll.xt-ignore {
-    display: block !important;
+  #{$item}.scroll.xt-clone {
+    display: block;
   }
-  #{$item}.scroll:not(.xt-ignore) {
+  #{$item}.scroll:not(.xt-clone) {
     position: fixed;
     @if $position == 'top' {
       @if $pos {

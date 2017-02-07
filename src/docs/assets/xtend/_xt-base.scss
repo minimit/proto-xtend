@@ -105,6 +105,18 @@ a, button {
 }
 
 //////////////////////
+// xt
+//////////////////////
+
+.xt-container {
+  @include box;
+}
+.xt-clone {
+  display: none;
+  visibility: hidden;
+}
+
+//////////////////////
 // xt-height
 //////////////////////
 

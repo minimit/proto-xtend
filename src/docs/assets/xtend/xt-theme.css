@@ -99,6 +99,12 @@ a, button {
   opacity: 1;
 }
 
+.xt-container {
+  position: relative;
+  float: left;
+  width: 100%;
+}
+
 .xt-height {
   display: block !important;
   overflow: hidden;
