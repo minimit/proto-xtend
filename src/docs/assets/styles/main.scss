@@ -777,11 +777,50 @@ html.overlay {
     width: 100%;
   }
 }
+// animations
+html.overlay {
+  .site-menu {
+    animation: opacity-fadein 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+    .button {
+      opacity: 0;
+      animation: right-fadein 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+      -webkit-animation-fill-mode: forwards;
+      -moz-animation-fill-mode: forwards;
+      -ms-animation-fill-mode: forwards;
+      -o-animation-fill-mode: forwards;
+      animation-fill-mode: forwards;
+      &:nth-child(2) {
+        transition-delay: 0.05s;
+        animation-delay: 0.05s;
+      }
+      &:nth-child(3) {
+        transition-delay: 0.1s;
+        animation-delay: 0.1s;
+      }
+      &:nth-child(4) {
+        transition-delay: 0.15s;
+        animation-delay: 0.15s;
+      }
+      &:nth-child(5) {
+        transition-delay: 0.2s;
+        animation-delay: 0.2s;
+      }
+    }
+  }
+}
 
 //////////////////////
 // animations
 //////////////////////
 
+@keyframes opacity-fadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 @keyframes top-fadein {
   0% {
     opacity: 0;
