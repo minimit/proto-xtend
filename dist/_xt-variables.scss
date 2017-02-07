@@ -154,7 +154,7 @@ $focus: "&:focus, &.focus";
   }
   @if $direction == 'vertical' {
     html#{$class} {
-      &, & body {
+      body {
         overflow-y: hidden;
       }
       #{$item} {
@@ -163,7 +163,7 @@ $focus: "&:focus, &.focus";
     }
   } @elseif $direction == 'horizontal' {
     html#{$class} {
-      &, & body {
+      body {
         overflow-x: hidden;
       }
       #{$item} {
