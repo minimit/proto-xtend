@@ -105,6 +105,13 @@ font-family: 'Fira Sans Condensed', sans-serif;
 // mixins
 //////////////////////
 
+// @include box;
+@mixin box {
+  position: relative;
+  float: left;
+  width: 100%;
+}
+
 // @include clearfix;
 @mixin clearfix {
   &:before,
@@ -117,11 +124,29 @@ font-family: 'Fira Sans Condensed', sans-serif;
   }
 }
 
-// @include box;
-@mixin box {
-  position: relative;
-  float: left;
-  width: 100%;
+// @include no-selection;
+@mixin no-selection {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+// @include text-selection;
+@mixin text-selection {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+
+// @include accelerate;
+@mixin accelerate {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-perspective: 1000;
+  perspective: 1000;
+  transform: translateZ(0);
 }
 
 // #{$hover} {}

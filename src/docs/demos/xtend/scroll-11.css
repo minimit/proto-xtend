@@ -87,13 +87,18 @@ a, button {
   display: none;
   visibility: hidden; }
 
+.xt-fixed {
+  z-index: 90 !important; }
+
 .xt-height {
   display: block !important;
   overflow: hidden;
   height: 0; }
 
 .xt-height-inside {
-  float: left; }
+  position: relative;
+  float: left;
+  width: 100%; }
 
 html {
   font-size: 16px; }

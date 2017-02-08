@@ -160,7 +160,6 @@
     // $group
     if (settings.name === 'xt-scroll') {
       $group.wrap($('<div class="xt-container"></div>'));
-      $group.addClass('xt-fixed');
     }
     // $elements
     if (settings.elements) {
@@ -200,14 +199,6 @@
     var settings = this.settings;
     var group = this.group;
     var $group = $(this.group);
-    // xt-height
-    if (settings.$targets) {
-      settings.$targets.each( function() {
-        if ($(this).hasClass('xt-height')) {
-          $(this).wrapInner('<div class="xt-height-inside"></div>');
-        }
-      });
-    }
     // initial activations
     if (settings.name === 'xt-ajax') {
       var url;
@@ -305,18 +296,6 @@
           object.hide($(this), true);
         }
       });
-    }
-    // $targets events
-    if (settings.$targets) {
-      // custom events
-      if (settings.name === 'xt-overlay') {
-        // .xt-fixed scrollbar padding
-        settings.$targets.on('show.xt hide.xt', function(e, obj, $data) {
-          if (e.target === this) {
-            $(this).find('.xt-fixed').css('padding-right', window.xtScrollbarWidth($group));
-          }
-        });
-      }
     }
     // ajax events
     if (settings.name === 'xt-ajax') {
@@ -456,14 +435,26 @@
     var settings = this.settings;
     var group = this.group;
     var $group = $(this.group);
+    // activate $group
+    if (settings.name === 'xt-overlay') {
+      if (!$group.hasClass(settings.class)) {
+        this.on($group);
+        if (settings.name === 'xt-scroll') {
+          this.onFixed($group);
+        }
+        if (settings.name === 'xt-overlay') {
+          this.onFixed(settings.$targets);
+        }
+      }
+    }
     // activate $element
     var triggerElement;
     if ($element) {
       // show and add in $currents
       if (!$element.hasClass(settings.class)) {
         triggerElement = true;
+        this.on($element);
         var $currents = this.getCurrents();
-        $element.addClass(settings.class);
         $currents = this.setCurrents($currents.xtPushElement($element));
         // control over activated
         if (settings.name === 'xt-ajax') {
@@ -492,13 +483,7 @@
       $target = settings.$targets.eq(index);
       if (!$target.hasClass(settings.class)) {
         triggerTarget = true;
-        $target.addClass(settings.class);
-        if ($target.hasClass('xt-height')) {
-          var h = $target.find('.xt-height-inside').outerHeight();
-          $target.css("height", h);
-          $target.parents('.xt-height-top').css("margin-top", -h);
-          $target.parents('.xt-height-bottom').css("margin-bottom", -h);
-        }
+        this.on($target);
       }
     }
     // api
@@ -517,14 +502,26 @@
     var settings = this.settings;
     var group = this.group;
     var $group = $(this.group);
-    // activate $element
+    // deactivate $group
+    if (settings.name === 'xt-overlay') {
+      if ($group.hasClass(settings.class)) {
+        this.off($group);
+        if (settings.name === 'xt-scroll') {
+          this.offFixed($group);
+        }
+        if (settings.name === 'xt-overlay') {
+          this.offFixed(settings.$targets);
+        }
+      }
+    }
+    // deactivate $element
     var triggerElement;
     if ($element) {
       if ($element.hasClass(settings.class)) {
         var $currents = this.getCurrents();
         if (isSync || settings.name === 'xt-ajax' || $currents.length > settings.min) {
           triggerElement = true;
-          $element.removeClass(settings.class);
+          this.off($element);
           $currents = this.setCurrents($currents.not($element.get(0)));
         }
         // [disabled]
@@ -539,7 +536,7 @@
         }
       }
     }
-    // activate $target
+    // deactivate $target
     var $target;
     var triggerTarget;
     if (settings.$targets) {
@@ -548,12 +545,7 @@
       $target = settings.$targets.eq(index);
       if ($target.hasClass(settings.class)) {
         triggerTarget = true;
-        $target.removeClass(settings.class);
-        if ($target.hasClass('xt-height')) {
-          $target.css("height", 0);
-          $target.parents('.xt-height-top').css("margin-top", 0);
-          $target.parents('.xt-height-bottom').css("margin-bottom", 0);
-        }
+        this.off($target);
       }
     }
     // api
@@ -564,6 +556,64 @@
       if (triggerTarget) {
         $target.trigger('hide.xt', [object, true]);
       }
+    }
+  };
+  
+  Xt.prototype.on = function($el) {
+    var object = this;
+    var settings = this.settings;
+    var group = this.group;
+    var $group = $(this.group);
+    // on
+    $el.addClass(settings.class);
+    if ($el.hasClass('xt-height')) {
+      var $inside = $el.find('.xt-height-inside');
+      if (!$inside.length) {
+        $el.wrapInner('<div class="xt-height-inside"></div>');
+        $inside = $el.find('.xt-height-inside');
+      }
+      var h = $inside.outerHeight();
+      $el.css("height", h);
+      $el.parents('.xt-height-top').css("margin-top", -h);
+      $el.parents('.xt-height-bottom').css("margin-bottom", -h);
+    }
+  };
+  
+  Xt.prototype.off = function($el) {
+    var object = this;
+    var settings = this.settings;
+    var group = this.group;
+    var $group = $(this.group);
+    // off
+    $el.removeClass(settings.class);
+    if ($el.hasClass('xt-height')) {
+      $el.css("height", 0);
+      $el.parents('.xt-height-top').css("margin-top", 0);
+      $el.parents('.xt-height-bottom').css("margin-bottom", 0);
+    }
+  };
+  
+  Xt.prototype.onFixed = function($el) {
+    var object = this;
+    var settings = this.settings;
+    var group = this.group;
+    var $group = $(this.group);
+    // add scrollbar padding
+    if (!$el.hasClass('xt-fixed')) {
+      var w = window.xtScrollbarWidth($el);
+      w = $el.css('overflow-y') === 'hidden' ? 0 : w;
+      $el.addClass('xt-fixed').css('padding-right', w);
+    }
+  };
+  
+  Xt.prototype.offFixed = function($el) {
+    var object = this;
+    var settings = this.settings;
+    var group = this.group;
+    var $group = $(this.group);
+    // remove scrollbar padding
+    if ($el.hasClass('xt-fixed')) {
+      $el.removeClass('xt-fixed').css('padding-right', 0);
     }
   };
   

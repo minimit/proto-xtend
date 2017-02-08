@@ -115,6 +115,9 @@ a, button {
   display: none;
   visibility: hidden;
 }
+.xt-fixed {
+  z-index: 90 !important;
+}
 
 //////////////////////
 // xt-height
@@ -126,5 +129,5 @@ a, button {
   height: 0;
 } 
 .xt-height-inside {
-  float: left;
+  @include box;
 }

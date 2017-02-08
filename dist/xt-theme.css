@@ -110,6 +110,10 @@ a, button {
   visibility: hidden;
 }
 
+.xt-fixed {
+  z-index: 90 !important;
+}
+
 .xt-height {
   display: block !important;
   overflow: hidden;
@@ -117,7 +121,9 @@ a, button {
 }
 
 .xt-height-inside {
+  position: relative;
   float: left;
+  width: 100%;
 }
 
 html {
