@@ -185,10 +185,6 @@ $focus: "&:focus, &.focus";
       #{$item} {
         overflow-y: scroll;
       }
-      /* for scrollbar padding */
-      .xt-fixed {
-        background-clip: content-box;
-      }
     }
   } @elseif $direction == 'horizontal' {
     html#{$class} {

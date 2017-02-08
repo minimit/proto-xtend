@@ -175,16 +175,16 @@
       });
       settings.$targets.insertAfter($group);
       // xt-scroll stuff
-      if (settings.mode === 'absolute' || settings.mode === 'fixed') {
+      if (settings.mode === 'absolute') {
+        $group.css('position', 'absolute');
+      } else if (settings.mode === 'fixed') {
+        $group.css('position', 'fixed');
+      }
+      if ($group.is(':fixed') || $group.is(':absolute')) {
+        $group.css('z-index', 70);
         settings.$targets.css('display', 'block');
       } else {
         settings.$targets.css('display', 'none');
-      }
-      if (settings.mode === 'absolute') {
-        $group.css('position', 'absolute').css('z-index', 70);
-      } else if (settings.mode === 'fixed') {
-        $group.css('position', 'fixed').css('z-index', 70);
-        $group.addClass('xt-fixed');
       }
     } else if(settings.targets) {
       settings.$targets = $group.find(settings.targets).filter(':parents(.xt-ignore)');
@@ -193,7 +193,7 @@
       }
     }
     // initialized
-    $group.attr('data-xt-initialized', settings.name);
+    //$group.attr('data-xt-initialized', settings.name);
     // $group unique id
 		window.xtUniqueId = window.xtUniqueId ? window.xtUniqueId : 0;
     var xtUniqueId = $group.attr('id') ? $group.attr('id') : 'xtUniqueId' + window.xtUniqueId++;
@@ -313,7 +313,6 @@
       $(window).on('popstate.xt.' + settings.namespace, function(e) {
         if (history.state && history.state.url) {
           object.ajax(history.state.url, history.state.title);
-          console.log(history.state.url);
         }
       });
     }
@@ -330,7 +329,7 @@
     $(window).on(scrollNamespace, function(e) {
       var scrollTop = $(this).scrollTop();
       // show or hide
-      var top = settings.$targets.offset().top;
+      var top = settings.$targets.parents('.xt-container').offset().top;
       var bottom = Infinity;
       if (settings.top) {
         if (!isNaN(parseFloat(settings.top))) {
@@ -444,20 +443,6 @@
     var settings = this.settings;
     var group = this.group;
     var $group = $(this.group);
-    // stuff
-    if (settings.name === 'xt-scroll') {
-      if (settings.mode !== 'fixed') {
-        $group.addClass('xt-fixed');
-      }
-    }
-    if (settings.name === 'xt-overlay') {
-      if (!$group.hasClass(settings.class)) {
-        // activate $group
-        this.on($group);
-        // add paddings
-        this.onFixed($('html, .xt-fixed'));
-      }
-    }
     // activate $element
     var triggerElement;
     if ($element) {
@@ -497,6 +482,15 @@
         this.on($target);
       }
     }
+    // stuff
+    if (settings.name === 'xt-overlay') {
+      if (!$group.hasClass(settings.class)) {
+        // activate $group
+        this.on($group);
+        // add paddings
+        this.onFixed($('*:fixed').not($group).add('html'));
+      }
+    }
     // api
     if (!triggered) {
       if (triggerElement) {
@@ -513,20 +507,6 @@
     var settings = this.settings;
     var group = this.group;
     var $group = $(this.group);
-    // stuff
-    if (settings.name === 'xt-scroll') {
-      if (settings.mode !== 'fixed') {
-        $group.removeClass('xt-fixed');
-      }
-    }
-    if (settings.name === 'xt-overlay') {
-      if ($group.hasClass(settings.class)) {
-        // deactivate $group
-        this.off($group);
-        // remove paddings
-        this.offFixed($('html, .xt-fixed'));
-      }
-    }
     // deactivate $element
     var triggerElement;
     if ($element) {
@@ -559,6 +539,15 @@
       if ($target.hasClass(settings.class)) {
         triggerTarget = true;
         this.off($target);
+      }
+    }
+    // stuff
+    if (settings.name === 'xt-overlay') {
+      if ($group.hasClass(settings.class)) {
+        // deactivate $group
+        this.off($group);
+        // remove paddings
+        this.offFixed($('.xt-fixed, html'));
       }
     }
     // api
@@ -614,7 +603,7 @@
     // add scrollbar padding
     var w = window.xtScrollbarWidth($el);
     w = $el.css('overflow-y') === 'hidden' ? 0 : w;
-    $el.css('padding-right', w);
+    $el.addClass('xt-fixed').css('padding-right', w).css('background-clip', 'content-box');
   };
   
   Xt.prototype.offFixed = function($el) {
@@ -623,7 +612,7 @@
     var group = this.group;
     var $group = $(this.group);
     // remove scrollbar padding
-    $el.css('padding-right', 0);
+    $el.removeClass('xt-fixed').css('padding-right', 0).css('background-clip', '');
   };
   
   Xt.prototype.getIndex = function($elements, $element) {
@@ -763,6 +752,18 @@
   // usage: $groups.filter(':parents(.xt-ignore)')
   $.expr[':'].parents = function(a, i, m){
     return $(a).parents(m[3]).length < 1;
+  };
+  
+  // select all elements with position: fixed;
+  // usage: $('*:fixed')
+  $.expr[':'].fixed = function(a, i, m){
+    return $(a).css('position') === 'fixed';
+  };
+  
+  // select all elements with position: absolute;
+  // usage: $('*:absolute')
+  $.expr[':'].absolute = function(a, i, m){
+    return $(a).css('position') === 'absolute';
   };
   
 })(jQuery, window, document);
