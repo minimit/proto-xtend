@@ -83,13 +83,6 @@ a, button {
   float: left;
   width: 100%; }
 
-.xt-clone {
-  display: none;
-  visibility: hidden; }
-
-.xt-fixed {
-  z-index: 90 !important; }
-
 .xt-height {
   display: block !important;
   overflow: hidden;
@@ -364,19 +357,18 @@ a:not(.button) {
   transition: margin-bottom 0.3s cubic-bezier(0.63, 0.36, 0, 0.97);
   will-change: margin-bottom; }
 
-/* defaults */
-.card[data-xt-scroll] {
-  z-index: 70; }
-  .card[data-xt-scroll] .show-scroll {
-    display: none; }
+.card[data-xt-scroll] .show-scroll {
+  display: none; }
 
-/* $start */
-/* .scroll */
-.card[data-xt-scroll].scroll.xt-clone {
+.card[data-xt-scroll] .hide-scroll {
   display: block; }
 
+.card[data-xt-scroll].scroll.xt-clone {
+  display: block !important; }
+
 .card[data-xt-scroll].scroll:not(.xt-clone) {
-  position: fixed;
+  position: fixed !important;
+  z-index: 70;
   top: 30px; }
   .card[data-xt-scroll].scroll:not(.xt-clone) .show-scroll {
     display: block; }

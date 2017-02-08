@@ -157,10 +157,6 @@
     var settings = this.settings;
     var group = this.group;
     var $group = $(this.group);
-    // $group
-    if (settings.name === 'xt-scroll') {
-      $group.wrap($('<div class="xt-container"></div>'));
-    }
     // $elements
     if (settings.elements) {
       settings.$elements = $group.find(settings.elements).filter(':parents(.xt-ignore)');
@@ -172,11 +168,24 @@
     }
     // $targets
     if (settings.name === 'xt-scroll') {
-      settings.$targets = $group.clone().addClass('xt-clone xt-ignore');
+      $group.wrap($('<div class="xt-container"></div>'));
+      settings.$targets = $group.clone().addClass('xt-clone xt-ignore').css('visibility', 'hidden');
       $.each(settings.$targets.data(), function (i) {
         settings.$targets.removeAttr("data-" + i);
       });
       settings.$targets.insertAfter($group);
+      // xt-scroll stuff
+      if (settings.mode === 'absolute' || settings.mode === 'fixed') {
+        settings.$targets.css('display', 'block');
+      } else {
+        settings.$targets.css('display', 'none');
+      }
+      if (settings.mode === 'absolute') {
+        $group.css('position', 'absolute').css('z-index', 70);
+      } else if (settings.mode === 'fixed') {
+        $group.css('position', 'fixed').css('z-index', 70);
+        $group.addClass('xt-fixed');
+      }
     } else if(settings.targets) {
       settings.$targets = $group.find(settings.targets).filter(':parents(.xt-ignore)');
       if (!settings.$targets.length) {
@@ -435,16 +444,18 @@
     var settings = this.settings;
     var group = this.group;
     var $group = $(this.group);
-    // activate $group
+    // stuff
+    if (settings.name === 'xt-scroll') {
+      if (settings.mode !== 'fixed') {
+        $group.addClass('xt-fixed');
+      }
+    }
     if (settings.name === 'xt-overlay') {
       if (!$group.hasClass(settings.class)) {
+        // activate $group
         this.on($group);
-        if (settings.name === 'xt-scroll') {
-          this.onFixed($group);
-        }
-        if (settings.name === 'xt-overlay') {
-          this.onFixed(settings.$targets);
-        }
+        // add paddings
+        this.onFixed($('html, .xt-fixed'));
       }
     }
     // activate $element
@@ -502,16 +513,18 @@
     var settings = this.settings;
     var group = this.group;
     var $group = $(this.group);
-    // deactivate $group
+    // stuff
+    if (settings.name === 'xt-scroll') {
+      if (settings.mode !== 'fixed') {
+        $group.removeClass('xt-fixed');
+      }
+    }
     if (settings.name === 'xt-overlay') {
       if ($group.hasClass(settings.class)) {
+        // deactivate $group
         this.off($group);
-        if (settings.name === 'xt-scroll') {
-          this.offFixed($group);
-        }
-        if (settings.name === 'xt-overlay') {
-          this.offFixed(settings.$targets);
-        }
+        // remove paddings
+        this.offFixed($('html, .xt-fixed'));
       }
     }
     // deactivate $element
@@ -599,11 +612,9 @@
     var group = this.group;
     var $group = $(this.group);
     // add scrollbar padding
-    if (!$el.hasClass('xt-fixed')) {
-      var w = window.xtScrollbarWidth($el);
-      w = $el.css('overflow-y') === 'hidden' ? 0 : w;
-      $el.addClass('xt-fixed').css('padding-right', w);
-    }
+    var w = window.xtScrollbarWidth($el);
+    w = $el.css('overflow-y') === 'hidden' ? 0 : w;
+    $el.css('padding-right', w);
   };
   
   Xt.prototype.offFixed = function($el) {
@@ -612,9 +623,7 @@
     var group = this.group;
     var $group = $(this.group);
     // remove scrollbar padding
-    if ($el.hasClass('xt-fixed')) {
-      $el.removeClass('xt-fixed').css('padding-right', 0);
-    }
+    $el.css('padding-right', 0);
   };
   
   Xt.prototype.getIndex = function($elements, $element) {

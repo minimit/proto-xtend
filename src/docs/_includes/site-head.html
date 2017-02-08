@@ -33,7 +33,7 @@
       
       <header class="site-header">
         
-        <nav class="site-header-top" role="navigation" data-xt-scroll='{"top": -1, "bottom": ".site-breadcrumbs"}'>
+        <nav class="site-header-top" role="navigation" data-xt-scroll='{"mode": "fixed", "bottom": ".site-breadcrumbs"}'>
           
           <div class="container">
             
@@ -65,7 +65,7 @@
           
         </nav>
         
-        <div class="site-menu xt-height">
+        <div class="site-menu xt-height" data-xt-overlay='{"elements": ".button__menu"}'>
           <div class="site-menu-content d-flex">
             <div class="container align-self-center">
             
@@ -116,82 +116,84 @@
                 
         </div>
         
-        <nav class="site-breadcrumbs" role="navigation" data-xt-scroll>
-          <div class="container">
-            
-            <div class="site-breadcrumbs-body float-left spacer" data-xt-toggle='{"elements": ".site-breadcrumbs-body-main", "targets": ".site-breadcrumbs-body-sub", "on": "mouseenter", "off": "mouseleave"}'>
-              {% for collection in site.collections %}
-                {% if collection.label == page.collection %}
+        <nav class="site-breadcrumbs" role="navigation" data-xt-scroll='{"mode": "absolute"}'>
+          <div class="site-breadcrumbs-inside">
+            <div class="container">
               
-                  {% assign sorted = site.[collection.label] | sort: 'order' %}
-                  {% for p in sorted %}
-                    {% if p.categories[0] == collection.label %}
-                      <div class="site-breadcrumbs-body-main">
-                        <a href="{{ p.url }}" class="button">
-                          {{ p.title }}
-                        </a>
-                        <div class="site-breadcrumbs-body-sub xt-height">
-                          {% assign subsorted = site.[collection.label] | where: 'categories', p.title | sort: 'order' %}
-                          {% for pa in subsorted %}
-                          <a href="{{ pa.url }}" class="button">
-                            {{ pa.title }}
-                          </a>
-                          {% endfor %}
-                        </div>
-                      </div>
-                    {% endif %}
-                  {% endfor %}
-                  
-                {% endif %}
-              {% endfor %}
-            </div>
-
-            <div class="site-breadcrumbs-meta float-right spacer">
-              
-              {% if page.collection == null %}
-                <a href="{{ site.twitter }}" target="_blank" class="button" data-toggle="tooltip" data-placement="top" title="Twitter" data-template='<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner tooltip-inverse"></div></div>'>
-                  <span class="icon-twitter"></span>
-                </a>
-                <a href="{{ site.google }}" target="_blank" class="button" data-toggle="tooltip" data-placement="top" title="Google+" data-template='<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner tooltip-inverse"></div></div>'>
-                  <span class="icon-google"></span>
-                </a>
-              {% endif %}
-              
-              {% for collection in site.collections %}
-                {% if collection.label == page.collection %}
+              <div class="site-breadcrumbs-body float-left spacer" data-xt-toggle='{"elements": ".site-breadcrumbs-body-main", "targets": ".site-breadcrumbs-body-sub", "on": "mouseenter", "off": "mouseleave"}'>
+                {% for collection in site.collections %}
+                  {% if collection.label == page.collection %}
                 
-                  {% if collection.links.download %}
-                    <a href="{{ collection.links.download }}" target="_blank" class="button" data-toggle="tooltip" data-placement="top" title="Download source" data-template='<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner tooltip-inverse"></div></div>'>
-                      <span class="icon-download"></span>
-                    </a>
+                    {% assign sorted = site.[collection.label] | sort: 'order' %}
+                    {% for p in sorted %}
+                      {% if p.categories[0] == collection.label %}
+                        <div class="site-breadcrumbs-body-main">
+                          <a href="{{ p.url }}" class="button">
+                            {{ p.title }}
+                          </a>
+                          <div class="site-breadcrumbs-body-sub xt-height">
+                            {% assign subsorted = site.[collection.label] | where: 'categories', p.title | sort: 'order' %}
+                            {% for pa in subsorted %}
+                            <a href="{{ pa.url }}" class="button">
+                              {{ pa.title }}
+                            </a>
+                            {% endfor %}
+                          </div>
+                        </div>
+                      {% endif %}
+                    {% endfor %}
+                    
                   {% endif %}
-                  
-                  {% if collection.links.github %}
-                    <a href="{{ collection.links.github }}" target="_blank" class="button" data-toggle="tooltip" data-placement="top" title="View in github" data-template='<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner tooltip-inverse"></div></div>'>
-                      <span class="icon-github"></span>
-                    </a>
-                  {% endif %}
-                  
+                {% endfor %}
+              </div>
+
+              <div class="site-breadcrumbs-meta float-right spacer">
+                
+                {% if page.collection == null %}
+                  <a href="{{ site.twitter }}" target="_blank" class="button" data-toggle="tooltip" data-placement="top" title="Twitter" data-template='<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner tooltip-inverse"></div></div>'>
+                    <span class="icon-twitter"></span>
+                  </a>
+                  <a href="{{ site.google }}" target="_blank" class="button" data-toggle="tooltip" data-placement="top" title="Google+" data-template='<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner tooltip-inverse"></div></div>'>
+                    <span class="icon-google"></span>
+                  </a>
                 {% endif %}
-              {% endfor %}
-              
-              <button type="button" class="button button__menu float-right show-scroll">
-                <span class="icon-menu-custom right">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </span>
-                <span class="text">
-                  {% if page.collection %}
-                      {{ page.collection | capitalize }}
-                  {% else %}
-                    {{ page.title | capitalize }}
+                
+                {% for collection in site.collections %}
+                  {% if collection.label == page.collection %}
+                  
+                    {% if collection.links.download %}
+                      <a href="{{ collection.links.download }}" target="_blank" class="button" data-toggle="tooltip" data-placement="top" title="Download source" data-template='<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner tooltip-inverse"></div></div>'>
+                        <span class="icon-download"></span>
+                      </a>
+                    {% endif %}
+                    
+                    {% if collection.links.github %}
+                      <a href="{{ collection.links.github }}" target="_blank" class="button" data-toggle="tooltip" data-placement="top" title="View in github" data-template='<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner tooltip-inverse"></div></div>'>
+                        <span class="icon-github"></span>
+                      </a>
+                    {% endif %}
+                    
                   {% endif %}
-                </span>
-              </button>
+                {% endfor %}
+                
+                <button type="button" class="button button__menu float-right show-scroll">
+                  <span class="icon-menu-custom right">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </span>
+                  <span class="text">
+                    {% if page.collection %}
+                        {{ page.collection | capitalize }}
+                    {% else %}
+                      {{ page.title | capitalize }}
+                    {% endif %}
+                  </span>
+                </button>
+                
+              </div>
               
             </div>
-            
           </div>
         </nav>
         

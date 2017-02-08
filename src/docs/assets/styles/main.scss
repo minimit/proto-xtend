@@ -196,14 +196,14 @@ a.logo {
 
 /*.site-menu */
 .site-menu {
-  background: $color-primary;
-  color: $color-white;
   .site-menu-content {
     padding-top: 100px;
     padding-bottom: 100px;
     width: 100%;
     min-height: 100vh;
     max-height: 100vh;
+    background: $color-primary;
+    color: $color-white;
   }
   // content
   .button {
@@ -248,12 +248,15 @@ a.logo {
 
 /* .site-breadcrumbs */
 .site-breadcrumbs {
-  cursor: default;
   @include box;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  background: $color-primary;
-  color: $color-white;
+  cursor: default;
+  .site-breadcrumbs-inside {
+    @include box;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background: $color-primary;
+    color: $color-white;
+  }
 }
 .site-breadcrumbs-body-main {
   .site-breadcrumbs-body-sub {
@@ -734,7 +737,7 @@ pre {
 @media (min-width: 768px) {
   
   // scroll styles
-  @include xt-scroll('.site-header-top', 'fixed');
+  @include xt-scroll('.site-header-top');
   // full width
   .site-header-top {
     width: 100%;
@@ -747,7 +750,7 @@ pre {
   }
   
   // scroll styles
-  @include xt-scroll('.site-breadcrumbs', 'absolute');
+  @include xt-scroll('.site-breadcrumbs');
   // animations
   .site-breadcrumbs {
     &.scroll-on-top,
@@ -764,12 +767,15 @@ pre {
 @media (min-width: 992px) {
 
   // scroll styles
-  @include xt-scroll('.site-aside', false, 'top', 56px);
+  @include xt-scroll('.site-aside', 'top', 56px);
   
 }
 
 // overlay styles
 @include xt-overlay('.site-menu');
+html.overlay .site-header-top {
+  z-index: 81 !important;
+}
 // animations
 .site-menu {
   .button {
@@ -800,32 +806,34 @@ pre {
     }
   }
 }
-.site-menu.overlay {
-  .button {
-    opacity: 0;
-    animation: right-fadein 0.6s cubic-bezier(0.19, 1, 0.22, 1);
-    -webkit-animation-fill-mode: forwards;
-    -moz-animation-fill-mode: forwards;
-    -ms-animation-fill-mode: forwards;
-    -o-animation-fill-mode: forwards;
-    animation-fill-mode: forwards;
-    &:nth-child(1) {
-      animation-delay: 0.06s;
-    }
-    &:nth-child(2) {
-      animation-delay: 0.12s;
-    }
-    &:nth-child(3) {
-      animation-delay: 0.18s;
-    }
-    &:nth-child(4) {
-      animation-delay: 0.24s;
-    }
-    &:nth-child(5) {
-      animation-delay: 0.30s;
-    }
-    &:nth-child(6) {
-      animation-delay: 0.36s;
+html.overlay {
+  .site-menu {
+    .button {
+      opacity: 0;
+      animation: right-fadein 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+      -webkit-animation-fill-mode: forwards;
+      -moz-animation-fill-mode: forwards;
+      -ms-animation-fill-mode: forwards;
+      -o-animation-fill-mode: forwards;
+      animation-fill-mode: forwards;
+      &:nth-child(1) {
+        animation-delay: 0.06s;
+      }
+      &:nth-child(2) {
+        animation-delay: 0.12s;
+      }
+      &:nth-child(3) {
+        animation-delay: 0.18s;
+      }
+      &:nth-child(4) {
+        animation-delay: 0.24s;
+      }
+      &:nth-child(5) {
+        animation-delay: 0.30s;
+      }
+      &:nth-child(6) {
+        animation-delay: 0.36s;
+      }
     }
   }
 }

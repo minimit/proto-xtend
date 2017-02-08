@@ -273,14 +273,6 @@
     });
     developerInit();
     
-    //////////////////////
-    // xtend
-    //////////////////////
-
-    $main.find('.site-menu').xtOverlay({"elements": ".button__menu", "targets": "html, .site-header-top"});
-    
-    //////////////////////
-    
   };
   
   // init main

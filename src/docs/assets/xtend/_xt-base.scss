@@ -111,13 +111,6 @@ a, button {
 .xt-container {
   @include box;
 }
-.xt-clone {
-  display: none;
-  visibility: hidden;
-}
-.xt-fixed {
-  z-index: 90 !important;
-}
 
 //////////////////////
 // xt-height

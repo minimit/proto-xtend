@@ -185,7 +185,7 @@ $focus: "&:focus, &.focus";
       #{$item} {
         overflow-y: scroll;
       }
-      /* .xt-fixed scrollbar padding */
+      /* for scrollbar padding */
       .xt-fixed {
         background-clip: content-box;
       }
@@ -206,36 +206,21 @@ $focus: "&:focus, &.focus";
 // xt-scroll
 //////////////////////
 
-@mixin xt-scroll($item, $start:false, $position:'top', $pos:false) {
-  /* defaults */
+@mixin xt-scroll($item, $position:'top', $pos:false) {
   #{$item} {
-    z-index: 70;
     .show-scroll {
       display: none;
     }
-  }
-  /* $start */
-  @if $start == 'absolute' {
-    #{$item}[data-xt-initialized]:not(.xt-clone) {
-      position: absolute;
-    }
-    #{$item}.xt-clone {
-      display: block;
-    }
-  } @elseif $start == 'fixed' {
-    #{$item}[data-xt-initialized] {
-      @extend #{$item}.scroll; // show as if scrolling
-    }
-    #{$item}.xt-clone {
+    .hide-scroll {
       display: block;
     }
   }
-  /* .scroll */
   #{$item}.scroll.xt-clone {
-    display: block;
+    display: block !important;
   }
   #{$item}.scroll:not(.xt-clone) {
-    position: fixed;
+    position: fixed !important;
+    z-index: 70;
     @if $position == 'top' {
       @if $pos {
         top: $pos;
