@@ -106,7 +106,6 @@ a, button {
 }
 
 .xt-height {
-  display: block !important;
   overflow: hidden;
   height: 0;
 }

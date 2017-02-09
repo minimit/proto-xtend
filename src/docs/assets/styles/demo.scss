@@ -1,8 +1,8 @@
+@import "bootstrap.min";
+
 //////////////////////
 // bootstrap
 //////////////////////
-
-@import "bootstrap.min";
 
 .card {
   width: 332px;
@@ -16,6 +16,19 @@
 }
 .collapse.active {
   display: block !important;
+}
+
+// animations
+.collapse.xt-height {
+  transform: translateX(-0.618rem);
+  transition: transform 0.3s cubic-bezier(0.19, 1, 0.22, 1), height 0.3s cubic-bezier(.63,.36,0,.97);
+  will-change: transform, height;
+  &.active {
+    transform: translateX(0);
+  }
+  &.deactivation {
+    transform: translateX(0.618rem);
+  }
 }
 
 //////////////////////

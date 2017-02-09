@@ -147,9 +147,9 @@
     // override with html settings
     $.extend(settings, $group.data(settings.name));
     // setup
-    this.scoping(); // scoping before setup
-    this.setup();
-    this.events(); // events after setup
+    object.scoping(); // scoping before setup
+    object.setup();
+    object.events(); // events after setup
   };
   
   Xt.prototype.scoping = function() {
@@ -160,9 +160,11 @@
     // $elements
     if (settings.elements) {
       settings.$elements = $group.find(settings.elements).filter(':parents(.xt-ignore)');
+      /* NO $(settings.elements)
       if (!settings.$elements.length) {
         settings.$elements = $(settings.elements).filter(':parents(.xt-ignore)');
       }
+      */
     } else {
       settings.$elements = $group;
     }
@@ -229,14 +231,14 @@
       if (found) {
         // set ajaxified
         settings.$targets.attr('data-xt-ajaxified', url);
-        this.pushstate(url, document.title);
+        object.pushstate(url, document.title);
         // then show
-        this.show(found);
+        object.show(found);
         // api
         settings.$targets.trigger('ajax.init.xt', [object]);
       }
     } else {
-      // reinit if has class
+      // automatic reinit if has class
       if (settings.$elements) {
         settings.$elements.each( function() {
           if ($(this).hasClass(settings.class)) {
@@ -244,9 +246,9 @@
             object.show($(this));
           }
         });
-        // init if $shown < min
+        // automatic init if $shown < min
         var min = settings.min;
-        var $currents = this.getCurrents();
+        var $currents = object.getCurrents();
         if ($currents.length < min) {
           object.show(settings.$elements.eq(0));
         }
@@ -261,9 +263,9 @@
     var $group = $(this.group);
     // events
     if (settings.name === 'xt-scroll') {
-      this.eventsScroll();
+      object.eventsScroll();
     } else {
-      this.eventsDefault();
+      object.eventsDefault();
     }
   };
   
@@ -276,7 +278,7 @@
     if (settings.$elements) {
       // on off events
       if (settings.on) {
-        settings.$elements.on(settings.on, function(e) {
+        settings.$elements.off(settings.on).on(settings.on, function(e) {
           object.toggle($(this));
           if (settings.name === 'xt-ajax') {
             e.preventDefault();
@@ -284,7 +286,7 @@
         });
       }
       if (settings.off) {
-        settings.$elements.on(settings.off, function(e) {
+        settings.$elements.off(settings.off).on(settings.off, function(e) {
           object.toggle($(this));
         });
       }
@@ -425,7 +427,7 @@
           object.show($(this), triggered, true, skipState);
         });
       } else {
-        this.show($element, triggered, isSync, skipState);
+        object.show($element, triggered, isSync, skipState);
       }
     } else {
       if (settings.multiple) {
@@ -433,7 +435,7 @@
           object.hide($(this), triggered, true, skipState);
         });
       } else {
-        this.hide($element, triggered, isSync, skipState);
+        object.hide($element, triggered, isSync, skipState);
       }
     }
   };
@@ -449,22 +451,22 @@
       // show and add in $currents
       if (!$element.hasClass(settings.class)) {
         triggerElement = true;
-        this.on($element);
-        var $currents = this.getCurrents();
-        $currents = this.setCurrents($currents.xtPushElement($element));
+        object.on($element);
+        var $currents = object.getCurrents();
+        $currents = object.setCurrents($currents.xtPushElement($element));
         // control over activated
         if (settings.name === 'xt-ajax') {
           // [disabled]
-          this.checkDisabled($element, 'disable');
+          object.checkDisabled($element, 'disable');
           // ajax
           object.ajax($element.attr('href'));
         } else {
           // [disabled]
-          this.checkDisabled($element);
+          object.checkDisabled($element);
           // hide max or differents
           if (!isSync) {
             if ($currents.length > settings.max) {
-              this.hide($currents.first());
+              object.hide($currents.first());
             }
           }
         }
@@ -474,21 +476,21 @@
     var $target;
     var triggerTarget;
     if (settings.$targets) {
-      var index = this.getIndex(settings.$elements, $element);
+      var index = object.getIndex(settings.$elements, $element);
       index = index >= settings.$targets.length ? settings.$targets.length - 1 : index;
       $target = settings.$targets.eq(index);
       if (!$target.hasClass(settings.class)) {
         triggerTarget = true;
-        this.on($target);
+        object.on($target);
       }
     }
     // stuff
     if (settings.name === 'xt-overlay') {
       if (!$group.hasClass(settings.class)) {
         // activate $group
-        this.on($group);
+        object.on($group);
         // add paddings
-        this.onFixed($('*:fixed').not($group).add('html'));
+        object.onFixed($('*:fixed').not($group).add('html'));
       }
     }
     // api
@@ -511,17 +513,17 @@
     var triggerElement;
     if ($element) {
       if ($element.hasClass(settings.class)) {
-        var $currents = this.getCurrents();
+        var $currents = object.getCurrents();
         if (isSync || settings.name === 'xt-ajax' || $currents.length > settings.min) {
           triggerElement = true;
-          this.off($element);
-          $currents = this.setCurrents($currents.not($element.get(0)));
+          object.off($element);
+          $currents = object.setCurrents($currents.not($element.get(0)));
         }
         // [disabled]
         if (isSync || settings.name === 'xt-ajax') {
-          this.checkDisabled($element, 'enable');
+          object.checkDisabled($element, 'enable');
         } else {
-          this.checkDisabled($element);
+          object.checkDisabled($element);
         }
         // api
         if (!triggered) {
@@ -533,21 +535,21 @@
     var $target;
     var triggerTarget;
     if (settings.$targets) {
-      var index = this.getIndex(settings.$elements, $element);
+      var index = object.getIndex(settings.$elements, $element);
       index = index >= settings.$targets.length ? settings.$targets.length - 1 : index;
       $target = settings.$targets.eq(index);
       if ($target.hasClass(settings.class)) {
         triggerTarget = true;
-        this.off($target);
+        object.off($target);
       }
     }
     // stuff
     if (settings.name === 'xt-overlay') {
       if ($group.hasClass(settings.class)) {
         // deactivate $group
-        this.off($group);
+        object.off($group);
         // remove paddings
-        this.offFixed($('.xt-fixed, html'));
+        object.offFixed($('.xt-fixed, html'));
       }
     }
     // api
@@ -568,6 +570,15 @@
     var $group = $(this.group);
     // on
     $el.addClass(settings.class);
+    // deactivation
+    if (settings.deactivation) {
+      $el.removeClass('deactivation');
+      clearTimeout($el.data('deactivation.timeout'));
+    } else if (settings.deactivation !== '0s') {
+      $el.removeClass('deactivation');
+      $el.off('transitionend.xt');
+    }
+    // xt-height
     if ($el.hasClass('xt-height')) {
       var $inside = $el.find('.xt-height-inside');
       if (!$inside.length) {
@@ -586,8 +597,26 @@
     var settings = this.settings;
     var group = this.group;
     var $group = $(this.group);
-    // off
-    $el.removeClass(settings.class);
+    // off and deactivation
+    if (settings.deactivation) {
+      $el.addClass('deactivation');
+      clearTimeout($el.data('deactivation.timeout'));
+      var timeout = window.setTimeout( function() {
+        $el.removeClass(settings.class);
+        $el.removeClass('deactivation');
+      }, settings.deactivation);
+      $el.data('deactivation.timeout', timeout);
+    } else if ($el.css('transitionDuration') !== '0s' || $el.css('animationDuration') !== '0s') {
+      console.log($el.css('transitionDuration'));
+      $el.addClass('deactivation');
+      $el.off('transitionend.xt').on('transitionend.xt', function(e) {
+        $el.removeClass(settings.class);
+        $el.removeClass('deactivation');
+      });
+    } else {
+      $el.removeClass(settings.class);
+    }
+    // xt-height
     if ($el.hasClass('xt-height')) {
       $el.css("height", 0);
       $el.parents('.xt-height-top').css("margin-top", 0);
@@ -637,7 +666,7 @@
     if (settings.on === 'click') {
       if (!force) {
         // automatic based on max
-        var $currents = this.getCurrents();
+        var $currents = object.getCurrents();
         var min = settings.min;
         if ($currents.length === min) {
           $currents.attr('disabled', '');
@@ -702,7 +731,7 @@
     settings.$elements.filter('[href="' + url + '"]').each( function(i) {
       object.show($(this), true, false, true);
     });
-    // push this object state
+    // push object state
     if (!history.state || !history.state.url || history.state.url !== url) {
       history.pushState({'url': url, 'title': title}, title, url);
     }

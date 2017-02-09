@@ -1,8 +1,18 @@
+@import "bootstrap.min";
+
+//////////////////////
+// xtend theme
+//////////////////////
+
+// colors
+//$color-primary: #ff00ff;
+
+// override theme
+@import "../xtend/xt-theme.scss";
+
 //////////////////////
 // bootstrap
 //////////////////////
-
-@import "bootstrap.min";
 
 .card {
   width: 332px;
@@ -18,15 +28,18 @@
   display: block !important;
 }
 
-//////////////////////
-// xtend theme
-//////////////////////
-
-// colors
-//$color-primary: #ff00ff;
-
-// override theme
-@import "../xtend/xt-theme.scss";
+// animations
+.collapse.xt-height {
+  transform: translateX(-0.618rem);
+  transition: transform 0.3s cubic-bezier(0.19, 1, 0.22, 1), height 0.3s cubic-bezier(.63,.36,0,.97);
+  will-change: transform, height;
+  &.active {
+    transform: translateX(0);
+  }
+  &.deactivation {
+    transform: translateX(0.618rem);
+  }
+}
 
 //////////////////////
 // custom theme

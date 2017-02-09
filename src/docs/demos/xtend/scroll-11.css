@@ -84,7 +84,6 @@ a, button {
   width: 100%; }
 
 .xt-height {
-  display: block !important;
   overflow: hidden;
   height: 0; }
 
