@@ -343,13 +343,15 @@
       if (settings.bottom) {
         if (!isNaN(parseFloat(settings.bottom))) {
           bottom = settings.bottom;
-        } else {
+        } else if ($(settings.bottom).length) {
           bottom = $(settings.bottom).offset().top;
         }
       }
       if (scrollTop > top && scrollTop < bottom) {
         if (!$group.hasClass(settings.class)) {
-          object.show($group);
+          window.xtRequestAnimationFrame( function() {
+            object.show($group);
+          });
           // direction classes
           $group.removeClass('scroll-off-top scroll-off-bottom');
           if (settings.scrollTopOld > scrollTop) {
@@ -366,7 +368,9 @@
         }
       } else {
         if ($group.hasClass(settings.class)) {
-          object.hide($group);
+          window.xtRequestAnimationFrame( function() {
+            object.hide($group);
+          });
           // direction classes
           $group.removeClass('scroll-on-top scroll-on-bottom');
           if (settings.scrollTopOld > scrollTop) {
@@ -568,15 +572,15 @@
     var settings = this.settings;
     var group = this.group;
     var $group = $(this.group);
-    // on
+    // on and fadein
     $el.addClass(settings.class);
-    // deactivation
-    if (settings.deactivation) {
-      $el.removeClass('deactivation');
-      clearTimeout($el.data('deactivation.timeout'));
-    } else if (settings.deactivation !== '0s') {
-      $el.removeClass('deactivation');
-      $el.off('transitionend.xt');
+    $el.removeClass('fadeout');
+    clearTimeout($el.data('fadeout.timeout'));
+    $el.off('transitionend.xt');
+    if (settings.fadein || $el.css('transitionDuration') !== '0s' || $el.css('animationDuration') !== '0s') {
+      window.xtRequestAnimationFrame( function() {
+        $el.addClass('fadein');
+      });
     }
     // xt-height
     if ($el.hasClass('xt-height')) {
@@ -597,24 +601,25 @@
     var settings = this.settings;
     var group = this.group;
     var $group = $(this.group);
-    // off and deactivation
-    if (settings.deactivation) {
-      $el.addClass('deactivation');
-      clearTimeout($el.data('deactivation.timeout'));
+    // off and fadeout
+    $el.removeClass('fadein');
+    $el.addClass('fadeout');
+    var fade = function() {
+      $el.removeClass(settings.class);
+      $el.removeClass('fadeout');
+    };
+    if (settings.fadeout) {
+      clearTimeout($el.data('fadeout.timeout'));
       var timeout = window.setTimeout( function() {
-        $el.removeClass(settings.class);
-        $el.removeClass('deactivation');
-      }, settings.deactivation);
-      $el.data('deactivation.timeout', timeout);
+        fade();
+      }, settings.fadeout);
+      $el.data('fadeout.timeout', timeout);
     } else if ($el.css('transitionDuration') !== '0s' || $el.css('animationDuration') !== '0s') {
-      console.log($el.css('transitionDuration'));
-      $el.addClass('deactivation');
       $el.off('transitionend.xt').on('transitionend.xt', function(e) {
-        $el.removeClass(settings.class);
-        $el.removeClass('deactivation');
+        fade();
       });
     } else {
-      $el.removeClass(settings.class);
+      fade();
     }
     // xt-height
     if ($el.hasClass('xt-height')) {
