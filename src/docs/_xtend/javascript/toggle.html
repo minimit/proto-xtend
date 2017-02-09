@@ -40,10 +40,10 @@ $('.element').xtToggle({"elements": ".button", "targets": ".collapse"});
     <div class="demo-text"><code>class</code> and <code>targets</code></div>
     <div class="demo-source" data-lang="html">
 <div class="spacer">
-  <button class="button color-primary" data-xt-toggle='{"targets": ".collapse", "class": "example-class"}'>
+  <button class="button color-primary" data-xt-toggle='{"targets": "#collapse-0", "class": "example-class"}'>
     toggle
   </button>
-  <div class="collapse">
+  <div class="collapse" id="collapse-0">
     <div class="card card-block">
       Target
     </div>
@@ -66,7 +66,17 @@ $('.element').xtToggle({"elements": ".button", "targets": ".collapse"});
     <div class="demo-text"><code>.active</code> default <strong>class</strong></div>
     <div class="demo-source" data-lang="html">
 <div class="spacer">
-  <button class="button color-primary" data-xt-toggle='{"elements": ".button", "targets": ".collapse"}'>
+  <button class="button color-primary" data-xt-toggle='{"targets": "#collapse-1"}'>
+    toggle
+  </button>
+  <div class="collapse" id="collapse-1">
+    <div class="card card-block">
+      Target
+    </div>
+  </div>
+</div>
+<div class="spacer" data-xt-toggle='{"elements": ".button", "targets": ".collapse"}'>
+  <button class="button color-primary">
     toggle
   </button>
   <div class="collapse">

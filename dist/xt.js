@@ -48,7 +48,7 @@
   $.fn.xtOverlay = function(options) {
     var defaults = {
       'name': 'xt-overlay',
-      'targets': 'html',
+      'targets': '',
       'multiple': true,
       'on': 'click',
       'class': 'overlay',
@@ -159,12 +159,19 @@
     var $group = $(this.group);
     // $elements
     if (settings.elements) {
-      settings.$elements = $group.find(settings.elements).filter(':parents(.xt-ignore)');
-      /* NO $(settings.elements)
-      if (!settings.$elements.length) {
+      if (settings.elements.indexOf('#') !== -1) {
         settings.$elements = $(settings.elements).filter(':parents(.xt-ignore)');
+      } else {
+        settings.$elements = $group.find(settings.elements).filter(':parents(.xt-ignore)');
+        if (!settings.$elements.length) {
+          settings.$elements = $group.parent().find(settings.elements).filter(':parents(.xt-ignore)');
+        }
+        /* NO $(settings.elements)
+        if (!settings.$elements.length) {
+          settings.$elements = $(settings.elements).filter(':parents(.xt-ignore)');
+        }
+        */
       }
-      */
     } else {
       settings.$elements = $group;
     }
@@ -189,9 +196,23 @@
         settings.$targets.css('display', 'none');
       }
     } else if(settings.targets) {
-      settings.$targets = $group.find(settings.targets).filter(':parents(.xt-ignore)');
-      if (!settings.$targets.length) {
+      if (settings.targets.indexOf('#') !== -1) {
         settings.$targets = $(settings.targets).filter(':parents(.xt-ignore)');
+      } else {
+        settings.$targets = $group.find(settings.targets).filter(':parents(.xt-ignore)');
+        if (!settings.$targets.length) {
+          settings.$targets = $group.parent().find(settings.targets).filter(':parents(.xt-ignore)');
+        }
+        /* NO $(settings.targets)
+        if (!settings.$targets.length) {
+          settings.$targets = $(settings.targets).filter(':parents(.xt-ignore)');
+        }
+        */
+      }
+      // add html if overlay
+      if (settings.name === 'xt-overlay') {
+        settings.$targets = settings.$targets.xtPushElement($('html'));
+        console.log(settings.$targets);
       }
     }
     // initialized
@@ -426,21 +447,23 @@
     var $group = $(this.group);
     // choose based on state
     if (!$element.hasClass(settings.class)) {
+      /*
       if (settings.multiple) {
         settings.$elements.each( function(i) {
           object.show($(this), triggered, true, skipState);
         });
       } else {
-        object.show($element, triggered, isSync, skipState);
-      }
+      */
+      object.show($element, triggered, isSync, skipState);
     } else {
+      /*
       if (settings.multiple) {
         settings.$elements.each( function(i) {
           object.hide($(this), triggered, true, skipState);
         });
       } else {
-        object.hide($element, triggered, isSync, skipState);
-      }
+      */
+      object.hide($element, triggered, isSync, skipState);
     }
   };
   
