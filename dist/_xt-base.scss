@@ -113,13 +113,13 @@ a, button {
 }
 
 //////////////////////
-// xt-height
+// collapse-height
 //////////////////////
 
-.xt-height {
+.collapse-height {
   overflow: hidden;
   height: 0;
 } 
-.xt-height-inside {
+.collapse-height-inside {
   @include box;
 }

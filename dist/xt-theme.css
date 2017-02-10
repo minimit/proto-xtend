@@ -105,12 +105,12 @@ a, button {
   width: 100%;
 }
 
-.xt-height {
+.collapse-height {
   overflow: hidden;
   height: 0;
 }
 
-.xt-height-inside {
+.collapse-height-inside {
   position: relative;
   float: left;
   width: 100%;
@@ -452,17 +452,17 @@ a:not(.button):hover:not(.active), a:not(.button).hover:not(.active), a:not(.but
   color: #ffffff;
 }
 
-.xt-height {
+.collapse-height {
   transition: height 0.3s cubic-bezier(0.63, 0.36, 0, 0.97);
   will-change: height;
 }
 
-.xt-height-top {
+.collapse-top {
   transition: margin-top 0.3s cubic-bezier(0.63, 0.36, 0, 0.97);
   will-change: margin-top;
 }
 
-.xt-height-bottom {
+.collapse-bottom {
   transition: margin-bottom 0.3s cubic-bezier(0.63, 0.36, 0, 0.97);
   will-change: margin-bottom;
 }

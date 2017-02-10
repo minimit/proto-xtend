@@ -318,12 +318,12 @@
         }
       });
       // api
-      settings.$elements.on('show.xt', function(e, obj, triggered) {
+      settings.$elements.on('on.xt', function(e, obj, triggered) {
         if (!triggered && e.target === this) {
           object.show($(this), true);
         }
       });
-      settings.$elements.on('hide.xt', function(e, obj, triggered) {
+      settings.$elements.on('off.xt', function(e, obj, triggered) {
         if (!triggered && e.target === this) {
           object.hide($(this), true);
         }
@@ -473,12 +473,10 @@
     var group = this.group;
     var $group = $(this.group);
     // activate $element
-    var triggerElement;
     if ($element) {
       // show and add in $currents
       if (!$element.hasClass(settings.class)) {
-        triggerElement = true;
-        object.on($element);
+        object.on($element, triggered);
         var $currents = object.getCurrents();
         $currents = object.setCurrents($currents.xtPushElement($element));
         // control over activated
@@ -501,32 +499,21 @@
     }
     // activate $target
     var $target;
-    var triggerTarget;
     if (settings.$targets) {
       var index = object.getIndex(settings.$elements, $element);
       index = index >= settings.$targets.length ? settings.$targets.length - 1 : index;
       $target = settings.$targets.eq(index);
       if (!$target.hasClass(settings.class)) {
-        triggerTarget = true;
-        object.on($target);
+        object.on($target, triggered);
       }
     }
     // stuff
     if (settings.name === 'xt-overlay') {
       if (!$group.hasClass(settings.class)) {
         // activate $group
-        object.on($group);
+        object.on($group, triggered);
         // add paddings
         object.onFixed($('*:fixed').not($group).add('html'));
-      }
-    }
-    // api
-    if (!triggered) {
-      if (triggerElement) {
-        $element.trigger('show.xt', [object, true]);
-      }
-      if (triggerTarget) {
-        $target.trigger('show.xt', [object, true]);
       }
     }
   };
@@ -537,13 +524,11 @@
     var group = this.group;
     var $group = $(this.group);
     // deactivate $element
-    var triggerElement;
     if ($element) {
       if ($element.hasClass(settings.class)) {
         var $currents = object.getCurrents();
         if (isSync || settings.name === 'xt-ajax' || $currents.length > settings.min) {
-          triggerElement = true;
-          object.off($element);
+          object.off($element, triggered);
           $currents = object.setCurrents($currents.not($element.get(0)));
         }
         // [disabled]
@@ -552,45 +537,30 @@
         } else {
           object.checkDisabled($element);
         }
-        // api
-        if (!triggered) {
-          $element.trigger('hide.xt', [object, true]);
-        }
       }
     }
     // deactivate $target
     var $target;
-    var triggerTarget;
     if (settings.$targets) {
       var index = object.getIndex(settings.$elements, $element);
       index = index >= settings.$targets.length ? settings.$targets.length - 1 : index;
       $target = settings.$targets.eq(index);
       if ($target.hasClass(settings.class)) {
-        triggerTarget = true;
-        object.off($target);
+        object.off($target, triggered);
       }
     }
     // stuff
     if (settings.name === 'xt-overlay') {
       if ($group.hasClass(settings.class)) {
         // deactivate $group
-        object.off($group);
+        object.off($group, triggered);
         // remove paddings
         object.offFixed($('.xt-fixed, html'));
       }
     }
-    // api
-    if (!triggered) {
-      if (triggerElement) {
-        $element.trigger('hide.xt', [object, true]);
-      }
-      if (triggerTarget) {
-        $target.trigger('hide.xt', [object, true]);
-      }
-    }
   };
   
-  Xt.prototype.on = function($el) {
+  Xt.prototype.on = function($el, triggered) {
     var object = this;
     var settings = this.settings;
     var group = this.group;
@@ -605,21 +575,25 @@
         $el.addClass('fadein');
       });
     }
-    // xt-height
-    if ($el.hasClass('xt-height')) {
-      var $inside = $el.find('.xt-height-inside');
+    // collapse-height
+    if ($el.hasClass('collapse-height')) {
+      var $inside = $el.find('.collapse-height-inside');
       if (!$inside.length) {
-        $el.wrapInner('<div class="xt-height-inside"></div>');
-        $inside = $el.find('.xt-height-inside');
+        $el.wrapInner('<div class="collapse-height-inside"></div>');
+        $inside = $el.find('.collapse-height-inside');
       }
       var h = $inside.outerHeight();
       $el.css("height", h);
-      $el.parents('.xt-height-top').css("margin-top", -h);
-      $el.parents('.xt-height-bottom').css("margin-bottom", -h);
+      $el.parents('.collapse-top').css("margin-top", -h);
+      $el.parents('.collapse-bottom').css("margin-bottom", -h);
+    }
+    // api
+    if (!triggered) {
+      $el.trigger('on.xt', [object, true]);
     }
   };
   
-  Xt.prototype.off = function($el) {
+  Xt.prototype.off = function($el, triggered) {
     var object = this;
     var settings = this.settings;
     var group = this.group;
@@ -644,11 +618,15 @@
     } else {
       fade();
     }
-    // xt-height
-    if ($el.hasClass('xt-height')) {
+    // collapse-height
+    if ($el.hasClass('collapse-height')) {
       $el.css("height", 0);
-      $el.parents('.xt-height-top').css("margin-top", 0);
-      $el.parents('.xt-height-bottom').css("margin-bottom", 0);
+      $el.parents('.collapse-top').css("margin-top", 0);
+      $el.parents('.collapse-bottom').css("margin-bottom", 0);
+    }
+    // api
+    if (!triggered) {
+      $el.trigger('off.xt', [object, true]);
     }
   };
   

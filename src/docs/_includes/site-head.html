@@ -65,7 +65,7 @@
           
         </nav>
         
-        <div class="site-menu xt-height" id="site-menu">
+        <div class="site-menu collapse-height" id="site-menu">
           <div class="site-menu-content d-flex">
             <div class="container align-self-center">
             
@@ -131,7 +131,7 @@
                           <a href="{{ p.url }}" class="button">
                             {{ p.title }}
                           </a>
-                          <div class="site-breadcrumbs-body-sub xt-height">
+                          <div class="site-breadcrumbs-body-sub collapse-height">
                             {% assign subsorted = site.[collection.label] | where: 'categories', p.title | sort: 'order' %}
                             {% for pa in subsorted %}
                             <a href="{{ pa.url }}" class="button">

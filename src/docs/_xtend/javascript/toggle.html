@@ -311,13 +311,13 @@ $('.element').xtToggle({"elements": ".button", "targets": ".collapse"});
 <h3>Height</h3>
 <div class="demo">
   <div class="demo-item demo-preview" data-name="default">
-    <div class="demo-text"><code>.xt-height</code> to the "targets"</div>
+    <div class="demo-text"><code>.collapse-height</code> to the "targets"</div>
     <div class="demo-source" data-lang="html">
 <div class="spacer" data-xt-toggle='{"elements": ".button", "targets": ".collapse"}'>
   <button class="button color-primary">
     toggle
   </button>
-  <div class="collapse xt-height">
+  <div class="collapse collapse-height">
     <div class="card card-block">
       Target
     </div>
@@ -325,7 +325,7 @@ $('.element').xtToggle({"elements": ".button", "targets": ".collapse"});
 </div>
     </div>
     <div class="demo-source" data-lang="css">
-.xt-height {
+.collapse-height {
   -webkit-transition: height 0.3s cubic-bezier(.63,.36,0,.97);
   transition: height 0.3s cubic-bezier(.63,.36,0,.97);
   will-change: height;
@@ -339,7 +339,7 @@ $('.element').xtToggle({"elements": ".button", "targets": ".collapse"});
   <div class="button color-primary">
     toggle
   </div>
-  <div class="collapse xt-height">
+  <div class="collapse collapse-height">
     <div class="card card-block">
       Target
     </div>
@@ -355,7 +355,7 @@ $('.element').xtToggle({"elements": ".button", "targets": ".collapse"});
     <img src="https://placehold.it/330x132/f8f8f8/00B0FF/?text=Image" />
     <div class="card-block">
       <h5 class="card-title">Card title</h5>
-      <div class="collapse xt-height">
+      <div class="collapse collapse-height">
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
       </div>
     </div>
@@ -364,22 +364,22 @@ $('.element').xtToggle({"elements": ".button", "targets": ".collapse"});
     </div>
   </div>
   <div class="demo-item demo-preview" data-name="absolute">
-    <div class="demo-text"><code>.xt-height-top</code> or <code>.xt-height-bottom</code></div>
+    <div class="demo-text"><code>.collapse-top</code> or <code>.collapse-bottom</code></div>
     <div class="demo-source" data-lang="html">
 <div class="spacer" data-xt-toggle='{"elements": ".card", "on": "mouseenter", "off": "mouseleave", "targets": ".collapse"}'>
   <div class="card">
     <img src="https://placehold.it/330x132/f8f8f8/00B0FF/?text=Image" />
-    <div class="card-block xt-height-top">
+    <div class="card-block collapse-top">
       <h5 class="card-title">Card title</h5>
-      <div class="collapse xt-height">
+      <div class="collapse collapse-height">
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
       </div>
     </div>
   </div>
   <div class="card">
-    <div class="card-block xt-height-bottom">
+    <div class="card-block collapse-bottom">
       <h5 class="card-title">Card title</h5>
-      <div class="collapse xt-height">
+      <div class="collapse collapse-height">
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
       </div>
     </div>
@@ -388,12 +388,12 @@ $('.element').xtToggle({"elements": ".button", "targets": ".collapse"});
 </div>
     </div>
     <div class="demo-source" data-lang="css">
-.xt-height-top {
+.collapse-top {
   -webkit-transition: margin-top 0.3s cubic-bezier(.63,.36,0,.97);
   transition: margin-top 0.3s cubic-bezier(.63,.36,0,.97);
   will-change: margin-top;
 }
-.xt-height-bottom {
+.collapse-bottom {
   -webkit-transition: margin-bottom 0.3s cubic-bezier(.63,.36,0,.97);
   transition: margin-bottom 0.3s cubic-bezier(.63,.36,0,.97);
   will-change: margin-bottom;
