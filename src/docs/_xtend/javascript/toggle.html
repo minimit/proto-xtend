@@ -6,136 +6,6 @@ categories: [Javascript]
 order: 10
 ---
 
-<h2>Usage</h2>
-
-<h3>Initialization</h3>
-
-<p class="lead">Html Initialization</p>
-<pre><code class="html">
-&lt;div class="element" data-xt-toggle'&gt;toggle&lt;/div&gt;
-&lt;div class="element" data-xt-toggle='{"elements": ".button", "targets": ".collapse"}'&gt;
-  &lt;div class="button"&gt;&lt;/div&gt;
-  &lt;div class="collapse"&gt;&lt;/div&gt;
-&lt;/div&gt;
-</code></pre>
-<pre><code class="js">
-$('.element').xtInitAll(); // init only '.element'
-$('html').xtInitAll(true); // init 'html' and all descendants
-</code></pre>
-
-<p class="lead">Js Initialization</p>
-<pre><code class="js">
-$('.element').xtToggle();
-$('.element').xtToggle({"elements": ".button", "targets": ".collapse"});
-</code></pre>
-<div class="alert alert-danger">
-  <strong>Important:</strong> the plugin's attributes <strong>must be a valid json format</strong>, so with double quotes inside.
-</div>
-
-<h2>Scoping</h2>
-
-<div class="demo">
-  <div class="demo-item demo-preview" data-name="">
-    <div class="demo-text">single element</div>
-    <div class="demo-source" data-lang="html">
-<div class="spacer">
-  <button class="button color-primary" data-xt-toggle='{"targets": "#collapse-0"}'>
-    toggle 0
-  </button>
-  <div class="collapse" id="collapse-0">
-    <div class="card card-block">
-      Target 0
-    </div>
-  </div>
-</div>
-    </div>
-  </div>
-  <div class="demo-item demo-preview" data-name="">
-    <div class="demo-text">single element multiple targets with classes <code>data-xt-group</code></div>
-    <div class="demo-source" data-lang="html">
-<div class="spacer">
-  <button class="button color-primary" data-xt-toggle='{"targets": ".collapse"}' data-xt-group="0">
-    toggle 0
-  </button>
-  <div class="collapse" data-xt-group="0">
-    <div class="card card-block">
-      Target 0
-    </div>
-  </div>
-  <div class="collapse" data-xt-group="0">
-    <div class="card card-block">
-      Target 1
-    </div>
-  </div>
-</div>
-    </div>
-  </div>
-  <div class="demo-item demo-preview" data-name="">
-    <div class="demo-text">multiple elements single targets</div>
-    <div class="demo-source" data-lang="html">
-<div class="spacer" data-xt-toggle='{"elements": ".button", "targets": ".collapse"}'>
-  <button class="button color-primary">
-    toggle 0
-  </button>
-  <button class="button color-primary">
-    toggle 1
-  </button>
-  <div class="collapse">
-    <div class="card card-block">
-      Target 0
-    </div>
-  </div>
-  <div class="collapse">
-    <div class="card card-block">
-      Target 1
-    </div>
-  </div>
-</div>
-    </div>
-  </div>
-  <div class="demo-item demo-preview" data-name="">
-    <div class="demo-text">multiple elements multiple targets <code>data-xt-group</code></div>
-    <div class="demo-source" data-lang="html">
-<div class="group" data-xt-toggle='{"elements": ".button", "targets": ".collapse"}'>
-  <div class="spacer">
-    <button class="button color-primary" data-xt-group="0">
-      toggle group 0
-    </button>
-    <button class="button color-primary">
-      toggle 0
-    </button>
-    <button class="button color-primary" data-xt-group="0">
-      toggle group 0
-    </button>
-    <button class="button color-primary">
-      toggle 1
-    </button>
-    <div class="collapse">
-      <div class="card card-block">
-        Target 0
-      </div>
-    </div>
-    <div class="collapse" data-xt-group="0">
-      <div class="card card-block">
-        Target group 0
-      </div>
-    </div>
-    <div class="collapse" data-xt-group="0">
-      <div class="card card-block">
-        Target group 0
-      </div>
-    </div>
-    <div class="collapse">
-      <div class="card card-block">
-        Target 1
-      </div>
-    </div>
-  </div>
-</div>
-    </div>
-  </div>
-</div>
-
 <h2>Demos</h2>
 
 <h3>Activation</h3>
@@ -144,13 +14,11 @@ $('.element').xtToggle({"elements": ".button", "targets": ".collapse"});
     <div class="demo-text"><code>class</code> and <code>targets</code></div>
     <div class="demo-source" data-lang="html">
 <div class="spacer">
-  <button class="button color-primary" data-xt-toggle='{"targets": "#collapse-3", "class": "example-class"}'>
+  <button class="button color-primary" data-xt-toggle='{"targets": "#card-example", "class": "example-class"}'>
     toggle
   </button>
-  <div class="collapse" id="collapse-3">
-    <div class="card card-block">
-      Target
-    </div>
+  <div class="card card-block hide" id="card-example">
+    Target
   </div>
 </div>
     </div>
@@ -159,7 +27,7 @@ $('.element').xtToggle({"elements": ".button", "targets": ".collapse"});
 .button.example-class {
   border: 1px solid red;
 }
-.collapse.example-class {
+.card.example-class {
   display: block !important;
   border: 1px solid red;
 }
@@ -170,23 +38,19 @@ $('.element').xtToggle({"elements": ".button", "targets": ".collapse"});
     <div class="demo-text"><code>.active</code> default <strong>class</strong></div>
     <div class="demo-source" data-lang="html">
 <div class="spacer">
-  <button class="button color-primary" data-xt-toggle='{"targets": "#collapse-1"}'>
+  <button class="button color-primary" data-xt-toggle='{"targets": "#card-1"}'>
     toggle
   </button>
-  <div class="collapse" id="collapse-1">
-    <div class="card card-block">
-      Target
-    </div>
+  <div class="card card-block hide" id="card-1">
+    Target
   </div>
 </div>
-<div class="spacer" data-xt-toggle='{"elements": ".button", "targets": ".collapse"}'>
+<div class="spacer" data-xt-toggle='{"elements": ".button", "targets": ".card"}'>
   <button class="button color-primary">
     toggle
   </button>
-  <div class="collapse">
-    <div class="card card-block">
-      Target
-    </div>
+  <div class="card card-block hide">
+    Target
   </div>
 </div>
     </div>
@@ -194,7 +58,7 @@ $('.element').xtToggle({"elements": ".button", "targets": ".collapse"});
   <div class="demo-item demo-preview" data-name="min and max">
     <div class="demo-text"><code>min</code> and <code>max</code></div>
     <div class="demo-source" data-lang="html">
-<div class="spacer" data-xt-toggle='{"elements": ".button", "targets": ".collapse", "min": 2, "max": 2}'>
+<div class="spacer" data-xt-toggle='{"elements": ".button", "targets": ".card", "min": 2, "max": 2}'>
   <button class="button color-primary">
     toggle 0
   </button>
@@ -207,25 +71,17 @@ $('.element').xtToggle({"elements": ".button", "targets": ".collapse"});
   <button class="button color-primary">
     toggle 3
   </button>
-  <div class="collapse">
-    <div class="card card-block">
-      Target 0
-    </div>
+  <div class="card card-block hide">
+    Target 0
   </div>
-  <div class="collapse">
-    <div class="card card-block">
-      Target 1
-    </div>
+  <div class="card card-block hide">
+    Target 1
   </div>
-  <div class="collapse">
-    <div class="card card-block">
-      Target 2
-    </div>
+  <div class="card card-block hide">
+    Target 2
   </div>
-  <div class="collapse">
-    <div class="card card-block">
-      Target 3
-    </div>
+  <div class="card card-block hide">
+    Target 3
   </div>
 </div>
     </div>
@@ -233,7 +89,7 @@ $('.element').xtToggle({"elements": ".button", "targets": ".collapse"});
   <div class="demo-item demo-preview" data-name="initial">
     <div class="demo-text"><code>.active</code> initials</div>
     <div class="demo-source" data-lang="html">
-<div class="spacer" data-xt-toggle='{"elements": ".button", "targets": ".collapse", "min": 2, "max": 2}'>
+<div class="spacer" data-xt-toggle='{"elements": ".button", "targets": ".card", "min": 2, "max": 2}'>
   <button class="button color-primary">
     toggle 0
   </button>
@@ -246,28 +102,20 @@ $('.element').xtToggle({"elements": ".button", "targets": ".collapse"});
   <button class="button color-primary active">
     toggle 3
   </button>
-  <div class="collapse">
-    <div class="card card-block">
-      Target 0
-    </div>
+  <div class="card card-block hide">
+    Target 0
   </div>
-  <div class="collapse">
-    <div class="card card-block">
-      Target 1
-    </div>
+  <div class="card card-block hide">
+    Target 1
   </div>
-  <div class="collapse">
-    <div class="card card-block">
-      Target 2
-    </div>
+  <div class="card card-block hide">
+    Target 2
   </div>
-  <div class="collapse">
-    <div class="card card-block">
-      Target 3
-    </div>
+  <div class="card card-block hide">
+    Target 3
   </div>
 </div>
-<div class="spacer" data-xt-toggle='{"elements": ".button", "targets": ".collapse", "min": 2, "max": 2}'>
+<div class="spacer" data-xt-toggle='{"elements": ".button", "targets": ".card", "min": 2, "max": 2}'>
   <button class="button color-primary">
     toggle 0
   </button>
@@ -280,25 +128,17 @@ $('.element').xtToggle({"elements": ".button", "targets": ".collapse"});
   <button class="button color-primary active">
     toggle 3
   </button>
-  <div class="collapse">
-    <div class="card card-block">
-      Target 0
-    </div>
+  <div class="card card-block hide">
+    Target 0
   </div>
-  <div class="collapse">
-    <div class="card card-block">
-      Target 1
-    </div>
+  <div class="card card-block hide">
+    Target 1
   </div>
-  <div class="collapse">
-    <div class="card card-block">
-      Target 2
-    </div>
+  <div class="card card-block hide">
+    Target 2
   </div>
-  <div class="collapse">
-    <div class="card card-block">
-      Target 3
-    </div>
+  <div class="card card-block hide">
+    Target 3
   </div>
 </div>
     </div>
@@ -334,19 +174,6 @@ $('.element').xtToggle({"elements": ".button", "targets": ".collapse"});
 </div>
     </div>
   </div>
-  <div class="demo-item demo-preview" data-name="multiple">
-    <div class="demo-text"><strong>multiple</strong></div>
-    <div class="demo-source" data-lang="html">
-<div class="spacer" data-xt-toggle='{"elements": ".button", "multiple": "true"}'>
-  <button class="button color-primary">
-    toggle
-  </button>
-  <button class="button color-primary">
-    toggle
-  </button>
-</div>
-    </div>
-  </div>
 </div>
 
 <h3>Height</h3>
@@ -354,11 +181,11 @@ $('.element').xtToggle({"elements": ".button", "targets": ".collapse"});
   <div class="demo-item demo-preview" data-name="default">
     <div class="demo-text"><code>.collapse-height</code> to the "targets"</div>
     <div class="demo-source" data-lang="html">
-<div class="spacer" data-xt-toggle='{"elements": ".button", "targets": ".collapse"}'>
+<div class="spacer" data-xt-toggle='{"elements": ".button", "targets": ".collapse-height"}'>
   <button class="button color-primary">
     toggle
   </button>
-  <div class="collapse collapse-height">
+  <div class="hide collapse-height">
     <div class="card card-block">
       Target
     </div>
@@ -366,21 +193,16 @@ $('.element').xtToggle({"elements": ".button", "targets": ".collapse"});
 </div>
     </div>
     <div class="demo-source" data-lang="css">
-.collapse-height {
-  -webkit-transition: height 0.3s cubic-bezier(.63,.36,0,.97);
-  transition: height 0.3s cubic-bezier(.63,.36,0,.97);
-  will-change: height;
-}
     </div>
   </div>
   <div class="demo-item demo-preview" data-name="events">
     <div class="demo-text"><code>mouseenter</code> and <code>mouseleave</code></div>
     <div class="demo-source" data-lang="html">
-<div class="spacer" data-xt-toggle='{"elements": ".button", "on": "mouseenter", "off": "mouseleave", "targets": ".collapse"}'>
+<div class="spacer" data-xt-toggle='{"elements": ".button", "on": "mouseenter", "off": "mouseleave", "targets": ".collapse-height"}'>
   <div class="button color-primary">
     toggle
   </div>
-  <div class="collapse collapse-height">
+  <div class="hide collapse-height">
     <div class="card card-block">
       Target
     </div>
@@ -391,12 +213,12 @@ $('.element').xtToggle({"elements": ".button", "targets": ".collapse"});
   <div class="demo-item demo-preview" data-name="card">
     <div class="demo-text"><code>.card</code></div>
     <div class="demo-source" data-lang="html">
-<div class="spacer" data-xt-toggle='{"elements": ".card", "on": "mouseenter", "off": "mouseleave", "targets": ".collapse"}'>
+<div class="spacer" data-xt-toggle='{"elements": ".card", "on": "mouseenter", "off": "mouseleave", "targets": ".collapse-height"}'>
   <div class="card">
     <img src="https://placehold.it/330x132/f8f8f8/00B0FF/?text=Image" />
     <div class="card-block">
       <h5 class="card-title">Card title</h5>
-      <div class="collapse collapse-height">
+      <div class="hide collapse-height">
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
       </div>
     </div>
@@ -407,12 +229,12 @@ $('.element').xtToggle({"elements": ".button", "targets": ".collapse"});
   <div class="demo-item demo-preview" data-name="absolute">
     <div class="demo-text"><code>.collapse-top</code> or <code>.collapse-bottom</code></div>
     <div class="demo-source" data-lang="html">
-<div class="spacer" data-xt-toggle='{"elements": ".card", "on": "mouseenter", "off": "mouseleave", "targets": ".collapse"}'>
+<div class="spacer" data-xt-toggle='{"elements": ".card", "on": "mouseenter", "off": "mouseleave", "targets": ".collapse-height"}'>
   <div class="card">
     <img src="https://placehold.it/330x132/f8f8f8/00B0FF/?text=Image" />
     <div class="card-block collapse-top">
       <h5 class="card-title">Card title</h5>
-      <div class="collapse collapse-height">
+      <div class="hide collapse-height">
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
       </div>
     </div>
@@ -420,7 +242,7 @@ $('.element').xtToggle({"elements": ".button", "targets": ".collapse"});
   <div class="card">
     <div class="card-block collapse-bottom">
       <h5 class="card-title">Card title</h5>
-      <div class="collapse collapse-height">
+      <div class="hide collapse-height">
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
       </div>
     </div>
@@ -428,17 +250,7 @@ $('.element').xtToggle({"elements": ".button", "targets": ".collapse"});
   </div>
 </div>
     </div>
-    <div class="demo-source" data-lang="css">
-.collapse-top {
-  -webkit-transition: margin-top 0.3s cubic-bezier(.63,.36,0,.97);
-  transition: margin-top 0.3s cubic-bezier(.63,.36,0,.97);
-  will-change: margin-top;
-}
-.collapse-bottom {
-  -webkit-transition: margin-bottom 0.3s cubic-bezier(.63,.36,0,.97);
-  transition: margin-bottom 0.3s cubic-bezier(.63,.36,0,.97);
-  will-change: margin-bottom;
-}
+    <div class="demo-source" data-lang="scss">
     </div>
   </div>
 </div>

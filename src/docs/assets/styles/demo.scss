@@ -11,25 +11,6 @@
   position: relative;
   background: #ffffff;
 }
-.collapse {
-  display: none !important;
-}
-.collapse.active {
-  display: block !important;
-}
-
-// animations
-.collapse.collapse-height {
-  transform: translateX(-0.618rem);
-  transition: transform 300ms cubic-bezier(0.19, 1, 0.22, 1), height 300ms cubic-bezier(.63,.36,0,.97);
-  will-change: transform, height;
-  &.fadein {
-    transform: translateX(0);
-  }
-  &.fadeout {
-    transform: translateX(0.618rem);
-  }
-}
 
 //////////////////////
 // main

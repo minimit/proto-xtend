@@ -43,6 +43,9 @@ body {
 .hide {
   display: none !important;
 }
+.hide.active {
+  display: block !important;
+}
 .show {
   display: block !important;
 }

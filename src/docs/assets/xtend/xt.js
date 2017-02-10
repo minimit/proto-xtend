@@ -107,6 +107,10 @@
   // init
   //////////////////////
   
+  $.fn.xt = {
+    'uid': 0
+  };
+  
   $.fn.xtInitAll = function(deep) {
     return this.each( function() {
       if ($(this).is('[data-xt-toggle]')) {
@@ -211,16 +215,14 @@
       }
     }
     // namespace
-		window.xtUniqueId = window.xtUniqueId ? window.xtUniqueId : 0;
-    var xtUniqueId;
     if (settings.targets && settings.targets.indexOf('#') !== -1) {
-      xtUniqueId = settings.targets;
+      settings.uid = settings.targets;
     } else if($group.attr('id')) {
-      xtUniqueId = $group.attr('id');
+      settings.uid = $group.attr('id');
     } else {
-      xtUniqueId = 'unique' + window.xtUniqueId++;
+      settings.uid = 'unique' + $.fn.xt.uid++;
     }
-    settings.namespace = settings.name + '_' + xtUniqueId + '_' + settings.class;
+    settings.namespace = settings.name + '_' + settings.uid + '_' + settings.class;
     $group.attr('data-xt-namespace', settings.namespace);
   };
   
@@ -445,22 +447,8 @@
     var $group = $(this.group);
     // choose based on state
     if (!$element.hasClass(settings.class)) {
-      /*
-      if (settings.multiple) {
-        settings.$elements.each( function(i) {
-          object.show($(this), triggered, true, skipState);
-        });
-      } else {
-      */
       object.show($element, triggered, isSync, skipState);
     } else {
-      /*
-      if (settings.multiple) {
-        settings.$elements.each( function(i) {
-          object.hide($(this), triggered, true, skipState);
-        });
-      } else {
-      */
       object.hide($element, triggered, isSync, skipState);
     }
   };
@@ -474,7 +462,7 @@
     if ($element) {
       // show and add in $currents
       if (!$element.hasClass(settings.class)) {
-        object.on($element, triggered);
+        object.on(object.getElements(settings.$elements, $element), triggered);
         var $currents = object.getCurrents();
         $currents = object.setCurrents($currents.xtPushElement($element));
         // linked
@@ -495,7 +483,9 @@
           // hide max or differents
           if (!isSync) {
             if ($currents.length > settings.max) {
-              object.hide($currents.first());
+              var $first = $currents.first();
+              var g = $first.attr('data-group');
+              object.hide($first);
             }
           }
         }
@@ -530,11 +520,15 @@
     var $group = $(this.group);
     // deactivate $element
     if ($element) {
+      var $currents = object.getCurrents();
       if ($element.hasClass(settings.class)) {
-        var $currents = object.getCurrents();
         if (isSync || settings.name === 'xt-ajax' || $currents.length > settings.min) {
-          object.off($element, triggered);
-          $currents = object.setCurrents($currents.not($element.get(0)));
+          object.off(object.getElements(settings.$elements, $element), triggered);
+          if ($element.attr('data-group')) {
+            $currents = object.setCurrents($currents.not('[data-group=' + $element.attr('data-group') + ']'));
+          } else {
+            $currents = object.setCurrents($currents.not($element.get(0)));
+          }
           // linked
           var $linked = $('[data-xt-namespace="' + settings.namespace + '"]').filter(':parents(.xt-ignore)').not($group);
           $linked.each( function() {
@@ -642,6 +636,29 @@
     }
   };
   
+  Xt.prototype.getElements = function($elements, $element) {
+    if ($element.is('[data-group]')) {
+      // with [data-group]
+      var group = $element.attr('data-group');
+      return $elements.filter('[data-group="' + group + '"]');
+    } else {
+      // without [data-group]
+      return $element;
+    }
+  };
+  
+  Xt.prototype.getTargets = function($elements, $element, $group) {
+    if ($element.is('[data-group]')) {
+      // with [data-group]
+      var group = $element.attr('data-group');
+      return $group.filter('[data-group="' + group + '"]');
+    } else {
+      // without [data-group]
+      var index = this.getIndex($elements.not('[data-group]'), $element);
+      return $group.not('[data-group]').eq(index);
+    }
+  };
+  
   Xt.prototype.onFixed = function($el) {
     var object = this;
     var settings = this.settings;
@@ -660,19 +677,6 @@
     var $group = $(this.group);
     // remove scrollbar padding
     $el.removeClass('xt-fixed').css('padding-right', 0).css('background-clip', '');
-  };
-  
-  
-  Xt.prototype.getTargets = function($elements, $element, $targets) {
-    if ($element.is('[data-xt-group]')) {
-      // with [data-xt-group]
-      var group = $element.attr('data-xt-group');
-      return $targets.filter('[data-xt-group="' + group + '"]');
-    } else {
-      // without [data-xt-group]
-      var index = this.getIndex($elements.not('[data-xt-group]'), $element);
-      return $targets.not('[data-xt-group]').eq(index);
-    }
   };
   
   Xt.prototype.getIndex = function($elements, $element) {

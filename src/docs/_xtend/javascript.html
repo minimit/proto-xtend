@@ -1,7 +1,125 @@
 ---
 title: Javascript
-description: Lorem ipsum
+description: Setup and scoping for all components
 
 categories: [xtend]
 order: 3
 ---
+
+<h2>Toggle</h2>
+
+<h3>Setup</h3>
+
+<p class="lead">Html Initialization</p>
+<pre><code class="html">
+&lt;div class="element" data-xt-toggle'&gt;toggle&lt;/div&gt;
+&lt;div class="element" data-xt-toggle='{"elements": ".button", "targets": ".card"}'&gt;
+  &lt;div class="button"&gt;&lt;/div&gt;
+  &lt;div class="card hide"&gt;&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<pre><code class="js">
+$('.element').xtInitAll(); // init only '.element'
+$('html').xtInitAll(true); // init 'html' and all descendants
+</code></pre>
+
+<p class="lead">Js Initialization</p>
+<pre><code class="js">
+$('.element').xtToggle();
+$('.element').xtToggle({"elements": ".button", "targets": ".card"});
+</code></pre>
+<div class="alert alert-danger">
+  <strong>Important:</strong> the plugin's attributes <strong>must be a valid json format</strong>, so with double quotes inside.
+</div>
+
+<h3>Scoping</h3>
+
+<div class="demo">
+  <div class="demo-item demo-preview" data-name="">
+    <div class="demo-text">single target (using id <strong>#</strong>)</div>
+    <div class="demo-source" data-lang="html">
+<div class="spacer">
+  <button class="button color-primary" data-xt-toggle='{"targets": "#card-unique"}'>
+    Toggle
+  </button>
+  <div class="card card-block hide" id="card-unique">
+    Target
+  </div>
+</div>
+    </div>
+  </div>
+  <div class="demo-item demo-preview" data-name="">
+    <div class="demo-text">same target (using id <strong>#</strong>)</div>
+    <div class="demo-source" data-lang="html">
+<div class="spacer">
+  <button class="button color-primary" data-xt-toggle='{"targets": "#card-multiple"}'>
+    Toggle
+  </button>
+  <button class="button color-primary" data-xt-toggle='{"targets": "#card-multiple"}'>
+    Toggle
+  </button>
+  <div class="card card-block hide" id="card-multiple">
+    Target
+  </div>
+</div>
+    </div>
+  </div>
+  <div class="demo-item demo-preview" data-name="">
+    <div class="demo-text">targets by order (using <strong>elements</strong> on the group)</div>
+    <div class="demo-source" data-lang="html">
+<div class="spacer" data-xt-toggle='{"elements": ".button", "targets": ".card"}'>
+  <button class="button color-primary">
+    Toggle 0
+  </button>
+  <button class="button color-primary">
+    Toggle 1
+  </button>
+  <div class="card card-block hide">
+    Target 0
+  </div>
+  <div class="card card-block hide">
+    Target 1
+  </div>
+</div>
+    </div>
+  </div>
+  <div class="demo-item demo-preview" data-name="">
+    <div class="demo-text">targets by order and group combinations</div>
+    <div class="demo-source" data-lang="html">
+<div class="group" data-xt-toggle='{"elements": ".button", "targets": ".card"}'>
+  <div class="spacer">
+    <button class="button color-primary" data-group="0">
+      Group 0
+    </button>
+    <button class="button color-primary">
+      Toggle 0
+    </button>
+    <button class="button color-primary" data-group="0">
+      Group 0
+    </button>
+    <button class="button color-primary">
+      Toggle 1
+    </button>
+    <button class="button color-primary" data-group="1">
+      Group 1
+    </button>
+    <div class="card card-block hide">
+      Target 0
+    </div>
+    <div class="card card-block hide" data-group="0">
+      Group 0
+    </div>
+    <div class="card card-block hide" data-group="1">
+      Group 1
+    </div>
+    <div class="card card-block hide" data-group="0">
+      Group 0
+    </div>
+    <div class="card card-block hide">
+      Target 1
+    </div>
+  </div>
+</div>
+    </div>
+  </div>
+</div>
