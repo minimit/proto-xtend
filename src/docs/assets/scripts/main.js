@@ -293,10 +293,26 @@
     $(this).xtInitAll(true); // init xt
   });
   
+  /*
+  $('.button__menu').filter(':parents(.xt-ignore)').on('on.xt', function(e, obj, triggered, isSync) {
+    console.log(triggered, $('.button__menu').filter(':parents(.xt-ignore)').length, $('.button__menu').filter(':parents(.xt-ignore)').not(this).length);
+    if (!triggered && e.target === this) {
+      $('.button__menu').filter(':parents(.xt-ignore)').not(this).trigger('on.xt', [true, true]);
+    }
+  });
+  */
+  /*
+  $('.button__menu').on('off.xt', function(e) {
+    $('.button__menu').not(this).trigger('off.xt', [true]);
+  });
+  */
+  
+  /*
+  // tests
   $('button').on('on.xt', function(e, obj, $data) {
     console.log($(this));
   });
-  
+  */
   // tests
   $(document).ready( function() {
     //$('.site-breadcrumbs-body-main').trigger('on.xt');

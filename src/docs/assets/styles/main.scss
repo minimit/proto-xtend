@@ -345,7 +345,7 @@ $button__menu_pixels: 1px;
       transform-origin: left center;
     }
   }
-  &.overlay {
+  &.overlay:not(.fadeout) {
     .icon-menu-custom {
       span:nth-child(1) {
         transform: rotate(45deg);
@@ -911,3 +911,16 @@ html.overlay .site-header-top {
     transform: translateX(-0.618rem);
   }
 }
+
+//////////////////////
+// testing
+//////////////////////
+/*
+.site-header-top,
+.site-menu {
+  opacity: 0.5;
+}
+html.overlay body {
+  overflow: scroll !important;
+}
+*/

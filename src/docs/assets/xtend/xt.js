@@ -209,21 +209,19 @@
         }
         */
       }
-      // add html if overlay
-      if (settings.name === 'xt-overlay') {
-        settings.$targets = settings.$targets.xtPushElement($('html'));
-        console.log(settings.$targets);
-      }
     }
-    // initialized
-    //$group.attr('data-xt-initialized', settings.name);
-    // $group unique id
-		window.xtUniqueId = window.xtUniqueId ? window.xtUniqueId : 0;
-    var xtUniqueId = $group.attr('id') ? $group.attr('id') : 'xtUniqueId' + window.xtUniqueId++;
-    $group.attr('id', xtUniqueId);
     // namespace
+		window.xtUniqueId = window.xtUniqueId ? window.xtUniqueId : 0;
+    var xtUniqueId;
+    if (settings.targets && settings.targets.indexOf('#') !== -1) {
+      xtUniqueId = settings.targets;
+    } else if($group.attr('id')) {
+      xtUniqueId = $group.attr('id');
+    } else {
+      xtUniqueId = 'unique' + window.xtUniqueId++;
+    }
     settings.namespace = settings.name + '_' + xtUniqueId + '_' + settings.class;
-    $group.attr('data-xt-group-' + settings.name, settings.namespace);
+    $group.attr('data-xt-namespace', settings.namespace);
   };
   
   Xt.prototype.setup = function() {
@@ -479,6 +477,12 @@
         object.on($element, triggered);
         var $currents = object.getCurrents();
         $currents = object.setCurrents($currents.xtPushElement($element));
+        // linked
+        var $linked = $('[data-xt-namespace="' + settings.namespace + '"]').filter(':parents(.xt-ignore)').not($group);
+        $linked.each( function() {
+          var xt = $(this).data(settings.name);
+          xt.show($(this), true, true);
+        });
         // control over activated
         if (settings.name === 'xt-ajax') {
           // [disabled]
@@ -498,22 +502,23 @@
       }
     }
     // activate $target
-    var $target;
     if (settings.$targets) {
-      var index = object.getIndex(settings.$elements, $element);
-      index = index >= settings.$targets.length ? settings.$targets.length - 1 : index;
-      $target = settings.$targets.eq(index);
+      var $target = object.getTargets(settings.$elements, $element, settings.$targets);
       if (!$target.hasClass(settings.class)) {
         object.on($target, triggered);
-      }
-    }
-    // stuff
-    if (settings.name === 'xt-overlay') {
-      if (!$group.hasClass(settings.class)) {
-        // activate $group
-        object.on($group, triggered);
-        // add paddings
-        object.onFixed($('*:fixed').not($group).add('html'));
+        // stuff
+        if (settings.name === 'xt-overlay') {
+          // html class
+          if (!$('html').hasClass(settings.class)) {
+            $('html').addClass(settings.class);
+          }
+          // add paddings
+          object.onFixed($('*:fixed').not($target).add('html'));
+          // activate $group
+          if (!$group.hasClass(settings.class)) {
+            object.on($group, triggered);
+          }
+        }
       }
     }
   };
@@ -530,6 +535,12 @@
         if (isSync || settings.name === 'xt-ajax' || $currents.length > settings.min) {
           object.off($element, triggered);
           $currents = object.setCurrents($currents.not($element.get(0)));
+          // linked
+          var $linked = $('[data-xt-namespace="' + settings.namespace + '"]').filter(':parents(.xt-ignore)').not($group);
+          $linked.each( function() {
+            var xt = $(this).data(settings.name);
+            xt.hide($(this), true, true);
+          });
         }
         // [disabled]
         if (isSync || settings.name === 'xt-ajax') {
@@ -540,22 +551,23 @@
       }
     }
     // deactivate $target
-    var $target;
     if (settings.$targets) {
-      var index = object.getIndex(settings.$elements, $element);
-      index = index >= settings.$targets.length ? settings.$targets.length - 1 : index;
-      $target = settings.$targets.eq(index);
+      var $target = object.getTargets(settings.$elements, $element, settings.$targets);
       if ($target.hasClass(settings.class)) {
         object.off($target, triggered);
-      }
-    }
-    // stuff
-    if (settings.name === 'xt-overlay') {
-      if ($group.hasClass(settings.class)) {
-        // deactivate $group
-        object.off($group, triggered);
-        // remove paddings
-        object.offFixed($('.xt-fixed, html'));
+        // stuff
+        if (settings.name === 'xt-overlay') {
+          // html class
+          if ($('html').hasClass(settings.class)) {
+            $('html').removeClass(settings.class);
+          }
+          // remove paddings
+          object.offFixed($('.xt-fixed, html'));
+          // deactivate $group
+          if ($group.hasClass(settings.class)) {
+            object.off($group, triggered);
+          }
+        }
       }
     }
   };
@@ -648,6 +660,19 @@
     var $group = $(this.group);
     // remove scrollbar padding
     $el.removeClass('xt-fixed').css('padding-right', 0).css('background-clip', '');
+  };
+  
+  
+  Xt.prototype.getTargets = function($elements, $element, $targets) {
+    if ($element.is('[data-xt-group]')) {
+      // with [data-xt-group]
+      var group = $element.attr('data-xt-group');
+      return $targets.filter('[data-xt-group="' + group + '"]');
+    } else {
+      // without [data-xt-group]
+      var index = this.getIndex($elements.not('[data-xt-group]'), $element);
+      return $targets.not('[data-xt-group]').eq(index);
+    }
   };
   
   Xt.prototype.getIndex = function($elements, $element) {
