@@ -33,10 +33,8 @@
       
       <header class="site-header">
         
-        <nav class="site-header-top" role="navigation" data-xt-scroll='{"top": "-1", "bottom": ".site-breadcrumbs.xt-clone"}'>
-          
+        <div class="site-header-top" data-xt-scroll='{"top": "-1", "bottom": ".site-breadcrumbs.xt-clone"}'>
           <div class="container">
-            
             <div class="media">
               <div class="d-flex align-self-center mr-3">
                 <a href="{{ site.baseurl }}" class="logo" title="Home">
@@ -44,7 +42,7 @@
                 </a>
               </div>
               <div class="media-body align-self-center">
-                <button type="button" class="button button__menu float-right" data-xt-overlay='{"targets": "#site-menu"}'>
+                <button type="button" class="button button__menu float-right" data-xt-overlay='{"targets": "#site-menu", "fadeout": 0}'>
                   <span class="icon-menu-custom right">
                     <span></span>
                     <span></span>
@@ -60,45 +58,74 @@
                 </button>
               </div>
             </div>
-      
-          </div>
-          
-        </nav>
-        
-        <div class="site-menu collapse-height" id="site-menu">
-          <div class="site-menu-content d-flex">
-            <div class="container align-self-center">
-            
-              <div class="row justify-content-center">
-                <div class="col-xs-12 col-md-10 col-lg-8">
-                  
-                  {% for collection in site.collections %}
-                    {% if site.[collection.label].size > 0 %}
-                      {% assign sorted = site.[collection.label] | sort: 'order' %}
-                      <a href="{{ sorted[0].url }}" class="button make-line">
-                        {{ collection.label }}
-                      </a>
-                    {% endif %}
-                  {% endfor %}
-                  <a href="#" class="button make-line">
-                    Playground
-                  </a>
-                  <a href="#" class="button make-line">
-                    Articles
-                  </a>
-                  <a href="#" class="button make-line">
-                    Inspirations
-                  </a>
-                  <a href="{{ site.baseurl }}tests/" class="button make-line developer">
-                    Tests
-                  </a>
-                  
-                </div>
-              </div>
-              
-            </div>
           </div>
         </div>
+        
+        <nav class="site-menu collapse-height" id="site-menu">
+        
+          <div class="site-header-top">
+            <div class="container">
+              <div class="media">
+                <div class="d-flex align-self-center mr-3">
+                  <a href="{{ site.baseurl }}" class="logo" title="Home">
+                    MINIMIT
+                  </a>
+                </div>
+                <div class="media-body align-self-center">
+                  <button type="button" class="button button__menu float-right" data-xt-overlay='{"targets": "#site-menu", "fadeout": 0}'>
+                    <span class="icon-menu-custom right">
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                    </span>
+                    <span class="text">
+                      {% if page.collection %}
+                          {{ page.collection | capitalize }}
+                      {% else %}
+                        {{ page.title | capitalize }}
+                      {% endif %}
+                    </span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="site-menu-content"> <!-- d-flex -->
+            <div class="site-menu-content-inside"> <!-- align-self-center -->
+              <div class="container">
+              
+                <div class="row justify-content-center">
+                  <div class="col-xs-12 col-md-10 col-lg-8">
+                    
+                    {% for collection in site.collections %}
+                      {% if site.[collection.label].size > 0 %}
+                        {% assign sorted = site.[collection.label] | sort: 'order' %}
+                        <a href="{{ sorted[0].url }}" class="button make-line">
+                          {{ collection.label }}
+                        </a>
+                      {% endif %}
+                    {% endfor %}
+                    <a href="#" class="button make-line">
+                      Playground
+                    </a>
+                    <a href="#" class="button make-line">
+                      Articles
+                    </a>
+                    <a href="#" class="button make-line">
+                      Inspirations
+                    </a>
+                    <a href="{{ site.baseurl }}tests/" class="button make-line developer">
+                      Tests
+                    </a>
+                    
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+        </nav>
         
         <div class="site-hero">
                 
@@ -176,7 +203,7 @@
                   {% endif %}
                 {% endfor %}
                 
-                <button type="button" class="button button__menu float-right show-scroll" data-xt-overlay='{"targets": "#site-menu"}'>
+                <button type="button" class="button button__menu float-right show-scroll" data-xt-overlay='{"targets": "#site-menu", "fadeout": 0}'>
                   <span class="icon-menu-custom right">
                     <span></span>
                     <span></span>

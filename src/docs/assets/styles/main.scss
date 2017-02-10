@@ -184,20 +184,23 @@ a.logo {
 
 /* .site-header-top */
 .site-header-top {
-  background: rgba($color-primary, 0.75);
+  background: $color-primary;
   color: $color-white;
 }
 
 /*.site-menu */
 .site-menu {
   .site-menu-content {
-    padding-top: 100px;
-    padding-bottom: 100px;
     width: 100%;
     min-height: 100vh;
     max-height: 100vh;
     background: $color-primary;
     color: $color-white;
+  }
+  .site-menu-content-inside {
+    background: $color-primary;
+    padding-top: 40px;
+    padding-bottom: 100px;
   }
   // content
   .button {
@@ -242,7 +245,6 @@ a.logo {
 
 /* .site-breadcrumbs */
 .site-breadcrumbs {
-  border-bottom: 3px solid $color-primary-light;
   @include box;
   cursor: default;
   .site-breadcrumbs-inside {
@@ -251,6 +253,7 @@ a.logo {
     padding-bottom: 5px;
     background: $color-primary;
     color: $color-white;
+    border-bottom: 3px solid $color-primary-light;
   }
 }
 .site-breadcrumbs-body-main {
@@ -283,6 +286,7 @@ $button__menu_pixels: 1px;
   line-height: 1.2;
   text-transform: none !important;
   .site-header-top & {
+    width: auto !important;
     margin-top: 1px;
     margin-bottom: 1px;
     padding-left: 0;
@@ -308,7 +312,7 @@ $button__menu_pixels: 1px;
       border-radius: 0;
       left: 0;
       transform: rotate(0deg);
-      transition: all 100ms cubic-bezier(0.19, 1, 0.22, 1);
+      transition: all 1100ms cubic-bezier(0.19, 1, 0.22, 1);
     }
     span:nth-child(1) {
       top: 0;
@@ -323,8 +327,11 @@ $button__menu_pixels: 1px;
       transform-origin: left center;
     }
   }
-  &.overlay:not(.fadeout) {
+  &.overlay {
     .icon-menu-custom {
+      span {
+        transition: all 1100ms cubic-bezier(0.19, 1, 0.22, 1);
+      }
       span:nth-child(1) {
         transform: rotate(45deg);
         top: 0;
@@ -759,6 +766,9 @@ pre {
   // settings
   .site-header-top {
     width: 100%;
+    &.scroll {
+      background: rgba($color-primary, 0.75);
+    }
     // animations
     &.scroll-on-bottom {
       animation: top-fadein 600ms cubic-bezier(0.19, 1, 0.22, 1);
@@ -791,13 +801,20 @@ pre {
 
 // overlay styles
 @include xt-overlay('.site-menu');
-html.overlay .site-header-top {
+.site-header-top {
   z-index: 81 !important;
+}
+/*
+html.overlay .site-header-top {
   @extend .site-header-top.scroll; // show af is scrolling
 }
+*/
+
 // animations
 .site-menu {
-  .button {
+  opacity: 1 !important;
+  transform: none !important;
+  .button:not(.button__menu) {
     opacity: 1;
     animation: left-fadeout 600ms cubic-bezier(0.19, 1, 0.22, 1);
     -webkit-animation-fill-mode: forwards;
@@ -827,7 +844,7 @@ html.overlay .site-header-top {
 }
 .site-menu.overlay {
   display: block;
-  .button {
+  .button:not(.button__menu) {
     opacity: 0;
     animation: right-fadein 600ms cubic-bezier(0.19, 1, 0.22, 1);
     -webkit-animation-fill-mode: forwards;
@@ -894,10 +911,11 @@ html.overlay .site-header-top {
 //////////////////////
 // testing
 //////////////////////
+
 /*
 .site-header-top,
 .site-menu {
-  opacity: 0.5;
+  opacity: 0.5 !important;
 }
 html.overlay body {
   overflow: scroll !important;

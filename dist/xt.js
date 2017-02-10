@@ -33,7 +33,7 @@
       'min': 0,
       'max': 1,
     };
-    return this.each( function() {
+    return this.each(function() {
       if (!$.data(this, defaults.name)) {
         $.data(this, defaults.name, new XtToggle(this, options, defaults));
       }
@@ -55,7 +55,7 @@
       'min': 0,
       'max': 1,
     };
-    return this.each( function() {
+    return this.each(function() {
       if (!$.data(this, defaults.name)) {
         $.data(this, defaults.name, new XtOverlay(this, options, defaults));
       }
@@ -75,7 +75,7 @@
       'min': 0,
       'max': 1,
     };
-    return this.each( function() {
+    return this.each(function() {
       if (!$.data(this, defaults.name)) {
         $.data(this, defaults.name, new XtScroll(this, options, defaults));
       }
@@ -95,7 +95,7 @@
       'class': 'active',
       'url': null,
     };
-    return this.each( function() {
+    return this.each(function() {
       if (!$.data(this, defaults.name)) {
         $.data(this, defaults.name, new XtAjax(this, options, defaults));
       }
@@ -112,7 +112,7 @@
   };
   
   $.fn.xtInitAll = function(deep) {
-    return this.each( function() {
+    return this.each(function() {
       if ($(this).is('[data-xt-toggle]')) {
         $(this).xtToggle();
       }
@@ -135,10 +135,9 @@
   };
   
   //////////////////////
-  // methods
+  // init methods
   //////////////////////
 
-  // init
   Xt.prototype.init = function() {
     var object = this;
     var settings = this.settings;
@@ -170,24 +169,20 @@
         if (!settings.$elements.length) {
           settings.$elements = $group.parent().find(settings.elements).filter(':parents(.xt-ignore)');
         }
-        /* NO $(settings.elements)
-        if (!settings.$elements.length) {
-          settings.$elements = $(settings.elements).filter(':parents(.xt-ignore)');
-        }
-        */
       }
     } else {
       settings.$elements = $group;
     }
     // $targets
     if (settings.name === 'xt-scroll') {
+      // xt-scroll $targets
       $group.wrap($('<div class="xt-container"></div>'));
       settings.$targets = $group.clone().addClass('xt-clone xt-ignore').css('visibility', 'hidden');
       $.each(settings.$targets.data(), function (i) {
         settings.$targets.removeAttr("data-" + i);
       });
       settings.$targets.insertAfter($group);
-      // xt-scroll stuff
+      // stuff
       if (settings.mode === 'absolute') {
         $group.css('position', 'absolute');
       } else if (settings.mode === 'fixed') {
@@ -207,11 +202,6 @@
         if (!settings.$targets.length) {
           settings.$targets = $group.parent().find(settings.targets).filter(':parents(.xt-ignore)');
         }
-        /* NO $(settings.targets)
-        if (!settings.$targets.length) {
-          settings.$targets = $(settings.targets).filter(':parents(.xt-ignore)');
-        }
-        */
       }
     }
     // namespace
@@ -243,7 +233,7 @@
         var loc = window.location.href.split('#')[0];
         url = loc.replace(/https?:\/\/[^\/]+/i, '');
       }
-      settings.$elements.each( function() {
+      settings.$elements.each(function() {
         if ($(this).attr('href') === url) {
           found = $(this);
           return false;
@@ -261,7 +251,7 @@
     } else {
       // automatic reinit if has class
       if (settings.$elements) {
-        settings.$elements.each( function() {
+        settings.$elements.each(function() {
           if ($(this).hasClass(settings.class)) {
             $(this).removeClass(settings.class);
             object.show($(this));
@@ -341,6 +331,10 @@
     }
   };
   
+  //////////////////////
+  // events methods
+  //////////////////////
+
   Xt.prototype.eventsScroll = function() {
     var object = this;
     var settings = this.settings;
@@ -370,38 +364,38 @@
       }
       if (scrollTop > top && scrollTop < bottom) {
         if (!$group.hasClass(settings.class)) {
-          window.xtRequestAnimationFrame( function() {
+          window.xtRequestAnimationFrame(function() {
             object.show($group);
           });
           // direction classes
           $group.removeClass('scroll-off-top scroll-off-bottom');
           if (settings.scrollTopOld > scrollTop) {
             $group.removeClass('scroll-on-top');
-            window.xtRequestAnimationFrame( function() {
+            window.xtRequestAnimationFrame(function() {
               $group.addClass('scroll-on-bottom');
             });
           } else {
             $group.removeClass('scroll-on-bottom');
-            window.xtRequestAnimationFrame( function() {
+            window.xtRequestAnimationFrame(function() {
               $group.addClass('scroll-on-top');
             });
           }
         }
       } else {
         if ($group.hasClass(settings.class)) {
-          window.xtRequestAnimationFrame( function() {
+          window.xtRequestAnimationFrame(function() {
             object.hide($group);
           });
           // direction classes
           $group.removeClass('scroll-on-top scroll-on-bottom');
           if (settings.scrollTopOld > scrollTop) {
             $group.removeClass('scroll-off-top');
-            window.xtRequestAnimationFrame( function() {
+            window.xtRequestAnimationFrame(function() {
               $group.addClass('scroll-off-bottom');
             });
           } else {
             $group.removeClass('scroll-off-bottom');
-            window.xtRequestAnimationFrame( function() {
+            window.xtRequestAnimationFrame(function() {
               $group.addClass('scroll-off-top');
             });
           }
@@ -416,30 +410,10 @@
     });
   };
   
-  // methods
-  
-  Xt.prototype.getCurrents = function() {
-    var object = this;
-    var settings = this.settings;
-    var group = this.group;
-    var $group = $(this.group);
-    // get $currents on $group data
-    var $currents = $group.data('$currents_' + settings.namespace) || $([]);
-    return $currents;
-  };
-  
-  Xt.prototype.setCurrents = function($currents) {
-    var object = this;
-    var settings = this.settings;
-    var group = this.group;
-    var $group = $(this.group);
-    // set $currents on $group data
-    $group.data('$currents_' + settings.namespace, $currents);
-    return $currents;
-  };
-  
-  // toggle
-  
+  //////////////////////
+  // toggle methods
+  //////////////////////
+
   Xt.prototype.toggle = function($element, triggered, isSync, skipState) {
     var object = this;
     var settings = this.settings;
@@ -464,13 +438,15 @@
       if (!$element.hasClass(settings.class)) {
         object.on(object.getElements(settings.$elements, $element), triggered);
         var $currents = object.getCurrents();
-        $currents = object.setCurrents($currents.xtPushElement($element));
+        $currents = object.setCurrents($currents.pushElement($element));
         // linked
-        var $linked = $('[data-xt-namespace="' + settings.namespace + '"]').filter(':parents(.xt-ignore)').not($group);
-        $linked.each( function() {
-          var xt = $(this).data(settings.name);
-          xt.show($(this), true, true);
-        });
+        if (!isSync) {
+          var $linked = $('[data-xt-namespace="' + settings.namespace + '"]').filter(':parents(.xt-ignore)').not($group);
+          $linked.each(function() {
+            var xt = $(this).data(settings.name);
+            xt.show($(this), true, true);
+          });
+        }
         // control over activated
         if (settings.name === 'xt-ajax') {
           // [disabled]
@@ -498,10 +474,7 @@
         object.on($target, triggered);
         // stuff
         if (settings.name === 'xt-overlay') {
-          // html class
-          if (!$('html').hasClass(settings.class)) {
-            $('html').addClass(settings.class);
-          }
+          $('html').addClass(settings.class);
           // add paddings
           object.onFixed($('*:fixed').not($target).add('html'));
           // activate $group
@@ -530,11 +503,13 @@
             $currents = object.setCurrents($currents.not($element.get(0)));
           }
           // linked
-          var $linked = $('[data-xt-namespace="' + settings.namespace + '"]').filter(':parents(.xt-ignore)').not($group);
-          $linked.each( function() {
-            var xt = $(this).data(settings.name);
-            xt.hide($(this), true, true);
-          });
+          if (!isSync) {
+            var $linked = $('[data-xt-namespace="' + settings.namespace + '"]').filter(':parents(.xt-ignore)').not($group);
+            $linked.each(function() {
+              var xt = $(this).data(settings.name);
+              xt.hide($(this), true, true);
+            });
+          }
         }
         // [disabled]
         if (isSync || settings.name === 'xt-ajax') {
@@ -551,10 +526,7 @@
         object.off($target, triggered);
         // stuff
         if (settings.name === 'xt-overlay') {
-          // html class
-          if ($('html').hasClass(settings.class)) {
-            $('html').removeClass(settings.class);
-          }
+          $('html').removeClass(settings.class);
           // remove paddings
           object.offFixed($('.xt-fixed, html'));
           // deactivate $group
@@ -566,22 +538,31 @@
     }
   };
   
+  //////////////////////
+  // on and off methods
+  //////////////////////
+  
   Xt.prototype.on = function($el, triggered) {
     var object = this;
     var settings = this.settings;
     var group = this.group;
     var $group = $(this.group);
-    // on and fadein
+    // on
     $el.addClass(settings.class);
     $el.removeClass('fadeout');
     clearTimeout($el.data('fadeout.timeout'));
     $el.off('transitionend.xt');
-    if (settings.fadein || $el.css('transitionDuration') !== '0s' || $el.css('animationDuration') !== '0s') {
-      window.xtRequestAnimationFrame( function() {
+    // fadein
+    if (settings.fadein || $el.css('transitionDuration') !== '0s') {
+      window.xtRequestAnimationFrame(function() {
         $el.addClass('fadein');
+        // api
+        if (!triggered) {
+          $el.trigger('fadein.xt', [object, true]);
+        }
       });
     }
-    // collapse-height
+    // collapse-height fadein
     if ($el.hasClass('collapse-height')) {
       var $inside = $el.find('.collapse-height-inside');
       if (!$inside.length) {
@@ -589,7 +570,7 @@
         $inside = $el.find('.collapse-height-inside');
       }
       var h = $inside.outerHeight();
-      $el.css("height", h);
+      $el.css('height', h);
       $el.parents('.collapse-top').css("margin-top", -h);
       $el.parents('.collapse-bottom').css("margin-bottom", -h);
     }
@@ -604,29 +585,54 @@
     var settings = this.settings;
     var group = this.group;
     var $group = $(this.group);
-    // off and fadeout
-    $el.removeClass('fadein');
-    $el.addClass('fadeout');
-    var fade = function() {
+    // off
+    var realoff = function() {
       $el.removeClass(settings.class);
       $el.removeClass('fadeout');
+      // api
+      if (!triggered) {
+        $el.trigger('fadeout.xt', [object, true]);
+      }
     };
+    $el.removeClass('fadein');
+    $el.addClass('fadeout');
+    // fadeout
+    clearTimeout($el.data('fadeout.timeout'));
     if (settings.fadeout) {
-      clearTimeout($el.data('fadeout.timeout'));
-      var timeout = window.setTimeout( function() {
-        fade();
+      var timeout = window.setTimeout(function() {
+        realoff();
       }, settings.fadeout);
       $el.data('fadeout.timeout', timeout);
-    } else if ($el.css('transitionDuration') !== '0s' || $el.css('animationDuration') !== '0s') {
+    } else if ($el.css('transitionDuration') !== '0s') {
       $el.off('transitionend.xt').on('transitionend.xt', function(e) {
-        fade();
+        if (e.target === this) {
+          console.log($el, $el.css('transitionDuration'));
+          realoff();
+        }
       });
     } else {
-      fade();
+      realoff();
     }
-    // collapse-height
+    /* only with setTimeout
+    clearTimeout($el.data('fadeout.timeout'));
+    var time;
+    if (settings.fadeout) {
+      time = settings.fadeout;
+    } else if ($el.css('transitionDuration') !== '0s') {
+      time = object.getTime($el.css('transitionDuration'));
+    }
+    if (time) {
+      var timeout = window.setTimeout(function() {
+        realoff();
+      }, time);
+      $el.data('fadeout.timeout', timeout);
+    } else {
+      realoff();
+    }
+    */
+    // collapse-height fadeout
     if ($el.hasClass('collapse-height')) {
-      $el.css("height", 0);
+      $el.css('height', 0);
       $el.parents('.collapse-top').css("margin-top", 0);
       $el.parents('.collapse-bottom').css("margin-bottom", 0);
     }
@@ -634,6 +640,30 @@
     if (!triggered) {
       $el.trigger('off.xt', [object, true]);
     }
+  };
+  
+  //////////////////////
+  // utils methods
+  //////////////////////
+
+  Xt.prototype.getCurrents = function() {
+    var object = this;
+    var settings = this.settings;
+    var group = this.group;
+    var $group = $(this.group);
+    // get $currents on $group data
+    var $currents = $group.data('$currents_' + settings.namespace) || $([]);
+    return $currents;
+  };
+  
+  Xt.prototype.setCurrents = function($currents) {
+    var object = this;
+    var settings = this.settings;
+    var group = this.group;
+    var $group = $(this.group);
+    // set $currents on $group data
+    $group.data('$currents_' + settings.namespace, $currents);
+    return $currents;
   };
   
   Xt.prototype.getElements = function($elements, $element) {
@@ -665,7 +695,7 @@
     var group = this.group;
     var $group = $(this.group);
     // add scrollbar padding
-    var w = window.xtScrollbarWidth($el);
+    var w = object.scrollbarWidth($el);
     w = $el.css('overflow-y') === 'hidden' ? 0 : w;
     $el.addClass('xt-fixed').css('padding-right', w).css('background-clip', 'content-box');
   };
@@ -682,7 +712,7 @@
   Xt.prototype.getIndex = function($elements, $element) {
     var index = 0;
     if ($elements && $element) {
-      $elements.each( function(i) {
+      $elements.each(function(i) {
         if ($(this).is($element.get(0))) {
           index = i;
           return false;
@@ -718,7 +748,21 @@
     }
   };
   
-  // ajax and pushstate
+  Xt.prototype.scrollbarWidth = function($el) {
+    var parent, child, width;
+    if(width === undefined) {
+      parent = $('<div style="width:50px; height:50px; overflow:auto;"><div /></div>').appendTo($el);
+      child = parent.children();
+      width = child.innerWidth() - child.height(99).innerWidth();
+      parent.remove();
+    }
+    console.log(width);
+    return width;
+  };
+  
+  //////////////////////
+  // ajax methods
+  //////////////////////
   
   Xt.prototype.ajax = function(url, title) {
     var object = this;
@@ -763,7 +807,7 @@
     // also when on popstate
     document.title = title;
     // trigger on registered
-    settings.$elements.filter('[href="' + url + '"]').each( function(i) {
+    settings.$elements.filter('[href="' + url + '"]').each(function(i) {
       object.show($(this), true, false, true);
     });
     // push object state
@@ -776,20 +820,8 @@
   // utils
   //////////////////////
   
-  // xtScrollbarWidth
-  window.xtScrollbarWidth = function($el) {
-    var parent, child, width;
-    if(width === undefined) {
-      parent = $('<div style="width:50px; height:50px; overflow:auto;"><div /></div>').appendTo($el);
-      child = parent.children();
-      width = child.innerWidth() - child.height(99).innerWidth();
-      parent.remove();
-    }
-    return width;
-  };
-  
   // https://www.paulirish.com/2011/requestanimationframe-for-smart-animating/
-  window.xtRequestAnimationFrame = ( function() {
+  window.xtRequestAnimationFrame = (function() {
     return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || function(callback) {
       window.setTimeout(callback, 1000 / 60);
     };
@@ -797,8 +829,8 @@
   
   // http://stackoverflow.com/questions/13281897/how-to-preserve-order-of-items-added-to-jquery-matched-set
   // push jquery group inside jquery query, use $([]) for empty query
-  // usage: $groups.xtPushElement($group)
-  $.fn.xtPushElement = function($el) {
+  // usage: $groups.pushElement($group)
+  $.fn.pushElement = function($el) {
     Array.prototype.push.apply(this, $el);
     return this;
   };
