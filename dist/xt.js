@@ -313,7 +313,6 @@
       settings.$elements.on('xtRemoved', function(e) {
         if (settings.name === 'xt-overlay') { // also this $group.is('[data-xt-reset]')
           object.hide($(this), false, true, true);
-          console.log('ccc');
         }
       });
       // api
