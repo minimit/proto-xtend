@@ -91,40 +91,39 @@
             </div>
           </div>
           
-          <div class="site-menu-content d-flex">
-            <div class="site-menu-content-inside align-self-center">
-              <div class="container">
+          <div class="site-menu-outside">
+            <div class="site-menu-inside">
+              <div class="site-menu-content container">
               
-                <div class="row justify-content-center">
-                  <div class="col-xs-12 col-md-10 col-lg-8">
+                {% for collection in site.collections %}
+                  {% if site.[collection.label].size > 0 %}
+                    {% assign sorted = site.[collection.label] | sort: 'order' %}
+                    <a href="{{ sorted[0].url }}" class="button make-line">
+                      {{ collection.label }}
+                    </a>
+                  {% endif %}
+                {% endfor %}
+                <a href="#" class="button make-line">
+                  Playground
+                </a>
+                <a href="#" class="button make-line">
+                  Articles
+                </a>
+                <!--
+                <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+                <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+                -->
+                <a href="#" class="button make-line">
+                  Inspirations
+                </a>
+                <a href="{{ site.baseurl }}tests/" class="button make-line developer">
+                  Tests
+                </a>
                     
-                    {% for collection in site.collections %}
-                      {% if site.[collection.label].size > 0 %}
-                        {% assign sorted = site.[collection.label] | sort: 'order' %}
-                        <a href="{{ sorted[0].url }}" class="button make-line">
-                          {{ collection.label }}
-                        </a>
-                      {% endif %}
-                    {% endfor %}
-                    <a href="#" class="button make-line">
-                      Playground
-                    </a>
-                    <a href="#" class="button make-line">
-                      Articles
-                    </a>
-                    <a href="#" class="button make-line">
-                      Inspirations
-                    </a>
-                    <a href="{{ site.baseurl }}tests/" class="button make-line developer">
-                      Tests
-                    </a>
-                    
-                  </div>
-                </div>
-                
               </div>
             </div>
           </div>
+          
         </nav>
         
         <div class="site-hero">

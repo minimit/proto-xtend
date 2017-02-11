@@ -85,17 +85,18 @@ a, button {
 
 .button .left {
   float: left;
-  top: 0.2em;
+  top: 0.1em;
 }
 
 .button .right {
   float: right;
-  top: 0.2em;
+  top: 0.1em;
 }
 
 .button .text {
-  display: block;
+  display: inline-block;
   overflow: hidden;
+  margin-bottom: -0.25em;
 }
 
 [disabled] {

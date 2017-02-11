@@ -86,15 +86,16 @@ a, button {
   // content
   .left {
     float: left;
-    top: 0.2em; // vertical fix
+    top: 0.1em; // vertical fix
   }
   .right {
     float: right;
-    top: 0.2em; // vertical fix
+    top: 0.1em; // vertical fix
   }
   .text {
-    display: block;
+    display: inline-block;
     overflow: hidden;
+    margin-bottom: -0.25em; // vertical fix
   }
 }
 

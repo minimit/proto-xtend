@@ -69,13 +69,14 @@ a, button {
     text-decoration: none; }
   .button .left {
     float: left;
-    top: 0.2em; }
+    top: 0.1em; }
   .button .right {
     float: right;
-    top: 0.2em; }
+    top: 0.1em; }
   .button .text {
-    display: block;
-    overflow: hidden; }
+    display: inline-block;
+    overflow: hidden;
+    margin-bottom: -0.25em; }
 
 [disabled] {
   cursor: default;
