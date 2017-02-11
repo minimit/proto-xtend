@@ -185,9 +185,6 @@ a.logo {
   width: 100%;
   background: rgba($color-primary, 0.75);
   color: $color-white;
-  .site-menu & {
-    background: $color-primary;
-  }
 }
 
 /*.site-menu */
@@ -811,12 +808,9 @@ pre {
 
 // overlay styles
 @include xt-overlay('.site-menu');
-.site-menu .site-header-top {
-  @extend .site-header-top.scroll;
-}
 html.overlay .site-header-top {
-  // fix icon animation
   z-index: 81 !important;
+  @extend .site-header-top.scroll;
 }
 // animations
 .site-menu.overlay {
