@@ -150,9 +150,27 @@
     // override with html settings
     $.extend(settings, $group.data(settings.name));
     // setup
-    object.scoping(); // scoping before setup
+    object.scoping();
+    object.namespace();
     object.setup();
-    object.events(); // events after setup
+    object.events();
+  };
+  
+  Xt.prototype.namespace = function() {
+    var object = this;
+    var settings = this.settings;
+    var group = this.group;
+    var $group = $(this.group);
+    // namespace
+    if (settings.targets && settings.targets.indexOf('#') !== -1) {
+      settings.uid = settings.targets;
+    } else if($group.attr('id')) {
+      settings.uid = $group.attr('id');
+    } else {
+      settings.uid = 'unique' + $.fn.xt.uid++;
+    }
+    settings.namespace = settings.name + '_' + settings.uid + '_' + settings.class;
+    $group.attr('data-xt-namespace', settings.namespace);
   };
   
   Xt.prototype.scoping = function() {
@@ -204,16 +222,6 @@
         }
       }
     }
-    // namespace
-    if (settings.targets && settings.targets.indexOf('#') !== -1) {
-      settings.uid = settings.targets;
-    } else if($group.attr('id')) {
-      settings.uid = $group.attr('id');
-    } else {
-      settings.uid = 'unique' + $.fn.xt.uid++;
-    }
-    settings.namespace = settings.name + '_' + settings.uid + '_' + settings.class;
-    $group.attr('data-xt-namespace', settings.namespace);
   };
   
   Xt.prototype.setup = function() {
@@ -301,10 +309,11 @@
           object.toggle($(this));
         });
       }
-      // remove html classes on remove
+      // remove html classes
       settings.$elements.on('xtRemoved', function(e) {
-        if ($(this).is('[data-xt-reset]') || settings.targets === 'html') {
+        if (settings.name === 'xt-overlay') { // also this $group.is('[data-xt-reset]')
           object.hide($(this), false, true, true);
+          console.log('ccc');
         }
       });
       // api
@@ -606,30 +615,12 @@
     } else if ($el.css('transitionDuration') !== '0s') {
       $el.off('transitionend.xt').on('transitionend.xt', function(e) {
         if (e.target === this) {
-          console.log($el, $el.css('transitionDuration'));
           realoff();
         }
       });
     } else {
       realoff();
     }
-    /* only with setTimeout
-    clearTimeout($el.data('fadeout.timeout'));
-    var time;
-    if (settings.fadeout) {
-      time = settings.fadeout;
-    } else if ($el.css('transitionDuration') !== '0s') {
-      time = object.getTime($el.css('transitionDuration'));
-    }
-    if (time) {
-      var timeout = window.setTimeout(function() {
-        realoff();
-      }, time);
-      $el.data('fadeout.timeout', timeout);
-    } else {
-      realoff();
-    }
-    */
     // collapse-height fadeout
     if ($el.hasClass('collapse-height')) {
       $el.css('height', 0);
@@ -756,7 +747,6 @@
       width = child.innerWidth() - child.height(99).innerWidth();
       parent.remove();
     }
-    console.log(width);
     return width;
   };
   

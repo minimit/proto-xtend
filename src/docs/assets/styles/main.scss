@@ -132,7 +132,6 @@
 //////////////////////
 
 // sticky footer flex
-
 .site-wrapper,
 .site-wrapper-inside {
   min-height: 100%;
@@ -184,8 +183,12 @@ a.logo {
 
 /* .site-header-top */
 .site-header-top {
-  background: $color-primary;
+  width: 100%;
+  background: rgba($color-primary, 0.75);
   color: $color-white;
+  .site-menu & {
+    background: $color-primary;
+  }
 }
 
 /*.site-menu */
@@ -778,8 +781,6 @@ pre {
   @include xt-scroll('.site-header-top');
   // settings
   .site-header-top {
-    width: 100%;
-    background: rgba($color-primary, 0.75);
     // animations
     &.scroll-on-bottom {
       animation: top-fadein 600ms cubic-bezier(0.19, 1, 0.22, 1);
@@ -804,7 +805,7 @@ pre {
 }
 
 @media (min-width: 992px) {
-
+  
   // scroll styles
   @include xt-scroll('.site-aside', 'top', 56px);
   
@@ -812,72 +813,104 @@ pre {
 
 // overlay styles
 @include xt-overlay('.site-menu');
-.site-header-top {
+.site-menu .site-header-top {
+  @extend .site-header-top.scroll;
+}
+html.overlay .site-header-top {
+  // fix icon animation
   z-index: 81 !important;
 }
-.site-menu .site-header-top {
-  @extend .site-header-top.scroll; // show af is scrolling
-}
-
 // animations
-.site-menu {
-  opacity: 1 !important;
-  transform: none !important;
-  .button:not(.button__menu) {
-    opacity: 1;
-    animation: left-fadeout 600ms cubic-bezier(0.19, 1, 0.22, 1);
-    -webkit-animation-fill-mode: forwards;
-    -moz-animation-fill-mode: forwards;
-    -ms-animation-fill-mode: forwards;
-    -o-animation-fill-mode: forwards;
-    animation-fill-mode: forwards;
-    &:nth-child(1) {
-      animation-delay: 6ms;
-    }
-    &:nth-child(2) {
-      animation-delay: 5ms;
-    }
-    &:nth-child(3) {
-      animation-delay: 4ms;
-    }
-    &:nth-child(4) {
-      animation-delay: 0.03s;
-    }
-    &:nth-child(5) {
-      animation-delay: 2ms;
-    }
-    &:nth-child(6) {
-      animation-delay: 1ms;
+.site-menu.overlay {
+  display: block;
+  .site-menu-content {
+    .button {
+      .line-container {
+        opacity: 0;
+        animation: left-fadein 600ms cubic-bezier(0.19, 1, 0.22, 1);
+        -webkit-animation-fill-mode: forwards;
+        -moz-animation-fill-mode: forwards;
+        -ms-animation-fill-mode: forwards;
+        -o-animation-fill-mode: forwards;
+        animation-fill-mode: forwards;
+      }
+      &:nth-child(1) {
+        .line-container {
+          animation-delay: 30ms;
+        }
+      }
+      &:nth-child(2) {
+        .line-container {
+          animation-delay: 60ms;
+        }
+      }
+      &:nth-child(3) {
+        .line-container {
+          animation-delay: 90ms;
+        }
+      }
+      &:nth-child(4) {
+        .line-container {
+          animation-delay: 120ms;
+        }
+      }
+      &:nth-child(5) {
+        .line-container {
+          animation-delay: 150ms;
+        }
+      }
+      &:nth-child(6) {
+        .line-container {
+          animation-delay: 180ms;
+        }
+      }
     }
   }
 }
-.site-menu.overlay {
-  display: block;
-  .button:not(.button__menu) {
-    opacity: 0;
-    animation: right-fadein 600ms cubic-bezier(0.19, 1, 0.22, 1);
-    -webkit-animation-fill-mode: forwards;
-    -moz-animation-fill-mode: forwards;
-    -ms-animation-fill-mode: forwards;
-    -o-animation-fill-mode: forwards;
-    animation-fill-mode: forwards;
-    &:nth-child(1) {
-      animation-delay: 6ms;
-    }
-    &:nth-child(2) {
-      animation-delay: 12ms;
-    }
-    &:nth-child(3) {
-      animation-delay: 18ms;
-    }
-    &:nth-child(4) {
-      animation-delay: 24ms;
-    }
-    &:nth-child(5) {
-      animation-delay: 30ms;
-    }
-    &:nth-child(6) {
-      animation-delay: 36ms;
+.site-menu.overlay.fadeout {
+  opacity: 1 !important;
+  transform: none !important;
+  .site-menu-content {
+    .button {
+      .line-container {
+        opacity: 1;
+        animation: right-fadeout 300ms cubic-bezier(0.19, 1, 0.22, 1);
+        -webkit-animation-fill-mode: forwards;
+        -moz-animation-fill-mode: forwards;
+        -ms-animation-fill-mode: forwards;
+        -o-animation-fill-mode: forwards;
+        animation-fill-mode: forwards;
+      }
+      &:nth-child(1) {
+        .line-container {
+          animation-delay: 6ms;
+        }
+      }
+      &:nth-child(2) {
+        .line-container {
+          animation-delay: 5ms;
+        }
+      }
+      &:nth-child(3) {
+        .line-container {
+          animation-delay: 4ms;
+        }
+      }
+      &:nth-child(4) {
+        .line-container {
+          animation-delay: 0.03s;
+        }
+      }
+      &:nth-child(5) {
+        .line-container {
+          animation-delay: 2ms;
+        }
+      }
+      &:nth-child(6) {
+        .line-container {
+          animation-delay: 1ms;
+        }
+      }
     }
   }
 }
@@ -896,6 +929,16 @@ pre {
     transform: translateY(0px);
   }
 }
+@keyframes left-fadein {
+  0% {
+    opacity: 0;
+    transform: translateX(-0.618rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
 @keyframes right-fadein {
   0% {
     opacity: 0;
@@ -906,27 +949,13 @@ pre {
     transform: translateX(0px);
   }
 }
-@keyframes left-fadeout {
+@keyframes right-fadeout {
   0% {
     opacity: 1;
     transform: translateX(0px);
   }
   100% {
     opacity: 0;
-    transform: translateX(-0.618rem);
+    transform: translateX(0.618rem);
   }
 }
-
-//////////////////////
-// testing
-//////////////////////
-
-/*
-.site-header-top,
-.site-menu {
-  opacity: 0.5 !important;
-}
-html.overlay body {
-  overflow: scroll !important;
-}
-*/
