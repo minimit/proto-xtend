@@ -472,19 +472,19 @@ a:not(.button):hover:not(.active), a:not(.button).hover:not(.active), a:not(.but
   will-change: margin-bottom;
 }
 
-/*
-.collapse-height {
+.a-horizontal {
   opacity: 0;
   transform: translateX(-0.618rem);
-  transition: all 300ms cubic-bezier(.63,.36,0,.97);
-  &.fadein {
-    opacity: 1;
-    transform: translateX(0);
-    transition: all 300ms cubic-bezier(.63,.36,0,.97);
-  }
-  &.fadeout {
-    opacity: 0;
-    transform: translateX(0.618rem);
-  }
+  transition: all 300ms cubic-bezier(0.63, 0.36, 0, 0.97);
 }
-*/
+
+.a-horizontal.fadein {
+  opacity: 1;
+  transform: translateX(0);
+  transition: all 300ms cubic-bezier(0.63, 0.36, 0, 0.97);
+}
+
+.a-horizontal.fadeout {
+  opacity: 0;
+  transform: translateX(0.618rem);
+}

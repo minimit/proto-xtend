@@ -557,40 +557,45 @@
     var group = this.group;
     var $group = $(this.group);
     // on
-    var doneon = function() {
-      $el.removeClass('fadein');
-      // collapse-height
-      object.autoHeight($el);
-      // api
-      if (!triggered) {
-        $el.trigger('fadein.xt', [object, true]);
-      }
-    };
     $el.addClass(settings.class);
-    $el.addClass('fadein');
     $el.removeClass('fadeout');
-    // fadein
     clearTimeout($el.data('fade.timeout'));
     $el.off('transitionend.xt');
-    if (settings.fadeout) {
-      var timeout = window.setTimeout(function() {
-        doneon();
-      }, settings.fadeout);
-      $el.data('fade.timeout', timeout);
-    } else if ($el.css('transitionDuration') !== '0s') {
-      $el.on('transitionend.xt', function(e) {
-        if (e.target === this) {
-          doneon();
-        }
-      });
-    } else {
-      doneon();
-    }
+    // fadein
+    window.xtRequestAnimationFrame(function() {
+      $el.addClass('fadein');
+      if (settings.fadeout) {
+        var timeout = window.setTimeout(function(object, $el) {
+          object.onDone($el, triggered);
+        }, settings.fadeout, object, $el);
+        $el.data('fade.timeout', timeout);
+      } else if ($el.css('transitionDuration') !== '0s') {
+        $el.one('transitionend.xt', function(e) {
+          object.onDone($el);
+        });
+      } else {
+        object.onDone($el, triggered);
+      }
+    });
     // collapse-height
-    object.onHeight($el);
+    object.onHeight($el, triggered);
     // api
     if (!triggered) {
       $el.trigger('on.xt', [object, true]);
+    }
+  };
+  
+  Xt.prototype.onDone = function($el, triggered) {
+    var object = this;
+    var settings = this.settings;
+    var group = this.group;
+    var $group = $(this.group);
+    // when animation is done
+    // collapse-height
+    object.autoHeight($el);
+    // api
+    if (!triggered) {
+      $el.trigger('fadein.xt', [object, true]);
     }
   };
   
@@ -600,41 +605,47 @@
     var group = this.group;
     var $group = $(this.group);
     // off
-    var doneoff = function() {
-      $el.removeClass(settings.class);
-      $el.removeClass('fadeout');
-      // api
-      if (!triggered) {
-        $el.trigger('fadeout.xt', [object, true]);
-      }
-    };
     $el.removeClass('fadein');
-    $el.addClass('fadeout');
-    // fadeout
     clearTimeout($el.data('fade.timeout'));
     $el.off('transitionend.xt');
-    if (settings.fadeout) {
-      var timeout = window.setTimeout(function() {
-        doneoff();
-      }, settings.fadeout);
-      $el.data('fade.timeout', timeout);
-    } else if ($el.css('transitionDuration') !== '0s') {
-      $el.on('transitionend.xt', function(e) {
-        if (e.target === this) {
-          doneoff();
-        }
-      });
-    } else {
-      doneoff();
-    }
-    // collapse-height
-    object.onHeight($el);
+    // fadeout
     window.xtRequestAnimationFrame(function() {
-      object.offHeight($el);
+      $el.addClass('fadeout');
+      if (settings.fadeout) {
+        var timeout = window.setTimeout(function(object, $el) {
+          object.offDone($el);
+        }, settings.fadeout, object, $el);
+        $el.data('fade.timeout', timeout);
+      } else if ($el.css('transitionDuration') !== '0s') {
+        $el.one('transitionend.xt', function(e) {
+          object.offDone($el);
+        });
+      } else {
+        object.offDone($el, triggered);
+      }
+    });
+    // collapse-height
+    object.onHeight($el, triggered);
+    window.xtRequestAnimationFrame(function() {
+      object.offHeight($el, triggered);
     });
     // api
     if (!triggered) {
       $el.trigger('off.xt', [object, true]);
+    }
+  };
+  
+  Xt.prototype.offDone = function($el, triggered) {
+    var object = this;
+    var settings = this.settings;
+    var group = this.group;
+    var $group = $(this.group);
+    // when animation is done
+    $el.removeClass(settings.class);
+    $el.removeClass('fadeout');
+    // api
+    if (!triggered) {
+      $el.trigger('fadeout.xt', [object, true]);
     }
   };
   
