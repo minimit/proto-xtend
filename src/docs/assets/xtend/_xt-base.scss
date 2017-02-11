@@ -112,18 +112,23 @@ a, button {
 // xt
 //////////////////////
 
-.xt-container {
+.xt-outside,
+.xt-inside {
   @include box;
 }
 
 //////////////////////
-// collapse-height
+// animations
 //////////////////////
 
-.collapse-height {
+// .a-height
+.a-height {
   overflow: hidden;
   height: 0;
 } 
-.collapse-height-inside {
-  @include box;
-}
+
+// .a-width
+.a-width {
+  overflow: hidden;
+  width: 0;
+} 

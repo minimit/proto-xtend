@@ -194,7 +194,7 @@
     // $targets
     if (settings.name === 'xt-scroll') {
       // xt-scroll $targets
-      $group.wrap($('<div class="xt-container"></div>'));
+      $group.wrap($('<div class="xt-outside"></div>'));
       settings.$targets = $group.clone().addClass('xt-clone xt-ignore').css('visibility', 'hidden');
       $.each(settings.$targets.data(), function (i) {
         settings.$targets.removeAttr("data-" + i);
@@ -355,7 +355,7 @@
     $(window).on(scrollNamespace, function(e) {
       var scrollTop = $(this).scrollTop();
       // show or hide
-      var top = settings.$targets.parents('.xt-container').offset().top;
+      var top = settings.$targets.parents('.xt-outside').offset().top;
       var bottom = Infinity;
       if (settings.top) {
         if (!isNaN(parseFloat(settings.top))) {
@@ -577,8 +577,9 @@
         object.onDone($el, triggered);
       }
     });
-    // collapse-height
+    // animations
     object.onHeight($el, triggered);
+    object.onWidth($el, triggered);
     // api
     if (!triggered) {
       $el.trigger('on.xt', [object, true]);
@@ -591,8 +592,13 @@
     var group = this.group;
     var $group = $(this.group);
     // when animation is done
-    // collapse-height
-    object.autoHeight($el);
+    // animations
+    if ($el.hasClass('a-height')) {
+      $el.css('height', 'auto');
+    }
+    if ($el.hasClass('a-width')) {
+      $el.css('width', 'auto');
+    }
     // api
     if (!triggered) {
       $el.trigger('fadein.xt', [object, true]);
@@ -624,10 +630,12 @@
         object.offDone($el, triggered);
       }
     });
-    // collapse-height
+    // animations
     object.onHeight($el, triggered);
+    object.onWidth($el, triggered);
     window.xtRequestAnimationFrame(function() {
       object.offHeight($el, triggered);
+      object.offWidth($el, triggered);
     });
     // api
     if (!triggered) {
@@ -650,33 +658,52 @@
   };
   
   Xt.prototype.onHeight = function($el) {
-    // collapse-height fadein
-    if ($el.hasClass('collapse-height')) {
-      var $inside = $el.find('.collapse-height-inside');
+    // animation fadein
+    if ($el.hasClass('a-height')) {
+      var $inside = $el.find('.xt-inside');
       if (!$inside.length) {
-        $el.wrapInner('<div class="collapse-height-inside"></div>');
-        $inside = $el.find('.collapse-height-inside');
+        $el.wrapInner('<div class="xt-inside"></div>');
+        $inside = $el.find('.xt-inside');
       }
       var h = $inside.outerHeight();
       $el.css('height', h);
-      $el.parents('.collapse-top').css("margin-top", -h);
-      $el.parents('.collapse-bottom').css("margin-bottom", -h);
+      $el.parents('.a-height-top').css("margin-top", -h);
+      $el.parents('.a-height-bottom').css("margin-bottom", -h);
     }
   };
   
   Xt.prototype.offHeight = function($el) {
-    // collapse-height fadeout
-    if ($el.hasClass('collapse-height')) {
+    // animation fadeout
+    if ($el.hasClass('a-height')) {
       $el.css('height', 0);
-      $el.parents('.collapse-top').css("margin-top", 0);
-      $el.parents('.collapse-bottom').css("margin-bottom", 0);
+      $el.parents('.a-height-top').css("margin-top", 0);
+      $el.parents('.a-height-bottom').css("margin-bottom", 0);
     }
   };
   
-  Xt.prototype.autoHeight = function($el) {
-    // collapse-height auto
-    if ($el.hasClass('collapse-height')) {
-      $el.css('height', 'auto');
+  Xt.prototype.onWidth = function($el) {
+    // animation fadein
+    if ($el.hasClass('a-width')) {
+      var $outside = $el.parent();
+      var $inside = $el.find('.xt-inside');
+      if (!$inside.length) {
+        $el.wrapInner('<div class="xt-inside"></div>');
+        $inside = $el.find('.xt-inside');
+      }
+      var w = $outside.outerWidth();
+      $inside.css('width', w);
+      $el.css('width', w);
+      $el.parents('.a-width-left').css("margin-left", -w);
+      $el.parents('.a-width-right').css("margin-right", -w);
+    }
+  };
+  
+  Xt.prototype.offWidth = function($el) {
+    // animation fadeout
+    if ($el.hasClass('a-width')) {
+      $el.css('width', 0);
+      $el.parents('.a-width-left').css("margin-left", 0);
+      $el.parents('.a-width-right').css("margin-right", 0);
     }
   };
   

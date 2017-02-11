@@ -261,18 +261,48 @@ a:not(.button) {
 // animations
 //////////////////////
 
-// .collapse-height
-.collapse-height {
+// .a-height
+.a-height {
   transition: height 0.3s cubic-bezier(.63,.36,0,.97);
   will-change: height;
 }
-.collapse-top {
+.a-height-top {
   transition: margin-top 0.3s cubic-bezier(.63,.36,0,.97);
   will-change: margin-top;
 }
-.collapse-bottom {
+.a-height-bottom {
   transition: margin-bottom 0.3s cubic-bezier(.63,.36,0,.97);
   will-change: margin-bottom;
+}
+
+// .a-width
+.a-width {
+  transition: width 0.3s cubic-bezier(.63,.36,0,.97);
+  will-change: width;
+}
+.a-width-left {
+  transition: margin-left 0.3s cubic-bezier(.63,.36,0,.97);
+  will-change: margin-left;
+}
+.a-width-right {
+  transition: margin-right 0.3s cubic-bezier(.63,.36,0,.97);
+  will-change: margin-right;
+}
+
+// .a-vertical
+.a-vertical {
+  opacity: 0;
+  transform: translateY(-0.618rem);
+  transition: all 300ms cubic-bezier(.63,.36,0,.97);
+}
+.a-vertical.fadein {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 300ms cubic-bezier(.63,.36,0,.97);
+}
+.a-vertical.fadeout {
+  opacity: 0;
+  transform: translateY(0.618rem);
 }
 
 // .a-horizontal

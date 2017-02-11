@@ -176,16 +176,16 @@ order: 10
   </div>
 </div>
 
-<h3>Height</h3>
+<h3>Height Animation</h3>
 <div class="demo">
   <div class="demo-item demo-preview" data-name="default">
-    <div class="demo-text"><code>.collapse-height</code> to the "targets"</div>
+    <div class="demo-text"><code>.a-height</code> to the "targets"</div>
     <div class="demo-source" data-lang="html">
-<div class="spacer" data-xt-toggle='{"elements": ".button", "targets": ".collapse-height"}'>
+<div class="spacer" data-xt-toggle='{"elements": ".button", "targets": ".a-height"}'>
   <button class="button color-primary">
     toggle
   </button>
-  <div class="hide collapse-height">
+  <div class="hide a-height">
     <div class="card card-block">
       Target
     </div>
@@ -194,13 +194,13 @@ order: 10
     </div>
   </div>
   <div class="demo-item demo-preview" data-name="animations">
-    <div class="demo-text"><code>.a-horizontal</code></div>
+    <div class="demo-text"><code>.a-height.a-vertical</code></div>
     <div class="demo-source" data-lang="html">
-<div class="spacer" data-xt-toggle='{"elements": ".button", "targets": ".collapse-height"}'>
+<div class="spacer" data-xt-toggle='{"elements": ".button", "targets": ".a-height"}'>
   <button class="button color-primary">
     toggle
   </button>
-  <div class="hide collapse-height a-horizontal">
+  <div class="hide a-height a-vertical">
     <div class="card card-block">
       Target
     </div>
@@ -211,11 +211,11 @@ order: 10
   <div class="demo-item demo-preview" data-name="events">
     <div class="demo-text"><code>mouseenter</code> and <code>mouseleave</code></div>
     <div class="demo-source" data-lang="html">
-<div class="spacer" data-xt-toggle='{"elements": ".button", "on": "mouseenter", "off": "mouseleave", "targets": ".collapse-height"}'>
+<div class="spacer" data-xt-toggle='{"elements": ".button", "on": "mouseenter", "off": "mouseleave", "targets": ".a-height"}'>
   <div class="button color-primary">
     toggle
   </div>
-  <div class="hide collapse-height">
+  <div class="hide a-height">
     <div class="card card-block">
       Target
     </div>
@@ -226,12 +226,12 @@ order: 10
   <div class="demo-item demo-preview" data-name="card">
     <div class="demo-text"><code>.card</code></div>
     <div class="demo-source" data-lang="html">
-<div class="spacer" data-xt-toggle='{"elements": ".card", "on": "mouseenter", "off": "mouseleave", "targets": ".collapse-height"}'>
+<div class="spacer" data-xt-toggle='{"elements": ".card", "on": "mouseenter", "off": "mouseleave", "targets": ".a-height"}'>
   <div class="card">
     <img src="https://placehold.it/330x132/f8f8f8/00B0FF/?text=Image" />
     <div class="card-block">
       <h5 class="card-title">Card title</h5>
-      <div class="hide collapse-height">
+      <div class="hide a-height">
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
       </div>
     </div>
@@ -240,22 +240,112 @@ order: 10
     </div>
   </div>
   <div class="demo-item demo-preview" data-name="absolute">
-    <div class="demo-text"><code>.collapse-top</code> or <code>.collapse-bottom</code></div>
+    <div class="demo-text"><code>.a-height-top</code> or <code>.a-height-bottom</code></div>
     <div class="demo-source" data-lang="html">
-<div class="spacer" data-xt-toggle='{"elements": ".card", "on": "mouseenter", "off": "mouseleave", "targets": ".collapse-height"}'>
+<div class="spacer" data-xt-toggle='{"elements": ".card", "on": "mouseenter", "off": "mouseleave", "targets": ".a-height"}'>
   <div class="card">
     <img src="https://placehold.it/330x132/f8f8f8/00B0FF/?text=Image" />
-    <div class="card-block collapse-top">
+    <div class="card-block a-height-top">
       <h5 class="card-title">Card title</h5>
-      <div class="hide collapse-height">
+      <div class="hide a-height">
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
       </div>
     </div>
   </div>
   <div class="card">
-    <div class="card-block collapse-bottom">
+    <div class="card-block a-height-bottom">
       <h5 class="card-title">Card title</h5>
-      <div class="hide collapse-height">
+      <div class="hide a-height">
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      </div>
+    </div>
+    <img src="https://placehold.it/330x132/f8f8f8/00B0FF/?text=Image" />
+  </div>
+</div>
+    </div>
+  </div>
+</div>
+
+<h3>Width Animation</h3>
+<div class="demo">
+  <div class="demo-item demo-preview" data-name="default">
+    <div class="demo-text"><code>.a-width</code> to the "targets"</div>
+    <div class="demo-source" data-lang="html">
+<div class="spacer" data-xt-toggle='{"elements": ".button", "targets": ".a-width"}'>
+  <button class="button color-primary">
+    toggle
+  </button>
+  <div class="hide a-width">
+    <div class="card card-block">
+      Target
+    </div>
+  </div>
+</div>
+    </div>
+  </div>
+  <div class="demo-item demo-preview" data-name="animations">
+    <div class="demo-text"><code>.a-width.a-horizontal</code></div>
+    <div class="demo-source" data-lang="html">
+<div class="spacer" data-xt-toggle='{"elements": ".button", "targets": ".a-width"}'>
+  <button class="button color-primary">
+    toggle
+  </button>
+  <div class="hide a-width a-horizontal">
+    <div class="card card-block">
+      Target
+    </div>
+  </div>
+</div>
+    </div>
+  </div>
+  <div class="demo-item demo-preview" data-name="events">
+    <div class="demo-text"><code>mouseenter</code> and <code>mouseleave</code></div>
+    <div class="demo-source" data-lang="html">
+<div class="spacer" data-xt-toggle='{"elements": ".button", "on": "mouseenter", "off": "mouseleave", "targets": ".a-width"}'>
+  <div class="button color-primary">
+    toggle
+  </div>
+  <div class="hide a-width">
+    <div class="card card-block">
+      Target
+    </div>
+  </div>
+</div>
+    </div>
+  </div>
+  <div class="demo-item demo-preview" data-name="card">
+    <div class="demo-text"><code>.card</code></div>
+    <div class="demo-source" data-lang="html">
+<div class="spacer" data-xt-toggle='{"elements": ".card", "on": "mouseenter", "off": "mouseleave", "targets": ".a-width"}'>
+  <div class="card">
+    <img src="https://placehold.it/330x132/f8f8f8/00B0FF/?text=Image" />
+    <div class="card-block">
+      <h5 class="card-title">Card title</h5>
+      <div class="hide a-width">
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      </div>
+    </div>
+  </div>
+</div>
+    </div>
+  </div>
+  <div class="demo-item demo-preview" data-name="absolute">
+    <div class="demo-text"><code>.a-height-left</code> or <code>.a-height-right</code></div>
+    <div class="demo-source" data-lang="html">
+<div class="spacer" data-xt-toggle='{"elements": ".card", "on": "mouseenter", "off": "mouseleave", "targets": ".a-width"}'>
+  <div class="card">
+    <img src="https://placehold.it/330x132/f8f8f8/00B0FF/?text=Image" />
+    <div class="card-block a-height-left">
+      <h5 class="card-title">Card title</h5>
+      <div class="hide a-width">
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-block a-height-right">
+      <h5 class="card-title">Card title</h5>
+      <div class="hide a-width">
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
       </div>
     </div>
