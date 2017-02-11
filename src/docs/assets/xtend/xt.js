@@ -557,32 +557,37 @@
     var group = this.group;
     var $group = $(this.group);
     // on
+    var doneon = function() {
+      $el.removeClass('fadein');
+      // collapse-height
+      object.autoHeight($el);
+      // api
+      if (!triggered) {
+        $el.trigger('fadein.xt', [object, true]);
+      }
+    };
     $el.addClass(settings.class);
+    $el.addClass('fadein');
     $el.removeClass('fadeout');
-    clearTimeout($el.data('fadeout.timeout'));
-    $el.off('transitionend.xt');
     // fadein
-    if (settings.fadein || $el.css('transitionDuration') !== '0s') {
-      window.xtRequestAnimationFrame(function() {
-        $el.addClass('fadein');
-        // api
-        if (!triggered) {
-          $el.trigger('fadein.xt', [object, true]);
+    clearTimeout($el.data('fade.timeout'));
+    $el.off('transitionend.xt');
+    if (settings.fadeout) {
+      var timeout = window.setTimeout(function() {
+        doneon();
+      }, settings.fadeout);
+      $el.data('fade.timeout', timeout);
+    } else if ($el.css('transitionDuration') !== '0s') {
+      $el.on('transitionend.xt', function(e) {
+        if (e.target === this) {
+          doneon();
         }
       });
+    } else {
+      doneon();
     }
-    // collapse-height fadein
-    if ($el.hasClass('collapse-height')) {
-      var $inside = $el.find('.collapse-height-inside');
-      if (!$inside.length) {
-        $el.wrapInner('<div class="collapse-height-inside"></div>');
-        $inside = $el.find('.collapse-height-inside');
-      }
-      var h = $inside.outerHeight();
-      $el.css('height', h);
-      $el.parents('.collapse-top').css("margin-top", -h);
-      $el.parents('.collapse-bottom').css("margin-bottom", -h);
-    }
+    // collapse-height
+    object.onHeight($el);
     // api
     if (!triggered) {
       $el.trigger('on.xt', [object, true]);
@@ -595,7 +600,7 @@
     var group = this.group;
     var $group = $(this.group);
     // off
-    var realoff = function() {
+    var doneoff = function() {
       $el.removeClass(settings.class);
       $el.removeClass('fadeout');
       // api
@@ -606,30 +611,61 @@
     $el.removeClass('fadein');
     $el.addClass('fadeout');
     // fadeout
-    clearTimeout($el.data('fadeout.timeout'));
+    clearTimeout($el.data('fade.timeout'));
+    $el.off('transitionend.xt');
     if (settings.fadeout) {
       var timeout = window.setTimeout(function() {
-        realoff();
+        doneoff();
       }, settings.fadeout);
-      $el.data('fadeout.timeout', timeout);
+      $el.data('fade.timeout', timeout);
     } else if ($el.css('transitionDuration') !== '0s') {
-      $el.off('transitionend.xt').on('transitionend.xt', function(e) {
+      $el.on('transitionend.xt', function(e) {
         if (e.target === this) {
-          realoff();
+          doneoff();
         }
       });
     } else {
-      realoff();
+      doneoff();
     }
+    // collapse-height
+    object.onHeight($el);
+    window.xtRequestAnimationFrame(function() {
+      object.offHeight($el);
+    });
+    // api
+    if (!triggered) {
+      $el.trigger('off.xt', [object, true]);
+    }
+  };
+  
+  Xt.prototype.onHeight = function($el) {
+    // collapse-height fadein
+    if ($el.hasClass('collapse-height')) {
+      var $inside = $el.find('.collapse-height-inside');
+      if (!$inside.length) {
+        $el.wrapInner('<div class="collapse-height-inside"></div>');
+        $inside = $el.find('.collapse-height-inside');
+      }
+      var h = $inside.outerHeight();
+      $el.css('height', h);
+      $el.parents('.collapse-top').css("margin-top", -h);
+      $el.parents('.collapse-bottom').css("margin-bottom", -h);
+    }
+  };
+  
+  Xt.prototype.offHeight = function($el) {
     // collapse-height fadeout
     if ($el.hasClass('collapse-height')) {
       $el.css('height', 0);
       $el.parents('.collapse-top').css("margin-top", 0);
       $el.parents('.collapse-bottom').css("margin-bottom", 0);
     }
-    // api
-    if (!triggered) {
-      $el.trigger('off.xt', [object, true]);
+  };
+  
+  Xt.prototype.autoHeight = function($el) {
+    // collapse-height auto
+    if ($el.hasClass('collapse-height')) {
+      $el.css('height', 'auto');
     }
   };
   

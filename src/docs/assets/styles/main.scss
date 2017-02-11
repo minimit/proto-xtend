@@ -794,8 +794,7 @@ pre {
   // settings
   .site-breadcrumbs {
     // animations
-    &.scroll-on-top,
-    &.scroll-on-bottom {
+    &.scroll {
       z-index: 71 !important;
       .site-breadcrumbs-meta,
       .show-scroll {
