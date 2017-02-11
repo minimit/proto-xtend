@@ -150,7 +150,7 @@
     // override with html settings
     $.extend(settings, $group.data(settings.name));
     // setup
-    object.scoping();
+    object.scope();
     object.namespace();
     object.setup();
     object.events();
@@ -173,7 +173,7 @@
     $group.attr('data-xt-namespace', settings.namespace);
   };
   
-  Xt.prototype.scoping = function() {
+  Xt.prototype.scope = function() {
     var object = this;
     var settings = this.settings;
     var group = this.group;
@@ -853,11 +853,12 @@
           settings.$targets.html($html);
           settings.$targets.attr('data-xt-ajaxified', url);
           // reinit $elements and events
-          object.scoping();
+          object.scope();
           object.events();
           // pushstate
           object.pushstate(url, title);
           // api
+          settings.$targets.xtInitAll(true); // init xt
           settings.$targets.trigger('ajax.populated.xt', [object, $data]);
         },
         error: function(jqXHR, textStatus, errorThrown) {

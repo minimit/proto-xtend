@@ -1,6 +1,6 @@
 ---
 title: Scroll
-description: Scroll component
+description: Lorem Ipsum
 
 categories: [Javascript]
 order: 30
@@ -8,17 +8,24 @@ order: 30
 
 <h2>Usage</h2>
 
-<h3>Initialization</h3>
+<h3>Setup</h3>
 
 <p class="lead">Html Initialization</p>
+
 <pre><code class="html">
 &lt;div class="element" data-xt-scroll&gt;&lt;/div&gt;
 &lt;div class="element" data-xt-scroll='{"top": "#top", "bottom": "#bottom"}'&gt;&lt;/div&gt;
 </code></pre>
+
+<div class="alert alert-danger">
+  <strong>Important:</strong> the plugin's attributes <strong>must be a valid json format</strong>, so with double quotes inside.
+</div>
+
 <pre><code class="js">
 $('.element').xtInitAll(); // init only '.element'
-$('html').xtInitAll(true); // init 'html' and all descendants
+$('body').xtInitAll(true); // init 'html' and all descendants
 </code></pre>
+
 <!--
 <p>The scroll plugin adds to the "element" and body the <code>.scroll</code> class when the windows is top reach the element.</p>
 <p>The plugin clones the "element" and hides it, so it adds the space of the "element" also if it's <code>position: fixed;</code>, it works with responsive automatically.</p>
@@ -26,13 +33,16 @@ $('html').xtInitAll(true); // init 'html' and all descendants
 -->
 
 <p class="lead">Js Initialization</p>
+
 <pre><code class="js">
 $('.element').xtScroll();
 $('.element').xtScroll({"top": "#top", "bottom": "#bottom"});
 </code></pre>
 
 <h3>Scss</h3>
-<p>@TODO @mixin xt-scroll</p>
+
+<p>@TODO table @mixin xt-scroll</p>
+
 <pre><code class="scss">
 @include xt-scroll('.card[data-xt-scroll]');
 // absolute when not scrolling
@@ -41,7 +51,13 @@ $('.element').xtScroll({"top": "#top", "bottom": "#bottom"});
 @include xt-scroll('.card[data-xt-scroll]', '.scroll-card', 'top', 56px);
 </code></pre>
 
-<h2>Demos</h2>
+<h2>Api</h2>
+
+<p>@TODO table api</p>
+<p>@TODO link javascript modes</p>
+<p>@TODO link animations</p>
+
+<h2>Examples</h2>
 
 <div class="demo">
   <div class="demo-item" data-iframe="{{ site.baseurl }}demos/xtend/scroll-0.html" data-name="basic">

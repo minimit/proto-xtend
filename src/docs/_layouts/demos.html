@@ -39,7 +39,7 @@
       // outside iframe
       if (window.self === window.top) {
         $(document).ready( function() {
-          $('html').xtInitAll(true);
+          $('body').xtInitAll(true);
         });
       }
       // inside iframe
@@ -47,7 +47,7 @@
         // add id
         $('html').attr('id', document.location.href.match(/[^\/]+$/)[0]);
         // xtInitAll
-        $('html').xtInitAll(true);
+        $('body').xtInitAll(true);
         // https://github.com/marcj/css-element-queries
         if (!$('html').hasClass('full')) {
           new ResizeSensor(document.getElementById('body-inside'), function() {

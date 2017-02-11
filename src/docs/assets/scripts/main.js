@@ -277,22 +277,29 @@
   
   // init main
   
-  main($('html'));
+  main($('body'));
   
   //////////////////////
   // xtend
   //////////////////////
   
   // init xt
-  $('html').xtInitAll(true);
-  $('html').xtAjax({'elements': 'a[href^="/"]', 'targets': '.site-wrapper'});
+  $('body').xtInitAll(true);
+  $('body').xtAjax({'elements': 'a[href^="/"]', 'targets': '.site-wrapper'});
   
   // xt-ajax
   $('.site-wrapper').on('ajax.populated.xt', function(e, obj, $data) {
-    main($(this)); // custom function on ajax
-    $(this).xtInitAll(true); // init xt
+    // custom function on ajax
+    main($(this));
   });
   
+  /*
+  // test ajax stop page from changing
+  function unloadPage(){
+   return false;
+  }
+  window.onbeforeunload = unloadPage;
+  */
   /*
   $('.button__menu').filter(':parents(.xt-ignore)').on('on.xt', function(e, obj, triggered, isSync) {
     console.log(triggered, $('.button__menu').filter(':parents(.xt-ignore)').length, $('.button__menu').filter(':parents(.xt-ignore)').not(this).length);
