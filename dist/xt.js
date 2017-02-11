@@ -578,8 +578,8 @@
       }
     });
     // animations
-    object.onHeight($el, triggered);
     object.onWidth($el, triggered);
+    object.onHeight($el, triggered);
     // api
     if (!triggered) {
       $el.trigger('on.xt', [object, true]);
@@ -631,11 +631,11 @@
       }
     });
     // animations
-    object.onHeight($el, triggered);
     object.onWidth($el, triggered);
+    object.onHeight($el, triggered);
     window.xtRequestAnimationFrame(function() {
-      object.offHeight($el, triggered);
       object.offWidth($el, triggered);
+      object.offHeight($el, triggered);
     });
     // api
     if (!triggered) {
@@ -654,6 +654,36 @@
     // api
     if (!triggered) {
       $el.trigger('fadeout.xt', [object, true]);
+    }
+  };
+  
+  Xt.prototype.onWidth = function($el) {
+    // animation fadein
+    if ($el.hasClass('a-width')) {
+      var $outside = $el.parents('.xt-outside');
+      if (!$outside.length) {
+        $el.wrap('<div class="xt-outside"></div>');
+        $outside = $el.parents('.xt-outside');
+      }
+      var $inside = $el.find('.xt-inside');
+      if (!$inside.length) {
+        $el.wrapInner('<div class="xt-inside"></div>');
+        $inside = $el.find('.xt-inside');
+      }
+      var w = $outside.outerWidth();
+      $inside.css('width', w);
+      $el.css('width', w);
+      $el.parents('.a-width-left').css("margin-left", -w);
+      $el.parents('.a-width-right').css("margin-right", -w);
+    }
+  };
+  
+  Xt.prototype.offWidth = function($el) {
+    // animation fadeout
+    if ($el.hasClass('a-width')) {
+      $el.css('width', 0);
+      $el.parents('.a-width-left').css("margin-left", 0);
+      $el.parents('.a-width-right').css("margin-right", 0);
     }
   };
   
@@ -678,32 +708,6 @@
       $el.css('height', 0);
       $el.parents('.a-height-top').css("margin-top", 0);
       $el.parents('.a-height-bottom').css("margin-bottom", 0);
-    }
-  };
-  
-  Xt.prototype.onWidth = function($el) {
-    // animation fadein
-    if ($el.hasClass('a-width')) {
-      var $outside = $el.parent();
-      var $inside = $el.find('.xt-inside');
-      if (!$inside.length) {
-        $el.wrapInner('<div class="xt-inside"></div>');
-        $inside = $el.find('.xt-inside');
-      }
-      var w = $outside.outerWidth();
-      $inside.css('width', w);
-      $el.css('width', w);
-      $el.parents('.a-width-left').css("margin-left", -w);
-      $el.parents('.a-width-right').css("margin-right", -w);
-    }
-  };
-  
-  Xt.prototype.offWidth = function($el) {
-    // animation fadeout
-    if ($el.hasClass('a-width')) {
-      $el.css('width', 0);
-      $el.parents('.a-width-left').css("margin-left", 0);
-      $el.parents('.a-width-right').css("margin-right", 0);
     }
   };
   

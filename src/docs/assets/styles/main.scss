@@ -14,9 +14,6 @@
 // bootstrap
 //////////////////////
 
-.card {
-  width: 332px;
-}
 .card-block {
   position: relative;
   background: #ffffff;
@@ -611,9 +608,6 @@ $button__menu_pixels: 1px;
     font-size: 17px;
     color: $color-primary;
     line-height: 1;
-    [class^="icon-"],
-    [class*=" icon-"] {
-    }
     #{$hover},
     #{$active} {
       color: $color-primary;
@@ -683,6 +677,9 @@ p code,
     &.active {
       display: block;
     }
+  }
+  .demo-source {
+    line-height: 1.8;
   }
   .demo-item.populated .demo-code-body-item {
     display: none;

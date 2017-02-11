@@ -34,23 +34,6 @@ body {
 }
 
 //////////////////////
-// boxes
-//////////////////////
-
-.box {
-  @include box;
-}
-.hide {
-  display: none !important;
-}
-.hide.active {
-  display: block !important;
-}
-.show {
-  display: block !important;
-}
-
-//////////////////////
 // spacer
 //////////////////////
 
@@ -112,9 +95,20 @@ a, button {
 // xt
 //////////////////////
 
+.box,
 .xt-outside,
 .xt-inside {
   @include box;
+}
+
+.hide {
+  display: none !important;
+}
+.hide.active {
+  display: block !important;
+}
+.show {
+  display: block !important;
 }
 
 //////////////////////
