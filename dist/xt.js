@@ -445,7 +445,8 @@
     if ($element) {
       // show and add in $currents
       if (!$element.hasClass(settings.class)) {
-        object.on(object.getElements(settings.$elements, $element), triggered);
+        var $elements = object.getElements(settings.$elements, $element);
+        object.on($elements, triggered);
         var $currents = object.getCurrents();
         $currents = object.setCurrents($currents.pushElement($element));
         // linked
@@ -469,7 +470,6 @@
           if (!isSync) {
             if ($currents.length > settings.max) {
               var $first = $currents.first();
-              var g = $first.attr('data-group');
               object.hide($first);
             }
           }
@@ -505,7 +505,8 @@
       var $currents = object.getCurrents();
       if ($element.hasClass(settings.class)) {
         if (isSync || settings.name === 'xt-ajax' || $currents.length > settings.min) {
-          object.off(object.getElements(settings.$elements, $element), triggered);
+          var $elements = object.getElements(settings.$elements, $element);
+          object.off($elements, triggered);
           if ($element.attr('data-group')) {
             $currents = object.setCurrents($currents.not('[data-group=' + $element.attr('data-group') + ']'));
           } else {
@@ -738,8 +739,8 @@
   Xt.prototype.getElements = function($elements, $element) {
     if ($element.is('[data-group]')) {
       // with [data-group]
-      var group = $element.attr('data-group');
-      return $elements.filter('[data-group="' + group + '"]');
+      var g = $element.attr('data-group');
+      return $elements.filter('[data-group="' + g + '"]');
     } else {
       // without [data-group]
       return $element;
@@ -749,8 +750,8 @@
   Xt.prototype.getTargets = function($elements, $element, $group) {
     if ($element.is('[data-group]')) {
       // with [data-group]
-      var group = $element.attr('data-group');
-      return $group.filter('[data-group="' + group + '"]');
+      var g = $element.attr('data-group');
+      return $group.filter('[data-group="' + g + '"]');
     } else {
       // without [data-group]
       var index = this.getIndex($elements.not('[data-group]'), $element);
@@ -791,28 +792,41 @@
     return index;
   };
   
-  Xt.prototype.checkDisabled = function($element, force) {
+  Xt.prototype.checkDisabled = function($el, force) {
     var object = this;
     var settings = this.settings;
     var group = this.group;
     var $group = $(this.group);
     // manage [disabled] attribute
+    var str = 'disabled';
     if (settings.on === 'click') {
       if (!force) {
         // automatic based on max
         var $currents = object.getCurrents();
         var min = settings.min;
+        var add;
         if ($currents.length === min) {
-          $currents.attr('disabled', '');
+          add = true;
+          $currents.attr(str, str);
         } else {
-          $currents.removeAttr('disabled');
+          $currents.removeAttr(str);
         }
+        // sync data-group
+        $currents.filter('[data-group]').each( function() {
+          var g = $(this).attr('data-group');
+          var $dataGroup = settings.$elements.not(this).filter('[data-group="' + g + '"]');
+          if (add) {
+            $dataGroup.attr(str, str);
+          } else {
+            $dataGroup.removeAttr(str);
+          }
+        });
       } else if (force === 'disable') {
         // force disable
-        $element.attr('disabled', '');
+        $el.attr(str, str);
       } else if (force === 'enable') {
         // force enable
-        $element.removeAttr('disabled');
+        $el.removeAttr(str);
       }
     }
   };
