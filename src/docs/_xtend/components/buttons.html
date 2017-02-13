@@ -6,28 +6,24 @@ categories: [Components]
 order: 1
 ---
 
-<h2>Setup</h2>
-<p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-
 <h2>Spacer</h2>
-<p>Group a series of buttons together on a single line with the button group. Add on optional JavaScript radio and checkbox style behavior with our buttons plugin.</p>
+<p><code>.spacer</code></p>
 
 <div class="demo">
   <div class="demo-item demo-preview">
     <div class="demo-source" data-lang="html">
 <div class="spacer">
   <button class="button color-primary">
-    lorem ipsum
+    Lorem ipsum
   </button>
   <button class="button color-primary">
-    lorem ipsum
+    Lorem ipsum
   </button>
   <button class="button color-primary">
-    lorem ipsum
+    Lorem ipsum
   </button>
   <button class="button color-primary">
-    lorem ipsum
+    Lorem ipsum
   </button>
 </div>
     </div>
@@ -35,10 +31,10 @@ order: 1
 </div>
 
 <h2>Buttons</h2>
-<p>Use Bootstrap’s custom button styles for actions in forms, dialogs, and more. Includes support for a handful of contextual variations, sizes, states, and more.</p>
 
 <h3>Button Styles</h3>
-<p>Bootstrap includes six predefined button styles, each serving its own semantic purpose.</p>
+<p>Custom styles associated with colors, @TODO link scss colors.</p>
+
 <div class="demo">
   <div class="demo-item demo-preview">
     <div class="demo-source" data-lang="html">
@@ -47,13 +43,13 @@ order: 1
     default
   </button>
   <button class="button color-primary">
-    lorem ipsum
+    Lorem ipsum
   </button>
   <button class="button color-text">
-    lorem ipsum
+    Lorem ipsum
   </button>
   <button class="button color-white">
-    lorem ipsum
+    Lorem ipsum
   </button>
 </div>
     </div>
@@ -61,7 +57,7 @@ order: 1
 </div>
 
 <h3>Button Sizes</h3>
-<p>Fancy larger or smaller buttons? Add .btn-lg or .btn-sm for additional sizes.</p>
+<p><code>.size-xs, size-sm, .size-md, .size-lg</code>.</p>
 <div class="demo">
   <div class="demo-item demo-preview">
     <div class="demo-source" data-lang="html">
@@ -88,54 +84,143 @@ order: 1
 
 <h3>Button Icons</h3>
 
-<p>Icon position left and right.</p>
+<p><code>.left</code> <code>.right</code>, @TODO link icons.</p>
 <div class="demo">
   <div class="demo-item demo-preview">
     <div class="demo-source" data-lang="html">
 <div class="spacer">
   <button class="button color-primary">
     <span class="icon-github left"></span>
-    lorem ipsum
+    default
   </button>
+  <button class="button size-xs color-primary">
+    <span class="icon-github left"></span>
+    size-xs
+  </button>
+  <button class="button size-sm color-primary">
+    <span class="icon-github left"></span>
+    size-sm
+  </button>
+  <button class="button size-md color-primary">
+    <span class="icon-github left"></span>
+    size-md
+  </button>
+  <button class="button size-lg color-primary">
+    <span class="icon-github left"></span>
+    size-lg
+  </button>
+</div>
+    </div>
+  </div>
+  <div class="demo-item demo-preview">
+    <div class="demo-source" data-lang="html">
+<div class="spacer">
   <button class="button color-primary">
-    <span class="icon-twitter left"></span>
-    lorem ipsum
+    <span class="icon-twitter right"></span>
+    default
   </button>
+  <button class="button size-xs color-primary">
+    <span class="icon-twitter right"></span>
+    size-xs
+  </button>
+  <button class="button size-sm color-primary">
+    <span class="icon-twitter right"></span>
+    size-sm
+  </button>
+  <button class="button size-md color-primary">
+    <span class="icon-twitter right"></span>
+    size-md
+  </button>
+  <button class="button size-lg color-primary">
+    <span class="icon-twitter right"></span>
+    size-lg
+  </button>
+</div>
+    </div>
+  </div>
+  <div class="demo-item demo-preview">
+    <div class="demo-source" data-lang="html">
+<div class="spacer">
   <button class="button color-primary">
     <span class="icon-github left"></span>
-    <span class="text">lorem ipsum</span>
+    <span class="icon-twitter right"></span>
+    default
   </button>
-  <button class="button color-primary">
-    <span class="icon-twitter left"></span>
-    <span class="text">lorem ipsum</span>
+  <button class="button size-xs color-primary">
+    <span class="icon-github left"></span>
+    <span class="icon-twitter right"></span>
+    size-xs
+  </button>
+  <button class="button size-sm color-primary">
+    <span class="icon-github left"></span>
+    <span class="icon-twitter right"></span>
+    size-sm
+  </button>
+  <button class="button size-md color-primary">
+    <span class="icon-github left"></span>
+    <span class="icon-twitter right"></span>
+    size-md
+  </button>
+  <button class="button size-lg color-primary">
+    <span class="icon-github left"></span>
+    <span class="icon-twitter right"></span>
+    size-lg
   </button>
 </div>
     </div>
   </div>
 </div>
 
-<p>Icon floats with text.</p>
+<h3>Button Text</h3>
+<p>Wrap the text inside <code>.text</code> to float it retaining <code>.left</code> and <code>.right</code> spacing.</p>
+
 <div class="demo">
   <div class="demo-item demo-preview">
+    <div class="demo-text">Use <code>&lt;br&gt;</code> to add newlines...</div>
     <div class="demo-source" data-lang="html">
 <div class="spacer">
   <button class="button color-primary">
     <span class="icon-github left"></span>
-    <span class="text">lorem<br>ipsum</span>
+    <span class="text">Lorem<br>ipsum</span>
   </button>
   <button class="button color-primary">
     <span class="icon-twitter left"></span>
-    <span class="text">lorem<br>ipsum</span>
+    <span class="text">Lorem<br>ipsum</span>
   </button>
   <button class="button color-primary">
     <span class="icon-github left"></span>
     <span class="icon-twitter right"></span>
-    <span class="text">lorem<br>ipsum</span>
+    <span class="text">Lorem<br>ipsum</span>
   </button>
   <button class="button color-primary">
     <span class="icon-github left"></span>
     <span class="icon-twitter right"></span>
-    <span class="text">lorem<br>ipsum</span>
+    <span class="text">Lorem<br>ipsum</span>
+  </button>
+</div>
+    </div>
+  </div>
+  <div class="demo-item demo-preview">
+    <div class="demo-text">... or <code>.nowrap</code> and width.</div>
+    <div class="demo-source" data-lang="html">
+<div class="spacer">
+  <button class="button color-primary" style="width: 150px;">
+    <span class="icon-github left"></span>
+    <span class="text nowrap">Lorem ipsum dolor sit amet, consectetur adipiscing elit</span>
+  </button>
+  <button class="button color-primary" style="width: 150px;">
+    <span class="icon-twitter left"></span>
+    <span class="text nowrap">Lorem ipsum dolor sit amet, consectetur adipiscing elit</span>
+  </button>
+  <button class="button color-primary" style="width: 150px;">
+    <span class="icon-github left"></span>
+    <span class="icon-twitter right"></span>
+    <span class="text nowrap">Lorem ipsum dolor sit amet, consectetur adipiscing elit</span>
+  </button>
+  <button class="button color-primary" style="width: 150px;">
+    <span class="icon-github left"></span>
+    <span class="icon-twitter right"></span>
+    <span class="text nowrap">Lorem ipsum dolor sit amet, consectetur adipiscing elit</span>
   </button>
 </div>
     </div>

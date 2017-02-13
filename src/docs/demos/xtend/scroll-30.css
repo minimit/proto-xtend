@@ -94,6 +94,9 @@ a, button {
 .hide {
   display: none !important; }
 
+.nowrap {
+  white-space: nowrap; }
+
 .toggle-block {
   display: none !important; }
   .toggle-block.active {
