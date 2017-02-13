@@ -162,7 +162,7 @@ $focus: "&:focus, &.focus";
 // xt-overlay
 //////////////////////
 
-@mixin xt-overlay($item, $class:'.overlay', $direction:'vertical') {
+@mixin xt-overlay($item, $class:'.active', $direction:'vertical') {
   #{$item} {
     display: none;
     z-index: 80;
@@ -202,7 +202,7 @@ $focus: "&:focus, &.focus";
 // xt-scroll
 //////////////////////
 
-@mixin xt-scroll($item, $position:'top', $pos:false) {
+@mixin xt-scroll($item, $position:'top', $pos:false, $class:'.active') {
   #{$item} {
     .show-scroll {
       display: none;
@@ -211,10 +211,10 @@ $focus: "&:focus, &.focus";
       display: block;
     }
   }
-  #{$item}.scroll.xt-clone {
+  #{$item}#{$class}.xt-clone {
     display: block !important;
   }
-  #{$item}.scroll:not(.xt-clone) {
+  #{$item}#{$class}:not(.xt-clone) {
     position: fixed !important;
     z-index: 70;
     @if $position == 'top' {

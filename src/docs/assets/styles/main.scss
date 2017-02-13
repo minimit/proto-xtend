@@ -339,7 +339,7 @@ $button__menu_pixels: 1px;
       transform-origin: left center;
     }
   }
-  &.overlay {
+  &.active {
     .icon-menu-custom {
       span {
         transition: all 1100ms cubic-bezier(0.19, 1, 0.22, 1);
@@ -808,12 +808,12 @@ pre {
 
 // overlay styles
 @include xt-overlay('.site-menu');
-html.overlay .site-header-top {
+html.active .site-header-top {
   z-index: 81 !important;
-  @extend .site-header-top.scroll;
+  @extend .site-header-top.active;
 }
 // animations
-.site-menu.overlay {
+.site-menu.active {
   display: block;
   .site-menu-content {
     .button {
@@ -859,7 +859,7 @@ html.overlay .site-header-top {
     }
   }
 }
-.site-menu.overlay.fadeout {
+.site-menu.active.fadeout {
   opacity: 1 !important;
   transform: none !important;
   .site-menu-content {

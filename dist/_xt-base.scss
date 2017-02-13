@@ -107,24 +107,24 @@ a, button {
 }
 
 // animations
-.hide-none {
+.toggle-none {
   &.active {
     display: none !important;
   }
 }
-.hide-block {
+.toggle-block {
   display: none !important;
   &.active {
     display: block !important;
   }
 }
-.hide-inline {
+.toggle-inline {
   display: none !important;
   &.active {
     display: inline !important;
   }
 }
-.hide-inline-block {
+.toggle-inline-block {
   display: none !important;
   &.active {
     display: inline-block !important;

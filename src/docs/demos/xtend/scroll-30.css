@@ -79,22 +79,22 @@ a, button {
 .hide {
   display: none !important; }
 
-.hide-none.active {
+.toggle-none.active {
   display: none !important; }
 
-.hide-block {
+.toggle-block {
   display: none !important; }
-  .hide-block.active {
+  .toggle-block.active {
     display: block !important; }
 
-.hide-inline {
+.toggle-inline {
   display: none !important; }
-  .hide-inline.active {
+  .toggle-inline.active {
     display: inline !important; }
 
-.hide-inline-block {
+.toggle-inline-block {
   display: none !important; }
-  .hide-inline-block.active {
+  .toggle-inline-block.active {
     display: inline-block !important; }
 
 .a-height {
@@ -440,16 +440,16 @@ a:not(.button) {
 .card[data-xt-scroll] .hide-scroll {
   display: block; }
 
-.card[data-xt-scroll].scroll.xt-clone {
+.card[data-xt-scroll].active.xt-clone {
   display: block !important; }
 
-.card[data-xt-scroll].scroll:not(.xt-clone) {
+.card[data-xt-scroll].active:not(.xt-clone) {
   position: fixed !important;
   z-index: 70;
   top: 0; }
-  .card[data-xt-scroll].scroll:not(.xt-clone) .show-scroll {
+  .card[data-xt-scroll].active:not(.xt-clone) .show-scroll {
     display: block; }
-  .card[data-xt-scroll].scroll:not(.xt-clone) .hide-scroll {
+  .card[data-xt-scroll].active:not(.xt-clone) .hide-scroll {
     display: none; }
 
 .card.scroll-on-top, .card.scroll-off-top {

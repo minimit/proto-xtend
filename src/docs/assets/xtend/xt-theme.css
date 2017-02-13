@@ -100,31 +100,31 @@ a, button {
   display: none !important;
 }
 
-.hide-none.active {
+.toggle-none.active {
   display: none !important;
 }
 
-.hide-block {
+.toggle-block {
   display: none !important;
 }
 
-.hide-block.active {
+.toggle-block.active {
   display: block !important;
 }
 
-.hide-inline {
+.toggle-inline {
   display: none !important;
 }
 
-.hide-inline.active {
+.toggle-inline.active {
   display: inline !important;
 }
 
-.hide-inline-block {
+.toggle-inline-block {
   display: none !important;
 }
 
-.hide-inline-block.active {
+.toggle-inline-block.active {
   display: inline-block !important;
 }
 

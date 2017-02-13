@@ -50,7 +50,7 @@
       'targets': '',
       'multiple': true,
       'on': 'click',
-      'class': 'overlay',
+      'class': 'active',
       'min': 0,
       'max': 1,
     };
@@ -70,7 +70,7 @@
     var defaults = {
       'name': 'xt-scroll',
       'on': 'scroll',
-      'class': 'scroll',
+      'class': 'active',
       'min': 0,
       'max': 1,
     };
