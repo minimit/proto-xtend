@@ -807,6 +807,9 @@ pre {
   
   // scroll styles
   @include xt-scroll('.site-aside', 'top', 56px);
+  .site-aside {
+    z-index: 69 !important;
+  }
   
 }
 

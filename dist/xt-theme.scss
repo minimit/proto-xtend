@@ -212,6 +212,11 @@ a:not(.button) {
     padding: 12px 16px;
     font-size: 14px;
   }
+  /* animations */
+  transition-property: all;
+  transition-duration: 300ms;
+  transition-timing-function: cubic-bezier(.63,.36,0,.97);
+  transition-delay: 0ms;
   /* styles */
   border: 0;
   border-radius: 0;
