@@ -15,7 +15,7 @@
 //////////////////////
 
 .card-block {
-  position: relative;
+  @include box;
   background: #ffffff;
 }
 

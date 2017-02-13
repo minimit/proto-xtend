@@ -68,9 +68,7 @@ a, button {
   cursor: default;
   opacity: 1; }
 
-.box,
-.xt-outside,
-.xt-inside {
+.box {
   position: relative;
   float: left;
   width: 100%; }
@@ -78,11 +76,26 @@ a, button {
 .hide {
   display: none !important; }
 
-.hide.active {
-  display: block !important; }
-
 .show {
   display: block !important; }
+
+.a-none.active {
+  display: none !important; }
+
+.a-block {
+  display: none !important; }
+  .a-block.active {
+    display: block !important; }
+
+.a-inline {
+  display: none !important; }
+  .a-inline.active {
+    display: inline !important; }
+
+.a-inline-block {
+  display: none !important; }
+  .a-inline-block.active {
+    display: inline-block !important; }
 
 .a-height {
   overflow: hidden;

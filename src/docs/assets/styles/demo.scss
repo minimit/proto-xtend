@@ -1,11 +1,17 @@
 @import "bootstrap.min";
 
 //////////////////////
+// xtend theme
+//////////////////////
+
+@import "../xtend/_xt-variables.scss";
+
+//////////////////////
 // bootstrap
 //////////////////////
 
 .card-block {
-  position: relative;
+  @include box;
   background: #ffffff;
 }
 

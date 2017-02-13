@@ -194,7 +194,7 @@
     // $targets
     if (settings.name === 'xt-scroll') {
       // xt-scroll $targets
-      $group.wrap($('<div class="xt-outside"></div>'));
+      $group.wrap($('<div class="box-wrap"></div>').addBox());
       settings.$targets = $group.clone().addClass('xt-clone xt-ignore').css('visibility', 'hidden');
       $.each(settings.$targets.data(), function (i) {
         settings.$targets.removeAttr("data-" + i);
@@ -354,7 +354,7 @@
     $(window).on(scrollNamespace, function(e) {
       var scrollTop = $(this).scrollTop();
       // show or hide
-      var top = settings.$targets.parents('.xt-outside').offset().top;
+      var top = settings.$targets.parents('.box-wrap').offset().top;
       var bottom = Infinity;
       if (settings.top) {
         if (!isNaN(parseFloat(settings.top))) {
@@ -660,15 +660,15 @@
   Xt.prototype.onWidth = function($el) {
     // animation fadein
     if ($el.hasClass('a-width')) {
-      var $outside = $el.parents('.xt-outside');
+      var $outside = $el.parents('.box-wrap');
       if (!$outside.length) {
-        $el.wrap('<div class="xt-outside"></div>');
-        $outside = $el.parents('.xt-outside');
+        $el.wrap('<div class="box-wrap"></div>');
+        $outside = $el.parents('.box-wrap').addBox();
       }
-      var $inside = $el.find('.xt-inside');
+      var $inside = $el.find('.box-wrap');
       if (!$inside.length) {
-        $el.wrapInner('<div class="xt-inside"></div>');
-        $inside = $el.find('.xt-inside');
+        $el.wrapInner('<div class="box-wrap"></div>');
+        $inside = $el.find('.box-wrap').addBox();
       }
       var w = $outside.outerWidth();
       $inside.css('width', w);
@@ -690,10 +690,10 @@
   Xt.prototype.onHeight = function($el) {
     // animation fadein
     if ($el.hasClass('a-height')) {
-      var $inside = $el.find('.xt-inside');
+      var $inside = $el.find('.box-wrap');
       if (!$inside.length) {
-        $el.wrapInner('<div class="xt-inside"></div>');
-        $inside = $el.find('.xt-inside');
+        $el.wrapInner('<div class="box-wrap"></div>');
+        $inside = $el.find('.box-wrap').addBox();
       }
       var h = $inside.outerHeight();
       $el.css('height', h);
@@ -908,6 +908,12 @@
       window.setTimeout(callback, 1000 / 60);
     };
   })();
+  
+  // add .box to $el
+  $.fn.addBox = function() {
+    this.css({'position': 'relative', 'float': 'left', 'width': '100%'});
+    return this;
+  };
   
   // http://stackoverflow.com/questions/13281897/how-to-preserve-order-of-items-added-to-jquery-matched-set
   // push jquery group inside jquery query, use $([]) for empty query

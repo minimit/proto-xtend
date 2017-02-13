@@ -95,17 +95,12 @@ a, button {
 // xt
 //////////////////////
 
-.box,
-.xt-outside,
-.xt-inside {
+.box {
   @include box;
 }
 
 .hide {
   display: none !important;
-}
-.hide.active {
-  display: block !important;
 }
 .show {
   display: block !important;
@@ -114,6 +109,37 @@ a, button {
 //////////////////////
 // animations
 //////////////////////
+
+// .a-none
+.a-none {
+  &.active {
+    display: none !important;
+  }
+}
+
+// .a-block
+.a-block {
+  display: none !important;
+  &.active {
+    display: block !important;
+  }
+}
+
+// .a-inline
+.a-inline {
+  display: none !important;
+  &.active {
+    display: inline !important;
+  }
+}
+
+// .a-inline-block
+.a-inline-block {
+  display: none !important;
+  &.active {
+    display: inline-block !important;
+  }
+}
 
 // .a-height
 .a-height {
