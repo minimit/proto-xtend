@@ -44,7 +44,7 @@
           }
         } else {
           if (!$item.attr('data-name')) {
-            name = '#' + k;
+            name = 'demo #' + k;
           }
         }
         var $btn = $container.find('.demo-tabs-left').append('<button class="button">' + name + '</button>').find('.button').eq(k);

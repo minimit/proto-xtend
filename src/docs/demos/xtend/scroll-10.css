@@ -79,9 +79,6 @@ a, button {
 .hide {
   display: none !important; }
 
-.toggle-none.active {
-  display: none !important; }
-
 .toggle-block {
   display: none !important; }
   .toggle-block.active {
@@ -96,6 +93,9 @@ a, button {
   display: none !important; }
   .toggle-inline-block.active {
     display: inline-block !important; }
+
+.toggle-none.active {
+  display: none !important; }
 
 .a-height {
   overflow: hidden;

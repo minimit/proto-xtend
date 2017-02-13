@@ -100,10 +100,6 @@ a, button {
   display: none !important;
 }
 
-.toggle-none.active {
-  display: none !important;
-}
-
 .toggle-block {
   display: none !important;
 }
@@ -126,6 +122,10 @@ a, button {
 
 .toggle-inline-block.active {
   display: inline-block !important;
+}
+
+.toggle-none.active {
+  display: none !important;
 }
 
 .a-height {

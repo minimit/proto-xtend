@@ -107,11 +107,6 @@ a, button {
 }
 
 // animations
-.toggle-none {
-  &.active {
-    display: none !important;
-  }
-}
 .toggle-block {
   display: none !important;
   &.active {
@@ -128,6 +123,11 @@ a, button {
   display: none !important;
   &.active {
     display: inline-block !important;
+  }
+}
+.toggle-none {
+  &.active {
+    display: none !important;
   }
 }
 

@@ -24,8 +24,7 @@
     var defaults = {
       'name': 'xt-toggle',
       'elements': null,
-      'targets': null,
-      'multiple': false,
+      'targets': '.toggle-block, .toggle-inline-block, .toggle-inline, .toggle-none',
       'class': 'active',
       'on': 'click',
       'off': null,
@@ -48,7 +47,6 @@
     var defaults = {
       'name': 'xt-overlay',
       'targets': '',
-      'multiple': true,
       'on': 'click',
       'class': 'active',
       'min': 0,
@@ -191,9 +189,11 @@
         settings.$elements = $(settings.elements).filter(':parents(.xt-ignore)');
       } else {
         settings.$elements = $group.find(settings.elements).filter(':parents(.xt-ignore)');
+        /*
         if (!settings.$elements.length) {
           settings.$elements = $group.parent().find(settings.elements).filter(':parents(.xt-ignore)');
         }
+        */
       }
     } else {
       settings.$elements = $group;
@@ -224,9 +224,11 @@
         settings.$targets = $(settings.targets).filter(':parents(.xt-ignore)');
       } else {
         settings.$targets = $group.find(settings.targets).filter(':parents(.xt-ignore)');
+        /*
         if (!settings.$targets.length) {
           settings.$targets = $group.parent().find(settings.targets).filter(':parents(.xt-ignore)');
         }
+        */
       }
     }
   };
@@ -272,11 +274,13 @@
             object.show($(this));
           }
         });
-        // automatic init if $shown < min
-        var min = settings.min;
+        // automatic init if $currents < min
         var $currents = object.getCurrents();
-        if ($currents.length < min) {
-          object.show(settings.$elements.eq(0));
+        var todo = settings.min - $currents.length;
+        if (todo) {
+          for (var i = 0; i < todo; i++) {
+            object.show(settings.$elements.eq(i));
+          }
         }
       }
     }
