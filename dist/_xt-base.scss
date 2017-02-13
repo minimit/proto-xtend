@@ -97,6 +97,11 @@ a, button {
 
 .box {
   @include box;
+  @include clearfix;
+}
+.box-wrap {
+  @include box;
+  @include clearfix;
 }
 
 .show {

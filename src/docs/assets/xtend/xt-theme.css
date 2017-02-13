@@ -92,6 +92,30 @@ a, button {
   width: 100%;
 }
 
+.box:before, .box:after {
+  content: " ";
+  display: table;
+}
+
+.box:after {
+  clear: both;
+}
+
+.box-wrap {
+  position: relative;
+  float: left;
+  width: 100%;
+}
+
+.box-wrap:before, .box-wrap:after {
+  content: " ";
+  display: table;
+}
+
+.box-wrap:after {
+  clear: both;
+}
+
 .show {
   display: block !important;
 }

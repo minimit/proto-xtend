@@ -201,7 +201,7 @@
     // $targets
     if (settings.name === 'xt-scroll') {
       // xt-scroll $targets
-      $group.wrap($('<div class="box-wrap"></div>').addBox());
+      $group.wrap($('<div class="box-wrap"></div>'));
       settings.$targets = $group.clone().addClass('xt-clone xt-ignore').css('visibility', 'hidden');
       $.each(settings.$targets.data(), function (i) {
         settings.$targets.removeAttr("data-" + i);
@@ -603,7 +603,7 @@
     var group = this.group;
     var $group = $(this.group);
     // when animation is done
-    // animations
+    // a-width and a-height
     if ($el.hasClass('a-height')) {
       $el.css('height', 'auto');
     }
@@ -662,30 +662,56 @@
     // when animation is done
     $el.removeClass(settings.class);
     $el.removeClass('fadeout');
+    // a-width and a-height
+    if ($el.hasClass('a-height') || $el.hasClass('a-width')) {
+      this.removeWrap($el);
+    }
     // api
     if (!triggered) {
       $el.trigger('fadeout.xt', [object, true]);
     }
   };
   
+  Xt.prototype.addWrap = function($el) {
+    var $outside = $el.parents('.box-wrap');
+    if (!$outside.length) {
+      $el.wrap('<div class="box-wrap"></div>');
+    }
+    var $inside = $el.find('.box-wrap');
+    if (!$inside.length) {
+      $el.wrapInner('<div class="box-wrap"></div>');
+    }
+  };
+  
+  Xt.prototype.removeWrap = function($el) {
+    $el.find('.box-wrap').contents().unwrap();
+    $el.unwrap();
+  };
+    
   Xt.prototype.onWidth = function($el) {
     // animation fadein
     if ($el.hasClass('a-width')) {
+      this.addWrap($el);
       var $outside = $el.parents('.box-wrap');
-      if (!$outside.length) {
-        $el.wrap('<div class="box-wrap"></div>');
-        $outside = $el.parents('.box-wrap').addBox();
-      }
       var $inside = $el.find('.box-wrap');
-      if (!$inside.length) {
-        $el.wrapInner('<div class="box-wrap"></div>');
-        $inside = $el.find('.box-wrap').addBox();
-      }
       var w = $outside.outerWidth();
       $inside.css('width', w);
       $el.css('width', w);
       $el.parents('.a-width-left').css("margin-left", -w);
       $el.parents('.a-width-right').css("margin-right", -w);
+    }
+  };
+  
+  Xt.prototype.onHeight = function($el) {
+    // animation fadein
+    if ($el.hasClass('a-height')) {
+      this.addWrap($el);
+      var $outside = $el.parents('.box-wrap');
+      var $inside = $el.find('.box-wrap');
+      var h = $inside.outerHeight();
+      $el.css('height', h);
+      $el.parents('.a-height-top').css("margin-top", -h);
+      $el.parents('.a-height-bottom').css("margin-bottom", -h);
     }
   };
   
@@ -695,21 +721,6 @@
       $el.css('width', 0);
       $el.parents('.a-width-left').css("margin-left", 0);
       $el.parents('.a-width-right').css("margin-right", 0);
-    }
-  };
-  
-  Xt.prototype.onHeight = function($el) {
-    // animation fadein
-    if ($el.hasClass('a-height')) {
-      var $inside = $el.find('.box-wrap');
-      if (!$inside.length) {
-        $el.wrapInner('<div class="box-wrap"></div>');
-        $inside = $el.find('.box-wrap').addBox();
-      }
-      var h = $inside.outerHeight();
-      $el.css('height', h);
-      $el.parents('.a-height-top').css("margin-top", -h);
-      $el.parents('.a-height-bottom').css("margin-bottom", -h);
     }
   };
   
@@ -919,12 +930,6 @@
       window.setTimeout(callback, 1000 / 60);
     };
   })();
-  
-  // add .box to $el
-  $.fn.addBox = function() {
-    this.css({'position': 'relative', 'float': 'left', 'width': '100%'});
-    return this;
-  };
 
   // http://stackoverflow.com/questions/13281897/how-to-preserve-order-of-items-added-to-jquery-matched-set
   // push jquery group inside jquery query, use $([]) for empty query
