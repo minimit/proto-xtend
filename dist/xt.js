@@ -143,15 +143,15 @@
     var group = this.group;
     var $group = $(this.group);
     // override with js settings
-    var c = defaults.class; // defaults.class
     settings = $.extend(settings, defaults, options);
     // override with html settings
     $.extend(settings, $group.data(settings.name));
     // defaults.class
-    var carr = settings.class.split(' ');
-    if (carr.indexOf(defaults.class) === -1) {
+    var arr = settings.class.split(' ');
+    if (arr.indexOf(defaults.class) === -1) {
       settings.class += ' ' + defaults.class;
     }
+    object.defaultClass = defaults.class;
     // debug
     if ($group.attr('debug') || $group.attr('debug') === '') {
       settings.debug = true;
@@ -267,7 +267,7 @@
       // automatic reinit if has class
       if (settings.$elements) {
         settings.$elements.each(function() {
-          if ($(this).hasClass(settings.class)) {
+          if ($(this).hasClass(object.defaultClass)) {
             $(this).removeClass(settings.class);
             object.show($(this));
           }
@@ -378,7 +378,7 @@
         }
       }
       if (scrollTop > top && scrollTop < bottom) {
-        if (!$group.hasClass(settings.class)) {
+        if (!$group.hasClass(object.defaultClass)) {
           window.xtRequestAnimationFrame(function() {
             object.show($group);
           });
@@ -397,7 +397,7 @@
           }
         }
       } else {
-        if ($group.hasClass(settings.class)) {
+        if ($group.hasClass(object.defaultClass)) {
           window.xtRequestAnimationFrame(function() {
             object.hide($group);
           });
@@ -435,7 +435,7 @@
     var group = this.group;
     var $group = $(this.group);
     // choose based on state
-    if (!$element.hasClasses(settings.class)) {
+    if (!$element.hasClass(object.defaultClass)) {
       object.show($element, triggered, isSync, skipState);
     } else {
       object.hide($element, triggered, isSync, skipState);
@@ -450,7 +450,7 @@
     // activate $element
     if ($element) {
       // show and add in $currents
-      if (!$element.hasClasses(settings.class)) {
+      if (!$element.hasClass(object.defaultClass)) {
         var $elements = object.getElements(settings.$elements, $element);
         object.on($elements, triggered);
         var $currents = object.getCurrents();
@@ -485,7 +485,7 @@
     // activate $target
     if (settings.$targets) {
       var $target = object.getTargets(settings.$elements, $element, settings.$targets);
-      if (!$target.hasClass(settings.class)) {
+      if (!$target.hasClass(object.defaultClass)) {
         object.on($target, triggered);
         // stuff
         if (settings.name === 'xt-overlay') {
@@ -493,7 +493,7 @@
           // add paddings
           object.onFixed($('*:fixed').not($target).add('html'));
           // activate $group
-          if (!$group.hasClass(settings.class)) {
+          if (!$group.hasClass(object.defaultClass)) {
             object.on($group, triggered);
           }
         }
@@ -509,7 +509,7 @@
     // deactivate $element
     if ($element) {
       var $currents = object.getCurrents();
-      if ($element.hasClasses(settings.class)) {
+      if ($element.hasClass(object.defaultClass)) {
         if (isSync || settings.name === 'xt-ajax' || $currents.length > settings.min) {
           var $elements = object.getElements(settings.$elements, $element);
           object.off($elements, triggered);
@@ -538,7 +538,7 @@
     // deactivate $target
     if (settings.$targets) {
       var $target = object.getTargets(settings.$elements, $element, settings.$targets);
-      if ($target.hasClass(settings.class)) {
+      if ($target.hasClass(object.defaultClass)) {
         object.off($target, triggered);
         // stuff
         if (settings.name === 'xt-overlay') {
@@ -546,7 +546,7 @@
           // remove paddings
           object.offFixed($('.xt-fixed, html'));
           // deactivate $group
-          if ($group.hasClass(settings.class)) {
+          if ($group.hasClass(object.defaultClass)) {
             object.off($group, triggered);
           }
         }
@@ -921,18 +921,6 @@
     this.css({'position': 'relative', 'float': 'left', 'width': '100%'});
     return this;
   };
-  
-  // hasClasses
-  // usage: $elements.hasClasses('class0 class1']);
-  $.fn.extend({
-    hasClasses: function(str) {
-      str = '.' + str.split(' ').join('.');
-      if ($(this).is(str)) {
-        return true;
-      }
-      return false;
-    }
-  });
 
   // http://stackoverflow.com/questions/13281897/how-to-preserve-order-of-items-added-to-jquery-matched-set
   // push jquery group inside jquery query, use $([]) for empty query
