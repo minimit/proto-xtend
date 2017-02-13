@@ -10,14 +10,13 @@
   // constructor
   //////////////////////
   
-  var Xt = function(group, options, defaults) {
+  var Xt = function(group, defaults, options) {
     this.group = group;
-    this.settings = $.extend({}, defaults, options);
-    this.init();
+    this.init(defaults, options);
   };
   
-  var XtToggle = function(group, options, defaults) {
-    Xt.call(this, group, options, defaults);
+  var XtToggle = function(group, defaults, options) {
+    Xt.call(this, group, defaults, options);
   };
   XtToggle.prototype = Object.create(Xt.prototype);
   XtToggle.prototype.constructor = XtToggle;
@@ -35,13 +34,13 @@
     };
     return this.each(function() {
       if (!$.data(this, defaults.name)) {
-        $.data(this, defaults.name, new XtToggle(this, options, defaults));
+        $.data(this, defaults.name, new XtToggle(this, defaults, options));
       }
     });
   };
   
-  var XtOverlay = function(group, options, defaults) {
-    Xt.call(this, group, options, defaults);
+  var XtOverlay = function(group, defaults, options) {
+    Xt.call(this, group, defaults, options);
   };
   XtOverlay.prototype = Object.create(Xt.prototype);
   XtOverlay.prototype.constructor = XtOverlay;
@@ -57,13 +56,13 @@
     };
     return this.each(function() {
       if (!$.data(this, defaults.name)) {
-        $.data(this, defaults.name, new XtOverlay(this, options, defaults));
+        $.data(this, defaults.name, new XtOverlay(this, defaults, options));
       }
     });
   };
   
-  var XtScroll = function(group, options, defaults) {
-    Xt.call(this, group, options, defaults);
+  var XtScroll = function(group, defaults, options) {
+    Xt.call(this, group, defaults, options);
   };
   XtScroll.prototype = Object.create(Xt.prototype);
   XtScroll.prototype.constructor = XtScroll;
@@ -77,13 +76,13 @@
     };
     return this.each(function() {
       if (!$.data(this, defaults.name)) {
-        $.data(this, defaults.name, new XtScroll(this, options, defaults));
+        $.data(this, defaults.name, new XtScroll(this, defaults, options));
       }
     });
   };
   
-  var XtAjax = function(group, options, defaults) {
-    Xt.call(this, group, options, defaults);
+  var XtAjax = function(group, defaults, options) {
+    Xt.call(this, group, defaults, options);
   };
   XtAjax.prototype = Object.create(Xt.prototype);
   XtAjax.prototype.constructor = XtAjax;
@@ -97,7 +96,7 @@
     };
     return this.each(function() {
       if (!$.data(this, defaults.name)) {
-        $.data(this, defaults.name, new XtAjax(this, options, defaults));
+        $.data(this, defaults.name, new XtAjax(this, defaults, options));
       }
     });
   };
@@ -138,17 +137,25 @@
   // init methods
   //////////////////////
 
-  Xt.prototype.init = function() {
+  Xt.prototype.init = function(defaults, options) {
     var object = this;
-    var settings = this.settings;
+    var settings = this.settings = {};
     var group = this.group;
     var $group = $(this.group);
-    // variables
+    // override with js settings
+    var c = defaults.class; // defaults.class
+    settings = $.extend(settings, defaults, options);
+    // override with html settings
+    $.extend(settings, $group.data(settings.name));
+    // defaults.class
+    var carr = settings.class.split(' ');
+    if (carr.indexOf(defaults.class) === -1) {
+      settings.class += ' ' + defaults.class;
+    }
+    // debug
     if ($group.attr('debug') || $group.attr('debug') === '') {
       settings.debug = true;
     }
-    // override with html settings
-    $.extend(settings, $group.data(settings.name));
     // setup
     object.scope();
     object.namespace();
@@ -428,7 +435,7 @@
     var group = this.group;
     var $group = $(this.group);
     // choose based on state
-    if (!$element.hasClass(settings.class)) {
+    if (!$element.hasClasses(settings.class)) {
       object.show($element, triggered, isSync, skipState);
     } else {
       object.hide($element, triggered, isSync, skipState);
@@ -443,7 +450,7 @@
     // activate $element
     if ($element) {
       // show and add in $currents
-      if (!$element.hasClass(settings.class)) {
+      if (!$element.hasClasses(settings.class)) {
         var $elements = object.getElements(settings.$elements, $element);
         object.on($elements, triggered);
         var $currents = object.getCurrents();
@@ -502,7 +509,7 @@
     // deactivate $element
     if ($element) {
       var $currents = object.getCurrents();
-      if ($element.hasClass(settings.class)) {
+      if ($element.hasClasses(settings.class)) {
         if (isSync || settings.name === 'xt-ajax' || $currents.length > settings.min) {
           var $elements = object.getElements(settings.$elements, $element);
           object.off($elements, triggered);
@@ -915,6 +922,18 @@
     return this;
   };
   
+  // hasClasses
+  // usage: $elements.hasClasses('class0 class1']);
+  $.fn.extend({
+    hasClasses: function(str) {
+      str = '.' + str.split(' ').join('.');
+      if ($(this).is(str)) {
+        return true;
+      }
+      return false;
+    }
+  });
+
   // http://stackoverflow.com/questions/13281897/how-to-preserve-order-of-items-added-to-jquery-matched-set
   // push jquery group inside jquery query, use $([]) for empty query
   // usage: $groups.pushElement($group)
