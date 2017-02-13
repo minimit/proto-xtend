@@ -223,7 +223,7 @@
       if (settings.targets.indexOf('#') !== -1) {
         settings.$targets = $(settings.targets).filter(':parents(.xt-ignore)');
       } else {
-        settings.$targets = $group.find(settings.targets).filter(':parents(.xt-ignore)');
+        settings.$targets = $group.find(settings.targets).filter(':parents(.xt-ignore)').filter(':parents(' + settings.targets + ')');
         /*
         if (!settings.$targets.length) {
           settings.$targets = $group.parent().find(settings.targets).filter(':parents(.xt-ignore)');
@@ -757,15 +757,15 @@
     }
   };
   
-  Xt.prototype.getTargets = function($elements, $element, $group) {
+  Xt.prototype.getTargets = function($elements, $element, $g) {
     if ($element.is('[data-group]')) {
       // with [data-group]
       var g = $element.attr('data-group');
-      return $group.filter('[data-group="' + g + '"]');
+      return $g.filter('[data-group="' + g + '"]');
     } else {
       // without [data-group]
       var index = this.getIndex($elements.not('[data-group]'), $element);
-      return $group.not('[data-group]').eq(index);
+      return $g.not('[data-group]').eq(index);
     }
   };
   

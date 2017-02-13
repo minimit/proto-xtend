@@ -42,7 +42,7 @@ $('div').xtToggle({"elements": ".element"});
 <p>@TODO link javascript modes</p>
 <p>@TODO link animations</p>
 
-<h2>Tutorial</h2>
+<h2>Examples</h2>
 
 <h3>Single</h3>
 
@@ -51,7 +51,7 @@ $('div').xtToggle({"elements": ".element"});
 <p>For the <code>targets</code> use the classes <code>.toggle-block, .toggle-inline-block, .toggle-inline, .toggle-none</code>. These classes toggle the display property on <code>.active</code> (@TODO link utils classes).</p></p>
 
 <div class="demo">
-  <div class="demo-item demo-preview" data-name="element">
+  <div class="demo-item demo-preview" data-name="">
     <div class="demo-text">Simple toggle</div>
     <div class="demo-source" data-lang="html">
 <div class="spacer">
@@ -64,7 +64,7 @@ $('div').xtToggle({"elements": ".element"});
 </div>
     </div>
   </div>
-  <div class="demo-item demo-preview" data-name="target">
+  <div class="demo-item demo-preview" data-name="">
     <div class="demo-text">Toggle single <code>targets</code> using <strong>#id</strong></div>
     <div class="demo-source" data-lang="html">
 <div class="spacer">
@@ -83,7 +83,7 @@ $('div').xtToggle({"elements": ".element"});
 </div>
     </div>
   </div>
-  <div class="demo-item demo-preview" data-name="same target">
+  <div class="demo-item demo-preview" data-name="">
     <div class="demo-text">Toggle same <code>targets</code> using <strong>#id</strong></div>
     <div class="demo-source" data-lang="html">
 <div class="spacer">
@@ -156,6 +156,37 @@ $('div').xtToggle({"elements": ".element"});
   </button>
   <div class="card card-content toggle-none">
     Target
+  </div>
+</div>
+    </div>
+  </div>
+  <div class="demo-item demo-preview" data-name="">
+    <div class="demo-text">Nested classes are filtered out</div>
+    <div class="demo-source" data-lang="html">
+<div class="spacer" data-xt-toggle='{"elements": ".button"}'>
+  <button class="button color-primary">
+    Toggle 0
+  </button>
+  <button class="button color-primary">
+    Toggle 1
+  </button>
+  <div class="card card-content toggle-block">
+    Target 0
+    <div class="card card-content toggle-block">
+      Target not toggled
+    </div>
+    <div class="card card-content toggle-none">
+      Target not toggled
+    </div>
+  </div>
+  <div class="card card-content toggle-block">
+    Target 1
+    <div class="card card-content toggle-block">
+      Target not toggled
+    </div>
+    <div class="card card-content toggle-none">
+      Target not toggled
+    </div>
   </div>
 </div>
     </div>
@@ -308,7 +339,7 @@ $('div').xtToggle({"elements": ".element"});
 <p>Toggled class is always <code>active</code>, you can specify custom additional classes to toggle with <code>class</code>.</p>
 
 <div class="demo">
-  <div class="demo-item demo-preview" data-name="class">
+  <div class="demo-item demo-preview" data-name="">
     <div class="demo-source" data-lang="html">
 <div class="spacer" data-xt-toggle='{"elements": "button", "class": "class-example-0 class-example-1"}'>
   <button class="button color-primary">
