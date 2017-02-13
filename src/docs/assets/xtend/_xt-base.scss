@@ -99,47 +99,41 @@ a, button {
   @include box;
 }
 
-.hide {
-  display: none !important;
-}
 .show {
   display: block !important;
 }
+.hide {
+  display: none !important;
+}
 
-//////////////////////
 // animations
-//////////////////////
-
-// .a-none
-.a-none {
+.hide-none {
   &.active {
     display: none !important;
   }
 }
-
-// .a-block
-.a-block {
+.hide-block {
   display: none !important;
   &.active {
     display: block !important;
   }
 }
-
-// .a-inline
-.a-inline {
+.hide-inline {
   display: none !important;
   &.active {
     display: inline !important;
   }
 }
-
-// .a-inline-block
-.a-inline-block {
+.hide-inline-block {
   display: none !important;
   &.active {
     display: inline-block !important;
   }
 }
+
+//////////////////////
+// animations
+//////////////////////
 
 // .a-height
 .a-height {

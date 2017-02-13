@@ -92,39 +92,39 @@ a, button {
   width: 100%;
 }
 
-.hide {
-  display: none !important;
-}
-
 .show {
   display: block !important;
 }
 
-.a-none.active {
+.hide {
   display: none !important;
 }
 
-.a-block {
+.hide-none.active {
   display: none !important;
 }
 
-.a-block.active {
+.hide-block {
+  display: none !important;
+}
+
+.hide-block.active {
   display: block !important;
 }
 
-.a-inline {
+.hide-inline {
   display: none !important;
 }
 
-.a-inline.active {
+.hide-inline.active {
   display: inline !important;
 }
 
-.a-inline-block {
+.hide-inline-block {
   display: none !important;
 }
 
-.a-inline-block.active {
+.hide-inline-block.active {
   display: inline-block !important;
 }
 
