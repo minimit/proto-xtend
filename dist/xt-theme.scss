@@ -245,21 +245,56 @@ a:not(.button) {
     }
   }
   &.color-text {
-    background: transparent !important;
-    color: $color-primary;
+    background: transparent;
+    color: $color-text;
     #{$hover},
     #{$active} {
-      color: $color-text;
+      background: $color-primary-lighter;
+      color: $color-primary;
     }
   }
   &.color-white {
-    background: transparent !important;
+    background: transparent;
     color: $color-white-light;
     #{$hover},
     #{$active} {
+      background: transparent;
       color: $color-white;
     }
   }
+}
+
+//////////////////////
+// drop
+//////////////////////
+
+.drop-content {
+  background: $color-white;
+  color: $color-black;
+  -webkit-box-shadow: 0 0 5px rgba($color-black, 0.2);
+  box-shadow: 0 0 5px rgba($color-black, 0.2);
+  
+  /* position */
+  margin: 10px 0;
+  padding: 10px 0;
+  .button {
+    @extend .button.color-text;
+    padding-left: 20px;
+    padding-right: 40px;
+    width: 100%;
+    text-align: left;
+    white-space: nowrap;
+  }
+  &.drop-top {
+    bottom: 100%;
+  }
+  &.drop-right {
+    right: 0;
+  }
+  
+  /* animations */
+  @extend .anim;
+  @extend .a-vertical;
 }
 
 //////////////////////
@@ -267,12 +302,15 @@ a:not(.button) {
 //////////////////////
 
 // transition for all animations
-[class^="a-"],
-[class*=" a-"] {
+.anim {
   transition-property: all;
   transition-duration: 300ms;
   transition-timing-function: cubic-bezier(.63,.36,0,.97);
   transition-delay: 0ms;
+}
+[class^="a-"],
+[class*=" a-"] {
+  @extend .anim;
 }
 
 // .a-horizontal

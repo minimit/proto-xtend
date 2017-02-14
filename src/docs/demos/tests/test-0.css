@@ -64,6 +64,13 @@ a, button {
     overflow: hidden;
     margin-bottom: -0.25em; }
 
+.drop {
+  position: relative; }
+
+.drop-content {
+  position: absolute;
+  z-index: 40; }
+
 [disabled] {
   cursor: default;
   opacity: 1; }
@@ -369,18 +376,40 @@ a:not(.button) {
     .button.color-primary:hover:not(.active), .button.color-primary.hover:not(.active), .button.color-primary:active, .button.color-primary.active, .button.color-primary:active:focus, .button.color-primary:active.focus, .button.color-primary.active:focus, .button.color-primary.active.focus {
       background: #e60000;
       color: #ffffff; }
-  .button.color-text {
-    background: transparent !important;
-    color: #ff0000; }
-    .button.color-text:hover:not(.active), .button.color-text.hover:not(.active), .button.color-text:active, .button.color-text.active, .button.color-text:active:focus, .button.color-text:active.focus, .button.color-text.active:focus, .button.color-text.active.focus {
-      color: #000000; }
+  .button.color-text, .drop-content .button {
+    background: transparent;
+    color: #000000; }
+    .button.color-text:hover:not(.active), .drop-content .button:hover:not(.active), .button.color-text.hover:not(.active), .drop-content .hover.button:not(.active), .button.color-text:active, .drop-content .button:active, .button.color-text.active, .drop-content .active.button, .button.color-text:active:focus, .drop-content .button:active:focus, .button.color-text:active.focus, .drop-content .button:active.focus, .button.color-text.active:focus, .drop-content .active.button:focus, .button.color-text.active.focus, .drop-content .active.focus.button {
+      background: rgba(255, 0, 0, 0.1);
+      color: #ff0000; }
   .button.color-white {
-    background: transparent !important;
+    background: transparent;
     color: rgba(255, 255, 255, 0.75); }
     .button.color-white:hover:not(.active), .button.color-white.hover:not(.active), .button.color-white:active, .button.color-white.active, .button.color-white:active:focus, .button.color-white:active.focus, .button.color-white.active:focus, .button.color-white.active.focus {
+      background: transparent;
       color: #ffffff; }
 
-[class^="a-"],
+.drop-content {
+  background: #ffffff;
+  color: #000000;
+  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  /* position */
+  margin: 10px 0;
+  padding: 10px 0;
+  /* animations */ }
+  .drop-content .button {
+    padding-left: 20px;
+    padding-right: 40px;
+    width: 100%;
+    text-align: left;
+    white-space: nowrap; }
+  .drop-content.drop-top {
+    bottom: 100%; }
+  .drop-content.drop-right {
+    right: 0; }
+
+.anim, .drop-content, [class^="a-"],
 [class*=" a-"] {
   transition-property: all;
   transition-duration: 300ms;
@@ -397,13 +426,13 @@ a:not(.button) {
     opacity: 0;
     transform: translateX(0.618rem); }
 
-.a-vertical {
+.a-vertical, .drop-content {
   opacity: 0;
   transform: translateY(-0.618rem); }
-  .a-vertical.fadein {
+  .a-vertical.fadein, .fadein.drop-content {
     opacity: 1;
     transform: translateY(0); }
-  .a-vertical.fadeout {
+  .a-vertical.fadeout, .fadeout.drop-content {
     opacity: 0;
     transform: translateY(0.618rem); }
 

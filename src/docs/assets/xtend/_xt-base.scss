@@ -83,6 +83,18 @@ a, button {
 }
 
 //////////////////////
+// drop
+//////////////////////
+
+.drop {
+  position: relative;
+}
+.drop-content {
+  position: absolute;
+  z-index: 40;
+}
+
+//////////////////////
 // various
 //////////////////////
 
@@ -115,7 +127,6 @@ a, button {
   white-space: nowrap;
 }
 
-// animations
 .toggle-block {
   display: none !important;
   &.active,

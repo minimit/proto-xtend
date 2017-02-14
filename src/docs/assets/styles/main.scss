@@ -679,6 +679,8 @@ p code,
     }
   }
   .demo-source {
+    position: relative;
+    z-index: 3;
     line-height: 1.8;
   }
   .demo-item.populated .demo-code-body-item {
