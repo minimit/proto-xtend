@@ -160,45 +160,6 @@ $active: "&:active, &.active, &:active:focus, &:active.focus, &.active:focus, &.
 $focus: "&:focus, &.focus";
 
 //////////////////////
-// xt-overlay
-//////////////////////
-
-@mixin xt-overlay($item, $direction:'vertical') {
-  #{$item} {
-    display: none;
-    z-index: 80;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-  }
-  #{$item}.active,
-  #{$item}.fadeout {
-    display: block;
-  }
-  @if $direction == 'vertical' {
-    html.xt-fixed {
-      body {
-        overflow-y: hidden;
-      }
-      #{$item} {
-        overflow-y: scroll;
-      }
-    }
-  } @elseif $direction == 'horizontal' {
-    html.xt-fixed {
-      body {
-        overflow-x: hidden;
-      }
-      #{$item} {
-        overflow-x: scroll;
-      }
-    }
-  }
-}
-
-//////////////////////
 // xt-scroll
 //////////////////////
 

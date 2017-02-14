@@ -107,9 +107,34 @@ a, button {
   white-space: nowrap;
 }
 
-[disabled] {
-  cursor: default;
-  opacity: 1;
+.overlay {
+  display: none;
+  z-index: 80;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.overlay.active, .overlay.fadeout {
+  display: block;
+}
+
+html.xt-fixed-vertical body {
+  overflow-y: hidden;
+}
+
+html.xt-fixed-vertical .overlay {
+  overflow-y: scroll;
+}
+
+html.xt-fixed-horizontal body {
+  overflow-x: hidden;
+}
+
+html.xt-fixed-horizontal .overlay {
+  overflow-x: scroll;
 }
 
 .box {
@@ -154,6 +179,12 @@ a, button {
   white-space: nowrap;
 }
 
+[disabled] {
+  cursor: default;
+  opacity: 1;
+}
+
+/* toggles */
 .toggle-flex {
   display: none !important;
 }
@@ -557,6 +588,10 @@ a:not(.button):hover:not(.active), a:not(.button).hover:not(.active), a:not(.but
 .drop-target .button {
   padding-left: 20px;
   padding-right: 40px;
+}
+
+.overlay {
+  background: #ffffff;
 }
 
 .anim, .drop-target, [class^="a-"],

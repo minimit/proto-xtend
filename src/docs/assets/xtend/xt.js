@@ -2,7 +2,7 @@
 @copyright (c) 2016 - 2017 Riccardo Caroli
 @license MIT (https://github.com/minimit/xtend/blob/master/LICENSE) */
 
-;(function($, window, document, undefined) {
+;( function($, window, document, undefined) {
 
   'use strict';
   
@@ -31,7 +31,7 @@
       'min': 0,
       'max': 1,
     };
-    return this.each(function() {
+    return this.each( function() {
       if (!$.data(this, defaults.name)) {
         $.data(this, defaults.name, new XtToggle(this, defaults, options));
       }
@@ -52,7 +52,7 @@
       'min': 0,
       'max': 1,
     };
-    return this.each(function() {
+    return this.each( function() {
       if (!$.data(this, defaults.name)) {
         $.data(this, defaults.name, new XtOverlay(this, defaults, options));
       }
@@ -72,7 +72,7 @@
       'min': 0,
       'max': 1,
     };
-    return this.each(function() {
+    return this.each( function() {
       if (!$.data(this, defaults.name)) {
         $.data(this, defaults.name, new XtScroll(this, defaults, options));
       }
@@ -92,7 +92,7 @@
       'class': 'active',
       'url': null,
     };
-    return this.each(function() {
+    return this.each( function() {
       if (!$.data(this, defaults.name)) {
         $.data(this, defaults.name, new XtAjax(this, defaults, options));
       }
@@ -109,7 +109,7 @@
   };
   
   $.fn.xtInitAll = function(deep) {
-    return this.each(function() {
+    return this.each( function() {
       if ($(this).is('[data-xt-toggle]')) {
         $(this).xtToggle();
       }
@@ -203,7 +203,7 @@
       // xt-scroll $targets
       $group.wrap($('<div class="box-wrap"></div>'));
       settings.$targets = $group.clone().addClass('xt-clone xt-ignore').css('visibility', 'hidden');
-      $.each(settings.$targets.data(), function (i) {
+      $.each(settings.$targets.data(), function(i) {
         settings.$targets.removeAttr("data-" + i);
       });
       settings.$targets.insertAfter($group);
@@ -250,7 +250,7 @@
         var loc = window.location.href.split('#')[0];
         url = loc.replace(/https?:\/\/[^\/]+/i, '');
       }
-      settings.$elements.each(function() {
+      settings.$elements.each( function() {
         if ($(this).attr('href') === url) {
           found = $(this);
           return false;
@@ -268,7 +268,7 @@
     } else {
       // automatic reinit if has class
       if (settings.$elements) {
-        settings.$elements.each(function() {
+        settings.$elements.each( function() {
           if ($(this).hasClass(object.defaultClass)) {
             $(this).removeClass(settings.class);
             object.show($(this));
@@ -383,38 +383,38 @@
       }
       if (scrollTop > top && scrollTop < bottom) {
         if (!$group.hasClass(object.defaultClass)) {
-          window.xtRequestAnimationFrame(function() {
+          window.xtRequestAnimationFrame( function() {
             object.show($group);
           });
           // direction classes
           $group.removeClass('scroll-off-top scroll-off-bottom');
           if (settings.scrollTopOld > scrollTop) {
             $group.removeClass('scroll-on-top');
-            window.xtRequestAnimationFrame(function() {
+            window.xtRequestAnimationFrame( function() {
               $group.addClass('scroll-on-bottom');
             });
           } else {
             $group.removeClass('scroll-on-bottom');
-            window.xtRequestAnimationFrame(function() {
+            window.xtRequestAnimationFrame( function() {
               $group.addClass('scroll-on-top');
             });
           }
         }
       } else {
         if ($group.hasClass(object.defaultClass)) {
-          window.xtRequestAnimationFrame(function() {
+          window.xtRequestAnimationFrame( function() {
             object.hide($group);
           });
           // direction classes
           $group.removeClass('scroll-on-top scroll-on-bottom');
           if (settings.scrollTopOld > scrollTop) {
             $group.removeClass('scroll-off-top');
-            window.xtRequestAnimationFrame(function() {
+            window.xtRequestAnimationFrame( function() {
               $group.addClass('scroll-off-bottom');
             });
           } else {
             $group.removeClass('scroll-off-bottom');
-            window.xtRequestAnimationFrame(function() {
+            window.xtRequestAnimationFrame( function() {
               $group.addClass('scroll-off-top');
             });
           }
@@ -461,10 +461,12 @@
         $currents = object.setCurrents($currents.pushElement($element));
         // linked
         if (!isSync) {
-          var $linked = $('[data-xt-namespace="' + settings.namespace + '"]').filter(':parents(.xt-ignore)').not($group);
-          $linked.each(function() {
-            var xt = $(this).data(settings.name);
-            xt.show($(this), true, true);
+          window.xtRequestAnimationFrame( function() {
+            var $linked = $('[data-xt-namespace="' + settings.namespace + '"]').filter(':parents(.xt-ignore)').not($group);
+            $linked.each( function() {
+              var xt = $(this).data(settings.name);
+              xt.show($(this), true, true);
+            });
           });
         }
         // control over activated
@@ -524,10 +526,12 @@
           }
           // linked
           if (!isSync) {
-            var $linked = $('[data-xt-namespace="' + settings.namespace + '"]').filter(':parents(.xt-ignore)').not($group);
-            $linked.each(function() {
-              var xt = $(this).data(settings.name);
-              xt.hide($(this), true, true);
+            window.xtRequestAnimationFrame( function() {
+              var $linked = $('[data-xt-namespace="' + settings.namespace + '"]').filter(':parents(.xt-ignore)').not($group);
+              $linked.each( function() {
+                var xt = $(this).data(settings.name);
+                xt.hide($(this), true, true);
+              });
             });
           }
         }
@@ -548,7 +552,7 @@
         if (settings.name === 'xt-overlay') {
           $('html').removeClass(settings.class);
           // remove paddings
-          object.offFixed($('.xt-fixed, html'));
+          object.offFixed($('.xt-fixed-vertical').add('html'));
           // deactivate $group
           if ($group.hasClass(object.defaultClass)) {
             object.showOff($group, triggered);
@@ -572,15 +576,18 @@
     $el.removeClass('fadeout');
     clearTimeout($el.data('fade.timeout'));
     $el.off('transitionend.xt');
+    if (settings.name === 'xt-overlay') {
+      $('html').removeClass('fadeout');
+    }
     // fadein
-    window.xtRequestAnimationFrame(function() {
+    window.xtRequestAnimationFrame( function() {
       $el.addClass('fadein');
       if (settings.timeIn === undefined && $el.css('transitionDuration') !== '0s') {
         $el.one('transitionend.xt', function(e) {
           object.onDone($el);
         });
       } else if (settings.timeIn) {
-        var timeout = window.setTimeout(function(object, $el) {
+        var timeout = window.setTimeout( function(object, $el) {
           object.onDone($el, triggered);
         }, settings.timeIn, object, $el);
         $el.data('fade.timeout', timeout);
@@ -629,14 +636,17 @@
     $el.addClass('fadeout');
     clearTimeout($el.data('fade.timeout'));
     $el.off('transitionend.xt');
+    if (settings.name === 'xt-overlay') {
+      $('html').addClass('fadeout');
+    }
     // fadeout
-    window.xtRequestAnimationFrame(function() {
+    window.xtRequestAnimationFrame( function() {
       if (settings.timeOut === undefined && $el.css('transitionDuration') !== '0s') {
         $el.one('transitionend.xt', function(e) {
           object.offDone($el);
         });
       } else if (settings.timeOut) {
-        var timeout = window.setTimeout(function(object, $el) {
+        var timeout = window.setTimeout( function(object, $el) {
           object.offDone($el);
         }, settings.timeOut, object, $el);
         $el.data('fade.timeout', timeout);
@@ -647,7 +657,7 @@
     // animations
     object.onWidth($el, triggered);
     object.onHeight($el, triggered);
-    window.xtRequestAnimationFrame(function() {
+    window.xtRequestAnimationFrame( function() {
       object.offWidth($el, triggered);
       object.offHeight($el, triggered);
     });
@@ -664,6 +674,9 @@
     var $group = $(this.group);
     // when animation is done
     $el.removeClass('fadeout');
+    if (settings.name === 'xt-overlay') {
+      $('html').removeClass('fadeout');
+    }
     // a-width and a-height
     if ($el.hasClass('a-height') || $el.hasClass('a-width')) {
       this.removeWrap($el);
@@ -816,7 +829,7 @@
     // add scrollbar padding
     var w = object.scrollbarWidth($el);
     w = $el.css('overflow-y') === 'hidden' ? 0 : w;
-    $el.addClass('xt-fixed').css('padding-right', w).css('background-clip', 'content-box');
+    $el.addClass('xt-fixed-vertical').css('padding-right', w).css('background-clip', 'content-box');
   };
   
   Xt.prototype.offFixed = function($el) {
@@ -825,13 +838,13 @@
     var group = this.group;
     var $group = $(this.group);
     // remove scrollbar padding
-    $el.removeClass('xt-fixed').css('padding-right', 0).css('background-clip', '');
+    $el.removeClass('xt-fixed-vertical').css('padding-right', 0).css('background-clip', '');
   };
   
   Xt.prototype.getIndex = function($elements, $element) {
     var index = 0;
     if ($elements && $element) {
-      $elements.each(function(i) {
+      $elements.each( function(i) {
         if ($(this).is($element.get(0))) {
           index = i;
           return false;
@@ -939,7 +952,7 @@
     // also when on popstate
     document.title = title;
     // trigger on registered
-    settings.$elements.filter('[href="' + url + '"]').each(function(i) {
+    settings.$elements.filter('[href="' + url + '"]').each( function() {
       object.show($(this), true, false, true);
     });
     // push object state
@@ -953,7 +966,7 @@
   //////////////////////
   
   // https://www.paulirish.com/2011/requestanimationframe-for-smart-animating/
-  window.xtRequestAnimationFrame = (function() {
+  window.xtRequestAnimationFrame = ( function() {
     return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || function(callback) {
       window.setTimeout(callback, 1000 / 60);
     };

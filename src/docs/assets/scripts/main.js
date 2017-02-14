@@ -1,4 +1,4 @@
-;(function($, window, document, undefined) {
+;( function($, window, document, undefined) {
   
   'use strict';
   
@@ -61,7 +61,7 @@
             $(this).attr('data-original-title', 'Copy to clipboard').tooltip('hide');
           });
         var clipboard = new Clipboard('.button__clipboard', {
-          target: function (trigger) {
+          target: function(trigger) {
             return $(trigger).parents('.demo').find('.demo-item.active .demo-code-body-item.active .hljs')[0];
           }
         });
@@ -219,11 +219,11 @@
     });
     
     // .site-article .make-line
-    $main.find('.site-article').find('h2, h3').addClass('make-line');
+    $main.find('.site-article').find('> h2, > h3').addClass('make-line');
     $main.find('.make-line').wrapInner('<span class="line"></span>').wrapInner('<div class="line-container"></div>');
     
     // .site-article .site-article-anchor
-    $main.find('.site-article').find('h2, h3').filter(':parents(.demo)').each( function(i) {
+    $main.find('.site-article').find('> h2, > h3').filter(':parents(.demo)').each( function(i) {
       var $element = $(this);
       var id = $element.text().replace(/\s+/g, '-').toLowerCase();
       $element.attr('id', id);

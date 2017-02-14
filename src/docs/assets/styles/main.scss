@@ -191,9 +191,6 @@ a.logo {
 
 /*.site-menu */
 .site-menu {
-  .xt-inside {
-    height: 100vh;
-  }
   .site-menu-outside {
     background: $color-primary;
     color: $color-white;
@@ -212,11 +209,10 @@ a.logo {
     width: 100%;
     min-height: 100vh;
   }
-  .site-menu-content {
-  }
-  
   // content
   .button {
+    padding-left: 0;
+    padding-right: 0;
     width: 100%;
     @include font(sans-light, !important);
     font-size: 2.619rem;
@@ -326,7 +322,7 @@ $button__menu_pixels: 1px;
       border-radius: 0;
       left: 0;
       transform: rotate(0deg);
-      transition: all 1100ms cubic-bezier(0.19, 1, 0.22, 1);
+      transition: all 1100ms cubic-bezier(0.19, 1, 0.22, 1) 100ms;
     }
     span:nth-child(1) {
       top: 0;
@@ -343,9 +339,6 @@ $button__menu_pixels: 1px;
   }
   &.active {
     .icon-menu-custom {
-      span {
-        transition: all 1100ms cubic-bezier(0.19, 1, 0.22, 1);
-      }
       span:nth-child(1) {
         transform: rotate(45deg);
         top: 0;
@@ -362,13 +355,7 @@ $button__menu_pixels: 1px;
       }
     }
   }
-  #{$hover} {
-    .icon-menu-custom {
-      span {
-        background: $color-white;
-      }
-    }
-  }
+  #{$hover},
   #{$active} {
     .icon-menu-custom {
       span {
@@ -453,6 +440,10 @@ $button__menu_pixels: 1px;
 //////////////////////
 // main
 //////////////////////
+
+.site-main {
+  background: #ffffff;
+}
 
 /* .site-article */
 .site-article {
@@ -719,7 +710,6 @@ p code,
     padding: 0;
   }
   // .demo-text
-  .demo-source p,
   .demo-text {
     font-size: 14px;
     line-height: 1.6;
@@ -776,56 +766,62 @@ pre {
 // xt
 //////////////////////
 
+// .site-footer
 @include xt-scroll('.site-footer', 'bottom');
 .site-footer {
   z-index: 4 !important;
   width: 100%;
 }
+.site-header {
+  z-index: 6 !important;
+}
 .site-main {
   z-index: 5 !important;
-  background: #ffffff;
 }
 
-@media (min-width: 768px) {
-  
-  @include xt-scroll('.site-header-top');
-  .site-header-top {
-    width: 100%;
-    // animations
-    &.scroll-on-bottom {
-      animation: top-fadein 600ms cubic-bezier(0.19, 1, 0.22, 1);
-    }
+// .site-header-top
+@include xt-scroll('.site-header-top[data-xt-scroll]');
+.site-header-top[data-xt-scroll] {
+  width: 100%;
+  &.scroll-on-bottom {
+    animation: top-fadein 600ms cubic-bezier(0.19, 1, 0.22, 1);
   }
-  
-  @include xt-scroll('.site-breadcrumbs');
-  .site-breadcrumbs {
-    // animations
-    &.active {
-      z-index: 71 !important;
-      .site-breadcrumbs-meta,
-      .show-scroll {
-        animation: right-fadein 600ms cubic-bezier(0.19, 1, 0.22, 1);
-      }
-    }
-  }
-  
 }
 
-@media (min-width: 992px) {
+// .site-breadcrumbs
+@include xt-scroll('.site-breadcrumbs');
+.site-breadcrumbs {
+  &.active {
+    z-index: 71 !important;
+    .site-breadcrumbs-meta,
+    .show-scroll {
+      animation: right-fadein 600ms cubic-bezier(0.19, 1, 0.22, 1);
+    }
+  }
+}
+
+// .site-aside
+@include xt-scroll('.site-aside', 'top', 56px);
+.site-aside {
+  z-index: 69 !important;
+}
   
-  @include xt-scroll('.site-aside', 'top', 56px);
-  .site-aside {
+// .site-menu
+html.active,
+html.fadeout {
+  .site-menu {
     z-index: 69 !important;
+    .site-header-top {
+      position: absolute;
+      width: 100%;
+    }
   }
-  
+  // below demos overlay...
+  .site-breadcrumbs,
+  .site-header-top {
+    z-index: 68 !important;
+  }
 }
-
-@include xt-overlay('.site-menu');
-html.active .site-header-top {
-  z-index: 81 !important;
-  @extend .site-header-top.active;
-}
-// animations
 .site-menu.active {
   display: block;
   .site-menu-content {

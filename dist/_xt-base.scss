@@ -109,16 +109,42 @@ a, button {
 }
 
 //////////////////////
-// various
+// overlay
 //////////////////////
 
-[disabled] {
-  cursor: default;
-  opacity: 1;
+.overlay {
+  display: none;
+  z-index: 80;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  &.active,
+  &.fadeout {
+    display: block;
+  }
+}
+html.xt-fixed-vertical {
+  body {
+    overflow-y: hidden;
+  }
+  .overlay {
+    overflow-y: scroll;
+  }
+}
+html.xt-fixed-horizontal {
+  body {
+    overflow-x: hidden;
+  }
+  .overlay {
+    overflow-x: scroll;
+  }
 }
 
+
 //////////////////////
-// xt
+// utils
 //////////////////////
 
 .box {
@@ -129,18 +155,25 @@ a, button {
   @include box;
   @include clearfix;
 }
-
 .show {
   display: block !important;
 }
 .hide {
   display: none !important;
 }
-
 .nowrap {
   white-space: nowrap;
 }
+[disabled] {
+  cursor: default;
+  opacity: 1;
+}
 
+//////////////////////
+// xt
+//////////////////////
+
+/* toggles */
 .toggle-flex {
   display: none !important;
   &.active,
@@ -175,10 +208,6 @@ a, button {
     display: none !important;
   }
 }
-
-//////////////////////
-// animations
-//////////////////////
 
 // .a-height
 .a-height {
