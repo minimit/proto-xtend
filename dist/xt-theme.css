@@ -582,19 +582,49 @@ a:not(.button):hover:not(.active), a:not(.button).hover:not(.active), a:not(.but
   transform: translateX(0.618rem);
 }
 
-.a-vertical, .drop-target {
+.a-horizontal-zoom {
+  opacity: 0;
+  transform: translateX(-0.618rem) scale(0.95);
+}
+
+.a-horizontal-zoom.fadein {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+}
+
+.a-horizontal-zoom.fadeout {
+  opacity: 0;
+  transform: translateX(0.618rem) scale(0.95);
+}
+
+.a-vertical {
   opacity: 0;
   transform: translateY(-0.618rem);
 }
 
-.a-vertical.fadein, .fadein.drop-target {
+.a-vertical.fadein {
   opacity: 1;
   transform: translateY(0);
 }
 
-.a-vertical.fadeout, .fadeout.drop-target {
+.a-vertical.fadeout {
   opacity: 0;
   transform: translateY(0.618rem);
+}
+
+.a-vertical-zoom, .drop-target {
+  opacity: 0;
+  transform: translateY(-0.618rem) scale(0.95);
+}
+
+.a-vertical-zoom.fadein, .fadein.drop-target {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.a-vertical-zoom.fadeout, .fadeout.drop-target {
+  opacity: 0;
+  transform: translateY(0.618rem) scale(0.95);
 }
 
 .a-diagonal {

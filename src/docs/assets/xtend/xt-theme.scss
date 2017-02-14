@@ -283,7 +283,7 @@ a:not(.button) {
   }
   /* animations */
   @extend .anim;
-  @extend .a-vertical;
+  @extend .a-vertical-zoom;
 }
 
 //////////////////////
@@ -316,6 +316,21 @@ a:not(.button) {
   }
 }
 
+
+// .a-horizontal-zoom
+.a-horizontal-zoom {
+  opacity: 0;
+  transform: translateX(-0.618rem) scale(0.95);
+  &.fadein {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+  &.fadeout {
+    opacity: 0;
+    transform: translateX(0.618rem) scale(0.95);
+  }
+}
+
 // .a-vertical
 .a-vertical {
   opacity: 0;
@@ -327,6 +342,20 @@ a:not(.button) {
   &.fadeout {
     opacity: 0;
     transform: translateY(0.618rem);
+  }
+}
+
+// .a-vertical-zoom
+.a-vertical-zoom {
+  opacity: 0;
+  transform: translateY(-0.618rem) scale(0.95);
+  &.fadein {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  &.fadeout {
+    opacity: 0;
+    transform: translateY(0.618rem) scale(0.95);
   }
 }
 
