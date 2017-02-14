@@ -9,7 +9,7 @@
   //////////////////////
   // constructor
   //////////////////////
-  
+
   var Xt = function(group, defaults, options) {
     this.group = group;
     this.init(defaults, options);
