@@ -89,9 +89,23 @@ a, button {
 .drop {
   position: relative;
 }
-.drop-content {
+.drop-target {
   position: absolute;
   z-index: 40;
+  /* horizontal */
+  &.right {
+    right: 0;
+  }
+  /* vertical */
+  &.top {
+    bottom: 100%;
+  }
+  /* content */
+  .button {
+    width: 100%;
+    text-align: left;
+    white-space: nowrap;
+  }
 }
 
 //////////////////////
@@ -127,6 +141,13 @@ a, button {
   white-space: nowrap;
 }
 
+.toggle-flex {
+  display: none !important;
+  &.active,
+  &.fadeout {
+    display: flex !important;
+  }
+}
 .toggle-block {
   display: none !important;
   &.active,

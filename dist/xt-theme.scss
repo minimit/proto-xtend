@@ -268,30 +268,19 @@ a:not(.button) {
 // drop
 //////////////////////
 
-.drop-content {
+.drop-target {
   background: $color-white;
   color: $color-black;
   -webkit-box-shadow: 0 0 5px rgba($color-black, 0.2);
   box-shadow: 0 0 5px rgba($color-black, 0.2);
-  
-  /* position */
+  /* content */
   margin: 10px 0;
   padding: 10px 0;
   .button {
     @extend .button.color-text;
     padding-left: 20px;
     padding-right: 40px;
-    width: 100%;
-    text-align: left;
-    white-space: nowrap;
   }
-  &.drop-top {
-    bottom: 100%;
-  }
-  &.drop-right {
-    right: 0;
-  }
-  
   /* animations */
   @extend .anim;
   @extend .a-vertical;

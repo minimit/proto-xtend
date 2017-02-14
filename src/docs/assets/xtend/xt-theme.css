@@ -85,9 +85,26 @@ a, button {
   position: relative;
 }
 
-.drop-content {
+.drop-target {
   position: absolute;
   z-index: 40;
+  /* horizontal */
+  /* vertical */
+  /* content */
+}
+
+.drop-target.right {
+  right: 0;
+}
+
+.drop-target.top {
+  bottom: 100%;
+}
+
+.drop-target .button {
+  width: 100%;
+  text-align: left;
+  white-space: nowrap;
 }
 
 [disabled] {
@@ -135,6 +152,14 @@ a, button {
 
 .nowrap {
   white-space: nowrap;
+}
+
+.toggle-flex {
+  display: none !important;
+}
+
+.toggle-flex.active, .toggle-flex.fadeout {
+  display: flex !important;
 }
 
 .toggle-block {
@@ -498,12 +523,12 @@ a:not(.button):hover:not(.active), a:not(.button).hover:not(.active), a:not(.but
   color: #ffffff;
 }
 
-.button.color-text, .drop-content .button {
+.button.color-text, .drop-target .button {
   background: transparent;
   color: #000000;
 }
 
-.button.color-text:hover:not(.active), .drop-content .button:hover:not(.active), .button.color-text.hover:not(.active), .drop-content .hover.button:not(.active), .button.color-text:active, .drop-content .button:active, .button.color-text.active, .drop-content .active.button, .button.color-text:active:focus, .drop-content .button:active:focus, .button.color-text:active.focus, .drop-content .button:active.focus, .button.color-text.active:focus, .drop-content .active.button:focus, .button.color-text.active.focus, .drop-content .active.focus.button {
+.button.color-text:hover:not(.active), .drop-target .button:hover:not(.active), .button.color-text.hover:not(.active), .drop-target .hover.button:not(.active), .button.color-text:active, .drop-target .button:active, .button.color-text.active, .drop-target .active.button, .button.color-text:active:focus, .drop-target .button:active:focus, .button.color-text:active.focus, .drop-target .button:active.focus, .button.color-text.active:focus, .drop-target .active.button:focus, .button.color-text.active.focus, .drop-target .active.focus.button {
   background: rgba(0, 176, 255, 0.1);
   color: #00B0FF;
 }
@@ -518,34 +543,23 @@ a:not(.button):hover:not(.active), a:not(.button).hover:not(.active), a:not(.but
   color: #ffffff;
 }
 
-.drop-content {
+.drop-target {
   background: #ffffff;
   color: #000000;
   -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-  /* position */
+  /* content */
   margin: 10px 0;
   padding: 10px 0;
   /* animations */
 }
 
-.drop-content .button {
+.drop-target .button {
   padding-left: 20px;
   padding-right: 40px;
-  width: 100%;
-  text-align: left;
-  white-space: nowrap;
 }
 
-.drop-content.drop-top {
-  bottom: 100%;
-}
-
-.drop-content.drop-right {
-  right: 0;
-}
-
-.anim, .drop-content, [class^="a-"],
+.anim, .drop-target, [class^="a-"],
 [class*=" a-"] {
   transition-property: all;
   transition-duration: 300ms;
@@ -568,17 +582,17 @@ a:not(.button):hover:not(.active), a:not(.button).hover:not(.active), a:not(.but
   transform: translateX(0.618rem);
 }
 
-.a-vertical, .drop-content {
+.a-vertical, .drop-target {
   opacity: 0;
   transform: translateY(-0.618rem);
 }
 
-.a-vertical.fadein, .fadein.drop-content {
+.a-vertical.fadein, .fadein.drop-target {
   opacity: 1;
   transform: translateY(0);
 }
 
-.a-vertical.fadeout, .fadeout.drop-content {
+.a-vertical.fadeout, .fadeout.drop-target {
   opacity: 0;
   transform: translateY(0.618rem);
 }

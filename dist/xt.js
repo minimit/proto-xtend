@@ -24,7 +24,7 @@
     var defaults = {
       'name': 'xt-toggle',
       'elements': null,
-      'targets': '.toggle-block, .toggle-inline-block, .toggle-inline, .toggle-none',
+      'targets': '.toggle-flex, .toggle-block, .toggle-inline-block, .toggle-inline, .toggle-none',
       'class': 'active',
       'on': 'click',
       'off': null,
@@ -591,6 +591,8 @@
     // animations
     object.onWidth($el, triggered);
     object.onHeight($el, triggered);
+    object.onMiddle($el, triggered);
+    object.onCenter($el, triggered);
     // api
     if (!triggered) {
       $el.trigger('on.xt', [object, true]);
@@ -736,6 +738,26 @@
       $el.css('height', 0);
       $el.parents('.a-height-top').css("margin-top", 0);
       $el.parents('.a-height-bottom').css("margin-bottom", 0);
+    }
+  };
+  
+  Xt.prototype.onMiddle = function($el) {
+    // animation fadeout
+    if ($el.hasClass('middle')) {
+      var $outside = $el.parent();
+      var add = $outside.outerHeight() / 2;
+      var remove = $el.outerHeight() / 2;
+      $el.css('top', add - remove);
+    }
+  };
+  
+  Xt.prototype.onCenter = function($el) {
+    // animation fadeout
+    if ($el.hasClass('center')) {
+      var $outside = $el.parent();
+      var add = $outside.outerWidth() / 2;
+      var remove = $el.outerWidth() / 2;
+      $el.css('left', add - remove);
     }
   };
   
