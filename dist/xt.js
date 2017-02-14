@@ -327,12 +327,12 @@
         }
       });
       // api
-      settings.$elements.on('on.xt', function(e, obj, triggered) {
+      settings.$elements.on('show.xt', function(e, obj, triggered) {
         if (!triggered && e.target === this) {
           object.show($(this), true);
         }
       });
-      settings.$elements.on('off.xt', function(e, obj, triggered) {
+      settings.$elements.on('hide.xt', function(e, obj, triggered) {
         if (!triggered && e.target === this) {
           object.hide($(this), true);
         }
@@ -456,7 +456,7 @@
       // show and add in $currents
       if (!$element.hasClass(object.defaultClass)) {
         var $elements = object.getElements(settings.$elements, $element);
-        object.showOn($elements, triggered);
+        object.showAfter($elements, triggered);
         var $currents = object.getCurrents();
         $currents = object.setCurrents($currents.pushElement($element));
         // linked
@@ -492,15 +492,18 @@
     if (settings.$targets) {
       var $target = object.getTargets(settings.$elements, $element, settings.$targets);
       if (!$target.hasClass(object.defaultClass)) {
-        object.showOn($target, triggered);
+        object.showAfter($target, triggered);
         // stuff
         if (settings.name === 'xt-overlay') {
-          $('html').addClass(settings.class);
           // add paddings
           object.onFixed($('*:fixed').not($target).add('html'));
-          // activate $group
-          if (!$group.hasClass(object.defaultClass)) {
-            object.showOn($group, triggered);
+          // activate $additional with $group time
+          var $additional = $('html');
+          if (!$additional.hasClass(object.defaultClass)) {
+            $additional.addClass(settings.class);
+            window.xtRequestAnimationFrame( function() {
+              $additional.addClass('fadein');
+            });
           }
         }
       }
@@ -518,7 +521,7 @@
       if ($element.hasClass(object.defaultClass)) {
         if (isSync || settings.name === 'xt-ajax' || $currents.length > settings.min) {
           var $elements = object.getElements(settings.$elements, $element);
-          object.showOff($elements, triggered);
+          object.hideAfter($elements, triggered);
           if ($element.attr('data-group')) {
             $currents = object.setCurrents($currents.not('[data-group=' + $element.attr('data-group') + ']'));
           } else {
@@ -547,15 +550,20 @@
     if (settings.$targets) {
       var $target = object.getTargets(settings.$elements, $element, settings.$targets);
       if ($target.hasClass(object.defaultClass)) {
-        object.showOff($target, triggered);
+        object.hideAfter($target, triggered);
         // stuff
         if (settings.name === 'xt-overlay') {
-          $('html').removeClass(settings.class);
           // remove paddings
           object.offFixed($('.xt-fixed-vertical').add('html'));
-          // deactivate $group
-          if ($group.hasClass(object.defaultClass)) {
-            object.showOff($group, triggered);
+          // deactivate $additional with $group time
+          var $additional = $('html');
+          if ($additional.hasClass(object.defaultClass)) {
+            $additional.removeClass(settings.class);
+            $additional.removeClass('fadein');
+            $additional.addClass('fadeout');
+            settings.$targets.off('hide.xt.done.additional').one('hide.xt.done.additional', function() {
+              $additional.removeClass('fadeout');
+            });
           }
         }
       }
@@ -566,7 +574,7 @@
   // on and off methods
   //////////////////////
   
-  Xt.prototype.showOn = function($el, triggered) {
+  Xt.prototype.showAfter = function($el, triggered) {
     var object = this;
     var settings = this.settings;
     var group = this.group;
@@ -576,23 +584,20 @@
     $el.removeClass('fadeout');
     clearTimeout($el.data('fade.timeout'));
     $el.off('transitionend.xt');
-    if (settings.name === 'xt-overlay') {
-      $('html').removeClass('fadeout');
-    }
     // fadein
     window.xtRequestAnimationFrame( function() {
       $el.addClass('fadein');
       if (settings.timeIn === undefined && $el.css('transitionDuration') !== '0s') {
         $el.one('transitionend.xt', function(e) {
-          object.onDone($el);
+          object.showDone($el);
         });
       } else if (settings.timeIn) {
         var timeout = window.setTimeout( function(object, $el) {
-          object.onDone($el, triggered);
+          object.showDone($el, triggered);
         }, settings.timeIn, object, $el);
         $el.data('fade.timeout', timeout);
       } else {
-        object.onDone($el, triggered);
+        object.showDone($el, triggered);
       }
     });
     // animations
@@ -602,11 +607,11 @@
     object.onCenter($el, triggered);
     // api
     if (!triggered) {
-      $el.trigger('on.xt', [object, true]);
+      $el.trigger('show.xt', [object, true]);
     }
   };
   
-  Xt.prototype.onDone = function($el, triggered) {
+  Xt.prototype.showDone = function($el, triggered) {
     var object = this;
     var settings = this.settings;
     var group = this.group;
@@ -621,11 +626,11 @@
     }
     // api
     if (!triggered) {
-      $el.trigger('fadein.xt', [object, true]);
+      $el.trigger('show.xt.done', [object, true]);
     }
   };
   
-  Xt.prototype.showOff = function($el, triggered) {
+  Xt.prototype.hideAfter = function($el, triggered) {
     var object = this;
     var settings = this.settings;
     var group = this.group;
@@ -636,22 +641,19 @@
     $el.addClass('fadeout');
     clearTimeout($el.data('fade.timeout'));
     $el.off('transitionend.xt');
-    if (settings.name === 'xt-overlay') {
-      $('html').addClass('fadeout');
-    }
     // fadeout
     window.xtRequestAnimationFrame( function() {
       if (settings.timeOut === undefined && $el.css('transitionDuration') !== '0s') {
         $el.one('transitionend.xt', function(e) {
-          object.offDone($el);
+          object.hideDone($el);
         });
       } else if (settings.timeOut) {
         var timeout = window.setTimeout( function(object, $el) {
-          object.offDone($el);
+          object.hideDone($el);
         }, settings.timeOut, object, $el);
         $el.data('fade.timeout', timeout);
       } else {
-        object.offDone($el, triggered);
+        object.hideDone($el, triggered);
       }
     });
     // animations
@@ -663,27 +665,24 @@
     });
     // api
     if (!triggered) {
-      $el.trigger('off.xt', [object, true]);
+      $el.trigger('hide.xt', [object, true]);
     }
   };
   
-  Xt.prototype.offDone = function($el, triggered) {
+  Xt.prototype.hideDone = function($el, triggered) {
     var object = this;
     var settings = this.settings;
     var group = this.group;
     var $group = $(this.group);
     // when animation is done
     $el.removeClass('fadeout');
-    if (settings.name === 'xt-overlay') {
-      $('html').removeClass('fadeout');
-    }
     // a-width and a-height
     if ($el.hasClass('a-height') || $el.hasClass('a-width')) {
       this.removeWrap($el);
     }
     // api
     if (!triggered) {
-      $el.trigger('fadeout.xt', [object, true]);
+      $el.trigger('hide.xt.done', [object, true]);
     }
   };
   

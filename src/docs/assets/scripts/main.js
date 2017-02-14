@@ -95,7 +95,7 @@
             initIframe();
           }
           // iframe resize on show
-          $item.on('on.xt', function(e, obj) {
+          $item.on('show.xt', function(e, obj) {
             if (e.target === this) {
               window.resizeIframe(id);
               if (k !== 0) {
@@ -192,7 +192,7 @@
       var $demo = $(this);
       populateDemo($demo, i);
       // enable fullscreen
-      $demo.find('.demo-tabs-left .button').on('on.xt', function(e, obj) {
+      $demo.find('.demo-tabs-left .button').on('show.xt', function(e, obj) {
         var $fullscreen = $(this).parents('.demo').find('.button__fullscreen');
         var iframe = $(this).parents('.demo').find('.demo-item.active').attr('data-iframe');
         if (iframe) {
@@ -260,7 +260,7 @@
         $('.developer').addClass('developer-show');
       }
       // init
-      $('.button__developer').xtToggle().on('on.xt', function(e) {
+      $('.button__developer').xtToggle().on('show.xt', function(e) {
         window.developer = true;
         $('.developer').addClass('developer-show');
       }).on('hide.xt', function(e) {
@@ -293,6 +293,14 @@
     main($(this));
   });
   
+  // fix .overlay z-index
+  $('.site-article .overlay').on('show.xt', function() {
+    $('.site-main').css('z-index', '999');
+  });
+  $('.site-article .overlay').on('hide.xt.done', function() {
+    $('.site-main').css('z-index', '');
+  });
+  
   /*
   // test ajax stop page from changing
   function unloadPage(){
@@ -301,31 +309,31 @@
   window.onbeforeunload = unloadPage;
   */
   /*
-  $('.button__menu').filter(':parents(.xt-ignore)').on('on.xt', function(e, obj, triggered, isSync) {
+  $('.button__menu').filter(':parents(.xt-ignore)').on('show.xt', function(e, obj, triggered, isSync) {
     console.log(triggered, $('.button__menu').filter(':parents(.xt-ignore)').length, $('.button__menu').filter(':parents(.xt-ignore)').not(this).length);
     if (!triggered && e.target === this) {
-      $('.button__menu').filter(':parents(.xt-ignore)').not(this).trigger('on.xt', [true, true]);
+      $('.button__menu').filter(':parents(.xt-ignore)').not(this).trigger('show.xt', [true, true]);
     }
   });
   */
   /*
-  $('.button__menu').on('off.xt', function(e) {
-    $('.button__menu').not(this).trigger('off.xt', [true]);
+  $('.button__menu').on('hide.xt', function(e) {
+    $('.button__menu').not(this).trigger('hide.xt', [true]);
   });
   */
   
   /*
   // tests
-  $('button').on('on.xt', function(e, obj, $data) {
+  $('button').on('show.xt', function(e, obj, $data) {
     console.log($(this));
   });
   */
   // tests
   $(document).ready( function() {
-    //$('.site-breadcrumbs-body-main').trigger('on.xt');
-    //$('a[href="/"]').filter(':parents(.xt-ignore)').trigger('on.xt');
+    //$('.site-breadcrumbs-body-main').trigger('show.xt');
+    //$('a[href="/"]').filter(':parents(.xt-ignore)').trigger('show.xt');
     //if ($('html').atr('id') === 'test-0.html') { console.log(this.settings); }
-    //$('.demo-item').on('on.xt', function(e, obj) { console.log($(e.target)); });
+    //$('.demo-item').on('show.xt', function(e, obj) { console.log($(e.target)); });
   });
   
   
