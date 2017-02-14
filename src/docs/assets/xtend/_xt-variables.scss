@@ -162,7 +162,7 @@ $focus: "&:focus, &.focus";
 // xt-overlay
 //////////////////////
 
-@mixin xt-overlay($item, $class:'.active', $direction:'vertical') {
+@mixin xt-overlay($item, $direction:'vertical') {
   #{$item} {
     display: none;
     z-index: 80;
@@ -172,13 +172,12 @@ $focus: "&:focus, &.focus";
     right: 0;
     bottom: 0;
   }
-  html#{$class} {
-    #{$item} {
-      display: block;
-    }
+  #{$item}.active,
+  #{$item}.fadeout {
+    display: block;
   }
   @if $direction == 'vertical' {
-    html#{$class} {
+    html.xt-fixed {
       body {
         overflow-y: hidden;
       }
@@ -187,7 +186,7 @@ $focus: "&:focus, &.focus";
       }
     }
   } @elseif $direction == 'horizontal' {
-    html#{$class} {
+    html.xt-fixed {
       body {
         overflow-x: hidden;
       }
@@ -202,7 +201,7 @@ $focus: "&:focus, &.focus";
 // xt-scroll
 //////////////////////
 
-@mixin xt-scroll($item, $position:'top', $pos:false, $class:'.active') {
+@mixin xt-scroll($item, $position:'top', $pos:false) {
   #{$item} {
     .show-scroll {
       display: none;
@@ -211,10 +210,10 @@ $focus: "&:focus, &.focus";
       display: block;
     }
   }
-  #{$item}#{$class}.xt-clone {
+  #{$item}.active.xt-clone {
     display: block !important;
   }
-  #{$item}#{$class}:not(.xt-clone) {
+  #{$item}.active:not(.xt-clone) {
     position: fixed !important;
     z-index: 70;
     @if $position == 'top' {

@@ -382,7 +382,7 @@
         }
       }
       if (scrollTop > top && scrollTop < bottom) {
-        if (!$group.hasClass(object.defaultClass) || $group.hasClass('fadeout')) {
+        if (!$group.hasClass(object.defaultClass)) {
           window.xtRequestAnimationFrame(function() {
             object.show($group);
           });
@@ -401,7 +401,7 @@
           }
         }
       } else {
-        if ($group.hasClass(object.defaultClass) && !$group.hasClass('fadeout')) {
+        if ($group.hasClass(object.defaultClass)) {
           window.xtRequestAnimationFrame(function() {
             object.hide($group);
           });
@@ -439,7 +439,7 @@
     var group = this.group;
     var $group = $(this.group);
     // choose based on state
-    if (!$element.hasClass(object.defaultClass) || $element.hasClass('fadeout')) {
+    if (!$element.hasClass(object.defaultClass)) {
       object.show($element, triggered, isSync, skipState);
     } else {
       object.hide($element, triggered, isSync, skipState);
@@ -454,7 +454,7 @@
     // activate $element
     if ($element) {
       // show and add in $currents
-      if (!$element.hasClass(object.defaultClass) || $element.hasClass('fadeout')) {
+      if (!$element.hasClass(object.defaultClass)) {
         var $elements = object.getElements(settings.$elements, $element);
         object.showOn($elements, triggered);
         var $currents = object.getCurrents();
@@ -489,15 +489,15 @@
     // activate $target
     if (settings.$targets) {
       var $target = object.getTargets(settings.$elements, $element, settings.$targets);
-      if (!$target.hasClass(object.defaultClass) || $target.hasClass('fadeout')) {
-        object.showOn($target, triggered, true);
+      if (!$target.hasClass(object.defaultClass)) {
+        object.showOn($target, triggered);
         // stuff
         if (settings.name === 'xt-overlay') {
           $('html').addClass(settings.class);
           // add paddings
           object.onFixed($('*:fixed').not($target).add('html'));
           // activate $group
-          if (!$group.hasClass(object.defaultClass) || $group.hasClass('fadeout')) {
+          if (!$group.hasClass(object.defaultClass)) {
             object.showOn($group, triggered);
           }
         }
@@ -513,7 +513,7 @@
     // deactivate $element
     if ($element) {
       var $currents = object.getCurrents();
-      if ($element.hasClass(object.defaultClass) && !$element.hasClass('fadeout')) {
+      if ($element.hasClass(object.defaultClass)) {
         if (isSync || settings.name === 'xt-ajax' || $currents.length > settings.min) {
           var $elements = object.getElements(settings.$elements, $element);
           object.showOff($elements, triggered);
@@ -542,15 +542,15 @@
     // deactivate $target
     if (settings.$targets) {
       var $target = object.getTargets(settings.$elements, $element, settings.$targets);
-      if ($target.hasClass(object.defaultClass) && !$target.hasClass('fadeout')) {
-        object.showOff($target, triggered, true);
+      if ($target.hasClass(object.defaultClass)) {
+        object.showOff($target, triggered);
         // stuff
         if (settings.name === 'xt-overlay') {
           $('html').removeClass(settings.class);
           // remove paddings
           object.offFixed($('.xt-fixed, html'));
           // deactivate $group
-          if ($group.hasClass(object.defaultClass) && !$group.hasClass('fadeout')) {
+          if ($group.hasClass(object.defaultClass)) {
             object.showOff($group, triggered);
           }
         }
@@ -562,7 +562,7 @@
   // on and off methods
   //////////////////////
   
-  Xt.prototype.showOn = function($el, triggered, detectAnimation) {
+  Xt.prototype.showOn = function($el, triggered) {
     var object = this;
     var settings = this.settings;
     var group = this.group;
@@ -575,15 +575,15 @@
     // fadein
     window.xtRequestAnimationFrame(function() {
       $el.addClass('fadein');
-      if (settings.fadeout) {
-        var timeout = window.setTimeout(function(object, $el) {
-          object.onDone($el, triggered);
-        }, settings.fadeout, object, $el);
-        $el.data('fade.timeout', timeout);
-      } else if (detectAnimation && $el.css('transitionDuration') !== '0s') {
+      if (settings.timeIn === undefined && $el.css('transitionDuration') !== '0s') {
         $el.one('transitionend.xt', function(e) {
           object.onDone($el);
         });
+      } else if (settings.timeIn) {
+        var timeout = window.setTimeout(function(object, $el) {
+          object.onDone($el, triggered);
+        }, settings.timeIn, object, $el);
+        $el.data('fade.timeout', timeout);
       } else {
         object.onDone($el, triggered);
       }
@@ -616,28 +616,28 @@
     }
   };
   
-  Xt.prototype.showOff = function($el, triggered, detectAnimation) {
+  Xt.prototype.showOff = function($el, triggered) {
     var object = this;
     var settings = this.settings;
     var group = this.group;
     var $group = $(this.group);
     // off
+    $el.removeClass(settings.class);
     $el.removeClass('fadein');
+    $el.addClass('fadeout');
     clearTimeout($el.data('fade.timeout'));
     $el.off('transitionend.xt');
     // fadeout
     window.xtRequestAnimationFrame(function() {
-      $el.addClass('fadeout');
-      if (settings.fadeout) {
-        var timeout = window.setTimeout(function(object, $el) {
-          object.offDone($el);
-        }, settings.fadeout, object, $el);
-        $el.data('fade.timeout', timeout);
-      } else if (detectAnimation && $el.css('transitionDuration') !== '0s') {
+      if (settings.timeOut === undefined && $el.css('transitionDuration') !== '0s') {
         $el.one('transitionend.xt', function(e) {
-          console.log($el.text());
           object.offDone($el);
         });
+      } else if (settings.timeOut) {
+        var timeout = window.setTimeout(function(object, $el) {
+          object.offDone($el);
+        }, settings.timeOut, object, $el);
+        $el.data('fade.timeout', timeout);
       } else {
         object.offDone($el, triggered);
       }
@@ -661,7 +661,6 @@
     var group = this.group;
     var $group = $(this.group);
     // when animation is done
-    $el.removeClass(settings.class);
     $el.removeClass('fadeout');
     // a-width and a-height
     if ($el.hasClass('a-height') || $el.hasClass('a-width')) {

@@ -132,7 +132,7 @@ a, button {
   display: none !important;
 }
 
-.toggle-block.active {
+.toggle-block.active, .toggle-block.fadeout {
   display: block !important;
 }
 
@@ -140,7 +140,7 @@ a, button {
   display: none !important;
 }
 
-.toggle-inline.active {
+.toggle-inline.active, .toggle-inline.fadeout {
   display: inline !important;
 }
 
@@ -148,11 +148,11 @@ a, button {
   display: none !important;
 }
 
-.toggle-inline-block.active {
+.toggle-inline-block.active, .toggle-inline-block.fadeout {
   display: inline-block !important;
 }
 
-.toggle-none.active {
+.toggle-none.active, .toggle-none.fadeout {
   display: none !important;
 }
 

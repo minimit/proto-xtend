@@ -118,24 +118,28 @@ a, button {
 // animations
 .toggle-block {
   display: none !important;
-  &.active {
+  &.active,
+  &.fadeout {
     display: block !important;
   }
 }
 .toggle-inline {
   display: none !important;
-  &.active {
+  &.active,
+  &.fadeout {
     display: inline !important;
   }
 }
 .toggle-inline-block {
   display: none !important;
-  &.active {
+  &.active,
+  &.fadeout {
     display: inline-block !important;
   }
 }
 .toggle-none {
-  &.active {
+  &.active,
+  &.fadeout {
     display: none !important;
   }
 }
