@@ -47,23 +47,35 @@ gulp.task('copy-dist', ['scss', 'js'], function() {
 gulp.task('scss:watch', function() {
   gulp.watch(['src/docs/assets/xtend/*.scss', 'src/docs/assets/styles/*.scss', 'src/docs/demos/**/*.scss'], ['copy-dist']);
 });
-gulp.task('scss', ['scss-demos'], function() {
+gulp.task('scss', ['scss-pre'], function() {
   return gulp.src('src/docs/assets/styles/*.scss')
     .pipe(sourcemaps.init())
     .pipe(sass({
       outputStyle: 'compressed'
     }))
+    .pipe(rename({
+      suffix: '.min'
+    }))
     .pipe(sourcemaps.write(''))
     .pipe(gulp.dest('src/docs/assets/styles/'));
 });
-gulp.task('scss-demos', ['scss-xt-min'], function() {
+gulp.task('scss-pre', ['scss-demos'], function() {
+  return gulp.src('src/docs/assets/styles/*.scss')
+    .pipe(sourcemaps.init())
+    .pipe(sass({
+      outputStyle: 'expanded'
+    }))
+    .pipe(sourcemaps.write(''))
+    .pipe(gulp.dest('src/docs/assets/styles/'));
+});
+gulp.task('scss-demos', ['scss-xt'], function() {
   return gulp.src('src/docs/demos/**/*.scss')
     .pipe(sass({
       outputStyle: 'nested'
     }))
     .pipe(gulp.dest('src/docs/demos/'));
 });
-gulp.task('scss-xt-min', ['scss-xt'], function() {
+gulp.task('scss-xt', ['scss-xt-pre'], function() {
   return gulp.src('src/docs/assets/xtend/*.scss')
     .pipe(sourcemaps.init())
     .pipe(sass({
@@ -75,7 +87,7 @@ gulp.task('scss-xt-min', ['scss-xt'], function() {
     .pipe(sourcemaps.write(''))
     .pipe(gulp.dest('src/docs/assets/xtend/'));
 });
-gulp.task('scss-xt', function() {
+gulp.task('scss-xt-pre', function() {
   return gulp.src('src/docs/assets/xtend/*.scss')
     .pipe(sourcemaps.init())
     .pipe(sass({

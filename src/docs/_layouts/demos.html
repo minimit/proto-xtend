@@ -21,10 +21,8 @@
     <!-- styles -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" />
     <link rel="stylesheet" href="{{ site.baseurl }}assets/styles/icons/style.css?v={{ site.version }}" />
-    {% if page.scss %}
-    <link rel="stylesheet" href="{{ page.name | replace: '.html', '.css' }}?v={{ site.version }}" />
-    {% endif %}
-    <link rel="stylesheet" href="{{ site.baseurl }}assets/styles/demo.css?v={{ site.version }}" />
+    {% if page.scss %}<link rel="stylesheet" href="{{ page.name | replace: '.html', '.css' }}?v={{ site.version }}" />{% endif %}
+    <link rel="stylesheet" href="{{ site.baseurl }}assets/styles/demo.min.css?v={{ site.version }}" />
     
     <!-- scripts -->
     <script src="{{ site.baseurl }}assets/scripts/jquery.min.js"></script>
