@@ -610,7 +610,8 @@ $button__menu_pixels: 1px;
 //////////////////////
 
 /* .hljs */
-.hljs {
+.hljs,
+pre code {
   padding: 0;
   width: 100%;
   margin-top: -0.238rem;
