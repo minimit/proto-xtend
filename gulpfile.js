@@ -31,7 +31,7 @@ gulp.task('watch', ['version'], function(done) {
   runSequence(['scss', 'js'], function(done) {
     runSequence(['copy-dist'], function(done) {
       runSequence(['bower'], function(done) {
-        runSequence(['site-serve', 'version:watch', 'scss:watch', 'js:watch']);
+        runSequence(['site-serve', 'version:watch', 'scss:watch', 'js:watch', 'js-site:watch']);
       });
     });
   });
@@ -86,21 +86,9 @@ gulp.task('scss-xt', function() {
 });
 
 gulp.task('js:watch', function() {
-  gulp.watch(['src/docs/assets/scripts/main.js', '!src/docs/assets/scripts/main.min.js', 'src/docs/assets/xtend/*.js', '!src/docs/assets/xtend/*.min.js'], ['copy-dist']);
+  gulp.watch(['src/docs/assets/xtend/*.js', '!src/docs/assets/xtend/*.min.js'], ['copy-dist']);
 });
-gulp.task('js', ['js-xt'], function() {
-  return gulp.src(['src/docs/assets/scripts/main.js', '!src/docs/assets/scripts/main.min.js'])
-    .pipe(sourcemaps.init())
-    .pipe(uglify({
-      preserveComments: 'license'
-    }))
-    .pipe(rename({
-      suffix: '.min'
-    }))
-    .pipe(sourcemaps.write(''))
-    .pipe(gulp.dest('src/docs/assets/scripts/'));
-});
-gulp.task('js-xt', function() {
+gulp.task('js', function() {
   return gulp.src(['src/docs/assets/xtend/*.js', '!src/docs/assets/xtend/*.min.js'])
     .pipe(sourcemaps.init())
     .pipe(uglify({
@@ -111,6 +99,22 @@ gulp.task('js-xt', function() {
     }))
     .pipe(sourcemaps.write(''))
     .pipe(gulp.dest('src/docs/assets/xtend/'));
+});
+
+gulp.task('js-site:watch', function() {
+  gulp.watch(['src/docs/assets/scripts/main.js', '!src/docs/assets/scripts/main.min.js'], ['js-site']);
+});
+gulp.task('js-site', function() {
+  return gulp.src(['src/docs/assets/scripts/main.js', '!src/docs/assets/scripts/main.min.js'])
+    .pipe(sourcemaps.init())
+    .pipe(uglify({
+      preserveComments: 'license'
+    }))
+    .pipe(rename({
+      suffix: '.min'
+    }))
+    .pipe(sourcemaps.write(''))
+    .pipe(gulp.dest('src/docs/assets/scripts/'));
 });
 
 // version
