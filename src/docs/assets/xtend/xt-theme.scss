@@ -177,7 +177,8 @@ a:not(.button) {
   background: transparent;
   color: $color-primary;
   #{$hover},
-  #{$active} {
+  #{$active},
+  #{$focus} {
     background: transparent;
     color: $color-primary;
     text-decoration: underline;

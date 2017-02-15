@@ -9652,7 +9652,7 @@ a:not(.button) {
   color: #00B0FF;
 }
 
-a:not(.button):hover, a:not(.button):active {
+a:not(.button):hover, a:not(.button):active, a:not(.button):focus {
   background: transparent;
   color: #00B0FF;
   text-decoration: underline;

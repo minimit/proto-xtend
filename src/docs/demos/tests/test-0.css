@@ -374,7 +374,7 @@ strong {
 a:not(.button) {
   background: transparent;
   color: #ff0000; }
-  a:not(.button):hover, a:not(.button):active {
+  a:not(.button):hover, a:not(.button):active, a:not(.button):focus {
     background: transparent;
     color: #ff0000;
     text-decoration: underline; }
