@@ -145,7 +145,7 @@
           <div class="site-breadcrumbs-inside">
             <div class="container">
               
-              <div class="site-breadcrumbs-body float-left spacer" data-xt-toggle='{"elements": ".site-breadcrumbs-body-main", "targets": ".site-breadcrumbs-body-sub", "on": "mouseenter", "off": "mouseleave"}'>
+              <div class="site-breadcrumbs-body float-left spacer top" data-xt-toggle='{"elements": ".site-breadcrumbs-body-main", "targets": ".site-breadcrumbs-body-sub", "on": "mouseenter", "off": "mouseleave"}'>
                 {% for collection in site.collections %}
                   {% if collection.label == page.collection %}
                 
@@ -172,7 +172,7 @@
                 {% endfor %}
               </div>
 
-              <div class="site-breadcrumbs-meta float-right spacer">
+              <div class="site-breadcrumbs-meta float-right spacer top">
                 
                 {% if page.collection == null %}
                   <a href="{{ site.twitter }}" target="_blank" class="button" data-toggle="tooltip" data-placement="top" title="Twitter" data-template='<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner tooltip-inverse"></div></div>'>

@@ -585,10 +585,9 @@
     clearTimeout($el.data('fade.timeout'));
     $el.off('transitionend.xt');
     // fadein
-    window.xtRequestAnimationFrame( function() {
       $el.addClass('fadein');
       if (settings.timeIn === undefined && $el.css('transitionDuration') !== '0s') {
-        $el.one('transitionend.xt', function(e) {
+        $el.on('transitionend.xt', function(e) {
           object.showDone($el);
         });
       } else if (settings.timeIn) {
@@ -599,7 +598,6 @@
       } else {
         object.showDone($el, triggered);
       }
-    });
     // animations
     object.onWidth($el, triggered);
     object.onHeight($el, triggered);
@@ -644,7 +642,7 @@
     // fadeout
     window.xtRequestAnimationFrame( function() {
       if (settings.timeOut === undefined && $el.css('transitionDuration') !== '0s') {
-        $el.one('transitionend.xt', function(e) {
+        $el.on('transitionend.xt', function(e) {
           object.hideDone($el);
         });
       } else if (settings.timeOut) {

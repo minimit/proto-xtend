@@ -38,14 +38,26 @@ body {
 //////////////////////
 
 .spacer {
-  //@include text-spacing;
   cursor: default;
-  padding-right: 4px; // fix spacing inline-block spacing
+  display: flex;
+  flex-wrap: wrap;
   > * {
-    display: inline-block;
-    position: relative;
-    margin-right: -4px; // fix inline-block spacing
-    vertical-align: top;
+    align-self: center;
+  }
+  &.top {
+    > * {
+      align-self: flex-start;
+    }
+  }
+  &.bottom {
+    > * {
+      align-self: flex-end;
+    }
+  }
+  &.stretch {
+    > * {
+      align-self: stretch;
+    }
   }
 }
 
@@ -89,6 +101,9 @@ a, button {
 .drop {
   display: inline-block;
   position: relative;
+  /*
+    display: flex;
+    flex-wrap: wrap;*/
 }
 .drop-target {
   position: absolute;
@@ -168,6 +183,7 @@ html.xt-fixed-horizontal {
 [disabled] {
   cursor: default;
   opacity: 1;
+  pointer-events: none;
 }
 
 //////////////////////
