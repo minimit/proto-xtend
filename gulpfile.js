@@ -68,13 +68,14 @@ gulp.task('scss-pre', ['scss-demos'], function() {
     .pipe(sourcemaps.write(''))
     .pipe(gulp.dest('src/docs/assets/styles/'));
 });
-gulp.task('scss-demos', ['scss-xt'], function() {
+gulp.task('scss-demos', function() {
   return gulp.src('src/docs/demos/**/*.scss')
     .pipe(sass({
       outputStyle: 'nested'
     }))
     .pipe(gulp.dest('src/docs/demos/'));
 });
+/*
 gulp.task('scss-xt', ['scss-xt-pre'], function() {
   return gulp.src('src/docs/assets/xtend/*.scss')
     .pipe(sourcemaps.init())
@@ -96,6 +97,7 @@ gulp.task('scss-xt-pre', function() {
     .pipe(sourcemaps.write(''))
     .pipe(gulp.dest('src/docs/assets/xtend/'));
 });
+*/
 
 gulp.task('js:watch', function() {
   gulp.watch(['src/docs/assets/xtend/*.js', '!src/docs/assets/xtend/*.min.js'], ['copy-dist']);

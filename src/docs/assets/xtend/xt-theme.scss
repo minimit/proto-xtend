@@ -81,24 +81,6 @@ strong {
 }
 
 //////////////////////
-// links
-//////////////////////
-
-a:not(.button) {
-  color: $color-primary;
-  #{$hover},
-  #{$active},
-  #{$focus} {
-    color: $color-primary;
-    text-decoration: underline;
-  }
-}
-.button {
-  #{$focus} {
-  }
-}
-
-//////////////////////
 // icons
 //////////////////////
 
@@ -188,6 +170,21 @@ a:not(.button) {
 }
 
 //////////////////////
+// links
+//////////////////////
+
+a:not(.button) {
+  background: transparent;
+  color: $color-primary;
+  #{$hover},
+  #{$active} {
+    background: transparent;
+    color: $color-primary;
+    text-decoration: underline;
+  }
+}
+
+//////////////////////
 // button
 //////////////////////
 
@@ -228,7 +225,7 @@ a:not(.button) {
   transition-timing-function: cubic-bezier(.63,.36,0,.97);
   transition-delay: 0ms;
   /* variants */
-  @extend .button.secondary; // default .button
+  @extend .button.secondary; // default
   &.primary {
     background: $color-primary;
     color: $color-white;
@@ -256,15 +253,6 @@ a:not(.button) {
       color: $color-primary;
     }
   }
-  &.white {
-    background: transparent;
-    color: $color-white-light;
-    #{$hover},
-    #{$active} {
-      background: transparent;
-      color: $color-white;
-    }
-  }
 }
 
 //////////////////////
@@ -282,7 +270,7 @@ a:not(.button) {
   -webkit-box-shadow: 0 0 5px rgba($color-black, 0.2);
   box-shadow: 0 0 5px rgba($color-black, 0.2);
   /* variants */
-  @extend .drop-target.text; // default .drop-target
+  @extend .drop-target.text; // default
   &.primary {
     background: $color-primary;
     color: $color-white;
@@ -302,13 +290,6 @@ a:not(.button) {
     color: $color-black;
     .button {
       @extend .button.text;
-    }
-  }
-  &.white {
-    background: $color-black;
-    color: $color-white-light;
-    .button {
-      @extend .button.white;
     }
   }
   /* animations */
