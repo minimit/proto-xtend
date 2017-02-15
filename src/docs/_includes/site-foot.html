@@ -5,42 +5,42 @@
             <nav class="site-footer-top" role="navigation">
               <div class="media">
                 <div class="media-body">
-                  <a href="{{ site.baseurl }}" class="button color-white">
+                  <a href="{{ site.baseurl }}" class="button">
                     Home
                   </a>
                   {% for collection in site.collections %}
                     {% if site.[collection.label].size > 0 %}
                       {% assign sorted = site.[collection.label] | sort: 'order' %}
-                      <a href="{{ sorted[0].url }}" class="button color-white">
+                      <a href="{{ sorted[0].url }}" class="button">
                         {{ collection.label }}
                       </a>
                     {% endif %}
                   {% endfor %}
-                  <a href="#" class="button color-white">
+                  <a href="#" class="button">
                     Playground
                   </a>
-                  <a href="#" class="button color-white">
+                  <a href="#" class="button">
                     Articles
                   </a>
-                  <a href="#" class="button color-white">
+                  <a href="#" class="button">
                     Inspirations
                   </a>
                 </div>
                 <div class="mr-3">
-                  <a href="{{ site.baseurl }}tests/" class="button color-white developer">
+                  <a href="{{ site.baseurl }}tests/" class="button developer">
                     Tests
                   </a>
-                  <button class="button color-white button__developer">
+                  <button class="button button__developer">
                     <span class="icon-embed2"></span>
                   </button>
                   {% comment %}
-                  <a href="#" class="button color-white">
+                  <a href="#" class="button">
                     Privacy policy
                   </a>
-                  <a href="#" class="button color-white">
+                  <a href="#" class="button">
                     license
                   </a>
-                  <a href="#" class="button color-white">
+                  <a href="#" class="button">
                     contact
                   </a>
                   {% endcomment %}

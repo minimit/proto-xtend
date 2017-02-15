@@ -411,22 +411,22 @@ a:not(.button) {
       color: #000000; }
     .button:active, .button.active, .button:active:focus, .button:active.focus, .button.active:focus, .button.active.focus {
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); }
-  .button.color-primary {
+  .button.button-primary {
     background: #00B0FF;
     color: #ffffff; }
-    .button.color-primary:hover:not(.active), .button.color-primary.hover:not(.active), .button.color-primary:active, .button.color-primary.active, .button.color-primary:active:focus, .button.color-primary:active.focus, .button.color-primary.active:focus, .button.color-primary.active.focus {
+    .button.button-primary:hover:not(.active), .button.button-primary.hover:not(.active), .button.button-primary:active, .button.button-primary.active, .button.button-primary:active:focus, .button.button-primary:active.focus, .button.button-primary.active:focus, .button.button-primary.active.focus {
       background: #009ee6;
       color: #ffffff; }
-  .button.color-text, .drop-target .button {
+  .button.button-text, .drop-target .button {
     background: transparent;
     color: #000000; }
-    .button.color-text:hover:not(.active), .drop-target .button:hover:not(.active), .button.color-text.hover:not(.active), .drop-target .hover.button:not(.active), .button.color-text:active, .drop-target .button:active, .button.color-text.active, .drop-target .active.button, .button.color-text:active:focus, .drop-target .button:active:focus, .button.color-text:active.focus, .drop-target .button:active.focus, .button.color-text.active:focus, .drop-target .active.button:focus, .button.color-text.active.focus, .drop-target .active.focus.button {
+    .button.button-text:hover:not(.active), .drop-target .button:hover:not(.active), .button.button-text.hover:not(.active), .drop-target .hover.button:not(.active), .button.button-text:active, .drop-target .button:active, .button.button-text.active, .drop-target .active.button, .button.button-text:active:focus, .drop-target .button:active:focus, .button.button-text:active.focus, .drop-target .button:active.focus, .button.button-text.active:focus, .drop-target .active.button:focus, .button.button-text.active.focus, .drop-target .active.focus.button {
       background: rgba(0, 176, 255, 0.1);
       color: #00B0FF; }
-  .button.color-white {
+  .button.button-white {
     background: transparent;
     color: rgba(255, 255, 255, 0.75); }
-    .button.color-white:hover:not(.active), .button.color-white.hover:not(.active), .button.color-white:active, .button.color-white.active, .button.color-white:active:focus, .button.color-white:active.focus, .button.color-white.active:focus, .button.color-white.active.focus {
+    .button.button-white:hover:not(.active), .button.button-white.hover:not(.active), .button.button-white:active, .button.button-white.active, .button.button-white:active:focus, .button.button-white:active.focus, .button.button-white.active:focus, .button.button-white.active.focus {
       background: transparent;
       color: #ffffff; }
 

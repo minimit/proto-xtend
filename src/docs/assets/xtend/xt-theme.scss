@@ -235,7 +235,7 @@ a:not(.button) {
       box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
     }
   }
-  &.color-primary {
+  &.button-primary {
     background: $color-primary;
     color: $color-white;
     #{$hover},
@@ -244,7 +244,7 @@ a:not(.button) {
       color: $color-white;
     }
   }
-  &.color-text {
+  &.button-text {
     background: transparent;
     color: $color-text;
     #{$hover},
@@ -253,7 +253,7 @@ a:not(.button) {
       color: $color-primary;
     }
   }
-  &.color-white {
+  &.button-white {
     background: transparent;
     color: $color-white-light;
     #{$hover},
@@ -277,7 +277,7 @@ a:not(.button) {
   margin: 10px 0;
   padding: 10px 0;
   .button {
-    @extend .button.color-text;
+    @extend .button.button-text;
     padding-left: 20px;
     padding-right: 40px;
   }

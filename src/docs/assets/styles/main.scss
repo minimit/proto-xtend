@@ -72,21 +72,24 @@
     font-size: 16px;
   }
   /* color-white */
+  .site-footer &,
   .site-header & {
-    background: transparent !important;
+    background: transparent;
     color: $color-white-light;
     #{$hover},
     #{$active} {
+      background: transparent;
       color: $color-white;
     }
   }
   /* color-text */
   .demo-tabs &,
   .demo-code-tabs & {
-    background: transparent !important;
+    background: transparent;
     color: $color-text-light;
     #{$hover},
     #{$active} {
+      background: transparent;
       color: $color-text;
     }
   }
