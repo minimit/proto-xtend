@@ -9239,6 +9239,7 @@ a, button {
 }
 
 .drop {
+  display: inline-block;
   position: relative;
 }
 
@@ -10886,12 +10887,12 @@ html.fadeout .site-header-top {
   animation-delay: 180ms;
 }
 
-.site-menu.active.fadeout {
+.site-menu.fadeout {
   opacity: 1 !important;
   transform: none !important;
 }
 
-.site-menu.active.fadeout .site-menu-content .button .line-container {
+.site-menu.fadeout .site-menu-content .button .line-container {
   opacity: 1;
   animation: right-fadeout 300ms cubic-bezier(0.19, 1, 0.22, 1);
   -webkit-animation-fill-mode: forwards;
@@ -10901,27 +10902,27 @@ html.fadeout .site-header-top {
   animation-fill-mode: forwards;
 }
 
-.site-menu.active.fadeout .site-menu-content .button:nth-child(1) .line-container {
+.site-menu.fadeout .site-menu-content .button:nth-child(1) .line-container {
   animation-delay: 6ms;
 }
 
-.site-menu.active.fadeout .site-menu-content .button:nth-child(2) .line-container {
+.site-menu.fadeout .site-menu-content .button:nth-child(2) .line-container {
   animation-delay: 5ms;
 }
 
-.site-menu.active.fadeout .site-menu-content .button:nth-child(3) .line-container {
+.site-menu.fadeout .site-menu-content .button:nth-child(3) .line-container {
   animation-delay: 4ms;
 }
 
-.site-menu.active.fadeout .site-menu-content .button:nth-child(4) .line-container {
+.site-menu.fadeout .site-menu-content .button:nth-child(4) .line-container {
   animation-delay: 0.03s;
 }
 
-.site-menu.active.fadeout .site-menu-content .button:nth-child(5) .line-container {
+.site-menu.fadeout .site-menu-content .button:nth-child(5) .line-container {
   animation-delay: 2ms;
 }
 
-.site-menu.active.fadeout .site-menu-content .button:nth-child(6) .line-container {
+.site-menu.fadeout .site-menu-content .button:nth-child(6) .line-container {
   animation-delay: 1ms;
 }
 

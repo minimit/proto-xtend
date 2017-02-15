@@ -65,6 +65,7 @@ a, button {
     margin-bottom: -0.25em; }
 
 .drop {
+  display: inline-block;
   position: relative; }
 
 .drop-target {
