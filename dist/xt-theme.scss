@@ -221,22 +221,21 @@ a:not(.button) {
   transition-duration: 300ms;
   transition-timing-function: cubic-bezier(.63,.36,0,.97);
   transition-delay: 0ms;
-  /* styles */
+  /* default */
   border: 0;
   border-radius: 0;
   @include font(sans-regular);
   letter-spacing: 0.5px;
   text-transform: uppercase;
-  & {
+  /* variants */
+  @extend .button.variant-default; // default .button
+  &.variant-default {
     background: darken($color-white, 10%);
     color: $color-text;
     #{$hover},
     #{$active} {
       background: darken($color-white, 15%);
       color: $color-text;
-    }
-    #{$active} {
-      box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
     }
   }
   &.variant-primary {
@@ -273,17 +272,44 @@ a:not(.button) {
 //////////////////////
 
 .drop-target {
-  background: $color-white;
-  color: $color-black;
-  -webkit-box-shadow: 0 0 5px rgba($color-black, 0.2);
-  box-shadow: 0 0 5px rgba($color-black, 0.2);
-  /* content */
+  /* custom */
   margin: 10px 0;
   padding: 10px 0;
-  .button {
-    //@extend .button.variant-text;
-    padding-left: 20px;
-    padding-right: 40px;
+  > * {
+    padding-left: 20px !important;
+    padding-right: 40px !important;
+  }
+  -webkit-box-shadow: 0 0 5px rgba($color-black, 0.2);
+  box-shadow: 0 0 5px rgba($color-black, 0.2);
+  /* variants */
+  @extend .drop-target.variant-text; // default .drop-target
+  &.variant-default {
+    background: darken($color-white, 10%);
+    color: $color-black;
+    .button {
+      @extend .button.variant-default;
+    }
+  }
+  &.variant-primary {
+    background: $color-primary;
+    color: $color-white;
+    .button {
+      @extend .button.variant-primary;
+    }
+  }
+  &.variant-text {
+    background: $color-white;
+    color: $color-black;
+    .button {
+      @extend .button.variant-text;
+    }
+  }
+  &.variant-white {
+    background: $color-black;
+    color: $color-white-light;
+    .button {
+      @extend .button.variant-white;
+    }
   }
   /* animations */
   @extend .anim;

@@ -101,11 +101,10 @@ a, button {
 .drop {
   display: inline-block;
   position: relative;
-  /*
-    display: flex;
-    flex-wrap: wrap;*/
 }
 .drop-target {
+  display: flex;
+  flex-wrap: wrap;
   position: absolute;
   z-index: 40;
   /* horizontal */

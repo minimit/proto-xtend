@@ -94,12 +94,11 @@ a, button {
 .drop {
   display: inline-block;
   position: relative;
-  /*
-    display: flex;
-    flex-wrap: wrap;*/
 }
 
 .drop-target {
+  display: flex;
+  flex-wrap: wrap;
   position: absolute;
   z-index: 40;
   /* horizontal */
@@ -515,7 +514,7 @@ a:not(.button):hover:not(.active), a:not(.button).hover:not(.active), a:not(.but
   transition-duration: 300ms;
   transition-timing-function: cubic-bezier(0.63, 0.36, 0, 0.97);
   transition-delay: 0ms;
-  /* styles */
+  /* default */
   border: 0;
   border-radius: 0;
   font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -523,6 +522,7 @@ a:not(.button):hover:not(.active), a:not(.button).hover:not(.active), a:not(.but
   font-style: normal;
   letter-spacing: 0.5px;
   text-transform: uppercase;
+  /* variants */
 }
 
 .button.tiny {
@@ -550,64 +550,79 @@ a:not(.button):hover:not(.active), a:not(.button).hover:not(.active), a:not(.but
   padding-right: 2em;
 }
 
-.button {
+.button.variant-default, .button, .drop-target.variant-default .button {
   background: #e6e6e6;
   color: #000000;
 }
 
-.button:hover:not(.active), .button.hover:not(.active), .button:active, .button.active, .button:active:focus, .button:active.focus, .button.active:focus, .button.active.focus {
+.button.variant-default:hover:not(.active), .button:hover:not(.active), .button.variant-default.hover:not(.active), .hover.button:not(.active), .button.variant-default:active, .button:active, .drop-target.variant-default .button:active, .button.variant-default.active, .active.button, .drop-target.variant-default .active.button, .button.variant-default:active:focus, .button:active:focus, .button.variant-default:active.focus, .button:active.focus, .button.variant-default.active:focus, .active.button:focus, .button.variant-default.active.focus, .active.focus.button {
   background: #d9d9d9;
   color: #000000;
 }
 
-.button:active, .button.active, .button:active:focus, .button:active.focus, .button.active:focus, .button.active.focus {
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-.button.variant-primary {
+.button.variant-primary, .drop-target.variant-primary .button {
   background: #00B0FF;
   color: #ffffff;
 }
 
-.button.variant-primary:hover:not(.active), .button.variant-primary.hover:not(.active), .button.variant-primary:active, .button.variant-primary.active, .button.variant-primary:active:focus, .button.variant-primary:active.focus, .button.variant-primary.active:focus, .button.variant-primary.active.focus {
+.button.variant-primary:hover:not(.active), .drop-target.variant-primary .button:hover:not(.active), .button.variant-primary.hover:not(.active), .drop-target.variant-primary .hover.button:not(.active), .button.variant-primary:active, .drop-target.variant-primary .button:active, .button.variant-primary.active, .drop-target.variant-primary .active.button, .button.variant-primary:active:focus, .drop-target.variant-primary .button:active:focus, .button.variant-primary:active.focus, .drop-target.variant-primary .button:active.focus, .button.variant-primary.active:focus, .drop-target.variant-primary .active.button:focus, .button.variant-primary.active.focus, .drop-target.variant-primary .active.focus.button {
   background: #009ee6;
   color: #ffffff;
 }
 
-.button.variant-text {
+.button.variant-text, .drop-target.variant-text .button, .drop-target .button {
   background: transparent;
   color: #000000;
 }
 
-.button.variant-text:hover:not(.active), .button.variant-text.hover:not(.active), .button.variant-text:active, .button.variant-text.active, .button.variant-text:active:focus, .button.variant-text:active.focus, .button.variant-text.active:focus, .button.variant-text.active.focus {
+.button.variant-text:hover:not(.active), .drop-target .button:hover:not(.active), .button.variant-text.hover:not(.active), .drop-target .hover.button:not(.active), .button.variant-text:active, .drop-target .button:active, .button.variant-text.active, .drop-target .active.button, .button.variant-text:active:focus, .drop-target .button:active:focus, .button.variant-text:active.focus, .drop-target .button:active.focus, .button.variant-text.active:focus, .drop-target .active.button:focus, .button.variant-text.active.focus, .drop-target .active.focus.button {
   background: rgba(0, 176, 255, 0.1);
   color: #00B0FF;
 }
 
-.button.variant-white {
+.button.variant-white, .drop-target.variant-white .button {
   background: transparent;
   color: rgba(255, 255, 255, 0.75);
 }
 
-.button.variant-white:hover:not(.active), .button.variant-white.hover:not(.active), .button.variant-white:active, .button.variant-white.active, .button.variant-white:active:focus, .button.variant-white:active.focus, .button.variant-white.active:focus, .button.variant-white.active.focus {
+.button.variant-white:hover:not(.active), .drop-target.variant-white .button:hover:not(.active), .button.variant-white.hover:not(.active), .drop-target.variant-white .hover.button:not(.active), .button.variant-white:active, .drop-target.variant-white .button:active, .button.variant-white.active, .drop-target.variant-white .active.button, .button.variant-white:active:focus, .drop-target.variant-white .button:active:focus, .button.variant-white:active.focus, .drop-target.variant-white .button:active.focus, .button.variant-white.active:focus, .drop-target.variant-white .active.button:focus, .button.variant-white.active.focus, .drop-target.variant-white .active.focus.button {
   background: transparent;
   color: #ffffff;
 }
 
 .drop-target {
-  background: #ffffff;
-  color: #000000;
-  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-  /* content */
+  /* custom */
   margin: 10px 0;
   padding: 10px 0;
+  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  /* variants */
   /* animations */
 }
 
-.drop-target .button {
-  padding-left: 20px;
-  padding-right: 40px;
+.drop-target > * {
+  padding-left: 20px !important;
+  padding-right: 40px !important;
+}
+
+.drop-target.variant-default {
+  background: #e6e6e6;
+  color: #000000;
+}
+
+.drop-target.variant-primary {
+  background: #00B0FF;
+  color: #ffffff;
+}
+
+.drop-target.variant-text, .drop-target {
+  background: #ffffff;
+  color: #000000;
+}
+
+.drop-target.variant-white {
+  background: #000000;
+  color: rgba(255, 255, 255, 0.75);
 }
 
 .overlay {

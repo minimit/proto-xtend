@@ -10,6 +10,9 @@ order: 20
 
 <h3>Variants</h3>
 
+<p><code>@extend .button.variant-default; // default .button</code></p>
+<p><code>.button</code> <code>.button.variant-default</code> <code>.button.variant-primary</code> <code>.button.variant-text</code> <code>.button.variant-white</code></p>
+
 <div class="demo">
   <div class="demo-item demo-preview" data-name="">
     <div class="demo-source" data-lang="html">
@@ -17,14 +20,17 @@ order: 20
   <button class="button">
     default
   </button>
+  <button class="button variant-default">
+    variant-default
+  </button>
   <button class="button variant-primary">
-    Lorem ipsum
+    variant-primary
   </button>
   <button class="button variant-text">
-    Lorem ipsum
+    variant-text
   </button>
   <button class="button variant-white">
-    Lorem ipsum
+    variant-white
   </button>
 </div>
     </div>
@@ -33,17 +39,20 @@ order: 20
     <div class="demo-text"><code>[disabled]</code></div>
     <div class="demo-source" data-lang="html">
 <div class="spacer">
-  <button class="button">
+  <button class="button" disabled>
     default
   </button>
+  <button class="button variant-default" disabled>
+    variant-default
+  </button>
   <button class="button variant-primary" disabled>
-    Lorem ipsum
+    variant-primary
   </button>
   <button class="button variant-text" disabled>
-    Lorem ipsum
+    variant-text
   </button>
   <button class="button variant-white" disabled>
-    Lorem ipsum
+    variant-white
   </button>
 </div>
     </div>

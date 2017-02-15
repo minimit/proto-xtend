@@ -584,7 +584,9 @@
     $el.removeClass('fadeout');
     clearTimeout($el.data('fade.timeout'));
     $el.off('transitionend.xt');
+    window.xtCancelAnimationFrame($el.data('frame.timeout'));
     // fadein
+    var frame = window.xtRequestAnimationFrame( function() {
       $el.addClass('fadein');
       if (settings.timeIn === undefined && $el.css('transitionDuration') !== '0s') {
         $el.on('transitionend.xt', function(e) {
@@ -598,6 +600,8 @@
       } else {
         object.showDone($el, triggered);
       }
+    });
+    $el.data('frame.timeout', frame);
     // animations
     object.onWidth($el, triggered);
     object.onHeight($el, triggered);
@@ -640,7 +644,8 @@
     clearTimeout($el.data('fade.timeout'));
     $el.off('transitionend.xt');
     // fadeout
-    window.xtRequestAnimationFrame( function() {
+    window.xtCancelAnimationFrame($el.data('frame.timeout'));
+    var frame = window.xtRequestAnimationFrame( function() {
       if (settings.timeOut === undefined && $el.css('transitionDuration') !== '0s') {
         $el.on('transitionend.xt', function(e) {
           object.hideDone($el);
@@ -654,6 +659,7 @@
         object.hideDone($el, triggered);
       }
     });
+    $el.data('frame.timeout', frame);
     // animations
     object.onWidth($el, triggered);
     object.onHeight($el, triggered);
@@ -966,6 +972,11 @@
   window.xtRequestAnimationFrame = ( function() {
     return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || function(callback) {
       window.setTimeout(callback, 1000 / 60);
+    };
+  })();
+  window.xtCancelAnimationFrame = ( function(id) {
+    return window.cancelAnimationFrame || window.webkitCancelAnimationFrame || window.mozCancelAnimationFrame || function(callback) {
+      window.clearTimeout(id);
     };
   })();
 
