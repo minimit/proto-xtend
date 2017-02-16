@@ -74,13 +74,37 @@ a, button {
   flex-wrap: wrap;
   position: absolute;
   z-index: 40;
-  /* horizontal */
-  /* vertical */
+  /* before and after */
+  /* left and right */
+  /* middle */
   /* content */ }
+  .drop-target.before {
+    left: auto;
+    right: 100%; }
+  .drop-target.after {
+    left: 100%;
+    right: auto; }
+  .drop-target.before.bottom, .before.drop-target, .drop-target.after.bottom, .after.drop-target {
+    top: 0;
+    bottom: auto; }
+  .drop-target.before.top, .drop-target.after.top {
+    top: auto;
+    bottom: 0; }
+  .drop-target.left, .drop-target {
+    left: 0;
+    right: auto; }
   .drop-target.right {
+    left: auto;
     right: 0; }
-  .drop-target.top {
+  .drop-target.left.bottom, .drop-target, .drop-target.right.bottom, .right.drop-target {
+    top: 100%;
+    bottom: auto; }
+  .drop-target.left.top, .top.drop-target, .drop-target.right.top {
+    top: auto;
     bottom: 100%; }
+  .drop-target.middle {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important; }
   .drop-target .button {
     width: 100%;
     text-align: left;
@@ -118,6 +142,13 @@ html.xt-fixed-horizontal .overlay {
     display: table; }
   .box:after {
     clear: both; }
+
+.clear:before, .clear:after {
+  content: " ";
+  display: table; }
+
+.clear:after {
+  clear: both; }
 
 .show {
   display: block !important; }
@@ -433,15 +464,19 @@ a:not(.button) {
 
 .drop-target {
   /* styles */
-  margin: 10px 0;
-  padding: 10px 0;
   -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  /* positions */
+  padding: 10px 0;
   /* variants */
   /* animations */ }
   .drop-target > * {
     padding-left: 20px !important;
     padding-right: 40px !important; }
+  .drop-target.before, .drop-target.after {
+    margin: 0 10px; }
+  .drop-target.left, .drop-target, .drop-target.right {
+    margin: 10px 0; }
   .drop-target.primary {
     background: #00B0FF;
     color: #ffffff; }
@@ -457,10 +492,11 @@ a:not(.button) {
 
 .anim, .drop-target, [class^="a-"],
 [class*=" a-"] {
-  transition-property: all;
+  transition-property: opacity, transform;
   transition-duration: 300ms;
   transition-timing-function: cubic-bezier(0.63, 0.36, 0, 0.97);
-  transition-delay: 0ms; }
+  transition-delay: 0ms;
+  will-change: opacity, transform; }
 
 .a-horizontal {
   opacity: 0;

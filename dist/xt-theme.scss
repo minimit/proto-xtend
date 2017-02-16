@@ -262,14 +262,24 @@ a:not(.button) {
 
 .drop-target {
   /* styles */
-  margin: 10px 0;
-  padding: 10px 0;
+  -webkit-box-shadow: 0 0 5px rgba($color-black, 0.2);
+  box-shadow: 0 0 5px rgba($color-black, 0.2);
   > * {
     padding-left: 20px !important;
     padding-right: 40px !important;
   }
-  -webkit-box-shadow: 0 0 5px rgba($color-black, 0.2);
-  box-shadow: 0 0 5px rgba($color-black, 0.2);
+  /* positions */
+  @extend .drop-target.bottom; // default
+  @extend .drop-target.left; // default
+  padding: 10px 0;
+  &.before,
+  &.after {
+    margin: 0 10px;
+  }
+  &.left,
+  &.right {
+    margin: 10px 0;
+  }
   /* variants */
   @extend .drop-target.text; // default
   &.primary {
@@ -310,12 +320,13 @@ a:not(.button) {
 // animations
 //////////////////////
 
-// transition for all animations
+// transition for opacity and transform
 .anim {
-  transition-property: all;
+  transition-property: opacity, transform;
   transition-duration: 300ms;
   transition-timing-function: cubic-bezier(.63,.36,0,.97);
   transition-delay: 0ms;
+  will-change: opacity, transform;
 }
 [class^="a-"],
 [class*=" a-"] {

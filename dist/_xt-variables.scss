@@ -113,8 +113,8 @@ font-family: 'Fira Sans Condensed', sans-serif;
   width: 100%;
 }
 
-// @include clearfix;
-@mixin clearfix {
+// @include clear;
+@mixin clear {
   &:before,
   &:after {
     content: " ";
