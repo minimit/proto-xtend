@@ -838,8 +838,7 @@ pre {
 .site-breadcrumbs {
   &.active {
     z-index: 71 !important;
-    .site-breadcrumbs-meta,
-    .show-scroll {
+    .site-breadcrumbs-meta {
       animation: right-fadein 600ms cubic-bezier(0.19, 1, 0.22, 1);
     }
   }
@@ -1006,6 +1005,8 @@ html.fadeout {
   }
 }
 
+/*
 .site-menu {
   opacity: 0.4;
 }
+*/

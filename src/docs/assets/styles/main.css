@@ -10856,8 +10856,7 @@ pre {
   z-index: 71 !important;
 }
 
-.site-breadcrumbs.active .site-breadcrumbs-meta,
-.site-breadcrumbs.active .show-scroll {
+.site-breadcrumbs.active .site-breadcrumbs-meta {
   animation: right-fadein 600ms cubic-bezier(0.19, 1, 0.22, 1);
 }
 
@@ -11031,8 +11030,10 @@ html.fadeout .site-header-top {
   }
 }
 
+/*
 .site-menu {
   opacity: 0.4;
 }
+*/
 
 /*# sourceMappingURL=main.css.map */
