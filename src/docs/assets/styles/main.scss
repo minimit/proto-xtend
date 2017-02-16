@@ -472,7 +472,7 @@ $button__menu_pixels: 1px;
     background: transparent !important;
     @include font(sans-regular);
     color: $color-text-light;
-    text-align: left;
+    text-align: right;
     letter-spacing: 0;
     text-transform: none;
     #{$hover},
@@ -498,7 +498,7 @@ $button__menu_pixels: 1px;
   .button.site-aside-subsub {
     //margin-top: 0.309rem;
     padding-left: 6px;
-    font-size: 12px;
+    font-size: 13px;
   }
 }
 
@@ -1004,4 +1004,8 @@ html.fadeout {
     opacity: 0;
     transform: translateX(0.618rem);
   }
+}
+
+.site-menu {
+  opacity: 0.4;
 }

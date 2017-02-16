@@ -139,7 +139,8 @@ html.xt-fixed-horizontal .overlay {
   width: 100%; }
 
 .wrap-position {
-  float: left; }
+  float: left;
+  width: 100%; }
 
 /* toggles */
 .toggle-flex {
@@ -562,6 +563,7 @@ a:not(.button) {
 
 .card[data-xt-scroll].active:not(.xt-clone) {
   position: fixed !important;
+  width: inherit;
   z-index: 70;
   bottom: 30px; }
   .card[data-xt-scroll].active:not(.xt-clone) .show-scroll {

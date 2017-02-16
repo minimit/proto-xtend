@@ -177,6 +177,7 @@ $focus: "&:focus"; //$focus: "&:focus, &.focus";
   }
   #{$item}.active:not(.xt-clone) {
     position: fixed !important;
+    width: inherit; // fix fixed width
     z-index: 70;
     @if $position == 'top' {
       @if $pos {

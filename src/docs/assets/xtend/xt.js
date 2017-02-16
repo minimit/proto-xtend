@@ -359,13 +359,21 @@
     var settings = this.settings;
     var group = this.group;
     var $group = $(this.group);
-    // scroll events
+    // resize
+    var $container = settings.$targets.parent('.wrap-container.wrap-position');
+    var resizeNamespace = 'resize.xt.' + settings.namespace;
+    $(window).off(resizeNamespace);
+    $(window).on(resizeNamespace, function(e) {
+      $container.css('width', $container.parent().width()); // fix fixed width
+    });
+    $(window).trigger(resizeNamespace);
+    // scroll
     var scrollNamespace = 'scroll.xt.' + settings.namespace;
     $(window).off(scrollNamespace);
     $(window).on(scrollNamespace, function(e) {
       var scrollTop = $(this).scrollTop();
       // show or hide
-      var top = settings.$targets.parent('.wrap-container.wrap-position').offset().top;
+      var top = $container.offset().top;
       var bottom = Infinity;
       if (settings.top) {
         if (!isNaN(parseFloat(settings.top))) {
@@ -425,6 +433,7 @@
     $(window).trigger(scrollNamespace);
     // remove window event on remove
     $group.on('xtRemoved', function(e) {
+      $(window).off(resizeNamespace);
       $(window).off(scrollNamespace);
     });
   };
@@ -496,7 +505,7 @@
         // stuff
         if (settings.name === 'xt-overlay') {
           // add paddings
-          object.onFixed($('*:fixed').not($target).add('html'));
+          object.onFixed($('html')); // $('*:fixed').not($target).add('html')
           // activate $additional with $group time
           var $additional = $('html');
           if (!$additional.hasClass(object.defaultClass)) {
@@ -554,7 +563,7 @@
         // stuff
         if (settings.name === 'xt-overlay') {
           // remove paddings
-          object.offFixed($('.xt-fixed-vertical').add('html'));
+          object.offFixed($('html')); // $('.xt-fixed-vertical').add('html')
           // deactivate $additional with $group time
           var $additional = $('html');
           if ($additional.hasClass(object.defaultClass)) {

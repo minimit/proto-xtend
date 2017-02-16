@@ -139,7 +139,8 @@ html.xt-fixed-horizontal .overlay {
   width: 100%; }
 
 .wrap-position {
-  float: left; }
+  float: left;
+  width: 100%; }
 
 /* toggles */
 .toggle-flex {

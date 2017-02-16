@@ -9343,6 +9343,7 @@ html.xt-fixed-horizontal .overlay {
 
 .wrap-position {
   float: left;
+  width: 100%;
 }
 
 /* toggles */
@@ -10390,7 +10391,7 @@ a.logo:focus {
   font-weight: 400;
   font-style: normal;
   color: #a6a6a6;
-  text-align: left;
+  text-align: right;
   letter-spacing: 0;
   text-transform: none;
 }
@@ -10415,7 +10416,7 @@ a.logo:focus {
 
 .site-aside-text .button.site-aside-subsub {
   padding-left: 6px;
-  font-size: 12px;
+  font-size: 13px;
 }
 
 /* .make-line */
@@ -10763,6 +10764,7 @@ pre {
 
 .site-footer.active:not(.xt-clone) {
   position: fixed !important;
+  width: inherit;
   z-index: 70;
   bottom: 0;
 }
@@ -10802,6 +10804,7 @@ pre {
 
 .site-header-top[data-xt-scroll].active:not(.xt-clone) {
   position: fixed !important;
+  width: inherit;
   z-index: 70;
   top: 0;
 }
@@ -10836,6 +10839,7 @@ pre {
 
 .site-breadcrumbs.active:not(.xt-clone) {
   position: fixed !important;
+  width: inherit;
   z-index: 70;
   top: 0;
 }
@@ -10871,6 +10875,7 @@ pre {
 
 .site-aside.active:not(.xt-clone) {
   position: fixed !important;
+  width: inherit;
   z-index: 70;
   top: 56px;
 }
@@ -11024,6 +11029,10 @@ html.fadeout .site-header-top {
     opacity: 0;
     transform: translateX(0.618rem);
   }
+}
+
+.site-menu {
+  opacity: 0.4;
 }
 
 /*# sourceMappingURL=main.css.map */
