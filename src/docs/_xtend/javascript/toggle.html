@@ -103,6 +103,35 @@ $('div').xtToggle({"elements": ".element"});
 
 <p>You can create a <strong>manager</strong> by assigning <code>elements</code>, they must be inside the manager.</p>
 
+<p>By default the <strong>target</strong> activated is the one with the same index of the toggled <strong>element</strong>.</p>
+
+<div class="demo">
+  <div class="demo-item demo-preview" data-name="">
+    <div class="demo-source" data-lang="html">
+<div class="spacer" data-xt-toggle='{"elements": ".button"}'>
+  <button class="button">
+    Toggle 0
+  </button>
+  <button class="button">
+    Toggle 1
+  </button>
+  <button class="button">
+    Toggle 2
+  </button>
+  <div class="card card-content toggle-block">
+    Target 0
+  </div>
+  <div class="card card-content toggle-block">
+    Target 1
+  </div>
+  <div class="card card-content toggle-block">
+    Target 2
+  </div>
+</div>
+    </div>
+  </div>
+</div>
+
 <p><code>targets</code> by default are <code>.toggle-block, .toggle-inline-block, .toggle-inline, .toggle-none</code> (@TODO link utils classes).</p>
 
 <div class="demo">
@@ -185,35 +214,6 @@ $('div').xtToggle({"elements": ".element"});
     <div class="card card-content toggle-none">
       Target not toggled
     </div>
-  </div>
-</div>
-    </div>
-  </div>
-</div>
-
-<p>By default the <strong>target</strong> activated is the one with the same index of the toggled <strong>element</strong>.</p>
-
-<div class="demo">
-  <div class="demo-item demo-preview" data-name="">
-    <div class="demo-source" data-lang="html">
-<div class="spacer" data-xt-toggle='{"elements": ".button"}'>
-  <button class="button">
-    Toggle 0
-  </button>
-  <button class="button">
-    Toggle 1
-  </button>
-  <button class="button">
-    Toggle 2
-  </button>
-  <div class="card card-content toggle-block">
-    Target 0
-  </div>
-  <div class="card card-content toggle-block">
-    Target 1
-  </div>
-  <div class="card card-content toggle-block">
-    Target 2
   </div>
 </div>
     </div>

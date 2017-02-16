@@ -805,7 +805,14 @@
   };
   
   Xt.prototype.getElements = function($elements, $element) {
-    if ($element.is('[data-group]')) {
+    var object = this;
+    var settings = this.settings;
+    var group = this.group;
+    var $group = $(this.group);
+    // $elements and $element
+    if ($elements.is($group)) {
+      return $elements;
+    } else if ($element.is('[data-group]')) {
       // with [data-group]
       var g = $element.attr('data-group');
       return $elements.filter('[data-group="' + g + '"]');
@@ -816,7 +823,14 @@
   };
   
   Xt.prototype.getTargets = function($elements, $element, $g) {
-    if ($element.is('[data-group]')) {
+    var object = this;
+    var settings = this.settings;
+    var group = this.group;
+    var $group = $(this.group);
+    // targets from $elements and $element
+    if ($elements.is($group)) {
+      return $g;
+    } else if ($element.is('[data-group]')) {
       // with [data-group]
       var g = $element.attr('data-group');
       return $g.filter('[data-group="' + g + '"]');
