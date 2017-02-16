@@ -151,7 +151,6 @@ html.xt-fixed-horizontal {
   }
 }
 
-
 //////////////////////
 // utils
 //////////////////////
@@ -159,13 +158,6 @@ html.xt-fixed-horizontal {
 .box {
   @include box;
   @include clearfix;
-}
-.wrap-container {
-  position: relative;
-  width: 100%;
-}
-.wrap-position {
-  float: left;
 }
 
 .show {
@@ -186,6 +178,15 @@ html.xt-fixed-horizontal {
 //////////////////////
 // xt
 //////////////////////
+
+/* wrap */
+.wrap-container {
+  position: relative;
+  width: 100%;
+}
+.wrap-position {
+  float: left;
+}
 
 /* toggles */
 .toggle-flex {
