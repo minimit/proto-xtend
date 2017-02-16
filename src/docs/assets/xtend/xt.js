@@ -375,21 +375,21 @@
       // show or hide
       var top = $container.offset().top;
       var bottom = Infinity;
-      if (settings.top) {
+      if (settings.top !== undefined) {
         if (!isNaN(parseFloat(settings.top))) {
           top = settings.top;
         } else {
           top = $(settings.top).offset().top;
         }
       }
-      if (settings.bottom) {
+      if (settings.bottom !== undefined) {
         if (!isNaN(parseFloat(settings.bottom))) {
           bottom = settings.bottom;
         } else if ($(settings.bottom).length) {
           bottom = $(settings.bottom).offset().top;
         }
       }
-      if (scrollTop > top && scrollTop < bottom) {
+      if (scrollTop >= top && scrollTop < bottom) {
         if (!$group.hasClass(object.defaultClass)) {
           window.xtRequestAnimationFrame( function() {
             object.show($group);
@@ -430,6 +430,7 @@
       }
       settings.scrollTopOld = scrollTop;
     });
+    $(window).trigger(scrollNamespace);
     // remove window event on remove
     $group.on('xtRemoved', function(e) {
       $(window).off(resizeNamespace);

@@ -271,7 +271,7 @@
         var $target = $($(this).attr('href'));
         var top = $target.offset().top;
         var bottom = Infinity;
-        if (scrollTop > top && scrollTop < bottom) {
+        if (scrollTop >= top && scrollTop <= bottom) {
           if (!$element.hasClass('active')) {
             $subs.not($element).removeClass('active');
             $element.addClass('active');
