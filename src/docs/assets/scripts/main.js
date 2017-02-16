@@ -247,14 +247,14 @@
       });
     });
     $(window).off('scroll.aside').on('scroll.aside', function() {
-      var scrollTop = $(this).scrollTop();
+      var scrollTop = $(this).scrollTop() + 60;
       var $elements = $('.button.site-aside-sub').filter(':parents(.xt-ignore)');
       $elements.each( function(i) {
         var $element = $(this);
         var $target = $($(this).attr('href'));
         var top = $target.offset().top;
         var bottom = Infinity;
-        if (scrollTop > top && scrollTop < bottom) {
+        if (scrollTop >= top && scrollTop < bottom) {
           if (!$element.hasClass('active')) {
             $elements.not($element).removeClass('active');
             $element.addClass('active');
