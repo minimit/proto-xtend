@@ -937,8 +937,8 @@
           // pushstate
           object.pushstate(url, title);
           // api
-          settings.$targets.xtInitAll(true); // init xt
           settings.$targets.trigger('ajax.populated.xt', [object, $data]);
+          settings.$targets.xtInitAll(true); // init xt
         },
         error: function(jqXHR, textStatus, errorThrown) {
           console.error('ajax error url:' + url + ' ' + errorThrown);

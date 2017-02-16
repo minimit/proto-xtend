@@ -30,7 +30,7 @@
           $(this).attr('data-original-title', 'Open fullscreen').tooltip('hide');
         });
       // single element and no demo tabs
-      if ($items.length === 1 && !$items.hasClass('demo-preview') && !$items.attr('data-iframe')) {
+      if ($items.length === 1/* && !$items.hasClass('demo-preview') && !$items.attr('data-iframe')*/) {
         $items.css('display', 'block');
         $container.find('.demo-tabs').css('display', 'none');
       }

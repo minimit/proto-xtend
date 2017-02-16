@@ -15,6 +15,9 @@
 // bootstrap
 //////////////////////
 
+.card {
+  width: 100%;
+}
 .card-block {
   @include box;
   background: #ffffff;
@@ -176,7 +179,7 @@ a.logo {
   margin: 11px 0 10px 0;
   @include font(sans-medium);
   color: $color-white-light;
-  font-size: 1.238rem;
+  font-size: 19px;
   text-decoration: none !important;
   #{$hover},
   #{$active} {
@@ -617,8 +620,6 @@ pre code {
   padding: 0;
   width: 100%;
   margin-top: -0.238rem;
-  padding: 0 1rem;
-  padding-bottom: 1rem;
 }
 pre {
   position: relative;
@@ -633,22 +634,80 @@ pre {
 pre code {
   float: left;
   @include font(sans-mono);
-  font-size: 12px !important;
+  font-size: 13px !important;
   line-height: 1.6;
   white-space: pre-wrap !important;
 }
 p code,
 .demo-text code {
-  margin: 0 .2rem;
-  padding: .2rem .2rem;
   @include font(sans-mono);
-  font-size: 12px;
   color: #d14;
   border-radius: 0;
+}
+
+/* code colors */
+/*
+.hljs,
+pre code {
+  padding: 0 1rem;
+  padding-bottom: 1rem;
+}
+.demo {
   background: $color-grey;
+}
+p code,
+.demo-text code {
+  background: $color-grey;
+}
+.demo-tabs,
+.demo-code-tabs {
+  background: darken($color-grey, 4%);
+  background: linear-gradient(to right, darken($color-grey, 4%) 0%, darken($color-grey, 0%) 100%);
+}
+.demo-text + iframe,
+.demo-text + .demo-source {
+  padding-top: 0;
+}
+.demo-text {
+  font-size: 14px;
+  line-height: 1.6;
 }
 .demo-text code {
   background: darken($color-grey, 4%);
+}
+p code,
+.demo-text code {
+  margin: 0 .2rem;
+  padding: .2rem .2rem;
+  font-size: 12px;
+}
+*/
+.demo {
+  border: 3px solid $color-grey;
+}
+.demo-tabs,
+.demo-code-tabs {
+  background: $color-grey;
+}
+.hljs,
+.demo-code-body {
+  background: $color-grey;
+}
+.hljs,
+pre code {
+  padding: 0 1rem;
+  padding-bottom: 1rem;
+}
+.demo-text {
+  background: $color-grey;
+  font-size: 13px;
+  line-height: 1.6;
+}
+p code,
+.demo-text code {
+  padding: 0 0.3em;
+  background: transparent;
+  font-size: 13px;
 }
 
 /* .demo */
@@ -659,7 +718,6 @@ p code,
   width: 100%;
   margin-top: 1.619rem;
   margin-bottom: 1.619rem;
-  background: $color-grey;
   // code
   .demo-code {
     @include box;
@@ -695,10 +753,6 @@ p code,
   .demo-source {
     padding: 1rem;
   }
-  .demo-text + iframe,
-  .demo-text + .demo-source {
-    padding-top: 0;
-  }
   .demo-source {
     &:not([data-lang="html"]) {
       display: none;
@@ -711,11 +765,6 @@ p code,
   .hljs {
     margin: 0;
     padding: 0;
-  }
-  // .demo-text
-  .demo-text {
-    font-size: 14px;
-    line-height: 1.6;
   }
   // others
   .button__fullscreen {
@@ -745,13 +794,6 @@ pre {
   .demo-text {
     padding: 0.809rem 1rem;
   }
-}
-
-/* .demo shadow style */
-.demo-tabs,
-.demo-code-tabs {
-  background: darken($color-grey, 4%);
-  background: linear-gradient(to right, darken($color-grey, 4%) 0%, darken($color-grey, 0%) 100%);
 }
 
 //////////////////////
