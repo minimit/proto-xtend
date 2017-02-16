@@ -42,17 +42,15 @@
               </div>
               <div class="media-body align-self-center">
                 <button type="button" class="button button__menu float-right" data-xt-overlay='{"targets": "#site-menu"}'>
+                  {% if page.collection %}
+                    {{ page.collection | capitalize }}
+                  {% else %}
+                    {{ page.title | capitalize }}
+                  {% endif %}
                   <span class="icon-menu-custom right">
                     <span></span>
                     <span></span>
                     <span></span>
-                  </span>
-                  <span class="text">
-                    {% if page.collection %}
-                        {{ page.collection | capitalize }}
-                    {% else %}
-                      {{ page.title | capitalize }}
-                    {% endif %}
                   </span>
                 </button>
               </div>
@@ -72,17 +70,15 @@
                 </div>
                 <div class="media-body align-self-center">
                   <button type="button" class="button button__menu float-right" data-xt-overlay='{"targets": "#site-menu"}'>
+                    {% if page.collection %}
+                      {{ page.collection | capitalize }}
+                    {% else %}
+                      {{ page.title | capitalize }}
+                    {% endif %}
                     <span class="icon-menu-custom right">
                       <span></span>
                       <span></span>
                       <span></span>
-                    </span>
-                    <span class="text">
-                      {% if page.collection %}
-                          {{ page.collection | capitalize }}
-                      {% else %}
-                        {{ page.title | capitalize }}
-                      {% endif %}
                     </span>
                   </button>
                 </div>
@@ -202,17 +198,15 @@
                 {% endfor %}
                 
                 <button type="button" class="button button__menu float-right show-scroll" data-xt-overlay='{"targets": "#site-menu"}'>
+                  {% if page.collection %}
+                    {{ page.collection | capitalize }}
+                  {% else %}
+                    {{ page.title | capitalize }}
+                  {% endif %}
                   <span class="icon-menu-custom right">
                     <span></span>
                     <span></span>
                     <span></span>
-                  </span>
-                  <span class="text">
-                    {% if page.collection %}
-                        {{ page.collection | capitalize }}
-                    {% else %}
-                      {{ page.title | capitalize }}
-                    {% endif %}
                   </span>
                 </button>
                 

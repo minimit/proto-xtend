@@ -119,84 +119,11 @@ strong {
 }
 
 //////////////////////
-// spacer
-//////////////////////
-
-.spacer {
-  /* alignment */
-  @extend .spacer.center; // default
-  /* spacing */
-  @extend .spacer.medium; // default
-  &.tiny {
-    margin-left: 0;
-    margin-bottom: 0;
-    > * {
-      margin-left: 0;
-      margin-bottom: 0;
-    }
-  }
-  &.small {
-    margin-left: -0.5rem;
-    &:last-child {
-      margin-bottom: -0.5rem;
-    }
-    > * {
-      margin-left: 0.5rem;
-      margin-bottom: 0.5rem;
-    }
-  }
-  &.medium {
-    margin-left: -0.618rem;
-    &:last-child {
-      margin-bottom: -0.618rem;
-    }
-    > * {
-      margin-left: 0.618rem;
-      margin-bottom: 0.618rem;
-    }
-  }
-  &.large {
-    margin-left: -1.238rem;
-    &:last-child {
-      margin-bottom: -1.238rem;
-    }
-    > * {
-      margin-left: 1.238rem;
-      margin-bottom: 1.238rem;
-    }
-  }
-  &.giant {
-    margin-left: -2.619rem;
-    &:last-child {
-      margin-bottom: -2.619rem;
-    }
-    > * {
-      margin-left: 2.619rem;
-      margin-bottom: 2.619rem;
-    }
-  }
-  /* expand to .button sizes */
-  /*
-  &.expand {
-    margin-left: -10px;
-    margin-right: -10px;
-  }
-  &.expand-sm {
-    margin-left: -8px;
-    margin-right: -8px;
-  }
-  &.expand-md {
-    margin-left: -12px;
-    margin-right: -12px;
-  }
-  */
-}
-
-//////////////////////
 // links
 //////////////////////
 
-a:not(.button) {
+a:not(.button),
+.button.link {
   background: transparent;
   color: $color-primary;
   #{$hover},
@@ -205,6 +132,14 @@ a:not(.button) {
     background: transparent;
     color: $color-primary;
     text-decoration: underline;
+  }
+}
+
+// fix bootstrap to remove
+a.button:not(.link) {
+  #{$hover},
+  #{$focus} {
+    text-decoration: none;
   }
 }
 
@@ -280,6 +215,80 @@ a:not(.button) {
       color: $color-primary;
     }
   }
+}
+
+//////////////////////
+// spacer
+//////////////////////
+
+.spacer {
+  /* alignment */
+  @extend .spacer.center; // default
+  /* spacing */
+  @extend .spacer.medium; // default
+  &.tiny {
+    margin-left: 0;
+    margin-bottom: 0;
+    > * {
+      margin-left: 0;
+      margin-bottom: 0;
+    }
+  }
+  &.small {
+    margin-left: -0.5rem;
+    &:last-child {
+      margin-bottom: -0.5rem;
+    }
+    > * {
+      margin-left: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+  }
+  &.medium {
+    margin-left: -0.618rem;
+    &:last-child {
+      margin-bottom: -0.618rem;
+    }
+    > * {
+      margin-left: 0.618rem;
+      margin-bottom: 0.618rem;
+    }
+  }
+  &.large {
+    margin-left: -1.238rem;
+    &:last-child {
+      margin-bottom: -1.238rem;
+    }
+    > * {
+      margin-left: 1.238rem;
+      margin-bottom: 1.238rem;
+    }
+  }
+  &.giant {
+    margin-left: -2.619rem;
+    &:last-child {
+      margin-bottom: -2.619rem;
+    }
+    > * {
+      margin-left: 2.619rem;
+      margin-bottom: 2.619rem;
+    }
+  }
+  /* expand to .button sizes */
+  /*
+  &.expand {
+    margin-left: -10px;
+    margin-right: -10px;
+  }
+  &.expand-sm {
+    margin-left: -8px;
+    margin-right: -8px;
+  }
+  &.expand-md {
+    margin-left: -12px;
+    margin-right: -12px;
+  }
+  */
 }
 
 //////////////////////

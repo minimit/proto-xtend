@@ -54,7 +54,6 @@ a, button {
   display: inline-block;
   vertical-align: middle;
   text-align: center;
-  text-decoration: none !important;
   /*
   .left {
     float: left;
@@ -385,66 +384,21 @@ strong {
   [class*=" icon-"].right {
     margin-left: 0.5em; }
 
-.spacer {
-  /* alignment */
-  /* spacing */
-  /* expand to .button sizes */
-  /*
-  &.expand {
-    margin-left: -10px;
-    margin-right: -10px;
-  }
-  &.expand-sm {
-    margin-left: -8px;
-    margin-right: -8px;
-  }
-  &.expand-md {
-    margin-left: -12px;
-    margin-right: -12px;
-  }
-  */ }
-  .spacer.tiny {
-    margin-left: 0;
-    margin-bottom: 0; }
-    .spacer.tiny > * {
-      margin-left: 0;
-      margin-bottom: 0; }
-  .spacer.small {
-    margin-left: -0.5rem; }
-    .spacer.small:last-child {
-      margin-bottom: -0.5rem; }
-    .spacer.small > * {
-      margin-left: 0.5rem;
-      margin-bottom: 0.5rem; }
-  .spacer.medium, .spacer {
-    margin-left: -0.618rem; }
-    .spacer.medium:last-child, .spacer:last-child {
-      margin-bottom: -0.618rem; }
-    .spacer.medium > *, .spacer > * {
-      margin-left: 0.618rem;
-      margin-bottom: 0.618rem; }
-  .spacer.large {
-    margin-left: -1.238rem; }
-    .spacer.large:last-child {
-      margin-bottom: -1.238rem; }
-    .spacer.large > * {
-      margin-left: 1.238rem;
-      margin-bottom: 1.238rem; }
-  .spacer.giant {
-    margin-left: -2.619rem; }
-    .spacer.giant:last-child {
-      margin-bottom: -2.619rem; }
-    .spacer.giant > * {
-      margin-left: 2.619rem;
-      margin-bottom: 2.619rem; }
-
-a:not(.button) {
+a:not(.button),
+.button.link {
   background: transparent;
   color: #ff0000; }
-  a:not(.button):hover, a:not(.button):active, a:not(.button).active, a:not(.button):focus {
+  a:not(.button):hover, a:not(.button):active, a:not(.button).active, a:not(.button):focus,
+  .button.link:hover,
+  .button.link:active,
+  .button.link.active,
+  .button.link:focus {
     background: transparent;
     color: #ff0000;
     text-decoration: underline; }
+
+a.button:not(.link):hover, a.button:not(.link):focus {
+  text-decoration: none; }
 
 .button {
   /* sizes */
@@ -499,6 +453,59 @@ a:not(.button) {
     .button.light:hover, .drop-target .button:hover, .button.light:active, .drop-target .button:active, .button.light.active, .drop-target .active.button {
       background: rgba(255, 0, 0, 0.1);
       color: #ff0000; }
+
+.spacer {
+  /* alignment */
+  /* spacing */
+  /* expand to .button sizes */
+  /*
+  &.expand {
+    margin-left: -10px;
+    margin-right: -10px;
+  }
+  &.expand-sm {
+    margin-left: -8px;
+    margin-right: -8px;
+  }
+  &.expand-md {
+    margin-left: -12px;
+    margin-right: -12px;
+  }
+  */ }
+  .spacer.tiny {
+    margin-left: 0;
+    margin-bottom: 0; }
+    .spacer.tiny > * {
+      margin-left: 0;
+      margin-bottom: 0; }
+  .spacer.small {
+    margin-left: -0.5rem; }
+    .spacer.small:last-child {
+      margin-bottom: -0.5rem; }
+    .spacer.small > * {
+      margin-left: 0.5rem;
+      margin-bottom: 0.5rem; }
+  .spacer.medium, .spacer {
+    margin-left: -0.618rem; }
+    .spacer.medium:last-child, .spacer:last-child {
+      margin-bottom: -0.618rem; }
+    .spacer.medium > *, .spacer > * {
+      margin-left: 0.618rem;
+      margin-bottom: 0.618rem; }
+  .spacer.large {
+    margin-left: -1.238rem; }
+    .spacer.large:last-child {
+      margin-bottom: -1.238rem; }
+    .spacer.large > * {
+      margin-left: 1.238rem;
+      margin-bottom: 1.238rem; }
+  .spacer.giant {
+    margin-left: -2.619rem; }
+    .spacer.giant:last-child {
+      margin-bottom: -2.619rem; }
+    .spacer.giant > * {
+      margin-left: 2.619rem;
+      margin-bottom: 2.619rem; }
 
 .drop-target {
   /* styles */
