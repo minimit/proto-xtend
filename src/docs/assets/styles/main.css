@@ -10391,7 +10391,7 @@ a.logo:focus {
   font-weight: 400;
   font-style: normal;
   color: #a6a6a6;
-  text-align: right;
+  text-align: left;
   letter-spacing: 0;
   text-transform: none;
 }
@@ -10400,23 +10400,32 @@ a.logo:focus {
   color: #000000;
 }
 
-.site-aside-text .button {
+.site-aside-text > .button:not(.site-aside-sub) {
+  margin-bottom: 8px;
   font-size: 1.238rem;
 }
 
-.site-aside-text .button.different {
+.site-aside-text > .button:not(.site-aside-sub).different {
   display: none;
 }
 
-.site-aside-text .button.site-aside-sub {
-  padding-top: 12px;
-  padding-bottom: 3px;
+.site-aside-text > .button.site-aside-sub {
+  padding-top: 8px;
+  padding-bottom: 2px;
   font-size: 13px;
 }
 
-.site-aside-text .button.site-aside-subsub {
-  padding-left: 6px;
+.site-aside-text .site-aside-subsub {
+  display: none;
+}
+
+.site-aside-text .site-aside-subsub > .button {
+  padding-left: 8px;
   font-size: 13px;
+}
+
+.site-aside-text .button.site-aside-sub.active + .site-aside-subsub {
+  display: block;
 }
 
 /* .make-line */

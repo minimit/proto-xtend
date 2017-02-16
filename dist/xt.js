@@ -366,6 +366,7 @@
     $(window).on(resizeNamespace, function(e) {
       $container.css('width', $container.parent().width()); // fix fixed width
     });
+    $(window).trigger(resizeNamespace);
     // scroll
     var scrollNamespace = 'scroll.xt.' + settings.namespace;
     $(window).off(scrollNamespace);

@@ -472,7 +472,7 @@ $button__menu_pixels: 1px;
     background: transparent !important;
     @include font(sans-regular);
     color: $color-text-light;
-    text-align: right;
+    text-align: left;
     letter-spacing: 0;
     text-transform: none;
     #{$hover},
@@ -480,25 +480,29 @@ $button__menu_pixels: 1px;
       color: $color-text;
     }
   }
-  .button {
+  > .button:not(.site-aside-sub) {
+    margin-bottom: 8px;
     font-size: 1.238rem;
     &.different {
       display: none;
     }
   }
-  .site-aside-text + & {
-    //margin-top: 0.618rem;
-  }
-  .button.site-aside-sub {
+  > .button.site-aside-sub {
     //margin-top: 0.309rem;
-    padding-top: 12px;
-    padding-bottom: 3px;
+    padding-top: 8px;
+    padding-bottom: 2px;
     font-size: 13px;
   }
-  .button.site-aside-subsub {
-    //margin-top: 0.309rem;
-    padding-left: 6px;
-    font-size: 13px;
+  .site-aside-subsub {
+    display: none;
+    > .button {
+      //margin-top: 0.309rem;
+      padding-left: 8px;
+      font-size: 13px;
+    }
+  }
+  .button.site-aside-sub.active + .site-aside-subsub {
+    display: block;
   }
 }
 

@@ -236,15 +236,51 @@
     
     // .site-aside-text
     $main.find('.site-aside-text > .button:not(.different)').each( function(i) {
-      var $container = $(this).parent();
+      var $container = $(this).parents('.site-aside-text');
       $main.find('.site-article').find('h2, h3').each( function(z) {
         var $element = $(this);
-        if ($(this).is('h3')) {
-          $container.append($('<a href="#' + $(this).attr('id') + '" class="button site-aside-subsub">' + $(this).text() + '</a>'));
-        } else {
-          $container.append($('<a href="#' + $(this).attr('id') + '" class="button site-aside-sub">' + $(this).text() + '</a>'));
+        if ($(this).is('h2')) {
+          $container.append($('<a href="#' + $(this).attr('id') + '" class="button site-aside-sub">' + $(this).text() + '</a><div class="site-aside-subsub"></div>'));
+        } else if ($(this).is('h3')) {
+          $container.find('.site-aside-subsub').last().append($('<a href="#' + $(this).attr('id') + '" class="button">' + $(this).text() + '</a>'));
         }
-        //$element.xtScroll();
+      });
+    });
+    $(window).off('scroll.aside').on('scroll.aside', function() {
+      var scrollTop = $(this).scrollTop();
+      var $elements = $('.button.site-aside-sub').filter(':parents(.xt-ignore)');
+      $elements.each( function(i) {
+        var $element = $(this);
+        var $target = $($(this).attr('href'));
+        var top = $target.offset().top;
+        var bottom = Infinity;
+        if (scrollTop > top && scrollTop < bottom) {
+          if (!$element.hasClass('active')) {
+            $elements.not($element).removeClass('active');
+            $element.addClass('active');
+          }
+        } else {
+          if ($element.hasClass('active')) {
+            $element.removeClass('active');
+          }
+        }
+      });
+      var $subs = $('.button.site-aside-sub.active + .site-aside-subsub .button').filter(':parents(.xt-ignore)');
+      $subs.each( function(i) {
+        var $element = $(this);
+        var $target = $($(this).attr('href'));
+        var top = $target.offset().top;
+        var bottom = Infinity;
+        if (scrollTop > top && scrollTop < bottom) {
+          if (!$element.hasClass('active')) {
+            $subs.not($element).removeClass('active');
+            $element.addClass('active');
+          }
+        } else {
+          if ($element.hasClass('active')) {
+            $element.removeClass('active');
+          }
+        }
       });
     });
     
