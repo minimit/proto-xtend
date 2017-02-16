@@ -36,8 +36,9 @@ body {
 .spacer {
   cursor: default;
   display: flex;
-  flex-wrap: wrap; }
-  .spacer > * {
+  flex-wrap: wrap;
+  /* alignment */ }
+  .spacer.center > *, .spacer > * {
     align-self: center; }
   .spacer.top > * {
     align-self: flex-start; }
@@ -53,17 +54,20 @@ a, button {
   display: inline-block;
   vertical-align: middle;
   text-align: center;
-  text-decoration: none !important; }
-  .button .left {
+  text-decoration: none !important;
+  /*
+  .left {
     float: left;
-    top: 0.1em; }
-  .button .right {
+    top: 0.1em; // vertical fix
+  }
+  .right {
     float: right;
-    top: 0.1em; }
+    top: 0.1em; // vertical fix
+  }
+  */ }
   .button .text {
     display: inline-block;
-    overflow: hidden;
-    margin-bottom: -0.25em; }
+    overflow: hidden; }
 
 .drop {
   display: inline-block;
@@ -164,15 +168,6 @@ html.xt-fixed-horizontal .overlay {
   opacity: 1;
   pointer-events: none; }
 
-/* wrap */
-.wrap-container {
-  position: relative;
-  width: 100%; }
-
-.wrap-position {
-  float: left;
-  width: 100%; }
-
 /* toggles */
 .toggle-flex {
   display: none !important; }
@@ -197,13 +192,35 @@ html.xt-fixed-horizontal .overlay {
 .toggle-none.active, .toggle-none.fadeout {
   display: none !important; }
 
+/* wrap */
+.wrap-container {
+  position: relative;
+  width: 100%; }
+
+.wrap-position {
+  float: left;
+  width: 100%; }
+
+/* width and height */
+.a-width {
+  overflow: hidden;
+  width: 0; }
+
 .a-height {
   overflow: hidden;
   height: 0; }
 
+.a-height,
 .a-width {
-  overflow: hidden;
-  width: 0; }
+  transition-property: width, height !important;
+  will-change: width, height !important; }
+
+.a-width-left,
+.a-width-right,
+.a-height-top,
+.a-height-bottom {
+  transition-property: margin !important;
+  will-change: margin !important; }
 
 html {
   font-size: 15px; }
@@ -341,18 +358,36 @@ strong {
   display: inline-block;
   position: relative;
   vertical-align: middle;
-  top: -0.1em;
-  /* alignment */ }
+  top: -0.08em;
+  /* alignment */
+  /* sizes */
+  /*
+  .tiny {
+    font-size: 0.5em;
+  }
+  .small {
+    font-size: 0.75em;
+  }
+  .medium {
+    font-size: 1em;
+  }
+  .large {
+    font-size: 1.5em;
+  }
+  .giant {
+    font-size: 2em;
+  }
+  */ }
   [class^="icon-"].left,
   [class*=" icon-"].left {
-    margin-right: 0.7em; }
+    margin-right: 0.5em; }
   [class^="icon-"].right,
   [class*=" icon-"].right {
-    margin-left: 0.7em; }
+    margin-left: 0.5em; }
 
 .spacer {
+  /* alignment */
   /* spacing */
-  margin-left: -0.618rem;
   /* expand to .button sizes */
   /*
   &.expand {
@@ -368,11 +403,6 @@ strong {
     margin-right: -12px;
   }
   */ }
-  .spacer:last-child {
-    margin-bottom: -0.618rem; }
-  .spacer > * {
-    margin-left: 0.618rem;
-    margin-bottom: 0.618rem; }
   .spacer.tiny {
     margin-left: 0;
     margin-bottom: 0; }
@@ -386,6 +416,13 @@ strong {
     .spacer.small > * {
       margin-left: 0.5rem;
       margin-bottom: 0.5rem; }
+  .spacer.medium, .spacer {
+    margin-left: -0.618rem; }
+    .spacer.medium:last-child, .spacer:last-child {
+      margin-bottom: -0.618rem; }
+    .spacer.medium > *, .spacer > * {
+      margin-left: 0.618rem;
+      margin-bottom: 0.618rem; }
   .spacer.large {
     margin-left: -1.238rem; }
     .spacer.large:last-child {
@@ -411,8 +448,6 @@ a:not(.button) {
 
 .button {
   /* sizes */
-  padding: 8px 12px;
-  font-size: 12px;
   line-height: 1.238;
   /* styles */
   border: 0;
@@ -434,6 +469,9 @@ a:not(.button) {
   .button.small {
     padding: 6px 10px;
     font-size: 11px; }
+  .button.medium, .button {
+    padding: 8px 12px;
+    font-size: 12px; }
   .button.large {
     padding: 10px 14px;
     font-size: 13px; }
@@ -455,10 +493,10 @@ a:not(.button) {
     .button.secondary:hover, .button:hover, .drop-target.secondary .button:hover, .button.secondary:active, .button:active, .drop-target.secondary .button:active, .button.secondary.active, .active.button, .drop-target.secondary .active.button {
       background: #d9d9d9;
       color: #000000; }
-  .button.text, .drop-target.text .button, .drop-target .button {
+  .button.light, .drop-target.light .button, .drop-target .button {
     background: transparent;
     color: #000000; }
-    .button.text:hover, .drop-target .button:hover, .button.text:active, .drop-target .button:active, .button.text.active, .drop-target .active.button {
+    .button.light:hover, .drop-target .button:hover, .button.light:active, .drop-target .button:active, .button.light.active, .drop-target .active.button {
       background: rgba(255, 0, 0, 0.1);
       color: #ff0000; }
 
@@ -483,7 +521,7 @@ a:not(.button) {
   .drop-target.secondary {
     background: #e6e6e6;
     color: #000000; }
-  .drop-target.text, .drop-target {
+  .drop-target.light, .drop-target {
     background: #ffffff;
     color: #000000; }
 

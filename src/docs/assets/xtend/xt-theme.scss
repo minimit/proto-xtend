@@ -90,14 +90,32 @@ strong {
   display: inline-block;
   position: relative;
   vertical-align: middle;
-  top: -0.1em; // vertical fix to ascenders
+  top: -0.08em; // vertical align to ascenders
   /* alignment */
   &.left {
-    margin-right: 0.7em;
+    margin-right: 0.5em;
   }
   &.right {
-    margin-left: 0.7em;
+    margin-left: 0.5em;
   }
+  /* sizes */
+  /*
+  .tiny {
+    font-size: 0.5em;
+  }
+  .small {
+    font-size: 0.75em;
+  }
+  .medium {
+    font-size: 1em;
+  }
+  .large {
+    font-size: 1.5em;
+  }
+  .giant {
+    font-size: 2em;
+  }
+  */
 }
 
 //////////////////////
@@ -105,15 +123,10 @@ strong {
 //////////////////////
 
 .spacer {
+  /* alignment */
+  @extend .spacer.center; // default
   /* spacing */
-  margin-left: -0.618rem;
-  &:last-child {
-    margin-bottom: -0.618rem;
-  }
-  > * {
-    margin-left: 0.618rem;
-    margin-bottom: 0.618rem;
-  }
+  @extend .spacer.medium; // default
   &.tiny {
     margin-left: 0;
     margin-bottom: 0;
@@ -130,6 +143,16 @@ strong {
     > * {
       margin-left: 0.5rem;
       margin-bottom: 0.5rem;
+    }
+  }
+  &.medium {
+    margin-left: -0.618rem;
+    &:last-child {
+      margin-bottom: -0.618rem;
+    }
+    > * {
+      margin-left: 0.618rem;
+      margin-bottom: 0.618rem;
     }
   }
   &.large {
@@ -191,8 +214,7 @@ a:not(.button) {
 
 .button {
   /* sizes */
-  padding: 8px 12px;
-  font-size: 12px;
+  @extend .button.medium; // default
   line-height: 1.238;
   &.tiny {
     padding: 4px 8px;
@@ -201,6 +223,10 @@ a:not(.button) {
   &.small {
     padding: 6px 10px;
     font-size: 11px;
+  }
+  &.medium {
+    padding: 8px 12px;
+    font-size: 12px;
   }
   &.large {
     padding: 10px 14px;
@@ -245,7 +271,7 @@ a:not(.button) {
       color: $color-text;
     }
   }
-  &.text {
+  &.light {
     background: transparent;
     color: $color-text;
     #{$hover},
@@ -281,7 +307,7 @@ a:not(.button) {
     margin: 10px 0;
   }
   /* variants */
-  @extend .drop-target.text; // default
+  @extend .drop-target.light; // default
   &.primary {
     background: $color-primary;
     color: $color-white;
@@ -296,11 +322,11 @@ a:not(.button) {
       @extend .button.secondary;
     }
   }
-  &.text {
+  &.light {
     background: $color-white;
     color: $color-black;
     .button {
-      @extend .button.text;
+      @extend .button.light;
     }
   }
   /* animations */
@@ -320,17 +346,19 @@ a:not(.button) {
 // animations
 //////////////////////
 
-// transition for opacity and transform
+[class^="a-"],
+[class*=" a-"] {
+  @extend .anim;
+}
+
+// opacity and transform
+
 .anim {
   transition-property: opacity, transform;
   transition-duration: 300ms;
   transition-timing-function: cubic-bezier(.63,.36,0,.97);
   transition-delay: 0ms;
   will-change: opacity, transform;
-}
-[class^="a-"],
-[class*=" a-"] {
-  @extend .anim;
 }
 
 // .a-horizontal

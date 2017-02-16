@@ -200,13 +200,20 @@
     }
     // $targets
     if (settings.name === 'xt-scroll') {
+      // wrapper
+      var $outside = $group.parent('.wrap-container.wrap-position');
+      if (!$outside.length) {
+        $outside = $group.wrap($('<div class="wrap-container wrap-position"></div>'));
+      }
       // xt-scroll $targets
-      $group.wrap($('<div class="wrap-container wrap-position"></div>'));
-      settings.$targets = $group.clone().addClass('xt-clone xt-ignore').css('visibility', 'hidden');
-      $.each(settings.$targets.data(), function(i) {
-        settings.$targets.removeAttr("data-" + i);
-      });
-      settings.$targets.insertAfter($group);
+      settings.$targets = $outside.find('.xt-clone.xt-ignore');
+      if (!settings.$targets.length) {
+        settings.$targets = $group.clone().addClass('xt-clone xt-ignore').css('visibility', 'hidden');
+        $.each(settings.$targets.data(), function(i) {
+          settings.$targets.removeAttr("data-" + i);
+        });
+        settings.$targets.insertAfter($group);
+      }
       // stuff
       if (settings.mode === 'absolute') {
         $group.css('position', 'absolute');
@@ -360,11 +367,11 @@
     var group = this.group;
     var $group = $(this.group);
     // resize
-    var $container = settings.$targets.parent('.wrap-container.wrap-position');
+    var $outside = settings.$targets.parent('.wrap-container.wrap-position');
     var resizeNamespace = 'resize.xt.' + settings.namespace;
     $(window).off(resizeNamespace);
     $(window).on(resizeNamespace, function(e) {
-      $container.css('width', $container.parent().width()); // fix fixed width
+      $outside.css('width', $outside.parent().width()); // fix fixed width
     });
     $(window).trigger(resizeNamespace);
     // scroll
@@ -374,7 +381,7 @@
       var scrollTop = $(this).scrollTop();
       if (scrollTop !== settings.scrollTopOld) {
         // show or hide
-        var top = $container.offset().top;
+        var top = $outside.offset().top;
         var bottom = Infinity;
         if (settings.top !== undefined) {
           if (!isNaN(parseFloat(settings.top))) {
@@ -701,14 +708,15 @@
     }
   };
   
-  Xt.prototype.addWrapOutside = function($el) {
+  //////////////////////
+  // animations methods
+  //////////////////////
+  
+  Xt.prototype.addWrap = function($el) {
     var $outside = $el.parent('.wrap-container');
     if (!$outside.length) {
       $el.wrap('<div class="wrap-container"></div>');
     }
-  };
-  
-  Xt.prototype.addWrapInside = function($el) {
     var $inside = $el.find('> .wrap-position');
     if (!$inside.length) {
       $el.wrapInner('<div class="wrap-position"></div>');
@@ -729,8 +737,7 @@
   Xt.prototype.onWidth = function($el) {
     // animation fadein
     if ($el.hasClass('a-width')) {
-      this.addWrapOutside($el);
-      this.addWrapInside($el);
+      this.addWrap($el);
       var $outside = $el.parent('.wrap-container');
       var $inside = $el.find('> .wrap-position');
       var w = $outside.outerWidth();
@@ -744,7 +751,7 @@
   Xt.prototype.onHeight = function($el) {
     // animation fadein
     if ($el.hasClass('a-height')) {
-      this.addWrapInside($el);
+      this.addWrap($el);
       var $inside = $el.find('> .wrap-position');
       var h = $inside.outerHeight();
       $el.css('height', h);

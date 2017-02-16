@@ -40,8 +40,11 @@ body {
   cursor: default;
   display: flex;
   flex-wrap: wrap;
-  > * {
-    align-self: center;
+  /* alignment */
+  &.center {
+    > * {
+      align-self: center;
+    }
   }
   &.top {
     > * {
@@ -73,6 +76,7 @@ a, button {
   text-align: center;
   text-decoration: none !important;
   // content
+  /*
   .left {
     float: left;
     top: 0.1em; // vertical fix
@@ -81,10 +85,10 @@ a, button {
     float: right;
     top: 0.1em; // vertical fix
   }
+  */
   .text {
     display: inline-block;
     overflow: hidden;
-    margin-bottom: -0.25em; // vertical fix
   }
 }
 
@@ -214,20 +218,6 @@ html.xt-fixed-horizontal {
   pointer-events: none;
 }
 
-//////////////////////
-// xt
-//////////////////////
-
-/* wrap */
-.wrap-container {
-  position: relative;
-  width: 100%;
-}
-.wrap-position {
-  float: left;
-  width: 100%;
-}
-
 /* toggles */
 .toggle-flex {
   display: none !important;
@@ -264,14 +254,38 @@ html.xt-fixed-horizontal {
   }
 }
 
-// .a-height
-.a-height {
-  overflow: hidden;
-  height: 0;
-} 
+//////////////////////
+// xt
+//////////////////////
 
-// .a-width
+/* wrap */
+.wrap-container {
+  position: relative;
+  width: 100%;
+}
+.wrap-position {
+  float: left;
+  width: 100%;
+}
+
+/* width and height */
 .a-width {
   overflow: hidden;
   width: 0;
 } 
+.a-height {
+  overflow: hidden;
+  height: 0;
+}
+.a-height,
+.a-width {
+  transition-property: width, height !important;
+  will-change: width, height !important;
+}
+.a-width-left,
+.a-width-right,
+.a-height-top,
+.a-height-bottom {
+  transition-property: margin !important;
+  will-change: margin !important;
+}
