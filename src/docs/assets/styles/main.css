@@ -9317,21 +9317,6 @@ html.xt-fixed-horizontal .overlay {
   clear: both;
 }
 
-.wrap-scroll {
-  position: relative;
-  float: left;
-  width: 100%;
-}
-
-.wrap-outside {
-  position: relative;
-  width: 100%;
-}
-
-.wrap-inside {
-  float: left;
-}
-
 .show {
   display: block !important;
 }
@@ -9348,6 +9333,16 @@ html.xt-fixed-horizontal .overlay {
   cursor: default;
   opacity: 1;
   pointer-events: none;
+}
+
+/* wrap */
+.wrap-container {
+  position: relative;
+  width: 100%;
+}
+
+.wrap-position {
+  float: left;
 }
 
 /* toggles */
