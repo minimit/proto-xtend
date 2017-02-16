@@ -273,6 +273,19 @@
     });
     developerInit();
     
+    //////////////////////
+    // others
+    //////////////////////
+    
+    // fix .overlay z-index
+    $main.find('.site-article .overlay').on('show.xt', function() {
+      $('.site-main').css('z-index', '999');
+    });
+    $main.find('.site-article .overlay').on('hide.xt.done', function() {
+      $('.site-main').css('z-index', '');
+    });
+    
+    
   };
   
   // init main
@@ -291,14 +304,6 @@
   $('.site-wrapper').on('ajax.populated.xt', function(e, obj, $data) {
     // custom function on ajax
     main($(this));
-  });
-  
-  // fix .overlay z-index
-  $('.site-article .overlay').on('show.xt', function() {
-    $('.site-main').css('z-index', '999');
-  });
-  $('.site-article .overlay').on('hide.xt.done', function() {
-    $('.site-main').css('z-index', '');
   });
   
   /*

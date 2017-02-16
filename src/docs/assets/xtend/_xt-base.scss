@@ -160,9 +160,17 @@ html.xt-fixed-horizontal {
   @include box;
   @include clearfix;
 }
-.box-wrap {
-  @include box;
-  @include clearfix;
+.wrap-scroll {
+  position: relative;
+  float: left;
+  width: 100%;
+}
+.wrap-outside {
+  position: relative;
+  width: 100%;
+}
+.wrap-inside {
+  float: left;
 }
 .show {
   display: block !important;

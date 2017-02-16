@@ -201,7 +201,7 @@
     // $targets
     if (settings.name === 'xt-scroll') {
       // xt-scroll $targets
-      $group.wrap($('<div class="box-wrap"></div>'));
+      $group.wrap($('<div class="wrap-scroll"></div>'));
       settings.$targets = $group.clone().addClass('xt-clone xt-ignore').css('visibility', 'hidden');
       $.each(settings.$targets.data(), function(i) {
         settings.$targets.removeAttr("data-" + i);
@@ -365,7 +365,7 @@
     $(window).on(scrollNamespace, function(e) {
       var scrollTop = $(this).scrollTop();
       // show or hide
-      var top = settings.$targets.parents('.box-wrap').offset().top;
+      var top = settings.$targets.parent('.wrap-scroll').offset().top;
       var bottom = Infinity;
       if (settings.top) {
         if (!isNaN(parseFloat(settings.top))) {
@@ -690,24 +690,27 @@
     }
   };
   
-  Xt.prototype.addWrap = function($el) {
-    var $outside = $el.parents('.box-wrap');
+  Xt.prototype.addWrapOutside = function($el) {
+    var $outside = $el.parent('.wrap-outside');
     if (!$outside.length) {
-      $el.wrap('<div class="box-wrap"></div>');
+      $el.wrap('<div class="wrap-outside"></div>');
     }
-    var $inside = $el.find('.box-wrap');
+  };
+  
+  Xt.prototype.addWrapInside = function($el) {
+    var $inside = $el.find('> .wrap-inside');
     if (!$inside.length) {
-      $el.wrapInner('<div class="box-wrap"></div>');
+      $el.wrapInner('<div class="wrap-inside"></div>');
     }
   };
   
   Xt.prototype.removeWrap = function($el) {
-    var $outside = $el.parents('.box-wrap');
-    if (!$outside.length) {
+    var $outside = $el.parent('.wrap-outside');
+    if ($outside.length) {
       $el.unwrap();
     }
-    var $inside = $el.find('.box-wrap');
-    if (!$inside.length) {
+    var $inside = $el.find('> .wrap-inside');
+    if ($inside.length) {
       $inside.contents().unwrap();
     }
   };
@@ -715,9 +718,10 @@
   Xt.prototype.onWidth = function($el) {
     // animation fadein
     if ($el.hasClass('a-width')) {
-      this.addWrap($el);
-      var $outside = $el.parents('.box-wrap');
-      var $inside = $el.find('.box-wrap');
+      this.addWrapOutside($el);
+      this.addWrapInside($el);
+      var $outside = $el.parent('.wrap-outside');
+      var $inside = $el.find('> .wrap-inside');
       var w = $outside.outerWidth();
       $inside.css('width', w);
       $el.css('width', w);
@@ -729,9 +733,8 @@
   Xt.prototype.onHeight = function($el) {
     // animation fadein
     if ($el.hasClass('a-height')) {
-      this.addWrap($el);
-      var $outside = $el.parents('.box-wrap');
-      var $inside = $el.find('.box-wrap');
+      this.addWrapInside($el);
+      var $inside = $el.find('> .wrap-inside');
       var h = $inside.outerHeight();
       $el.css('height', h);
       $el.parents('.a-height-top').css("margin-top", -h);
