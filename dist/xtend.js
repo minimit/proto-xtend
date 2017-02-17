@@ -201,9 +201,9 @@
     // $targets
     if (settings.name === 'xt-scroll') {
       // wrapper
-      var $outside = $group.parent('.wrap-container.wrap-position');
+      var $outside = $group.parent('.xt-container.xt-position');
       if (!$outside.length) {
-        $outside = $group.wrap($('<div class="wrap-container wrap-position"></div>'));
+        $outside = $group.wrap($('<div class="xt-container xt-position"></div>'));
       }
       // xt-scroll $targets
       settings.$targets = $outside.find('.xt-clone.xt-ignore');
@@ -367,7 +367,7 @@
     var group = this.group;
     var $group = $(this.group);
     // resize
-    var $outside = settings.$targets.parent('.wrap-container.wrap-position');
+    var $outside = settings.$targets.parent('.xt-container.xt-position');
     var resizeNamespace = 'resize.xt.' + settings.namespace;
     $(window).off(resizeNamespace);
     $(window).on(resizeNamespace, function(e) {
@@ -604,23 +604,25 @@
     $el.off('transitionend.xt');
     window.xtCancelAnimationFrame($el.data('frame.timeout'));
     // in
+    window.xtCancelAnimationFrame($el.data('frame.timeout'));
     var frame = window.xtRequestAnimationFrame( function() {
       $el.addClass('in');
-      if (settings.timeIn === undefined && $el.css('transitionDuration') !== '0s') {
-        $el.on('transitionend.xt', function(e) {
-          object.showDone($el);
-        });
-      } else if (settings.timeIn) {
-        var timeout = window.setTimeout( function(object, $el) {
-          object.showDone($el, triggered);
-        }, settings.timeIn, object, $el);
-        $el.data('fade.timeout', timeout);
-      } else {
+      object.animationDelay($el, triggered, function() {
         object.showDone($el, triggered);
+      });
+      // close on document click
+      if ($group.hasClass('drop')) {
+        $(document).off('click.xt.' + settings.namespace).on('click.xt.' + settings.namespace, function(e) {
+          var $target = $(e.target);
+          if (!$group.is($target) && !$group.has($target).length) {
+            object.hide(settings.$elements, true, true, true);
+          }
+        });
       }
     });
     $el.data('frame.timeout', frame);
     // animations
+    object.onBackdrop($el, triggered);
     object.onWidth($el, triggered);
     object.onHeight($el, triggered);
     object.onMiddle($el, triggered);
@@ -664,17 +666,12 @@
     // out
     window.xtCancelAnimationFrame($el.data('frame.timeout'));
     var frame = window.xtRequestAnimationFrame( function() {
-      if (settings.timeOut === undefined && $el.css('transitionDuration') !== '0s') {
-        $el.on('transitionend.xt', function(e) {
-          object.hideDone($el);
-        });
-      } else if (settings.timeOut) {
-        var timeout = window.setTimeout( function(object, $el) {
-          object.hideDone($el);
-        }, settings.timeOut, object, $el);
-        $el.data('fade.timeout', timeout);
-      } else {
+      object.animationDelay($el, triggered, function() {
         object.hideDone($el, triggered);
+      });
+      // close on document click
+      if ($group.hasClass('drop')) {
+        $(document).off('click.xt.' + settings.namespace);
       }
     });
     $el.data('frame.timeout', frame);
@@ -682,6 +679,7 @@
     object.onWidth($el, triggered);
     object.onHeight($el, triggered);
     window.xtRequestAnimationFrame( function() {
+      object.offBackdrop($el, triggered);
       object.offWidth($el, triggered);
       object.offHeight($el, triggered);
     });
@@ -708,29 +706,82 @@
     }
   };
   
+  Xt.prototype.animationDelay = function($el, triggered, callout) {
+    var object = this;
+    var settings = this.settings;
+    var group = this.group;
+    var $group = $(this.group);
+    // delay for animations
+    if (settings.timeOut === undefined && $el.css('transitionDuration') !== '0s') {
+      $el.on('transitionend.xt', function(e) {
+        callout();
+      });
+    } else if (settings.timeOut) {
+      var timeout = window.setTimeout( function(object) {
+        callout();
+      }, settings.timeOut);
+      $el.data('fade.timeout', timeout);
+    } else {
+      callout();
+    }
+  };
+  
   //////////////////////
   // animations methods
   //////////////////////
   
   Xt.prototype.addWrap = function($el) {
-    var $outside = $el.parent('.wrap-container');
+    var $outside = $el.parent('.xt-container');
     if (!$outside.length) {
-      $el.wrap('<div class="wrap-container"></div>');
+      $el.wrap('<div class="xt-container"></div>');
     }
-    var $inside = $el.find('> .wrap-position');
+    var $inside = $el.find('> .xt-position');
     if (!$inside.length) {
-      $el.wrapInner('<div class="wrap-position"></div>');
+      $el.wrapInner('<div class="xt-position"></div>');
     }
   };
-  
   Xt.prototype.removeWrap = function($el) {
-    var $outside = $el.parent('.wrap-container');
+    var $outside = $el.parent('.xt-container');
     if ($outside.length) {
       $el.unwrap();
     }
-    var $inside = $el.find('> .wrap-position');
+    var $inside = $el.find('> .xt-position');
     if ($inside.length) {
       $inside.contents().unwrap();
+    }
+  };
+  
+  Xt.prototype.onBackdrop = function($el, triggered) {
+    var object = this;
+    // animation out
+    if ($el.hasClass('backdrop')) {
+      var $backdrop = $el.parent().find('.xt-backdrop');
+      if (!$backdrop.length) {
+        $backdrop = $('<div class="xt-backdrop"></div>').appendTo($el.parent('.drop'));
+      }
+      // events
+      $backdrop.on('click', function(e) {
+        object.hide(object.settings.$elements, true, true, true);
+      });
+      // animations
+      window.xtRequestAnimationFrame( function() {
+        $backdrop.addClass('in');
+      });
+    }
+  };
+  Xt.prototype.offBackdrop = function($el, triggered) {
+    var object = this;
+    // animation out
+    var $backdrop = $el.parent().find('.xt-backdrop');
+    if ($backdrop.length) {
+      // animations
+      $backdrop.removeClass('in');
+      window.xtRequestAnimationFrame( function() {
+        $backdrop.addClass('out');
+        object.animationDelay($backdrop, triggered, function() {
+          $backdrop.remove();
+        });
+      });
     }
   };
     
@@ -738,8 +789,8 @@
     // animation in
     if ($el.hasClass('a-width')) {
       this.addWrap($el);
-      var $outside = $el.parent('.wrap-container');
-      var $inside = $el.find('> .wrap-position');
+      var $outside = $el.parent('.xt-container');
+      var $inside = $el.find('> .xt-position');
       var w = $outside.outerWidth();
       $inside.css('width', w);
       $el.css('width', w);
@@ -747,19 +798,6 @@
       $el.parents('.a-width-right').css("margin-right", -w);
     }
   };
-  
-  Xt.prototype.onHeight = function($el) {
-    // animation in
-    if ($el.hasClass('a-height')) {
-      this.addWrap($el);
-      var $inside = $el.find('> .wrap-position');
-      var h = $inside.outerHeight();
-      $el.css('height', h);
-      $el.parents('.a-height-top').css("margin-top", -h);
-      $el.parents('.a-height-bottom').css("margin-bottom", -h);
-    }
-  };
-  
   Xt.prototype.offWidth = function($el) {
     // animation out
     if ($el.hasClass('a-width')) {
@@ -769,6 +807,17 @@
     }
   };
   
+  Xt.prototype.onHeight = function($el) {
+    // animation in
+    if ($el.hasClass('a-height')) {
+      this.addWrap($el);
+      var $inside = $el.find('> .xt-position');
+      var h = $inside.outerHeight();
+      $el.css('height', h);
+      $el.parents('.a-height-top').css("margin-top", -h);
+      $el.parents('.a-height-bottom').css("margin-bottom", -h);
+    }
+  };
   Xt.prototype.offHeight = function($el) {
     // animation out
     if ($el.hasClass('a-height')) {
@@ -787,7 +836,6 @@
       $el.css('top', add - remove);
     }
   };
-  
   Xt.prototype.onCenter = function($el) {
     // animation out
     if ($el.hasClass('center')) {
@@ -808,7 +856,7 @@
     var group = this.group;
     var $group = $(this.group);
     // get $currents on $group data
-    var $currents = $group.data('$currents_' + settings.namespace) || $([]);
+    var $currents = $group.data('$currents.' + settings.namespace) || $([]);
     return $currents;
   };
   
@@ -818,7 +866,7 @@
     var group = this.group;
     var $group = $(this.group);
     // set $currents on $group data
-    $group.data('$currents_' + settings.namespace, $currents);
+    $group.data('$currents.' + settings.namespace, $currents);
     return $currents;
   };
   

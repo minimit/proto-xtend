@@ -76,7 +76,7 @@ a, button {
   display: flex;
   flex-wrap: wrap;
   position: absolute;
-  z-index: 40;
+  z-index: 110;
   /* before and after */
   /* left and right */
   /* middle */
@@ -124,6 +124,26 @@ a, button {
   .overlay.active, .overlay.out {
     display: block; }
 
+/* .xt-container and .xt-position */
+.xt-container {
+  position: relative;
+  width: 100%; }
+
+.xt-position {
+  float: left;
+  width: 100%; }
+
+/* .xt-backdrop */
+.xt-backdrop {
+  content: '';
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh; }
+
+/* .xt-fixed */
 html.xt-fixed-vertical body {
   overflow-y: hidden; }
 
@@ -135,6 +155,27 @@ html.xt-fixed-horizontal body {
 
 html.xt-fixed-horizontal .overlay {
   overflow-x: scroll; }
+
+/* .a-width and .a-height */
+.a-width {
+  overflow: hidden;
+  width: 0; }
+
+.a-height {
+  overflow: hidden;
+  height: 0; }
+
+.a-height,
+.a-width {
+  transition-property: width, height !important;
+  will-change: width, height !important; }
+
+.a-width-left,
+.a-width-right,
+.a-height-top,
+.a-height-bottom {
+  transition-property: margin !important;
+  will-change: margin !important; }
 
 .box {
   position: relative;
@@ -190,36 +231,6 @@ html.xt-fixed-horizontal .overlay {
 
 .toggle-none.active, .toggle-none.out {
   display: none !important; }
-
-/* wrap */
-.wrap-container {
-  position: relative;
-  width: 100%; }
-
-.wrap-position {
-  float: left;
-  width: 100%; }
-
-/* width and height */
-.a-width {
-  overflow: hidden;
-  width: 0; }
-
-.a-height {
-  overflow: hidden;
-  height: 0; }
-
-.a-height,
-.a-width {
-  transition-property: width, height !important;
-  will-change: width, height !important; }
-
-.a-width-left,
-.a-width-right,
-.a-height-top,
-.a-height-bottom {
-  transition-property: margin !important;
-  will-change: margin !important; }
 
 html {
   font-size: 15px; }
@@ -535,7 +546,17 @@ a.button:not(.link):hover, a.button:not(.link):focus {
 .overlay {
   background: #ffffff; }
 
-.anim, .drop-target, [class^="a-"],
+.xt-backdrop {
+  /* styles */
+  background: #000000;
+  /* animations */
+  opacity: 0; }
+  .xt-backdrop.in {
+    opacity: 0.2; }
+  .xt-backdrop.out {
+    opacity: 0; }
+
+.anim, .drop-target, .xt-backdrop, [class^="a-"],
 [class*=" a-"] {
   transition-property: opacity, transform;
   transition-duration: 300ms;

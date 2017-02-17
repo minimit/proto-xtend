@@ -103,7 +103,7 @@ a, button {
   display: flex;
   flex-wrap: wrap;
   position: absolute;
-  z-index: 40;
+  z-index: 110;
   /* before and after */
   &.before {
     left: auto;
@@ -174,6 +174,33 @@ a, button {
     display: block;
   }
 }
+
+//////////////////////
+// plugin
+//////////////////////
+
+/* .xt-container and .xt-position */
+.xt-container {
+  position: relative;
+  width: 100%;
+}
+.xt-position {
+  float: left;
+  width: 100%;
+}
+
+/* .xt-backdrop */
+.xt-backdrop {
+  content: '';
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* .xt-fixed */
 html.xt-fixed-vertical {
   body {
     overflow-y: hidden;
@@ -189,6 +216,28 @@ html.xt-fixed-horizontal {
   .overlay {
     overflow-x: scroll;
   }
+}
+
+/* .a-width and .a-height */
+.a-width {
+  overflow: hidden;
+  width: 0;
+} 
+.a-height {
+  overflow: hidden;
+  height: 0;
+}
+.a-height,
+.a-width {
+  transition-property: width, height !important;
+  will-change: width, height !important;
+}
+.a-width-left,
+.a-width-right,
+.a-height-top,
+.a-height-bottom {
+  transition-property: margin !important;
+  will-change: margin !important;
 }
 
 //////////////////////
@@ -251,40 +300,4 @@ html.xt-fixed-horizontal {
   &.out {
     display: none !important;
   }
-}
-
-//////////////////////
-// xt
-//////////////////////
-
-/* wrap */
-.wrap-container {
-  position: relative;
-  width: 100%;
-}
-.wrap-position {
-  float: left;
-  width: 100%;
-}
-
-/* width and height */
-.a-width {
-  overflow: hidden;
-  width: 0;
-} 
-.a-height {
-  overflow: hidden;
-  height: 0;
-}
-.a-height,
-.a-width {
-  transition-property: width, height !important;
-  will-change: width, height !important;
-}
-.a-width-left,
-.a-width-right,
-.a-height-top,
-.a-height-bottom {
-  transition-property: margin !important;
-  will-change: margin !important;
 }

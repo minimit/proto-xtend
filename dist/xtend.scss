@@ -352,6 +352,24 @@ a.button:not(.link) {
 }
 
 //////////////////////
+// plugin
+//////////////////////
+
+.xt-backdrop {
+  /* styles */
+  background: #000000;
+  /* animations */
+  @extend .anim;
+  opacity: 0;
+  &.in {
+    opacity: 0.2;
+  }
+  &.out {
+    opacity: 0;
+  }
+}
+
+//////////////////////
 // animations
 //////////////////////
 
@@ -383,7 +401,6 @@ a.button:not(.link) {
     transform: translateX(0.618rem);
   }
 }
-
 
 // .a-horizontal-zoom
 .a-horizontal-zoom {
