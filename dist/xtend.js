@@ -600,16 +600,22 @@
     var settings = this.settings;
     var group = this.group;
     var $group = $(this.group);
+    // $anim
+    var $anim = $el;
+    if ($el.hasClass('overlay')) {
+      $anim = $el.find('> .inside > .content');
+    }
     // on
     $el.addClass(settings.class);
     $el.removeClass('out');
-    object.animationDelayClear($el, 'el');
+    $anim.removeClass('out');
+    object.animationDelayClear($anim, 'anim');
     // in
-    window.xtCancelAnimationFrame($el.data('frame.timeout'));
+    window.xtCancelAnimationFrame($anim.data('frame.timeout'));
     var frame = window.xtRequestAnimationFrame( function() {
-      $el.addClass('in');
-      object.animationDelay($el, triggered, 'el', function() {
-        object.showDone($el, triggered);
+      $anim.addClass('in');
+      object.animationDelay($anim, triggered, 'anim', function() {
+        object.showDone($el, $anim, triggered);
       });
       // close on document click
       if ($group.hasClass('drop')) {
@@ -621,32 +627,31 @@
         });
       }
     });
-    $el.data('frame.timeout', frame);
+    $anim.data('frame.timeout', frame);
     // animations
-    object.onContent($el, triggered);
-    object.onBackdrop($el, triggered);
-    object.onWidth($el, triggered);
-    object.onHeight($el, triggered);
-    object.onMiddle($el, triggered);
-    object.onCenter($el, triggered);
+    object.onBackdrop($el, $anim, triggered);
+    object.onWidth($el, $anim, triggered);
+    object.onHeight($el, $anim, triggered);
+    object.onMiddle($el, $anim, triggered);
+    object.onCenter($el, $anim, triggered);
     // api
     if (!triggered) {
       $el.trigger('show.xt', [object, true]);
     }
   };
   
-  Xt.prototype.showDone = function($el, triggered) {
+  Xt.prototype.showDone = function($el, $anim, triggered) {
     var object = this;
     var settings = this.settings;
     var group = this.group;
     var $group = $(this.group);
     // when animation is done
     // a-width and a-height
-    if ($el.hasClass('a-height')) {
-      $el.css('height', 'auto');
+    if ($anim.hasClass('a-height')) {
+      $anim.css('height', 'auto');
     }
-    if ($el.hasClass('a-width')) {
-      $el.css('width', 'auto');
+    if ($anim.hasClass('a-width')) {
+      $anim.css('width', 'auto');
     }
     // api
     if (!triggered) {
@@ -659,31 +664,35 @@
     var settings = this.settings;
     var group = this.group;
     var $group = $(this.group);
+    // $anim
+    var $anim = $el;
+    if ($el.hasClass('overlay')) {
+      $anim = $el.find('> .inside > .content');
+    }
     // off
     $el.removeClass(settings.class);
-    $el.removeClass('in');
-    $el.addClass('out');
-    object.animationDelayClear($el, 'el');
+    $el.removeClass('in').addClass('out');
+    $anim.removeClass('in').addClass('out');
+    object.animationDelayClear($anim, 'anim');
     // out
-    window.xtCancelAnimationFrame($el.data('frame.timeout'));
+    window.xtCancelAnimationFrame($anim.data('frame.timeout'));
     var frame = window.xtRequestAnimationFrame( function() {
-      object.animationDelay($el, triggered, 'el', function() {
-        object.hideDone($el, triggered);
+      object.animationDelay($anim, triggered, 'anim', function() {
+        object.hideDone($el, $anim, triggered);
       });
       // close on document click
       if ($group.hasClass('drop')) {
         $(document).off('click.xt.' + settings.namespace);
       }
     });
-    $el.data('frame.timeout', frame);
+    $anim.data('frame.timeout', frame);
     // animations
-    object.onWidth($el, triggered);
-    object.onHeight($el, triggered);
+    object.onWidth($el, $anim, triggered);
+    object.onHeight($el, $anim, triggered);
     window.xtRequestAnimationFrame( function() {
-      object.offContent($el, triggered);
-      object.offBackdrop($el, triggered);
-      object.offWidth($el, triggered);
-      object.offHeight($el, triggered);
+      object.offBackdrop($el, $anim, triggered);
+      object.offWidth($el, $anim, triggered);
+      object.offHeight($el, $anim, triggered);
     });
     // api
     if (!triggered) {
@@ -691,16 +700,17 @@
     }
   };
   
-  Xt.prototype.hideDone = function($el, triggered) {
+  Xt.prototype.hideDone = function($el, $anim, triggered) {
     var object = this;
     var settings = this.settings;
     var group = this.group;
     var $group = $(this.group);
     // when animation is done
     $el.removeClass('out');
+    $anim.removeClass('out');
     // a-width and a-height
-    if ($el.hasClass('a-height') || $el.hasClass('a-width')) {
-      this.removeWrap($el);
+    if ($anim.hasClass('a-height') || $anim.hasClass('a-width')) {
+      object.removeWrap($anim);
     }
     // api
     if (!triggered) {
@@ -759,41 +769,11 @@
     }
   };
   
-  Xt.prototype.onContent = function($el, triggered) {
-    var object = this;
-    // animation in
-    var $content = $el.find('> .inside > .content');
-    if ($content.length) {
-      window.xtRequestAnimationFrame( function() {
-        $content.addClass('in');
-        $content.removeClass('out');
-        object.animationDelayClear($content, 'content');
-      });
-    }
-  };
-  Xt.prototype.offContent = function($el, triggered) {
-    var object = this;
-    // animation in
-    var $content = $el.find('> .inside > .content');
-    if ($content.length) {
-      $content.removeClass('in');
-      window.xtRequestAnimationFrame( function() {
-        $content.addClass('out');
-        object.animationDelay($content, triggered, 'content', function() {
-          $content.removeClass('out');
-        });
-      });
-    }
-  };
-  
-  Xt.prototype.onBackdrop = function($el, triggered) {
+  Xt.prototype.onBackdrop = function($el, $anim, triggered) {
     var object = this;
     // animation in
     if ($el.hasClass('backdrop')) {
-      var $position = $el.find('> .inside');
-      if (!$position.length) {
-        $position = $el.parent();
-      }
+      var $position = $anim.parent();
       var $backdrop = $position.find('.xt-backdrop');
       if (!$backdrop.length) {
         $backdrop = $('<div class="xt-backdrop"></div>').appendTo($position);
@@ -810,14 +790,11 @@
       });
     }
   };
-  Xt.prototype.offBackdrop = function($el, triggered) {
+  Xt.prototype.offBackdrop = function($el, $anim, triggered) {
     var object = this;
     // animation out
     if ($el.hasClass('backdrop')) {
-      var $position = $el.find('> .inside');
-      if (!$position.length) {
-        $position = $el.parent();
-      }
+      var $position = $anim.parent();
       var $backdrop = $position.find('.xt-backdrop');
       if ($backdrop.length) {
         // animations
@@ -832,7 +809,7 @@
     }
   };
     
-  Xt.prototype.onWidth = function($el) {
+  Xt.prototype.onWidth = function($el, $anim) {
     var object = this;
     // animation in
     if ($el.hasClass('a-width')) {
@@ -846,7 +823,7 @@
       $el.parents('.a-width-right').css('margin-right', -w);
     }
   };
-  Xt.prototype.offWidth = function($el) {
+  Xt.prototype.offWidth = function($el, $anim) {
     // animation out
     if ($el.hasClass('a-width')) {
       $el.css('width', 0);
@@ -855,7 +832,7 @@
     }
   };
   
-  Xt.prototype.onHeight = function($el) {
+  Xt.prototype.onHeight = function($el, $anim) {
     var object = this;
     // animation in
     if ($el.hasClass('a-height')) {
@@ -867,7 +844,7 @@
       $el.parents('.a-height-bottom').css('margin-bottom', -h);
     }
   };
-  Xt.prototype.offHeight = function($el) {
+  Xt.prototype.offHeight = function($el, $anim) {
     // animation out
     if ($el.hasClass('a-height')) {
       $el.css('height', 0);
@@ -876,7 +853,7 @@
     }
   };
   
-  Xt.prototype.onMiddle = function($el) {
+  Xt.prototype.onMiddle = function($el, $anim) {
     // animation out
     if ($el.hasClass('middle')) {
       var $outside = $el.parent();
@@ -885,7 +862,7 @@
       $el.css('top', add - remove);
     }
   };
-  Xt.prototype.onCenter = function($el) {
+  Xt.prototype.onCenter = function($el, $anim) {
     // animation out
     if ($el.hasClass('center')) {
       var $outside = $el.parent();
