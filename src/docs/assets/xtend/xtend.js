@@ -520,7 +520,7 @@
           if (!$additional.hasClass(object.defaultClass)) {
             $additional.addClass(settings.class);
             window.xtRequestAnimationFrame( function() {
-              $additional.addClass('fadein');
+              $additional.addClass('in');
             });
           }
         }
@@ -577,10 +577,10 @@
           var $additional = $('html');
           if ($additional.hasClass(object.defaultClass)) {
             $additional.removeClass(settings.class);
-            $additional.removeClass('fadein');
-            $additional.addClass('fadeout');
+            $additional.removeClass('in');
+            $additional.addClass('out');
             settings.$targets.off('hide.xt.done.additional').one('hide.xt.done.additional', function() {
-              $additional.removeClass('fadeout');
+              $additional.removeClass('out');
             });
           }
         }
@@ -599,13 +599,13 @@
     var $group = $(this.group);
     // on
     $el.addClass(settings.class);
-    $el.removeClass('fadeout');
+    $el.removeClass('out');
     clearTimeout($el.data('fade.timeout'));
     $el.off('transitionend.xt');
     window.xtCancelAnimationFrame($el.data('frame.timeout'));
-    // fadein
+    // in
     var frame = window.xtRequestAnimationFrame( function() {
-      $el.addClass('fadein');
+      $el.addClass('in');
       if (settings.timeIn === undefined && $el.css('transitionDuration') !== '0s') {
         $el.on('transitionend.xt', function(e) {
           object.showDone($el);
@@ -657,11 +657,11 @@
     var $group = $(this.group);
     // off
     $el.removeClass(settings.class);
-    $el.removeClass('fadein');
-    $el.addClass('fadeout');
+    $el.removeClass('in');
+    $el.addClass('out');
     clearTimeout($el.data('fade.timeout'));
     $el.off('transitionend.xt');
-    // fadeout
+    // out
     window.xtCancelAnimationFrame($el.data('frame.timeout'));
     var frame = window.xtRequestAnimationFrame( function() {
       if (settings.timeOut === undefined && $el.css('transitionDuration') !== '0s') {
@@ -697,7 +697,7 @@
     var group = this.group;
     var $group = $(this.group);
     // when animation is done
-    $el.removeClass('fadeout');
+    $el.removeClass('out');
     // a-width and a-height
     if ($el.hasClass('a-height') || $el.hasClass('a-width')) {
       this.removeWrap($el);
@@ -735,7 +735,7 @@
   };
     
   Xt.prototype.onWidth = function($el) {
-    // animation fadein
+    // animation in
     if ($el.hasClass('a-width')) {
       this.addWrap($el);
       var $outside = $el.parent('.wrap-container');
@@ -749,7 +749,7 @@
   };
   
   Xt.prototype.onHeight = function($el) {
-    // animation fadein
+    // animation in
     if ($el.hasClass('a-height')) {
       this.addWrap($el);
       var $inside = $el.find('> .wrap-position');
@@ -761,7 +761,7 @@
   };
   
   Xt.prototype.offWidth = function($el) {
-    // animation fadeout
+    // animation out
     if ($el.hasClass('a-width')) {
       $el.css('width', 0);
       $el.parents('.a-width-left').css("margin-left", 0);
@@ -770,7 +770,7 @@
   };
   
   Xt.prototype.offHeight = function($el) {
-    // animation fadeout
+    // animation out
     if ($el.hasClass('a-height')) {
       $el.css('height', 0);
       $el.parents('.a-height-top').css("margin-top", 0);
@@ -779,7 +779,7 @@
   };
   
   Xt.prototype.onMiddle = function($el) {
-    // animation fadeout
+    // animation out
     if ($el.hasClass('middle')) {
       var $outside = $el.parent();
       var add = $outside.outerHeight() / 2;
@@ -789,7 +789,7 @@
   };
   
   Xt.prototype.onCenter = function($el) {
-    // animation fadeout
+    // animation out
     if ($el.hasClass('center')) {
       var $outside = $el.parent();
       var add = $outside.outerWidth() / 2;

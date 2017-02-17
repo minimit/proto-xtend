@@ -121,7 +121,7 @@ a, button {
   left: 0;
   right: 0;
   bottom: 0; }
-  .overlay.active, .overlay.fadeout {
+  .overlay.active, .overlay.out {
     display: block; }
 
 html.xt-fixed-vertical body {
@@ -170,25 +170,25 @@ html.xt-fixed-horizontal .overlay {
 /* toggles */
 .toggle-flex {
   display: none !important; }
-  .toggle-flex.active, .toggle-flex.fadeout {
+  .toggle-flex.active, .toggle-flex.out {
     display: flex !important; }
 
 .toggle-block {
   display: none !important; }
-  .toggle-block.active, .toggle-block.fadeout {
+  .toggle-block.active, .toggle-block.out {
     display: block !important; }
 
 .toggle-inline {
   display: none !important; }
-  .toggle-inline.active, .toggle-inline.fadeout {
+  .toggle-inline.active, .toggle-inline.out {
     display: inline !important; }
 
 .toggle-inline-block {
   display: none !important; }
-  .toggle-inline-block.active, .toggle-inline-block.fadeout {
+  .toggle-inline-block.active, .toggle-inline-block.out {
     display: inline-block !important; }
 
-.toggle-none.active, .toggle-none.fadeout {
+.toggle-none.active, .toggle-none.out {
   display: none !important; }
 
 /* wrap */
@@ -546,90 +546,90 @@ a.button:not(.link):hover, a.button:not(.link):focus {
 .a-horizontal {
   opacity: 0;
   transform: translateX(-0.618rem); }
-  .a-horizontal.fadein {
+  .a-horizontal.in {
     opacity: 1;
     transform: translateX(0); }
-  .a-horizontal.fadeout {
+  .a-horizontal.out {
     opacity: 0;
     transform: translateX(0.618rem); }
 
 .a-horizontal-zoom {
   opacity: 0;
   transform: translateX(-0.618rem) scale(0.95); }
-  .a-horizontal-zoom.fadein {
+  .a-horizontal-zoom.in {
     opacity: 1;
     transform: translateX(0) scale(1); }
-  .a-horizontal-zoom.fadeout {
+  .a-horizontal-zoom.out {
     opacity: 0;
     transform: translateX(0.618rem) scale(0.95); }
 
 .a-vertical {
   opacity: 0;
   transform: translateY(-0.618rem); }
-  .a-vertical.fadein {
+  .a-vertical.in {
     opacity: 1;
     transform: translateY(0); }
-  .a-vertical.fadeout {
+  .a-vertical.out {
     opacity: 0;
     transform: translateY(0.618rem); }
 
 .a-vertical-zoom, .drop-target {
   opacity: 0;
   transform: translateY(-0.618rem) scale(0.95); }
-  .a-vertical-zoom.fadein, .fadein.drop-target {
+  .a-vertical-zoom.in, .in.drop-target {
     opacity: 1;
     transform: translateY(0) scale(1); }
-  .a-vertical-zoom.fadeout, .fadeout.drop-target {
+  .a-vertical-zoom.out, .out.drop-target {
     opacity: 0;
     transform: translateY(0.618rem) scale(0.95); }
 
 .a-diagonal {
   opacity: 0;
   transform: translateX(-0.618rem) translateY(-0.618rem); }
-  .a-diagonal.fadein {
+  .a-diagonal.in {
     opacity: 1;
     transform: translateX(0) translateY(0); }
-  .a-diagonal.fadeout {
+  .a-diagonal.out {
     opacity: 0;
     transform: translateX(0.618rem) translateY(0.618rem); }
 
 .a-left {
   opacity: 0;
   transform: translateX(0.618rem); }
-  .a-left.fadein {
+  .a-left.in {
     opacity: 1;
     transform: translateY(0); }
-  .a-left.fadeout {
+  .a-left.out {
     opacity: 0;
     transform: translateX(0.618rem); }
 
 .a-right {
   opacity: 0;
   transform: translateX(-0.618rem); }
-  .a-right.fadein {
+  .a-right.in {
     opacity: 1;
     transform: translateY(0); }
-  .a-right.fadeout {
+  .a-right.out {
     opacity: 0;
     transform: translateX(-0.618rem); }
 
 .a-top {
   opacity: 0;
   transform: translateY(-0.618rem); }
-  .a-top.fadein {
+  .a-top.in {
     opacity: 1;
     transform: translateY(0); }
-  .a-top.fadeout {
+  .a-top.out {
     opacity: 0;
     transform: translateY(-0.618rem); }
 
 .a-bottom {
   opacity: 0;
   transform: translateY(0.618rem); }
-  .a-bottom.fadein {
+  .a-bottom.in {
     opacity: 1;
     transform: translateY(0); }
-  .a-bottom.fadeout {
+  .a-bottom.out {
     opacity: 0;
     transform: translateY(0.618rem); }
 

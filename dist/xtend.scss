@@ -374,11 +374,11 @@ a.button:not(.link) {
 .a-horizontal {
   opacity: 0;
   transform: translateX(-0.618rem);
-  &.fadein {
+  &.in {
     opacity: 1;
     transform: translateX(0);
   }
-  &.fadeout {
+  &.out {
     opacity: 0;
     transform: translateX(0.618rem);
   }
@@ -389,11 +389,11 @@ a.button:not(.link) {
 .a-horizontal-zoom {
   opacity: 0;
   transform: translateX(-0.618rem) scale(0.95);
-  &.fadein {
+  &.in {
     opacity: 1;
     transform: translateX(0) scale(1);
   }
-  &.fadeout {
+  &.out {
     opacity: 0;
     transform: translateX(0.618rem) scale(0.95);
   }
@@ -403,11 +403,11 @@ a.button:not(.link) {
 .a-vertical {
   opacity: 0;
   transform: translateY(-0.618rem);
-  &.fadein {
+  &.in {
     opacity: 1;
     transform: translateY(0);
   }
-  &.fadeout {
+  &.out {
     opacity: 0;
     transform: translateY(0.618rem);
   }
@@ -417,11 +417,11 @@ a.button:not(.link) {
 .a-vertical-zoom {
   opacity: 0;
   transform: translateY(-0.618rem) scale(0.95);
-  &.fadein {
+  &.in {
     opacity: 1;
     transform: translateY(0) scale(1);
   }
-  &.fadeout {
+  &.out {
     opacity: 0;
     transform: translateY(0.618rem) scale(0.95);
   }
@@ -431,11 +431,11 @@ a.button:not(.link) {
 .a-diagonal {
   opacity: 0;
   transform:  translateX(-0.618rem) translateY(-0.618rem);
-  &.fadein {
+  &.in {
     opacity: 1;
     transform: translateX(0) translateY(0);
   }
-  &.fadeout {
+  &.out {
     opacity: 0;
     transform: translateX(0.618rem) translateY(0.618rem);
   }
@@ -445,11 +445,11 @@ a.button:not(.link) {
 .a-left {
   opacity: 0;
   transform: translateX(0.618rem);
-  &.fadein {
+  &.in {
     opacity: 1;
     transform: translateY(0);
   }
-  &.fadeout {
+  &.out {
     opacity: 0;
     transform: translateX(0.618rem);
   }
@@ -459,11 +459,11 @@ a.button:not(.link) {
 .a-right {
   opacity: 0;
   transform: translateX(-0.618rem);
-  &.fadein {
+  &.in {
     opacity: 1;
     transform: translateY(0);
   }
-  &.fadeout {
+  &.out {
     opacity: 0;
     transform: translateX(-0.618rem);
   }
@@ -473,11 +473,11 @@ a.button:not(.link) {
 .a-top {
   opacity: 0;
   transform: translateY(-0.618rem);
-  &.fadein {
+  &.in {
     opacity: 1;
     transform: translateY(0);
   }
-  &.fadeout {
+  &.out {
     opacity: 0;
     transform: translateY(-0.618rem);
   }
@@ -487,11 +487,11 @@ a.button:not(.link) {
 .a-bottom {
   opacity: 0;
   transform: translateY(0.618rem);
-  &.fadein {
+  &.in {
     opacity: 1;
     transform: translateY(0);
   }
-  &.fadeout {
+  &.out {
     opacity: 0;
     transform: translateY(0.618rem);
   }

@@ -170,7 +170,7 @@ a, button {
   right: 0;
   bottom: 0;
   &.active,
-  &.fadeout {
+  &.out {
     display: block;
   }
 }
@@ -221,34 +221,34 @@ html.xt-fixed-horizontal {
 .toggle-flex {
   display: none !important;
   &.active,
-  &.fadeout {
+  &.out {
     display: flex !important;
   }
 }
 .toggle-block {
   display: none !important;
   &.active,
-  &.fadeout {
+  &.out {
     display: block !important;
   }
 }
 .toggle-inline {
   display: none !important;
   &.active,
-  &.fadeout {
+  &.out {
     display: inline !important;
   }
 }
 .toggle-inline-block {
   display: none !important;
   &.active,
-  &.fadeout {
+  &.out {
     display: inline-block !important;
   }
 }
 .toggle-none {
   &.active,
-  &.fadeout {
+  &.out {
     display: none !important;
   }
 }
