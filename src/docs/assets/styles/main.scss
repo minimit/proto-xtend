@@ -198,24 +198,12 @@ a.logo {
 }
 
 /*.site-menu */
-.site-menu {
-  .site-menu-outside {
-    background: $color-primary;
-    color: $color-white;
-    // flex
-    display: flex;
-    flex-direction: row;
-  }
-  .site-menu-inside {
-    padding-top: 100px;
-    padding-bottom: 60px;
-    // flex
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    min-height: 100vh;
+.site-menu.overlay {
+  .inside {
+    .content {
+      padding-top: 100px;
+      padding-bottom: 60px;
+    }
   }
   // content
   .button {
@@ -738,7 +726,6 @@ p code,
   }
   .demo-source {
     position: relative;
-    z-index: 100;
     line-height: 1.8;
   }
   .demo-item.populated .demo-code-body-item {
@@ -863,6 +850,7 @@ html.out {
     z-index: 69 !important;
     .site-header-top {
       position: absolute;
+      top: 0;
       width: 100%;
     }
   }

@@ -58,36 +58,36 @@
           </div>
         </div>
         
-        <nav class="site-menu overlay a-height" id="site-menu">
-          
-          <div class="site-header-top">
-            <div class="container">
-              <div class="media">
-                <div class="d-flex align-self-center mr-3">
-                  <a href="{{ site.baseurl }}" class="logo" title="Home">
-                    MINIMIT
-                  </a>
-                </div>
-                <div class="media-body align-self-center">
-                  <button type="button" class="button button__menu float-right" data-xt-overlay='{"targets": "#site-menu"}'>
-                    {% if page.collection %}
-                      {{ page.collection | capitalize }}
-                    {% else %}
-                      {{ page.title | capitalize }}
-                    {% endif %}
-                    <span class="icon-menu-custom right">
-                      <span></span>
-                      <span></span>
-                      <span></span>
-                    </span>
-                  </button>
+        <nav class="site-menu overlay full a-height" id="site-menu">
+          <div class="inside">
+            <div class="content">
+              
+              <div class="site-header-top">
+                <div class="container">
+                  <div class="media">
+                    <div class="d-flex align-self-center mr-3">
+                      <a href="{{ site.baseurl }}" class="logo" title="Home">
+                        MINIMIT
+                      </a>
+                    </div>
+                    <div class="media-body align-self-center">
+                      <button type="button" class="button button__menu float-right" data-xt-overlay='{"targets": "#site-menu"}'>
+                        {% if page.collection %}
+                          {{ page.collection | capitalize }}
+                        {% else %}
+                          {{ page.title | capitalize }}
+                        {% endif %}
+                        <span class="icon-menu-custom right">
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                        </span>
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-            
-          <div class="site-menu-outside">
-            <div class="site-menu-inside">
+                
               <div class="site-menu-content container">
               
                 {% for collection in site.collections %}
@@ -116,9 +116,9 @@
                 </a>
                     
               </div>
+            
             </div>
           </div>
-          
         </nav>
         
         <div class="site-hero">

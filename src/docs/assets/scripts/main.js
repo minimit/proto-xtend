@@ -315,19 +315,6 @@
     });
     developerInit();
     
-    //////////////////////
-    // others
-    //////////////////////
-    /*
-    // fix .overlay z-index
-    $main.find('.site-article .overlay').on('show.xt', function() {
-      $('.site-main').css('z-index', '999');
-    });
-    $main.find('.site-article .overlay').on('hide.xt.done', function() {
-      $('.site-main').css('z-index', '');
-    });
-    */
-    
   };
   
   // init main

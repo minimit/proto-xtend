@@ -130,16 +130,24 @@ a, button {
   top: 0;
   left: 0;
   right: 0;
-  bottom: 0; }
+  bottom: 0;
+  /* default */
+  /* full */ }
   .overlay .inside {
     display: flex;
-    height: 100%;
-    /* justification */
-    justify-content: center; }
-  .overlay .content {
-    z-index: 110;
-    /* alignment */
-    align-self: center; }
+    flex-direction: row;
+    justify-content: center;
+    min-height: 100vh; }
+    .overlay .inside .content {
+      z-index: 110;
+      align-self: center; }
+  .overlay.full .inside .content {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh; }
 
 /* .xt-container and .xt-position */
 .xt-container {
@@ -157,8 +165,8 @@ a, button {
   z-index: 100;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh; }
+  width: 100%;
+  height: 100%; }
 
 /* .xt-fixed */
 html.xt-fixed-vertical body {
@@ -425,6 +433,7 @@ a:not(.button),
     color: #ff0000;
     text-decoration: underline; }
 
+/* fix bootstrap to remove */
 a.button:not(.link):hover, a.button:not(.link):focus {
   text-decoration: none; }
 
@@ -440,10 +449,7 @@ a.button:not(.link):hover, a.button:not(.link):focus {
   letter-spacing: 0.5px;
   text-transform: uppercase;
   /* animations */
-  transition-property: all;
-  transition-duration: 300ms;
-  transition-timing-function: cubic-bezier(0.63, 0.36, 0, 0.97);
-  transition-delay: 0ms;
+  transition-property: background, color !important;
   /* variants */ }
   .button.tiny {
     padding: 4px 8px;
@@ -565,10 +571,16 @@ a.button:not(.link):hover, a.button:not(.link):focus {
   /* sizes */
   /* .close */
   /* animations */ }
-  .overlay .content {
+  .overlay.full .inside {
+    background: #ff0000;
+    color: #ffffff; }
+  .overlay:not(.full) .inside .content {
     background: #ffffff;
-    width: 600px; }
+    margin-top: 60px;
+    margin-bottom: 60px; }
   .overlay .content {
+    padding-top: 40px;
+    padding-bottom: 40px;
     width: 600px; }
 
 .xt-backdrop {
@@ -581,14 +593,15 @@ a.button:not(.link):hover, a.button:not(.link):focus {
   .xt-backdrop.out {
     opacity: 0; }
 
-.anim, .drop-target, .overlay .content, .xt-backdrop, [class^="a-"],
+/* opacity and transform */
+.anim, .button, .drop-target, .overlay .content, .xt-backdrop, [class^="a-"],
 [class*=" a-"] {
   transition-property: opacity, transform;
   transition-duration: 300ms;
   transition-timing-function: cubic-bezier(0.63, 0.36, 0, 0.97);
-  transition-delay: 0ms;
-  will-change: opacity, transform; }
+  transition-delay: 0ms; }
 
+/* .a-horizontal */
 .a-horizontal {
   opacity: 0;
   transform: translateX(-0.618rem); }
@@ -599,6 +612,7 @@ a.button:not(.link):hover, a.button:not(.link):focus {
     opacity: 0;
     transform: translateX(0.618rem); }
 
+/* .a-horizontal-zoom */
 .a-horizontal-zoom {
   opacity: 0;
   transform: translateX(-0.618rem) scale(0.95); }
@@ -609,6 +623,7 @@ a.button:not(.link):hover, a.button:not(.link):focus {
     opacity: 0;
     transform: translateX(0.618rem) scale(0.95); }
 
+/* .a-vertical */
 .a-vertical {
   opacity: 0;
   transform: translateY(-0.618rem); }
@@ -619,6 +634,7 @@ a.button:not(.link):hover, a.button:not(.link):focus {
     opacity: 0;
     transform: translateY(0.618rem); }
 
+/* .a-vertical-zoom */
 .a-vertical-zoom, .drop-target, .overlay .content {
   opacity: 0;
   transform: translateY(-0.618rem) scale(0.95); }
@@ -629,6 +645,7 @@ a.button:not(.link):hover, a.button:not(.link):focus {
     opacity: 0;
     transform: translateY(0.618rem) scale(0.95); }
 
+/* .a-diagonal */
 .a-diagonal {
   opacity: 0;
   transform: translateX(-0.618rem) translateY(-0.618rem); }
@@ -639,6 +656,7 @@ a.button:not(.link):hover, a.button:not(.link):focus {
     opacity: 0;
     transform: translateX(0.618rem) translateY(0.618rem); }
 
+/* .a-left */
 .a-left {
   opacity: 0;
   transform: translateX(0.618rem); }
@@ -649,6 +667,7 @@ a.button:not(.link):hover, a.button:not(.link):focus {
     opacity: 0;
     transform: translateX(0.618rem); }
 
+/* .a-right */
 .a-right {
   opacity: 0;
   transform: translateX(-0.618rem); }
@@ -659,6 +678,7 @@ a.button:not(.link):hover, a.button:not(.link):focus {
     opacity: 0;
     transform: translateX(-0.618rem); }
 
+/* .a-top */
 .a-top {
   opacity: 0;
   transform: translateY(-0.618rem); }
@@ -669,6 +689,7 @@ a.button:not(.link):hover, a.button:not(.link):focus {
     opacity: 0;
     transform: translateY(-0.618rem); }
 
+/* .a-bottom */
 .a-bottom {
   opacity: 0;
   transform: translateY(0.618rem); }
