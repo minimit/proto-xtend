@@ -237,7 +237,7 @@
     // .site-aside-text
     $main.find('.site-aside-text > .button:not(.different)').each( function(i) {
       var $container = $(this).parents('.site-aside-text');
-      $main.find('.site-article').find('h2, h3').each( function(z) {
+      $main.find('.site-article').find('> h2, > h3').each( function(z) {
         var $element = $(this);
         if ($(this).is('h2')) {
           $container.append($('<a href="#' + $(this).attr('id') + '" class="button site-aside-sub">' + $(this).text() + '</a><div class="site-aside-subsub"></div>'));
@@ -251,34 +251,40 @@
       var $elements = $('.button.site-aside-sub').filter(':parents(.xt-ignore)');
       $elements.each( function(i) {
         var $element = $(this);
-        var $target = $($(this).attr('href'));
-        var top = $target.offset().top;
-        var bottom = Infinity;
-        if (scrollTop >= top && scrollTop < bottom) {
-          if (!$element.hasClass('active')) {
-            $elements.not($element).removeClass('active');
-            $element.addClass('active');
-          }
-        } else {
-          if ($element.hasClass('active')) {
-            $element.removeClass('active');
+        var href = $(this).attr('href');
+        if (href) {
+          var $target = $(href);
+          var top = $target.offset().top;
+          var bottom = Infinity;
+          if (scrollTop >= top && scrollTop < bottom) {
+            if (!$element.hasClass('active')) {
+              $elements.not($element).removeClass('active');
+              $element.addClass('active');
+            }
+          } else {
+            if ($element.hasClass('active')) {
+              $element.removeClass('active');
+            }
           }
         }
       });
       var $subs = $('.button.site-aside-sub.active + .site-aside-subsub .button').filter(':parents(.xt-ignore)');
       $subs.each( function(i) {
         var $element = $(this);
-        var $target = $($(this).attr('href'));
-        var top = $target.offset().top;
-        var bottom = Infinity;
-        if (scrollTop >= top && scrollTop <= bottom) {
-          if (!$element.hasClass('active')) {
-            $subs.not($element).removeClass('active');
-            $element.addClass('active');
-          }
-        } else {
-          if ($element.hasClass('active')) {
-            $element.removeClass('active');
+        var href = $(this).attr('href');
+        if (href) {
+          var $target = $(href);
+          var top = $target.offset().top;
+          var bottom = Infinity;
+          if (scrollTop >= top && scrollTop <= bottom) {
+            if (!$element.hasClass('active')) {
+              $subs.not($element).removeClass('active');
+              $element.addClass('active');
+            }
+          } else {
+            if ($element.hasClass('active')) {
+              $element.removeClass('active');
+            }
           }
         }
       });
@@ -312,7 +318,7 @@
     //////////////////////
     // others
     //////////////////////
-    
+    /*
     // fix .overlay z-index
     $main.find('.site-article .overlay').on('show.xt', function() {
       $('.site-main').css('z-index', '999');
@@ -320,7 +326,7 @@
     $main.find('.site-article .overlay').on('hide.xt.done', function() {
       $('.site-main').css('z-index', '');
     });
-    
+    */
     
   };
   

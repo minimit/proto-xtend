@@ -37,13 +37,24 @@ body {
   cursor: default;
   display: flex;
   flex-wrap: wrap;
+  /* justification */
   /* alignment */ }
-  .spacer.center > *, .spacer > * {
-    align-self: center; }
+  .spacer.left {
+    justify-content: flex-start; }
+  .spacer.right {
+    justify-content: flex-end; }
+  .spacer.center {
+    justify-content: center; }
+  .spacer.between {
+    justify-content: space-between; }
+  .spacer.around {
+    justify-content: space-around; }
   .spacer.top > * {
     align-self: flex-start; }
   .spacer.bottom > * {
     align-self: flex-end; }
+  .spacer.middle > *, .spacer > * {
+    align-self: center; }
   .spacer.stretch > * {
     align-self: stretch; }
 
@@ -114,15 +125,21 @@ a, button {
     white-space: nowrap; }
 
 .overlay {
-  display: none;
-  z-index: 80;
   position: fixed;
+  z-index: 90;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0; }
-  .overlay.active, .overlay.out {
-    display: block; }
+  .overlay .inside {
+    display: flex;
+    height: 100%;
+    /* justification */
+    justify-content: center; }
+  .overlay .content {
+    z-index: 110;
+    /* alignment */
+    align-self: center; }
 
 /* .xt-container and .xt-position */
 .xt-container {
@@ -214,9 +231,9 @@ html.xt-fixed-horizontal .overlay {
   .toggle-flex.active, .toggle-flex.out {
     display: flex !important; }
 
-.toggle-block {
+.toggle-block, .overlay {
   display: none !important; }
-  .toggle-block.active, .toggle-block.out {
+  .toggle-block.active, .active.overlay, .toggle-block.out, .out.overlay {
     display: block !important; }
 
 .toggle-inline {
@@ -544,7 +561,15 @@ a.button:not(.link):hover, a.button:not(.link):focus {
     color: #000000; }
 
 .overlay {
-  background: #ffffff; }
+  /* styles */
+  /* sizes */
+  /* .close */
+  /* animations */ }
+  .overlay .content {
+    background: #ffffff;
+    width: 600px; }
+  .overlay .content {
+    width: 600px; }
 
 .xt-backdrop {
   /* styles */
@@ -556,7 +581,7 @@ a.button:not(.link):hover, a.button:not(.link):focus {
   .xt-backdrop.out {
     opacity: 0; }
 
-.anim, .drop-target, .xt-backdrop, [class^="a-"],
+.anim, .drop-target, .overlay .content, .xt-backdrop, [class^="a-"],
 [class*=" a-"] {
   transition-property: opacity, transform;
   transition-duration: 300ms;
@@ -594,13 +619,13 @@ a.button:not(.link):hover, a.button:not(.link):focus {
     opacity: 0;
     transform: translateY(0.618rem); }
 
-.a-vertical-zoom, .drop-target {
+.a-vertical-zoom, .drop-target, .overlay .content {
   opacity: 0;
   transform: translateY(-0.618rem) scale(0.95); }
-  .a-vertical-zoom.in, .in.drop-target {
+  .a-vertical-zoom.in, .in.drop-target, .overlay .in.content {
     opacity: 1;
     transform: translateY(0) scale(1); }
-  .a-vertical-zoom.out, .out.drop-target {
+  .a-vertical-zoom.out, .out.drop-target, .overlay .out.content {
     opacity: 0;
     transform: translateY(0.618rem) scale(0.95); }
 

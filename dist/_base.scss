@@ -40,12 +40,23 @@ body {
   cursor: default;
   display: flex;
   flex-wrap: wrap;
-  /* alignment */
-  &.center {
-    > * {
-      align-self: center;
-    }
+  /* justification */
+  &.left {
+    justify-content: flex-start;
   }
+  &.right {
+    justify-content: flex-end;
+  }
+  &.center {
+    justify-content: center;
+  }
+  &.between {
+    justify-content: space-between;
+  }
+  &.around {
+    justify-content: space-around;
+  }
+  /* alignment */
   &.top {
     > * {
       align-self: flex-start;
@@ -54,6 +65,11 @@ body {
   &.bottom {
     > * {
       align-self: flex-end;
+    }
+  }
+  &.middle {
+    > * {
+      align-self: center;
     }
   }
   &.stretch {
@@ -162,16 +178,23 @@ a, button {
 //////////////////////
 
 .overlay {
-  display: none;
-  z-index: 80;
+  @extend .toggle-block;
   position: fixed;
+  z-index: 90;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  &.active,
-  &.out {
-    display: block;
+  .inside {
+    display: flex;
+    height: 100%;
+    /* justification */
+    justify-content: center;
+  }
+  .content {
+    z-index: 110;
+    /* alignment */
+    align-self: center;
   }
 }
 

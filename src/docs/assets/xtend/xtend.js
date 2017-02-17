@@ -210,7 +210,7 @@
       if (!settings.$targets.length) {
         settings.$targets = $group.clone().addClass('xt-clone xt-ignore').css('visibility', 'hidden');
         $.each(settings.$targets.data(), function(i) {
-          settings.$targets.removeAttr("data-" + i);
+          settings.$targets.removeAttr('data-' + i);
         });
         settings.$targets.insertAfter($group);
       }
@@ -289,6 +289,9 @@
             object.show(settings.$elements.eq(i));
           }
         }
+      }
+      if (settings.name === 'xt-overlay') {
+        settings.$targets.appendTo('body');
       }
     }
   };
@@ -600,14 +603,12 @@
     // on
     $el.addClass(settings.class);
     $el.removeClass('out');
-    clearTimeout($el.data('fade.timeout'));
-    $el.off('transitionend.xt');
-    window.xtCancelAnimationFrame($el.data('frame.timeout'));
+    object.animationDelayClear($el, 'el');
     // in
     window.xtCancelAnimationFrame($el.data('frame.timeout'));
     var frame = window.xtRequestAnimationFrame( function() {
       $el.addClass('in');
-      object.animationDelay($el, triggered, function() {
+      object.animationDelay($el, triggered, 'el', function() {
         object.showDone($el, triggered);
       });
       // close on document click
@@ -622,6 +623,7 @@
     });
     $el.data('frame.timeout', frame);
     // animations
+    object.onContent($el, triggered);
     object.onBackdrop($el, triggered);
     object.onWidth($el, triggered);
     object.onHeight($el, triggered);
@@ -661,12 +663,11 @@
     $el.removeClass(settings.class);
     $el.removeClass('in');
     $el.addClass('out');
-    clearTimeout($el.data('fade.timeout'));
-    $el.off('transitionend.xt');
+    object.animationDelayClear($el, 'el');
     // out
     window.xtCancelAnimationFrame($el.data('frame.timeout'));
     var frame = window.xtRequestAnimationFrame( function() {
-      object.animationDelay($el, triggered, function() {
+      object.animationDelay($el, triggered, 'el', function() {
         object.hideDone($el, triggered);
       });
       // close on document click
@@ -679,6 +680,7 @@
     object.onWidth($el, triggered);
     object.onHeight($el, triggered);
     window.xtRequestAnimationFrame( function() {
+      object.offContent($el, triggered);
       object.offBackdrop($el, triggered);
       object.offWidth($el, triggered);
       object.offHeight($el, triggered);
@@ -706,24 +708,30 @@
     }
   };
   
-  Xt.prototype.animationDelay = function($el, triggered, callout) {
+  Xt.prototype.animationDelay = function($el, triggered, ns, callout) {
     var object = this;
     var settings = this.settings;
     var group = this.group;
     var $group = $(this.group);
     // delay for animations
     if (settings.timeOut === undefined && $el.css('transitionDuration') !== '0s') {
-      $el.on('transitionend.xt', function(e) {
+      $el.on('transitionend.xt.' + ns, function(e) {
         callout();
       });
     } else if (settings.timeOut) {
       var timeout = window.setTimeout( function(object) {
         callout();
       }, settings.timeOut);
-      $el.data('fade.timeout', timeout);
+      $el.data('fade.timeout.' + ns, timeout);
     } else {
       callout();
     }
+  };
+  Xt.prototype.animationDelayClear = function($el, ns) {
+    clearTimeout($el.data('fade.timeout.' + ns));
+    $el.off('transitionend.xt.' + ns);
+    clearTimeout($el.data('fade.timeout.' + ns));
+    $el.off('transitionend.xt.' + ns);
   };
   
   //////////////////////
@@ -751,13 +759,44 @@
     }
   };
   
+  Xt.prototype.onContent = function($el, triggered) {
+    var object = this;
+    // animation in
+    var $content = $el.find('> .inside > .content');
+    if ($content.length) {
+      window.xtRequestAnimationFrame( function() {
+        $content.addClass('in');
+        $content.removeClass('out');
+        object.animationDelayClear($content, 'content');
+      });
+    }
+  };
+  Xt.prototype.offContent = function($el, triggered) {
+    var object = this;
+    // animation in
+    var $content = $el.find('> .inside > .content');
+    if ($content.length) {
+      $content.removeClass('in');
+      window.xtRequestAnimationFrame( function() {
+        $content.addClass('out');
+        object.animationDelay($content, triggered, 'content', function() {
+          $content.removeClass('out');
+        });
+      });
+    }
+  };
+  
   Xt.prototype.onBackdrop = function($el, triggered) {
     var object = this;
-    // animation out
+    // animation in
     if ($el.hasClass('backdrop')) {
-      var $backdrop = $el.parent().find('.xt-backdrop');
+      var $position = $el.find('> .inside');
+      if (!$position.length) {
+        $position = $el.parent();
+      }
+      var $backdrop = $position.find('.xt-backdrop');
       if (!$backdrop.length) {
-        $backdrop = $('<div class="xt-backdrop"></div>').appendTo($el.parent('.drop'));
+        $backdrop = $('<div class="xt-backdrop"></div>').appendTo($position);
       }
       // events
       $backdrop.on('click', function(e) {
@@ -766,64 +805,74 @@
       // animations
       window.xtRequestAnimationFrame( function() {
         $backdrop.addClass('in');
+        $backdrop.removeClass('out');
+        object.animationDelayClear($backdrop, 'backdrop');
       });
     }
   };
   Xt.prototype.offBackdrop = function($el, triggered) {
     var object = this;
     // animation out
-    var $backdrop = $el.parent().find('.xt-backdrop');
-    if ($backdrop.length) {
-      // animations
-      $backdrop.removeClass('in');
-      window.xtRequestAnimationFrame( function() {
-        $backdrop.addClass('out');
-        object.animationDelay($backdrop, triggered, function() {
-          $backdrop.remove();
+    if ($el.hasClass('backdrop')) {
+      var $position = $el.find('> .inside');
+      if (!$position.length) {
+        $position = $el.parent();
+      }
+      var $backdrop = $position.find('.xt-backdrop');
+      if ($backdrop.length) {
+        // animations
+        $backdrop.removeClass('in');
+        window.xtRequestAnimationFrame( function() {
+          $backdrop.addClass('out');
+          object.animationDelay($backdrop, triggered, 'backdrop', function() {
+            $backdrop.removeClass('out').remove();
+          });
         });
-      });
+      }
     }
   };
     
   Xt.prototype.onWidth = function($el) {
+    var object = this;
     // animation in
     if ($el.hasClass('a-width')) {
-      this.addWrap($el);
+      object.addWrap($el);
       var $outside = $el.parent('.xt-container');
       var $inside = $el.find('> .xt-position');
       var w = $outside.outerWidth();
       $inside.css('width', w);
       $el.css('width', w);
-      $el.parents('.a-width-left').css("margin-left", -w);
-      $el.parents('.a-width-right').css("margin-right", -w);
+      $el.parents('.a-width-left').css('margin-left', -w);
+      $el.parents('.a-width-right').css('margin-right', -w);
     }
   };
   Xt.prototype.offWidth = function($el) {
     // animation out
     if ($el.hasClass('a-width')) {
       $el.css('width', 0);
-      $el.parents('.a-width-left').css("margin-left", 0);
-      $el.parents('.a-width-right').css("margin-right", 0);
+      $el.parents('.a-width-left').css('margin-left', 0);
+      $el.parents('.a-width-right').css('margin-right', 0);
     }
   };
   
   Xt.prototype.onHeight = function($el) {
+    var object = this;
     // animation in
     if ($el.hasClass('a-height')) {
-      this.addWrap($el);
+      object.addWrap($el);
       var $inside = $el.find('> .xt-position');
       var h = $inside.outerHeight();
       $el.css('height', h);
-      $el.parents('.a-height-top').css("margin-top", -h);
-      $el.parents('.a-height-bottom').css("margin-bottom", -h);
+      $el.parents('.a-height-top').css('margin-top', -h);
+      $el.parents('.a-height-bottom').css('margin-bottom', -h);
     }
   };
   Xt.prototype.offHeight = function($el) {
     // animation out
     if ($el.hasClass('a-height')) {
       $el.css('height', 0);
-      $el.parents('.a-height-top').css("margin-top", 0);
-      $el.parents('.a-height-bottom').css("margin-bottom", 0);
+      $el.parents('.a-height-top').css('margin-top', 0);
+      $el.parents('.a-height-bottom').css('margin-bottom', 0);
     }
   };
   
@@ -902,7 +951,7 @@
       return $g.filter('[data-group="' + g + '"]');
     } else {
       // without [data-group]
-      var index = this.getIndex($elements.not('[data-group]'), $element);
+      var index = object.getIndex($elements.not('[data-group]'), $element);
       return $g.not('[data-group]').eq(index);
     }
   };

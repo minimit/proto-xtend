@@ -223,7 +223,7 @@ a.button:not(.link) {
 
 .spacer {
   /* alignment */
-  @extend .spacer.center; // default
+  @extend .spacer.middle; // default
   /* spacing */
   @extend .spacer.medium; // default
   &.tiny {
@@ -348,7 +348,25 @@ a.button:not(.link) {
 //////////////////////
 
 .overlay {
-  background: $color-white;
+  /* styles */
+  .inside {
+  }
+  .content {
+    background: $color-white;
+    width: 600px;
+  }
+  /* sizes */
+  .content {
+    width: 600px;
+  }
+  /* .close */
+  .close {
+  }
+  /* animations */
+  .content {
+    @extend .anim;
+    @extend .a-vertical-zoom;
+  }
 }
 
 //////////////////////
@@ -357,7 +375,7 @@ a.button:not(.link) {
 
 .xt-backdrop {
   /* styles */
-  background: #000000;
+  background: $color-black;
   /* animations */
   @extend .anim;
   opacity: 0;

@@ -75,6 +75,7 @@
     font-size: 16px;
   }
   /* color-white */
+  .site-menu &,
   .site-footer &,
   .site-header & {
     background: transparent;
@@ -872,7 +873,6 @@ html.out {
   }
 }
 .site-menu.active {
-  display: block;
   .site-menu-content {
     .button {
       .line-container {
