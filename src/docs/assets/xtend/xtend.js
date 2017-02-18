@@ -607,8 +607,7 @@
       $el = $el.pushElement($content);
     }
     // on
-    $el.addClass(settings.class);
-    $el.removeClass('out');
+    $el.addClass(settings.class).removeClass('out');
     object.animationDelayClear($el, 'anim');
     // in
     object.animationMultiple($el, triggered, object.showDone, 'in');
@@ -671,8 +670,7 @@
       $el = $el.pushElement($content);
     }
     // off
-    $el.removeClass(settings.class);
-    $el.removeClass('in').addClass('out');
+    $el.removeClass(settings.class).removeClass('in').addClass('out');
     object.animationDelayClear($el, 'anim');
     // out
     object.animationMultiple($el, triggered, object.hideDone);
@@ -700,6 +698,10 @@
     var settings = this.settings;
     // when animation is done
     $el.removeClass('out');
+    // a-width and a-height
+    if ($el.hasClass('a-height') || $el.hasClass('a-width')) {
+      object.removeWrap($el);
+    }
     // api
     if (!triggered) {
       $el.trigger('hide.xt.done', [object, true]);
@@ -716,7 +718,7 @@
       window.xtCancelAnimationFrame($single.data('frame.timeout'));
       var frame = window.xtRequestAnimationFrame( function() {
         if (add) {
-          $single.addClass(add);
+          $single.removeClass('a-disable').addClass(add);
         }
         $single.data('fade.done', true);
         object.animationDelay($single, 'anim', function() {
@@ -881,7 +883,7 @@
         var $outside = $single.parent();
         var add = $outside.outerHeight() / 2;
         var remove = $single.outerHeight() / 2;
-        $single.css('top', add - remove);
+        $single.addClass('a-disable').css('top', add - remove);
       }
     });
   };
@@ -893,7 +895,7 @@
         var $outside = $single.parent();
         var add = $outside.outerWidth() / 2;
         var remove = $single.outerWidth() / 2;
-        $single.css('left', add - remove);
+        $single.addClass('a-disable').css('left', add - remove);
       }
     });
   };
@@ -906,6 +908,17 @@
     var $inside = $el.find('> .xt-position');
     if (!$inside.length) {
       $el.wrapInner('<div class="xt-position"></div>');
+    }
+  };
+  Xt.prototype.removeWrap = function($el) {
+    var $outside = $el.parent('.xt-container');
+    if ($outside.length) {
+      $outside.contents().unwrap();
+    }
+    var $inside = $el.find('> .xt-position');
+    if ($inside.length) {
+      console.log($inside);
+      $inside.contents().unwrap();
     }
   };
   

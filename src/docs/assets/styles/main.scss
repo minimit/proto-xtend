@@ -874,32 +874,32 @@ html.out {
       }
       &:nth-child(1) {
         .line-container {
-          animation-delay: 30ms;
+          animation-delay: 100ms;
         }
       }
       &:nth-child(2) {
         .line-container {
-          animation-delay: 60ms;
+          animation-delay: 150ms;
         }
       }
       &:nth-child(3) {
         .line-container {
-          animation-delay: 90ms;
+          animation-delay: 200ms;
         }
       }
       &:nth-child(4) {
         .line-container {
-          animation-delay: 120ms;
+          animation-delay: 250ms;
         }
       }
       &:nth-child(5) {
         .line-container {
-          animation-delay: 150ms;
+          animation-delay: 300ms;
         }
       }
       &:nth-child(6) {
         .line-container {
-          animation-delay: 180ms;
+          animation-delay: 350ms;
         }
       }
     }

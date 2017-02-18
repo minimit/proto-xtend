@@ -246,6 +246,10 @@ html.xt-fixed-horizontal .overlay {
 .toggle-none.active, .toggle-none.out {
   display: none !important; }
 
+/* animations */
+.a-disable {
+  transition: none !important; }
+
 html {
   font-size: 15px; }
 
@@ -585,25 +589,14 @@ a.button:not(.link):hover, a.button:not(.link):focus {
     transition-timing-function: cubic-bezier(0.63, 0.36, 0, 0.97); }
 
 /* .a-default */
-.a-default, .button:not(.a-custom), .drop-target:not(.a-custom), .overlay .content:not(.a-custom), .a-horizontal, .a-horizontal-zoom, .a-vertical, .a-vertical-zoom, .a-diagonal, .a-left, .a-right, .a-top, .a-bottom, .a-height,
+.a-default, .button:not(.a-custom), .drop-target:not(.a-custom), .overlay .content:not(.a-custom), .a-height,
 .a-width, .a-width-left,
 .a-width-right,
 .a-height-top,
-.a-height-bottom {
-  transition: all 300ms, top 1ms, left 1ms, bottom 1ms, right 1ms; }
-  .a-default.in, .in.button:not(.a-custom), .in.drop-target:not(.a-custom), .overlay .in.content:not(.a-custom), .in.a-horizontal, .in.a-horizontal-zoom, .in.a-vertical, .in.a-vertical-zoom, .in.a-diagonal, .in.a-left, .in.a-right, .in.a-top, .in.a-bottom, .in.a-height,
-  .in.a-width, .in.a-width-left,
-  .in.a-width-right,
-  .in.a-height-top,
-  .in.a-height-bottom {
-    transition-timing-function: cubic-bezier(0.63, 0.36, 0, 0.97); }
-  .a-default.out, .out.button:not(.a-custom), .out.drop-target:not(.a-custom), .overlay .out.content:not(.a-custom), .out.a-horizontal, .out.a-horizontal-zoom, .out.a-vertical, .out.a-vertical-zoom, .out.a-diagonal, .out.a-left, .out.a-right, .out.a-top, .out.a-bottom, .out.a-height,
-  .out.a-width, .out.a-width-left,
-  .out.a-width-right,
-  .out.a-height-top,
-  .out.a-height-bottom {
-    transition-timing-function: cubic-bezier(0.63, 0.36, 0, 0.97); }
+.a-height-bottom, .a-horizontal, .a-horizontal-zoom, .a-vertical, .a-vertical-zoom, .a-diagonal, .a-left, .a-right, .a-top, .a-bottom {
+  transition: all 300ms cubic-bezier(0.63, 0.36, 0, 0.97); }
 
+/* .a-height and .a-width */
 /* .a-horizontal */
 .a-horizontal {
   opacity: 0;
@@ -703,7 +696,6 @@ a.button:not(.link):hover, a.button:not(.link):focus {
     opacity: 0;
     transform: translateY(0.618rem); }
 
-/* .a-height and .a-width */
 .card[data-xt-scroll] .show-scroll {
   display: none; }
 
