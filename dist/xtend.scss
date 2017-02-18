@@ -181,9 +181,6 @@ a.button:not(.link) {
   @include font(sans-regular);
   letter-spacing: 0.5px;
   text-transform: uppercase;
-  /* animations */
-  @extend .anim;
-  transition-property: background, color !important;
   /* variants */
   @extend .button.secondary; // default
   &.primary {
@@ -212,6 +209,10 @@ a.button:not(.link) {
       background: $color-primary-lighter;
       color: $color-primary;
     }
+  }
+  /* animations */
+  &:not(.a-custom) {
+    @extend .a-default;
   }
 }
 
@@ -337,8 +338,10 @@ a.button:not(.link) {
     }
   }
   /* animations */
-  @extend .anim;
-  @extend .a-vertical-zoom;
+  &:not(.a-custom) {
+    @extend .a-default;
+    @extend .a-vertical-zoom;
+  }
 }
 
 //////////////////////
@@ -373,8 +376,10 @@ a.button:not(.link) {
   }
   /* animations */
   .content {
-    @extend .anim;
-    @extend .a-vertical-zoom;
+    &:not(.a-custom) {
+      @extend .a-default;
+      @extend .a-vertical-zoom;
+    }
   }
 }
 
@@ -386,7 +391,7 @@ a.button:not(.link) {
   /* styles */
   background: $color-black;
   /* animations */
-  @extend .anim;
+  @extend .a-default;
   opacity: 0;
   &.in {
     opacity: 0.2;
@@ -400,22 +405,24 @@ a.button:not(.link) {
 // animations
 //////////////////////
 
-[class^="a-"],
-[class*=" a-"] {
-  @extend .anim;
-}
-
-/* opacity and transform */
-.anim {
-  //transition: all 300ms cubic-bezier(.63,.36,0,.97), top 1ms, left 1ms, bottom 1ms, right 1ms; // exclude positions from animations
-  transition-property: opacity, transform;
-  transition-duration: 300ms;
-  transition-timing-function: cubic-bezier(.63,.36,0,.97);
-  transition-delay: 0ms;
+/* .a-default */
+.a-default {
+  transition: all 300ms cubic-bezier(.63,.36,0,.97), top 1ms, left 1ms, bottom 1ms, right 1ms;
+  &.in {
+    transition-duration: 300ms;
+    transition-timing-function: cubic-bezier(.63,.36,0,.97);
+    transition-delay: 0ms;
+  }
+  &.out {
+    transition-duration: 300ms;
+    transition-timing-function: cubic-bezier(.63,.36,0,.97);
+    transition-delay: 0ms;
+  }
 }
 
 /* .a-horizontal */
 .a-horizontal {
+  @extend .a-default;
   opacity: 0;
   transform: translateX(-0.618rem);
   &.in {
@@ -430,6 +437,7 @@ a.button:not(.link) {
 
 /* .a-horizontal-zoom */
 .a-horizontal-zoom {
+  @extend .a-default;
   opacity: 0;
   transform: translateX(-0.618rem) scale(0.95);
   &.in {
@@ -444,6 +452,7 @@ a.button:not(.link) {
 
 /* .a-vertical */
 .a-vertical {
+  @extend .a-default;
   opacity: 0;
   transform: translateY(-0.618rem);
   &.in {
@@ -458,6 +467,7 @@ a.button:not(.link) {
 
 /* .a-vertical-zoom */
 .a-vertical-zoom {
+  @extend .a-default;
   opacity: 0;
   transform: translateY(-0.618rem) scale(0.95);
   &.in {
@@ -472,6 +482,7 @@ a.button:not(.link) {
 
 /* .a-diagonal */
 .a-diagonal {
+  @extend .a-default;
   opacity: 0;
   transform:  translateX(-0.618rem) translateY(-0.618rem);
   &.in {
@@ -486,6 +497,7 @@ a.button:not(.link) {
 
 /* .a-left */
 .a-left {
+  @extend .a-default;
   opacity: 0;
   transform: translateX(0.618rem);
   &.in {
@@ -500,6 +512,7 @@ a.button:not(.link) {
 
 /* .a-right */
 .a-right {
+  @extend .a-default;
   opacity: 0;
   transform: translateX(-0.618rem);
   &.in {
@@ -514,6 +527,7 @@ a.button:not(.link) {
 
 /* .a-top */
 .a-top {
+  @extend .a-default;
   opacity: 0;
   transform: translateY(-0.618rem);
   &.in {
@@ -528,6 +542,7 @@ a.button:not(.link) {
 
 /* .a-bottom */
 .a-bottom {
+  @extend .a-default;
   opacity: 0;
   transform: translateY(0.618rem);
   &.in {

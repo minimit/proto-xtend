@@ -708,3 +708,70 @@ order: 30
     </div>
   </div>
 </div>
+
+<h3>Animations</h3>
+
+<p>You can set your default with <code>@extend</code>.</p>
+<p><code>.a-custom</code> with custom animations @TOOD link animations.</p>
+
+<div class="demo">
+  <div class="demo-item demo-preview" data-name="backdrop">
+    <div class="demo-text"><code>.a-custom.a-horizontal</code> <code>.a-custom.a-oblique</code></div>
+    <div class="demo-source" data-lang="html">
+<div class="spacer">
+  
+  <div class="drop" data-xt-toggle='{"elements": "> .button"}'>
+    <button class="button">
+      default
+    </button>
+    <div class="drop-target backdrop toggle-flex">
+      <a href="#" class="button">
+        Lorem ipsum dolor
+      </a>
+      <a href="#" class="button">
+        Lorem ipsum dolor
+      </a>
+      <a href="#" class="button">
+        Lorem ipsum dolor
+      </a>
+    </div>
+  </div>
+    
+  <div class="drop" data-xt-toggle='{"elements": "> .button"}'>
+    <button class="button">
+      a-horizontal
+    </button>
+    <div class="drop-target backdrop a-custom a-horizontal toggle-flex">
+      <a href="#" class="button">
+        Lorem ipsum dolor
+      </a>
+      <a href="#" class="button">
+        Lorem ipsum dolor
+      </a>
+      <a href="#" class="button">
+        Lorem ipsum dolor
+      </a>
+    </div>
+  </div>
+    
+  <div class="drop" data-xt-toggle='{"elements": "> .button"}'>
+    <button class="button">
+      a-diagonal
+    </button>
+    <div class="drop-target backdrop a-custom a-diagonal toggle-flex">
+      <a href="#" class="button">
+        Lorem ipsum dolor
+      </a>
+      <a href="#" class="button">
+        Lorem ipsum dolor
+      </a>
+      <a href="#" class="button">
+        Lorem ipsum dolor
+      </a>
+    </div>
+  </div>
+  
+</div>
+    </div>
+  </div>
+</div>
