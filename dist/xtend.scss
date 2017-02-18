@@ -391,13 +391,15 @@ a.button:not(.link) {
   /* styles */
   background: $color-black;
   /* animations */
-  @extend .a-default;
+  transition: opacity 300ms;
   opacity: 0;
   &.in {
     opacity: 0.2;
+    transition-timing-function: cubic-bezier(.63,.36,0,.97);
   }
   &.out {
     opacity: 0;
+    transition-timing-function: cubic-bezier(.63,.36,0,.97);
   }
 }
 
@@ -407,16 +409,16 @@ a.button:not(.link) {
 
 /* .a-default */
 .a-default {
-  transition: all 300ms cubic-bezier(.63,.36,0,.97), top 1ms, left 1ms, bottom 1ms, right 1ms;
+  transition: all 300ms, top 1ms, left 1ms, bottom 1ms, right 1ms;
   &.in {
-    transition-duration: 300ms;
     transition-timing-function: cubic-bezier(.63,.36,0,.97);
-    transition-delay: 0ms;
+    //transition-duration: 300ms;
+    //transition-delay: 0ms;
   }
   &.out {
-    transition-duration: 300ms;
     transition-timing-function: cubic-bezier(.63,.36,0,.97);
-    transition-delay: 0ms;
+    //transition-duration: 300ms;
+    //transition-delay: 0ms;
   }
 }
 
@@ -553,4 +555,16 @@ a.button:not(.link) {
     opacity: 0;
     transform: translateY(0.618rem);
   }
+}
+
+/* .a-height and .a-width */
+.a-height,
+.a-width {
+  @extend .a-default;
+}
+.a-width-left,
+.a-width-right,
+.a-height-top,
+.a-height-bottom {
+  @extend .a-default;
 }

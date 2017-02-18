@@ -191,6 +191,7 @@ a, button {
     flex-direction: row;
     justify-content: center;
     min-height: 100vh;
+    .xt-container,
     .content {
       z-index: 110;
       align-self: center;
@@ -258,22 +259,10 @@ html.xt-fixed-horizontal {
 .a-width {
   overflow: hidden;
   width: 0;
-} 
+}
 .a-height {
   overflow: hidden;
   height: 0;
-}
-.a-height,
-.a-width {
-  transition-property: width, height !important;
-  will-change: width, height !important;
-}
-.a-width-left,
-.a-width-right,
-.a-height-top,
-.a-height-bottom {
-  transition-property: margin !important;
-  will-change: margin !important;
 }
 
 //////////////////////
