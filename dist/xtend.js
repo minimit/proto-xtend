@@ -30,6 +30,7 @@
       'off': null,
       'min': 0,
       'max': 1,
+      'animated': null,
     };
     return this.each( function() {
       if (!$.data(this, defaults.name)) {
@@ -51,6 +52,7 @@
       'class': 'active',
       'min': 0,
       'max': 1,
+      'animated': '.inside .content',
     };
     return this.each( function() {
       if (!$.data(this, defaults.name)) {
@@ -600,12 +602,12 @@
     var settings = this.settings;
     var group = this.group;
     var $group = $(this.group);
-    // $content
+    // $animated
     var $el = $elements.slice(0);
-    var $content = $el;
-    if ($el.hasClass('overlay')) {
-      $content = $el.find('.inside .content');
-      $el = $el.pushElement($content);
+    var $animated = $el;
+    if (settings.animated) {
+      $animated = $el.find(settings.animated);
+      $el = $el.pushElement($animated);
     }
     // on
     $el.addClass(settings.class).removeClass('fade-out');
@@ -614,7 +616,7 @@
     object.animationMultiple($el, triggered, object.showDone, 'fade-in');
     // animations
     if ($el.hasClass('backdrop')) {
-      object.onBackdrop($content, triggered);
+      object.onBackdrop($animated, triggered);
     }
     object.onWidth($el, triggered);
     object.onHeight($el, triggered);
@@ -664,12 +666,12 @@
     var settings = this.settings;
     var group = this.group;
     var $group = $(this.group);
-    // $content
+    // $animated
     var $el = $elements.slice(0);
-    var $content = $el;
+    var $animated = $el;
     if ($el.hasClass('overlay')) {
-      $content = $el.find('.inside .content');
-      $el = $el.pushElement($content);
+      $animated = $el.find('.inside .content');
+      $el = $el.pushElement($animated);
     }
     // off
     $el.removeClass(settings.class).removeClass('fade-in').addClass('fade-out');
@@ -681,7 +683,7 @@
     object.onHeight($el, triggered);
     window.xtRequestAnimationFrame( function() {
       if ($el.hasClass('backdrop')) {
-        object.offBackdrop($content, triggered);
+        object.offBackdrop($animated, triggered);
       }
       object.offWidth($el, triggered);
       object.offHeight($el, triggered);
@@ -759,11 +761,11 @@
   // animations methods
   //////////////////////
   
-  Xt.prototype.onBackdrop = function($content, triggered) {
+  Xt.prototype.onBackdrop = function($animated, triggered) {
     var object = this;
     var settings = this.settings;
     // animation in
-    var $position = $content.parent();
+    var $position = $animated.parent();
     var $backdrop = $position.find('> .xt-backdrop');
     if (!$backdrop.length) {
       $backdrop = $('<div class="xt-backdrop"></div>').appendTo($position);
@@ -789,11 +791,11 @@
       $(window).trigger(resizeNamespace);
     }
   };
-  Xt.prototype.offBackdrop = function($content, triggered) {
+  Xt.prototype.offBackdrop = function($animated, triggered) {
     var object = this;
     var settings = this.settings;
     // animation out
-    var $position = $content.parent();
+    var $position = $animated.parent();
     var $backdrop = $position.find('> .xt-backdrop');
     if ($backdrop.length) {
       // animations
