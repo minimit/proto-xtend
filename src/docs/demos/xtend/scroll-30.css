@@ -142,6 +142,8 @@ a, button {
   .overlay .overlay-content {
     z-index: 110;
     align-self: center; }
+  .overlay.full .xt-backdrop {
+    display: none; }
   .overlay.full .overlay-content {
     display: flex;
     justify-content: center;

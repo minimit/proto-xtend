@@ -199,6 +199,9 @@ a, button {
   }
   /* full */
   &.full {
+    .xt-backdrop {
+      display: none;
+    }
     .overlay-content {
       display: flex;
       justify-content: center;

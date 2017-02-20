@@ -53,6 +53,7 @@
       'min': 0,
       'max': 1,
       'animated': '.overlay-content',
+      'backdrop': '.overlay-inside',
     };
     return this.each( function() {
       if (!$.data(this, defaults.name)) {
@@ -615,9 +616,7 @@
     // in
     object.animationMultiple($el, triggered, object.showDone, 'fade-in');
     // animations
-    if ($el.hasClass('backdrop')) {
-      object.onBackdrop($animated, triggered);
-    }
+    object.onBackdrop($el, triggered);
     object.onWidth($el, triggered);
     object.onHeight($el, triggered);
     object.onMiddle($el, triggered);
@@ -682,9 +681,7 @@
     object.onWidth($el, triggered);
     object.onHeight($el, triggered);
     window.xtRequestAnimationFrame( function() {
-      if ($el.hasClass('backdrop')) {
-        object.offBackdrop($animated, triggered);
-      }
+      object.offBackdrop($el, triggered);
       object.offWidth($el, triggered);
       object.offHeight($el, triggered);
     });
@@ -761,57 +758,61 @@
   // animations methods
   //////////////////////
   
-  Xt.prototype.onBackdrop = function($animated, triggered) {
+  Xt.prototype.onBackdrop = function($el, triggered) {
     var object = this;
     var settings = this.settings;
     // animation in
-    var $position = $animated.parent();
-    var $backdrop = $position.find('> .xt-backdrop');
-    if (!$backdrop.length) {
-      $backdrop = $('<div class="xt-backdrop"></div>').appendTo($position);
-    }
-    // animations
-    object.animationDelayClear($backdrop, 'backdrop');
-    window.xtRequestAnimationFrame( function() {
-      $backdrop.addClass('fade-in');
-      $backdrop.removeClass('fade-out');
-    });
-    // events
-    $backdrop.on('click', function(e) {
-      object.hide(object.settings.$elements, true, true, true);
-    });
-    // backdrop resize
-    var $inside = $backdrop.parent('.overlay-inside');
-    if ($inside.length) {
-      var resizeNamespace = 'resize.xt.backdrop.' + settings.namespace;
-      $(window).off(resizeNamespace).on(resizeNamespace, function(e) {
-        $backdrop.css('width', $inside.width()); // fix fixed width
-        $backdrop.css('height', $inside.height()); // fix fixed height
+    var $position = $el.hasClass('backdrop') ? $el.parent() : $el.find(settings.backdrop);
+    if ($position.length) {
+      var $backdrop = $position.find('> .xt-backdrop');
+      if (!$backdrop.length) {
+        $backdrop = $('<div class="xt-backdrop"></div>').appendTo($position);
+      }
+      // animations
+      object.animationDelayClear($backdrop, 'backdrop');
+      window.xtRequestAnimationFrame( function() {
+        $backdrop.addClass('fade-in');
+        $backdrop.removeClass('fade-out');
       });
-      $(window).trigger(resizeNamespace);
+      // events
+      $backdrop.on('click', function(e) {
+        object.hide(object.settings.$elements, true, true, true);
+      });
+      // backdrop resize
+      var $inside = $backdrop.parent('.overlay-inside');
+      if ($inside.length) {
+        var resizeNamespace = 'resize.xt.backdrop.' + settings.namespace;
+        $(window).off(resizeNamespace).on(resizeNamespace, function(e) {
+          $backdrop.css('width', $inside.width()); // fix fixed width
+          $backdrop.css('height', $inside.height()); // fix fixed height
+        });
+        $(window).trigger(resizeNamespace);
+      }
     }
   };
-  Xt.prototype.offBackdrop = function($animated, triggered) {
+  Xt.prototype.offBackdrop = function($el, triggered) {
     var object = this;
     var settings = this.settings;
     // animation out
-    var $position = $animated.parent();
-    var $backdrop = $position.find('> .xt-backdrop');
-    if ($backdrop.length) {
-      // animations
-      $backdrop.removeClass('fade-in');
-      window.xtRequestAnimationFrame( function() {
-        $backdrop.addClass('fade-out');
-        object.animationDelay($backdrop, 'backdrop', function() {
-          $backdrop.removeClass('fade-out').remove();
+    var $position = $el.hasClass('backdrop') ? $el.parent() : $el.find(settings.backdrop);
+    if ($position.length) {
+      var $backdrop = $position.find('> .xt-backdrop');
+      if ($backdrop.length) {
+        // animations
+        $backdrop.removeClass('fade-in');
+        window.xtRequestAnimationFrame( function() {
+          $backdrop.addClass('fade-out');
+          object.animationDelay($backdrop, 'backdrop', function() {
+            $backdrop.removeClass('fade-out').remove();
+          });
         });
-      });
-    }
-    // backdrop resize
-    var $inside = $backdrop.parent('.overlay-inside');
-    if ($inside.length) {
-      var resizeNamespace = 'resize.xt.backdrop.' + settings.namespace;
-      $(window).off(resizeNamespace);
+      }
+      // backdrop resize
+      var $inside = $backdrop.parent('.overlay-inside');
+      if ($inside.length) {
+        var resizeNamespace = 'resize.xt.backdrop.' + settings.namespace;
+        $(window).off(resizeNamespace);
+      }
     }
   };
     
