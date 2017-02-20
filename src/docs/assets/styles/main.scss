@@ -199,11 +199,9 @@ a.logo {
 
 /*.site-menu */
 .site-menu.overlay {
-  .inside {
-    .content {
-      padding-top: 100px;
-      padding-bottom: 60px;
-    }
+  .overlay-content {
+    padding-top: 100px;
+    padding-bottom: 60px;
   }
   // content
   .button {

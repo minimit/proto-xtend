@@ -52,7 +52,7 @@
       'class': 'active',
       'min': 0,
       'max': 1,
-      'animated': '.inside .content',
+      'animated': '.overlay-content',
     };
     return this.each( function() {
       if (!$.data(this, defaults.name)) {
@@ -670,7 +670,7 @@
     var $el = $elements.slice(0);
     var $animated = $el;
     if ($el.hasClass('overlay')) {
-      $animated = $el.find('.inside .content');
+      $animated = $el.find(settings.animated);
       $el = $el.pushElement($animated);
     }
     // off
@@ -781,7 +781,7 @@
       object.hide(object.settings.$elements, true, true, true);
     });
     // backdrop resize
-    var $inside = $backdrop.parent('.inside');
+    var $inside = $backdrop.parent('.overlay-inside');
     if ($inside.length) {
       var resizeNamespace = 'resize.xt.backdrop.' + settings.namespace;
       $(window).off(resizeNamespace).on(resizeNamespace, function(e) {
@@ -808,7 +808,7 @@
       });
     }
     // backdrop resize
-    var $inside = $backdrop.parent('.inside');
+    var $inside = $backdrop.parent('.overlay-inside');
     if ($inside.length) {
       var resizeNamespace = 'resize.xt.backdrop.' + settings.namespace;
       $(window).off(resizeNamespace);

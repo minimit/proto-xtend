@@ -5,6 +5,7 @@
 // override variables
 @import "_vars.scss";
 @import "_base.scss";
+@import "_anim.scss";
 
 //////////////////////
 // structure
@@ -211,9 +212,7 @@ a.button:not(.link) {
     }
   }
   /* animations */
-  &:not(.anim-custom) {
-    @extend .anim-default;
-  }
+  @include transition-default;
 }
 
 //////////////////////
@@ -338,10 +337,8 @@ a.button:not(.link) {
     }
   }
   /* animations */
-  &:not(.anim-custom) {
-    @extend .anim-default;
-    @extend .anim-vertical-zoom;
-  }
+  @include transition-default;
+  @include anim-vertical-zoom;
 }
 
 //////////////////////
@@ -351,22 +348,20 @@ a.button:not(.link) {
 .overlay {
   /* styles */
   &.full {
-    .inside {
+    .overlay-inside {
       background: $color-primary;
       color: $color-white;
     }
   }
   &:not(.full) {
-    .inside {
-      .content {
-        background: $color-white;
-        margin-top: 60px;
-        margin-bottom: 60px;
-      }
+    .overlay-content {
+      background: $color-white;
+      margin-top: 60px;
+      margin-bottom: 60px;
     }
   }
   /* sizes */
-  .content {
+  .overlay-content {
     padding-top: 40px;
     padding-bottom: 40px;
     width: 600px;
@@ -374,19 +369,18 @@ a.button:not(.link) {
   /* .close */
   .close {
   }
+}
+.overlay-content {
   /* animations */
-  .content {
-    &:not(.anim-custom) {
-      @extend .anim-default;
-      @extend .anim-vertical-zoom;
-    }
-  }
+  @include transition-default;
+  @include anim-vertical-zoom;
 }
 
 //////////////////////
 // plugin
 //////////////////////
 
+/* .xt-backdrop */
 .xt-backdrop {
   /* styles */
   background: $color-black;
@@ -403,166 +397,43 @@ a.button:not(.link) {
   }
 }
 
-//////////////////////
-// transitions
-//////////////////////
-
-/* .anim-default */
-.anim-default {
-  transition: all 300ms cubic-bezier(.63,.36,0,.97), top 1ms, left 1ms; // disable top and left animations
-  &.fade-in {
-  }
-  &.fade-out {
-  }
-}
-
 /* .anim-height and .anim-width */
 .anim-height,
 .anim-width {
-  @extend .anim-default;
+  @include transition-default;
 }
 .anim-width-left,
 .anim-width-right,
 .anim-height-top,
 .anim-height-bottom {
-  @extend .anim-default;
+  @include transition-default;
 }
 
-//////////////////////
-// animations
-//////////////////////
 
-/* .anim-horizontal */
 .anim-horizontal {
-  @extend .anim-default;
-  opacity: 0;
-  transform: translateX(-0.618rem);
-  &.fade-in {
-    opacity: 1;
-    transform: translateX(0);
-  }
-  &.fade-out {
-    opacity: 0;
-    transform: translateX(0.618rem);
-  }
+  @include anim-horizontal;
 }
-
-/* .anim-horizontal-zoom */
 .anim-horizontal-zoom {
-  @extend .anim-default;
-  opacity: 0;
-  transform: translateX(-0.618rem) scale(0.95);
-  &.fade-in {
-    opacity: 1;
-    transform: translateX(0) scale(1);
-  }
-  &.fade-out {
-    opacity: 0;
-    transform: translateX(0.618rem) scale(0.95);
-  }
+  @include anim-horizontal-zoom;
 }
-
-/* .anim-vertical */
 .anim-vertical {
-  @extend .anim-default;
-  opacity: 0;
-  transform: translateY(-0.618rem);
-  &.fade-in {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  &.fade-out {
-    opacity: 0;
-    transform: translateY(0.618rem);
-  }
+  @include anim-vertical;
 }
-
-/* .anim-vertical-zoom */
 .anim-vertical-zoom {
-  @extend .anim-default;
-  opacity: 0;
-  transform: translateY(-0.618rem) scale(0.95);
-  &.fade-in {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-  &.fade-out {
-    opacity: 0;
-    transform: translateY(0.618rem) scale(0.95);
-  }
+  @include anim-vertical-zoom;
 }
-
-/* .anim-diagonal */
 .anim-diagonal {
-  @extend .anim-default;
-  opacity: 0;
-  transform:  translateX(-0.618rem) translateY(-0.618rem);
-  &.fade-in {
-    opacity: 1;
-    transform: translateX(0) translateY(0);
-  }
-  &.fade-out {
-    opacity: 0;
-    transform: translateX(0.618rem) translateY(0.618rem);
-  }
+  @include anim-diagonal;
 }
-
-/* .anim-left */
 .anim-left {
-  @extend .anim-default;
-  opacity: 0;
-  transform: translateX(0.618rem);
-  &.fade-in {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  &.fade-out {
-    opacity: 0;
-    transform: translateX(0.618rem);
-  }
+  @include anim-left;
 }
-
-/* .anim-right */
 .anim-right {
-  @extend .anim-default;
-  opacity: 0;
-  transform: translateX(-0.618rem);
-  &.fade-in {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  &.fade-out {
-    opacity: 0;
-    transform: translateX(-0.618rem);
-  }
+  @include anim-right;
 }
-
-/* .anim-top */
 .anim-top {
-  @extend .anim-default;
-  opacity: 0;
-  transform: translateY(-0.618rem);
-  &.fade-in {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  &.fade-out {
-    opacity: 0;
-    transform: translateY(-0.618rem);
-  }
+  @include anim-top;
 }
-
-/* .anim-bottom */
 .anim-bottom {
-  @extend .anim-default;
-  opacity: 0;
-  transform: translateY(0.618rem);
-  &.fade-in {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  &.fade-out {
-    opacity: 0;
-    transform: translateY(0.618rem);
-  }
+  @include anim-bottom;
 }
