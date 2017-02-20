@@ -30,7 +30,7 @@
       'off': null,
       'min': 0,
       'max': 1,
-      'animated': null,
+      'anim': null,
     };
     return this.each( function() {
       if (!$.data(this, defaults.name)) {
@@ -52,7 +52,7 @@
       'class': 'active',
       'min': 0,
       'max': 1,
-      'animated': '.overlay-content',
+      'anim': '.overlay-content',
       'backdrop': '.overlay-inside',
     };
     return this.each( function() {
@@ -594,6 +594,45 @@
     }
   };
   
+  Xt.prototype.checkDisabled = function($el, force) {
+    var object = this;
+    var settings = this.settings;
+    var group = this.group;
+    var $group = $(this.group);
+    // manage [disabled] attribute
+    var str = 'disabled';
+    if (settings.on === 'click') {
+      if (!force) {
+        // automatic based on max
+        var $currents = object.getCurrents();
+        var min = settings.min;
+        var add;
+        if ($currents.length === min) {
+          add = true;
+          $currents.attr(str, str);
+        } else {
+          $currents.removeAttr(str);
+        }
+        // sync data-group
+        $currents.filter('[data-group]').each( function() {
+          var g = $(this).attr('data-group');
+          var $dataGroup = settings.$elements.not(this).filter('[data-group="' + g + '"]');
+          if (add) {
+            $dataGroup.attr(str, str);
+          } else {
+            $dataGroup.removeAttr(str);
+          }
+        });
+      } else if (force === 'disable') {
+        // force disable
+        $el.attr(str, str);
+      } else if (force === 'enable') {
+        // force enable
+        $el.removeAttr(str);
+      }
+    }
+  };
+  
   //////////////////////
   // on and off methods
   //////////////////////
@@ -603,12 +642,12 @@
     var settings = this.settings;
     var group = this.group;
     var $group = $(this.group);
-    // $animated
+    // $anim
     var $el = $elements.slice(0);
-    var $animated = $el;
-    if (settings.animated) {
-      $animated = $el.find(settings.animated);
-      $el = $el.pushElement($animated);
+    var $anim = $el;
+    if (settings.anim) {
+      $anim = $el.find(settings.anim);
+      $el = $el.pushElement($anim);
     }
     // on
     $el.addClass(settings.class).removeClass('fade-out');
@@ -665,12 +704,12 @@
     var settings = this.settings;
     var group = this.group;
     var $group = $(this.group);
-    // $animated
+    // $anim
     var $el = $elements.slice(0);
-    var $animated = $el;
+    var $anim = $el;
     if ($el.hasClass('overlay')) {
-      $animated = $el.find(settings.animated);
-      $el = $el.pushElement($animated);
+      $anim = $el.find(settings.anim);
+      $el = $el.pushElement($anim);
     }
     // off
     $el.removeClass(settings.class).removeClass('fade-in').addClass('fade-out');
@@ -712,9 +751,9 @@
   Xt.prototype.animationMultiple = function($el, triggered, callout, add) {
     var object = this;
     // animationMultiple
+    var done = 0;
     $el.each( function() {
       var $single = $(this);
-      var done = 0;
       window.xtCancelAnimationFrame($single.data('frame.timeout'));
       var frame = window.xtRequestAnimationFrame( function() {
         if (add) {
@@ -733,15 +772,17 @@
   Xt.prototype.animationDelay = function($el, ns, callout) {
     var object = this;
     var settings = this.settings;
+    // time
+    var t = settings.timing;
+    var duration = $el.css('transitionDuration');
+    if (settings.timing === undefined && duration !== '0s') {
+      t = object.stringToMilliseconds(duration);
+    }
     // delay for animations
-    if (settings.timing === undefined && $el.css('transitionDuration') !== '0s') {
-      $el.on('transitionend.xt.' + ns, function(e) {
-        callout();
-      });
-    } else if (settings.timing) {
+    if (t) {
       var timeout = window.setTimeout( function(object) {
         callout();
-      }, settings.timing);
+      }, t);
       $el.data('fade.timeout.' + ns, timeout);
     } else {
       callout();
@@ -1012,45 +1053,6 @@
     return index;
   };
   
-  Xt.prototype.checkDisabled = function($el, force) {
-    var object = this;
-    var settings = this.settings;
-    var group = this.group;
-    var $group = $(this.group);
-    // manage [disabled] attribute
-    var str = 'disabled';
-    if (settings.on === 'click') {
-      if (!force) {
-        // automatic based on max
-        var $currents = object.getCurrents();
-        var min = settings.min;
-        var add;
-        if ($currents.length === min) {
-          add = true;
-          $currents.attr(str, str);
-        } else {
-          $currents.removeAttr(str);
-        }
-        // sync data-group
-        $currents.filter('[data-group]').each( function() {
-          var g = $(this).attr('data-group');
-          var $dataGroup = settings.$elements.not(this).filter('[data-group="' + g + '"]');
-          if (add) {
-            $dataGroup.attr(str, str);
-          } else {
-            $dataGroup.removeAttr(str);
-          }
-        });
-      } else if (force === 'disable') {
-        // force disable
-        $el.attr(str, str);
-      } else if (force === 'enable') {
-        // force enable
-        $el.removeAttr(str);
-      }
-    }
-  };
-  
   Xt.prototype.scrollbarWidth = function($el) {
     var parent, child, width;
     if(width === undefined) {
@@ -1060,6 +1062,27 @@
       parent.remove();
     }
     return width;
+  };
+  
+  Xt.prototype.stringToMilliseconds = function(str) {
+    var num = parseFloat(str, 10);
+    var unit = str.match(/m?s/);
+    var ms;
+    if (unit) {
+      unit = unit[0];
+    }
+    switch (unit) {
+      case "s":
+        ms = num * 1000;
+        break;
+      case "ms":
+        ms = num;
+        break;
+      default:
+        ms = 0;
+        break;
+    }
+    return ms;
   };
   
   //////////////////////

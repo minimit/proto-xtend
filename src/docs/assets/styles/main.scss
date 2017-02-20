@@ -2,14 +2,13 @@
 @import "highlight/github";
 
 //////////////////////
-// xtend theme
+// xtend
 //////////////////////
-
-// colors
-//$color-primary: #ff00ff;
 
 // override theme
 @import "../../../../dist/xtend.scss";
+
+// override variables
 
 //////////////////////
 // bootstrap

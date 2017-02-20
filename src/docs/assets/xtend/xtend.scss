@@ -3,13 +3,14 @@
 @license MIT (https://github.com/minimit/xtend/blob/master/LICENSE) */
 
 //////////////////////
-// xtend variables
+// imports
 //////////////////////
 
-// override variables
 @import "_mixins.scss";
 @import "_vars.scss";
 @import "_base.scss";
+
+// override variables
 
 //////////////////////
 // structure
@@ -341,8 +342,10 @@ a.button:not(.link) {
     }
   }
   /* animations */
-  @include transition-default;
-  @include anim-vertical-zoom;
+  &:not([class*=" anim-"]) {
+    @include transition-default;
+    @include anim-vertical-zoom;
+  }
 }
 
 //////////////////////
@@ -351,18 +354,14 @@ a.button:not(.link) {
 
 .overlay {
   /* styles */
-  &.full {
-    .overlay-inside {
-      background: $color-primary;
-      color: $color-white;
-    }
+  .overlay-content:not(.full) {
+    background: $color-white;
+    margin-top: 60px;
+    margin-bottom: 60px;
   }
-  &:not(.full) {
-    .overlay-content {
-      background: $color-white;
-      margin-top: 60px;
-      margin-bottom: 60px;
-    }
+  .overlay-content.full {
+    background: $color-primary;
+    color: $color-white;
   }
   /* sizes */
   .overlay-content {
@@ -373,11 +372,15 @@ a.button:not(.link) {
   /* .close */
   .close {
   }
-}
-.overlay-content {
   /* animations */
-  @include transition-default;
-  @include anim-vertical-zoom;
+  .overlay-content:not([class*=" anim-"]) {
+    @include transition-default;
+    @include anim-vertical-zoom;
+  }
+  .overlay-content.full:not([class*=" anim-"]) {
+    @include transition-default;
+    @include anim-vertical;
+  }
 }
 
 //////////////////////

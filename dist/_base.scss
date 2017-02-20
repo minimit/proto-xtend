@@ -188,24 +188,21 @@ a, button {
     justify-content: center;
     min-height: 100vh;
   }
-  .xt-container,
   .overlay-content {
     z-index: 110;
     align-self: center;
   }
   /* full */
-  &.full {
-    .xt-backdrop {
-      display: none;
-    }
-    .overlay-content {
-      display: flex;
-      justify-content: center;
-      flex-direction: column;
-      align-items: center;
-      width: 100%;
-      min-height: 100vh;
-    }
+  .overlay-content.full + .xt-backdrop {
+    display: none;
+  }
+  .overlay-content.full {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
   }
 }
 
