@@ -184,6 +184,9 @@ html.xt-fixed-horizontal .overlay {
   overflow-x: scroll; }
 
 /* animations */
+.anim-none {
+  transition: none !important; }
+
 .anim-width {
   overflow: hidden;
   width: 0; }

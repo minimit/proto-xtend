@@ -250,6 +250,9 @@ html.xt-fixed-horizontal {
 }
 
 /* animations */
+.anim-none {
+  transition: none !important;
+}
 .anim-width {
   overflow: hidden;
   width: 0;
