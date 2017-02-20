@@ -9,90 +9,255 @@ order: 40
 <h2>Overlay</h2>
 
 <p><code>.overlay</code> gets automatically moved to <code>&lt;body&gt;</code>, watch out for styling...</p>
+
 <h3>Single</h3>
 
 <div class="demo">
-  <div class="demo-item demo-preview" data-name="">
+  <div class="demo-item demo-preview" data-name="default">
     <div class="demo-source" data-lang="html">
 <button class="button" data-xt-overlay='{"targets": "#overlay-default"}'>
-  Toggle
+  Open
 </button>
-
 <div class="overlay" id="overlay-default">
   <div class="overlay-inside">
     <div class="overlay-content">
-      
-      <div class="close overlay-close">×</div>
-      
+      <button type="button" class="overlay-close"><span class="icon-cross"></span></button>
       <h2>Lorem ipsum</h2>
       <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam aliquet turpis lacinia, efficitur leo vel, commodo leo. In eleifend mi et est fermentum elementum.</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam aliquet turpis lacinia, efficitur leo vel, commodo leo. In eleifend mi et est fermentum elementum.</p>
-      <div class="drop" data-xt-toggle='{"elements": "> .button"}'>
-        <button class="button">
-          default
-        </button>
-        <div class="drop-target after top toggle-flex">
-          <a href="#" class="button">
-            Lorem ipsum dolor
-          </a>
-          <a href="#" class="button">
-            Lorem ipsum dolor
-          </a>
-          <a href="#" class="button">
-            Lorem ipsum dolor
-          </a>
-        </div>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam aliquet turpis lacinia, efficitur leo vel, commodo leo. In eleifend mi et est fermentum elementum.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam aliquet turpis lacinia, efficitur leo vel, commodo leo. In eleifend mi et est fermentum elementum.</p>
-      </div>
-      
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus, lectus quis ornare volutpat, ligula nulla sollicitudin nunc, ut commodo nulla enim nec nisi.</p>
+      <p>Morbi sodales, dolor a iaculis ornare, velit justo lacinia erat, pretium sollicitudin dui sem id justo.</p>
     </div>
   </div>
 </div>
     </div>
   </div>
-</div>
-
-<h3>Full</h3>
-
-<div class="demo">
-  <div class="demo-item demo-preview" data-name="">
+  <div class="demo-item demo-preview" data-name="full">
     <div class="demo-text"><code>.full</code></div>
     <div class="demo-source" data-lang="html">
 <button class="button" data-xt-overlay='{"targets": "#overlay-full"}'>
-  Toggle
+  Open
 </button>
-
-<div class="overlay" id="overlay-full">
+<div class="overlay full" id="overlay-full">
   <div class="overlay-inside">
-    <div class="overlay-content full">
-      
-      <div class="close overlay-close">×</div>
-      
+    <div class="overlay-content">
+      <button type="button" class="overlay-close"><span class="icon-cross"></span></button>
       <h2>Lorem ipsum</h2>
       <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam aliquet turpis lacinia, efficitur leo vel, commodo leo. In eleifend mi et est fermentum elementum.</p>
-      <div class="drop" data-xt-toggle='{"elements": "> .button"}'>
-        <button class="button">
-          default
-        </button>
-        <div class="drop-target after top toggle-flex">
-          <a href="#" class="button">
-            Lorem ipsum dolor
-          </a>
-          <a href="#" class="button">
-            Lorem ipsum dolor
-          </a>
-          <a href="#" class="button">
-            Lorem ipsum dolor
-          </a>
-        </div>
-      </div>
-      
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus, lectus quis ornare volutpat, ligula nulla sollicitudin nunc, ut commodo nulla enim nec nisi.</p>
+      <p>Morbi sodales, dolor a iaculis ornare, velit justo lacinia erat, pretium sollicitudin dui sem id justo.</p>
     </div>
   </div>
 </div>
+    </div>
+  </div>
+  <div class="demo-item demo-preview" data-name="tests">
+    <div class="demo-source" data-lang="html">
+<button class="button" data-xt-overlay='{"targets": "#overlay-tests"}'>
+  Open
+</button>
+<div class="overlay" id="overlay-tests">
+  <div class="overlay-inside">
+    <div class="overlay-content">
+      <button type="button" class="overlay-close"><span class="icon-cross"></span></button>
+      <h2>Lorem ipsum</h2>
+      <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus, lectus quis ornare volutpat, ligula nulla sollicitudin nunc, ut commodo nulla enim nec nisi.</p>
+      <div class="spacer">
+        <div class="drop" data-xt-toggle='{"elements": "> .button"}'>
+          <button class="button">
+            after top backdrop
+          </button>
+          <div class="drop-target after top backdrop toggle-flex">
+            <a href="#" class="button">
+              Lorem ipsum dolor
+            </a>
+            <a href="#" class="button">
+              Lorem ipsum dolor
+            </a>
+            <a href="#" class="button">
+              Lorem ipsum dolor
+            </a>
+          </div>
+        </div>
+      </div>
+      <p>Morbi sodales, dolor a iaculis ornare, velit justo lacinia erat, pretium sollicitudin dui sem id justo.</p>
+    </div>
+  </div>
+</div>
+    </div>
+  </div>
+</div>
+
+<h3>Sizes</h3>
+
+<p><code>.tiny</code> <code>.small</code> <code>.medium</code> <code>.large</code> <code>.giant</code></p>
+<p>You can set <strong>default size</strong> inside the scss with <code>@extend</code>.</p>
+
+<div class="demo">
+  <div class="demo-item demo-preview" data-name="default">
+    <div class="demo-source" data-lang="html">
+<div class="spacer">
+  
+  <button class="button" data-xt-overlay='{"targets": "#overlay-default-tiny"}'>
+    tiny
+  </button>
+  <div class="overlay tiny" id="overlay-default-tiny">
+    <div class="overlay-inside">
+      <div class="overlay-content">
+        <button type="button" class="overlay-close"><span class="icon-cross"></span></button>
+        <h2>Lorem ipsum</h2>
+        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus, lectus quis ornare volutpat, ligula nulla sollicitudin nunc, ut commodo nulla enim nec nisi.</p>
+        <p>Morbi sodales, dolor a iaculis ornare, velit justo lacinia erat, pretium sollicitudin dui sem id justo.</p>
+      </div>
+    </div>
+  </div>
+    
+  <button class="button" data-xt-overlay='{"targets": "#overlay-default-small"}'>
+    small
+  </button>
+  <div class="overlay small" id="overlay-default-small">
+    <div class="overlay-inside">
+      <div class="overlay-content">
+        <button type="button" class="overlay-close"><span class="icon-cross"></span></button>
+        <h2>Lorem ipsum</h2>
+        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus, lectus quis ornare volutpat, ligula nulla sollicitudin nunc, ut commodo nulla enim nec nisi.</p>
+        <p>Morbi sodales, dolor a iaculis ornare, velit justo lacinia erat, pretium sollicitudin dui sem id justo.</p>
+      </div>
+    </div>
+  </div>
+      
+  <button class="button" data-xt-overlay='{"targets": "#overlay-default-medium"}'>
+    medium
+  </button>
+  <div class="overlay medium" id="overlay-default-medium">
+    <div class="overlay-inside">
+      <div class="overlay-content">
+        <button type="button" class="overlay-close"><span class="icon-cross"></span></button>
+        <h2>Lorem ipsum</h2>
+        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus, lectus quis ornare volutpat, ligula nulla sollicitudin nunc, ut commodo nulla enim nec nisi.</p>
+        <p>Morbi sodales, dolor a iaculis ornare, velit justo lacinia erat, pretium sollicitudin dui sem id justo.</p>
+      </div>
+    </div>
+  </div>
+        
+  <button class="button" data-xt-overlay='{"targets": "#overlay-default-large"}'>
+    large
+  </button>
+  <div class="overlay large" id="overlay-default-large">
+    <div class="overlay-inside">
+      <div class="overlay-content">
+        <button type="button" class="overlay-close"><span class="icon-cross"></span></button>
+        <h2>Lorem ipsum</h2>
+        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus, lectus quis ornare volutpat, ligula nulla sollicitudin nunc, ut commodo nulla enim nec nisi.</p>
+        <p>Morbi sodales, dolor a iaculis ornare, velit justo lacinia erat, pretium sollicitudin dui sem id justo.</p>
+      </div>
+    </div>
+  </div>
+  
+  <button class="button" data-xt-overlay='{"targets": "#overlay-default-giant"}'>
+    giant
+  </button>
+  <div class="overlay giant" id="overlay-default-giant">
+    <div class="overlay-inside">
+      <div class="overlay-content">
+        <button type="button" class="overlay-close"><span class="icon-cross"></span></button>
+        <h2>Lorem ipsum</h2>
+        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus, lectus quis ornare volutpat, ligula nulla sollicitudin nunc, ut commodo nulla enim nec nisi.</p>
+        <p>Morbi sodales, dolor a iaculis ornare, velit justo lacinia erat, pretium sollicitudin dui sem id justo.</p>
+      </div>
+    </div>
+  </div>
+  
+</div>
+    </div>
+  </div>
+  <div class="demo-item demo-preview" data-name="full">
+    <div class="demo-text"><code>.full</code></div>
+    <div class="demo-source" data-lang="html">
+<div class="spacer">    
+
+  <button class="button" data-xt-overlay='{"targets": "#overlay-full-tiny"}'>
+    tiny
+  </button>
+  <div class="overlay full tiny" id="overlay-full-tiny">
+    <div class="overlay-inside">
+      <div class="overlay-content">
+        <button type="button" class="overlay-close"><span class="icon-cross"></span></button>
+        <h2>Lorem ipsum</h2>
+        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus, lectus quis ornare volutpat, ligula nulla sollicitudin nunc, ut commodo nulla enim nec nisi.</p>
+        <p>Morbi sodales, dolor a iaculis ornare, velit justo lacinia erat, pretium sollicitudin dui sem id justo.</p>
+      </div>
+    </div>
+  </div>
+    
+  <button class="button" data-xt-overlay='{"targets": "#overlay-full-small"}'>
+    small
+  </button>
+  <div class="overlay full small" id="overlay-full-small">
+    <div class="overlay-inside">
+      <div class="overlay-content">
+        <button type="button" class="overlay-close"><span class="icon-cross"></span></button>
+        <h2>Lorem ipsum</h2>
+        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus, lectus quis ornare volutpat, ligula nulla sollicitudin nunc, ut commodo nulla enim nec nisi.</p>
+        <p>Morbi sodales, dolor a iaculis ornare, velit justo lacinia erat, pretium sollicitudin dui sem id justo.</p>
+      </div>
+    </div>
+  </div>
+      
+  <button class="button" data-xt-overlay='{"targets": "#overlay-full-medium"}'>
+    medium
+  </button>
+  <div class="overlay full medium" id="overlay-full-medium">
+    <div class="overlay-inside">
+      <div class="overlay-content">
+        <button type="button" class="overlay-close"><span class="icon-cross"></span></button>
+        <h2>Lorem ipsum</h2>
+        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus, lectus quis ornare volutpat, ligula nulla sollicitudin nunc, ut commodo nulla enim nec nisi.</p>
+        <p>Morbi sodales, dolor a iaculis ornare, velit justo lacinia erat, pretium sollicitudin dui sem id justo.</p>
+      </div>
+    </div>
+  </div>
+        
+  <button class="button" data-xt-overlay='{"targets": "#overlay-full-large"}'>
+    large
+  </button>
+  <div class="overlay full large" id="overlay-full-large">
+    <div class="overlay-inside">
+      <div class="overlay-content">
+        <button type="button" class="overlay-close"><span class="icon-cross"></span></button>
+        <h2>Lorem ipsum</h2>
+        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus, lectus quis ornare volutpat, ligula nulla sollicitudin nunc, ut commodo nulla enim nec nisi.</p>
+        <p>Morbi sodales, dolor a iaculis ornare, velit justo lacinia erat, pretium sollicitudin dui sem id justo.</p>
+      </div>
+    </div>
+  </div>
+
+  <button class="button" data-xt-overlay='{"targets": "#overlay-full-giant"}'>
+    giant
+  </button>
+  <div class="overlay full giant" id="overlay-full-giant">
+    <div class="overlay-inside">
+      <div class="overlay-content">
+        <button type="button" class="overlay-close"><span class="icon-cross"></span></button>
+        <h2>Lorem ipsum</h2>
+        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus, lectus quis ornare volutpat, ligula nulla sollicitudin nunc, ut commodo nulla enim nec nisi.</p>
+        <p>Morbi sodales, dolor a iaculis ornare, velit justo lacinia erat, pretium sollicitudin dui sem id justo.</p>
+      </div>
+    </div>
+  </div>
+  
+</div>
+
     </div>
   </div>
 </div>
@@ -108,72 +273,33 @@ order: 40
     <div class="demo-source" data-lang="html">
 <div class="spacer">
   <button class="button" data-xt-overlay='{"targets": "#overlay-diagonal"}'>
-    Toggle
+    Open
   </button>
 
   <div class="overlay" id="overlay-diagonal">
-    <div class="overlay-inside">
-      <div class="overlay-content anim-diagonal">
-        
-        <div class="close overlay-close">×</div>
-        
+    <div class="overlay-inside anim-diagonal">
+      <div class="overlay-content">
+        <button type="button" class="overlay-close"><span class="icon-cross"></span></button>
         <h2>Lorem ipsum</h2>
         <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam aliquet turpis lacinia, efficitur leo vel, commodo leo. In eleifend mi et est fermentum elementum.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam aliquet turpis lacinia, efficitur leo vel, commodo leo. In eleifend mi et est fermentum elementum.</p>
-        <div class="drop" data-xt-toggle='{"elements": "> .button"}'>
-          <button class="button">
-            default
-          </button>
-          <div class="drop-target after top toggle-flex">
-            <a href="#" class="button">
-              Lorem ipsum dolor
-            </a>
-            <a href="#" class="button">
-              Lorem ipsum dolor
-            </a>
-            <a href="#" class="button">
-              Lorem ipsum dolor
-            </a>
-          </div>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam aliquet turpis lacinia, efficitur leo vel, commodo leo. In eleifend mi et est fermentum elementum.</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam aliquet turpis lacinia, efficitur leo vel, commodo leo. In eleifend mi et est fermentum elementum.</p>
-        </div>
-        
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus, lectus quis ornare volutpat, ligula nulla sollicitudin nunc, ut commodo nulla enim nec nisi.</p>
+        <p>Morbi sodales, dolor a iaculis ornare, velit justo lacinia erat, pretium sollicitudin dui sem id justo.</p>
       </div>
     </div>
   </div>
 
   <button class="button" data-xt-overlay='{"targets": "#overlay-full-diagonal"}'>
-    Toggle
+    Open
   </button>
 
-  <div class="overlay" id="overlay-full-diagonal">
-    <div class="overlay-inside">
-      <div class="overlay-content full anim-diagonal">
-        
-        <div class="close overlay-close">×</div>
-        
+  <div class="overlay full" id="overlay-full-diagonal">
+    <div class="overlay-inside anim-diagonal">
+      <div class="overlay-content">
+        <button type="button" class="overlay-close"><span class="icon-cross"></span></button>
         <h2>Lorem ipsum</h2>
         <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam aliquet turpis lacinia, efficitur leo vel, commodo leo. In eleifend mi et est fermentum elementum.</p>
-        <div class="drop" data-xt-toggle='{"elements": "> .button"}'>
-          <button class="button">
-            default
-          </button>
-          <div class="drop-target after top toggle-flex">
-            <a href="#" class="button">
-              Lorem ipsum dolor
-            </a>
-            <a href="#" class="button">
-              Lorem ipsum dolor
-            </a>
-            <a href="#" class="button">
-              Lorem ipsum dolor
-            </a>
-          </div>
-        </div>
-        
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus, lectus quis ornare volutpat, ligula nulla sollicitudin nunc, ut commodo nulla enim nec nisi.</p>
+        <p>Morbi sodales, dolor a iaculis ornare, velit justo lacinia erat, pretium sollicitudin dui sem id justo.</p>
       </div>
     </div>
   </div>

@@ -16,7 +16,8 @@ font-family: 'Open Sans', sans-serif;
 font-family: 'Fira Sans Condensed', sans-serif;
 */
 a:focus,
-.button:focus {
+.button:focus,
+.overlay .overlay-close:focus {
   outline: 0; }
 
 html,
@@ -61,7 +62,7 @@ body {
 a, button {
   cursor: pointer; }
 
-.button {
+.button, .overlay .overlay-close {
   display: inline-block;
   vertical-align: middle;
   text-align: center;
@@ -75,7 +76,7 @@ a, button {
     top: 0.1em; // vertical fix
   }
   */ }
-  .button .text {
+  .button .text, .overlay .overlay-close .text {
     display: inline-block;
     overflow: hidden; }
 
@@ -119,7 +120,7 @@ a, button {
   .drop-target.middle {
     margin-top: 0 !important;
     margin-bottom: 0 !important; }
-  .drop-target .button {
+  .drop-target .button, .drop-target .overlay .overlay-close, .overlay .drop-target .overlay-close {
     width: 100%;
     text-align: left;
     white-space: nowrap; }
@@ -131,25 +132,34 @@ a, button {
   left: 0;
   right: 0;
   bottom: 0;
-  /* default */
-  /* full */ }
+  /* styles */
+  /* full */
+  /* close */ }
   .overlay .overlay-inside {
     display: flex;
+    position: relative;
+    z-index: 110;
     flex-direction: row;
     justify-content: center;
     min-height: 100vh; }
   .overlay .overlay-content {
-    z-index: 110;
+    position: relative;
     align-self: center; }
-  .overlay .overlay-content.full + .xt-backdrop {
-    display: none; }
-  .overlay .overlay-content.full {
+  .overlay.full .overlay-content {
     display: flex;
+    position: static;
     justify-content: center;
     flex-direction: column;
-    align-items: center;
     width: 100%;
     min-height: 100vh; }
+  .overlay.full .overlay-content + .xt-backdrop {
+    display: none; }
+  .overlay .overlay-close {
+    position: absolute;
+    top: 0;
+    right: 0; }
+  .overlay .overlay-close + * {
+    margin-top: 0; }
 
 /* .xt-container and .xt-position */
 .xt-container {
@@ -162,7 +172,6 @@ a, button {
 
 /* .xt-backdrop */
 .xt-backdrop {
-  content: '';
   position: fixed;
   z-index: 100;
   top: 0;
@@ -184,9 +193,6 @@ html.xt-fixed-horizontal .overlay {
   overflow-x: scroll; }
 
 /* animations */
-.anim-none {
-  transition: none !important; }
-
 .anim-width {
   overflow: hidden;
   width: 0; }
@@ -413,24 +419,29 @@ strong {
   [class*=" icon-"].right {
     margin-left: 0.5em; }
 
-a:not(.button),
-.button.link {
+a:not(.button):not(.overlay .overlay-close),
+.button.link,
+.overlay .link.overlay-close {
   background: transparent;
   color: #ff0000; }
-  a:not(.button):hover, a:not(.button):active, a:not(.button).active, a:not(.button):focus,
+  a:not(.button):not(.overlay .overlay-close):hover, a:not(.button):not(.overlay .overlay-close):active, a:not(.button):not(.overlay .overlay-close).active, a:not(.button):not(.overlay .overlay-close):focus,
   .button.link:hover,
+  .overlay .link.overlay-close:hover,
   .button.link:active,
+  .overlay .link.overlay-close:active,
   .button.link.active,
-  .button.link:focus {
+  .overlay .link.active.overlay-close,
+  .button.link:focus,
+  .overlay .link.overlay-close:focus {
     background: transparent;
     color: #ff0000;
     text-decoration: underline; }
 
 /* fix bootstrap to remove */
-a.button:not(.link):hover, a.button:not(.link):focus {
+a.button:not(.link):hover, .overlay a.overlay-close:not(.link):hover, a.button:not(.link):focus, .overlay a.overlay-close:not(.link):focus {
   text-decoration: none; }
 
-.button {
+.button, .overlay .overlay-close {
   /* sizes */
   line-height: 1.238;
   /* styles */
@@ -444,40 +455,40 @@ a.button:not(.link):hover, a.button:not(.link):focus {
   /* variants */
   /* animations */
   transition: all 300ms cubic-bezier(0.63, 0.36, 0, 0.97), top 1ms, left 1ms; }
-  .button.tiny {
+  .button.tiny, .overlay .tiny.overlay-close {
     padding: 4px 8px;
     font-size: 10px; }
-  .button.small {
+  .button.small, .overlay .small.overlay-close {
     padding: 6px 10px;
     font-size: 11px; }
-  .button.medium, .button {
+  .button.medium, .button, .overlay .overlay-close {
     padding: 8px 12px;
     font-size: 12px; }
-  .button.large {
+  .button.large, .overlay .large.overlay-close {
     padding: 10px 14px;
     font-size: 13px; }
-  .button.giant {
+  .button.giant, .overlay .giant.overlay-close {
     padding: 12px 16px;
     font-size: 14px; }
-  .button.wide {
+  .button.wide, .overlay .wide.overlay-close {
     padding-left: 2em;
     padding-right: 2em; }
-  .button.primary, .drop-target.primary .button {
+  .button.primary, .drop-target.primary .button, .drop-target.primary .overlay .overlay-close, .overlay .drop-target.primary .overlay-close, .overlay .primary.overlay-close {
     background: #ff0000;
     color: #ffffff; }
-    .button.primary:hover, .drop-target.primary .button:hover, .button.primary:active, .drop-target.primary .button:active, .button.primary.active, .drop-target.primary .active.button {
+    .button.primary:hover, .drop-target.primary .button:hover, .drop-target.primary .overlay .overlay-close:hover, .overlay .drop-target.primary .overlay-close:hover, .overlay .primary.overlay-close:hover, .button.primary:active, .drop-target.primary .button:active, .drop-target.primary .overlay .overlay-close:active, .overlay .drop-target.primary .overlay-close:active, .overlay .primary.overlay-close:active, .button.primary.active, .drop-target.primary .active.button, .drop-target.primary .overlay .active.overlay-close, .overlay .drop-target.primary .active.overlay-close, .overlay .primary.active.overlay-close {
       background: #e60000;
       color: #ffffff; }
-  .button.secondary, .button, .drop-target.secondary .button {
+  .button.secondary, .button, .overlay .overlay-close, .drop-target.secondary .button, .drop-target.secondary .overlay .overlay-close, .overlay .drop-target.secondary .overlay-close {
     background: #e6e6e6;
     color: #000000; }
-    .button.secondary:hover, .button:hover, .drop-target.secondary .button:hover, .button.secondary:active, .button:active, .drop-target.secondary .button:active, .button.secondary.active, .active.button, .drop-target.secondary .active.button {
+    .button.secondary:hover, .button:hover, .overlay .overlay-close:hover, .drop-target.secondary .button:hover, .button.secondary:active, .button:active, .overlay .overlay-close:active, .drop-target.secondary .button:active, .button.secondary.active, .active.button, .overlay .active.overlay-close, .drop-target.secondary .active.button {
       background: #d9d9d9;
       color: #000000; }
-  .button.light, .drop-target.light .button, .drop-target .button {
+  .button.light, .drop-target.light .button, .drop-target .button, .drop-target .overlay .overlay-close, .overlay .drop-target .overlay-close, .overlay .light.overlay-close {
     background: transparent;
     color: #000000; }
-    .button.light:hover, .drop-target .button:hover, .button.light:active, .drop-target .button:active, .button.light.active, .drop-target .active.button {
+    .button.light:hover, .drop-target .button:hover, .drop-target .overlay .overlay-close:hover, .overlay .drop-target .overlay-close:hover, .overlay .light.overlay-close:hover, .button.light:active, .drop-target .button:active, .drop-target .overlay .overlay-close:active, .overlay .drop-target .overlay-close:active, .overlay .light.overlay-close:active, .button.light.active, .drop-target .active.button, .drop-target .overlay .active.overlay-close, .overlay .drop-target .active.overlay-close, .overlay .light.active.overlay-close {
       background: rgba(255, 0, 0, 0.1);
       color: #ff0000; }
 
@@ -575,37 +586,57 @@ a.button:not(.link):hover, a.button:not(.link):focus {
   /* sizes */
   /* .close */
   /* animations */ }
-  .overlay .overlay-content:not(.full) {
-    background: #ffffff;
-    margin-top: 60px;
-    margin-bottom: 60px; }
-  .overlay .overlay-content.full {
-    background: #ff0000;
-    color: #ffffff; }
+  .overlay .overlay-inside {
+    padding: 15px; }
   .overlay .overlay-content {
-    padding-top: 40px;
-    padding-bottom: 40px;
-    width: 600px; }
-  .overlay .overlay-content:not([class*=" anim-"]) {
+    background: #ffffff; }
+  .overlay.full .overlay-inside {
+    padding: 0;
+    background: #ffffff; }
+  .overlay.tiny .overlay-content {
+    padding: 40px;
+    max-width: 310px; }
+  .overlay.small .overlay-content {
+    padding: 40px;
+    max-width: 510px; }
+  .overlay.medium .overlay-content, .overlay .overlay-content {
+    padding: 40px;
+    max-width: 710px; }
+  .overlay.large .overlay-content {
+    padding: 40px;
+    max-width: 910px; }
+  .overlay.giant .overlay-content {
+    padding: 40px;
+    max-width: inherit; }
+  .overlay .overlay-close {
+    width: 50px;
+    height: 50px;
+    font-size: 12px;
+    background: transparent;
+    color: #bfbfbf; }
+    .overlay .overlay-close:hover, .overlay .overlay-close:active, .overlay .overlay-close.active {
+      background: transparent;
+      color: #ff0000; }
+  .overlay .overlay-inside:not([class*=" anim-"]) {
     transition: all 300ms cubic-bezier(0.63, 0.36, 0, 0.97), top 1ms, left 1ms;
     transition: all 300ms cubic-bezier(0.63, 0.36, 0, 0.97), top 1ms, left 1ms;
     opacity: 0;
     transform: translateY(-0.618rem) scale(0.95); }
-    .overlay .overlay-content:not([class*=" anim-"]).fade-in {
+    .overlay .overlay-inside:not([class*=" anim-"]).fade-in {
       opacity: 1;
       transform: translateY(0) scale(1); }
-    .overlay .overlay-content:not([class*=" anim-"]).fade-out {
+    .overlay .overlay-inside:not([class*=" anim-"]).fade-out {
       opacity: 0;
       transform: translateY(0.618rem) scale(0.95); }
-  .overlay .overlay-content.full:not([class*=" anim-"]) {
+  .overlay.full .overlay-inside:not([class*=" anim-"]) {
     transition: all 300ms cubic-bezier(0.63, 0.36, 0, 0.97), top 1ms, left 1ms;
     transition: all 300ms cubic-bezier(0.63, 0.36, 0, 0.97), top 1ms, left 1ms;
     opacity: 0;
     transform: translateY(-0.618rem); }
-    .overlay .overlay-content.full:not([class*=" anim-"]).fade-in {
+    .overlay.full .overlay-inside:not([class*=" anim-"]).fade-in {
       opacity: 1;
       transform: translateY(0); }
-    .overlay .overlay-content.full:not([class*=" anim-"]).fade-out {
+    .overlay.full .overlay-inside:not([class*=" anim-"]).fade-out {
       opacity: 0;
       transform: translateY(0.618rem); }
 
@@ -733,5 +764,5 @@ a.button:not(.link):hover, a.button:not(.link):focus {
 .anim-height-bottom {
   transition: all 300ms cubic-bezier(0.63, 0.36, 0, 0.97), top 1ms, left 1ms; }
 
-.button.color-primary:hover, .button.color-primary:active, .button.color-primary.active {
+.button.color-primary:hover, .overlay .color-primary.overlay-close:hover, .button.color-primary:active, .overlay .color-primary.overlay-close:active, .button.color-primary.active, .overlay .color-primary.active.overlay-close {
   border: 1px solid #000000; }

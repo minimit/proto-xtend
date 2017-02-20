@@ -78,7 +78,7 @@
   .site-footer &,
   .site-header & {
     background: transparent;
-    color: $color-white-light;
+    color: $color-white-75;
     #{$hover},
     #{$active} {
       background: transparent;
@@ -89,7 +89,7 @@
   .demo-tabs &,
   .demo-code-tabs & {
     background: transparent;
-    color: $color-text-light;
+    color: $color-text-75;
     #{$hover},
     #{$active} {
       background: transparent;
@@ -178,7 +178,7 @@ a.logo {
   @include box;
   margin: 11px 0 10px 0;
   @include font(sans-medium);
-  color: $color-white-light;
+  color: $color-white-75;
   font-size: 19px;
   text-decoration: none !important;
   #{$hover},
@@ -186,13 +186,13 @@ a.logo {
     color: $color-white;
   }
   #{$focus} {
-    color: $color-white-light;
+    color: $color-white-75;
   }
 }
 
 /* .site-header-top */
 .site-header-top {
-  background: rgba($color-primary, 0.75);
+  background: $color-primary-75;
   color: $color-white;
 }
 
@@ -201,6 +201,10 @@ a.logo {
   .overlay-content {
     padding-top: 100px;
     padding-bottom: 60px;
+    padding-left: 0;
+    padding-right: 0;
+    background: $color-primary;
+    color: $color-white;
   }
   // content
   .button {
@@ -217,8 +221,8 @@ a.logo {
         background: $color-primary;
       }
       .line:after {
-        background: $color-white-light;
-        //background: linear-gradient(to right, $color-white-light 0%, $color-white-lighter 100%);
+        background: $color-white-75;
+        //background: linear-gradient(to right, $color-white-75 0%, $color-white-50 100%);
       }
     }
     opacity: 0.75;
@@ -241,7 +245,7 @@ a.logo {
     margin-top: -0.4em !important;
   }
   .lead {
-    color: $color-white-light;
+    color: $color-white-75;
   }
 }
 
@@ -311,7 +315,7 @@ $button__menu_pixels: 1px;
       position: absolute;
       height: $button__menu_pixels;
       width: 100%;
-      background: $color-white-light;
+      background: $color-white-75;
       border-radius: 0;
       left: 0;
       transform: rotate(0deg);
@@ -387,7 +391,7 @@ $button__menu_pixels: 1px;
 /* .site-footer-bottom */
 .site-footer-bottom {
   font-size: 13px;
-  color: $color-white-light;
+  color: $color-white-75;
   a:not(.button) {
     color: $color-white;
     #{$hover},
@@ -458,7 +462,7 @@ $button__menu_pixels: 1px;
     width: 100%;
     background: transparent !important;
     @include font(sans-regular);
-    color: $color-text-light;
+    color: $color-text-75;
     text-align: left;
     letter-spacing: 0;
     text-transform: none;
@@ -513,8 +517,7 @@ $button__menu_pixels: 1px;
       left: 0;
       width: 100%;
       height: 1px;
-      background: $color-primary-light;
-      //background: linear-gradient(to right,  lighten($color-primary, 15%) 0%,  lighten($color-primary, 30%) 100%);
+      background: $color-primary-25;
       @at-root {
         h2#{&} {
           height: 1px;

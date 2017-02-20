@@ -16,21 +16,22 @@
 //////////////////////
 
 $color-primary: #00B0FF !default;
-$color-primary-light: lighten($color-primary, 25%) !default;
-$color-primary-lighter: rgba($color-primary, 0.1) !default;
+$color-primary-75: rgba($color-primary, 0.75) !default;
+$color-primary-25: lighten($color-primary, 25%) !default;
 
 $color-text: #000000 !default;
-$color-text-light: lighten($color-text, 65%) !default;
+$color-text-75: lighten($color-text, 75%) !default;
 
 $color-background: #ffffff !default;
 
 $color-white: #ffffff !default;
-$color-white-light: rgba($color-white, 0.75) !default;
-$color-white-lighter: rgba($color-white, 0.5) !default;
+$color-white-75: rgba($color-white, 0.75) !default;
+$color-white-50: rgba($color-white, 0.5) !default;
 
 $color-grey: #f8f8f8 !default;
 
 $color-black: #000000 !default;
+$color-black-75: rgba($color-white, 0.75) !default;
 
 //////////////////////
 // fonts

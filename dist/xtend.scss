@@ -212,7 +212,7 @@ a.button:not(.link) {
     color: $color-text;
     #{$hover},
     #{$active} {
-      background: $color-primary-lighter;
+      background: rgba($color-primary, 0.1);
       color: $color-primary;
     }
   }
@@ -354,32 +354,74 @@ a.button:not(.link) {
 
 .overlay {
   /* styles */
-  .overlay-content:not(.full) {
-    background: $color-white;
-    margin-top: 60px;
-    margin-bottom: 60px;
+  .overlay-inside {
+    padding: 15px; // empty space outside overlay
   }
-  .overlay-content.full {
-    background: $color-primary;
-    color: $color-white;
+  .overlay-content {
+    background: $color-white;
+  }
+  &.full {
+    .overlay-inside {
+      padding: 0;
+      background: $color-white;
+    }
   }
   /* sizes */
-  .overlay-content {
-    padding-top: 40px;
-    padding-bottom: 40px;
-    width: 600px;
+  @extend .overlay.medium; // default
+  &.tiny {
+    .overlay-content {
+      padding: 40px;
+      max-width: 310px;
+    }
+  }
+  &.small {
+    .overlay-content {
+      padding: 40px;
+      max-width: 510px;
+    }
+  }
+  &.medium {
+    .overlay-content {
+      padding: 40px;
+      max-width: 710px;
+    }
+  }
+  &.large {
+    .overlay-content {
+      padding: 40px;
+      max-width: 910px;
+    }
+  }
+  &.giant {
+    .overlay-content {
+      padding: 40px;
+      max-width: inherit;
+    }
   }
   /* .close */
-  .close {
+  .overlay-close {
+    @extend .button;
+    width: 50px;
+    height: 50px;
+    font-size: 12px;
+    background: transparent;
+    color: $color-text-75;
+    #{$hover},
+    #{$active} {
+      background: transparent;
+      color: $color-primary;
+    }
   }
   /* animations */
-  .overlay-content:not([class*=" anim-"]) {
+  .overlay-inside:not([class*=" anim-"]) {
     @include transition-default;
     @include anim-vertical-zoom;
   }
-  .overlay-content.full:not([class*=" anim-"]) {
-    @include transition-default;
-    @include anim-vertical;
+  &.full {
+    .overlay-inside:not([class*=" anim-"]) {
+      @include transition-default;
+      @include anim-vertical;
+    }
   }
 }
 
