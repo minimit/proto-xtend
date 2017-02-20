@@ -1,3 +1,6 @@
+/*! xtend v0.0.6 (http://www.minimit.com/xtend/)
+@copyright (c) 2016 - 2017 Riccardo Caroli
+@license MIT (https://github.com/minimit/xtend/blob/master/LICENSE) */
 /* ratios
 0.618
 0.809
@@ -12,9 +15,6 @@ font-family: 'Lato', sans-serif;
 font-family: 'Open Sans', sans-serif;
 font-family: 'Fira Sans Condensed', sans-serif;
 */
-/*! xtend v0.0.6 (http://www.minimit.com/xtend/)
-@copyright (c) 2016 - 2017 Riccardo Caroli
-@license MIT (https://github.com/minimit/xtend/blob/master/LICENSE) */
 a:focus,
 .button:focus {
   outline: 0; }
@@ -610,17 +610,6 @@ a.button:not(.link):hover, a.button:not(.link):focus {
     opacity: 0;
     transition-timing-function: cubic-bezier(0.63, 0.36, 0, 0.97); }
 
-/* .anim-height and .anim-width */
-.anim-height,
-.anim-width {
-  transition: all 300ms cubic-bezier(0.63, 0.36, 0, 0.97), top 1ms, left 1ms; }
-
-.anim-width-left,
-.anim-width-right,
-.anim-height-top,
-.anim-height-bottom {
-  transition: all 300ms cubic-bezier(0.63, 0.36, 0, 0.97), top 1ms, left 1ms; }
-
 .anim-horizontal {
   transition: all 300ms cubic-bezier(0.63, 0.36, 0, 0.97), top 1ms, left 1ms;
   opacity: 0;
@@ -719,6 +708,17 @@ a.button:not(.link):hover, a.button:not(.link):focus {
   .anim-bottom.fade-out {
     opacity: 0;
     transform: translateY(0.618rem); }
+
+/* .anim-height and .anim-width */
+.anim-height,
+.anim-width {
+  transition: all 300ms cubic-bezier(0.63, 0.36, 0, 0.97), top 1ms, left 1ms; }
+
+.anim-width-left,
+.anim-width-right,
+.anim-height-top,
+.anim-height-bottom {
+  transition: all 300ms cubic-bezier(0.63, 0.36, 0, 0.97), top 1ms, left 1ms; }
 
 .button.color-primary:hover, .button.color-primary:active, .button.color-primary.active {
   border: 1px solid #000000; }

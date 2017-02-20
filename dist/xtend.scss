@@ -1,11 +1,15 @@
+/*! xtend v0.0.6 (http://www.minimit.com/xtend/)
+@copyright (c) 2016 - 2017 Riccardo Caroli
+@license MIT (https://github.com/minimit/xtend/blob/master/LICENSE) */
+
 //////////////////////
 // xtend variables
 //////////////////////
 
 // override variables
+@import "_mixins.scss";
 @import "_vars.scss";
 @import "_base.scss";
-@import "_anim.scss";
 
 //////////////////////
 // structure
@@ -397,18 +401,9 @@ a.button:not(.link) {
   }
 }
 
-/* .anim-height and .anim-width */
-.anim-height,
-.anim-width {
-  @include transition-default;
-}
-.anim-width-left,
-.anim-width-right,
-.anim-height-top,
-.anim-height-bottom {
-  @include transition-default;
-}
-
+//////////////////////
+// animations
+//////////////////////
 
 .anim-horizontal {
   @include anim-horizontal;
@@ -436,4 +431,16 @@ a.button:not(.link) {
 }
 .anim-bottom {
   @include anim-bottom;
+}
+
+/* .anim-height and .anim-width */
+.anim-height,
+.anim-width {
+  @include transition-default;
+}
+.anim-width-left,
+.anim-width-right,
+.anim-height-top,
+.anim-height-bottom {
+  @include transition-default;
 }

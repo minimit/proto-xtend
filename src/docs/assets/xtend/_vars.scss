@@ -101,102 +101,154 @@ font-family: 'Fira Sans Condensed', sans-serif;
     margin-bottom: 0 !important;
   }
 }
-
 //////////////////////
-// mixins
+// transitions
 //////////////////////
 
-// @include box;
-@mixin box {
-  position: relative;
-  float: left;
-  width: 100%;
-}
-
-// @include clear;
-@mixin clear {
-  &:before,
-  &:after {
-    content: " ";
-    display: table;
+// @include transition-default;
+@mixin transition-default {
+  transition: all 300ms cubic-bezier(.63,.36,0,.97), top 1ms, left 1ms; // disable top and left animations
+  &.fade-in {
   }
-  &:after {
-    clear: both;
+  &.fade-out {
   }
 }
 
-// @include no-selection;
-@mixin no-selection {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-// @include text-selection;
-@mixin text-selection {
-  -webkit-user-select: text;
-  -moz-user-select: text;
-  -ms-user-select: text;
-  user-select: text;
-}
-
-// @include accelerate;
-@mixin accelerate {
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  -webkit-perspective: 1000;
-  perspective: 1000;
-  transform: translateZ(0);
-}
-
-// #{$hover} {}
-$hover: "&:hover"; //$hover: "&:hover:not(.active), &.hover:not(.active)";
-
-// #{$active} {}
-$active: "&:active, &.active"; //$active: "&:active, &.active, &:active:focus, &:active.focus, &.active:focus, &.active.focus";
-
-// #{$focus} {}
-$focus: "&:focus"; //$focus: "&:focus, &.focus";
-
 //////////////////////
-// xt-scroll
+// animations
 //////////////////////
 
-@mixin xt-scroll($item, $position:'top', $pos:false) {
-  #{$item} {
-    .show-scroll {
-      display: none;
-    }
-    .hide-scroll {
-      display: block;
-    }
+// @include anim-horizontal;
+@mixin anim-horizontal {
+  @include transition-default;
+  opacity: 0;
+  transform: translateX(-0.618rem);
+  &.fade-in {
+    opacity: 1;
+    transform: translateX(0);
   }
-  #{$item}.active.xt-clone {
-    display: block !important;
+  &.fade-out {
+    opacity: 0;
+    transform: translateX(0.618rem);
   }
-  #{$item}.active:not(.xt-clone) {
-    position: fixed !important;
-    width: inherit; // fix fixed width
-    z-index: 70;
-    @if $position == 'top' {
-      @if $pos {
-        top: $pos;
-      } @else {
-        top: 0;
-      }
-    } @elseif $position == 'bottom' {
-      @if $pos {
-        bottom: $pos;
-      } @else {
-        bottom: 0;
-      }
-    }
-    .show-scroll {
-      display: block;
-    }
-    .hide-scroll {
-      display: none;
-    }
+}
+
+// @include anim-horizontal-zoom;
+@mixin anim-horizontal-zoom {
+  @include transition-default;
+  opacity: 0;
+  transform: translateX(-0.618rem) scale(0.95);
+  &.fade-in {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+  &.fade-out {
+    opacity: 0;
+    transform: translateX(0.618rem) scale(0.95);
+  }
+}
+
+// @include anim-vertical;
+@mixin anim-vertical {
+  @include transition-default;
+  opacity: 0;
+  transform: translateY(-0.618rem);
+  &.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  &.fade-out {
+    opacity: 0;
+    transform: translateY(0.618rem);
+  }
+}
+
+// @include anim-vertical-zoom;
+@mixin anim-vertical-zoom {
+  @include transition-default;
+  opacity: 0;
+  transform: translateY(-0.618rem) scale(0.95);
+  &.fade-in {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  &.fade-out {
+    opacity: 0;
+    transform: translateY(0.618rem) scale(0.95);
+  }
+}
+
+// @include anim-diagonal;
+@mixin anim-diagonal {
+  @include transition-default;
+  opacity: 0;
+  transform:  translateX(-0.618rem) translateY(-0.618rem);
+  &.fade-in {
+    opacity: 1;
+    transform: translateX(0) translateY(0);
+  }
+  &.fade-out {
+    opacity: 0;
+    transform: translateX(0.618rem) translateY(0.618rem);
+  }
+}
+
+// @include anim-left;
+@mixin anim-left {
+  @include transition-default;
+  opacity: 0;
+  transform: translateX(0.618rem);
+  &.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  &.fade-out {
+    opacity: 0;
+    transform: translateX(0.618rem);
+  }
+}
+
+// @include anim-right;
+@mixin anim-right {
+  @include transition-default;
+  opacity: 0;
+  transform: translateX(-0.618rem);
+  &.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  &.fade-out {
+    opacity: 0;
+    transform: translateX(-0.618rem);
+  }
+}
+
+// @include anim-top;
+@mixin anim-top {
+  @include transition-default;
+  opacity: 0;
+  transform: translateY(-0.618rem);
+  &.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  &.fade-out {
+    opacity: 0;
+    transform: translateY(-0.618rem);
+  }
+}
+
+// @include anim-bottom;
+@mixin anim-bottom {
+  @include transition-default;
+  opacity: 0;
+  transform: translateY(0.618rem);
+  &.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  &.fade-out {
+    opacity: 0;
+    transform: translateY(0.618rem);
   }
 }
