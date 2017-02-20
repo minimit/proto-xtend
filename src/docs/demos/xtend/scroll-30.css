@@ -182,12 +182,15 @@ html.xt-fixed-horizontal body {
 html.xt-fixed-horizontal .overlay {
   overflow-x: scroll; }
 
-/* .a-width and .a-height */
-.a-width {
+/* animations */
+.anim-disable {
+  transition: none !important; }
+
+.anim-width {
   overflow: hidden;
   width: 0; }
 
-.a-height {
+.anim-height {
   overflow: hidden;
   height: 0; }
 
@@ -225,30 +228,26 @@ html.xt-fixed-horizontal .overlay {
 /* toggles */
 .toggle-flex {
   display: none !important; }
-  .toggle-flex.active, .toggle-flex.out {
+  .toggle-flex.active, .toggle-flex.fade-out {
     display: flex !important; }
 
 .toggle-block, .overlay {
   display: none !important; }
-  .toggle-block.active, .active.overlay, .toggle-block.out, .out.overlay {
+  .toggle-block.active, .active.overlay, .toggle-block.fade-out, .fade-out.overlay {
     display: block !important; }
 
 .toggle-inline {
   display: none !important; }
-  .toggle-inline.active, .toggle-inline.out {
+  .toggle-inline.active, .toggle-inline.fade-out {
     display: inline !important; }
 
 .toggle-inline-block {
   display: none !important; }
-  .toggle-inline-block.active, .toggle-inline-block.out {
+  .toggle-inline-block.active, .toggle-inline-block.fade-out {
     display: inline-block !important; }
 
-.toggle-none.active, .toggle-none.out {
+.toggle-none.active, .toggle-none.fade-out {
   display: none !important; }
-
-/* animations */
-.a-disable {
-  transition: none !important; }
 
 html {
   font-size: 15px; }
@@ -581,118 +580,118 @@ a.button:not(.link):hover, a.button:not(.link):focus {
   /* animations */
   transition: opacity 300ms;
   opacity: 0; }
-  .xt-backdrop.in {
+  .xt-backdrop.fade-in {
     opacity: 0.2;
     transition-timing-function: cubic-bezier(0.63, 0.36, 0, 0.97); }
-  .xt-backdrop.out {
+  .xt-backdrop.fade-out {
     opacity: 0;
     transition-timing-function: cubic-bezier(0.63, 0.36, 0, 0.97); }
 
-/* .a-default */
-.a-default, .button:not(.a-custom), .drop-target:not(.a-custom), .overlay .content:not(.a-custom), .a-height,
-.a-width, .a-width-left,
-.a-width-right,
-.a-height-top,
-.a-height-bottom, .a-horizontal, .a-horizontal-zoom, .a-vertical, .a-vertical-zoom, .a-diagonal, .a-left, .a-right, .a-top, .a-bottom {
+/* .anim-default */
+.anim-default, .button:not(.anim-custom), .drop-target:not(.anim-custom), .overlay .content:not(.anim-custom), .anim-height,
+.anim-width, .anim-width-left,
+.anim-width-right,
+.anim-height-top,
+.anim-height-bottom, .anim-horizontal, .anim-horizontal-zoom, .anim-vertical, .anim-vertical-zoom, .anim-diagonal, .anim-left, .anim-right, .anim-top, .anim-bottom {
   transition: all 300ms cubic-bezier(0.63, 0.36, 0, 0.97); }
 
-/* .a-height and .a-width */
-/* .a-horizontal */
-.a-horizontal {
+/* .anim-height and .anim-width */
+/* .anim-horizontal */
+.anim-horizontal {
   opacity: 0;
   transform: translateX(-0.618rem); }
-  .a-horizontal.in {
+  .anim-horizontal.fade-in {
     opacity: 1;
     transform: translateX(0); }
-  .a-horizontal.out {
+  .anim-horizontal.fade-out {
     opacity: 0;
     transform: translateX(0.618rem); }
 
-/* .a-horizontal-zoom */
-.a-horizontal-zoom {
+/* .anim-horizontal-zoom */
+.anim-horizontal-zoom {
   opacity: 0;
   transform: translateX(-0.618rem) scale(0.95); }
-  .a-horizontal-zoom.in {
+  .anim-horizontal-zoom.fade-in {
     opacity: 1;
     transform: translateX(0) scale(1); }
-  .a-horizontal-zoom.out {
+  .anim-horizontal-zoom.fade-out {
     opacity: 0;
     transform: translateX(0.618rem) scale(0.95); }
 
-/* .a-vertical */
-.a-vertical {
+/* .anim-vertical */
+.anim-vertical {
   opacity: 0;
   transform: translateY(-0.618rem); }
-  .a-vertical.in {
+  .anim-vertical.fade-in {
     opacity: 1;
     transform: translateY(0); }
-  .a-vertical.out {
+  .anim-vertical.fade-out {
     opacity: 0;
     transform: translateY(0.618rem); }
 
-/* .a-vertical-zoom */
-.a-vertical-zoom, .drop-target:not(.a-custom), .overlay .content:not(.a-custom) {
+/* .anim-vertical-zoom */
+.anim-vertical-zoom, .drop-target:not(.anim-custom), .overlay .content:not(.anim-custom) {
   opacity: 0;
   transform: translateY(-0.618rem) scale(0.95); }
-  .a-vertical-zoom.in, .in.drop-target:not(.a-custom), .overlay .in.content:not(.a-custom) {
+  .anim-vertical-zoom.fade-in, .fade-in.drop-target:not(.anim-custom), .overlay .fade-in.content:not(.anim-custom) {
     opacity: 1;
     transform: translateY(0) scale(1); }
-  .a-vertical-zoom.out, .out.drop-target:not(.a-custom), .overlay .out.content:not(.a-custom) {
+  .anim-vertical-zoom.fade-out, .fade-out.drop-target:not(.anim-custom), .overlay .fade-out.content:not(.anim-custom) {
     opacity: 0;
     transform: translateY(0.618rem) scale(0.95); }
 
-/* .a-diagonal */
-.a-diagonal {
+/* .anim-diagonal */
+.anim-diagonal {
   opacity: 0;
   transform: translateX(-0.618rem) translateY(-0.618rem); }
-  .a-diagonal.in {
+  .anim-diagonal.fade-in {
     opacity: 1;
     transform: translateX(0) translateY(0); }
-  .a-diagonal.out {
+  .anim-diagonal.fade-out {
     opacity: 0;
     transform: translateX(0.618rem) translateY(0.618rem); }
 
-/* .a-left */
-.a-left {
+/* .anim-left */
+.anim-left {
   opacity: 0;
   transform: translateX(0.618rem); }
-  .a-left.in {
+  .anim-left.fade-in {
     opacity: 1;
     transform: translateY(0); }
-  .a-left.out {
+  .anim-left.fade-out {
     opacity: 0;
     transform: translateX(0.618rem); }
 
-/* .a-right */
-.a-right {
+/* .anim-right */
+.anim-right {
   opacity: 0;
   transform: translateX(-0.618rem); }
-  .a-right.in {
+  .anim-right.fade-in {
     opacity: 1;
     transform: translateY(0); }
-  .a-right.out {
+  .anim-right.fade-out {
     opacity: 0;
     transform: translateX(-0.618rem); }
 
-/* .a-top */
-.a-top {
+/* .anim-top */
+.anim-top {
   opacity: 0;
   transform: translateY(-0.618rem); }
-  .a-top.in {
+  .anim-top.fade-in {
     opacity: 1;
     transform: translateY(0); }
-  .a-top.out {
+  .anim-top.fade-out {
     opacity: 0;
     transform: translateY(-0.618rem); }
 
-/* .a-bottom */
-.a-bottom {
+/* .anim-bottom */
+.anim-bottom {
   opacity: 0;
   transform: translateY(0.618rem); }
-  .a-bottom.in {
+  .anim-bottom.fade-in {
     opacity: 1;
     transform: translateY(0); }
-  .a-bottom.out {
+  .anim-bottom.fade-out {
     opacity: 0;
     transform: translateY(0.618rem); }
 

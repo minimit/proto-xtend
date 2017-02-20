@@ -255,12 +255,15 @@ html.xt-fixed-horizontal {
   }
 }
 
-/* .a-width and .a-height */
-.a-width {
+/* animations */
+.anim-disable {
+  transition: none !important;
+}
+.anim-width {
   overflow: hidden;
   width: 0;
 }
-.a-height {
+.anim-height {
   overflow: hidden;
   height: 0;
 }
@@ -295,39 +298,34 @@ html.xt-fixed-horizontal {
 .toggle-flex {
   display: none !important;
   &.active,
-  &.out {
+  &.fade-out {
     display: flex !important;
   }
 }
 .toggle-block {
   display: none !important;
   &.active,
-  &.out {
+  &.fade-out {
     display: block !important;
   }
 }
 .toggle-inline {
   display: none !important;
   &.active,
-  &.out {
+  &.fade-out {
     display: inline !important;
   }
 }
 .toggle-inline-block {
   display: none !important;
   &.active,
-  &.out {
+  &.fade-out {
     display: inline-block !important;
   }
 }
 .toggle-none {
   &.active,
-  &.out {
+  &.fade-out {
     display: none !important;
   }
-}
-
-/* animations */
-.a-disable {
-  transition: none !important;
 }

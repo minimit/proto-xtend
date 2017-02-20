@@ -845,7 +845,7 @@ pre {
   
 // .site-menu
 html.active,
-html.out {
+html.fade-out {
   .site-menu {
     z-index: 69 !important;
     .site-header-top {
@@ -905,7 +905,7 @@ html.out {
     }
   }
 }
-.site-menu.out {
+.site-menu.fade-out {
   opacity: 1 !important;
   transform: none !important;
   .site-menu-content {

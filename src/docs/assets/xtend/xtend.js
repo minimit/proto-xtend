@@ -523,7 +523,7 @@
           if (!$additional.hasClass(object.defaultClass)) {
             $additional.addClass(settings.class);
             window.xtRequestAnimationFrame( function() {
-              $additional.addClass('in');
+              $additional.addClass('fade-in');
             });
           }
         }
@@ -580,10 +580,10 @@
           var $additional = $('html');
           if ($additional.hasClass(object.defaultClass)) {
             $additional.removeClass(settings.class);
-            $additional.removeClass('in');
-            $additional.addClass('out');
+            $additional.removeClass('fade-in');
+            $additional.addClass('fade-out');
             settings.$targets.off('hide.xt.done.additional').one('hide.xt.done.additional', function() {
-              $additional.removeClass('out');
+              $additional.removeClass('fade-out');
             });
           }
         }
@@ -607,10 +607,10 @@
       $el = $el.pushElement($content);
     }
     // on
-    $el.addClass(settings.class).removeClass('out');
+    $el.addClass(settings.class).removeClass('fade-out');
     object.animationDelayClear($el, 'anim');
     // in
-    object.animationMultiple($el, triggered, object.showDone, 'in');
+    object.animationMultiple($el, triggered, object.showDone, 'fade-in');
     // animations
     if ($el.hasClass('backdrop')) {
       object.onBackdrop($content, triggered);
@@ -645,11 +645,11 @@
     var group = this.group;
     var $group = $(this.group);
     // when animation is done
-    // a-width and a-height
-    if ($el.hasClass('a-height')) {
+    // anim-width and anim-height
+    if ($el.hasClass('anim-height')) {
       $el.css('height', 'auto');
     }
-    if ($el.hasClass('a-width')) {
+    if ($el.hasClass('anim-width')) {
       $el.css('width', 'auto');
     }
     // api
@@ -670,7 +670,7 @@
       $el = $el.pushElement($content);
     }
     // off
-    $el.removeClass(settings.class).removeClass('in').addClass('out');
+    $el.removeClass(settings.class).removeClass('fade-in').addClass('fade-out');
     object.animationDelayClear($el, 'anim');
     // out
     object.animationMultiple($el, triggered, object.hideDone);
@@ -697,9 +697,9 @@
     var object = this;
     var settings = this.settings;
     // when animation is done
-    $el.removeClass('out');
-    // a-width and a-height
-    if ($el.hasClass('a-height') || $el.hasClass('a-width')) {
+    $el.removeClass('fade-out');
+    // anim-width and anim-height
+    if ($el.hasClass('anim-height') || $el.hasClass('anim-width')) {
       object.removeWrap($el);
     }
     // api
@@ -718,7 +718,7 @@
       window.xtCancelAnimationFrame($single.data('frame.timeout'));
       var frame = window.xtRequestAnimationFrame( function() {
         if (add) {
-          $single.removeClass('a-disable').addClass(add);
+          $single.removeClass('anim-disable').addClass(add);
         }
         $single.data('fade.done', true);
         object.animationDelay($single, 'anim', function() {
@@ -777,8 +777,8 @@
     // animations
     object.animationDelayClear($backdrop, 'backdrop');
     window.xtRequestAnimationFrame( function() {
-      $backdrop.addClass('in');
-      $backdrop.removeClass('out');
+      $backdrop.addClass('fade-in');
+      $backdrop.removeClass('fade-out');
     });
     // events
     $backdrop.on('click', function(e) {
@@ -803,11 +803,11 @@
     var $backdrop = $position.find('> .xt-backdrop');
     if ($backdrop.length) {
       // animations
-      $backdrop.removeClass('in');
+      $backdrop.removeClass('fade-in');
       window.xtRequestAnimationFrame( function() {
-        $backdrop.addClass('out');
+        $backdrop.addClass('fade-out');
         object.animationDelay($backdrop, 'backdrop', function() {
-          $backdrop.removeClass('out').remove();
+          $backdrop.removeClass('fade-out').remove();
         });
       });
     }
@@ -824,15 +824,15 @@
     // animation in
     $el.each( function() {
       var $single = $(this);
-      if ($single.hasClass('a-width')) {
+      if ($single.hasClass('anim-width')) {
         object.addWrap($single);
         var $outside = $single.parent('.xt-container');
         var $inside = $single.find('> .xt-position');
         var w = $outside.outerWidth();
         $inside.css('width', w);
         $single.css('width', w);
-        $single.parents('.a-width-left').css('margin-left', -w);
-        $single.parents('.a-width-right').css('margin-right', -w);
+        $single.parents('.anim-width-left').css('margin-left', -w);
+        $single.parents('.anim-width-right').css('margin-right', -w);
       }
     });
   };
@@ -840,10 +840,10 @@
     // animation out
     $el.each( function() {
       var $single = $(this);
-      if ($single.hasClass('a-width')) {
+      if ($single.hasClass('anim-width')) {
         $single.css('width', 0);
-        $single.parents('.a-width-left').css('margin-left', 0);
-        $single.parents('.a-width-right').css('margin-right', 0);
+        $single.parents('.anim-width-left').css('margin-left', 0);
+        $single.parents('.anim-width-right').css('margin-right', 0);
       }
     });
   };
@@ -853,13 +853,13 @@
     // animation in
     $el.each( function() {
       var $single = $(this);
-      if ($single.hasClass('a-height')) {
+      if ($single.hasClass('anim-height')) {
         object.addWrap($single);
         var $inside = $single.find('> .xt-position');
         var h = $inside.outerHeight();
         $single.css('height', h);
-        $single.parents('.a-height-top').css('margin-top', -h);
-        $single.parents('.a-height-bottom').css('margin-bottom', -h);
+        $single.parents('.anim-height-top').css('margin-top', -h);
+        $single.parents('.anim-height-bottom').css('margin-bottom', -h);
       }
     });
   };
@@ -867,10 +867,10 @@
     // animation out
     $el.each( function() {
       var $single = $(this);
-      if ($single.hasClass('a-height')) {
+      if ($single.hasClass('anim-height')) {
         $single.css('height', 0);
-        $single.parents('.a-height-top').css('margin-top', 0);
-        $single.parents('.a-height-bottom').css('margin-bottom', 0);
+        $single.parents('.anim-height-top').css('margin-top', 0);
+        $single.parents('.anim-height-bottom').css('margin-bottom', 0);
       }
     });
   };
@@ -883,7 +883,7 @@
         var $outside = $single.parent();
         var add = $outside.outerHeight() / 2;
         var remove = $single.outerHeight() / 2;
-        $single.addClass('a-disable').css('top', add - remove);
+        $single.addClass('anim-disable').css('top', add - remove);
       }
     });
   };
@@ -895,7 +895,7 @@
         var $outside = $single.parent();
         var add = $outside.outerWidth() / 2;
         var remove = $single.outerWidth() / 2;
-        $single.addClass('a-disable').css('left', add - remove);
+        $single.addClass('anim-disable').css('left', add - remove);
       }
     });
   };
@@ -917,7 +917,6 @@
     }
     var $inside = $el.find('> .xt-position');
     if ($inside.length) {
-      console.log($inside);
       $inside.contents().unwrap();
     }
   };

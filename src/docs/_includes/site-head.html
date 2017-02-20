@@ -58,7 +58,7 @@
           </div>
         </div>
         
-        <nav class="site-menu overlay full a-custom a-height" id="site-menu">
+        <nav class="site-menu overlay full anim-custom anim-height" id="site-menu">
           <div class="inside">
             <div class="content">
               
@@ -152,7 +152,7 @@
                           <a href="{{ p.url }}" class="button">
                             {{ p.title }}
                           </a>
-                          <div class="site-breadcrumbs-body-sub a-height">
+                          <div class="site-breadcrumbs-body-sub anim-height">
                             {% assign subsorted = site.[collection.label] | where: 'categories', p.title | sort: 'order' %}
                             {% for pa in subsorted %}
                             <a href="{{ pa.url }}" class="button">
