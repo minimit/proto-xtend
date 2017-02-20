@@ -409,7 +409,7 @@ a.button:not(.link) {
 
 /* .anim-default */
 .anim-default {
-  transition: all 300ms cubic-bezier(.63,.36,0,.97);
+  transition: all 300ms cubic-bezier(.63,.36,0,.97), top 1ms, left 1ms; // disable top and left animations
   &.fade-in {
   }
   &.fade-out {

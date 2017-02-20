@@ -595,12 +595,13 @@
   // on and off methods
   //////////////////////
   
-  Xt.prototype.showAfter = function($el, triggered) {
+  Xt.prototype.showAfter = function($elements, triggered) {
     var object = this;
     var settings = this.settings;
     var group = this.group;
     var $group = $(this.group);
     // $content
+    var $el = $elements.slice(0);
     var $content = $el;
     if ($el.hasClass('overlay')) {
       $content = $el.find('.inside .content');
@@ -654,16 +655,17 @@
     }
     // api
     if (!triggered) {
-      $el.trigger('show.xt.done', [object, true]);
+      $el.trigger('fadein.xt.done', [object, true]);
     }
   };
   
-  Xt.prototype.hideAfter = function($el, triggered) {
+  Xt.prototype.hideAfter = function($elements, triggered) {
     var object = this;
     var settings = this.settings;
     var group = this.group;
     var $group = $(this.group);
     // $content
+    var $el = $elements.slice(0);
     var $content = $el;
     if ($el.hasClass('overlay')) {
       $content = $el.find('.inside .content');
@@ -704,7 +706,7 @@
     }
     // api
     if (!triggered) {
-      $el.trigger('hide.xt.done', [object, true]);
+      $el.trigger('fadeout.xt', [object, true]);
     }
   };
   
@@ -713,22 +715,14 @@
     // animationMultiple
     $el.each( function() {
       var $single = $(this);
-      var done = true;
-      $single.data('fade.done', false);
+      var done = 0;
       window.xtCancelAnimationFrame($single.data('frame.timeout'));
       var frame = window.xtRequestAnimationFrame( function() {
         if (add) {
-          $single.removeClass('anim-disable').addClass(add);
+          $single.addClass(add);
         }
-        $single.data('fade.done', true);
         object.animationDelay($single, 'anim', function() {
-          $el.each( function() {
-            if (!$(this).data('fade.done')) {
-              done = false;
-              return done;
-            }
-          });
-          if (!done) {
+          if (++done < $el.length) {
             return false;
           }
           callout.apply(object, [$el, triggered]);
@@ -883,7 +877,7 @@
         var $outside = $single.parent();
         var add = $outside.outerHeight() / 2;
         var remove = $single.outerHeight() / 2;
-        $single.addClass('anim-disable').css('top', add - remove);
+        $single.css('top', add - remove);
       }
     });
   };
@@ -895,7 +889,7 @@
         var $outside = $single.parent();
         var add = $outside.outerWidth() / 2;
         var remove = $single.outerWidth() / 2;
-        $single.addClass('anim-disable').css('left', add - remove);
+        $single.css('left', add - remove);
       }
     });
   };
