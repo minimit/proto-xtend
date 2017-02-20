@@ -198,13 +198,16 @@ a.logo {
 
 /*.site-menu */
 .site-menu.overlay {
+  .overlay-inside {
+    background: $color-primary;
+    color: $color-white;
+  }
   .overlay-content {
     padding-top: 100px;
     padding-bottom: 60px;
     padding-left: 0;
     padding-right: 0;
     background: $color-primary;
-    color: $color-white;
   }
   // content
   .button {

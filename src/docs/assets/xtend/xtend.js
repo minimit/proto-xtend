@@ -192,7 +192,7 @@
         settings.$elements = $(settings.elements).filter(':parents(.xt-ignore)');
       } else {
         settings.$elements = $group.find(settings.elements).filter(':parents(.xt-ignore)');
-        /*
+        /*// @TODO
         if (!settings.$elements.length) {
           settings.$elements = $group.parent().find(settings.elements).filter(':parents(.xt-ignore)');
         }
@@ -234,7 +234,7 @@
         settings.$targets = $(settings.targets).filter(':parents(.xt-ignore)');
       } else {
         settings.$targets = $group.find(settings.targets).filter(':parents(.xt-ignore)').filter(':parents(' + settings.targets + ')');
-        /*
+        /*// @TODO
         if (!settings.$targets.length) {
           settings.$targets = $group.parent().find(settings.targets).filter(':parents(.xt-ignore)');
         }
@@ -335,7 +335,7 @@
       }
       // remove html classes
       settings.$elements.on('xtRemoved', function(e) {
-        if (settings.name === 'xt-overlay') { // also this $group.is('[data-xt-reset]')
+        if (settings.name === 'xt-overlay') { // @TODO $group.is('[data-xt-reset]')
           settings.$targets.remove();
           //object.hide($(this), false, true, true);
         }
@@ -484,11 +484,11 @@
         object.showAfter($elements, triggered);
         var $currents = object.getCurrents();
         $currents = object.setCurrents($currents.pushElement($element));
-        // linked
+        // sync
         if (!isSync) {
           window.xtRequestAnimationFrame( function() {
-            var $linked = $('[data-xt-namespace="' + settings.namespace + '"]').filter(':parents(.xt-ignore)').not($group);
-            $linked.each( function() {
+            var $sync = $('[data-xt-namespace="' + settings.namespace + '"]').filter(':parents(.xt-ignore)').not($group);
+            $sync.each( function() {
               var xt = $(this).data(settings.name);
               xt.show($(this), true, true);
             });
@@ -521,7 +521,7 @@
         // stuff
         if (settings.name === 'xt-overlay') {
           // add paddings
-          object.onFixed($('html, .xt-backdrop')); // $('*:fixed').not($target).add('html')
+          object.onFixed($('html, .xt-backdrop')); // @TODO $('*:fixed').not($target).add('html')
           // activate $additional with $group time
           var $additional = $('html');
           if (!$additional.hasClass(object.defaultClass)) {
@@ -552,11 +552,11 @@
           } else {
             $currents = object.setCurrents($currents.not($element.get(0)));
           }
-          // linked
+          // sync
           if (!isSync) {
             window.xtRequestAnimationFrame( function() {
-              var $linked = $('[data-xt-namespace="' + settings.namespace + '"]').filter(':parents(.xt-ignore)').not($group);
-              $linked.each( function() {
+              var $sync = $('[data-xt-namespace="' + settings.namespace + '"]').filter(':parents(.xt-ignore)').not($group);
+              $sync.each( function() {
                 var xt = $(this).data(settings.name);
                 xt.hide($(this), true, true);
               });
@@ -673,7 +673,7 @@
     } else if ($el.hasClass('overlay')) {
       // close on .overlay-close
       $el.find('.overlay-close').off('click.xt.' + settings.namespace).on('click.xt.' + settings.namespace, function(e) {
-        object.hide(settings.$elements, true, true, true);
+        object.hide(settings.$elements, true, false, true);
       });
     }
     // api
@@ -824,12 +824,12 @@
       });
       // events
       $backdrop.on('click.backdrop.xt', function(e) {
-        object.hide(object.settings.$elements, true, true, true);
+        object.hide(settings.$elements, true, false, true);
       });
       $el.on('click.backdrop.xt', function(e) {
         var $t = $(e.target);
         if ($container.length && $t.is($container)) {
-          object.hide(object.settings.$elements, true, true, true);
+          object.hide(settings.$elements, true, false, true);
         }
       });
     }
