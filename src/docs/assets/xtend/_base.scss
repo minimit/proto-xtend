@@ -269,6 +269,11 @@ html.xt-fixed-horizontal {
   overflow: hidden;
   height: 0;
 }
+.disable-anim,
+.disable-anim .xt-backdrop,
+.xt-disable-anim {
+  transition: none !important;
+}
 
 //////////////////////
 // utils

@@ -200,6 +200,11 @@ html.xt-fixed-horizontal .overlay {
   overflow: hidden;
   height: 0; }
 
+.disable-anim,
+.disable-anim .xt-backdrop,
+.xt-disable-anim {
+  transition: none !important; }
+
 .box {
   position: relative;
   float: left;
@@ -453,7 +458,7 @@ a.button:not(.link):hover, .overlay a.overlay-close:not(.link):hover, a.button:n
   text-transform: uppercase;
   /* variants */
   /* animations */
-  transition: all 300ms cubic-bezier(0.63, 0.36, 0, 0.97), top 1ms, left 1ms; }
+  transition: all 300ms cubic-bezier(0.63, 0.36, 0, 0.97); }
   .button.tiny, .overlay .tiny.overlay-close {
     padding: 4px 8px;
     font-size: 10px; }
@@ -569,8 +574,8 @@ a.button:not(.link):hover, .overlay a.overlay-close:not(.link):hover, a.button:n
     background: #ffffff;
     color: #000000; }
   .drop-target:not([class*=" anim-"]) {
-    transition: all 300ms cubic-bezier(0.63, 0.36, 0, 0.97), top 1ms, left 1ms;
-    transition: all 300ms cubic-bezier(0.63, 0.36, 0, 0.97), top 1ms, left 1ms;
+    transition: all 300ms cubic-bezier(0.63, 0.36, 0, 0.97);
+    transition: all 300ms cubic-bezier(0.63, 0.36, 0, 0.97);
     opacity: 0;
     transform: translateY(-0.618rem) scale(0.95); }
     .drop-target:not([class*=" anim-"]).fade-in {
@@ -617,8 +622,8 @@ a.button:not(.link):hover, .overlay a.overlay-close:not(.link):hover, a.button:n
       background: transparent;
       color: #00B0FF; }
   .overlay .overlay-inside:not([class*=" anim-"]) {
-    transition: all 300ms cubic-bezier(0.63, 0.36, 0, 0.97), top 1ms, left 1ms;
-    transition: all 300ms cubic-bezier(0.63, 0.36, 0, 0.97), top 1ms, left 1ms;
+    transition: all 300ms cubic-bezier(0.63, 0.36, 0, 0.97);
+    transition: all 300ms cubic-bezier(0.63, 0.36, 0, 0.97);
     opacity: 0;
     transform: translateY(-0.618rem) scale(0.95); }
     .overlay .overlay-inside:not([class*=" anim-"]).fade-in {
@@ -628,8 +633,8 @@ a.button:not(.link):hover, .overlay a.overlay-close:not(.link):hover, a.button:n
       opacity: 0;
       transform: translateY(0.618rem) scale(0.95); }
   .overlay.full .overlay-inside:not([class*=" anim-"]) {
-    transition: all 300ms cubic-bezier(0.63, 0.36, 0, 0.97), top 1ms, left 1ms;
-    transition: all 300ms cubic-bezier(0.63, 0.36, 0, 0.97), top 1ms, left 1ms;
+    transition: all 300ms cubic-bezier(0.63, 0.36, 0, 0.97);
+    transition: all 300ms cubic-bezier(0.63, 0.36, 0, 0.97);
     opacity: 0;
     transform: translateY(-0.618rem); }
     .overlay.full .overlay-inside:not([class*=" anim-"]).fade-in {
@@ -644,17 +649,15 @@ a.button:not(.link):hover, .overlay a.overlay-close:not(.link):hover, a.button:n
   /* styles */
   background: #000000;
   /* animations */
-  transition: opacity 300ms;
+  transition: all 300ms cubic-bezier(0.63, 0.36, 0, 0.97);
   opacity: 0; }
   .xt-backdrop.fade-in {
-    opacity: 0.2;
-    transition-timing-function: cubic-bezier(0.63, 0.36, 0, 0.97); }
+    opacity: 0.2; }
   .xt-backdrop.fade-out {
-    opacity: 0;
-    transition-timing-function: cubic-bezier(0.63, 0.36, 0, 0.97); }
+    opacity: 0; }
 
 .anim-horizontal {
-  transition: all 300ms cubic-bezier(0.63, 0.36, 0, 0.97), top 1ms, left 1ms;
+  transition: all 300ms cubic-bezier(0.63, 0.36, 0, 0.97);
   opacity: 0;
   transform: translateX(-0.618rem); }
   .anim-horizontal.fade-in {
@@ -665,7 +668,7 @@ a.button:not(.link):hover, .overlay a.overlay-close:not(.link):hover, a.button:n
     transform: translateX(0.618rem); }
 
 .anim-horizontal-zoom {
-  transition: all 300ms cubic-bezier(0.63, 0.36, 0, 0.97), top 1ms, left 1ms;
+  transition: all 300ms cubic-bezier(0.63, 0.36, 0, 0.97);
   opacity: 0;
   transform: translateX(-0.618rem) scale(0.95); }
   .anim-horizontal-zoom.fade-in {
@@ -676,7 +679,7 @@ a.button:not(.link):hover, .overlay a.overlay-close:not(.link):hover, a.button:n
     transform: translateX(0.618rem) scale(0.95); }
 
 .anim-vertical {
-  transition: all 300ms cubic-bezier(0.63, 0.36, 0, 0.97), top 1ms, left 1ms;
+  transition: all 300ms cubic-bezier(0.63, 0.36, 0, 0.97);
   opacity: 0;
   transform: translateY(-0.618rem); }
   .anim-vertical.fade-in {
@@ -687,7 +690,7 @@ a.button:not(.link):hover, .overlay a.overlay-close:not(.link):hover, a.button:n
     transform: translateY(0.618rem); }
 
 .anim-vertical-zoom {
-  transition: all 300ms cubic-bezier(0.63, 0.36, 0, 0.97), top 1ms, left 1ms;
+  transition: all 300ms cubic-bezier(0.63, 0.36, 0, 0.97);
   opacity: 0;
   transform: translateY(-0.618rem) scale(0.95); }
   .anim-vertical-zoom.fade-in {
@@ -698,7 +701,7 @@ a.button:not(.link):hover, .overlay a.overlay-close:not(.link):hover, a.button:n
     transform: translateY(0.618rem) scale(0.95); }
 
 .anim-diagonal {
-  transition: all 300ms cubic-bezier(0.63, 0.36, 0, 0.97), top 1ms, left 1ms;
+  transition: all 300ms cubic-bezier(0.63, 0.36, 0, 0.97);
   opacity: 0;
   transform: translateX(-0.618rem) translateY(-0.618rem); }
   .anim-diagonal.fade-in {
@@ -709,7 +712,7 @@ a.button:not(.link):hover, .overlay a.overlay-close:not(.link):hover, a.button:n
     transform: translateX(0.618rem) translateY(0.618rem); }
 
 .anim-left {
-  transition: all 300ms cubic-bezier(0.63, 0.36, 0, 0.97), top 1ms, left 1ms;
+  transition: all 300ms cubic-bezier(0.63, 0.36, 0, 0.97);
   opacity: 0;
   transform: translateX(0.618rem); }
   .anim-left.fade-in {
@@ -720,7 +723,7 @@ a.button:not(.link):hover, .overlay a.overlay-close:not(.link):hover, a.button:n
     transform: translateX(0.618rem); }
 
 .anim-right {
-  transition: all 300ms cubic-bezier(0.63, 0.36, 0, 0.97), top 1ms, left 1ms;
+  transition: all 300ms cubic-bezier(0.63, 0.36, 0, 0.97);
   opacity: 0;
   transform: translateX(-0.618rem); }
   .anim-right.fade-in {
@@ -731,7 +734,7 @@ a.button:not(.link):hover, .overlay a.overlay-close:not(.link):hover, a.button:n
     transform: translateX(-0.618rem); }
 
 .anim-top {
-  transition: all 300ms cubic-bezier(0.63, 0.36, 0, 0.97), top 1ms, left 1ms;
+  transition: all 300ms cubic-bezier(0.63, 0.36, 0, 0.97);
   opacity: 0;
   transform: translateY(-0.618rem); }
   .anim-top.fade-in {
@@ -742,7 +745,7 @@ a.button:not(.link):hover, .overlay a.overlay-close:not(.link):hover, a.button:n
     transform: translateY(-0.618rem); }
 
 .anim-bottom {
-  transition: all 300ms cubic-bezier(0.63, 0.36, 0, 0.97), top 1ms, left 1ms;
+  transition: all 300ms cubic-bezier(0.63, 0.36, 0, 0.97);
   opacity: 0;
   transform: translateY(0.618rem); }
   .anim-bottom.fade-in {
@@ -755,13 +758,13 @@ a.button:not(.link):hover, .overlay a.overlay-close:not(.link):hover, a.button:n
 /* .anim-height and .anim-width */
 .anim-height,
 .anim-width {
-  transition: all 300ms cubic-bezier(0.63, 0.36, 0, 0.97), top 1ms, left 1ms; }
+  transition: all 300ms cubic-bezier(0.63, 0.36, 0, 0.97); }
 
 .anim-width-left,
 .anim-width-right,
 .anim-height-top,
 .anim-height-bottom {
-  transition: all 300ms cubic-bezier(0.63, 0.36, 0, 0.97), top 1ms, left 1ms; }
+  transition: all 300ms cubic-bezier(0.63, 0.36, 0, 0.97); }
 
 .button.color-primary:hover, .overlay .color-primary.overlay-close:hover, .button.color-primary:active, .overlay .color-primary.overlay-close:active, .button.color-primary.active, .overlay .color-primary.active.overlay-close {
   border: 1px solid #000000; }

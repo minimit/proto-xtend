@@ -9,6 +9,7 @@
 @import "_mixins.scss";
 @import "_vars.scss";
 @import "_base.scss";
+@import "_anim.scss";
 
 // override variables
 
@@ -434,15 +435,13 @@ a.button:not(.link) {
   /* styles */
   background: $color-black;
   /* animations */
-  transition: opacity 300ms;
+  @include transition-default;
   opacity: 0;
   &.fade-in {
     opacity: 0.2;
-    transition-timing-function: cubic-bezier(.63,.36,0,.97);
   }
   &.fade-out {
     opacity: 0;
-    transition-timing-function: cubic-bezier(.63,.36,0,.97);
   }
 }
 

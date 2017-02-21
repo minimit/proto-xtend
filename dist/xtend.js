@@ -758,7 +758,7 @@
       window.xtCancelAnimationFrame($single.data('frame.timeout'));
       var frame = window.xtRequestAnimationFrame( function() {
         if (add) {
-          $single.addClass(add);
+          $single.removeClass('xt-disable-anim').addClass(add);
         }
         object.animationDelay($single, 'anim', function() {
           if (++done < $el.length) {
@@ -921,7 +921,7 @@
         var $outside = $single.parent();
         var add = $outside.outerHeight() / 2;
         var remove = $single.outerHeight() / 2;
-        $single.css('top', add - remove);
+        $single.addClass('xt-disable-anim').css('top', add - remove);
       }
     });
   };
@@ -933,7 +933,7 @@
         var $outside = $single.parent();
         var add = $outside.outerWidth() / 2;
         var remove = $single.outerWidth() / 2;
-        $single.css('left', add - remove);
+        $single.addClass('xt-disable-anim').css('left', add - remove);
       }
     });
   };
