@@ -108,14 +108,19 @@ a, button {
 //////////////////////
 
 .drop {
-  display: inline-block;
   position: relative;
 }
 .drop-target {
-  display: flex;
-  flex-wrap: wrap;
   position: absolute;
   z-index: 110;
+  /* content */
+  .button,
+  .drop {
+    float: left;
+    width: 100%;
+    text-align: left;
+    white-space: nowrap;
+  }
   /* before and after */
   &.before {
     left: auto;
@@ -167,12 +172,6 @@ a, button {
   }
   &.max-width {
     overflow-x: auto;
-  }
-  /* content */
-  .button {
-    width: 100%;
-    text-align: left;
-    white-space: nowrap;
   }
 }
 

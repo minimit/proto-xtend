@@ -81,19 +81,22 @@ a, button {
     overflow: hidden; }
 
 .drop {
-  display: inline-block;
   position: relative; }
 
 .drop-target {
-  display: flex;
-  flex-wrap: wrap;
   position: absolute;
   z-index: 110;
+  /* content */
   /* before and after */
   /* left and right */
   /* middle */
-  /* dimensions */
-  /* content */ }
+  /* dimensions */ }
+  .drop-target .button, .drop-target .overlay .overlay-close, .overlay .drop-target .overlay-close,
+  .drop-target .drop {
+    float: left;
+    width: 100%;
+    text-align: left;
+    white-space: nowrap; }
   .drop-target.before {
     left: auto;
     right: 100%; }
@@ -125,10 +128,6 @@ a, button {
     overflow-y: auto; }
   .drop-target.max-width {
     overflow-x: auto; }
-  .drop-target .button, .drop-target .overlay .overlay-close, .overlay .drop-target .overlay-close {
-    width: 100%;
-    text-align: left;
-    white-space: nowrap; }
 
 .overlay {
   position: fixed;
@@ -559,15 +558,16 @@ a.button:not(.link):hover, .overlay a.overlay-close:not(.link):hover, a.button:n
       margin-bottom: 2.619rem; }
 
 .drop-target {
-  /* styles */
-  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  /* content */
   /* dimensions */
   /* positions */
-  padding: 0.618rem 0;
   /* variants */
   /* animations */ }
-  .drop-target > * {
+  .drop-target .drop-inner {
+    padding: 0.618rem 0;
+    -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); }
+  .drop-target .button, .drop-target .overlay .overlay-close, .overlay .drop-target .overlay-close {
     padding-left: 20px !important;
     padding-right: 40px !important; }
   .drop-target.max-height {
@@ -575,16 +575,16 @@ a.button:not(.link):hover, .overlay a.overlay-close:not(.link):hover, a.button:n
   .drop-target.max-width {
     max-width: 225px; }
   .drop-target.before, .drop-target.after {
-    margin: 0 0.618rem; }
+    padding: 0 0.618rem; }
   .drop-target.left, .drop-target, .drop-target.right {
-    margin: 0.618rem 0; }
-  .drop-target.primary {
+    padding: 0.618rem 0; }
+  .drop-target.primary .drop-inner {
     background: #00B0FF;
     color: #ffffff; }
-  .drop-target.secondary {
+  .drop-target.secondary .drop-inner {
     background: #e6e6e6;
     color: #000000; }
-  .drop-target.light, .drop-target {
+  .drop-target.light .drop-inner, .drop-target .drop-inner {
     background: #ffffff;
     color: #000000; }
   .drop-target:not([class*=" anim-"]) {

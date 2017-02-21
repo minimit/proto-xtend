@@ -233,7 +233,9 @@
       if (settings.targets.indexOf('#') !== -1) {
         settings.$targets = $(settings.targets).filter(':parents(.xt-ignore)');
       } else {
-        settings.$targets = $group.find(settings.targets).filter(':parents(.xt-ignore)').filter(':parents(' + settings.targets + ')');
+        var $t = $group.find(settings.targets);
+        var $tinner = $t.find(settings.targets);
+        settings.$targets = $t.not($tinner).filter(':parents(.xt-ignore)');
         /*// @TODO
         if (!settings.$targets.length) {
           settings.$targets = $group.parent().find(settings.targets).filter(':parents(.xt-ignore)');
@@ -319,7 +321,7 @@
     var $group = $(this.group);
     // $elements events
     var $et = settings.$elements.slice(0);
-    if ($group.hasClass('drop')) {
+    if ($group.hasClass('drop') && settings.off === 'mouseleave') {
       $et = $et.pushElement(settings.$targets);
     }
     if ($et) {

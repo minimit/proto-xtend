@@ -300,10 +300,13 @@ a.button:not(.link) {
 //////////////////////
 
 .drop-target {
-  /* styles */
-  -webkit-box-shadow: 0 0 5px rgba($color-black, 0.2);
-  box-shadow: 0 0 5px rgba($color-black, 0.2);
-  > * {
+  /* content */
+  .drop-inner {
+    padding: 0.618rem 0;
+    -webkit-box-shadow: 0 0 5px rgba($color-black, 0.2);
+    box-shadow: 0 0 5px rgba($color-black, 0.2);
+  }
+  .button {
     padding-left: 20px !important;
     padding-right: 40px !important;
   }
@@ -317,34 +320,39 @@ a.button:not(.link) {
   /* positions */
   @extend .drop-target.bottom; // default
   @extend .drop-target.left; // default
-  padding: 0.618rem 0;
   &.before,
   &.after {
-    margin: 0 0.618rem;
+    padding: 0 0.618rem;
   }
   &.left,
   &.right {
-    margin: 0.618rem 0;
+    padding: 0.618rem 0;
   }
   /* variants */
   @extend .drop-target.light; // default
   &.primary {
-    background: $color-primary;
-    color: $color-white;
+    .drop-inner {
+      background: $color-primary;
+      color: $color-white;
+    }
     .button {
       @extend .button.primary;
     }
   }
   &.secondary {
-    background: darken($color-white, 10%);
-    color: $color-black;
+    .drop-inner {
+      background: darken($color-white, 10%);
+      color: $color-black;
+    }
     .button {
       @extend .button.secondary;
     }
   }
   &.light {
-    background: $color-white;
-    color: $color-black;
+    .drop-inner {
+      background: $color-white;
+      color: $color-black;
+    }
     .button {
       @extend .button.light;
     }
