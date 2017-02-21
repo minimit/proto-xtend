@@ -318,10 +318,14 @@
     var group = this.group;
     var $group = $(this.group);
     // $elements events
-    if (settings.$elements) {
+    var $et = settings.$elements.slice(0);
+    if ($group.hasClass('drop')) {
+      $et = $et.pushElement(settings.$targets);
+    }
+    if ($et) {
       // on off events
       if (settings.on) {
-        settings.$elements.off(settings.on).on(settings.on, function(e) {
+        $et.off(settings.on).on(settings.on, function(e) {
           object.toggle($(this));
           if (settings.name === 'xt-ajax') {
             e.preventDefault();
@@ -329,24 +333,24 @@
         });
       }
       if (settings.off) {
-        settings.$elements.off(settings.off).on(settings.off, function(e) {
+        $et.off(settings.off).on(settings.off, function(e) {
           object.toggle($(this));
         });
       }
       // remove html classes
-      settings.$elements.on('xtRemoved', function(e) {
+      $et.off('xtRemoved').on('xtRemoved', function(e) {
         if (settings.name === 'xt-overlay') { // @TODO $group.is('[data-xt-reset]')
           settings.$targets.remove();
           //object.hide($(this), false, true, true);
         }
       });
       // api
-      settings.$elements.on('show.xt', function(e, obj, triggered) {
+      $et.off('show.xt').on('show.xt', function(e, obj, triggered) {
         if (!triggered && e.target === this) {
           object.show($(this), true);
         }
       });
-      settings.$elements.on('hide.xt', function(e, obj, triggered) {
+      $et.off('hide.xt').on('hide.xt', function(e, obj, triggered) {
         if (!triggered && e.target === this) {
           object.hide($(this), true);
         }
@@ -355,8 +359,7 @@
     // ajax events
     if (settings.name === 'xt-ajax') {
       // popstate
-      $(window).off('popstate.xt.' + settings.namespace);
-      $(window).on('popstate.xt.' + settings.namespace, function(e) {
+      $(window).off('popstate.xt.' + settings.namespace).on('popstate.xt.' + settings.namespace, function(e) {
         if (history.state && history.state.url) {
           object.ajax(history.state.url, history.state.title);
         }
@@ -480,7 +483,7 @@
     if ($element) {
       // show and add in $currents
       if (!$element.hasClass(object.defaultClass)) {
-        var $elements = object.getElements(settings.$elements, $element);
+        var $elements = object.getIndexed(settings.$elements, $element, settings.$elements);
         object.showAfter($elements, triggered);
         var $currents = object.getCurrents();
         $currents = object.setCurrents($currents.pushElement($element));
@@ -515,7 +518,7 @@
     }
     // activate $target
     if (settings.$targets) {
-      var $target = object.getTargets(settings.$elements, $element, settings.$targets);
+      var $target = object.getIndexed(settings.$elements, $element, settings.$targets);
       if (!$target.hasClass(object.defaultClass)) {
         object.showAfter($target, triggered);
         // stuff
@@ -545,12 +548,12 @@
       var $currents = object.getCurrents();
       if ($element.hasClass(object.defaultClass)) {
         if (isSync || settings.name === 'xt-ajax' || $currents.length > settings.min) {
-          var $elements = object.getElements(settings.$elements, $element);
+          var $elements = object.getIndexed(settings.$elements, $element, settings.$elements);
           object.hideAfter($elements, triggered);
           if ($element.attr('data-group')) {
             $currents = object.setCurrents($currents.not('[data-group=' + $element.attr('data-group') + ']'));
           } else {
-            $currents = object.setCurrents($currents.not($element.get(0)));
+            $currents = object.setCurrents($currents.not($elements));
           }
           // sync
           if (!isSync) {
@@ -573,7 +576,7 @@
     }
     // deactivate $target
     if (settings.$targets) {
-      var $target = object.getTargets(settings.$elements, $element, settings.$targets);
+      var $target = object.getIndexed(settings.$elements, $element, settings.$targets);
       if ($target.hasClass(object.defaultClass)) {
         object.hideAfter($target, triggered);
         // stuff
@@ -708,7 +711,7 @@
     // $anim
     var $el = $elements.slice(0);
     var $anim = $el;
-    if ($el.hasClass('overlay')) {
+    if (settings.anim) {
       $anim = $el.find(settings.anim);
       $el = $el.pushElement($anim);
     }
@@ -814,7 +817,7 @@
     if ($position.length) {
       var $backdrop = $position.find('> .xt-backdrop');
       if (!$backdrop.length) {
-        $backdrop = $('<div class="xt-backdrop"></div>').appendTo($position);
+        $backdrop = $('<div class="xt-backdrop xt-ignore"></div>').appendTo($position);
       }
       // animations
       object.animationDelayClear($backdrop, 'backdrop');
@@ -983,40 +986,25 @@
     return $currents;
   };
   
-  Xt.prototype.getElements = function($elements, $element) {
+  Xt.prototype.getIndexed = function($elements, $el, $g) {
     var object = this;
     var settings = this.settings;
     var group = this.group;
     var $group = $(this.group);
-    // $elements and $element
-    if ($elements.is($group)) {
-      return $elements;
-    } else if ($element.is('[data-group]')) {
-      // with [data-group]
-      var g = $element.attr('data-group');
-      return $elements.filter('[data-group="' + g + '"]');
-    } else {
-      // without [data-group]
-      return $element;
-    }
-  };
-  
-  Xt.prototype.getTargets = function($elements, $element, $g) {
-    var object = this;
-    var settings = this.settings;
-    var group = this.group;
-    var $group = $(this.group);
-    // targets from $elements and $element
+    // $elements and $el
     if ($elements.is($group)) {
       return $g;
-    } else if ($element.is('[data-group]')) {
+    } else if ($el.is('[data-group]')) {
       // with [data-group]
-      var g = $element.attr('data-group');
+      var g = $el.attr('data-group');
       return $g.filter('[data-group="' + g + '"]');
     } else {
-      // without [data-group]
-      var index = object.getIndex($elements.not('[data-group]'), $element);
-      return $g.not('[data-group]').eq(index);
+      if (settings.$targets.has($g)) {
+        var index = object.getIndex($elements.not('[data-group]'), $el);
+        return $g.not('[data-group]').eq(index);
+      } else {
+        return $el;
+      }
     }
   };
   

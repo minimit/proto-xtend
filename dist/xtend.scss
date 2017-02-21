@@ -317,14 +317,14 @@ a.button:not(.link) {
   /* positions */
   @extend .drop-target.bottom; // default
   @extend .drop-target.left; // default
-  padding: 10px 0;
+  padding: 0.618rem 0;
   &.before,
   &.after {
-    margin: 0 10px;
+    margin: 0 0.618rem;
   }
   &.left,
   &.right {
-    margin: 10px 0;
+    margin: 0.618rem 0;
   }
   /* variants */
   @extend .drop-target.light; // default

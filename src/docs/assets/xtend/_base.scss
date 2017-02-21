@@ -248,6 +248,13 @@ a, button {
   width: 100%;
   height: 100%;
 }
+.backdrop-over {
+  &.active,
+  &.fade-out {
+    position: relative;
+    z-index: 110;
+  }
+}
 
 /* .xt-fixed */
 html.xt-fixed-vertical {
