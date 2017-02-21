@@ -370,14 +370,14 @@ a.button:not(.link) {
 
 .overlay {
   /* styles */
-  .overlay-inside {
+  .overlay-inner {
     padding: 15px; // empty space outside overlay
   }
   .overlay-content {
     background: $color-white;
   }
   &.full {
-    .overlay-inside {
+    .overlay-inner {
       padding: 0;
       background: $color-white;
     }
@@ -436,12 +436,12 @@ a.button:not(.link) {
     }
   }
   /* animations */
-  .overlay-inside:not([class*=" anim-"]) {
+  .overlay-inner:not([class*=" anim-"]) {
     @include transition-default;
     @include anim-vertical-zoom;
   }
   &.full {
-    .overlay-inside:not([class*=" anim-"]) {
+    .overlay-inner:not([class*=" anim-"]) {
       @include transition-default;
       @include anim-vertical;
     }

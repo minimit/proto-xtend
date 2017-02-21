@@ -52,8 +52,8 @@
       'class': 'active',
       'min': 0,
       'max': 1,
-      'anim': '.overlay-inside',
-      'backdrop': '.overlay-inside',
+      'anim': '.overlay-inner',
+      'backdrop': '.overlay-inner',
     };
     return this.each( function() {
       if (!$.data(this, defaults.name)) {

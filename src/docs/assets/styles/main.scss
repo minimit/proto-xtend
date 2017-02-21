@@ -198,7 +198,7 @@ a.logo {
 
 /*.site-menu */
 .site-menu.overlay {
-  .overlay-inside {
+  .overlay-inner {
     background: $color-primary;
     color: $color-white;
   }
@@ -854,6 +854,7 @@ html.fade-out {
     .site-header-top {
       position: absolute;
       top: 0;
+      left: 0;
       width: 100%;
     }
   }
