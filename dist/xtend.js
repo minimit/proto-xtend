@@ -461,32 +461,32 @@
   // toggle methods
   //////////////////////
 
-  Xt.prototype.toggle = function($element, triggered, isSync, skipState) {
+  Xt.prototype.toggle = function($el, triggered, isSync, skipState) {
     var object = this;
     var settings = this.settings;
     var group = this.group;
     var $group = $(this.group);
     // choose based on state
-    if (!$element.hasClass(object.defaultClass)) {
-      object.show($element, triggered, isSync, skipState);
+    if (!$el.hasClass(object.defaultClass)) {
+      object.show($el, triggered, isSync, skipState);
     } else {
-      object.hide($element, triggered, isSync, skipState);
+      object.hide($el, triggered, isSync, skipState);
     }
   };
   
-  Xt.prototype.show = function($element, triggered, isSync, skipState) {
+  Xt.prototype.show = function($el, triggered, isSync, skipState) {
     var object = this;
     var settings = this.settings;
     var group = this.group;
     var $group = $(this.group);
-    // activate $element
-    if ($element) {
+    // activate
+    if ($el) {
       // show and add in $currents
-      if (!$element.hasClass(object.defaultClass)) {
-        var $elements = object.getIndexed(settings.$elements, $element, settings.$elements);
+      if (!$el.hasClass(object.defaultClass)) {
+        var $elements = object.getIndexed(settings.$elements, $el, settings.$elements);
         object.showAfter($elements, triggered);
         var $currents = object.getCurrents();
-        $currents = object.setCurrents($currents.pushElement($element));
+        $currents = object.setCurrents($currents.pushElement($el));
         // sync
         if (!isSync) {
           window.xtRequestAnimationFrame( function() {
@@ -500,12 +500,12 @@
         // control over activated
         if (settings.name === 'xt-ajax') {
           // [disabled]
-          object.checkDisabled($element, 'disable');
+          object.checkDisabled($el, 'disable');
           // ajax
-          object.ajax($element.attr('href'));
+          object.ajax($el.attr('href'));
         } else {
           // [disabled]
-          object.checkDisabled($element);
+          object.checkDisabled($el);
           // hide max or differents
           if (!isSync) {
             if ($currents.length > settings.max) {
@@ -518,7 +518,7 @@
     }
     // activate $target
     if (settings.$targets) {
-      var $target = object.getIndexed(settings.$elements, $element, settings.$targets);
+      var $target = object.getIndexed(settings.$elements, $el, settings.$targets);
       if (!$target.hasClass(object.defaultClass)) {
         object.showAfter($target, triggered);
         // stuff
@@ -538,20 +538,20 @@
     }
   };
   
-  Xt.prototype.hide = function($element, triggered, isSync, skipState) {
+  Xt.prototype.hide = function($el, triggered, isSync, skipState) {
     var object = this;
     var settings = this.settings;
     var group = this.group;
     var $group = $(this.group);
-    // deactivate $element
-    if ($element) {
+    // deactivate
+    if ($el) {
       var $currents = object.getCurrents();
-      if ($element.hasClass(object.defaultClass)) {
+      if ($el.hasClass(object.defaultClass)) {
         if (isSync || settings.name === 'xt-ajax' || $currents.length > settings.min) {
-          var $elements = object.getIndexed(settings.$elements, $element, settings.$elements);
+          var $elements = object.getIndexed(settings.$elements, $el, settings.$elements);
           object.hideAfter($elements, triggered);
-          if ($element.attr('data-group')) {
-            $currents = object.setCurrents($currents.not('[data-group=' + $element.attr('data-group') + ']'));
+          if ($el.attr('data-group')) {
+            $currents = object.setCurrents($currents.not('[data-group=' + $el.attr('data-group') + ']'));
           } else {
             $currents = object.setCurrents($currents.not($elements));
           }
@@ -568,15 +568,15 @@
         }
         // [disabled]
         if (isSync || settings.name === 'xt-ajax') {
-          object.checkDisabled($element, 'enable');
+          object.checkDisabled($el, 'enable');
         } else {
-          object.checkDisabled($element);
+          object.checkDisabled($el);
         }
       }
     }
     // deactivate $target
     if (settings.$targets) {
-      var $target = object.getIndexed(settings.$elements, $element, settings.$targets);
+      var $target = object.getIndexed(settings.$elements, $el, settings.$targets);
       if ($target.hasClass(object.defaultClass)) {
         object.hideAfter($target, triggered);
         // stuff
@@ -1028,11 +1028,11 @@
     $el.removeClass('xt-fixed-vertical').css('padding-right', 0).css('background-clip', '');
   };
   
-  Xt.prototype.getIndex = function($elements, $element) {
+  Xt.prototype.getIndex = function($elements, $el) {
     var index = 0;
-    if ($elements && $element) {
+    if ($elements && $el) {
       $elements.each( function(i) {
-        if ($(this).is($element.get(0))) {
+        if ($(this).is($el.get(0))) {
           index = i;
           return false;
         }
