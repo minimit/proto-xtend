@@ -607,6 +607,9 @@ a.button:not(.link):hover, .overlay a.overlay-close:not(.link):hover, a.button:n
   .overlay.full .overlay-inside {
     padding: 0;
     background: #ffffff; }
+  .overlay.full .overlay-content {
+    padding: 40px;
+    max-width: inherit; }
   .overlay.tiny .overlay-content {
     padding: 40px;
     max-width: 310px; }
@@ -621,7 +624,7 @@ a.button:not(.link):hover, .overlay a.overlay-close:not(.link):hover, a.button:n
     max-width: 910px; }
   .overlay.giant .overlay-content {
     padding: 40px;
-    max-width: inherit; }
+    max-width: 1110px; }
   .overlay .overlay-close {
     width: 50px;
     height: 50px;

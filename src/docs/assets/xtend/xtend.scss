@@ -376,6 +376,13 @@ a.button:not(.link) {
   }
   /* sizes */
   @extend .overlay.medium; // default
+  &.full {
+    // default
+    .overlay-content {
+      padding: 40px;
+      max-width: inherit;
+    }
+  }
   &.tiny {
     .overlay-content {
       padding: 40px;
@@ -403,7 +410,7 @@ a.button:not(.link) {
   &.giant {
     .overlay-content {
       padding: 40px;
-      max-width: inherit;
+      max-width: 1110px;
     }
   }
   /* .close */
