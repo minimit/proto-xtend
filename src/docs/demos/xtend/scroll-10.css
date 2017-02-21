@@ -208,9 +208,9 @@ html.xt-fixed-horizontal .overlay {
   overflow: hidden;
   height: 0; }
 
-.disable-anim,
-.disable-anim .xt-backdrop,
-.xt-disable-anim {
+.no-anim,
+.no-anim .xt-backdrop,
+.xt-no-anim {
   transition: none !important; }
 
 .box {
