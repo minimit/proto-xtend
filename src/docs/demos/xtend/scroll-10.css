@@ -92,6 +92,7 @@ a, button {
   /* before and after */
   /* left and right */
   /* middle */
+  /* dimensions */
   /* content */ }
   .drop-target.before {
     left: auto;
@@ -120,6 +121,10 @@ a, button {
   .drop-target.middle {
     margin-top: 0 !important;
     margin-bottom: 0 !important; }
+  .drop-target.max-height {
+    overflow-y: auto; }
+  .drop-target.max-width {
+    overflow-x: auto; }
   .drop-target .button, .drop-target .overlay .overlay-close, .overlay .drop-target .overlay-close {
     width: 100%;
     text-align: left;
@@ -553,6 +558,7 @@ a.button:not(.link):hover, .overlay a.overlay-close:not(.link):hover, a.button:n
   /* styles */
   -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  /* dimensions */
   /* positions */
   padding: 10px 0;
   /* variants */
@@ -560,6 +566,10 @@ a.button:not(.link):hover, .overlay a.overlay-close:not(.link):hover, a.button:n
   .drop-target > * {
     padding-left: 20px !important;
     padding-right: 40px !important; }
+  .drop-target.max-height {
+    max-height: 225px; }
+  .drop-target.max-width {
+    max-width: 225px; }
   .drop-target.before, .drop-target.after {
     margin: 0 10px; }
   .drop-target.left, .drop-target, .drop-target.right {

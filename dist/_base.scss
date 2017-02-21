@@ -161,6 +161,13 @@ a, button {
     margin-top: 0 !important;
     margin-bottom: 0 !important;
   }
+  /* dimensions */
+  &.max-height {
+    overflow-y: auto;
+  }
+  &.max-width {
+    overflow-x: auto;
+  }
   /* content */
   .button {
     width: 100%;
