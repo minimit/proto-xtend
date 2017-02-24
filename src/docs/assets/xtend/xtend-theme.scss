@@ -162,6 +162,27 @@ a.button:not(.link) {
   @extend .button.medium; // default
   line-height: 1.238;
   &.tiny {
+    font-size: 0.66rem;
+    padding: .625em .875em;
+  }
+  &.small {
+    font-size: 0.73rem;
+    padding: .625em .875em;
+  }
+  &.medium {
+    font-size: 0.8rem;
+    padding: .625em .875em;
+  }
+  &.large {
+    font-size: 0.86rem;
+    padding: .625em .875em;
+  }
+  &.giant {
+    font-size: 1rem;
+    padding: .625em .875em;
+  }
+  /*
+  &.tiny {
     padding: 4px 8px;
     font-size: 10px;
   }
@@ -180,10 +201,14 @@ a.button:not(.link) {
   &.giant {
     padding: 12px 16px;
     font-size: 14px;
-  }
+  }*/
   &.wide {
-    padding-left: 2em;
-    padding-right: 2em;
+    padding-left: 1.625em;
+    padding-right: 1.625em;
+  }
+  &.tall {
+    padding-top: 1em;
+    padding-bottom: 1em;
   }
   /* styles */
   border: 0;
