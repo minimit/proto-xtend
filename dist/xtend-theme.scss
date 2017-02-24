@@ -246,7 +246,9 @@ a.button:not(.link) {
     }
   }
   /* animations */
-  @include transition-default;
+  &:not([class*=" anim-"]) {
+    @include transition-default;
+  }
 }
 
 //////////////////////
@@ -485,12 +487,14 @@ a.button:not(.link) {
   /* styles */
   background: $color-black;
   /* animations */
-  @include transition-default;
-  opacity: 0;
-  &.fade-in {
-    opacity: 0.2;
-  }
-  &.fade-out {
+  &:not([class*=" anim-"]) {
+    @include transition-default;
     opacity: 0;
+    &.fade-in {
+      opacity: 0.2;
+    }
+    &.fade-out {
+      opacity: 0;
+    }
   }
 }

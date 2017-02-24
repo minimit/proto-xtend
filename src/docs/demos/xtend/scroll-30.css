@@ -590,8 +590,7 @@ a.button:not(.link):hover, .overlay a.overlay-close:not(.link):hover, a.button:n
   letter-spacing: 0.5px;
   text-transform: uppercase;
   /* variants */
-  /* animations */
-  transition: all 300ms cubic-bezier(0.63, 0.36, 0, 0.97); }
+  /* animations */ }
   .button.tiny, .overlay .tiny.overlay-close {
     font-size: 0.66rem;
     padding: .625em .875em; }
@@ -631,6 +630,8 @@ a.button:not(.link):hover, .overlay a.overlay-close:not(.link):hover, a.button:n
     .button.light:hover, .drop-target .button:hover, .drop-target .overlay .overlay-close:hover, .overlay .drop-target .overlay-close:hover, .overlay .light.overlay-close:hover, .button.light:active, .drop-target .button:active, .drop-target .overlay .overlay-close:active, .overlay .drop-target .overlay-close:active, .overlay .light.overlay-close:active, .button.light.active, .drop-target .active.button, .drop-target .overlay .active.overlay-close, .overlay .drop-target .active.overlay-close, .overlay .light.active.overlay-close {
       background: rgba(0, 176, 255, 0.1);
       color: #00B0FF; }
+  .button:not([class*=" anim-"]), .overlay .overlay-close:not([class*=" anim-"]) {
+    transition: all 300ms cubic-bezier(0.63, 0.36, 0, 0.97); }
 
 .spacer {
   /* alignment */
@@ -793,13 +794,14 @@ a.button:not(.link):hover, .overlay a.overlay-close:not(.link):hover, a.button:n
 .xt-backdrop {
   /* styles */
   background: #000000;
-  /* animations */
-  transition: all 300ms cubic-bezier(0.63, 0.36, 0, 0.97);
-  opacity: 0; }
-  .xt-backdrop.fade-in {
-    opacity: 0.2; }
-  .xt-backdrop.fade-out {
+  /* animations */ }
+  .xt-backdrop:not([class*=" anim-"]) {
+    transition: all 300ms cubic-bezier(0.63, 0.36, 0, 0.97);
     opacity: 0; }
+    .xt-backdrop:not([class*=" anim-"]).fade-in {
+      opacity: 0.2; }
+    .xt-backdrop:not([class*=" anim-"]).fade-out {
+      opacity: 0; }
 
 .card[data-xt-scroll] .show-scroll {
   display: none; }
