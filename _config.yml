@@ -30,8 +30,3 @@ defaults:
     values:
       layout: sidebar
       
-# Dependencies
-highlighter: rouge
-markdown: kramdown
-kramdown:
-  auto_ids: true
