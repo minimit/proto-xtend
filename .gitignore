@@ -1,7 +1,6 @@
-.idea
+/.idea
+/docs
 .DS_store
 Thumbs.db
 Gemfile.lock
 node_modules
-
-/docs
