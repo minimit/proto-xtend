@@ -3,15 +3,18 @@
 @license MIT (https://github.com/minimit/xtend/blob/master/LICENSE) */
 
 //////////////////////
+// variables
+//////////////////////
+
+//$color-primary: #ff0000;
+
+//////////////////////
 // imports
 //////////////////////
 
 @import "_mixins.scss";
-@import "_vars.scss";
 @import "_base.scss";
-@import "_anim.scss";
-
-// override variables
+@import "_animations.scss";
 
 //////////////////////
 // structure
@@ -449,7 +452,7 @@ a.button:not(.link) {
 }
 
 //////////////////////
-// plugin
+// Others
 //////////////////////
 
 /* .xt-backdrop */
@@ -465,48 +468,4 @@ a.button:not(.link) {
   &.fade-out {
     opacity: 0;
   }
-}
-
-//////////////////////
-// animations
-//////////////////////
-
-.anim-horizontal {
-  @include anim-horizontal;
-}
-.anim-horizontal-zoom {
-  @include anim-horizontal-zoom;
-}
-.anim-vertical {
-  @include anim-vertical;
-}
-.anim-vertical-zoom {
-  @include anim-vertical-zoom;
-}
-.anim-diagonal {
-  @include anim-diagonal;
-}
-.anim-left {
-  @include anim-left;
-}
-.anim-right {
-  @include anim-right;
-}
-.anim-top {
-  @include anim-top;
-}
-.anim-bottom {
-  @include anim-bottom;
-}
-
-/* .anim-height and .anim-width */
-.anim-height,
-.anim-width {
-  @include transition-default;
-}
-.anim-width-left,
-.anim-width-right,
-.anim-height-top,
-.anim-height-bottom {
-  @include transition-default;
 }

@@ -19,7 +19,7 @@
     "url": ""
   },
   "moduleType": "globals",
-  "main": ["/dist/xtend.scss", "/dist/_anim.scss", "/dist/_base.scss", "/dist/_mixins.scss", "/dist/_vars.scss", "/dist/xtend.min.css", "/dist/xtend.js", "/dist/xtend.min.js"],
+  "main": ["/dist/xtend-theme.scss", "/dist/_animations.scss", "/dist/_base.scss", "/dist/_mixins.scss", "/dist/xtend-theme.min.css", "/dist/xtend.js", "/dist/xtend.min.js"],
   "dependencies": {
     "jquery": "^3"
   },

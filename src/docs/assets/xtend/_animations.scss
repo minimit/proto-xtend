@@ -1,118 +1,26 @@
 //////////////////////
-// ratios
-//////////////////////
-
-/* ratios
-0.618
-0.809
-1
-1.238
-2.619
-3.224
-*/
-
-//////////////////////
-// colors
-//////////////////////
-
-$color-primary: #00B0FF !default;
-$color-primary-75: rgba($color-primary, 0.75) !default;
-$color-primary-25: lighten($color-primary, 25%) !default;
-
-$color-text: #000000 !default;
-$color-text-75: lighten($color-text, 75%) !default;
-
-$color-background: #ffffff !default;
-
-$color-white: #ffffff !default;
-$color-white-75: rgba($color-white, 0.75) !default;
-$color-white-50: rgba($color-white, 0.5) !default;
-
-$color-grey: #f8f8f8 !default;
-
-$color-black: #000000 !default;
-$color-black-75: rgba($color-white, 0.75) !default;
-
-//////////////////////
-// fonts
-//////////////////////
-
-// usage: @include font(sans-regular);
-$xt-fonts: (
-  sans-light: (
-    font-family: unquote('"Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif'),
-    font-weight: 300,
-    font-style: normal,
-  ),
-  sans-regular: (
-    font-family: unquote('"Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif'),
-    font-weight: 400,
-    font-style: normal,
-  ),
-  sans-medium: (
-    font-family: unquote('"Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif'),
-    font-weight: 600,
-    font-style: normal,
-  ),
-) !default;
-/*
-font-family: 'PT Sans', sans-serif;
-font-family: 'Lato', sans-serif;
-font-family: 'Open Sans', sans-serif;
-font-family: 'Fira Sans Condensed', sans-serif;
-*/
-// export fonts
-@mixin font($key, $important:false) {
-  $map: map-get($xt-fonts, $key);
-  @each $property, $value in $map {
-    @if $important == !important {
-      #{$property}: $value !important;
-    } @else {
-      #{$property}: $value;
-    }
-  }
-}
-
-//////////////////////
-// spacing
-//////////////////////
-
-// @include spacing-headers;
-@mixin spacing-headers {
-  margin-top: 2.619rem;
-  margin-bottom: 1.238rem;
-  &:first-child {
-    margin-top: 0 !important;
-  }
-}
-
-// @include spacing-headers-small;
-@mixin spacing-headers-small {
-  margin-top: 1.238rem;
-  margin-bottom: 1rem;
-  &:first-child {
-    margin-top: 0 !important;
-  }
-}
-
-// @include spacing-text;
-@mixin spacing-text {
-  margin-bottom: 1rem;
-  &:last-child {
-    margin-bottom: 0 !important;
-  }
-}
-//////////////////////
 // transitions
 //////////////////////
 
 // @include transition-default;
 @mixin transition-default {
-  transition: all 300ms cubic-bezier(.63,.36,0,.97), top 1ms, left 1ms; // disable top and left animations
+  transition: all 300ms cubic-bezier(.63,.36,0,.97); // disable top and left animations
   &.fade-in {
   }
   &.fade-out {
   }
+}
+
+/* .anim-height and .anim-width */
+.anim-height,
+.anim-width {
+  @include transition-default;
+}
+.anim-width-left,
+.anim-width-right,
+.anim-height-top,
+.anim-height-bottom {
+  @include transition-default;
 }
 
 //////////////////////
@@ -133,6 +41,9 @@ font-family: 'Fira Sans Condensed', sans-serif;
     transform: translateX(0.618rem);
   }
 }
+.anim-horizontal {
+  @include anim-horizontal;
+}
 
 // @include anim-horizontal-zoom;
 @mixin anim-horizontal-zoom {
@@ -147,6 +58,9 @@ font-family: 'Fira Sans Condensed', sans-serif;
     opacity: 0;
     transform: translateX(0.618rem) scale(0.95);
   }
+}
+.anim-horizontal-zoom {
+  @include anim-horizontal-zoom;
 }
 
 // @include anim-vertical;
@@ -163,6 +77,9 @@ font-family: 'Fira Sans Condensed', sans-serif;
     transform: translateY(0.618rem);
   }
 }
+.anim-vertical {
+  @include anim-vertical;
+}
 
 // @include anim-vertical-zoom;
 @mixin anim-vertical-zoom {
@@ -177,6 +94,9 @@ font-family: 'Fira Sans Condensed', sans-serif;
     opacity: 0;
     transform: translateY(0.618rem) scale(0.95);
   }
+}
+.anim-vertical-zoom {
+  @include anim-vertical-zoom;
 }
 
 // @include anim-diagonal;
@@ -193,6 +113,9 @@ font-family: 'Fira Sans Condensed', sans-serif;
     transform: translateX(0.618rem) translateY(0.618rem);
   }
 }
+.anim-diagonal {
+  @include anim-diagonal;
+}
 
 // @include anim-left;
 @mixin anim-left {
@@ -207,6 +130,9 @@ font-family: 'Fira Sans Condensed', sans-serif;
     opacity: 0;
     transform: translateX(0.618rem);
   }
+}
+.anim-left {
+  @include anim-left;
 }
 
 // @include anim-right;
@@ -223,6 +149,9 @@ font-family: 'Fira Sans Condensed', sans-serif;
     transform: translateX(-0.618rem);
   }
 }
+.anim-right {
+  @include anim-right;
+}
 
 // @include anim-top;
 @mixin anim-top {
@@ -238,6 +167,9 @@ font-family: 'Fira Sans Condensed', sans-serif;
     transform: translateY(-0.618rem);
   }
 }
+.anim-top {
+  @include anim-top;
+}
 
 // @include anim-bottom;
 @mixin anim-bottom {
@@ -252,4 +184,7 @@ font-family: 'Fira Sans Condensed', sans-serif;
     opacity: 0;
     transform: translateY(0.618rem);
   }
+}
+.anim-bottom {
+  @include anim-bottom;
 }

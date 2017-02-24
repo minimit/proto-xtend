@@ -1,6 +1,4 @@
-$color-primary: #ff0000;
-
-@import "../../../../dist/xtend.scss"; // ignore if customizing xtend.scss
+@import "../../../../dist/xtend-theme.scss"; // ignore if customizing xtend.scss
 
 .button {
   &.color-primary {

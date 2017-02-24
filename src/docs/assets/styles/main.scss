@@ -1,14 +1,16 @@
+//////////////////////
+// variables
+//////////////////////
+
+//$color-primary: #ff00ff;
+
+//////////////////////
+// imports
+//////////////////////
+
 @import "bootstrap.min";
 @import "highlight/github";
-
-//////////////////////
-// xtend
-//////////////////////
-
-// override theme
-@import "../../../../dist/xtend.scss";
-
-// override variables
+@import "../../../../dist/xtend-theme.scss";
 
 //////////////////////
 // bootstrap
