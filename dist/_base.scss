@@ -143,6 +143,9 @@ a, button {
 .drop {
   display: inline-block;
   position: relative;
+  .drop-stack & {
+    position: static;
+  }
 }
 .drop-target {
   position: absolute;
@@ -154,9 +157,6 @@ a, button {
     width: 100%;
     text-align: left;
     white-space: nowrap;
-  }
-  .drop-inner {
-    position: relative;
   }
   /* before and after */
   &.before {
