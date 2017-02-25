@@ -721,11 +721,11 @@
     var group = this.group;
     var $group = $(this.group);
     // when animation is done
-    // anim-width and anim-height
-    if ($el.hasClass('anim-height')) {
+    // collapse-width and collapse-height
+    if ($el.hasClass('collapse-height')) {
       $el.css('height', 'auto');
     }
-    if ($el.hasClass('anim-width')) {
+    if ($el.hasClass('collapse-width')) {
       $el.css('width', 'auto');
     }
     // api
@@ -773,8 +773,8 @@
     var settings = this.settings;
     // when animation is done
     $el.removeClass('fade-out');
-    // anim-width and anim-height
-    if ($el.hasClass('anim-height') || $el.hasClass('anim-width')) {
+    // collapse-width and collapse-height
+    if ($el.hasClass('collapse-height') || $el.hasClass('collapse-width')) {
       object.removeWrap($el);
     }
     // api
@@ -901,15 +901,15 @@
     // animation in
     $el.each( function() {
       var $single = $(this);
-      if ($single.hasClass('anim-width')) {
+      if ($single.hasClass('collapse-width')) {
         object.addWrap($single);
         var $outside = $single.parent('.xt-container');
         var $inside = $single.find('> .xt-position');
         var w = $outside.outerWidth();
         $inside.css('width', w);
         $single.css('width', w);
-        $single.parents('.anim-width-left').css('margin-left', -w);
-        $single.parents('.anim-width-right').css('margin-right', -w);
+        $single.parents('.collapse-width-left').css('margin-left', -w);
+        $single.parents('.collapse-width-right').css('margin-right', -w);
       }
     });
   };
@@ -917,10 +917,10 @@
     // animation out
     $el.each( function() {
       var $single = $(this);
-      if ($single.hasClass('anim-width')) {
+      if ($single.hasClass('collapse-width')) {
         $single.css('width', 0);
-        $single.parents('.anim-width-left').css('margin-left', 0);
-        $single.parents('.anim-width-right').css('margin-right', 0);
+        $single.parents('.collapse-width-left').css('margin-left', 0);
+        $single.parents('.collapse-width-right').css('margin-right', 0);
       }
     });
   };
@@ -930,13 +930,13 @@
     // animation in
     $el.each( function() {
       var $single = $(this);
-      if ($single.hasClass('anim-height')) {
+      if ($single.hasClass('collapse-height')) {
         object.addWrap($single);
         var $inside = $single.find('> .xt-position');
         var h = $inside.outerHeight();
         $single.css('height', h);
-        $single.parents('.anim-height-top').css('margin-top', -h);
-        $single.parents('.anim-height-bottom').css('margin-bottom', -h);
+        $single.parents('.collapse-height-top').css('margin-top', -h);
+        $single.parents('.collapse-height-bottom').css('margin-bottom', -h);
       }
     });
   };
@@ -944,10 +944,10 @@
     // animation out
     $el.each( function() {
       var $single = $(this);
-      if ($single.hasClass('anim-height')) {
+      if ($single.hasClass('collapse-height')) {
         $single.css('height', 0);
-        $single.parents('.anim-height-top').css('margin-top', 0);
-        $single.parents('.anim-height-bottom').css('margin-bottom', 0);
+        $single.parents('.collapse-height-top').css('margin-top', 0);
+        $single.parents('.collapse-height-bottom').css('margin-bottom', 0);
       }
     });
   };

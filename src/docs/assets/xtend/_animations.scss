@@ -11,15 +11,18 @@
   }
 }
 
-/* .anim-height and .anim-width */
-.anim-height,
-.anim-width {
+//////////////////////
+// collapse
+//////////////////////
+
+.collapse-height,
+.collapse-width {
   @include transition-default;
 }
-.anim-width-left,
-.anim-width-right,
-.anim-height-top,
-.anim-height-bottom {
+.collapse-width-left,
+.collapse-width-right,
+.collapse-height-top,
+.collapse-height-bottom {
   @include transition-default;
 }
 

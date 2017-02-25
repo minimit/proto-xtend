@@ -278,12 +278,11 @@ html.xt-fixed-horizontal body {
 html.xt-fixed-horizontal .overlay {
   overflow-x: scroll; }
 
-/* animations */
-.anim-width {
+.collapse-width {
   overflow: hidden;
   width: 0; }
 
-.anim-height {
+.collapse-height {
   overflow: hidden;
   height: 0; }
 
@@ -291,15 +290,14 @@ html.xt-fixed-horizontal .overlay {
 .no-anim .xt-backdrop {
   transition: none !important; }
 
-/* .anim-height and .anim-width */
-.anim-height,
-.anim-width {
+.collapse-height,
+.collapse-width {
   transition: all 300ms cubic-bezier(0.63, 0.36, 0, 0.97); }
 
-.anim-width-left,
-.anim-width-right,
-.anim-height-top,
-.anim-height-bottom {
+.collapse-width-left,
+.collapse-width-right,
+.collapse-height-top,
+.collapse-height-bottom {
   transition: all 300ms cubic-bezier(0.63, 0.36, 0, 0.97); }
 
 .anim-opacity {

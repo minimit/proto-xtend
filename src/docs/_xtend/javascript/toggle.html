@@ -408,7 +408,7 @@ $('div').xtToggle({"elements": ".element"});
 
 <h3>Collapse</h3>
 
-<p>As you know you can't animate <strong>width</strong> and <strong>height</strong> to full with css, but you can with this plugin by using <code>anim-width</code> and <code>anim-height</code> (@TODO link animations).</p>
+<p>As you know you can't animate <strong>width</strong> and <strong>height</strong> to full with css, but you can with this plugin by using <code>collapse-width</code> and <code>collapse-height</code> (@TODO link animations).</p>
 <div class="alert alert-danger">
   <strong>Important:</strong> Wrap the <code>target</code> in an external div.
 </div>
@@ -418,25 +418,25 @@ $('div').xtToggle({"elements": ".element"});
     <div class="demo-source" data-lang="html">
 <div class="spacer" data-xt-toggle='{"elements": "> .button", "max": "Infinity"}'>
   <button class="button">
-    anim-width
+    collapse-width
   </button>
   <button class="button">
-    anim-height
+    collapse-height
   </button>
   <button class="button">
-    anim-width anim-height
+    collapse-width collapse-height
   </button>
-  <div class="toggle-block anim-width">
+  <div class="toggle-block collapse-width">
     <div class="card card-block">
       Target 0
     </div>
   </div>
-  <div class="toggle-block anim-height">
+  <div class="toggle-block collapse-height">
     <div class="card card-block">
       Target 1
     </div>
   </div>
-  <div class="toggle-block anim-width anim-height">
+  <div class="toggle-block collapse-width collapse-height">
     <div class="card card-block">
       Target 2
     </div>

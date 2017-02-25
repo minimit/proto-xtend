@@ -397,7 +397,7 @@ $button__menu_pixels: 1px;
 .site-footer-bottom {
   font-size: 13px;
   color: $color-white-75;
-  a:not(.button) {
+  a {
     color: $color-white;
     #{$hover},
     #{$active},

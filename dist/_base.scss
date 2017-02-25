@@ -380,12 +380,15 @@ html.xt-fixed-horizontal {
   }
 }
 
-/* animations */
-.anim-width {
+//////////////////////
+// animations
+//////////////////////
+
+.collapse-width {
   overflow: hidden;
   width: 0;
 }
-.anim-height {
+.collapse-height {
   overflow: hidden;
   height: 0;
 }
