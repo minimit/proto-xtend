@@ -133,15 +133,15 @@ a, button {
   .spacer.stretch > * {
     align-self: stretch; }
 
-.toggle-flex, .drop {
-  display: none !important; }
-  .toggle-flex.active, .active.drop, .toggle-flex.fade-out, .fade-out.drop {
-    display: flex !important; }
-
 .toggle-block, .overlay {
   display: none !important; }
   .toggle-block.active, .active.overlay, .toggle-block.fade-out, .fade-out.overlay {
     display: block !important; }
+
+.toggle-flex, .drop {
+  display: none !important; }
+  .toggle-flex.active, .active.drop, .toggle-flex.fade-out, .fade-out.drop {
+    display: flex !important; }
 
 .toggle-inline {
   display: none !important; }

@@ -166,18 +166,18 @@ a, button {
 // toggle
 //////////////////////
 
-.toggle-flex {
-  display: none !important;
-  &.active,
-  &.fade-out {
-    display: flex !important;
-  }
-}
 .toggle-block {
   display: none !important;
   &.active,
   &.fade-out {
     display: block !important;
+  }
+}
+.toggle-flex {
+  display: none !important;
+  &.active,
+  &.fade-out {
+    display: flex !important;
   }
 }
 .toggle-inline {

@@ -24,7 +24,7 @@
     var defaults = {
       'name': 'xt-toggle',
       'elements': null,
-      'targets': '.toggle-flex, .toggle-block, .toggle-inline-block, .toggle-inline, .toggle-none',
+      'targets': '[class^="toggle-"], [class*=" toggle-"]',
       'class': 'active',
       'on': 'click',
       'off': null,
