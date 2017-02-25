@@ -213,8 +213,7 @@ a.logo {
   }
   // content
   .button {
-    padding-left: 0;
-    padding-right: 0;
+    padding: 0.618rem 0;
     width: 100%;
     @include font(sans-light, !important);
     font-size: 2.619rem;

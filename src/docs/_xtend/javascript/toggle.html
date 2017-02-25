@@ -49,10 +49,10 @@ $('div').xtToggle({"elements": ".element"});
     <div class="demo-text">Toggle a single <strong>element</strong> with <code>data-xt-toggle</code>.</div>
     <div class="demo-source" data-lang="html">
 <div class="spacer">
-  <button class="button" data-xt-toggle>
+  <button type="button" class="button" data-xt-toggle>
     Toggle 0
   </button>
-  <button class="button" data-xt-toggle>
+  <button type="button" class="button" data-xt-toggle>
     Toggle 1
   </button>
 </div>
@@ -62,10 +62,10 @@ $('div').xtToggle({"elements": ".element"});
     <div class="demo-text">Toggle a single <strong>target</strong> using <code>targets</code> with <strong>#id</strong>.</div>
     <div class="demo-source" data-lang="html">
 <div class="spacer">
-  <button class="button" data-xt-toggle='{"targets": "#card-unique-0"}'>
+  <button type="button" class="button" data-xt-toggle='{"targets": "#card-unique-0"}'>
     Toggle 0
   </button>
-  <button class="button" data-xt-toggle='{"targets": "#card-unique-1"}'>
+  <button type="button" class="button" data-xt-toggle='{"targets": "#card-unique-1"}'>
     Toggle 1
   </button>
   <div class="card card-content toggle-block" id="card-unique-0">
@@ -81,10 +81,10 @@ $('div').xtToggle({"elements": ".element"});
     <div class="demo-text">Toggle same <strong>targets</strong> using <code>targets</code> with <strong>#id</strong>.</div>
     <div class="demo-source" data-lang="html">
 <div class="spacer">
-  <button class="button" data-xt-toggle='{"targets": "#card-unique"}'>
+  <button type="button" class="button" data-xt-toggle='{"targets": "#card-unique"}'>
     Toggle
   </button>
-  <button class="button" data-xt-toggle='{"targets": "#card-unique"}'>
+  <button type="button" class="button" data-xt-toggle='{"targets": "#card-unique"}'>
     Toggle
   </button>
   <div class="card card-content toggle-block" id="card-unique">
@@ -105,14 +105,14 @@ $('div').xtToggle({"elements": ".element"});
   <div class="demo-item demo-preview" data-name="manager">
     <div class="demo-text">With multiple <strong>targets</strong>, the ones activated is the one with the same index of the toggled <strong>element</strong>. Nested <strong>targets</strong> are filtered out.</div>
     <div class="demo-source" data-lang="html">
-<div class="spacer" data-xt-toggle='{"elements": "> .button"}'>
-  <button class="button">
+<div class="spacer" data-xt-toggle='{}'>
+  <button type="button" class="button">
     Toggle 0
   </button>
-  <button class="button">
+  <button type="button" class="button">
     Toggle 1
   </button>
-  <button class="button">
+  <button type="button" class="button">
     Toggle 2
   </button>
   <div class="card card-content toggle-block">
@@ -139,14 +139,14 @@ $('div').xtToggle({"elements": ".element"});
   <div class="demo-item demo-preview" data-name="custom toggle">
     <div class="demo-text">Custom targets classname that starts with <code>.toggle-</code>.</div>
     <div class="demo-source" data-lang="html">
-<div class="spacer" data-xt-toggle='{"elements": "> .button"}'>
-  <button class="button">
+<div class="spacer" data-xt-toggle='{}'>
+  <button type="button" class="button">
     Toggle 0
   </button>
-  <button class="button">
+  <button type="button" class="button">
     Toggle 1
   </button>
-  <button class="button">
+  <button type="button" class="button">
     Toggle 2
   </button>
   <div class="card card-content toggle-custom">
@@ -179,23 +179,23 @@ $('div').xtToggle({"elements": ".element"});
 <div class="demo">
   <div class="demo-item demo-preview" data-name="">
     <div class="demo-source" data-lang="html">
-<div class="spacer" data-xt-toggle='{"elements": "> .button"}'>
-  <button class="button" data-group="0">
+<div class="spacer" data-xt-toggle='{}'>
+  <button type="button" class="button" data-group="0">
     Group 0
   </button>
-  <button class="button">
+  <button type="button" class="button">
     Toggle 0
   </button>
-  <button class="button" data-group="0">
+  <button type="button" class="button" data-group="0">
     Group 0
   </button>
-  <button class="button">
+  <button type="button" class="button">
     Toggle 1
   </button>
-  <button class="button" data-group="1">
+  <button type="button" class="button" data-group="1">
     Group 1
   </button>
-  <button class="button" data-group="1">
+  <button type="button" class="button" data-group="1">
     Group 1
   </button>
   <div class="card card-content toggle-block">
@@ -226,8 +226,8 @@ $('div').xtToggle({"elements": ".element"});
   <div class="demo-item demo-preview" data-name="additional">
     <div class="demo-text">You can specify custom additional classes to toggle with <code>class</code>.</div>
     <div class="demo-source" data-lang="html">
-<div class="spacer" data-xt-toggle='{"elements": "> .button", "class": "class-example-0 class-example-1"}'>
-  <button class="button">
+<div class="spacer" data-xt-toggle='{"class": "class-example-0 class-example-1"}'>
+  <button type="button" class="button">
     Toggle
   </button>
   <div class="card card-content toggle-block" id="card-example">
@@ -255,20 +255,20 @@ $('div').xtToggle({"elements": ".element"});
   <div class="demo-item demo-preview" data-name="start">
     <div class="demo-text">You can start with toggled elements and targets just by adding the class <code>.active</code> on the html <strong>elements</strong> you want activated.</div>
     <div class="demo-source" data-lang="html">
-<div class="spacer" data-xt-toggle='{"elements": "> .button", "class": "class-example-0 class-example-1", "min": 2, "max": 3}'>
-  <button class="button" data-group="0">
+<div class="spacer" data-xt-toggle='{"class": "class-example-0 class-example-1", "min": 2, "max": 3}'>
+  <button type="button" class="button" data-group="0">
     Group 0
   </button>
-  <button class="button">
+  <button type="button" class="button">
     Toggle 0
   </button>
-  <button class="button" data-group="0">
+  <button type="button" class="button" data-group="0">
     Group 0
   </button>
-  <button class="button active">
+  <button type="button" class="button active">
     Toggle 1
   </button>
-  <button class="button" data-group="1">
+  <button type="button" class="button" data-group="1">
     Group 1
   </button>
   <div class="card card-content toggle-block">
@@ -315,17 +315,17 @@ $('div').xtToggle({"elements": ".element"});
   <div class="demo-item demo-preview" data-name="custom">
     <div class="demo-text">The required <strong>min</strong> activation is fulfilled on initialization. Automatic <code>[disabled]</code> on reaching the <strong>min</strong> value.</div>
     <div class="demo-source" data-lang="html">
-<div class="spacer" data-xt-toggle='{"elements": "> .button", "min": 2, "max": 2}'>
-  <button class="button">
+<div class="spacer" data-xt-toggle='{"min": 2, "max": 2}'>
+  <button type="button" class="button">
     Toggle 0
   </button>
-  <button class="button">
+  <button type="button" class="button">
     Toggle 1
   </button>
-  <button class="button">
+  <button type="button" class="button">
     Toggle 2
   </button>
-  <button class="button">
+  <button type="button" class="button">
     Toggle 3
   </button>
   <div class="card card-content toggle-block">
@@ -353,8 +353,8 @@ $('div').xtToggle({"elements": ".element"});
   <div class="demo-item demo-preview" data-name="">
     <div class="demo-text"><code>"on": "mouseenter"</code> <code>"off": "mouseleave"</code>.</div>
     <div class="demo-source" data-lang="html">
-<div class="spacer" data-xt-toggle='{"elements": "> .button", "on": "mouseenter", "off": "mouseleave"}'>
-  <button class="button">
+<div class="spacer" data-xt-toggle='{"on": "mouseenter", "off": "mouseleave"}'>
+  <button type="button" class="button">
     Toggle
   </button>
   <div class="card card-content toggle-block">
@@ -376,17 +376,17 @@ $('div').xtToggle({"elements": ".element"});
 <div class="demo">
   <div class="demo-item demo-preview" data-name="">
     <div class="demo-source" data-lang="html">
-<div class="spacer" data-xt-toggle='{"elements": "> .button", "max": "Infinity"}'>
-  <button class="button">
+<div class="spacer" data-xt-toggle='{"max": "Infinity"}'>
+  <button type="button" class="button">
     anim-horizontal
   </button>
-  <button class="button">
+  <button type="button" class="button">
     anim-vertical
   </button>
-  <button class="button">
+  <button type="button" class="button">
     anim-diagonal
   </button>
-  <button class="button">
+  <button type="button" class="button">
     no-anim
   </button>
   <div class="card card-content toggle-block anim-horizontal">
@@ -416,14 +416,14 @@ $('div').xtToggle({"elements": ".element"});
 <div class="demo">
   <div class="demo-item demo-preview" data-name="">
     <div class="demo-source" data-lang="html">
-<div class="spacer" data-xt-toggle='{"elements": "> .button", "max": "Infinity"}'>
-  <button class="button">
+<div class="spacer" data-xt-toggle='{"max": "Infinity"}'>
+  <button type="button" class="button">
     collapse-width
   </button>
-  <button class="button">
+  <button type="button" class="button">
     collapse-height
   </button>
-  <button class="button">
+  <button type="button" class="button">
     collapse-width collapse-height
   </button>
   <div class="toggle-block collapse-width">

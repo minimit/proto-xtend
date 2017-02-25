@@ -6,25 +6,43 @@ categories: [Components]
 order: 30
 ---
 
-<h2>Usage</h2>
+<h2>Api</h2>
 
-<p>@TODO <a href="#">link</a> to toggle</p>
+<p>@TODO table api +  default "elements" and "targets".</p>
+<p>@TODO <a href="#">link</a>  to toggle.</p>
 
 <h2>Initialization</h2>
 
 <div class="demo">
-  <div class="demo-item demo-preview" data-name="single">
+  <div class="demo-item demo-preview" data-name="button">
     <div class="demo-text"><code>[data-xt-drop]</code>.</div>
     <div class="demo-source" data-lang="html">
 <div class="drop-outer" data-xt-drop>
-  <button class="button">
+  <button type="button" class="button">
+    Toggle
+  </button>
+  <div class="drop">
+    <div class="drop-inner">
+      <button type="button" class="button">Lorem ipsum dolor</button> 
+      <button type="button" class="button">Lorem ipsum dolor</button> 
+      <button type="button" class="button">Lorem ipsum dolor</button> 
+    </div>
+  </div>
+</div>
+    </div>
+  </div>
+  <div class="demo-item demo-preview" data-name="link">
+    <div class="demo-text">Automatic close on clicking <code>[href]</code> and <code>[data-xt-reset]</code>.</div>
+    <div class="demo-source" data-lang="html">
+<div class="drop-outer" data-xt-drop>
+  <button type="button" class="button">
     Toggle
   </button>
   <div class="drop">
     <div class="drop-inner">
       <a href="#" class="button">Lorem ipsum dolor</a>
-      <a href="#" class="button">Lorem ipsum dolor</a>
-      <a href="#" class="button">Lorem ipsum dolor</a>
+      <button type="button" class="button" data-xt-reset>Lorem ipsum dolor</button> 
+      <button type="button" class="button" data-xt-reset>Lorem ipsum dolor</button> 
     </div>
   </div>
 </div>
@@ -34,35 +52,35 @@ order: 30
     <div class="demo-text"><code>[data-group]</code>.</div>
     <div class="demo-source" data-lang="html">
 <div class="drop-outer" data-xt-drop>
-  <button class="button" data-group="0">
+  <button type="button" class="button" data-group="0">
     Toggle
   </button>
   <div class="drop bottom left" data-group="0">
     <div class="drop-inner">
-      <a href="#" class="button">Lorem ipsum dolor</a>
-      <a href="#" class="button">Lorem ipsum dolor</a>
-      <a href="#" class="button">Lorem ipsum dolor</a>
+      <button type="button" class="button">Lorem ipsum dolor</button> 
+      <button type="button" class="button">Lorem ipsum dolor</button> 
+      <button type="button" class="button">Lorem ipsum dolor</button> 
     </div>
   </div>
   <div class="drop top right" data-group="0">
     <div class="drop-inner">
-      <a href="#" class="button">Lorem ipsum dolor</a>
-      <a href="#" class="button">Lorem ipsum dolor</a>
-      <a href="#" class="button">Lorem ipsum dolor</a>
+      <button type="button" class="button">Lorem ipsum dolor</button> 
+      <button type="button" class="button">Lorem ipsum dolor</button> 
+      <button type="button" class="button">Lorem ipsum dolor</button> 
     </div>
   </div>
   <div class="drop before bottom" data-group="0">
     <div class="drop-inner">
-      <a href="#" class="button">Lorem ipsum dolor</a>
-      <a href="#" class="button">Lorem ipsum dolor</a>
-      <a href="#" class="button">Lorem ipsum dolor</a>
+      <button type="button" class="button">Lorem ipsum dolor</button> 
+      <button type="button" class="button">Lorem ipsum dolor</button> 
+      <button type="button" class="button">Lorem ipsum dolor</button> 
     </div>
   </div>
   <div class="drop after top" data-group="0">
     <div class="drop-inner">
-      <a href="#" class="button">Lorem ipsum dolor</a>
-      <a href="#" class="button">Lorem ipsum dolor</a>
-      <a href="#" class="button">Lorem ipsum dolor</a>
+      <button type="button" class="button">Lorem ipsum dolor</button> 
+      <button type="button" class="button">Lorem ipsum dolor</button> 
+      <button type="button" class="button">Lorem ipsum dolor</button> 
     </div>
   </div>
 </div>
@@ -83,53 +101,53 @@ order: 30
 <div class="spacer">
   
   <div class="drop-outer" data-xt-drop>
-    <button class="button">
+    <button type="button" class="button">
       default
     </button>
     <div class="drop">
       <div class="drop-inner">
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
       </div>
     </div>
   </div>
     
   <div class="drop-outer" data-xt-drop>
-    <button class="button">
+    <button type="button" class="button">
       primary
     </button>
     <div class="drop primary">
       <div class="drop-inner">
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
       </div>
     </div>
   </div>
     
   <div class="drop-outer" data-xt-drop>
-    <button class="button">
+    <button type="button" class="button">
       secondary
     </button>
     <div class="drop secondary">
       <div class="drop-inner">
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
       </div>
     </div>
   </div>
     
   <div class="drop-outer" data-xt-drop>
-    <button class="button">
+    <button type="button" class="button">
       light
     </button>
     <div class="drop light">
       <div class="drop-inner">
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
       </div>
     </div>
   </div>
@@ -148,109 +166,109 @@ order: 30
 <div class="spacer">
   
   <div class="drop-outer" data-xt-drop>
-    <button class="button">
+    <button type="button" class="button">
       default
     </button>
     <div class="drop">
       <div class="drop-inner">
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
       </div>
     </div>
   </div>
   
   <div class="drop-outer" data-xt-drop>
-    <button class="button">
+    <button type="button" class="button">
       tiny
     </button>
     <div class="drop">
       <div class="drop-inner">
-        <a href="#" class="button tiny">
+        <button type="button" class="button tiny">
           Lorem ipsum dolor
-        </a>
-        <a href="#" class="button tiny">
+        </button> 
+        <button type="button" class="button tiny">
           Lorem ipsum dolor
-        </a>
-        <a href="#" class="button tiny">
+        </button> 
+        <button type="button" class="button tiny">
           Lorem ipsum dolor
-        </a>
+        </button> 
       </div>
     </div>
   </div>
   
   <div class="drop-outer" data-xt-drop>
-    <button class="button">
+    <button type="button" class="button">
       small
     </button>
     <div class="drop">
       <div class="drop-inner">
-        <a href="#" class="button small">
+        <button type="button" class="button small">
           Lorem ipsum dolor
-        </a>
-        <a href="#" class="button small">
+        </button> 
+        <button type="button" class="button small">
           Lorem ipsum dolor
-        </a>
-        <a href="#" class="button small">
+        </button> 
+        <button type="button" class="button small">
           Lorem ipsum dolor
-        </a>
+        </button> 
       </div>
     </div>
   </div>
   
   <div class="drop-outer" data-xt-drop>
-    <button class="button">
+    <button type="button" class="button">
       medium
     </button>
     <div class="drop">
       <div class="drop-inner">
-        <a href="#" class="button medium">
+        <button type="button" class="button medium">
           Lorem ipsum dolor
-        </a>
-        <a href="#" class="button medium">
+        </button> 
+        <button type="button" class="button medium">
           Lorem ipsum dolor
-        </a>
-        <a href="#" class="button medium">
+        </button> 
+        <button type="button" class="button medium">
           Lorem ipsum dolor
-        </a>
+        </button> 
       </div>
     </div>
   </div>
   
   <div class="drop-outer" data-xt-drop>
-    <button class="button">
+    <button type="button" class="button">
       large
     </button>
     <div class="drop">
       <div class="drop-inner">
-        <a href="#" class="button large">
+        <button type="button" class="button large">
           Lorem ipsum dolor
-        </a>
-        <a href="#" class="button large">
+        </button> 
+        <button type="button" class="button large">
           Lorem ipsum dolor
-        </a>
-        <a href="#" class="button large">
+        </button> 
+        <button type="button" class="button large">
           Lorem ipsum dolor
-        </a>
+        </button> 
       </div>
     </div>
   </div>
   
   <div class="drop-outer" data-xt-drop>
-    <button class="button">
+    <button type="button" class="button">
       giant
     </button>
     <div class="drop">
       <div class="drop-inner">
-        <a href="#" class="button giant">
+        <button type="button" class="button giant">
           Lorem ipsum dolor
-        </a>
-        <a href="#" class="button giant">
+        </button> 
+        <button type="button" class="button giant">
           Lorem ipsum dolor
-        </a>
-        <a href="#" class="button giant">
+        </button> 
+        <button type="button" class="button giant">
           Lorem ipsum dolor
-        </a>
+        </button> 
       </div>
     </div>
   </div>
@@ -268,14 +286,14 @@ order: 30
   <div class="demo-item demo-preview" data-name="default">
     <div class="demo-source" data-lang="html">
 <div class="drop-outer" data-xt-drop>
-  <button class="button">
+  <button type="button" class="button">
     default
   </button>
   <div class="drop">
     <div class="drop-inner">
-      <a href="#" class="button">Lorem ipsum dolor</a>
-      <a href="#" class="button">Lorem ipsum dolor</a>
-      <a href="#" class="button">Lorem ipsum dolor</a>
+      <button type="button" class="button">Lorem ipsum dolor</button> 
+      <button type="button" class="button">Lorem ipsum dolor</button> 
+      <button type="button" class="button">Lorem ipsum dolor</button> 
     </div>
   </div>
 </div>
@@ -287,40 +305,40 @@ order: 30
 <div class="spacer">
   
   <div class="drop-outer" data-xt-drop>
-    <button class="button">
+    <button type="button" class="button">
       bottom left
     </button>
     <div class="drop bottom left">
       <div class="drop-inner">
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
       </div>
     </div>
   </div>
   
   <div class="drop-outer" data-xt-drop>
-    <button class="button">
+    <button type="button" class="button">
       bottom right
     </button>
     <div class="drop bottom right">
       <div class="drop-inner">
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
       </div>
     </div>
   </div>
   
   <div class="drop-outer" data-xt-drop>
-    <button class="button">
+    <button type="button" class="button">
       bottom center
     </button>
     <div class="drop bottom center">
       <div class="drop-inner">
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
       </div>
     </div>
   </div>
@@ -334,40 +352,40 @@ order: 30
 <div class="spacer">
   
   <div class="drop-outer" data-xt-drop>
-    <button class="button">
+    <button type="button" class="button">
       top left
     </button>
     <div class="drop top left">
       <div class="drop-inner">
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
       </div>
     </div>
   </div>
   
   <div class="drop-outer" data-xt-drop>
-    <button class="button">
+    <button type="button" class="button">
       top right
     </button>
     <div class="drop top right">
       <div class="drop-inner">
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
       </div>
     </div>
   </div>
   
   <div class="drop-outer" data-xt-drop>
-    <button class="button">
+    <button type="button" class="button">
       top center
     </button>
     <div class="drop top center">
       <div class="drop-inner">
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
       </div>
     </div>
   </div>
@@ -381,40 +399,40 @@ order: 30
 <div class="spacer">
   
   <div class="drop-outer" data-xt-drop>
-    <button class="button">
+    <button type="button" class="button">
       middle
     </button>
     <div class="drop middle left">
       <div class="drop-inner">
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
       </div>
     </div>
   </div>
   
   <div class="drop-outer" data-xt-drop>
-    <button class="button">
+    <button type="button" class="button">
       middle right
     </button>
     <div class="drop middle right">
       <div class="drop-inner">
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
       </div>
     </div>
   </div>
   
   <div class="drop-outer" data-xt-drop>
-    <button class="button">
+    <button type="button" class="button">
       middle center
     </button>
     <div class="drop middle center">
       <div class="drop-inner">
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
       </div>
     </div>
   </div>
@@ -428,40 +446,40 @@ order: 30
 <div class="spacer">
   
   <div class="drop-outer" data-xt-drop>
-    <button class="button">
+    <button type="button" class="button">
       before top
     </button>
     <div class="drop before top">
       <div class="drop-inner">
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
       </div>
     </div>
   </div>
   
   <div class="drop-outer" data-xt-drop>
-    <button class="button">
+    <button type="button" class="button">
       before bottom
     </button>
     <div class="drop before bottom">
       <div class="drop-inner">
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
       </div>
     </div>
   </div>
   
   <div class="drop-outer" data-xt-drop>
-    <button class="button">
+    <button type="button" class="button">
       before middle
     </button>
     <div class="drop before middle">
       <div class="drop-inner">
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
       </div>
     </div>
   </div>
@@ -475,53 +493,53 @@ order: 30
 <div class="spacer">
   
   <div class="drop-outer" data-xt-drop>
-    <button class="button">
+    <button type="button" class="button">
       after top
     </button>
     <div class="drop after top">
       <div class="drop-inner">
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
       </div>
     </div>
   </div>
   
   <div class="drop-outer" data-xt-drop>
-    <button class="button">
+    <button type="button" class="button">
       after bottom
     </button>
     <div class="drop after bottom">
       <div class="drop-inner">
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
       </div>
     </div>
   </div>
   
   <div class="drop-outer" data-xt-drop>
-    <button class="button">
+    <button type="button" class="button">
       after middle
     </button>
     <div class="drop after middle">
       <div class="drop-inner">
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
       </div>
     </div>
   </div>
   
   <div class="drop-outer" data-xt-drop>
-    <button class="button">
+    <button type="button" class="button">
       after bottom
     </button>
     <div class="drop after">
       <div class="drop-inner">
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
       </div>
     </div>
   </div>
@@ -540,58 +558,58 @@ order: 30
 <div class="spacer">
   
   <div class="drop-outer" data-xt-drop>
-    <button class="button">
+    <button type="button" class="button">
       max-height
     </button>
     <div class="drop max-height">
       <div class="drop-inner">
-        <a href="#" class="button">Lorem ipsum dolor sit amet, consectetur adipiscing elit</a>
-        <a href="#" class="button">Lorem ipsum dolor sit amet, consectetur adipiscing elit</a>
-        <a href="#" class="button">Lorem ipsum dolor sit amet, consectetur adipiscing elit</a>
-        <a href="#" class="button">Lorem ipsum dolor sit amet, consectetur adipiscing elit</a>
-        <a href="#" class="button">Lorem ipsum dolor sit amet, consectetur adipiscing elit</a>
-        <a href="#" class="button">Lorem ipsum dolor sit amet, consectetur adipiscing elit</a>
-        <a href="#" class="button">Lorem ipsum dolor sit amet, consectetur adipiscing elit</a>
-        <a href="#" class="button">Lorem ipsum dolor sit amet, consectetur adipiscing elit</a>
-        <a href="#" class="button">Lorem ipsum dolor sit amet, consectetur adipiscing elit</a>
+        <button type="button" class="button">Lorem ipsum dolor sit amet, consectetur adipiscing elit</button> 
+        <button type="button" class="button">Lorem ipsum dolor sit amet, consectetur adipiscing elit</button> 
+        <button type="button" class="button">Lorem ipsum dolor sit amet, consectetur adipiscing elit</button> 
+        <button type="button" class="button">Lorem ipsum dolor sit amet, consectetur adipiscing elit</button> 
+        <button type="button" class="button">Lorem ipsum dolor sit amet, consectetur adipiscing elit</button> 
+        <button type="button" class="button">Lorem ipsum dolor sit amet, consectetur adipiscing elit</button> 
+        <button type="button" class="button">Lorem ipsum dolor sit amet, consectetur adipiscing elit</button> 
+        <button type="button" class="button">Lorem ipsum dolor sit amet, consectetur adipiscing elit</button> 
+        <button type="button" class="button">Lorem ipsum dolor sit amet, consectetur adipiscing elit</button> 
       </div>
     </div>
   </div>
     
   <div class="drop-outer" data-xt-drop>
-    <button class="button">
+    <button type="button" class="button">
       max-width
     </button>
     <div class="drop max-width">
       <div class="drop-inner">
-        <a href="#" class="button">Lorem ipsum dolor sit amet, consectetur adipiscing elit</a>
-        <a href="#" class="button">Lorem ipsum dolor sit amet, consectetur adipiscing elit</a>
-        <a href="#" class="button">Lorem ipsum dolor sit amet, consectetur adipiscing elit</a>
-        <a href="#" class="button">Lorem ipsum dolor sit amet, consectetur adipiscing elit</a>
-        <a href="#" class="button">Lorem ipsum dolor sit amet, consectetur adipiscing elit</a>
-        <a href="#" class="button">Lorem ipsum dolor sit amet, consectetur adipiscing elit</a>
-        <a href="#" class="button">Lorem ipsum dolor sit amet, consectetur adipiscing elit</a>
-        <a href="#" class="button">Lorem ipsum dolor sit amet, consectetur adipiscing elit</a>
-        <a href="#" class="button">Lorem ipsum dolor sit amet, consectetur adipiscing elit</a>
+        <button type="button" class="button">Lorem ipsum dolor sit amet, consectetur adipiscing elit</button> 
+        <button type="button" class="button">Lorem ipsum dolor sit amet, consectetur adipiscing elit</button> 
+        <button type="button" class="button">Lorem ipsum dolor sit amet, consectetur adipiscing elit</button> 
+        <button type="button" class="button">Lorem ipsum dolor sit amet, consectetur adipiscing elit</button> 
+        <button type="button" class="button">Lorem ipsum dolor sit amet, consectetur adipiscing elit</button> 
+        <button type="button" class="button">Lorem ipsum dolor sit amet, consectetur adipiscing elit</button> 
+        <button type="button" class="button">Lorem ipsum dolor sit amet, consectetur adipiscing elit</button> 
+        <button type="button" class="button">Lorem ipsum dolor sit amet, consectetur adipiscing elit</button> 
+        <button type="button" class="button">Lorem ipsum dolor sit amet, consectetur adipiscing elit</button> 
       </div>
     </div>
   </div>
     
   <div class="drop-outer" data-xt-drop>
-    <button class="button">
+    <button type="button" class="button">
       max-height max-width
     </button>
     <div class="drop max-width max-height">
       <div class="drop-inner">
-        <a href="#" class="button">Lorem ipsum dolor sit amet, consectetur adipiscing elit</a>
-        <a href="#" class="button">Lorem ipsum dolor sit amet, consectetur adipiscing elit</a>
-        <a href="#" class="button">Lorem ipsum dolor sit amet, consectetur adipiscing elit</a>
-        <a href="#" class="button">Lorem ipsum dolor sit amet, consectetur adipiscing elit</a>
-        <a href="#" class="button">Lorem ipsum dolor sit amet, consectetur adipiscing elit</a>
-        <a href="#" class="button">Lorem ipsum dolor sit amet, consectetur adipiscing elit</a>
-        <a href="#" class="button">Lorem ipsum dolor sit amet, consectetur adipiscing elit</a>
-        <a href="#" class="button">Lorem ipsum dolor sit amet, consectetur adipiscing elit</a>
-        <a href="#" class="button">Lorem ipsum dolor sit amet, consectetur adipiscing elit</a>
+        <button type="button" class="button">Lorem ipsum dolor sit amet, consectetur adipiscing elit</button> 
+        <button type="button" class="button">Lorem ipsum dolor sit amet, consectetur adipiscing elit</button> 
+        <button type="button" class="button">Lorem ipsum dolor sit amet, consectetur adipiscing elit</button> 
+        <button type="button" class="button">Lorem ipsum dolor sit amet, consectetur adipiscing elit</button> 
+        <button type="button" class="button">Lorem ipsum dolor sit amet, consectetur adipiscing elit</button> 
+        <button type="button" class="button">Lorem ipsum dolor sit amet, consectetur adipiscing elit</button> 
+        <button type="button" class="button">Lorem ipsum dolor sit amet, consectetur adipiscing elit</button> 
+        <button type="button" class="button">Lorem ipsum dolor sit amet, consectetur adipiscing elit</button> 
+        <button type="button" class="button">Lorem ipsum dolor sit amet, consectetur adipiscing elit</button> 
       </div>
     </div>
   </div>
@@ -610,61 +628,61 @@ order: 30
 <div class="spacer">
   
   <div class="drop-outer" data-xt-drop>
-    <button class="button">
+    <button type="button" class="button">
       default
     </button>
     <div class="drop backdrop">
       <div class="drop-inner">
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
       </div>
     </div>
   </div>
     
   <div class="drop-outer" data-xt-drop>
-    <button class="button">
+    <button type="button" class="button">
       after middle
     </button>
     <div class="drop after middle backdrop">
       <div class="drop-inner">
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
       </div>
     </div>
   </div>
   
   <div class="drop-outer" data-xt-drop>
-    <button class="button" data-group="0">
+    <button type="button" class="button" data-group="0">
       Group
     </button>
     <div class="drop bottom left backdrop" data-group="0">
       <div class="drop-inner">
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
       </div>
     </div>
     <div class="drop top right backdrop" data-group="0">
       <div class="drop-inner">
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
       </div>
     </div>
     <div class="drop before bottom backdrop" data-group="0">
       <div class="drop-inner">
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
       </div>
     </div>
     <div class="drop after top backdrop" data-group="0">
       <div class="drop-inner">
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
       </div>
     </div>
   </div>
@@ -678,61 +696,61 @@ order: 30
 <div class="spacer">
   
   <div class="drop-outer" data-xt-drop>
-    <button class="button backdrop-over">
+    <button type="button" class="button backdrop-over">
       default
     </button>
     <div class="drop backdrop">
       <div class="drop-inner">
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
       </div>
     </div>
   </div>
     
   <div class="drop-outer" data-xt-drop>
-    <button class="button backdrop-over">
+    <button type="button" class="button backdrop-over">
       after middle
     </button>
     <div class="drop after middle backdrop">
       <div class="drop-inner">
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
       </div>
     </div>
   </div>
   
   <div class="drop-outer" data-xt-drop>
-    <button class="button backdrop-over" data-group="0">
+    <button type="button" class="button backdrop-over" data-group="0">
       Group
     </button>
     <div class="drop bottom left backdrop" data-group="0">
       <div class="drop-inner">
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
       </div>
     </div>
     <div class="drop top right backdrop" data-group="0">
       <div class="drop-inner">
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
       </div>
     </div>
     <div class="drop before bottom backdrop" data-group="0">
       <div class="drop-inner">
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
       </div>
     </div>
     <div class="drop after top backdrop" data-group="0">
       <div class="drop-inner">
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
       </div>
     </div>
   </div>
@@ -753,54 +771,54 @@ order: 30
     <div class="demo-source" data-lang="html">
 <div class="spacer">
   
-  <div class="drop-outer" data-xt-drop='{"elements": "> .button", "on": "mouseenter", "off": "mouseleave"}'>
-    <button class="button">
+  <div class="drop-outer" data-xt-drop='{"on": "mouseenter", "off": "mouseleave"}'>
+    <button type="button" class="button">
       default
     </button>
     <div class="drop">
       <div class="drop-inner">
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
       </div>
     </div>
   </div>
   
-  <div class="drop-outer" data-xt-drop='{"elements": "> .button", "on": "mouseenter", "off": "mouseleave"}'>
-    <button class="button">
+  <div class="drop-outer" data-xt-drop='{"on": "mouseenter", "off": "mouseleave"}'>
+    <button type="button" class="button">
       after middle
     </button>
     <div class="drop after middle">
       <div class="drop-inner">
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
       </div>
     </div>
   </div>
     
-  <div class="drop-outer" data-xt-drop='{"elements": "> .button", "on": "mouseenter", "off": "mouseleave"}'>
-    <button class="button">
+  <div class="drop-outer" data-xt-drop='{"on": "mouseenter", "off": "mouseleave"}'>
+    <button type="button" class="button">
       no-anim
     </button>
     <div class="drop no-anim">
       <div class="drop-inner">
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
       </div>
     </div>
   </div>
   
-  <div class="drop-outer" data-xt-drop='{"elements": "> .button", "on": "mouseenter", "off": "mouseleave"}'>
-    <button class="button backdrop-over">
+  <div class="drop-outer" data-xt-drop='{"on": "mouseenter", "off": "mouseleave"}'>
+    <button type="button" class="button backdrop-over">
       backdrop
     </button>
     <div class="drop backdrop">
       <div class="drop-inner">
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
       </div>
     </div>
   </div>
@@ -819,53 +837,53 @@ order: 30
 <div class="spacer">
   
   <div class="drop-outer" data-xt-drop>
-    <button class="button">
+    <button type="button" class="button">
       default
     </button>
     <div class="drop">
       <div class="drop-inner">
-        <a href="#" class="button">Lorem ipsum dolor</a>
+        <button type="button" class="button">Lorem ipsum dolor</button> 
         
         <div class="drop-outer" data-xt-drop>
-          <button class="button">
+          <button type="button" class="button">
             default
           </button>
           <div class="drop">
             <div class="drop-inner">
-              <a href="#" class="button">Lorem ipsum dolor</a>
+              <button type="button" class="button">Lorem ipsum dolor</button> 
               
               <div class="drop-outer" data-xt-drop>
-                <button class="button">
+                <button type="button" class="button">
                   default
                 </button>
                 <div class="drop">
                   <div class="drop-inner">
-                    <a href="#" class="button">Lorem ipsum dolor</a>
-                    <a href="#" class="button">Lorem ipsum dolor</a>
-                    <a href="#" class="button">Lorem ipsum dolor</a>
+                    <button type="button" class="button">Lorem ipsum dolor</button> 
+                    <button type="button" class="button">Lorem ipsum dolor</button> 
+                    <button type="button" class="button">Lorem ipsum dolor</button> 
                   </div>
                 </div>
               </div>
               
               <div class="drop-outer" data-xt-drop>
-                <button class="button">
+                <button type="button" class="button">
                   default
                 </button>
                 <div class="drop">
                   <div class="drop-inner">
-                    <a href="#" class="button">Lorem ipsum dolor</a>
-                    <a href="#" class="button">Lorem ipsum dolor</a>
-                    <a href="#" class="button">Lorem ipsum dolor</a>
+                    <button type="button" class="button">Lorem ipsum dolor</button> 
+                    <button type="button" class="button">Lorem ipsum dolor</button> 
+                    <button type="button" class="button">Lorem ipsum dolor</button> 
                   </div>
                 </div>
               </div>
               
-              <a href="#" class="button">Lorem ipsum dolor</a>
+              <button type="button" class="button">Lorem ipsum dolor</button> 
             </div>
           </div>
         </div>
         
-        <a href="#" class="button">Lorem ipsum dolor</a>
+        <button type="button" class="button">Lorem ipsum dolor</button> 
       </div>
     </div>
   </div>
@@ -879,53 +897,53 @@ order: 30
 <div class="spacer">
   
   <div class="drop-outer drop-stack" data-xt-drop>
-    <button class="button">
+    <button type="button" class="button">
       default
     </button>
     <div class="drop">
       <div class="drop-inner">
-        <a href="#" class="button">Lorem ipsum dolor</a>
+        <button type="button" class="button">Lorem ipsum dolor</button> 
         
         <div class="drop-outer" data-xt-drop>
-          <button class="button">
+          <button type="button" class="button">
             default
           </button>
           <div class="drop">
             <div class="drop-inner">
-              <a href="#" class="button">Lorem ipsum dolor</a>
+              <button type="button" class="button">Lorem ipsum dolor</button> 
               
               <div class="drop-outer" data-xt-drop>
-                <button class="button">
+                <button type="button" class="button">
                   default
                 </button>
                 <div class="drop">
                   <div class="drop-inner">
-                    <a href="#" class="button">Lorem ipsum dolor</a>
-                    <a href="#" class="button">Lorem ipsum dolor</a>
-                    <a href="#" class="button">Lorem ipsum dolor</a>
+                    <button type="button" class="button">Lorem ipsum dolor</button> 
+                    <button type="button" class="button">Lorem ipsum dolor</button> 
+                    <button type="button" class="button">Lorem ipsum dolor</button> 
                   </div>
                 </div>
               </div>
               
               <div class="drop-outer" data-xt-drop>
-                <button class="button">
+                <button type="button" class="button">
                   default
                 </button>
                 <div class="drop">
                   <div class="drop-inner">
-                    <a href="#" class="button">Lorem ipsum dolor</a>
-                    <a href="#" class="button">Lorem ipsum dolor</a>
-                    <a href="#" class="button">Lorem ipsum dolor</a>
+                    <button type="button" class="button">Lorem ipsum dolor</button> 
+                    <button type="button" class="button">Lorem ipsum dolor</button> 
+                    <button type="button" class="button">Lorem ipsum dolor</button> 
                   </div>
                 </div>
               </div>
               
-              <a href="#" class="button">Lorem ipsum dolor</a>
+              <button type="button" class="button">Lorem ipsum dolor</button> 
             </div>
           </div>
         </div>
         
-        <a href="#" class="button">Lorem ipsum dolor</a>
+        <button type="button" class="button">Lorem ipsum dolor</button> 
       </div>
     </div>
   </div>
@@ -939,53 +957,53 @@ order: 30
 <div class="spacer">
   
   <div class="drop-outer" data-xt-drop>
-    <button class="button">
+    <button type="button" class="button">
       after middle
     </button>
     <div class="drop after middle">
       <div class="drop-inner">
-        <a href="#" class="button">Lorem ipsum dolor</a>
+        <button type="button" class="button">Lorem ipsum dolor</button> 
         
         <div class="drop-outer" data-xt-drop>
-          <button class="button">
+          <button type="button" class="button">
             after middle
           </button>
           <div class="drop after middle">
             <div class="drop-inner">
-              <a href="#" class="button">Lorem ipsum dolor</a>
+              <button type="button" class="button">Lorem ipsum dolor</button> 
               
               <div class="drop-outer" data-xt-drop>
-                <button class="button">
+                <button type="button" class="button">
                   after middle
                 </button>
                 <div class="drop after middle">
                   <div class="drop-inner">
-                    <a href="#" class="button">Lorem ipsum dolor</a>
-                    <a href="#" class="button">Lorem ipsum dolor</a>
-                    <a href="#" class="button">Lorem ipsum dolor</a>
+                    <button type="button" class="button">Lorem ipsum dolor</button> 
+                    <button type="button" class="button">Lorem ipsum dolor</button> 
+                    <button type="button" class="button">Lorem ipsum dolor</button> 
                   </div>
                 </div>
               </div>
               
               <div class="drop-outer" data-xt-drop>
-                <button class="button">
+                <button type="button" class="button">
                   after middle
                 </button>
                 <div class="drop after middle">
                   <div class="drop-inner">
-                    <a href="#" class="button">Lorem ipsum dolor</a>
-                    <a href="#" class="button">Lorem ipsum dolor</a>
-                    <a href="#" class="button">Lorem ipsum dolor</a>
+                    <button type="button" class="button">Lorem ipsum dolor</button> 
+                    <button type="button" class="button">Lorem ipsum dolor</button> 
+                    <button type="button" class="button">Lorem ipsum dolor</button> 
                   </div>
                 </div>
               </div>
               
-              <a href="#" class="button">Lorem ipsum dolor</a>
+              <button type="button" class="button">Lorem ipsum dolor</button> 
             </div>
           </div>
         </div>
         
-        <a href="#" class="button">Lorem ipsum dolor</a>
+        <button type="button" class="button">Lorem ipsum dolor</button> 
       </div>
     </div>
   </div>
@@ -999,53 +1017,53 @@ order: 30
 <div class="spacer">
   
   <div class="drop-outer drop-stack" data-xt-drop>
-    <button class="button">
+    <button type="button" class="button">
       after
     </button>
     <div class="drop after">
       <div class="drop-inner">
-        <a href="#" class="button">Lorem ipsum dolor</a>
+        <button type="button" class="button">Lorem ipsum dolor</button> 
         
         <div class="drop-outer" data-xt-drop>
-          <button class="button">
+          <button type="button" class="button">
             after
           </button>
           <div class="drop after">
             <div class="drop-inner">
-              <a href="#" class="button">Lorem ipsum dolor</a>
+              <button type="button" class="button">Lorem ipsum dolor</button> 
               
               <div class="drop-outer" data-xt-drop>
-                <button class="button">
+                <button type="button" class="button">
                   after
                 </button>
                 <div class="drop after">
                   <div class="drop-inner">
-                    <a href="#" class="button">Lorem ipsum dolor</a>
-                    <a href="#" class="button">Lorem ipsum dolor</a>
-                    <a href="#" class="button">Lorem ipsum dolor</a>
+                    <button type="button" class="button">Lorem ipsum dolor</button> 
+                    <button type="button" class="button">Lorem ipsum dolor</button> 
+                    <button type="button" class="button">Lorem ipsum dolor</button> 
                   </div>
                 </div>
               </div>
               
               <div class="drop-outer" data-xt-drop>
-                <button class="button">
+                <button type="button" class="button">
                   after
                 </button>
                 <div class="drop after">
                   <div class="drop-inner">
-                    <a href="#" class="button">Lorem ipsum dolor</a>
-                    <a href="#" class="button">Lorem ipsum dolor</a>
-                    <a href="#" class="button">Lorem ipsum dolor</a>
+                    <button type="button" class="button">Lorem ipsum dolor</button> 
+                    <button type="button" class="button">Lorem ipsum dolor</button> 
+                    <button type="button" class="button">Lorem ipsum dolor</button> 
                   </div>
                 </div>
               </div>
               
-              <a href="#" class="button">Lorem ipsum dolor</a>
+              <button type="button" class="button">Lorem ipsum dolor</button> 
             </div>
           </div>
         </div>
         
-        <a href="#" class="button">Lorem ipsum dolor</a>
+        <button type="button" class="button">Lorem ipsum dolor</button> 
       </div>
     </div>
   </div>
@@ -1055,7 +1073,7 @@ order: 30
   </div>
 </div>
 
-<h3>Animations</h3>
+<h2>Animations</h2>
 
 <p>You can set <strong>default animation</strong> inside the scss with <code>@include</code>.</p>
 <p>@TODO link animations.</p>
@@ -1067,53 +1085,53 @@ order: 30
 <div class="spacer">
   
   <div class="drop-outer" data-xt-drop>
-    <button class="button">
+    <button type="button" class="button">
       default
     </button>
     <div class="drop">
       <div class="drop-inner">
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
       </div>
     </div>
   </div>
     
   <div class="drop-outer" data-xt-drop>
-    <button class="button">
+    <button type="button" class="button">
       anim-horizontal
     </button>
     <div class="drop anim-horizontal">
       <div class="drop-inner">
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
       </div>
     </div>
   </div>
     
   <div class="drop-outer" data-xt-drop>
-    <button class="button">
+    <button type="button" class="button">
       anim-diagonal
     </button>
     <div class="drop anim-diagonal">
       <div class="drop-inner">
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
       </div>
     </div>
   </div>
     
   <div class="drop-outer" data-xt-drop>
-    <button class="button">
+    <button type="button" class="button">
       no-anim
     </button>
     <div class="drop no-anim">
       <div class="drop-inner">
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
-        <a href="#" class="button">Lorem ipsum dolor</a>
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
       </div>
     </div>
   </div>

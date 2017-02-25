@@ -23,14 +23,12 @@
   $.fn.xtToggle = function(options) {
     var defaults = {
       'name': 'xt-toggle',
-      'elements': null,
+      'elements': '> .button',
       'targets': '[class^="toggle-"], [class*=" toggle-"]',
       'class': 'active',
       'on': 'click',
-      'off': null,
       'min': 0,
       'max': 1,
-      'anim': null,
     };
     return this.each( function() {
       if (!$.data(this, defaults.name)) {
@@ -51,10 +49,8 @@
       'targets': '.drop',
       'class': 'active',
       'on': 'click',
-      'off': null,
       'min': 0,
       'max': 1,
-      'anim': null,
     };
     return this.each( function() {
       if (!$.data(this, defaults.name)) {
@@ -71,9 +67,8 @@
   $.fn.xtOverlay = function(options) {
     var defaults = {
       'name': 'xt-overlay',
-      'targets': '',
-      'on': 'click',
       'class': 'active',
+      'on': 'click',
       'min': 0,
       'max': 1,
       'anim': '.overlay-inner',
@@ -94,8 +89,8 @@
   $.fn.xtScroll = function(options) {
     var defaults = {
       'name': 'xt-scroll',
-      'on': 'scroll',
       'class': 'active',
+      'on': 'scroll',
       'min': 0,
       'max': 1,
     };
@@ -114,10 +109,8 @@
   $.fn.xtAjax = function(options) {
     var defaults = {
       'name': 'xt-ajax',
-      'targets': null,
-      'on': 'click',
       'class': 'active',
-      'url': null,
+      'on': 'click',
     };
     return this.each( function() {
       if (!$.data(this, defaults.name)) {
@@ -125,7 +118,6 @@
       }
     });
   };
-  
   
   //////////////////////
   // init
@@ -215,21 +207,19 @@
     var group = this.group;
     var $group = $(this.group);
     // $elements
+    settings.$elements = null;
     if (settings.elements) {
       if (settings.elements.indexOf('#') !== -1) {
         settings.$elements = $(settings.elements).filter(':parents(.xt-ignore)');
       } else {
         settings.$elements = $group.find(settings.elements).filter(':parents(.xt-ignore)');
-        /*// @TODO
-        if (!settings.$elements.length) {
-          settings.$elements = $group.parent().find(settings.elements).filter(':parents(.xt-ignore)');
-        }
-        */
       }
-    } else {
+    }
+    if (!settings.$elements || !settings.$elements.length) {
       settings.$elements = $group;
     }
     // $targets
+    settings.$targets = null;
     if (settings.name === 'xt-scroll') {
       // wrapper
       var $outside = $group.parent('.xt-container.xt-position');
@@ -264,11 +254,6 @@
         var $t = $group.find(settings.targets);
         var $tinner = $t.find(settings.targets);
         settings.$targets = $t.not($tinner).filter(':parents(.xt-ignore)');
-        /*// @TODO
-        if (!settings.$targets.length) {
-          settings.$targets = $group.parent().find(settings.targets).filter(':parents(.xt-ignore)');
-        }
-        */
       }
     }
   };
@@ -365,6 +350,12 @@
       if (settings.off) {
         $et.off(settings.off).on(settings.off, function(e) {
           object.toggle($(this));
+        });
+      }
+      // close on link click
+      if (settings.name === 'xt-drop') {
+        settings.$targets.find('[href], [data-xt-reset]').off('click.xt.href').on('click.xt.href', function(e) {
+          object.toggle($et);
         });
       }
       // remove html classes

@@ -92,6 +92,7 @@ a, button {
 
 .button, .overlay .overlay-close {
   display: inline-block;
+  position: relative;
   vertical-align: middle;
   text-align: center;
   /*

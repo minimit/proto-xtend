@@ -24,7 +24,7 @@
       var $items = $container.find('> .demo-item');
       // multiple elements
       $container.prepend('<div class="box demo-tabs"><div class="box demo-tabs-inside"><div class="demo-tabs-left float-left"></div><div class="demo-code-tabs-right float-right"></div></div></div>');
-      $container.find('.demo-code-tabs-right').append('<button class="button button__fullscreen" data-toggle="tooltip" data-placement="top" title="Open fullscreen"><span class="icon-enlarge2"></span></button>');
+      $container.find('.demo-code-tabs-right').append('<button type="button" class="button button__fullscreen" data-toggle="tooltip" data-placement="top" title="Open fullscreen"><span class="icon-enlarge2"></span></button>');
       $container.find('.button__fullscreen').tooltip(/*{trigger: 'click'}*/)
         .on('mouseleave', function(e) {
           $(this).attr('data-original-title', 'Open fullscreen').tooltip('hide');
@@ -47,14 +47,14 @@
             name = 'demo #' + k;
           }
         }
-        var $btn = $container.find('.demo-tabs-left').append('<button class="button">' + name + '</button>').find('.button').eq(k);
+        var $btn = $container.find('.demo-tabs-left').append('<button type="button" class="button">' + name + '</button>').find('.button').eq(k);
         // iframe append
         if ($item.attr('data-iframe')) {
           $item.append('<iframe data-src="' + $item.attr('data-iframe') + '" frameborder="0"></iframe>');
         }
         // tabs
         var id = 'iframe' + i + k;
-        $item.append('<div class="demo-code"><div class="box demo-code-tabs"><div class="box demo-code-tabs-inside"><div class="demo-code-tabs-left float-left"></div><div class="demo-code-tabs-right float-right"><button class="button button__clipboard" data-toggle="tooltip" data-placement="top" title="Copy to clipboard">copy</button></div></div></div><div class="box demo-code-body"></div></div>');
+        $item.append('<div class="demo-code"><div class="box demo-code-tabs"><div class="box demo-code-tabs-inside"><div class="demo-code-tabs-left float-left"></div><div class="demo-code-tabs-right float-right"><button type="button" class="button button__clipboard" data-toggle="tooltip" data-placement="top" title="Copy to clipboard">copy</button></div></div></div><div class="box demo-code-body"></div></div>');
         // https://github.com/zenorocha/clipboard.js/
         $item.find('.button__clipboard').tooltip(/*{trigger: 'click'}*/)
           .on('mouseleave', function(e) {
@@ -156,7 +156,7 @@
       var lang = $source.data('lang');
       // populate tabs
       var $codeInside = $item.find('.demo-code-body').append('<div class="demo-code-body-item"><pre><code></code></pre></div>').find('.demo-code-body-item').eq(z).find('pre code');
-      var $btnInside = $item.find('.demo-code-tabs-left').append('<button class="button">' + lang + '</button>').find('.button').eq(z);
+      var $btnInside = $item.find('.demo-code-tabs-left').append('<button type="button" class="button">' + lang + '</button>').find('.button').eq(z);
       // format code
       if (!$codeInside.hasClass('hljs')) {
         var text = formatCode($source, lang);

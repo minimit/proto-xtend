@@ -6,7 +6,12 @@ categories: [Components]
 order: 40
 ---
 
-<h2>Overlay</h2>
+<h2>Api</h2>
+
+<p>@TODO table api +  default "elements" and "targets".</p>
+<p>@TODO <a href="#">link</a> to toggle.</p>
+
+<h2>Options</h2>
 
 <p><code>.overlay</code> gets automatically moved to <code>&lt;body&gt;</code>, watch out for styling...</p>
 
@@ -15,7 +20,7 @@ order: 40
 <div class="demo">
   <div class="demo-item demo-preview" data-name="default">
     <div class="demo-source" data-lang="html">
-<button class="button" data-xt-overlay='{"targets": "#overlay-default"}'>
+<button type="button" class="button" data-xt-overlay='{"targets": "#overlay-default"}'>
   Open
 </button>
 <div class="overlay" id="overlay-default">
@@ -34,7 +39,7 @@ order: 40
   <div class="demo-item demo-preview" data-name="full">
     <div class="demo-text"><code>.full</code>.</div>
     <div class="demo-source" data-lang="html">
-<button class="button" data-xt-overlay='{"targets": "#overlay-full"}'>
+<button type="button" class="button" data-xt-overlay='{"targets": "#overlay-full"}'>
   Open
 </button>
 <div class="overlay full" id="overlay-full">
@@ -50,17 +55,37 @@ order: 40
 </div>
     </div>
   </div>
-  <div class="demo-item demo-preview" data-name="tests">
+  <div class="demo-item demo-preview" data-name="same target">
     <div class="demo-source" data-lang="html">
 <div class="spacer">
-  <button class="button" data-xt-overlay='{"targets": "#overlay-tests"}'>
+  <button type="button" class="button" data-xt-overlay='{"targets": "#overlay-same-target"}'>
     Open
   </button>
-  <button class="button" data-xt-overlay='{"targets": "#overlay-tests"}'>
+  <button type="button" class="button" data-xt-overlay='{"targets": "#overlay-same-target"}'>
     Open Same
   </button>
 </div>
-<div class="overlay" id="overlay-tests">
+<div class="overlay" id="overlay-same-target">
+  <div class="overlay-inner">
+    <div class="overlay-content">
+      <button type="button" class="overlay-close"><span class="icon-cross"></span></button>
+      <h2>Lorem ipsum</h2>
+      <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus, lectus quis ornare volutpat, ligula nulla sollicitudin nunc, ut commodo nulla enim nec nisi.</p>
+      <p>Morbi sodales, dolor a iaculis ornare, velit justo lacinia erat, pretium sollicitudin dui sem id justo.</p>
+    </div>
+  </div>
+</div>
+    </div>
+  </div>
+  <div class="demo-item demo-preview" data-name="content">
+    <div class="demo-source" data-lang="html">
+<div class="spacer">
+  <button type="button" class="button" data-xt-overlay='{"targets": "#overlay-content"}'>
+    Open
+  </button>
+</div>
+<div class="overlay" id="overlay-content">
   <div class="overlay-inner">
     <div class="overlay-content">
       <button type="button" class="overlay-close"><span class="icon-cross"></span></button>
@@ -69,19 +94,21 @@ order: 40
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus, lectus quis ornare volutpat, ligula nulla sollicitudin nunc, ut commodo nulla enim nec nisi.</p>
       <div class="spacer">
         <div class="drop-outer" data-xt-drop>
-          <button class="button">
+          <button type="button" class="button">
             after top backdrop
           </button>
-          <div class="drop after top backdrop">
-            <a href="#" class="button">
-              Lorem ipsum dolor
-            </a>
-            <a href="#" class="button">
-              Lorem ipsum dolor
-            </a>
-            <a href="#" class="button">
-              Lorem ipsum dolor
-            </a>
+          <div class="drop after middle backdrop">
+            <div class="drop-inner">
+              <a href="#" class="button">
+                Lorem ipsum dolor
+              </a>
+              <a href="#" class="button">
+                Lorem ipsum dolor
+              </a>
+              <a href="#" class="button">
+                Lorem ipsum dolor
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -103,7 +130,7 @@ order: 40
     <div class="demo-source" data-lang="html">
 <div class="spacer">
   
-  <button class="button" data-xt-overlay='{"targets": "#overlay-default-default"}'>
+  <button type="button" class="button" data-xt-overlay='{"targets": "#overlay-default-default"}'>
     default
   </button>
   <div class="overlay" id="overlay-default-default">
@@ -118,7 +145,7 @@ order: 40
     </div>
   </div>
   
-  <button class="button" data-xt-overlay='{"targets": "#overlay-default-tiny"}'>
+  <button type="button" class="button" data-xt-overlay='{"targets": "#overlay-default-tiny"}'>
     tiny
   </button>
   <div class="overlay tiny" id="overlay-default-tiny">
@@ -133,7 +160,7 @@ order: 40
     </div>
   </div>
     
-  <button class="button" data-xt-overlay='{"targets": "#overlay-default-small"}'>
+  <button type="button" class="button" data-xt-overlay='{"targets": "#overlay-default-small"}'>
     small
   </button>
   <div class="overlay small" id="overlay-default-small">
@@ -148,7 +175,7 @@ order: 40
     </div>
   </div>
       
-  <button class="button" data-xt-overlay='{"targets": "#overlay-default-medium"}'>
+  <button type="button" class="button" data-xt-overlay='{"targets": "#overlay-default-medium"}'>
     medium
   </button>
   <div class="overlay medium" id="overlay-default-medium">
@@ -163,7 +190,7 @@ order: 40
     </div>
   </div>
         
-  <button class="button" data-xt-overlay='{"targets": "#overlay-default-large"}'>
+  <button type="button" class="button" data-xt-overlay='{"targets": "#overlay-default-large"}'>
     large
   </button>
   <div class="overlay large" id="overlay-default-large">
@@ -178,7 +205,7 @@ order: 40
     </div>
   </div>
   
-  <button class="button" data-xt-overlay='{"targets": "#overlay-default-giant"}'>
+  <button type="button" class="button" data-xt-overlay='{"targets": "#overlay-default-giant"}'>
     giant
   </button>
   <div class="overlay giant" id="overlay-default-giant">
@@ -201,7 +228,7 @@ order: 40
     <div class="demo-source" data-lang="html">
 <div class="spacer">
   
-  <button class="button" data-xt-overlay='{"targets": "#overlay-full-default"}'>
+  <button type="button" class="button" data-xt-overlay='{"targets": "#overlay-full-default"}'>
     default
   </button>
   <div class="overlay full" id="overlay-full-default">
@@ -216,7 +243,7 @@ order: 40
     </div>
   </div> 
 
-  <button class="button" data-xt-overlay='{"targets": "#overlay-full-tiny"}'>
+  <button type="button" class="button" data-xt-overlay='{"targets": "#overlay-full-tiny"}'>
     tiny
   </button>
   <div class="overlay full tiny" id="overlay-full-tiny">
@@ -231,7 +258,7 @@ order: 40
     </div>
   </div>
     
-  <button class="button" data-xt-overlay='{"targets": "#overlay-full-small"}'>
+  <button type="button" class="button" data-xt-overlay='{"targets": "#overlay-full-small"}'>
     small
   </button>
   <div class="overlay full small" id="overlay-full-small">
@@ -246,7 +273,7 @@ order: 40
     </div>
   </div>
       
-  <button class="button" data-xt-overlay='{"targets": "#overlay-full-medium"}'>
+  <button type="button" class="button" data-xt-overlay='{"targets": "#overlay-full-medium"}'>
     medium
   </button>
   <div class="overlay full medium" id="overlay-full-medium">
@@ -261,7 +288,7 @@ order: 40
     </div>
   </div>
         
-  <button class="button" data-xt-overlay='{"targets": "#overlay-full-large"}'>
+  <button type="button" class="button" data-xt-overlay='{"targets": "#overlay-full-large"}'>
     large
   </button>
   <div class="overlay full large" id="overlay-full-large">
@@ -276,7 +303,7 @@ order: 40
     </div>
   </div>
 
-  <button class="button" data-xt-overlay='{"targets": "#overlay-full-giant"}'>
+  <button type="button" class="button" data-xt-overlay='{"targets": "#overlay-full-giant"}'>
     giant
   </button>
   <div class="overlay full giant" id="overlay-full-giant">
@@ -307,7 +334,7 @@ order: 40
     <div class="demo-text"><code>.anim-diagonal</code>.</div>
     <div class="demo-source" data-lang="html">
 <div class="spacer">
-  <button class="button" data-xt-overlay='{"targets": "#overlay-diagonal"}'>
+  <button type="button" class="button" data-xt-overlay='{"targets": "#overlay-diagonal"}'>
     anim-diagonal
   </button>
 
@@ -323,7 +350,7 @@ order: 40
     </div>
   </div>
 
-  <button class="button" data-xt-overlay='{"targets": "#overlay-full-diagonal"}'>
+  <button type="button" class="button" data-xt-overlay='{"targets": "#overlay-full-diagonal"}'>
     full anim-diagonal
   </button>
 
@@ -339,7 +366,7 @@ order: 40
     </div>
   </div>
   
-  <button class="button" data-xt-overlay='{"targets": "#overlay-disable"}'>
+  <button type="button" class="button" data-xt-overlay='{"targets": "#overlay-disable"}'>
     no-anim
   </button>
 
