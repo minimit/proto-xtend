@@ -75,6 +75,7 @@ a, button {
     overflow: hidden; }
 
 .drop {
+  display: inline-block;
   position: relative; }
 
 .drop-target {
@@ -118,9 +119,9 @@ a, button {
   .drop-target.middle {
     margin-top: 0 !important;
     margin-bottom: 0 !important; }
-  .drop-target.max-height {
+  .drop-target.max-height .drop-inner {
     overflow-y: auto; }
-  .drop-target.max-width {
+  .drop-target.max-width .drop-inner {
     overflow-x: auto; }
 
 .overlay {
@@ -203,8 +204,7 @@ html.xt-fixed-horizontal .overlay {
   height: 0; }
 
 .no-anim,
-.no-anim .xt-backdrop,
-.xt-no-anim {
+.no-anim .xt-backdrop {
   transition: none !important; }
 
 .box {
@@ -272,6 +272,14 @@ html.xt-fixed-horizontal .overlay {
 .anim-height-top,
 .anim-height-bottom {
   transition: all 300ms cubic-bezier(0.63, 0.36, 0, 0.97); }
+
+.anim-opacity {
+  transition: all 300ms cubic-bezier(0.63, 0.36, 0, 0.97);
+  opacity: 0; }
+  .anim-opacity.fade-in {
+    opacity: 1; }
+  .anim-opacity.fade-out {
+    opacity: 0; }
 
 .anim-horizontal {
   transition: all 300ms cubic-bezier(0.63, 0.36, 0, 0.97);
@@ -699,9 +707,9 @@ a.button:not(.link):hover, .overlay a.overlay-close:not(.link):hover, a.button:n
   .drop-target .button, .drop-target .overlay .overlay-close, .overlay .drop-target .overlay-close {
     padding-left: 20px !important;
     padding-right: 40px !important; }
-  .drop-target.max-height {
+  .drop-target.max-height .drop-inner {
     max-height: 225px; }
-  .drop-target.max-width {
+  .drop-target.max-width .drop-inner {
     max-width: 225px; }
   .drop-target.before, .drop-target.after {
     padding: 0 0.618rem; }

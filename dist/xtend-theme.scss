@@ -342,10 +342,14 @@ a.button:not(.link) {
   }
   /* dimensions */
   &.max-height {
-    max-height: 225px;
+    .drop-inner {
+      max-height: 225px;
+    }
   }
   &.max-width {
-    max-width: 225px;
+    .drop-inner {
+      max-width: 225px;
+    }
   }
   /* positions */
   @extend .drop-target.bottom; // default

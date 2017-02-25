@@ -723,10 +723,10 @@
     // out
     object.animationMultiple($el, triggered, object.hideDone);
     // animations
+    object.offBackdrop($el, triggered);
     object.onWidth($el, triggered);
     object.onHeight($el, triggered);
     window.xtRequestAnimationFrame( function() {
-      object.offBackdrop($el, triggered);
       object.offWidth($el, triggered);
       object.offHeight($el, triggered);
     });
@@ -763,7 +763,7 @@
       window.xtCancelAnimationFrame($single.data('frame.timeout'));
       var frame = window.xtRequestAnimationFrame( function() {
         if (add) {
-          $single.removeClass('xt-no-anim').addClass(add);
+          $single.removeClass('no-anim').addClass(add);
         }
         object.animationDelay($single, 'anim', function() {
           if (++done < $el.length) {
@@ -823,10 +823,12 @@
       }
       // animations
       object.animationDelayClear($backdrop, 'backdrop');
-      window.xtRequestAnimationFrame( function() {
+      window.xtCancelAnimationFrame($backdrop.data('frame.timeout'));
+      var frame = window.xtRequestAnimationFrame( function() {
         $backdrop.addClass('fade-in');
         $backdrop.removeClass('fade-out');
       });
+      $backdrop.data('frame.timeout', frame);
       // events
       $backdrop.on('click.backdrop.xt', function(e) {
         object.hide(settings.$elements, true, false, true);
@@ -849,12 +851,15 @@
       if ($backdrop.length) {
         // animations
         $backdrop.removeClass('fade-in');
-        window.xtRequestAnimationFrame( function() {
+        object.animationDelayClear($backdrop, 'backdrop');
+        window.xtCancelAnimationFrame($backdrop.data('frame.timeout'));
+        var frame = window.xtRequestAnimationFrame( function() {
           $backdrop.addClass('fade-out');
           object.animationDelay($backdrop, 'backdrop', function() {
             $backdrop.removeClass('fade-out').remove();
           });
         });
+        $backdrop.data('frame.timeout', frame);
         // events
         $backdrop.off('click.backdrop.xt');
         $el.off('click.backdrop.xt');
@@ -922,11 +927,11 @@
     // animation out
     $el.each( function() {
       var $single = $(this);
-      if ($single.hasClass('middle')) {
+      if ($single.hasClass('middle') && !$single.attr('middle.done')) {
         var $outside = $single.parent();
         var add = $outside.outerHeight() / 2;
         var remove = $single.outerHeight() / 2;
-        $single.addClass('xt-no-anim').css('top', add - remove);
+        $single.addClass('no-anim').attr('middle.done', true).css('top', add - remove);
       }
     });
   };
@@ -934,11 +939,11 @@
     // animation out
     $el.each( function() {
       var $single = $(this);
-      if ($single.hasClass('center')) {
+      if ($single.hasClass('center') && !$single.attr('center.done')) {
         var $outside = $single.parent();
         var add = $outside.outerWidth() / 2;
         var remove = $single.outerWidth() / 2;
-        $single.addClass('xt-no-anim').css('left', add - remove);
+        $single.addClass('no-anim').attr('center.done', true).css('left', add - remove);
       }
     });
   };

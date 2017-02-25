@@ -108,6 +108,7 @@ a, button {
 //////////////////////
 
 .drop {
+  display: inline-block;
   position: relative;
 }
 .drop-target {
@@ -168,10 +169,14 @@ a, button {
   }
   /* dimensions */
   &.max-height {
-    overflow-y: auto;
+    .drop-inner {
+      overflow-y: auto;
+    }
   }
   &.max-width {
-    overflow-x: auto;
+    .drop-inner {
+      overflow-x: auto;
+    }
   }
 }
 
@@ -283,8 +288,7 @@ html.xt-fixed-horizontal {
   height: 0;
 }
 .no-anim,
-.no-anim .xt-backdrop,
-.xt-no-anim {
+.no-anim .xt-backdrop {
   transition: none !important;
 }
 

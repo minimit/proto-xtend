@@ -27,6 +27,21 @@
 // animations
 //////////////////////
 
+// @include anim-opacity;
+@mixin anim-opacity {
+  @include transition-default;
+  opacity: 0;
+  &.fade-in {
+    opacity: 1;
+  }
+  &.fade-out {
+    opacity: 0;
+  }
+}
+.anim-opacity {
+  @include anim-opacity;
+}
+
 // @include anim-horizontal;
 @mixin anim-horizontal {
   @include transition-default;
