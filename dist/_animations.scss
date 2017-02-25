@@ -49,14 +49,14 @@
 @mixin anim-horizontal {
   @include transition-default;
   opacity: 0;
-  transform: translateX(-0.618rem);
+  transform: translateX(-.618rem);
   &.fade-in {
     opacity: 1;
     transform: translateX(0);
   }
   &.fade-out {
     opacity: 0;
-    transform: translateX(0.618rem);
+    transform: translateX(.618rem);
   }
 }
 .anim-horizontal {
@@ -67,14 +67,14 @@
 @mixin anim-horizontal-zoom {
   @include transition-default;
   opacity: 0;
-  transform: translateX(-0.618rem) scale(0.95);
+  transform: translateX(-.618rem) scale(.95);
   &.fade-in {
     opacity: 1;
     transform: translateX(0) scale(1);
   }
   &.fade-out {
     opacity: 0;
-    transform: translateX(0.618rem) scale(0.95);
+    transform: translateX(.618rem) scale(.95);
   }
 }
 .anim-horizontal-zoom {
@@ -85,14 +85,14 @@
 @mixin anim-vertical {
   @include transition-default;
   opacity: 0;
-  transform: translateY(-0.618rem);
+  transform: translateY(-.618rem);
   &.fade-in {
     opacity: 1;
     transform: translateY(0);
   }
   &.fade-out {
     opacity: 0;
-    transform: translateY(0.618rem);
+    transform: translateY(.618rem);
   }
 }
 .anim-vertical {
@@ -103,14 +103,14 @@
 @mixin anim-vertical-zoom {
   @include transition-default;
   opacity: 0;
-  transform: translateY(-0.618rem) scale(0.95);
+  transform: translateY(-.618rem) scale(.95);
   &.fade-in {
     opacity: 1;
     transform: translateY(0) scale(1);
   }
   &.fade-out {
     opacity: 0;
-    transform: translateY(0.618rem) scale(0.95);
+    transform: translateY(.618rem) scale(.95);
   }
 }
 .anim-vertical-zoom {
@@ -121,14 +121,14 @@
 @mixin anim-diagonal {
   @include transition-default;
   opacity: 0;
-  transform:  translateX(-0.618rem) translateY(-0.618rem);
+  transform:  translateX(-.618rem) translateY(-.618rem);
   &.fade-in {
     opacity: 1;
     transform: translateX(0) translateY(0);
   }
   &.fade-out {
     opacity: 0;
-    transform: translateX(0.618rem) translateY(0.618rem);
+    transform: translateX(.618rem) translateY(.618rem);
   }
 }
 .anim-diagonal {
@@ -139,14 +139,14 @@
 @mixin anim-left {
   @include transition-default;
   opacity: 0;
-  transform: translateX(0.618rem);
+  transform: translateX(.618rem);
   &.fade-in {
     opacity: 1;
     transform: translateY(0);
   }
   &.fade-out {
     opacity: 0;
-    transform: translateX(0.618rem);
+    transform: translateX(.618rem);
   }
 }
 .anim-left {
@@ -157,14 +157,14 @@
 @mixin anim-right {
   @include transition-default;
   opacity: 0;
-  transform: translateX(-0.618rem);
+  transform: translateX(-.618rem);
   &.fade-in {
     opacity: 1;
     transform: translateY(0);
   }
   &.fade-out {
     opacity: 0;
-    transform: translateX(-0.618rem);
+    transform: translateX(-.618rem);
   }
 }
 .anim-right {
@@ -175,14 +175,14 @@
 @mixin anim-top {
   @include transition-default;
   opacity: 0;
-  transform: translateY(-0.618rem);
+  transform: translateY(-.618rem);
   &.fade-in {
     opacity: 1;
     transform: translateY(0);
   }
   &.fade-out {
     opacity: 0;
-    transform: translateY(-0.618rem);
+    transform: translateY(-.618rem);
   }
 }
 .anim-top {
@@ -193,14 +193,14 @@
 @mixin anim-bottom {
   @include transition-default;
   opacity: 0;
-  transform: translateY(0.618rem);
+  transform: translateY(.618rem);
   &.fade-in {
     opacity: 1;
     transform: translateY(0);
   }
   &.fade-out {
     opacity: 0;
-    transform: translateY(0.618rem);
+    transform: translateY(.618rem);
   }
 }
 .anim-bottom {

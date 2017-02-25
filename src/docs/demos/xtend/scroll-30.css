@@ -2,8 +2,8 @@
 @copyright (c) 2016 - 2017 Riccardo Caroli
 @license MIT (https://github.com/minimit/xtend/blob/master/LICENSE) */
 /* ratios
-0.618
-0.809
+.618
+.809
 1
 1.238
 2.619
@@ -65,7 +65,7 @@ body {
 .caret-right,
 .caret-left {
   vertical-align: middle;
-  top: -0.08em; }
+  top: -.08em; }
 
 .caret-down {
   border-style: solid;
@@ -98,11 +98,11 @@ a, button {
   /*
   .left {
     float: left;
-    top: 0.1em; // vertical fix
+    top: .1em; // vertical fix
   }
   .right {
     float: right;
-    top: 0.1em; // vertical fix
+    top: .1em; // vertical fix
   }
   */ }
   .button .text, .overlay .overlay-close .text {
@@ -538,6 +538,24 @@ strong {
   font-weight: 600;
   font-style: normal; }
 
+code {
+  padding: .2rem .4rem;
+  border-radius: 0;
+  background-color: #f8f8f8;
+  font-family: monaco, Consolas, "Lucida Console", monospace;
+  font-weight: normal;
+  font-style: normal;
+  font-size: .9em;
+  color: #d14; }
+
+pre {
+  font-size: 1rem; }
+  pre code {
+    float: left;
+    font-size: 13px;
+    line-height: 1.6;
+    white-space: pre-wrap !important; }
+
 /* .icon- */
 .icon {
   display: inline-block;
@@ -546,10 +564,10 @@ strong {
   /* sizes */
   /*
   .tiny {
-    font-size: 0.5em;
+    font-size: .5em;
   }
   .small {
-    font-size: 0.75em;
+    font-size: .75em;
   }
   .medium {
     font-size: 1em;
@@ -562,9 +580,9 @@ strong {
   }
   */ }
   .icon.left {
-    margin-right: 0.35em; }
+    margin-right: .35em; }
   .icon.right {
-    margin-left: 0.35em; }
+    margin-left: .35em; }
 
 /* caret */
 .caret-down,
@@ -637,21 +655,21 @@ a.button:not(.link):hover, .overlay a.overlay-close:not(.link):hover, a.button:n
   font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 400;
   font-style: normal;
-  letter-spacing: 0.5px;
+  letter-spacing: .5px;
   text-transform: uppercase;
   /* variants */
   /* animations */ }
   .button.tiny, .overlay .tiny.overlay-close {
-    font-size: 0.66rem;
+    font-size: .66rem;
     padding: .625em .875em; }
   .button.small, .overlay .small.overlay-close {
-    font-size: 0.73rem;
+    font-size: .73rem;
     padding: .625em .875em; }
   .button.medium, .button, .overlay .overlay-close {
-    font-size: 0.8rem;
+    font-size: .8rem;
     padding: .625em .875em; }
   .button.large, .overlay .large.overlay-close {
-    font-size: 0.86rem;
+    font-size: .86rem;
     padding: .625em .875em; }
   .button.giant, .overlay .giant.overlay-close {
     font-size: 1rem;
@@ -708,19 +726,19 @@ a.button:not(.link):hover, .overlay a.overlay-close:not(.link):hover, a.button:n
       margin-left: 0;
       margin-bottom: 0; }
   .spacer.small {
-    margin-left: -0.5rem; }
+    margin-left: -.5rem; }
     .spacer.small:last-child {
-      margin-bottom: -0.5rem; }
+      margin-bottom: -.5rem; }
     .spacer.small > * {
-      margin-left: 0.5rem;
-      margin-bottom: 0.5rem; }
+      margin-left: .5rem;
+      margin-bottom: .5rem; }
   .spacer.medium, .spacer {
-    margin-left: -0.618rem; }
+    margin-left: -.618rem; }
     .spacer.medium:last-child, .spacer:last-child {
-      margin-bottom: -0.618rem; }
+      margin-bottom: -.618rem; }
     .spacer.medium > *, .spacer > * {
-      margin-left: 0.618rem;
-      margin-bottom: 0.618rem; }
+      margin-left: .618rem;
+      margin-bottom: .618rem; }
   .spacer.large {
     margin-left: -1.238rem; }
     .spacer.large:last-child {
@@ -743,7 +761,7 @@ a.button:not(.link):hover, .overlay a.overlay-close:not(.link):hover, a.button:n
   /* variants */
   /* animations */ }
   .drop .drop-inner {
-    padding: 0.618rem 0;
+    padding: .618rem 0;
     -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); }
   .drop .button, .drop .overlay .overlay-close, .overlay .drop .overlay-close {
@@ -754,9 +772,9 @@ a.button:not(.link):hover, .overlay a.overlay-close:not(.link):hover, a.button:n
   .drop.max-width .drop-inner {
     max-width: 225px; }
   .drop.before, .drop.after {
-    padding: 0 0.618rem; }
+    padding: 0 .618rem; }
   .drop.left, .drop, .drop.right {
-    padding: 0.618rem 0; }
+    padding: .618rem 0; }
   .drop.primary .drop-inner {
     background: #00B0FF;
     color: #ffffff; }
@@ -849,7 +867,7 @@ a.button:not(.link):hover, .overlay a.overlay-close:not(.link):hover, a.button:n
     transition: all 300ms cubic-bezier(0.63, 0.36, 0, 0.97);
     opacity: 0; }
     .xt-backdrop:not([class*=" anim-"]).fade-in {
-      opacity: 0.2; }
+      opacity: .2; }
     .xt-backdrop:not([class*=" anim-"]).fade-out {
       opacity: 0; }
 

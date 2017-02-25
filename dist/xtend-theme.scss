@@ -89,6 +89,23 @@ p {
 strong {
   @include font(sans-medium);
 }
+code {
+  padding: .2rem .4rem;
+  border-radius: 0;
+  background-color: $color-grey;
+  @include font(monospace);
+  font-size: .9em;
+  color: $color-red;
+}
+pre {
+  font-size: 1rem;
+  code {
+    float: left;
+    font-size: 13px;
+    line-height: 1.6;
+    white-space: pre-wrap !important;
+  }
+}
 
 //////////////////////
 // icons
@@ -100,18 +117,18 @@ strong {
   position: relative;
   /* alignment */
   &.left {
-    margin-right: 0.35em;
+    margin-right: .35em;
   }
   &.right {
-    margin-left: 0.35em;
+    margin-left: .35em;
   }
   /* sizes */
   /*
   .tiny {
-    font-size: 0.5em;
+    font-size: .5em;
   }
   .small {
-    font-size: 0.75em;
+    font-size: .75em;
   }
   .medium {
     font-size: 1em;
@@ -179,19 +196,19 @@ a.button:not(.link) {
   @extend .button.medium; // default
   line-height: 1.238;
   &.tiny {
-    font-size: 0.66rem;
+    font-size: .66rem;
     padding: .625em .875em;
   }
   &.small {
-    font-size: 0.73rem;
+    font-size: .73rem;
     padding: .625em .875em;
   }
   &.medium {
-    font-size: 0.8rem;
+    font-size: .8rem;
     padding: .625em .875em;
   }
   &.large {
-    font-size: 0.86rem;
+    font-size: .86rem;
     padding: .625em .875em;
   }
   &.giant {
@@ -231,7 +248,7 @@ a.button:not(.link) {
   border: 0;
   border-radius: 0;
   @include font(sans-regular);
-  letter-spacing: 0.5px;
+  letter-spacing: .5px;
   text-transform: uppercase;
   /* variants */
   @extend .button.secondary; // default
@@ -258,7 +275,7 @@ a.button:not(.link) {
     color: $color-text;
     #{$hover},
     #{$active} {
-      background: rgba($color-primary, 0.1);
+      background: rgba($color-primary, .1);
       color: $color-primary;
     }
   }
@@ -286,23 +303,23 @@ a.button:not(.link) {
     }
   }
   &.small {
-    margin-left: -0.5rem;
+    margin-left: -.5rem;
     &:last-child {
-      margin-bottom: -0.5rem;
+      margin-bottom: -.5rem;
     }
     > * {
-      margin-left: 0.5rem;
-      margin-bottom: 0.5rem;
+      margin-left: .5rem;
+      margin-bottom: .5rem;
     }
   }
   &.medium {
-    margin-left: -0.618rem;
+    margin-left: -.618rem;
     &:last-child {
-      margin-bottom: -0.618rem;
+      margin-bottom: -.618rem;
     }
     > * {
-      margin-left: 0.618rem;
-      margin-bottom: 0.618rem;
+      margin-left: .618rem;
+      margin-bottom: .618rem;
     }
   }
   &.large {
@@ -349,9 +366,9 @@ a.button:not(.link) {
 .drop {
   /* content */
   .drop-inner {
-    padding: 0.618rem 0;
-    -webkit-box-shadow: 0 0 5px rgba($color-black, 0.2);
-    box-shadow: 0 0 5px rgba($color-black, 0.2);
+    padding: .618rem 0;
+    -webkit-box-shadow: 0 0 5px rgba($color-black, .2);
+    box-shadow: 0 0 5px rgba($color-black, .2);
   }
   .button {
     padding-left: 20px !important;
@@ -373,11 +390,11 @@ a.button:not(.link) {
   @extend .drop.left; // default
   &.before,
   &.after {
-    padding: 0 0.618rem;
+    padding: 0 .618rem;
   }
   &.left,
   &.right {
-    padding: 0.618rem 0;
+    padding: .618rem 0;
   }
   /* variants */
   @extend .drop.light; // default
@@ -512,7 +529,7 @@ a.button:not(.link) {
     @include transition-default;
     opacity: 0;
     &.fade-in {
-      opacity: 0.2;
+      opacity: .2;
     }
     &.fade-out {
       opacity: 0;
@@ -564,7 +581,7 @@ a.button:not(.link) {
 @keyframes bottom-in {
   0% {
     opacity: 0;
-    transform: translateY(6px) scale(0.95);
+    transform: translateY(6px) scale(.95);
   }
   100% {
     opacity: 1;
@@ -578,13 +595,13 @@ a.button:not(.link) {
   }
   100% {
     opacity: 0;
-    transform: translateY(6px) scale(0.95);
+    transform: translateY(6px) scale(.95);
   }
 }
 @keyframes top-in {
   0% {
     opacity: 0;
-    transform: translateY(-6px) scale(0.95);
+    transform: translateY(-6px) scale(.95);
   }
   100% {
     opacity: 1;
@@ -598,13 +615,13 @@ a.button:not(.link) {
   }
   100% {
     opacity: 0;
-    transform: translateY(-6px) scale(0.95);
+    transform: translateY(-6px) scale(.95);
   }
 }
 @keyframes right-in {
   0% {
     opacity: 0;
-    transform: translateX(6px) scale(0.95);
+    transform: translateX(6px) scale(.95);
   }
   100% {
     opacity: 1;
@@ -618,13 +635,13 @@ a.button:not(.link) {
   }
   100% {
     opacity: 0;
-    transform: translateX(6px) scale(0.95);
+    transform: translateX(6px) scale(.95);
   }
 }
 @keyframes left-in {
   0% {
     opacity: 0;
-    transform: translateX(-6px) scale(0.95);
+    transform: translateX(-6px) scale(.95);
   }
   100% {
     opacity: 1;
@@ -638,6 +655,6 @@ a.button:not(.link) {
   }
   100% {
     opacity: 0;
-    transform: translateX(-6px) scale(0.95);
+    transform: translateX(-6px) scale(.95);
   }
 }

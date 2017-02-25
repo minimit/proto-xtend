@@ -64,7 +64,7 @@ body {
 .caret-right,
 .caret-left {
   vertical-align: middle;
-  top: -0.08em;
+  top: -.08em;
 }
 .caret-down {
   border-style: solid;
@@ -103,11 +103,11 @@ a, button {
   /*
   .left {
     float: left;
-    top: 0.1em; // vertical fix
+    top: .1em; // vertical fix
   }
   .right {
     float: right;
-    top: 0.1em; // vertical fix
+    top: .1em; // vertical fix
   }
   */
   .text {

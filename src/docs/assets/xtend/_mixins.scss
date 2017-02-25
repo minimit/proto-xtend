@@ -3,8 +3,8 @@
 //////////////////////
 
 /* ratios
-0.618
-0.809
+.618
+.809
 1
 1.238
 2.619
@@ -16,7 +16,7 @@
 //////////////////////
 
 $color-primary: #00B0FF !default;
-$color-primary-75: rgba($color-primary, 0.75) !default;
+$color-primary-75: rgba($color-primary, .75) !default;
 $color-primary-25: lighten($color-primary, 25%) !default;
 
 $color-text: #000000 !default;
@@ -24,14 +24,16 @@ $color-text-75: lighten($color-text, 75%) !default;
 
 $color-background: #ffffff !default;
 
+$color-red: #d14 !default;
+
 $color-white: #ffffff !default;
-$color-white-75: rgba($color-white, 0.75) !default;
-$color-white-50: rgba($color-white, 0.5) !default;
+$color-white-75: rgba($color-white, .75) !default;
+$color-white-50: rgba($color-white, .5) !default;
 
 $color-grey: #f8f8f8 !default;
 
 $color-black: #000000 !default;
-$color-black-75: rgba($color-white, 0.75) !default;
+$color-black-75: rgba($color-white, .75) !default;
 
 //////////////////////
 // fonts
@@ -52,6 +54,11 @@ $xt-fonts: (
   sans-medium: (
     font-family: unquote('"Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif'),
     font-weight: 600,
+    font-style: normal,
+  ),
+  monospace: (
+    font-family: unquote('monaco, Consolas, "Lucida Console", monospace'),
+    font-weight: normal,
     font-style: normal,
   ),
 ) !default;
