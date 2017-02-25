@@ -39,6 +39,30 @@
     });
   };
   
+  var XtDrop = function(group, defaults, options) {
+    Xt.call(this, group, defaults, options);
+  };
+  XtDrop.prototype = Object.create(Xt.prototype);
+  XtDrop.prototype.constructor = XtDrop;
+  $.fn.xtDrop = function(options) {
+    var defaults = {
+      'name': 'xt-drop',
+      'elements': '> .button',
+      'targets': '.drop',
+      'class': 'active',
+      'on': 'click',
+      'off': null,
+      'min': 0,
+      'max': 1,
+      'anim': null,
+    };
+    return this.each( function() {
+      if (!$.data(this, defaults.name)) {
+        $.data(this, defaults.name, new XtDrop(this, defaults, options));
+      }
+    });
+  };
+  
   var XtOverlay = function(group, defaults, options) {
     Xt.call(this, group, defaults, options);
   };
@@ -116,6 +140,9 @@
       if ($(this).is('[data-xt-toggle]')) {
         $(this).xtToggle();
       }
+      if ($(this).is('[data-xt-drop]')) {
+        $(this).xtDrop();
+      }
       if ($(this).is('[data-xt-overlay]')) {
         $(this).xtOverlay();
       }
@@ -127,6 +154,7 @@
       }
       if (deep) {
         $(this).find('[data-xt-toggle]').xtToggle();
+        $(this).find('[data-xt-drop]').xtDrop();
         $(this).find('[data-xt-overlay]').xtOverlay();
         $(this).find('[data-xt-scroll]').xtScroll();
         $(this).find('[data-xt-ajax]').xtAjax();
@@ -321,7 +349,7 @@
     var $group = $(this.group);
     // $elements events
     var $et = settings.$elements.slice(0);
-    if ($group.hasClass('drop-outer') && settings.off === 'mouseleave') {
+    if (settings.name === 'xt-drop' && settings.off === 'mouseleave') {
       $et = $et.pushElement(settings.$targets);
     }
     if ($et) {
@@ -667,7 +695,7 @@
     object.onMiddle($el, triggered);
     object.onCenter($el, triggered);
     // events
-    if ($group.hasClass('drop-outer')) {
+    if (settings.name === 'xt-drop') {
       // close on document click
       $(document).off('click.xt.' + settings.namespace).on('click.xt.' + settings.namespace, function(e) {
         var $target = $(e.target);
@@ -675,7 +703,8 @@
           object.hide(settings.$elements, true, true, true);
         }
       });
-    } else if ($el.hasClass('overlay')) {
+    }
+    if (settings.name === 'xt-overlay') {
       // close on .overlay-close
       $el.find('.overlay-close').off('click.xt.' + settings.namespace).on('click.xt.' + settings.namespace, function(e) {
         object.hide(settings.$elements, true, false, true);
@@ -731,7 +760,7 @@
       object.offHeight($el, triggered);
     });
     // close on document click
-    if ($group.hasClass('drop-outer')) {
+    if (settings.name === 'xt-drop') {
       $(document).off('click.xt.' + settings.namespace);
     }
     // api

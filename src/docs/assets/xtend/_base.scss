@@ -29,6 +29,32 @@ body {
 }
 
 //////////////////////
+// utils
+//////////////////////
+
+.box {
+  @include box;
+  @include clear;
+}
+.clear {
+  @include clear;
+}
+.show {
+  display: block !important;
+}
+.hide {
+  display: none !important;
+}
+.nowrap {
+  white-space: nowrap;
+}
+[disabled] {
+  cursor: default;
+  opacity: 1;
+  pointer-events: none;
+}
+
+//////////////////////
 // icons
 //////////////////////
 
@@ -137,6 +163,45 @@ a, button {
 }
 
 //////////////////////
+// toggle
+//////////////////////
+
+.toggle-flex {
+  display: none !important;
+  &.active,
+  &.fade-out {
+    display: flex !important;
+  }
+}
+.toggle-block {
+  display: none !important;
+  &.active,
+  &.fade-out {
+    display: block !important;
+  }
+}
+.toggle-inline {
+  display: none !important;
+  &.active,
+  &.fade-out {
+    display: inline !important;
+  }
+}
+.toggle-inline-block {
+  display: none !important;
+  &.active,
+  &.fade-out {
+    display: inline-block !important;
+  }
+}
+.toggle-none {
+  &.active,
+  &.fade-out {
+    display: none !important;
+  }
+}
+
+//////////////////////
 // drop
 //////////////////////
 
@@ -148,6 +213,7 @@ a, button {
   }
 }
 .drop {
+  @extend .toggle-flex;
   position: absolute;
   z-index: 110;
   /* content */
@@ -326,66 +392,4 @@ html.xt-fixed-horizontal {
 .no-anim,
 .no-anim .xt-backdrop {
   transition: none !important;
-}
-
-//////////////////////
-// utils
-//////////////////////
-
-.box {
-  @include box;
-  @include clear;
-}
-.clear {
-  @include clear;
-}
-.show {
-  display: block !important;
-}
-.hide {
-  display: none !important;
-}
-.nowrap {
-  white-space: nowrap;
-}
-[disabled] {
-  cursor: default;
-  opacity: 1;
-  pointer-events: none;
-}
-
-/* toggles */
-.toggle-flex {
-  display: none !important;
-  &.active,
-  &.fade-out {
-    display: flex !important;
-  }
-}
-.toggle-block {
-  display: none !important;
-  &.active,
-  &.fade-out {
-    display: block !important;
-  }
-}
-.toggle-inline {
-  display: none !important;
-  &.active,
-  &.fade-out {
-    display: inline !important;
-  }
-}
-.toggle-inline-block {
-  display: none !important;
-  &.active,
-  &.fade-out {
-    display: inline-block !important;
-  }
-}
-.toggle-none {
-  &.active,
-  &.fade-out {
-    display: none !important;
-  }
 }

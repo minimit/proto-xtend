@@ -28,6 +28,37 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
+.box {
+  position: relative;
+  float: left;
+  width: 100%; }
+  .box:before, .box:after {
+    content: " ";
+    display: table; }
+  .box:after {
+    clear: both; }
+
+.clear:before, .clear:after {
+  content: " ";
+  display: table; }
+
+.clear:after {
+  clear: both; }
+
+.show {
+  display: block !important; }
+
+.hide {
+  display: none !important; }
+
+.nowrap {
+  white-space: nowrap; }
+
+[disabled] {
+  cursor: default;
+  opacity: 1;
+  pointer-events: none; }
+
 /* caret */
 .caret-down,
 .caret-up,
@@ -101,6 +132,29 @@ a, button {
     align-self: center; }
   .spacer.stretch > * {
     align-self: stretch; }
+
+.toggle-flex, .drop {
+  display: none !important; }
+  .toggle-flex.active, .active.drop, .toggle-flex.fade-out, .fade-out.drop {
+    display: flex !important; }
+
+.toggle-block, .overlay {
+  display: none !important; }
+  .toggle-block.active, .active.overlay, .toggle-block.fade-out, .fade-out.overlay {
+    display: block !important; }
+
+.toggle-inline {
+  display: none !important; }
+  .toggle-inline.active, .toggle-inline.fade-out {
+    display: inline !important; }
+
+.toggle-inline-block {
+  display: none !important; }
+  .toggle-inline-block.active, .toggle-inline-block.fade-out {
+    display: inline-block !important; }
+
+.toggle-none.active, .toggle-none.fade-out {
+  display: none !important; }
 
 .drop-outer {
   display: inline-block;
@@ -236,61 +290,6 @@ html.xt-fixed-horizontal .overlay {
 .no-anim,
 .no-anim .xt-backdrop {
   transition: none !important; }
-
-.box {
-  position: relative;
-  float: left;
-  width: 100%; }
-  .box:before, .box:after {
-    content: " ";
-    display: table; }
-  .box:after {
-    clear: both; }
-
-.clear:before, .clear:after {
-  content: " ";
-  display: table; }
-
-.clear:after {
-  clear: both; }
-
-.show {
-  display: block !important; }
-
-.hide {
-  display: none !important; }
-
-.nowrap {
-  white-space: nowrap; }
-
-[disabled] {
-  cursor: default;
-  opacity: 1;
-  pointer-events: none; }
-
-/* toggles */
-.toggle-flex {
-  display: none !important; }
-  .toggle-flex.active, .toggle-flex.fade-out {
-    display: flex !important; }
-
-.toggle-block, .overlay {
-  display: none !important; }
-  .toggle-block.active, .active.overlay, .toggle-block.fade-out, .fade-out.overlay {
-    display: block !important; }
-
-.toggle-inline {
-  display: none !important; }
-  .toggle-inline.active, .toggle-inline.fade-out {
-    display: inline !important; }
-
-.toggle-inline-block {
-  display: none !important; }
-  .toggle-inline-block.active, .toggle-inline-block.fade-out {
-    display: inline-block !important; }
-
-.toggle-none.active, .toggle-none.fade-out {
-  display: none !important; }
 
 /* .anim-height and .anim-width */
 .anim-height,
