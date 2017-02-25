@@ -41,20 +41,24 @@ body {
   top: -0.08em;
 }
 .caret-down {
-  border: .3em solid transparent;
-  border-bottom: 0 !important;
+  border-style: solid;
+  border-color: transparent;
+  border-bottom-width: 0 !important; 
 }
 .caret-up {
-  border: .3em solid transparent;
-  border-top: 0 !important;
+  border-style: solid;
+  border-color: transparent;
+  border-top-width: 0 !important; 
 }
 .caret-right {
-  border: .3em solid transparent;
-  border-right: 0 !important;
+  border-style: solid;
+  border-color: transparent;
+  border-right-width: 0 !important; 
 }
 .caret-left {
-  border: .3em solid transparent;
-  border-left: 0 !important;
+  border-style: solid;
+  border-color: transparent;
+  border-left-width: 0 !important; 
 }
 
 //////////////////////
@@ -150,6 +154,9 @@ a, button {
     width: 100%;
     text-align: left;
     white-space: nowrap;
+  }
+  .drop-inner {
+    position: relative;
   }
   /* before and after */
   &.before {
