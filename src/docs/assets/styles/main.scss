@@ -489,12 +489,15 @@ $button__menu_pixels: 1px;
     font-size: 13px;
   }
   .site-aside-subsub {
-    display: none;
     > .button {
       //margin-top: .309rem;
       padding-left: 8px;
       font-size: 13px;
     }
+  }
+  // TEMP activation
+  .site-aside-subsub {
+    display: none;
   }
   .button.site-aside-sub.active + .site-aside-subsub {
     display: block;
