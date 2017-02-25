@@ -102,13 +102,13 @@ a, button {
   .spacer.stretch > * {
     align-self: stretch; }
 
-.drop {
+.drop-outer {
   display: inline-block;
   position: relative; }
-  .drop-stack .drop {
+  .drop-stack .drop-outer {
     position: static; }
 
-.drop-target {
+.drop {
   position: absolute;
   z-index: 110;
   /* content */
@@ -116,42 +116,42 @@ a, button {
   /* left and right */
   /* middle */
   /* dimensions */ }
-  .drop-target .button, .drop-target .overlay .overlay-close, .overlay .drop-target .overlay-close,
-  .drop-target .drop {
+  .drop .button, .drop .overlay .overlay-close, .overlay .drop .overlay-close,
+  .drop .drop-outer {
     float: left;
     width: 100%;
     text-align: left;
     white-space: nowrap; }
-  .drop-target.before {
+  .drop.before {
     left: auto;
     right: 100%; }
-  .drop-target.after {
+  .drop.after {
     left: 100%;
     right: auto; }
-  .drop-target.before.bottom, .before.drop-target, .drop-target.after.bottom, .after.drop-target {
+  .drop.before.bottom, .before.drop, .drop.after.bottom, .after.drop {
     top: 0;
     bottom: auto; }
-  .drop-target.before.top, .drop-target.after.top {
+  .drop.before.top, .drop.after.top {
     top: auto;
     bottom: 0; }
-  .drop-target.left, .drop-target {
+  .drop.left, .drop {
     left: 0;
     right: auto; }
-  .drop-target.right {
+  .drop.right {
     left: auto;
     right: 0; }
-  .drop-target.left.bottom, .drop-target, .drop-target.right.bottom, .right.drop-target {
+  .drop.left.bottom, .drop, .drop.right.bottom, .right.drop {
     top: 100%;
     bottom: auto; }
-  .drop-target.left.top, .top.drop-target, .drop-target.right.top {
+  .drop.left.top, .top.drop, .drop.right.top {
     top: auto;
     bottom: 100%; }
-  .drop-target.middle {
+  .drop.middle {
     margin-top: 0 !important;
     margin-bottom: 0 !important; }
-  .drop-target.max-height .drop-inner {
+  .drop.max-height .drop-inner {
     overflow-y: auto; }
-  .drop-target.max-width .drop-inner {
+  .drop.max-width .drop-inner {
     overflow-x: auto; }
 
 .overlay {
@@ -664,22 +664,22 @@ a.button:not(.link):hover, .overlay a.overlay-close:not(.link):hover, a.button:n
   .button.tall, .overlay .tall.overlay-close {
     padding-top: 1em;
     padding-bottom: 1em; }
-  .button.primary, .drop-target.primary .button, .drop-target.primary .overlay .overlay-close, .overlay .drop-target.primary .overlay-close, .overlay .primary.overlay-close {
+  .button.primary, .drop.primary .button, .drop.primary .overlay .overlay-close, .overlay .drop.primary .overlay-close, .overlay .primary.overlay-close {
     background: #00B0FF;
     color: #ffffff; }
-    .button.primary:hover, .drop-target.primary .button:hover, .drop-target.primary .overlay .overlay-close:hover, .overlay .drop-target.primary .overlay-close:hover, .overlay .primary.overlay-close:hover, .button.primary:active, .drop-target.primary .button:active, .drop-target.primary .overlay .overlay-close:active, .overlay .drop-target.primary .overlay-close:active, .overlay .primary.overlay-close:active, .button.primary.active, .drop-target.primary .active.button, .drop-target.primary .overlay .active.overlay-close, .overlay .drop-target.primary .active.overlay-close, .overlay .primary.active.overlay-close {
+    .button.primary:hover, .drop.primary .button:hover, .drop.primary .overlay .overlay-close:hover, .overlay .drop.primary .overlay-close:hover, .overlay .primary.overlay-close:hover, .button.primary:active, .drop.primary .button:active, .drop.primary .overlay .overlay-close:active, .overlay .drop.primary .overlay-close:active, .overlay .primary.overlay-close:active, .button.primary.active, .drop.primary .active.button, .drop.primary .overlay .active.overlay-close, .overlay .drop.primary .active.overlay-close, .overlay .primary.active.overlay-close {
       background: #009ee6;
       color: #ffffff; }
-  .button.secondary, .button, .overlay .overlay-close, .drop-target.secondary .button, .drop-target.secondary .overlay .overlay-close, .overlay .drop-target.secondary .overlay-close {
+  .button.secondary, .button, .overlay .overlay-close, .drop.secondary .button, .drop.secondary .overlay .overlay-close, .overlay .drop.secondary .overlay-close {
     background: #e6e6e6;
     color: #000000; }
-    .button.secondary:hover, .button:hover, .overlay .overlay-close:hover, .drop-target.secondary .button:hover, .button.secondary:active, .button:active, .overlay .overlay-close:active, .drop-target.secondary .button:active, .button.secondary.active, .active.button, .overlay .active.overlay-close, .drop-target.secondary .active.button {
+    .button.secondary:hover, .button:hover, .overlay .overlay-close:hover, .drop.secondary .button:hover, .button.secondary:active, .button:active, .overlay .overlay-close:active, .drop.secondary .button:active, .button.secondary.active, .active.button, .overlay .active.overlay-close, .drop.secondary .active.button {
       background: #d9d9d9;
       color: #000000; }
-  .button.light, .drop-target.light .button, .drop-target .button, .drop-target .overlay .overlay-close, .overlay .drop-target .overlay-close, .overlay .light.overlay-close {
+  .button.light, .drop.light .button, .drop .button, .drop .overlay .overlay-close, .overlay .drop .overlay-close, .overlay .light.overlay-close {
     background: transparent;
     color: #000000; }
-    .button.light:hover, .drop-target .button:hover, .drop-target .overlay .overlay-close:hover, .overlay .drop-target .overlay-close:hover, .overlay .light.overlay-close:hover, .button.light:active, .drop-target .button:active, .drop-target .overlay .overlay-close:active, .overlay .drop-target .overlay-close:active, .overlay .light.overlay-close:active, .button.light.active, .drop-target .active.button, .drop-target .overlay .active.overlay-close, .overlay .drop-target .active.overlay-close, .overlay .light.active.overlay-close {
+    .button.light:hover, .drop .button:hover, .drop .overlay .overlay-close:hover, .overlay .drop .overlay-close:hover, .overlay .light.overlay-close:hover, .button.light:active, .drop .button:active, .drop .overlay .overlay-close:active, .overlay .drop .overlay-close:active, .overlay .light.overlay-close:active, .button.light.active, .drop .active.button, .drop .overlay .active.overlay-close, .overlay .drop .active.overlay-close, .overlay .light.active.overlay-close {
       background: rgba(0, 176, 255, 0.1);
       color: #00B0FF; }
   .button:not([class*=" anim-"]), .overlay .overlay-close:not([class*=" anim-"]) {
@@ -738,45 +738,45 @@ a.button:not(.link):hover, .overlay a.overlay-close:not(.link):hover, a.button:n
       margin-left: 2.619rem;
       margin-bottom: 2.619rem; }
 
-.drop-target {
+.drop {
   /* content */
   /* dimensions */
   /* positions */
   /* variants */
   /* animations */ }
-  .drop-target .drop-inner {
+  .drop .drop-inner {
     padding: 0.618rem 0;
     -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); }
-  .drop-target .button, .drop-target .overlay .overlay-close, .overlay .drop-target .overlay-close {
+  .drop .button, .drop .overlay .overlay-close, .overlay .drop .overlay-close {
     padding-left: 20px !important;
     padding-right: 40px !important; }
-  .drop-target.max-height .drop-inner {
+  .drop.max-height .drop-inner {
     max-height: 225px; }
-  .drop-target.max-width .drop-inner {
+  .drop.max-width .drop-inner {
     max-width: 225px; }
-  .drop-target.before, .drop-target.after {
+  .drop.before, .drop.after {
     padding: 0 0.618rem; }
-  .drop-target.left, .drop-target, .drop-target.right {
+  .drop.left, .drop, .drop.right {
     padding: 0.618rem 0; }
-  .drop-target.primary .drop-inner {
+  .drop.primary .drop-inner {
     background: #00B0FF;
     color: #ffffff; }
-  .drop-target.secondary .drop-inner {
+  .drop.secondary .drop-inner {
     background: #e6e6e6;
     color: #000000; }
-  .drop-target.light .drop-inner, .drop-target .drop-inner {
+  .drop.light .drop-inner, .drop .drop-inner {
     background: #ffffff;
     color: #000000; }
-  .drop-target:not([class*=" anim-"]) {
+  .drop:not([class*=" anim-"]) {
     transition: all 300ms cubic-bezier(0.63, 0.36, 0, 0.97);
     transition: all 300ms cubic-bezier(0.63, 0.36, 0, 0.97);
     opacity: 0;
     transform: translateY(-0.618rem) scale(0.95); }
-    .drop-target:not([class*=" anim-"]).fade-in {
+    .drop:not([class*=" anim-"]).fade-in {
       opacity: 1;
       transform: translateY(0) scale(1); }
-    .drop-target:not([class*=" anim-"]).fade-out {
+    .drop:not([class*=" anim-"]).fade-out {
       opacity: 0;
       transform: translateY(0.618rem) scale(0.95); }
 

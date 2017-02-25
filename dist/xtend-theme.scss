@@ -346,7 +346,7 @@ a.button:not(.link) {
 // drop
 //////////////////////
 
-.drop-target {
+.drop {
   /* content */
   .drop-inner {
     padding: 0.618rem 0;
@@ -369,8 +369,8 @@ a.button:not(.link) {
     }
   }
   /* positions */
-  @extend .drop-target.bottom; // default
-  @extend .drop-target.left; // default
+  @extend .drop.bottom; // default
+  @extend .drop.left; // default
   &.before,
   &.after {
     padding: 0 0.618rem;
@@ -380,7 +380,7 @@ a.button:not(.link) {
     padding: 0.618rem 0;
   }
   /* variants */
-  @extend .drop-target.light; // default
+  @extend .drop.light; // default
   &.primary {
     .drop-inner {
       background: $color-primary;

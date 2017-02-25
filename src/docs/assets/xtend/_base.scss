@@ -140,19 +140,19 @@ a, button {
 // drop
 //////////////////////
 
-.drop {
+.drop-outer {
   display: inline-block;
   position: relative;
   .drop-stack & {
     position: static;
   }
 }
-.drop-target {
+.drop {
   position: absolute;
   z-index: 110;
   /* content */
   .button,
-  .drop {
+  .drop-outer {
     float: left;
     width: 100%;
     text-align: left;

@@ -321,7 +321,7 @@
     var $group = $(this.group);
     // $elements events
     var $et = settings.$elements.slice(0);
-    if ($group.hasClass('drop') && settings.off === 'mouseleave') {
+    if ($group.hasClass('drop-outer') && settings.off === 'mouseleave') {
       $et = $et.pushElement(settings.$targets);
     }
     if ($et) {
@@ -667,7 +667,7 @@
     object.onMiddle($el, triggered);
     object.onCenter($el, triggered);
     // events
-    if ($group.hasClass('drop')) {
+    if ($group.hasClass('drop-outer')) {
       // close on document click
       $(document).off('click.xt.' + settings.namespace).on('click.xt.' + settings.namespace, function(e) {
         var $target = $(e.target);
@@ -731,7 +731,7 @@
       object.offHeight($el, triggered);
     });
     // close on document click
-    if ($group.hasClass('drop')) {
+    if ($group.hasClass('drop-outer')) {
       $(document).off('click.xt.' + settings.namespace);
     }
     // api
