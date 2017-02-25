@@ -29,6 +29,63 @@ body {
 }
 
 //////////////////////
+// icons
+//////////////////////
+
+/* caret */
+.caret-down,
+.caret-up,
+.caret-right,
+.caret-left {
+  vertical-align: middle;
+  top: -0.08em;
+}
+.caret-down {
+  border: .3em solid transparent;
+  border-bottom: 0 !important;
+}
+.caret-up {
+  border: .3em solid transparent;
+  border-top: 0 !important;
+}
+.caret-right {
+  border: .3em solid transparent;
+  border-right: 0 !important;
+}
+.caret-left {
+  border: .3em solid transparent;
+  border-left: 0 !important;
+}
+
+//////////////////////
+// button
+//////////////////////
+
+a, button {
+  cursor: pointer;
+}
+.button {
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+  // content
+  /*
+  .left {
+    float: left;
+    top: 0.1em; // vertical fix
+  }
+  .right {
+    float: right;
+    top: 0.1em; // vertical fix
+  }
+  */
+  .text {
+    display: inline-block;
+    overflow: hidden;
+  }
+}
+
+//////////////////////
 // spacer
 //////////////////////
 
@@ -72,34 +129,6 @@ body {
     > * {
       align-self: stretch;
     }
-  }
-}
-
-//////////////////////
-// button
-//////////////////////
-
-a, button {
-  cursor: pointer;
-}
-.button {
-  display: inline-block;
-  vertical-align: middle;
-  text-align: center;
-  // content
-  /*
-  .left {
-    float: left;
-    top: 0.1em; // vertical fix
-  }
-  .right {
-    float: right;
-    top: 0.1em; // vertical fix
-  }
-  */
-  .text {
-    display: inline-block;
-    overflow: hidden;
   }
 }
 
