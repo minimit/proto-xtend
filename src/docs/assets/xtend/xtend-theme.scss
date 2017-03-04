@@ -371,7 +371,7 @@ a.button:not(.link) {
     box-shadow: 0 0 5px rgba($color-black, .2);
   }
   .button {
-    padding-left: 20px !important;
+    @extend .button.wide;
     padding-right: 40px !important;
   }
   /* dimensions */

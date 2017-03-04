@@ -678,7 +678,7 @@ a.button:not(.link):hover, .overlay a.overlay-close:not(.link):hover, a.button:n
   .button.giant, .overlay .giant.overlay-close {
     font-size: 1rem;
     padding: .625em .875em; }
-  .button.wide, .overlay .wide.overlay-close {
+  .button.wide, .drop .button, .drop .overlay .overlay-close, .overlay .drop .overlay-close, .overlay .wide.overlay-close {
     padding-left: 1.625em;
     padding-right: 1.625em; }
   .button.tall, .overlay .tall.overlay-close {
@@ -769,7 +769,6 @@ a.button:not(.link):hover, .overlay a.overlay-close:not(.link):hover, a.button:n
     -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); }
   .drop .button, .drop .overlay .overlay-close, .overlay .drop .overlay-close {
-    padding-left: 20px !important;
     padding-right: 40px !important; }
   .drop.max-height .drop-inner {
     max-height: 225px; }
