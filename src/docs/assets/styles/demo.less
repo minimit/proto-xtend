@@ -3,20 +3,25 @@
 //////////////////////
 
 @import (less) "bootstrap.min.css";
-@import "../../../../dist/_mixins.less";
-
-//////////////////////
-// variables
-//////////////////////
-
-//@color-primary: #ff00ff;
 
 //////////////////////
 // bootstrap
 //////////////////////
 
 .card-text {
-  .box;
+  // .box;
+  position: relative;
+  float: left;
+  width: 100%;
+  // .clear;
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
 }
 
 //////////////////////
