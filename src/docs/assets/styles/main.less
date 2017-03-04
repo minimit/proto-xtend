@@ -525,10 +525,8 @@ a.logo {
       width: 100%;
       height: 1px;
       background: @color-primary-25;
-      @at-root {
-        h2 & {
-          height: 1px;
-        }
+      h2 & {
+        height: 1px;
       }
     }
   }
@@ -846,22 +844,19 @@ pre {
 }
   
 // .site-menu
-html.active,
-html.fade-out {
-  .site-menu {
-    z-index: 69 !important;
-    .site-header-top {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-    }
-  }
-  // below demos overlay...
-  .site-breadcrumbs,
+.site-menu {
+  z-index: 69 !important;
   .site-header-top {
-    z-index: 68 !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
   }
+}
+.site-breadcrumbs,
+.site-header-top {
+  // below demos overlay...
+  z-index: 68 !important;
 }
 .site-menu.active {
   .site-menu-content {

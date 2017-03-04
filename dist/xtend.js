@@ -345,10 +345,6 @@
         $eventTarget.off(settings.on).on(settings.on, function(e) {
           var $t = $eventElement ? $eventElement : $(this);
           object.toggle($t);
-          // trigger off on backdrops etc..
-          $eventTarget.find('.xt-ignore').off(settings.on).on(settings.on, function(e) {
-            object.toggle($t);
-          });
           if (settings.name === 'xt-ajax') {
             e.preventDefault();
           }
@@ -370,7 +366,7 @@
       $eventTarget.off('xtRemoved').on('xtRemoved', function(e) {
         if (settings.name === 'xt-overlay') { // @TODO $group.is('[data-xt-reset]')
           settings.$targets.remove();
-          //object.hide($(this), false, true, true);
+          object.hide($(this), false, true, true);
         }
       });
       // api
@@ -558,9 +554,11 @@
           var $additional = $('html');
           if (!$additional.hasClass(object.defaultClass)) {
             $additional.addClass(settings.class);
+            /*
             window.xtRequestAnimationFrame( function() {
               $additional.addClass('fade-in');
             });
+            */
           }
         }
       }
@@ -616,11 +614,13 @@
           var $additional = $('html');
           if ($additional.hasClass(object.defaultClass)) {
             $additional.removeClass(settings.class);
+            /*
             $additional.removeClass('fade-in');
             $additional.addClass('fade-out');
             settings.$targets.off('hide.xt.done.additional').one('hide.xt.done.additional', function() {
               $additional.removeClass('fade-out');
             });
+            */
           }
         }
       }
@@ -842,7 +842,7 @@
     // animation in
     var $container = $el.find(settings.backdrop);
     var $position = $([]);
-    if ($container.length) {
+    if ($container.length) { // for .backdrop ex: modals
       $position = $container.parent();
     } else if($el.hasClass('backdrop')) {
       $position = $el.parent();
@@ -861,15 +861,20 @@
       });
       $backdrop.data('frame.timeout', frame);
       // events
-      $backdrop.on('click.backdrop.xt', function(e) {
+      var ns = 'click.backdrop.xt';
+      if (settings.off === 'mouseleave') {
+        ns = 'mouseenter.backdrop.xt';
+      }
+      $backdrop.off(ns).on(ns, function(e) {
         object.hide(settings.$elements, true, false, true);
       });
-      $el.on('click.backdrop.xt', function(e) {
-        var $t = $(e.target);
-        if ($container.length && $t.is($container)) {
-          object.hide(settings.$elements, true, false, true);
-        }
-      });
+      if ($container.length) { // for .backdrop ex: modals
+        $el.off(ns).on(ns, function(e) {
+          if ($(e.target).is($container)) {
+            object.hide(settings.$elements, true, false, true);
+          }
+        });
+      }
     }
   };
   Xt.prototype.offBackdrop = function($el, triggered) {
