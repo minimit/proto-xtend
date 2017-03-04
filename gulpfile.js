@@ -3,12 +3,13 @@
 var gulp = require('gulp');
 var fs = require('fs');
 var pump = require('pump');
-var sass = require('gulp-sass');
+var less = require('gulp-less');
 var watch = require('gulp-watch');
 var concat = require('gulp-concat');
 var rename = require('gulp-rename');
 var inject = require('gulp-inject');
 var uglify = require('gulp-uglify');
+var cleanCSS = require('gulp-clean-css');
 var runSequence = require('run-sequence');
 var sourcemaps = require('gulp-sourcemaps');
 var injectString = require('gulp-inject-string');
@@ -28,46 +29,43 @@ gulp.task('build', ['version'], function(done) {
 gulp.task('watch', ['version'], function(done) {
   runSequence(['copy-dist'], function(done) {
     runSequence(['bower'], function(done) {
-      runSequence(['site-serve', 'version:watch', 'scss:watch', 'js-dist:watch', 'js:watch']);
+      runSequence(['site-serve', 'version:watch', 'less:watch', 'js-dist:watch', 'js:watch']);
     });
   });
 });
 
-// compile scss and js
+// compile less and js
 
-gulp.task('copy-dist', ['scss', 'js', 'js-dist'], function() {
+gulp.task('copy-dist', ['less', 'js', 'js-dist'], function() {
   return gulp.src('dist/*')
     .pipe(gulp.dest('src/docs/assets/xtend/'));
 });
 
-gulp.task('scss:watch', function() {
-  gulp.watch(['dist/*.scss', 'src/docs/assets/styles/*.scss', 'src/docs/demos/**/*.scss'], ['copy-dist']);
+gulp.task('less:watch', function() {
+  gulp.watch(['dist/*.less', 'src/docs/assets/styles/*.less', 'src/docs/demos/**/*.less'], ['copy-dist']);
 });
-gulp.task('scss', ['scss-demos'], function() {
-  return gulp.src('src/docs/assets/styles/*.scss')
+gulp.task('less', ['less-demos'], function() {
+  return gulp.src(['src/docs/assets/styles/*.less', '!src/docs/assets/styles/_*.less'])
     .pipe(sourcemaps.init())
-    .pipe(sass({
-      outputStyle: 'compressed'
-    }))
+    .pipe(less())
+    .pipe(cleanCSS())
     .pipe(rename({
       suffix: '.min'
     }))
     .pipe(sourcemaps.write(''))
     .pipe(gulp.dest('src/docs/assets/styles/'));
 });
-gulp.task('scss-demos', ['scss-dist'], function() {
-  return gulp.src('src/docs/demos/**/*.scss')
-    .pipe(sass({
-      outputStyle: 'nested'
-    }))
+gulp.task('less-demos', ['less-dist'], function() {
+  return gulp.src(['src/docs/demos/**/*.less', '!src/docs/demos/_*.less'])
+    .pipe(less())
+    .pipe(cleanCSS())
     .pipe(gulp.dest('src/docs/demos/'));
 });
-gulp.task('scss-dist', function() {
-  return gulp.src('dist/*.scss')
+gulp.task('less-dist', function() {
+  return gulp.src(['dist/*.less', '!dist/_*.less'])
     .pipe(sourcemaps.init())
-    .pipe(sass({
-      outputStyle: 'compressed'
-    }))
+    .pipe(less())
+    .pipe(cleanCSS())
     .pipe(rename({
       suffix: '.min'
     }))
@@ -76,10 +74,10 @@ gulp.task('scss-dist', function() {
 });
 
 gulp.task('js:watch', function() {
-  gulp.watch(['src/docs/assets/scripts/main.js', '!src/docs/assets/scripts/main.min.js'], ['js']);
+  gulp.watch(['src/docs/assets/scripts/main.js', '!src/docs/assets/scripts/*.min.js'], ['js']);
 });
 gulp.task('js', function() {
-  return gulp.src(['src/docs/assets/scripts/main.js', '!src/docs/assets/scripts/main.min.js'])
+  return gulp.src(['src/docs/assets/scripts/main.js', '!src/docs/assets/scripts/*.min.js'])
     .pipe(sourcemaps.init())
     .pipe(uglify({
       preserveComments: 'license'
@@ -113,7 +111,7 @@ gulp.task('version:watch', function() {
   gulp.watch(['package.json'], ['version-changed']);
 });
 gulp.task('version-changed', ['version'], function(done) {
-  runSequence(['scss', 'js', 'site'], function(done) {
+  runSequence(['less', 'js', 'site'], function(done) {
     runSequence(['copy-dist']);
   });
 });
@@ -123,9 +121,9 @@ gulp.task('version', function() {
   gulp.src('_config.yml')
     .pipe(injectString.replace(/version: (.*)/, 'version: ' + version))
     .pipe(gulp.dest(''));
-  // inject scss and js
+  // inject styles and js
   var banner = "/*! xtend v" + version + " (http://www.minimit.com/xtend/)\n" + "@copyright (c) 2016 - 2017 Riccardo Caroli\n" + "@license MIT (https://github.com/minimit/xtend/blob/master/LICENSE) */";
-  return gulp.src(['src/docs/assets/xtend/**/*.scss', 'src/docs/assets/xtend/**/*.js'])
+  return gulp.src(['src/docs/assets/xtend/**/*.less', 'src/docs/assets/xtend/**/*.js'])
     .pipe(injectString.replace(/\/\*\![^\*]+\*\//, banner))
     .pipe(gulp.dest('src/docs/assets/xtend/'));
 });
@@ -147,7 +145,7 @@ gulp.task('site-serve', function() {
 
 gulp.task('bower', function() {
   return gulp.src('bower.json')
-    .pipe(inject(gulp.src(['dist/*.scss', 'dist/*.css', 'dist/*.js'], {read: false}), {
+    .pipe(inject(gulp.src(['dist/*.less', 'dist/*.css', 'dist/*.js'], {read: false}), {
       starttag: '"main": [',
       endtag: ']',
       transform: function (filepath, file, i, length) {

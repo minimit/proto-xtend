@@ -1,6 +1,8 @@
-@import "../../../../dist/xtend-theme.scss"; // ignore if customizing xtend.scss
+@import "../../../../dist/xtend-theme.less"; // ignore if customizing xtend.scss
 
-@include xt-scroll('.card[data-xt-scroll]');
+.card[data-xt-scroll] {
+  .xt-scroll();
+}
 .card {
   &.scroll-on-top,
   &.scroll-off-top {

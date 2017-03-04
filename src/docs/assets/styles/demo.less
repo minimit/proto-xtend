@@ -1,22 +1,22 @@
 //////////////////////
-// variables
-//////////////////////
-
-//$color-primary: #ff00ff;
-
-//////////////////////
 // imports
 //////////////////////
 
-@import "bootstrap.min";
-@import "../../../../dist/_mixins.scss";
+@import (less) "bootstrap.min.css";
+@import "../../../../dist/_mixins.less";
+
+//////////////////////
+// variables
+//////////////////////
+
+//@color-primary: #ff00ff;
 
 //////////////////////
 // bootstrap
 //////////////////////
 
 .card-text {
-  @include box;
+  .box;
 }
 
 //////////////////////
@@ -41,6 +41,6 @@ html.full {
     max-height: 370px;
   }
 }
-scss-style {
+less-style {
   display: none;
 }

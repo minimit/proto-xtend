@@ -3,18 +3,18 @@
 @license MIT (https://github.com/minimit/xtend/blob/master/LICENSE) */
 
 //////////////////////
-// variables
-//////////////////////
-
-//$color-primary: #ff0000;
-
-//////////////////////
 // imports
 //////////////////////
 
-@import "_mixins.scss";
-@import "_base.scss";
-@import "_animations.scss";
+@import "_mixins.less";
+@import "_base.less";
+@import "_animations.less";
+
+//////////////////////
+// variables
+//////////////////////
+
+//@color-primary: #ff0000;
 
 //////////////////////
 // structure
@@ -24,11 +24,11 @@ html {
   font-size: 15px;
 }
 body {
-  background: $color-background;
-  @include font(sans-regular);
+  background: @color-background;
+  .font-sans-regular();
   font-size: 1rem;
   line-height: 1.8;
-  color: $color-text;
+  color: @color-text;
 }
 
 //////////////////////
@@ -38,8 +38,8 @@ body {
 h1, .h1,
 h2, .h2,
 h3, .h3 {
-  @include spacing-headers;
-  @include font(sans-medium);
+  .spacing-headers();
+  .font-sans-medium();
   line-height: 1.3;
   & + & {
     margin-top: 1.238rem;
@@ -48,8 +48,8 @@ h3, .h3 {
 h4, .h4,
 h5, .h5,
 h6, .h6 {
-  @include spacing-headers-small;
-  @include font(sans-light);
+  .spacing-headers-small();
+  .font-sans-light();
   line-height: 1.3;
   & + & {
     margin-top: 1rem;
@@ -81,21 +81,21 @@ h6, .h6 {
 //////////////////////
 
 .lead {
-  @extend .h5;
+  .h5;
 }
 p {
-  @include spacing-text;
+  .spacing-text();
 }
 strong {
-  @include font(sans-medium);
+  .font-sans-medium();
 }
 code {
   padding: .2rem .4rem;
   border-radius: 0;
-  background-color: $color-grey;
-  @include font(monospace);
+  background-color: @color-grey;
+  .font-monospace();
   font-size: .9em;
-  color: $color-red;
+  color: @color-red;
 }
 pre {
   font-size: 1rem;
@@ -150,16 +150,16 @@ pre {
   border-width: .3em;
 }
 .caret-down {
-  border-top-color: $color-text;
+  border-top-color: @color-text;
 }
 .caret-up {
-  border-bottom-color: $color-text;
+  border-bottom-color: @color-text;
 }
 .caret-right {
-  border-left-color: $color-text;
+  border-left-color: @color-text;
 }
 .caret-left {
-  border-right-color: $color-text;
+  border-right-color: @color-text;
 }
 
 //////////////////////
@@ -169,20 +169,20 @@ pre {
 a:not(.button),
 .button.link {
   background: transparent;
-  color: $color-primary;
-  #{$hover},
-  #{$active},
-  #{$focus} {
+  color: @color-primary;
+  &:hover,
+  &:active, &.active,
+  &:focus {
     background: transparent;
-    color: $color-primary;
+    color: @color-primary;
     text-decoration: underline;
   }
 }
 
 /* fix bootstrap to remove */
 a.button:not(.link) {
-  #{$hover},
-  #{$focus} {
+  &:hover,
+  &:focus {
     text-decoration: none;
   }
 }
@@ -193,7 +193,7 @@ a.button:not(.link) {
 
 .button {
   /* sizes */
-  @extend .button.medium; // default
+  .button.medium; // default
   line-height: 1.25;
   &.tiny {
     font-size: .66rem;
@@ -247,41 +247,41 @@ a.button:not(.link) {
   /* styles */
   border: 0;
   border-radius: 0;
-  @include font(sans-regular);
+  .font-sans-regular();
   letter-spacing: .5px;
   text-transform: uppercase;
   /* variants */
-  @extend .button.secondary; // default
+  .button.secondary; // default
   &.primary {
-    background: $color-primary;
-    color: $color-white;
-    #{$hover},
-    #{$active} {
-      background: darken($color-primary, 5%);
-      color: $color-white;
+    background: @color-primary;
+    color: @color-white;
+    &:hover,
+    &:active, &.active {
+      background: darken(@color-primary, 5%);
+      color: @color-white;
     }
   }
   &.secondary {
-    background: darken($color-white, 10%);
-    color: $color-text;
-    #{$hover},
-    #{$active} {
-      background: darken($color-white, 15%);
-      color: $color-text;
+    background: darken(@color-white, 10%);
+    color: @color-text;
+    &:hover,
+    &:active, &.active {
+      background: darken(@color-white, 15%);
+      color: @color-text;
     }
   }
   &.light {
     background: transparent;
-    color: $color-text;
-    #{$hover},
-    #{$active} {
-      background: rgba($color-primary, .1);
-      color: $color-primary;
+    color: @color-text;
+    &:hover,
+    &:active, &.active {
+      background: fade(@color-primary, 10%);
+      color: @color-primary;
     }
   }
   /* animations */
   &:not([class*=" anim-"]) {
-    @include transition-default;
+    .transition-default;
   }
 }
 
@@ -291,9 +291,9 @@ a.button:not(.link) {
 
 .spacer {
   /* alignment */
-  @extend .spacer.middle; // default
+  .spacer.middle; // default
   /* spacing */
-  @extend .spacer.medium; // default
+  .spacer.medium; // default
   &.tiny {
     margin-left: 0;
     margin-bottom: 0;
@@ -364,15 +364,22 @@ a.button:not(.link) {
 //////////////////////
 
 .drop {
-  /* content */
-  .drop-inner {
+  /* positions */
+  .drop.left; // default
+  .drop.bottom; // default
+  /* spacing */
+  &.left,
+  &.right,
+  &.top,
+  &.bottom {
     padding: .618rem 0;
-    -webkit-box-shadow: 0 0 5px rgba($color-black, .2);
-    box-shadow: 0 0 5px rgba($color-black, .2);
   }
-  .button {
-    @extend .button.wide;
-    padding-right: 40px !important;
+  &.before,
+  &.after {
+    padding: .618rem;
+  }
+  .drop-outer.static & {
+    padding: 0;
   }
   /* dimensions */
   &.max-height {
@@ -385,49 +392,48 @@ a.button:not(.link) {
       max-width: 225px;
     }
   }
-  /* positions */
-  @extend .drop.bottom; // default
-  @extend .drop.left; // default
-  &.before,
-  &.after {
-    padding: 0 .618rem;
-  }
-  &.left,
-  &.right {
-    padding: .618rem 0;
-  }
   /* variants */
-  @extend .drop.light; // default
+  .drop.light; // default
   &.primary {
     .drop-inner {
-      background: $color-primary;
-      color: $color-white;
+      background: @color-primary;
+      color: @color-white;
     }
     .button {
-      @extend .button.primary;
+      .button.primary;
     }
   }
   &.secondary {
     .drop-inner {
-      background: darken($color-white, 10%);
-      color: $color-black;
+      background: darken(@color-white, 10%);
+      color: @color-black;
     }
     .button {
-      @extend .button.secondary;
+      .button.secondary;
     }
   }
   &.light {
     .drop-inner {
-      background: $color-white;
-      color: $color-black;
+      background: @color-white;
+      color: @color-black;
     }
     .button {
-      @extend .button.light;
+      .button.light;
     }
+  }
+  /* styles */
+  .drop-inner {
+    padding: .618rem 0;
+    -webkit-box-shadow: 0 0 5px fade(@color-black, 20%);
+    box-shadow: 0 0 5px fade(@color-black, 20%);
+  }
+  .button {
+    .button.wide;
+    padding-right: 40px !important;
   }
   /* animations */
   &:not([class*=" anim-"]) {
-    @include anim-vertical-zoom;
+    .anim-vertical-zoom;
   }
 }
 
@@ -441,16 +447,16 @@ a.button:not(.link) {
     padding: 15px; // empty space outside overlay
   }
   .overlay-content {
-    background: $color-white;
+    background: @color-white;
   }
   &.full {
     .overlay-inner {
       padding: 0;
-      background: $color-white;
+      background: @color-white;
     }
   }
   /* sizes */
-  @extend .overlay.medium; // default
+  .overlay.medium; // default
   &.full {
     // default
     .overlay-content {
@@ -490,25 +496,25 @@ a.button:not(.link) {
   }
   /* .close */
   .overlay-close {
-    @extend .button;
+    .button;
     width: 50px;
     height: 50px;
     font-size: 12px;
     background: transparent;
-    color: $color-text-75;
-    #{$hover},
-    #{$active} {
+    color: @color-text-75;
+    &:hover,
+    &:active, &.active {
       background: transparent;
-      color: $color-primary;
+      color: @color-primary;
     }
   }
   /* animations */
   .overlay-inner:not([class*=" anim-"]) {
-    @include anim-vertical-zoom;
+    .anim-vertical-zoom;
   }
   &.full {
     .overlay-inner:not([class*=" anim-"]) {
-      @include anim-vertical;
+      .anim-vertical;
     }
   }
 }
@@ -520,10 +526,10 @@ a.button:not(.link) {
 /* .xt-backdrop */
 .xt-backdrop {
   /* styles */
-  background: $color-black;
+  background: @color-black;
   /* animations */
   &:not([class*=" anim-"]) {
-    @include transition-default;
+    .transition-default;
     opacity: 0;
     &.fade-in {
       opacity: .2;
@@ -543,8 +549,8 @@ a.button:not(.link) {
   display: none;
 }
 .button {
-  #{$hover},
-  #{$active} {
+  &:hover,
+  &:active, &.active {
     .swap-in {
       display: inline-block;
     }
@@ -557,38 +563,38 @@ a.button:not(.link) {
 /* swap */
 .button {
   .swap-out.swap-bottom {
-    @include animation-default;
-    @extend .anim-bottom.fade-in;
+    .animation-default;
+    .anim-bottom.fade-in;
   }
   .swap-out.swap-top {
-    @include animation-default;
-    @extend .anim-top.fade-in;
+    .animation-default;
+    .anim-top.fade-in;
   }
   .swap-out.swap-left {
-    @include animation-default;
-    @extend .anim-left.fade-in;
+    .animation-default;
+    .anim-left.fade-in;
   }
   .swap-out.swap-right {
-    @include animation-default;
-    @extend .anim-right.fade-in;
+    .animation-default;
+    .anim-right.fade-in;
   }
-  #{$hover},
-  #{$active} {
+  &:hover,
+  &:active, &.active {
     .swap-bottom {
-      @include animation-default;
-      @extend .anim-bottom.fade-in;
+      .animation-default;
+      .anim-bottom.fade-in;
     }
     .swap-top {
-      @include animation-default;
-      @extend .anim-top.fade-in;
+      .animation-default;
+      .anim-top.fade-in;
     }
     .swap-left {
-      @include animation-default;
-      @extend .anim-left.fade-in;
+      .animation-default;
+      .anim-left.fade-in;
     }
     .swap-right {
-      @include animation-default;
-      @extend .anim-right.fade-in;
+      .animation-default;
+      .anim-right.fade-in;
     }
   }
 }

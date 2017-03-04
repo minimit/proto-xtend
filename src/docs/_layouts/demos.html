@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" />
     <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
     <link rel="stylesheet" href="{{ site.baseurl }}assets/styles/icons/style.css?v={{ site.version }}" />
-    {% if page.scss %}<link rel="stylesheet" href="{{ page.name | replace: '.html', '.css' }}?v={{ site.version }}" />{% endif %}
+    {% if page.less %}<link rel="stylesheet" href="{{ page.name | replace: '.html', '.css' }}?v={{ site.version }}" />{% endif %}
     <link rel="stylesheet" href="{{ site.baseurl }}assets/styles/demo.min.css?v={{ site.version }}" />
     
     <!-- scripts -->
@@ -64,8 +64,8 @@
     
     <div id="body-inside"><div>{{ content }}</div></div>
 
-    {% if page.scss %}
-    <scss-style>{% include_relative {{ page.name | replace: '.html', '.scss' }} %}</scss-style>
+    {% if page.less %}
+    <less-style>{% include_relative {{ page.name | replace: '.html', '.less' }} %}</less-style>
     {% endif %}
 
     {% if page.js %}

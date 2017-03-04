@@ -4,7 +4,7 @@
 
 a,
 .button {
-  #{$focus} {
+  &:focus {
     outline: 0;
   }
 }
@@ -32,13 +32,6 @@ body {
 // utils
 //////////////////////
 
-.box {
-  @include box;
-  @include clear;
-}
-.clear {
-  @include clear;
-}
 .show {
   display: block !important;
 }
@@ -219,7 +212,7 @@ a, button {
   }
 }
 .drop {
-  @extend .toggle-flex;
+  .toggle-flex;
   position: absolute;
   z-index: 110;
   /* content */
@@ -239,17 +232,6 @@ a, button {
     left: 100%;
     right: auto;
   }
-  &.before,
-  &.after {
-    &.bottom {
-      top: 0;
-      bottom: auto;
-    }
-    &.top {
-      top: auto;
-      bottom: 0;
-    }
-  }
   /* left and right */
   &.left {
     left: 0;
@@ -259,21 +241,29 @@ a, button {
     left: auto;
     right: 0;
   }
-  &.left,
-  &.right {
-    &.bottom {
-      top: 100%;
-      bottom: auto;
-    }
-    &.top {
-      top: auto;
-      bottom: 100%;
-    }
+  /* bottom and top */
+  &.bottom {
+    top: 100%;
+    bottom: auto;
+  }
+  &.top {
+    top: auto;
+    bottom: 100%;
   }
   /* middle */
+  &.middle-bottom {
+    top: auto;
+    bottom: 0;
+  }
+  &.middle-top {
+    top: 0;
+    bottom: auto;
+  }
+  &.middle-top,
+  &.middle-bottom,
   &.middle {
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
   }
   /* dimensions */
   &.max-height {
@@ -293,7 +283,7 @@ a, button {
 //////////////////////
 
 .overlay {
-  @extend .toggle-block;
+  .toggle-block;
   position: fixed;
   z-index: 90;
   top: 0;
@@ -328,7 +318,7 @@ a, button {
   }
   /* close */
   .overlay-close {
-    position: absolute;
+    position: absolute !important;
     top: 0;
     right: 0;
   }
@@ -400,5 +390,6 @@ html.xt-fixed-horizontal {
 }
 .no-anim,
 .no-anim .xt-backdrop {
+  animation: none !important;
   transition: none !important;
 }

@@ -40,9 +40,9 @@ order: 30
   </button>
   <div class="drop">
     <div class="drop-inner">
-      <a href="#" class="button">Lorem ipsum dolor</a>
-      <button type="button" class="button" data-xt-reset>Lorem ipsum dolor</button> 
-      <button type="button" class="button" data-xt-reset>Lorem ipsum dolor</button> 
+      <a href="#" class="button">a[href]</a>
+      <button type="button" class="button" data-xt-reset>button[data-xt-reset]</button> 
+      <button type="button" class="button" data-xt-reset>button[data-xt-reset]</button> 
     </div>
   </div>
 </div>
@@ -461,7 +461,7 @@ order: 30
     <div class="demo-text"><code>.before</code> with <code>.top</code> <code>.bottom</code> <code>.middle</code>.</div>
     <div class="demo-source" data-lang="html">
 <div class="spacer">
-  
+
   <div class="drop-outer" data-xt-drop>
     <button type="button" class="button">
       before top
@@ -500,7 +500,7 @@ order: 30
       </div>
     </div>
   </div>
-
+  
 </div>
     </div>
   </div>
@@ -508,7 +508,7 @@ order: 30
     <div class="demo-text"><code>.after</code> with <code>.top</code> <code>.bottom</code> <code>.middle</code>.</div>
     <div class="demo-source" data-lang="html">
 <div class="spacer">
-  
+    
   <div class="drop-outer" data-xt-drop>
     <button type="button" class="button">
       after top
@@ -548,11 +548,97 @@ order: 30
     </div>
   </div>
   
+</div>
+    </div>
+  </div>
+  <div class="demo-item demo-preview" data-name="others">
+    <div class="demo-text"><code>.middle-top</code> and <code>.middle-bottom</code>.</div>
+    <div class="demo-source" data-lang="html">
+<div class="spacer">
+  
   <div class="drop-outer" data-xt-drop>
     <button type="button" class="button">
-      after bottom
+      right middle-bottom
     </button>
-    <div class="drop after">
+    <div class="drop right middle-bottom">
+      <div class="drop-inner">
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+      </div>
+    </div>
+  </div>
+  
+  <div class="drop-outer" data-xt-drop>
+    <button type="button" class="button">
+      right middle-top
+    </button>
+    <div class="drop right middle-top">
+      <div class="drop-inner">
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+      </div>
+    </div>
+  </div>
+    
+  <div class="drop-outer" data-xt-drop>
+    <button type="button" class="button">
+      left middle-bottom
+    </button>
+    <div class="drop left middle-bottom">
+      <div class="drop-inner">
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+      </div>
+    </div>
+  </div>
+  
+  <div class="drop-outer" data-xt-drop>
+    <button type="button" class="button">
+      left middle-top
+    </button>
+    <div class="drop left middle-top">
+      <div class="drop-inner">
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+      </div>
+    </div>
+  </div>
+  
+  <div class="drop-outer" data-xt-drop>
+    <button type="button" class="button">
+      before middle-bottom
+    </button>
+    <div class="drop before middle-bottom">
+      <div class="drop-inner">
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+      </div>
+    </div>
+  </div>
+  
+  <div class="drop-outer" data-xt-drop>
+    <button type="button" class="button">
+      before middle-top
+    </button>
+    <div class="drop before middle-top">
+      <div class="drop-inner">
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+      </div>
+    </div>
+  </div>
+  
+  <div class="drop-outer" data-xt-drop>
+    <button type="button" class="button">
+      after middle-bottom
+    </button>
+    <div class="drop after middle-bottom">
       <div class="drop-inner">
         <button type="button" class="button">Lorem ipsum dolor</button> 
         <button type="button" class="button">Lorem ipsum dolor</button> 
@@ -561,19 +647,63 @@ order: 30
     </div>
   </div>
 
+  <div class="drop-outer" data-xt-drop>
+    <button type="button" class="button">
+      after middle-top
+    </button>
+    <div class="drop after middle-top">
+      <div class="drop-inner">
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+      </div>
+    </div>
+  </div>
+  
 </div>
     </div>
   </div>
+</div>
+
+<h3>Static</h3>
+
+<div class="demo">
   <div class="demo-item demo-preview" data-name="static">
     <div class="demo-text">Width relative to parent's relative elements with <code>.drop-outer.static</code>.</div>
     <div class="demo-source" data-lang="html">
-<div style="position: relative; width: 100%;">
+<div class="spacer">
+    
+  <div class="drop-outer static" data-xt-drop>
+    <button type="button" class="button">
+      default
+    </button>
+    <div class="drop">
+      <div class="drop-inner">
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+      </div>
+    </div>
+  </div>
   
   <div class="drop-outer static" data-xt-drop>
     <button type="button" class="button">
-      static
+      top
     </button>
-    <div class="drop">
+    <div class="drop top">
+      <div class="drop-inner">
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+        <button type="button" class="button">Lorem ipsum dolor</button> 
+      </div>
+    </div>
+  </div>
+  
+  <div class="drop-outer static" data-xt-drop>
+    <button type="button" class="button">
+      middle
+    </button>
+    <div class="drop middle">
       <div class="drop-inner">
         <button type="button" class="button">Lorem ipsum dolor</button> 
         <button type="button" class="button">Lorem ipsum dolor</button> 

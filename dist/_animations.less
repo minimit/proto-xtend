@@ -2,8 +2,8 @@
 // defaults
 //////////////////////
 
-// @include animation-default;
-@mixin animation-default {
+// .animation-default;
+.animation-default {
   animation-duration: 300ms;
   animation-timing-function: cubic-bezier(.63,.36,0,.97);
   &.fade-in {
@@ -12,8 +12,8 @@
   }
 }
 
-// @include transition-default;
-@mixin transition-default {
+// .transition-default;
+.transition-default {
   transition: all 300ms cubic-bezier(.63,.36,0,.97);
   &.fade-in {
   }
@@ -27,22 +27,22 @@
 
 .collapse-height,
 .collapse-width {
-  @include transition-default;
+  .transition-default;
 }
 .collapse-width-left,
 .collapse-width-right,
 .collapse-height-top,
 .collapse-height-bottom {
-  @include transition-default;
+  .transition-default;
 }
 
 //////////////////////
 // anim
 //////////////////////
 
-// @include anim-opacity;
-@mixin anim-opacity {
-  @include animation-default;
+// .anim-opacity;
+.anim-opacity {
+  .animation-default;
   opacity: 1;
   &.fade-in {
     animation-name: anim-opacity-in;
@@ -51,9 +51,6 @@
     opacity: 0;
     animation-name: anim-opacity-out;
   }
-}
-.anim-opacity {
-  @include anim-opacity;
 }
 @keyframes anim-opacity-in {
   0% {
@@ -72,9 +69,9 @@
   }
 }
 
-// @include anim-horizontal;
-@mixin anim-horizontal {
-  @include animation-default;
+// .anim-horizontal;
+.anim-horizontal {
+  .animation-default;
   opacity: 1;
   &.fade-in {
     animation-name: anim-horizontal-in;
@@ -83,9 +80,6 @@
     opacity: 0;
     animation-name: anim-horizontal-out;
   }
-}
-.anim-horizontal {
-  @include anim-horizontal;
 }
 @keyframes anim-horizontal-in {
   0% {
@@ -108,9 +102,9 @@
   }
 }
 
-// @include anim-horizontal-zoom;
-@mixin anim-horizontal-zoom {
-  @include animation-default;
+// .anim-horizontal-zoom;
+.anim-horizontal-zoom {
+  .animation-default;
   opacity: 1;
   &.fade-in {
     animation-name: anim-horizontal-zoom-in;
@@ -119,9 +113,6 @@
     opacity: 0;
     animation-name: anim-horizontal-zoom-out;
   }
-}
-.anim-horizontal-zoom {
-  @include anim-horizontal-zoom;
 }
 @keyframes anim-horizontal-zoom-in {
   0% {
@@ -144,9 +135,9 @@
   }
 }
 
-// @include anim-vertical;
-@mixin anim-vertical {
-  @include animation-default;
+// .anim-vertical;
+.anim-vertical {
+  .animation-default;
   opacity: 1;
   &.fade-in {
     animation-name: anim-vertical-in;
@@ -155,9 +146,6 @@
     opacity: 0;
     animation-name: anim-vertical-out;
   }
-}
-.anim-vertical {
-  @include anim-vertical;
 }
 @keyframes anim-vertical-in {
   0% {
@@ -180,9 +168,9 @@
   }
 }
 
-// @include anim-vertical-zoom;
-@mixin anim-vertical-zoom {
-  @include animation-default;
+// .anim-vertical-zoom;
+.anim-vertical-zoom {
+  .animation-default;
   opacity: 1;
   &.fade-in {
     animation-name: anim-vertical-zoom-in;
@@ -191,9 +179,6 @@
     opacity: 0;
     animation-name: anim-vertical-zoom-out;
   }
-}
-.anim-vertical-zoom {
-  @include anim-vertical-zoom;
 }
 @keyframes anim-vertical-zoom-in {
   0% {
@@ -216,9 +201,9 @@
   }
 }
 
-// @include anim-diagonal;
-@mixin anim-diagonal {
-  @include animation-default;
+// .anim-diagonal;
+.anim-diagonal {
+  .animation-default;
   opacity: 1;
   &.fade-in {
     animation-name: anim-diagonal-in;
@@ -227,9 +212,6 @@
     opacity: 0;
     animation-name: anim-diagonal-out;
   }
-}
-.anim-diagonal {
-  @include anim-diagonal;
 }
 @keyframes anim-diagonal-in {
   0% {
@@ -252,9 +234,9 @@
   }
 }
 
-// @include anim-left;
-@mixin anim-left {
-  @include animation-default;
+// .anim-left;
+.anim-left {
+  .animation-default;
   opacity: 1;
   &.fade-in {
     animation-name: anim-left-in;
@@ -263,9 +245,6 @@
     opacity: 0;
     animation-name: anim-left-out;
   }
-}
-.anim-left {
-  @include anim-left;
 }
 @keyframes anim-left-in {
   0% {
@@ -288,9 +267,9 @@
   }
 }
 
-// @include anim-right;
-@mixin anim-right {
-  @include animation-default;
+// .anim-right;
+.anim-right {
+  .animation-default;
   opacity: 1;
   &.fade-in {
     animation-name: anim-right-in;
@@ -299,9 +278,6 @@
     opacity: 0;
     animation-name: anim-right-out;
   }
-}
-.anim-right {
-  @include anim-right;
 }
 @keyframes anim-right-in {
   0% {
@@ -324,9 +300,9 @@
   }
 }
 
-// @include anim-top;
-@mixin anim-top {
-  @include animation-default;
+// .anim-top;
+.anim-top {
+  .animation-default;
   opacity: 1;
   &.fade-in {
     animation-name: anim-top-in;
@@ -335,9 +311,6 @@
     opacity: 0;
     animation-name: anim-top-out;
   }
-}
-.anim-top {
-  @include anim-top;
 }
 @keyframes anim-top-in {
   0% {
@@ -360,9 +333,9 @@
   }
 }
 
-// @include anim-bottom;
-@mixin anim-bottom {
-  @include animation-default;
+// .anim-bottom;
+.anim-bottom {
+  .animation-default;
   opacity: 1;
   &.fade-in {
     animation-name: anim-bottom-in;
@@ -371,9 +344,6 @@
     opacity: 0;
     animation-name: anim-bottom-out;
   }
-}
-.anim-bottom {
-  @include anim-bottom;
 }
 @keyframes anim-bottom-in {
   0% {
