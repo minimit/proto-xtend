@@ -159,9 +159,13 @@ a, button {
 
 .drop-outer {
   display: inline-block;
-  position: relative; }
-  .drop-stack .drop-outer {
+  position: relative;
+  /* static */ }
+  .drop-outer.static {
     position: static; }
+    .drop-outer.static .drop,
+    .drop-outer.static .drop-inner {
+      width: 100%; }
 
 .drop {
   position: absolute;
@@ -627,7 +631,7 @@ a.button:not(.link):hover, .overlay a.overlay-close:not(.link):hover, a.button:n
 
 .button, .overlay .overlay-close {
   /* sizes */
-  line-height: 1.238;
+  line-height: 1.25;
   /*
   &.tiny {
     padding: 4px 8px;

@@ -194,7 +194,7 @@ a.button:not(.link) {
 .button {
   /* sizes */
   @extend .button.medium; // default
-  line-height: 1.238;
+  line-height: 1.25;
   &.tiny {
     font-size: .66rem;
     padding: .625em .875em;

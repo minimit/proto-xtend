@@ -209,8 +209,13 @@ a, button {
 .drop-outer {
   display: inline-block;
   position: relative;
-  .drop-stack & {
+  /* static */
+  &.static {
     position: static;
+    .drop,
+    .drop-inner {
+      width: 100%;
+    }
   }
 }
 .drop {
