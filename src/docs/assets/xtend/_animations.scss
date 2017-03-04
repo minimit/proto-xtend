@@ -1,10 +1,20 @@
 //////////////////////
-// transitions
+// defaults
 //////////////////////
+
+// @include animation-default;
+@mixin animation-default {
+  animation-duration: 300ms;
+  animation-timing-function: cubic-bezier(.63,.36,0,.97);
+  &.fade-in {
+  }
+  &.fade-out {
+  }
+}
 
 // @include transition-default;
 @mixin transition-default {
-  transition: all 300ms cubic-bezier(.63,.36,0,.97); // disable top and left animations
+  transition: all 300ms cubic-bezier(.63,.36,0,.97);
   &.fade-in {
   }
   &.fade-out {
@@ -32,177 +42,356 @@
 
 // @include anim-opacity;
 @mixin anim-opacity {
-  @include transition-default;
-  opacity: 0;
+  @include animation-default;
+  opacity: 1;
   &.fade-in {
-    opacity: 1;
+    animation-name: anim-opacity-in;
   }
   &.fade-out {
     opacity: 0;
+    animation-name: anim-opacity-out;
   }
 }
 .anim-opacity {
   @include anim-opacity;
 }
+@keyframes anim-opacity-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes anim-opacity-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
 
 // @include anim-horizontal;
 @mixin anim-horizontal {
-  @include transition-default;
-  opacity: 0;
-  transform: translateX(-.618rem);
+  @include animation-default;
+  opacity: 1;
   &.fade-in {
-    opacity: 1;
-    transform: translateX(0);
+    animation-name: anim-horizontal-in;
   }
   &.fade-out {
     opacity: 0;
-    transform: translateX(.618rem);
+    animation-name: anim-horizontal-out;
   }
 }
 .anim-horizontal {
   @include anim-horizontal;
 }
+@keyframes anim-horizontal-in {
+  0% {
+    opacity: 0;
+    transform: translateX(-.618rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes anim-horizontal-out {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(.618rem);
+  }
+}
 
 // @include anim-horizontal-zoom;
 @mixin anim-horizontal-zoom {
-  @include transition-default;
-  opacity: 0;
-  transform: translateX(-.618rem) scale(.95);
+  @include animation-default;
+  opacity: 1;
   &.fade-in {
-    opacity: 1;
-    transform: translateX(0) scale(1);
+    animation-name: anim-horizontal-zoom-in;
   }
   &.fade-out {
     opacity: 0;
-    transform: translateX(.618rem) scale(.95);
+    animation-name: anim-horizontal-zoom-out;
   }
 }
 .anim-horizontal-zoom {
   @include anim-horizontal-zoom;
 }
+@keyframes anim-horizontal-zoom-in {
+  0% {
+    opacity: 0;
+    transform: translateX(-.618rem) scale(.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+@keyframes anim-horizontal-zoom-out {
+  0% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(.618rem) scale(.95);
+  }
+}
 
 // @include anim-vertical;
 @mixin anim-vertical {
-  @include transition-default;
-  opacity: 0;
-  transform: translateY(-.618rem);
+  @include animation-default;
+  opacity: 1;
   &.fade-in {
-    opacity: 1;
-    transform: translateY(0);
+    animation-name: anim-vertical-in;
   }
   &.fade-out {
     opacity: 0;
-    transform: translateY(.618rem);
+    animation-name: anim-vertical-out;
   }
 }
 .anim-vertical {
   @include anim-vertical;
 }
+@keyframes anim-vertical-in {
+  0% {
+    opacity: 0;
+    transform: translateY(-.618rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes anim-vertical-out {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(.618rem);
+  }
+}
 
 // @include anim-vertical-zoom;
 @mixin anim-vertical-zoom {
-  @include transition-default;
-  opacity: 0;
-  transform: translateY(-.618rem) scale(.95);
+  @include animation-default;
+  opacity: 1;
   &.fade-in {
-    opacity: 1;
-    transform: translateY(0) scale(1);
+    animation-name: anim-vertical-zoom-in;
   }
   &.fade-out {
     opacity: 0;
-    transform: translateY(.618rem) scale(.95);
+    animation-name: anim-vertical-zoom-out;
   }
 }
 .anim-vertical-zoom {
   @include anim-vertical-zoom;
 }
+@keyframes anim-vertical-zoom-in {
+  0% {
+    opacity: 0;
+    transform: translateY(-.618rem) scale(.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+@keyframes anim-vertical-zoom-out {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(.618rem) scale(.95);
+  }
+}
 
 // @include anim-diagonal;
 @mixin anim-diagonal {
-  @include transition-default;
-  opacity: 0;
-  transform:  translateX(-.618rem) translateY(-.618rem);
+  @include animation-default;
+  opacity: 1;
   &.fade-in {
-    opacity: 1;
-    transform: translateX(0) translateY(0);
+    animation-name: anim-diagonal-in;
   }
   &.fade-out {
     opacity: 0;
-    transform: translateX(.618rem) translateY(.618rem);
+    animation-name: anim-diagonal-out;
   }
 }
 .anim-diagonal {
   @include anim-diagonal;
 }
+@keyframes anim-diagonal-in {
+  0% {
+    opacity: 0;
+    transform:  translateX(-.618rem) translateY(-.618rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) translateY(0);
+  }
+}
+@keyframes anim-diagonal-out {
+  0% {
+    opacity: 1;
+    transform: translateX(0) translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(.618rem) translateY(.618rem);
+  }
+}
 
 // @include anim-left;
 @mixin anim-left {
-  @include transition-default;
-  opacity: 0;
-  transform: translateX(.618rem);
+  @include animation-default;
+  opacity: 1;
   &.fade-in {
-    opacity: 1;
-    transform: translateY(0);
+    animation-name: anim-left-in;
   }
   &.fade-out {
     opacity: 0;
-    transform: translateX(.618rem);
+    animation-name: anim-left-out;
   }
 }
 .anim-left {
   @include anim-left;
 }
-
-// @include anim-right;
-@mixin anim-right {
-  @include transition-default;
-  opacity: 0;
-  transform: translateX(-.618rem);
-  &.fade-in {
+@keyframes anim-left-in {
+  0% {
+    opacity: 0;
+    transform: translateX(.618rem);
+  }
+  100% {
     opacity: 1;
     transform: translateY(0);
   }
+}
+@keyframes anim-left-out {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(.618rem);
+  }
+}
+
+// @include anim-right;
+@mixin anim-right {
+  @include animation-default;
+  opacity: 1;
+  &.fade-in {
+    animation-name: anim-right-in;
+  }
   &.fade-out {
     opacity: 0;
-    transform: translateX(-.618rem);
+    animation-name: anim-right-out;
   }
 }
 .anim-right {
   @include anim-right;
 }
-
-// @include anim-top;
-@mixin anim-top {
-  @include transition-default;
-  opacity: 0;
-  transform: translateY(-.618rem);
-  &.fade-in {
+@keyframes anim-right-in {
+  0% {
+    opacity: 0;
+    transform: translateX(-.618rem);
+  }
+  100% {
     opacity: 1;
     transform: translateY(0);
   }
+}
+@keyframes anim-right-out {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-.618rem);
+  }
+}
+
+// @include anim-top;
+@mixin anim-top {
+  @include animation-default;
+  opacity: 1;
+  &.fade-in {
+    animation-name: anim-top-in;
+  }
   &.fade-out {
     opacity: 0;
-    transform: translateY(-.618rem);
+    animation-name: anim-top-out;
   }
 }
 .anim-top {
   @include anim-top;
 }
-
-// @include anim-bottom;
-@mixin anim-bottom {
-  @include transition-default;
-  opacity: 0;
-  transform: translateY(.618rem);
-  &.fade-in {
+@keyframes anim-top-in {
+  0% {
+    opacity: 0;
+    transform: translateY(-.618rem);
+  }
+  100% {
     opacity: 1;
     transform: translateY(0);
   }
+}
+@keyframes anim-top-out {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-.618rem);
+  }
+}
+
+// @include anim-bottom;
+@mixin anim-bottom {
+  @include animation-default;
+  opacity: 1;
+  &.fade-in {
+    animation-name: anim-bottom-in;
+  }
   &.fade-out {
     opacity: 0;
-    transform: translateY(.618rem);
+    animation-name: anim-bottom-out;
   }
 }
 .anim-bottom {
   @include anim-bottom;
+}
+@keyframes anim-bottom-in {
+  0% {
+    opacity: 0;
+    transform: translateY(.618rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes anim-bottom-out {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(.618rem);
+  }
 }

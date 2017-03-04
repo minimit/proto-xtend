@@ -427,7 +427,6 @@ a.button:not(.link) {
   }
   /* animations */
   &:not([class*=" anim-"]) {
-    @include transition-default;
     @include anim-vertical-zoom;
   }
 }
@@ -505,12 +504,10 @@ a.button:not(.link) {
   }
   /* animations */
   .overlay-inner:not([class*=" anim-"]) {
-    @include transition-default;
     @include anim-vertical-zoom;
   }
   &.full {
     .overlay-inner:not([class*=" anim-"]) {
-      @include transition-default;
       @include anim-vertical;
     }
   }
@@ -541,7 +538,7 @@ a.button:not(.link) {
 // icons
 //////////////////////
 
-/* swap */
+/* swap-in and swap-out */
 .swap-in {
   display: none;
 }
@@ -556,105 +553,42 @@ a.button:not(.link) {
     }
   }
 }
+
+/* swap */
 .button {
+  .swap-out.swap-bottom {
+    @include animation-default;
+    @extend .anim-bottom.fade-in;
+  }
+  .swap-out.swap-top {
+    @include animation-default;
+    @extend .anim-top.fade-in;
+  }
+  .swap-out.swap-left {
+    @include animation-default;
+    @extend .anim-left.fade-in;
+  }
+  .swap-out.swap-right {
+    @include animation-default;
+    @extend .anim-right.fade-in;
+  }
   #{$hover},
   #{$active} {
     .swap-bottom {
-      -webkit-animation: bottom-in 300ms cubic-bezier(.63,.36,0,.97);
-      animation: bottom-in 300ms cubic-bezier(.63,.36,0,.97);
+      @include animation-default;
+      @extend .anim-bottom.fade-in;
     }
     .swap-top {
-      -webkit-animation: top-in 300ms cubic-bezier(.63,.36,0,.97);
-      animation: top-in 300ms cubic-bezier(.63,.36,0,.97);
+      @include animation-default;
+      @extend .anim-top.fade-in;
     }
     .swap-left {
-      -webkit-animation: left-in 300ms cubic-bezier(.63,.36,0,.97);
-      animation: left-in 300ms cubic-bezier(.63,.36,0,.97);
+      @include animation-default;
+      @extend .anim-left.fade-in;
     }
     .swap-right {
-      -webkit-animation: right-in 300ms cubic-bezier(.63,.36,0,.97);
-      animation: right-in 300ms cubic-bezier(.63,.36,0,.97);
+      @include animation-default;
+      @extend .anim-right.fade-in;
     }
-  }
-}
-
-@keyframes bottom-in {
-  0% {
-    opacity: 0;
-    transform: translateY(6px) scale(.95);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-@keyframes bottom-out {
-  0% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-  100% {
-    opacity: 0;
-    transform: translateY(6px) scale(.95);
-  }
-}
-@keyframes top-in {
-  0% {
-    opacity: 0;
-    transform: translateY(-6px) scale(.95);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-@keyframes top-out {
-  0% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-  100% {
-    opacity: 0;
-    transform: translateY(-6px) scale(.95);
-  }
-}
-@keyframes right-in {
-  0% {
-    opacity: 0;
-    transform: translateX(6px) scale(.95);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0) scale(1);
-  }
-}
-@keyframes right-out {
-  0% {
-    opacity: 1;
-    transform: translateX(0) scale(1);
-  }
-  100% {
-    opacity: 0;
-    transform: translateX(6px) scale(.95);
-  }
-}
-@keyframes left-in {
-  0% {
-    opacity: 0;
-    transform: translateX(-6px) scale(.95);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0) scale(1);
-  }
-}
-@keyframes left-out {
-  0% {
-    opacity: 1;
-    transform: translateX(0) scale(1);
-  }
-  100% {
-    opacity: 0;
-    transform: translateX(-6px) scale(.95);
   }
 }

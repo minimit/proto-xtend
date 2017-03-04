@@ -333,45 +333,53 @@
     var group = this.group;
     var $group = $(this.group);
     // $elements events
-    var $et = settings.$elements.slice(0);
+    var $eventElement;
+    var $eventTarget = settings.$elements.slice(0);
     if (settings.name === 'xt-drop' && settings.off === 'mouseleave') {
-      $et = $et.pushElement(settings.$targets);
+      $eventElement = $eventTarget;
+      $eventTarget = $group;
     }
-    if ($et) {
+    if ($eventTarget) {
       // on off events
       if (settings.on) {
-        $et.off(settings.on).on(settings.on, function(e) {
-          object.toggle($(this));
+        $eventTarget.off(settings.on).on(settings.on, function(e) {
+          var $t = $eventElement ? $eventElement : $(this);
+          object.toggle($t);
+          // trigger off on backdrops etc..
+          $eventTarget.find('.xt-ignore').off(settings.on).on(settings.on, function(e) {
+            object.toggle($t);
+          });
           if (settings.name === 'xt-ajax') {
             e.preventDefault();
           }
         });
       }
       if (settings.off) {
-        $et.off(settings.off).on(settings.off, function(e) {
-          object.toggle($(this));
+        $eventTarget.off(settings.off).on(settings.off, function(e) {
+          var $t = $eventElement ? $eventElement : $(this);
+          object.toggle($t);
         });
       }
       // close on link click
       if (settings.name === 'xt-drop') {
         settings.$targets.find('[href], [data-xt-reset]').off('click.xt.href').on('click.xt.href', function(e) {
-          object.toggle($et);
+          object.hide($eventTarget);
         });
       }
       // remove html classes
-      $et.off('xtRemoved').on('xtRemoved', function(e) {
+      $eventTarget.off('xtRemoved').on('xtRemoved', function(e) {
         if (settings.name === 'xt-overlay') { // @TODO $group.is('[data-xt-reset]')
           settings.$targets.remove();
           //object.hide($(this), false, true, true);
         }
       });
       // api
-      $et.off('show.xt').on('show.xt', function(e, obj, triggered) {
+      $eventTarget.off('show.xt').on('show.xt', function(e, obj, triggered) {
         if (!triggered && e.target === this) {
           object.show($(this), true);
         }
       });
-      $et.off('hide.xt').on('hide.xt', function(e, obj, triggered) {
+      $eventTarget.off('hide.xt').on('hide.xt', function(e, obj, triggered) {
         if (!triggered && e.target === this) {
           object.hide($(this), true);
         }
@@ -783,7 +791,7 @@
       window.xtCancelAnimationFrame($single.data('frame.timeout'));
       var frame = window.xtRequestAnimationFrame( function() {
         if (add) {
-          $single.removeClass('no-anim').addClass(add);
+          $single.addClass(add);
         }
         object.animationDelay($single, 'anim', function() {
           if (++done < $el.length) {
@@ -800,9 +808,12 @@
     var settings = this.settings;
     // time
     var t = settings.timing;
-    var duration = $el.css('transitionDuration');
-    if (settings.timing === undefined && duration !== '0s') {
-      t = object.stringToMilliseconds(duration);
+    var transition = $el.css('transitionDuration');
+    var animation = $el.css('animationDuration');
+    if (settings.timing === undefined && (transition !== '0s' || animation !== '0s')) {
+      transition = object.stringToMilliseconds(transition);
+      animation = object.stringToMilliseconds(animation);
+      t = Math.max(transition, animation);
     }
     // delay for animations
     if (t) {
@@ -951,7 +962,7 @@
         var $outside = $single.parent();
         var add = $outside.outerHeight() / 2;
         var remove = $single.outerHeight() / 2;
-        $single.addClass('no-anim').attr('middle.done', true).css('top', add - remove);
+        $single.attr('middle.done', true).css('top', add - remove);
       }
     });
   };
@@ -963,7 +974,7 @@
         var $outside = $single.parent();
         var add = $outside.outerWidth() / 2;
         var remove = $single.outerWidth() / 2;
-        $single.addClass('no-anim').attr('center.done', true).css('left', add - remove);
+        $single.attr('center.done', true).css('left', add - remove);
       }
     });
   };
