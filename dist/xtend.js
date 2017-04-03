@@ -285,8 +285,8 @@
         // set ajaxified
         settings.$targets.attr('data-xt-ajaxified', url);
         object.pushstate(url, document.title);
-        // then show
-        object.show(found);
+        // then activate
+        object.activate(found);
         // api
         settings.$targets.trigger('ajax.init.xt', [object]);
       }
@@ -296,7 +296,7 @@
         settings.$elements.each( function() {
           if ($(this).hasClass(object.defaultClass)) {
             $(this).removeClass(settings.class);
-            object.show($(this));
+            object.activate($(this));
           }
         });
         // automatic init if $currents < min
@@ -304,7 +304,7 @@
         var todo = settings.min - $currents.length;
         if (todo) {
           for (var i = 0; i < todo; i++) {
-            object.show(settings.$elements.eq(i));
+            object.activate(settings.$elements.eq(i));
           }
         }
       }
@@ -359,25 +359,25 @@
       // close on link click
       if (settings.name === 'xt-drop') {
         settings.$targets.find('[href], [data-xt-reset]').off('click.xt.href').on('click.xt.href', function(e) {
-          object.hide($eventTarget);
+          object.deactivate($eventTarget);
         });
       }
       // remove html classes
       $eventTarget.off('xtRemoved').on('xtRemoved', function(e) {
         if (settings.name === 'xt-overlay') { // @TODO $group.is('[data-xt-reset]')
           settings.$targets.remove();
-          object.hide($(this), false, true, true);
+          object.deactivate($(this), false, true, true);
         }
       });
       // api
-      $eventTarget.off('show.xt').on('show.xt', function(e, obj, triggered) {
+      $eventTarget.off('activate.xt').on('activate.xt', function(e, obj, triggered) {
         if (!triggered && e.target === this) {
-          object.show($(this), true);
+          object.activate($(this), true);
         }
       });
-      $eventTarget.off('hide.xt').on('hide.xt', function(e, obj, triggered) {
+      $eventTarget.off('deactivate.xt').on('deactivate.xt', function(e, obj, triggered) {
         if (!triggered && e.target === this) {
-          object.hide($(this), true);
+          object.deactivate($(this), true);
         }
       });
     }
@@ -415,7 +415,7 @@
     $(window).on(scrollNamespace, function(e) {
       var scrollTop = $(this).scrollTop();
       if (scrollTop !== settings.scrollTopOld) {
-        // show or hide
+        // activate or deactivate
         var top = $outside.offset().top;
         var bottom = Infinity;
         if (settings.top !== undefined) {
@@ -435,7 +435,7 @@
         if (scrollTop >= top && scrollTop < bottom) {
           if (!$group.hasClass(object.defaultClass)) {
             window.xtRequestAnimationFrame( function() {
-              object.show($group);
+              object.activate($group);
             });
             // direction classes
             $group.removeClass('scroll-off-top scroll-off-bottom');
@@ -454,7 +454,7 @@
         } else {
           if ($group.hasClass(object.defaultClass)) {
             window.xtRequestAnimationFrame( function() {
-              object.hide($group);
+              object.deactivate($group);
             });
             // direction classes
             $group.removeClass('scroll-on-top scroll-on-bottom');
@@ -493,23 +493,23 @@
     var $group = $(this.group);
     // choose based on state
     if (!$el.hasClass(object.defaultClass)) {
-      object.show($el, triggered, isSync, skipState);
+      object.activate($el, triggered, isSync, skipState);
     } else {
-      object.hide($el, triggered, isSync, skipState);
+      object.deactivate($el, triggered, isSync, skipState);
     }
   };
   
-  Xt.prototype.show = function($el, triggered, isSync, skipState) {
+  Xt.prototype.activate = function($el, triggered, isSync, skipState) {
     var object = this;
     var settings = this.settings;
     var group = this.group;
     var $group = $(this.group);
     // activate
     if ($el) {
-      // show and add in $currents
+      // activate and add in $currents
       if (!$el.hasClass(object.defaultClass)) {
         var $elements = object.getIndexed(settings.$elements, $el, settings.$elements);
-        object.showAfter($elements, triggered);
+        object.activateAfter($elements, triggered);
         var $currents = object.getCurrents();
         $currents = object.setCurrents($currents.pushElement($el));
         // sync
@@ -518,7 +518,7 @@
             var $sync = $('[data-xt-namespace="' + settings.namespace + '"]').filter(':parents(.xt-ignore)').not($group);
             $sync.each( function() {
               var xt = $(this).data(settings.name);
-              xt.show($(this), true, true);
+              xt.activate($(this), true, true);
             });
           });
         }
@@ -531,11 +531,11 @@
         } else {
           // [disabled]
           object.checkDisabled($el);
-          // hide max or differents
+          // deactivate max or differents
           if (!isSync) {
             if ($currents.length > settings.max) {
               var $first = $currents.first();
-              object.hide($first);
+              object.deactivate($first);
             }
           }
         }
@@ -545,7 +545,7 @@
     if (settings.$targets) {
       var $target = object.getIndexed(settings.$elements, $el, settings.$targets);
       if (!$target.hasClass(object.defaultClass)) {
-        object.showAfter($target, triggered);
+        object.activateAfter($target, triggered);
         // stuff
         if (settings.name === 'xt-overlay') {
           // add paddings
@@ -565,7 +565,7 @@
     }
   };
   
-  Xt.prototype.hide = function($el, triggered, isSync, skipState) {
+  Xt.prototype.deactivate = function($el, triggered, isSync, skipState) {
     var object = this;
     var settings = this.settings;
     var group = this.group;
@@ -576,7 +576,7 @@
       if ($el.hasClass(object.defaultClass)) {
         if (isSync || settings.name === 'xt-ajax' || $currents.length > settings.min) {
           var $elements = object.getIndexed(settings.$elements, $el, settings.$elements);
-          object.hideAfter($elements, triggered);
+          object.deactivateAfter($elements, triggered);
           if ($el.attr('data-group')) {
             $currents = object.setCurrents($currents.not('[data-group=' + $el.attr('data-group') + ']'));
           } else {
@@ -588,7 +588,7 @@
               var $sync = $('[data-xt-namespace="' + settings.namespace + '"]').filter(':parents(.xt-ignore)').not($group);
               $sync.each( function() {
                 var xt = $(this).data(settings.name);
-                xt.hide($(this), true, true);
+                xt.deactivate($(this), true, true);
               });
             });
           }
@@ -605,7 +605,7 @@
     if (settings.$targets) {
       var $target = object.getIndexed(settings.$elements, $el, settings.$targets);
       if ($target.hasClass(object.defaultClass)) {
-        object.hideAfter($target, triggered);
+        object.deactivateAfter($target, triggered);
         // stuff
         if (settings.name === 'xt-overlay') {
           // remove paddings
@@ -617,7 +617,7 @@
             /*
             $additional.removeClass('fade-in');
             $additional.addClass('fade-out');
-            settings.$targets.off('hide.xt.done.additional').one('hide.xt.done.additional', function() {
+            settings.$targets.off('deactivate.xt.done.additional').one('deactivate.xt.done.additional', function() {
               $additional.removeClass('fade-out');
             });
             */
@@ -670,7 +670,7 @@
   // on and off methods
   //////////////////////
   
-  Xt.prototype.showAfter = function($elements, triggered) {
+  Xt.prototype.activateAfter = function($elements, triggered) {
     var object = this;
     var settings = this.settings;
     var group = this.group;
@@ -686,7 +686,7 @@
     $el.addClass(settings.class).removeClass('fade-out');
     object.animationDelayClear($el, 'anim');
     // in
-    object.animationMultiple($el, triggered, object.showDone, 'fade-in');
+    object.animationMultiple($el, triggered, object.activateDone, 'fade-in');
     // animations
     object.onBackdrop($el, triggered);
     object.onWidth($el, triggered);
@@ -699,22 +699,22 @@
       $(document).off('click.xt.' + settings.namespace).on('click.xt.' + settings.namespace, function(e) {
         var $target = $(e.target);
         if (!$group.is($target) && !$group.has($target).length) {
-          object.hide(settings.$elements, true, true, true);
+          object.deactivate(settings.$elements, true, true, true);
         }
       });
     }
     if (settings.name === 'xt-overlay') {
       // close on .overlay-close
       $el.find('.overlay-close').off('click.xt.' + settings.namespace).on('click.xt.' + settings.namespace, function(e) {
-        object.hide(settings.$elements, true, false, true);
+        object.deactivate(settings.$elements, true, false, true);
       });
     }
     // api
     if (!triggered) {
-      $el.trigger('show.xt', [object, true]);
+      $el.trigger('activate.xt', [object, true]);
     }
   };
-  Xt.prototype.showDone = function($el, triggered) {
+  Xt.prototype.activateDone = function($el, triggered) {
     var object = this;
     var settings = this.settings;
     var group = this.group;
@@ -733,7 +733,7 @@
     }
   };
   
-  Xt.prototype.hideAfter = function($elements, triggered) {
+  Xt.prototype.deactivateAfter = function($elements, triggered) {
     var object = this;
     var settings = this.settings;
     var group = this.group;
@@ -749,7 +749,7 @@
     $el.removeClass(settings.class).removeClass('fade-in').addClass('fade-out');
     object.animationDelayClear($el, 'anim');
     // out
-    object.animationMultiple($el, triggered, object.hideDone);
+    object.animationMultiple($el, triggered, object.deactivateDone);
     // animations
     object.offBackdrop($el, triggered);
     object.onWidth($el, triggered);
@@ -764,10 +764,10 @@
     }
     // api
     if (!triggered) {
-      $el.trigger('hide.xt', [object, true]);
+      $el.trigger('deactivate.xt', [object, true]);
     }
   };
-  Xt.prototype.hideDone = function($el, triggered) {
+  Xt.prototype.deactivateDone = function($el, triggered) {
     var object = this;
     var settings = this.settings;
     // when animation is done
@@ -866,12 +866,12 @@
         ns = 'mouseenter.backdrop.xt';
       }
       $backdrop.off(ns).on(ns, function(e) {
-        object.hide(settings.$elements, true, false, true);
+        object.deactivate(settings.$elements, true, false, true);
       });
       if ($container.length) { // for .backdrop ex: modals
         $el.off(ns).on(ns, function(e) {
           if ($(e.target).is($container)) {
-            object.hide(settings.$elements, true, false, true);
+            object.deactivate(settings.$elements, true, false, true);
           }
         });
       }
@@ -1165,7 +1165,7 @@
     document.title = title;
     // trigger on registered
     settings.$elements.filter('[href="' + url + '"]').each( function() {
-      object.show($(this), true, false, true);
+      object.activate($(this), true, false, true);
     });
     // push object state
     if (!history.state || !history.state.url || history.state.url !== url) {
