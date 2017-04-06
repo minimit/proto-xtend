@@ -810,7 +810,7 @@
     var t = settings.timing;
     var transition = $el.css('transitionDuration');
     var animation = $el.css('animationDuration');
-    if (settings.timing === undefined && (transition !== '0s' || animation !== '0s')) {
+    if (settings.timing === undefined && (transition !== undefined || animation !== undefined) && (transition !== '0s' || animation !== '0s')) {
       transition = object.stringToMilliseconds(transition);
       animation = object.stringToMilliseconds(animation);
       t = Math.max(transition, animation);
