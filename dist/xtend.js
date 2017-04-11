@@ -285,8 +285,8 @@
         // set ajaxified
         settings.$targets.attr('data-xt-ajaxified', url);
         object.pushstate(url, document.title);
-        // then activate
-        object.activate(found);
+        // then on
+        object.on(found);
         // api
         settings.$targets.trigger('ajax.init.xt', [object]);
       }
@@ -296,7 +296,7 @@
         settings.$elements.each( function() {
           if ($(this).hasClass(object.defaultClass)) {
             $(this).removeClass(settings.class);
-            object.activate($(this));
+            object.on($(this));
           }
         });
         // automatic init if $currents < min
@@ -304,7 +304,7 @@
         var todo = settings.min - $currents.length;
         if (todo) {
           for (var i = 0; i < todo; i++) {
-            object.activate(settings.$elements.eq(i));
+            object.on(settings.$elements.eq(i));
           }
         }
       }
@@ -359,25 +359,25 @@
       // close on link click
       if (settings.name === 'xt-drop') {
         settings.$targets.find('[href], [data-xt-reset]').off('click.xt.href').on('click.xt.href', function(e) {
-          object.deactivate($eventTarget);
+          object.off($eventTarget);
         });
       }
       // remove html classes
       $eventTarget.off('xtRemoved').on('xtRemoved', function(e) {
         if (settings.name === 'xt-overlay') { // @TODO $group.is('[data-xt-reset]')
           settings.$targets.remove();
-          object.deactivate($(this), false, true, true);
+          object.off($(this), false, true, true);
         }
       });
       // api
-      $eventTarget.off('activate.xt').on('activate.xt', function(e, obj, triggered) {
+      $eventTarget.off('on.xt').on('on.xt', function(e, obj, triggered) {
         if (!triggered && e.target === this) {
-          object.activate($(this), true);
+          object.on($(this), true);
         }
       });
-      $eventTarget.off('deactivate.xt').on('deactivate.xt', function(e, obj, triggered) {
+      $eventTarget.off('off.xt').on('off.xt', function(e, obj, triggered) {
         if (!triggered && e.target === this) {
-          object.deactivate($(this), true);
+          object.off($(this), true);
         }
       });
     }
@@ -415,7 +415,7 @@
     $(window).on(scrollNamespace, function(e) {
       var scrollTop = $(this).scrollTop();
       if (scrollTop !== settings.scrollTopOld) {
-        // activate or deactivate
+        // on or off
         var top = $outside.offset().top;
         var bottom = Infinity;
         if (settings.top !== undefined) {
@@ -435,7 +435,7 @@
         if (scrollTop >= top && scrollTop < bottom) {
           if (!$group.hasClass(object.defaultClass)) {
             window.xtRequestAnimationFrame( function() {
-              object.activate($group);
+              object.on($group);
             });
             // direction classes
             $group.removeClass('scroll-off-top scroll-off-bottom');
@@ -454,7 +454,7 @@
         } else {
           if ($group.hasClass(object.defaultClass)) {
             window.xtRequestAnimationFrame( function() {
-              object.deactivate($group);
+              object.off($group);
             });
             // direction classes
             $group.removeClass('scroll-on-top scroll-on-bottom');
@@ -493,23 +493,23 @@
     var $group = $(this.group);
     // choose based on state
     if (!$el.hasClass(object.defaultClass)) {
-      object.activate($el, triggered, isSync, skipState);
+      object.on($el, triggered, isSync, skipState);
     } else {
-      object.deactivate($el, triggered, isSync, skipState);
+      object.off($el, triggered, isSync, skipState);
     }
   };
   
-  Xt.prototype.activate = function($el, triggered, isSync, skipState) {
+  Xt.prototype.on = function($el, triggered, isSync, skipState) {
     var object = this;
     var settings = this.settings;
     var group = this.group;
     var $group = $(this.group);
-    // activate
+    // on
     if ($el) {
-      // activate and add in $currents
+      // on and add in $currents
       if (!$el.hasClass(object.defaultClass)) {
         var $elements = object.getIndexed(settings.$elements, $el, settings.$elements);
-        object.activateAfter($elements, triggered);
+        object.onAfter($elements, triggered);
         var $currents = object.getCurrents();
         $currents = object.setCurrents($currents.pushElement($el));
         // sync
@@ -518,11 +518,11 @@
             var $sync = $('[data-xt-namespace="' + settings.namespace + '"]').filter(':parents(.xt-ignore)').not($group);
             $sync.each( function() {
               var xt = $(this).data(settings.name);
-              xt.activate($(this), true, true);
+              xt.on($(this), true, true);
             });
           });
         }
-        // control over activated
+        // control over ond
         if (settings.name === 'xt-ajax') {
           // [disabled]
           object.checkDisabled($el, 'disable');
@@ -531,26 +531,26 @@
         } else {
           // [disabled]
           object.checkDisabled($el);
-          // deactivate max or differents
+          // off max or differents
           if (!isSync) {
             if ($currents.length > settings.max) {
               var $first = $currents.first();
-              object.deactivate($first);
+              object.off($first);
             }
           }
         }
       }
     }
-    // activate $target
+    // on $target
     if (settings.$targets) {
       var $target = object.getIndexed(settings.$elements, $el, settings.$targets);
       if (!$target.hasClass(object.defaultClass)) {
-        object.activateAfter($target, triggered);
+        object.onAfter($target, triggered);
         // stuff
         if (settings.name === 'xt-overlay') {
           // add paddings
           object.onFixed($('html, .xt-backdrop')); // @TODO $('*:fixed').not($target).add('html')
-          // activate $additional with $group time
+          // on $additional with $group time
           var $additional = $('html');
           if (!$additional.hasClass(object.defaultClass)) {
             $additional.addClass(settings.class);
@@ -565,18 +565,18 @@
     }
   };
   
-  Xt.prototype.deactivate = function($el, triggered, isSync, skipState) {
+  Xt.prototype.off = function($el, triggered, isSync, skipState) {
     var object = this;
     var settings = this.settings;
     var group = this.group;
     var $group = $(this.group);
-    // deactivate
+    // off
     if ($el) {
       var $currents = object.getCurrents();
       if ($el.hasClass(object.defaultClass)) {
         if (isSync || settings.name === 'xt-ajax' || $currents.length > settings.min) {
           var $elements = object.getIndexed(settings.$elements, $el, settings.$elements);
-          object.deactivateAfter($elements, triggered);
+          object.offAfter($elements, triggered);
           if ($el.attr('data-group')) {
             $currents = object.setCurrents($currents.not('[data-group=' + $el.attr('data-group') + ']'));
           } else {
@@ -588,7 +588,7 @@
               var $sync = $('[data-xt-namespace="' + settings.namespace + '"]').filter(':parents(.xt-ignore)').not($group);
               $sync.each( function() {
                 var xt = $(this).data(settings.name);
-                xt.deactivate($(this), true, true);
+                xt.off($(this), true, true);
               });
             });
           }
@@ -601,23 +601,23 @@
         }
       }
     }
-    // deactivate $target
+    // off $target
     if (settings.$targets) {
       var $target = object.getIndexed(settings.$elements, $el, settings.$targets);
       if ($target.hasClass(object.defaultClass)) {
-        object.deactivateAfter($target, triggered);
+        object.offAfter($target, triggered);
         // stuff
         if (settings.name === 'xt-overlay') {
           // remove paddings
           object.offFixed($('.xt-fixed-vertical'));
-          // deactivate $additional with $group time
+          // off $additional with $group time
           var $additional = $('html');
           if ($additional.hasClass(object.defaultClass)) {
             $additional.removeClass(settings.class);
             /*
             $additional.removeClass('fade-in');
             $additional.addClass('fade-out');
-            settings.$targets.off('deactivate.xt.done.additional').one('deactivate.xt.done.additional', function() {
+            settings.$targets.off('off.xt.done.additional').one('off.xt.done.additional', function() {
               $additional.removeClass('fade-out');
             });
             */
@@ -670,7 +670,7 @@
   // on and off methods
   //////////////////////
   
-  Xt.prototype.activateAfter = function($elements, triggered) {
+  Xt.prototype.onAfter = function($elements, triggered) {
     var object = this;
     var settings = this.settings;
     var group = this.group;
@@ -686,7 +686,7 @@
     $el.addClass(settings.class).removeClass('fade-out');
     object.animationDelayClear($el, 'anim');
     // in
-    object.animationMultiple($el, triggered, object.activateDone, 'fade-in');
+    object.animationMultiple($el, triggered, object.onDone, 'fade-in');
     // animations
     object.onBackdrop($el, triggered);
     object.onWidth($el, triggered);
@@ -699,22 +699,22 @@
       $(document).off('click.xt.' + settings.namespace).on('click.xt.' + settings.namespace, function(e) {
         var $target = $(e.target);
         if (!$group.is($target) && !$group.has($target).length) {
-          object.deactivate(settings.$elements, true, true, true);
+          object.off(settings.$elements, true, true, true);
         }
       });
     }
     if (settings.name === 'xt-overlay') {
       // close on .overlay-close
       $el.find('.overlay-close').off('click.xt.' + settings.namespace).on('click.xt.' + settings.namespace, function(e) {
-        object.deactivate(settings.$elements, true, false, true);
+        object.off(settings.$elements, true, false, true);
       });
     }
     // api
     if (!triggered) {
-      $el.trigger('activate.xt', [object, true]);
+      $el.trigger('on.xt', [object, true]);
     }
   };
-  Xt.prototype.activateDone = function($el, triggered) {
+  Xt.prototype.onDone = function($el, triggered) {
     var object = this;
     var settings = this.settings;
     var group = this.group;
@@ -733,7 +733,7 @@
     }
   };
   
-  Xt.prototype.deactivateAfter = function($elements, triggered) {
+  Xt.prototype.offAfter = function($elements, triggered) {
     var object = this;
     var settings = this.settings;
     var group = this.group;
@@ -749,7 +749,7 @@
     $el.removeClass(settings.class).removeClass('fade-in').addClass('fade-out');
     object.animationDelayClear($el, 'anim');
     // out
-    object.animationMultiple($el, triggered, object.deactivateDone);
+    object.animationMultiple($el, triggered, object.offDone);
     // animations
     object.offBackdrop($el, triggered);
     object.onWidth($el, triggered);
@@ -764,10 +764,10 @@
     }
     // api
     if (!triggered) {
-      $el.trigger('deactivate.xt', [object, true]);
+      $el.trigger('off.xt', [object, true]);
     }
   };
-  Xt.prototype.deactivateDone = function($el, triggered) {
+  Xt.prototype.offDone = function($el, triggered) {
     var object = this;
     var settings = this.settings;
     // when animation is done
@@ -866,12 +866,12 @@
         ns = 'mouseenter.backdrop.xt';
       }
       $backdrop.off(ns).on(ns, function(e) {
-        object.deactivate(settings.$elements, true, false, true);
+        object.off(settings.$elements, true, false, true);
       });
       if ($container.length) { // for .backdrop ex: modals
         $el.off(ns).on(ns, function(e) {
           if ($(e.target).is($container)) {
-            object.deactivate(settings.$elements, true, false, true);
+            object.off(settings.$elements, true, false, true);
           }
         });
       }
@@ -1165,7 +1165,7 @@
     document.title = title;
     // trigger on registered
     settings.$elements.filter('[href="' + url + '"]').each( function() {
-      object.activate($(this), true, false, true);
+      object.on($(this), true, false, true);
     });
     // push object state
     if (!history.state || !history.state.url || history.state.url !== url) {
