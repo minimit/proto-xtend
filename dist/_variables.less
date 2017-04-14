@@ -1,6 +1,23 @@
 //////////////////////
+// ratios
+//////////////////////
+
+/* ratios
+.618
+.809
+1
+1.238
+2.619
+3.224
+*/
+
+//////////////////////
 // colors
 //////////////////////
+
+// USAGE
+// color: @color-text;
+// background: @color-primary;
 
 @color-primary: #00B0FF;
 @color-primary-75: fade(@color-primary, 75%);
@@ -23,31 +40,43 @@
 @color-black-75: fade(@color-white, 75%);
 
 //////////////////////
+// responsive
+//////////////////////
+
+// USAGE
+// @media @min-sm {}
+// @media @max-md {}
+// @media @min-sm and @max-md {}
+
+@xs: 480;
+@sm: 768;
+@md: 992;
+@lg: 1200;
+@xlg: 1450;
+
+//////////////////////
 // fonts
 //////////////////////
 
+// USAGE
 // .font-sans-light();
+// .font-sans-regular();
+
 .font-sans-light() {
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 300;
   font-style: normal;
 }
-
-// .font-sans-regular();
 .font-sans-regular() {
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 400;
   font-style: normal;
 }
-
-// .font-sans-medium();
 .font-sans-medium() {
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 600;
   font-style: normal;
 }
-
-// .font-monospace();
 .font-monospace() {
   font-family: monaco, Consolas, "Lucida Console", monospace;
   font-weight: normal;
@@ -55,23 +84,14 @@
 }
 
 //////////////////////
-// ratios
-//////////////////////
-
-/* ratios
-.618
-.809
-1
-1.238
-2.619
-3.224
-*/
-
-//////////////////////
 // spacing
 //////////////////////
 
+// USAGE
 // .spacing-headers();
+// .spacing-headers-small();
+// .spacing-text();
+
 .spacing-headers() {
   margin-top: 2.619rem;
   margin-bottom: 1.238rem;
@@ -79,8 +99,6 @@
     margin-top: 0 !important;
   }
 }
-
-// .spacing-headers-small();
 .spacing-headers-small() {
   margin-top: 1.238rem;
   margin-bottom: 1rem;
@@ -88,11 +106,61 @@
     margin-top: 0 !important;
   }
 }
-
-// .spacing-text();
 .spacing-text() {
   margin-bottom: 1rem;
   &:last-child {
     margin-bottom: 0 !important;
   }
 }
+
+//////////////////////
+// utils
+//////////////////////
+
+// generate media queries
+
+@min-xs: ~"( min-width:"(unit(@xs, px))~")";
+@max-xs: ~"( max-width:"(unit(@xs - 1, px))~")";
+@min-sm: ~"( min-width:"(unit(@sm, px))~")";
+@max-sm: ~"( max-width:"(unit(@sm - 1, px))~")";
+@min-md: ~"( min-width:"(unit(@md, px))~")";
+@max-md: ~"( max-width:"(unit(@md - 1, px))~")";
+@min-lg: ~"( min-width:"(unit(@lg, px))~")";
+@max-lg: ~"( max-width:"(unit(@lg - 1, px))~")";
+@min-xlg: ~"( min-width:"(unit(@xlg, px))~")";
+@max-xlg: ~"( max-width:"(unit(@xlg - 1, px))~")";
+
+// generate grid
+
+@columns: 12;
+@breakpoints: xs, sm, md, lg, xlg;
+.for(@breakpoints); .-each(@value) {
+  @name: extract(@value, 1);
+  @query: "min-@{name}";
+  @media @@query {
+    .grid(@name; @columns);
+  }
+}
+.grid(@name; @columns; @index: 1) when (@index =< @columns) {
+  .grid(@name; @columns; (@index + 1));
+  .column.@{name}-@{index} {
+    @val: (percentage(@index / @columns));
+    -ms-flex-preferred-size: @val;
+    flex-basis: @val;
+    max-width: @val;
+  }
+}
+
+// .for loop
+
+.for(@i, @n) {.-each(@i)}
+.for(@n)     when (isnumber(@n)) {.for(1, @n)}
+.for(@i, @n) when not (@i = @n)  {
+  .for((@i + (@n - @i) / abs(@n - @i)), @n);
+}
+
+// .for-each loop
+
+.for(@array)   when (default()) {.for-impl_(length(@array))}
+.for-impl_(@i) when (@i > 1)    {.for-impl_((@i - 1))}
+.for-impl_(@i) when (@i > 0)    {.-each(extract(@array, @i))}

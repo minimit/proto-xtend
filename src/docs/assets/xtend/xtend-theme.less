@@ -360,6 +360,75 @@ a.button:not(.link) {
 }
 
 //////////////////////
+// grid
+//////////////////////
+
+.flex {
+  /* alignment */
+  .flex.middle; // default
+  /* spacing */
+  .flex.medium; // default
+  /* sizes */
+  &.tiny {
+    margin-left: 0;
+    margin-right: 0;
+    .column {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+  &.small {
+    margin-left: -.5rem;
+    margin-right: -.5rem;
+    .column {
+      padding-left: .5rem;
+      padding-right: .5rem;
+    }
+  }
+  &.medium {
+    margin-left: -.618rem;
+    margin-right: -.618rem;
+    .column {
+      padding-left: .618rem;
+      padding-right: .618rem;
+    }
+  }
+  &.large {
+    margin-left: -1.238rem;
+    margin-right: -1.238rem;
+    .column {
+      padding-left: 1.238rem;
+      padding-right: 1.238rem;
+    }
+  }
+  &.giant {
+    margin-left: -2.619rem;
+    margin-right: -2.619rem;
+    .column {
+      padding-left: 2.619rem;
+      padding-right: 2.619rem;
+    }
+  }
+}
+.column {
+  // flex-grow flex-shrink flex-basis
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+}
+.demo-source {
+  .column {
+    &:before {
+      content: '';
+      .box;
+      margin-bottom: 1rem;
+      height: 100%;
+      min-height: 1rem;
+      background: #007FFF;
+    }
+  }
+}
+
+//////////////////////
 // drop
 //////////////////////
 

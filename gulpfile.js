@@ -65,6 +65,7 @@ gulp.task('less-dist', function() {
   return gulp.src(['dist/*.less', '!dist/_*.less'])
     .pipe(sourcemaps.init())
     .pipe(less())
+    .pipe(gulp.dest('dist/'))
     .pipe(cleanCSS())
     .pipe(rename({
       suffix: '.min'
