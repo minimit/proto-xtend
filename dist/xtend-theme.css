@@ -402,14 +402,6 @@ html.xt-fixed-horizontal .overlay {
   perspective: 1000;
   transform: translateZ(0);
 }
-/* ratios
-.618
-.809
-1
-1.238
-2.619
-3.224
-*/
 @media ( min-width: 480px ) {
   .column.xs-12 {
     -ms-flex-preferred-size: 100%;
@@ -720,6 +712,14 @@ html.xt-fixed-horizontal .overlay {
     max-width: 8.33333333%;
   }
 }
+/* ratios
+.618
+.809
+1
+1.238
+2.619
+3.224
+*/
 .animation-default {
   animation-duration: 300ms;
   animation-timing-function: cubic-bezier(0.63, 0.36, 0, 0.97);
