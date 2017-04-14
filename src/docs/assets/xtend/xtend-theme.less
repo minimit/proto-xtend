@@ -24,7 +24,7 @@ html {
   font-size: 15px;
 }
 body {
-  background: @color-background;
+  background-color: @color-background;
   .font-sans-regular();
   font-size: 1rem;
   line-height: 1.8;
@@ -168,12 +168,12 @@ pre {
 
 a:not(.button),
 .button.link {
-  background: transparent;
+  background-color: transparent;
   color: @color-primary;
   &:hover,
   &:active, &.active,
   &:focus {
-    background: transparent;
+    background-color: transparent;
     color: @color-primary;
     text-decoration: underline;
   }
@@ -253,29 +253,29 @@ a.button:not(.link) {
   /* variants */
   .button.secondary; // default
   &.primary {
-    background: @color-primary;
+    background-color: @color-primary;
     color: @color-white;
     &:hover,
     &:active, &.active {
-      background: darken(@color-primary, 5%);
+      background-color: darken(@color-primary, 5%);
       color: @color-white;
     }
   }
   &.secondary {
-    background: darken(@color-white, 10%);
+    background-color: darken(@color-white, 10%);
     color: @color-text;
     &:hover,
     &:active, &.active {
-      background: darken(@color-white, 15%);
+      background-color: darken(@color-white, 15%);
       color: @color-text;
     }
   }
   &.light {
-    background: transparent;
+    background-color: transparent;
     color: @color-text;
     &:hover,
     &:active, &.active {
-      background: fade(@color-primary, 10%);
+      background-color: fade(@color-primary, 10%);
       color: @color-primary;
     }
   }
@@ -366,9 +366,10 @@ a.button:not(.link) {
 .flex {
   /* alignment */
   .flex.middle; // default
+  /* justification */
+  .flex.left; // default
   /* spacing */
   .flex.medium; // default
-  /* sizes */
   &.tiny {
     margin-left: 0;
     margin-right: 0;
@@ -410,23 +411,6 @@ a.button:not(.link) {
     }
   }
 }
-.column {
-  // flex-grow flex-shrink flex-basis
-  -ms-flex: 1 0 auto;
-  flex: 1 0 auto;
-}
-.demo-source {
-  .column {
-    &:before {
-      content: '';
-      .box;
-      margin-bottom: 1rem;
-      height: 100%;
-      min-height: 1rem;
-      background: #007FFF;
-    }
-  }
-}
 
 //////////////////////
 // drop
@@ -465,7 +449,7 @@ a.button:not(.link) {
   .drop.light; // default
   &.primary {
     .drop-inner {
-      background: @color-primary;
+      background-color: @color-primary;
       color: @color-white;
     }
     .button {
@@ -474,7 +458,7 @@ a.button:not(.link) {
   }
   &.secondary {
     .drop-inner {
-      background: darken(@color-white, 10%);
+      background-color: darken(@color-white, 10%);
       color: @color-black;
     }
     .button {
@@ -483,7 +467,7 @@ a.button:not(.link) {
   }
   &.light {
     .drop-inner {
-      background: @color-white;
+      background-color: @color-white;
       color: @color-black;
     }
     .button {
@@ -516,12 +500,12 @@ a.button:not(.link) {
     padding: 15px; // empty space outside overlay
   }
   .overlay-content {
-    background: @color-white;
+    background-color: @color-white;
   }
   &.full {
     .overlay-inner {
       padding: 0;
-      background: @color-white;
+      background-color: @color-white;
     }
   }
   /* sizes */
@@ -569,11 +553,11 @@ a.button:not(.link) {
     width: 50px;
     height: 50px;
     font-size: 12px;
-    background: transparent;
+    background-color: transparent;
     color: @color-text-75;
     &:hover,
     &:active, &.active {
-      background: transparent;
+      background-color: transparent;
       color: @color-primary;
     }
   }
@@ -595,7 +579,7 @@ a.button:not(.link) {
 /* .xt-backdrop */
 .xt-backdrop {
   /* styles */
-  background: @color-black;
+  background-color: @color-black;
   /* animations */
   &:not([class*=" anim-"]) {
     .transition-default;

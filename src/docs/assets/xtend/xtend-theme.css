@@ -86,7 +86,6 @@ button {
   overflow: hidden;
 }
 .spacer {
-  cursor: default;
   display: flex;
   flex-wrap: wrap;
   /* justification */
@@ -119,12 +118,25 @@ button {
 .spacer.stretch > * {
   align-self: stretch;
 }
+/* flex */
 .flex {
-  cursor: default;
   display: flex;
   flex-wrap: wrap;
-  /* justification */
+  flex-direction: row;
   /* alignment */
+  /* justification */
+}
+.flex.top > * {
+  align-self: flex-start;
+}
+.flex.bottom > * {
+  align-self: flex-end;
+}
+.flex.middle > * {
+  align-self: center;
+}
+.flex.stretch > * {
+  align-self: stretch;
 }
 .flex.left {
   justify-content: flex-start;
@@ -141,17 +153,11 @@ button {
 .flex.around {
   justify-content: space-around;
 }
-.flex.top > * {
-  align-self: flex-start;
-}
-.flex.bottom > * {
-  align-self: flex-end;
-}
-.flex.middle > * {
-  align-self: center;
-}
-.flex.stretch > * {
-  align-self: stretch;
+/* column */
+.flex,
+.column {
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
 }
 .toggle-block {
   display: none !important;
@@ -1109,7 +1115,7 @@ html {
   font-size: 15px;
 }
 body {
-  background: #ffffff;
+  background-color: #ffffff;
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 400;
   font-style: normal;
@@ -1357,7 +1363,7 @@ pre code {
 }
 a:not(.button),
 .button.link {
-  background: transparent;
+  background-color: transparent;
   color: #00B0FF;
 }
 a:not(.button):hover,
@@ -1368,7 +1374,7 @@ a:not(.button).active,
 .button.link.active,
 a:not(.button):focus,
 .button.link:focus {
-  background: transparent;
+  background-color: transparent;
   color: #00B0FF;
   text-decoration: underline;
 }
@@ -1412,7 +1418,7 @@ a.button:not(.link):focus {
   letter-spacing: .5px;
   text-transform: uppercase;
   /* variants */
-  background: #e6e6e6;
+  background-color: #e6e6e6;
   color: #000000;
   /* animations */
 }
@@ -1447,37 +1453,37 @@ a.button:not(.link):focus {
 .button:hover,
 .button:active,
 .button.active {
-  background: #d9d9d9;
+  background-color: #d9d9d9;
   color: #000000;
 }
 .button.primary {
-  background: #00B0FF;
+  background-color: #00B0FF;
   color: #ffffff;
 }
 .button.primary:hover,
 .button.primary:active,
 .button.primary.active {
-  background: #009ee6;
+  background-color: #009ee6;
   color: #ffffff;
 }
 .button.secondary {
-  background: #e6e6e6;
+  background-color: #e6e6e6;
   color: #000000;
 }
 .button.secondary:hover,
 .button.secondary:active,
 .button.secondary.active {
-  background: #d9d9d9;
+  background-color: #d9d9d9;
   color: #000000;
 }
 .button.light {
-  background: transparent;
+  background-color: transparent;
   color: #000000;
 }
 .button.light:hover,
 .button.light:active,
 .button.light.active {
-  background: rgba(0, 176, 255, 0.1);
+  background-color: rgba(0, 176, 255, 0.1);
   color: #00B0FF;
 }
 .button:not([class*=" anim-"]) {
@@ -1568,10 +1574,11 @@ a.button:not(.link):focus {
 }
 .flex {
   /* alignment */
+  /* justification */
+  justify-content: flex-start;
   /* spacing */
   margin-left: -0.618rem;
   margin-right: -0.618rem;
-  /* sizes */
 }
 .flex > * {
   align-self: center;
@@ -1620,28 +1627,6 @@ a.button:not(.link):focus {
   padding-left: 2.619rem;
   padding-right: 2.619rem;
 }
-.column {
-  -ms-flex: 1 0 auto;
-  flex: 1 0 auto;
-}
-.demo-source .column:before {
-  content: '';
-  position: relative;
-  float: left;
-  width: 100%;
-  margin-bottom: 1rem;
-  height: 100%;
-  min-height: 1rem;
-  background: #007FFF;
-}
-.demo-source .column:before:before,
-.demo-source .column:before:after {
-  content: " ";
-  display: table;
-}
-.demo-source .column:before:after {
-  clear: both;
-}
 .drop {
   /* positions */
   left: 0;
@@ -1675,59 +1660,59 @@ a.button:not(.link):focus {
   max-width: 225px;
 }
 .drop .drop-inner {
-  background: #ffffff;
+  background-color: #ffffff;
   color: #000000;
 }
 .drop .button {
-  background: transparent;
+  background-color: transparent;
   color: #000000;
 }
 .drop .button:hover,
 .drop .button:active,
 .drop .button.active {
-  background: rgba(0, 176, 255, 0.1);
+  background-color: rgba(0, 176, 255, 0.1);
   color: #00B0FF;
 }
 .drop.primary .drop-inner {
-  background: #00B0FF;
+  background-color: #00B0FF;
   color: #ffffff;
 }
 .drop.primary .button {
-  background: #00B0FF;
+  background-color: #00B0FF;
   color: #ffffff;
 }
 .drop.primary .button:hover,
 .drop.primary .button:active,
 .drop.primary .button.active {
-  background: #009ee6;
+  background-color: #009ee6;
   color: #ffffff;
 }
 .drop.secondary .drop-inner {
-  background: #e6e6e6;
+  background-color: #e6e6e6;
   color: #000000;
 }
 .drop.secondary .button {
-  background: #e6e6e6;
+  background-color: #e6e6e6;
   color: #000000;
 }
 .drop.secondary .button:hover,
 .drop.secondary .button:active,
 .drop.secondary .button.active {
-  background: #d9d9d9;
+  background-color: #d9d9d9;
   color: #000000;
 }
 .drop.light .drop-inner {
-  background: #ffffff;
+  background-color: #ffffff;
   color: #000000;
 }
 .drop.light .button {
-  background: transparent;
+  background-color: transparent;
   color: #000000;
 }
 .drop.light .button:hover,
 .drop.light .button:active,
 .drop.light .button.active {
-  background: rgba(0, 176, 255, 0.1);
+  background-color: rgba(0, 176, 255, 0.1);
   color: #00B0FF;
 }
 .drop .drop-inner {
@@ -1765,11 +1750,11 @@ a.button:not(.link):focus {
   padding: 15px;
 }
 .overlay .overlay-content {
-  background: #ffffff;
+  background-color: #ffffff;
 }
 .overlay.full .overlay-inner {
   padding: 0;
-  background: #ffffff;
+  background-color: #ffffff;
 }
 .overlay .overlay-content {
   padding: 40px;
@@ -1848,13 +1833,13 @@ a.button:not(.link):focus {
   letter-spacing: .5px;
   text-transform: uppercase;
   /* variants */
-  background: #e6e6e6;
+  background-color: #e6e6e6;
   color: #000000;
   /* animations */
   width: 50px;
   height: 50px;
   font-size: 12px;
-  background: transparent;
+  background-color: transparent;
   color: #bfbfbf;
 }
 .overlay .overlay-close:focus {
@@ -1895,37 +1880,37 @@ a.button:not(.link):focus {
 .overlay .overlay-close:hover,
 .overlay .overlay-close:active,
 .overlay .overlay-close.active {
-  background: #d9d9d9;
+  background-color: #d9d9d9;
   color: #000000;
 }
 .overlay .overlay-close.primary {
-  background: #00B0FF;
+  background-color: #00B0FF;
   color: #ffffff;
 }
 .overlay .overlay-close.primary:hover,
 .overlay .overlay-close.primary:active,
 .overlay .overlay-close.primary.active {
-  background: #009ee6;
+  background-color: #009ee6;
   color: #ffffff;
 }
 .overlay .overlay-close.secondary {
-  background: #e6e6e6;
+  background-color: #e6e6e6;
   color: #000000;
 }
 .overlay .overlay-close.secondary:hover,
 .overlay .overlay-close.secondary:active,
 .overlay .overlay-close.secondary.active {
-  background: #d9d9d9;
+  background-color: #d9d9d9;
   color: #000000;
 }
 .overlay .overlay-close.light {
-  background: transparent;
+  background-color: transparent;
   color: #000000;
 }
 .overlay .overlay-close.light:hover,
 .overlay .overlay-close.light:active,
 .overlay .overlay-close.light.active {
-  background: rgba(0, 176, 255, 0.1);
+  background-color: rgba(0, 176, 255, 0.1);
   color: #00B0FF;
 }
 .overlay .overlay-close:not([class*=" anim-"]) {
@@ -2029,7 +2014,7 @@ a.button:not(.link):focus {
 .overlay .overlay-close:hover,
 .overlay .overlay-close:active,
 .overlay .overlay-close.active {
-  background: transparent;
+  background-color: transparent;
   color: #00B0FF;
 }
 .overlay .overlay-inner:not([class*=" anim-"]) {
@@ -2065,7 +2050,7 @@ a.button:not(.link):focus {
 /* .xt-backdrop */
 .xt-backdrop {
   /* styles */
-  background: #000000;
+  background-color: #000000;
   /* animations */
 }
 .xt-backdrop:not([class*=" anim-"]) {

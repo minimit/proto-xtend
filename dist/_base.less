@@ -114,7 +114,6 @@ a, button {
 //////////////////////
 
 .spacer {
-  cursor: default;
   display: flex;
   flex-wrap: wrap;
   /* justification */
@@ -157,29 +156,14 @@ a, button {
 }
 
 //////////////////////
-// flex
+// grid
 //////////////////////
 
+/* flex */
 .flex {
-  cursor: default;
   display: flex;
   flex-wrap: wrap;
-  /* justification */
-  &.left {
-    justify-content: flex-start;
-  }
-  &.right {
-    justify-content: flex-end;
-  }
-  &.center {
-    justify-content: center;
-  }
-  &.between {
-    justify-content: space-between;
-  }
-  &.around {
-    justify-content: space-around;
-  }
+  flex-direction: row;
   /* alignment */
   &.top {
     > * {
@@ -201,6 +185,30 @@ a, button {
       align-self: stretch;
     }
   }
+  /* justification */
+  &.left {
+    justify-content: flex-start;
+  }
+  &.right {
+    justify-content: flex-end;
+  }
+  &.center {
+    justify-content: center;
+  }
+  &.between {
+    justify-content: space-between;
+  }
+  &.around {
+    justify-content: space-around;
+  }
+}
+
+/* column */
+.flex,
+.column {
+  // flex-grow flex-shrink flex-basis
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
 }
 
 //////////////////////
