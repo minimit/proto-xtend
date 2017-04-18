@@ -1,4 +1,10 @@
 //////////////////////
+// imports
+//////////////////////
+
+@import "_variables.less";
+
+//////////////////////
 // reset
 //////////////////////
 
@@ -159,7 +165,15 @@ a, button {
 // grid
 //////////////////////
 
-/* flex */
+/* .contain */
+.contain {
+  max-width: 100%;
+  &.full {
+    width: 100% !important;
+  }
+}
+
+/* .flex */
 .flex {
   display: flex;
   flex-wrap: wrap;
@@ -203,7 +217,7 @@ a, button {
   }
 }
 
-/* column */
+/* .column */
 .flex,
 .column {
   // flex-grow flex-shrink flex-basis
@@ -540,7 +554,9 @@ html.xt-fixed-horizontal {
 // utils
 //////////////////////
 
-// generate media queries
+@breakpoints: xs, sm, md, lg, xl;
+
+// media queries
 @min-xs: ~"( min-width:"(unit(@xs, px))~")";
 @max-xs: ~"( max-width:"(unit(@xs - 1, px))~")";
 @min-sm: ~"( min-width:"(unit(@sm, px))~")";
@@ -549,17 +565,36 @@ html.xt-fixed-horizontal {
 @max-md: ~"( max-width:"(unit(@md - 1, px))~")";
 @min-lg: ~"( min-width:"(unit(@lg, px))~")";
 @max-lg: ~"( max-width:"(unit(@lg - 1, px))~")";
-@min-xlg: ~"( min-width:"(unit(@xlg, px))~")";
-@max-xlg: ~"( max-width:"(unit(@xlg - 1, px))~")";
+@min-xl: ~"( min-width:"(unit(@xl, px))~")";
+@max-xl: ~"( max-width:"(unit(@xl - 1, px))~")";
 
-// generate grid
-@columns: 12;
-@breakpoints: xs, sm, md, lg, xlg;
+// generate
+.grid(cl; 12); // default grid
 .for(@breakpoints); .-each(@value) {
+  // responsive grid
   @name: extract(@value, 1);
   @query: "min-@{name}";
   @media @@query {
     .grid(@name; @columns);
+  }
+  // -auto
+  @name: extract(@value, 1);
+  @query: "min-@{name}";
+  @media @@query {
+    .column.@{name}-auto {
+      -ms-flex-preferred-size: auto;
+      flex-basis: auto;
+      max-width: none;
+    }
+  }
+  // .contain
+  @name: extract(@value, 1);
+  @query: "min-@{name}";
+  @unit: "contain-@{name}";
+  @media @@query {
+    .contain {
+      width: unit(@@unit, px);
+    }
   }
 }
 .grid(@name; @columns; @index: 1) when (@index =< @columns) {

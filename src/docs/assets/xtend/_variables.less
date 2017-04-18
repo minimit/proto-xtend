@@ -18,41 +18,45 @@
 // USAGE
 // color: @color-text;
 // background: @color-primary;
-
 @color-primary: #00B0FF;
+@color-text: #000000;
+@color-background: #ffffff;
+@color-red: #d14;
+@color-white: #ffffff;
+@color-grey: #f8f8f8;
+@color-black: #000000;
+
+// variations
 @color-primary-75: fade(@color-primary, 75%);
 @color-primary-25: lighten(@color-primary, 25%);
-
-@color-text: #000000;
 @color-text-75: lighten(@color-text, 75%);
-
-@color-background: #ffffff;
-
-@color-red: #d14;
-
-@color-white: #ffffff;
 @color-white-75: fade(@color-white, 75%);
 @color-white-50: fade(@color-white, 50%);
-
-@color-grey: #f8f8f8;
-
-@color-black: #000000;
 @color-black-75: fade(@color-white, 75%);
 
 //////////////////////
 // responsive
 //////////////////////
 
+@columns: 12;
+
+// media queries
 // USAGE
 // @media @min-sm {}
 // @media @max-md {}
 // @media @min-sm and @max-md {}
-
-@xs: 480;
+@xs: 576;
 @sm: 768;
 @md: 992;
 @lg: 1200;
-@xlg: 1450;
+@xl: 1450;
+
+// .contain sizes
+@contain-xs: 540;
+@contain-sm: 720;
+@contain-md: 960;
+@contain-lg: 1140;
+@contain-xl: 1400;
 
 //////////////////////
 // fonts
@@ -61,7 +65,6 @@
 // USAGE
 // .font-sans-light();
 // .font-sans-regular();
-
 .font-sans-light() {
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 300;
@@ -91,7 +94,6 @@
 // .spacing-headers();
 // .spacing-headers-small();
 // .spacing-text();
-
 .spacing-headers() {
   margin-top: 2.619rem;
   margin-bottom: 1.238rem;
