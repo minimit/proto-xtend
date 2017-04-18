@@ -1634,7 +1634,7 @@ a.button:not(.link):focus {
 .spacer {
   /* alignment */
   /* spacing */
-  margin-left: -0.618rem;
+  margin-left: -1rem;
   /* expand to .button sizes */
   /*
   &.expand {
@@ -1655,11 +1655,11 @@ a.button:not(.link):focus {
   align-self: center;
 }
 .spacer:last-child {
-  margin-bottom: -0.618rem;
+  margin-bottom: -1rem;
 }
 .spacer > * {
-  margin-left: .618rem;
-  margin-bottom: .618rem;
+  margin-left: 1rem;
+  margin-bottom: 1rem;
 }
 .spacer.tiny {
   margin-left: 0;
@@ -1670,24 +1670,24 @@ a.button:not(.link):focus {
   margin-bottom: 0;
 }
 .spacer.small {
-  margin-left: -0.5rem;
-}
-.spacer.small:last-child {
-  margin-bottom: -0.5rem;
-}
-.spacer.small > * {
-  margin-left: .5rem;
-  margin-bottom: .5rem;
-}
-.spacer.medium {
   margin-left: -0.618rem;
 }
-.spacer.medium:last-child {
+.spacer.small:last-child {
   margin-bottom: -0.618rem;
 }
-.spacer.medium > * {
+.spacer.small > * {
   margin-left: .618rem;
   margin-bottom: .618rem;
+}
+.spacer.medium {
+  margin-left: -1rem;
+}
+.spacer.medium:last-child {
+  margin-bottom: -1rem;
+}
+.spacer.medium > * {
+  margin-left: 1rem;
+  margin-bottom: 1rem;
 }
 .spacer.large {
   margin-left: -1.238rem;
@@ -1727,15 +1727,15 @@ a.button:not(.link):focus {
   /* justification */
   justify-content: flex-start;
   /* spacing */
-  margin-left: -0.618rem;
-  margin-right: -0.618rem;
+  margin-left: -1rem;
+  margin-right: -1rem;
 }
 .flex > * {
   align-self: flex-start;
 }
 .flex .column {
-  padding-left: .618rem;
-  padding-right: .618rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 .flex.tiny {
   margin-left: 0;
@@ -1746,20 +1746,20 @@ a.button:not(.link):focus {
   padding-right: 0;
 }
 .flex.small {
-  margin-left: -0.5rem;
-  margin-right: -0.5rem;
-}
-.flex.small .column {
-  padding-left: .5rem;
-  padding-right: .5rem;
-}
-.flex.medium {
   margin-left: -0.618rem;
   margin-right: -0.618rem;
 }
-.flex.medium .column {
+.flex.small .column {
   padding-left: .618rem;
   padding-right: .618rem;
+}
+.flex.medium {
+  margin-left: -1rem;
+  margin-right: -1rem;
+}
+.flex.medium .column {
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 .flex.large {
   margin-left: -1.238rem;
