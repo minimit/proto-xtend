@@ -363,6 +363,10 @@ a.button:not(.link) {
 // grid
 //////////////////////
 
+.contain {
+  padding-right: @contain-padding;
+  padding-left: @contain-padding;
+}
 .flex {
   /* alignment */
   .flex.top; // default
@@ -497,7 +501,7 @@ a.button:not(.link) {
 .overlay {
   /* styles */
   .overlay-inner {
-    padding: 15px; // empty space outside overlay
+    padding: @contain-padding; // empty space outside overlay
   }
   .overlay-content {
     background-color: @color-white;
@@ -520,31 +524,31 @@ a.button:not(.link) {
   &.tiny {
     .overlay-content {
       padding: 40px;
-      max-width: 310px;
+      max-width: @contain-xs - @contain-padding * 2;
     }
   }
   &.small {
     .overlay-content {
       padding: 40px;
-      max-width: 510px;
+      max-width: @contain-sm - @contain-padding * 2;
     }
   }
   &.medium {
     .overlay-content {
       padding: 40px;
-      max-width: 710px;
+      max-width: @contain-md - @contain-padding * 2;
     }
   }
   &.large {
     .overlay-content {
       padding: 40px;
-      max-width: 910px;
+      max-width: @contain-lg - @contain-padding * 2;
     }
   }
   &.giant {
     .overlay-content {
       padding: 40px;
-      max-width: 1110px;
+      max-width: @contain-xl - @contain-padding * 2;
     }
   }
   /* .close */

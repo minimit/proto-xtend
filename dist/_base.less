@@ -168,9 +168,19 @@ a, button {
 /* .contain */
 .contain {
   max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
   &.full {
     width: 100% !important;
   }
+}
+
+/* .column */
+.column {
+  max-width: 100%;
+  // flex-grow flex-shrink flex-basis
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
 }
 
 /* .flex */
@@ -178,6 +188,9 @@ a, button {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
+  // flex-grow flex-shrink flex-basis
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
   /* alignment */
   &.top {
     > * {
@@ -215,14 +228,6 @@ a, button {
   &.around {
     justify-content: space-around;
   }
-}
-
-/* .column */
-.flex,
-.column {
-  // flex-grow flex-shrink flex-basis
-  -ms-flex: 1 0 auto;
-  flex: 1 0 auto;
 }
 
 //////////////////////
@@ -375,6 +380,7 @@ a, button {
   .overlay-content {
     position: relative;
     align-self: center;
+    width: 100%;
   }
   /* full */
   &.full {

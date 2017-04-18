@@ -34,7 +34,7 @@
       <header class="site-header">
         
         <div class="site-header-top" data-xt-scroll='{"bottom": ".site-breadcrumbs.xt-clone"}'>
-          <div class="container">
+          <div class="contain">
             <div class="media">
               <div class="d-flex align-self-center mr-3">
                 <a href="{{ site.baseurl }}" class="logo" title="Home">
@@ -64,7 +64,7 @@
             <div class="overlay-content">
               
               <div class="site-header-top">
-                <div class="container">
+                <div class="contain">
                   <div class="media">
                     <div class="d-flex align-self-center mr-3">
                       <a href="{{ site.baseurl }}" class="logo" title="Home">
@@ -89,7 +89,7 @@
                 </div>
               </div>
                 
-              <div class="site-menu-content container">
+              <div class="site-menu-content contain">
               
                 {% for collection in site.collections %}
                   {% if site.[collection.label].size > 0 %}
@@ -124,7 +124,7 @@
         
         <div class="site-hero">
                 
-          <div class="container">
+          <div class="contain">
             <div class="media">
               <div class="media-body align-self-center">
                 <h1 class="h1">{{ page.title }}</h1>
@@ -140,7 +140,7 @@
         
         <nav class="site-breadcrumbs" role="navigation" data-xt-scroll='{"mode": "absolute"}'>
           <div class="site-breadcrumbs-inside">
-            <div class="container">
+            <div class="contain">
               
               <div class="site-breadcrumbs-body float-left spacer top" data-xt-toggle='{"elements": ".site-breadcrumbs-body-main", "targets": ".site-breadcrumbs-body-sub", "on": "mouseenter", "off": "mouseleave"}'>
                 {% for collection in site.collections %}

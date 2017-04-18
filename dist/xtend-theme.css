@@ -121,15 +121,25 @@ button {
 /* .contain */
 .contain {
   max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }
 .contain.full {
   width: 100% !important;
+}
+/* .column */
+.column {
+  max-width: 100%;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
 }
 /* .flex */
 .flex {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
   /* alignment */
   /* justification */
 }
@@ -159,12 +169,6 @@ button {
 }
 .flex.around {
   justify-content: space-around;
-}
-/* .column */
-.flex,
-.column {
-  -ms-flex: 1 0 auto;
-  flex: 1 0 auto;
 }
 .toggle-block {
   display: none !important;
@@ -307,6 +311,7 @@ button {
 .overlay .overlay-content {
   position: relative;
   align-self: center;
+  width: 100%;
 }
 .overlay.full .overlay-content {
   display: flex;
@@ -1699,6 +1704,10 @@ a.button:not(.link):focus {
   margin-left: 2.619rem;
   margin-bottom: 2.619rem;
 }
+.contain {
+  padding-right: 15px;
+  padding-left: 15px;
+}
 .flex {
   /* alignment */
   /* justification */
@@ -1885,7 +1894,7 @@ a.button:not(.link):focus {
 }
 .overlay .overlay-content {
   padding: 40px;
-  max-width: 710px;
+  max-width: 930px;
 }
 .overlay.full .overlay-content {
   padding: 40px;
@@ -1893,23 +1902,23 @@ a.button:not(.link):focus {
 }
 .overlay.tiny .overlay-content {
   padding: 40px;
-  max-width: 310px;
+  max-width: 510px;
 }
 .overlay.small .overlay-content {
   padding: 40px;
-  max-width: 510px;
+  max-width: 690px;
 }
 .overlay.medium .overlay-content {
   padding: 40px;
-  max-width: 710px;
+  max-width: 930px;
 }
 .overlay.large .overlay-content {
   padding: 40px;
-  max-width: 910px;
+  max-width: 1110px;
 }
 .overlay.giant .overlay-content {
   padding: 40px;
-  max-width: 1110px;
+  max-width: 1370px;
 }
 .overlay .overlay-close {
   display: inline-block;
