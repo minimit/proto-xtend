@@ -118,6 +118,11 @@ button {
 .spacer.stretch > * {
   align-self: stretch;
 }
+/* .flex-item */
+.flex-item {
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+}
 /* .contain */
 .contain {
   max-width: 100%;
@@ -125,7 +130,7 @@ button {
   margin-right: auto;
 }
 .contain.full {
-  width: 100% !important;
+  width: auto !important;
 }
 /* .column */
 .column {
@@ -1705,8 +1710,17 @@ a.button:not(.link):focus {
   margin-bottom: 2.619rem;
 }
 .contain {
-  padding-right: 15px;
-  padding-left: 15px;
+  padding-right: 30px;
+  padding-left: 30px;
+}
+@media ( max-width: 767px ) {
+  .contain {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+}
+.contain.full {
+  max-width: 1400px;
 }
 .flex {
   /* alignment */
@@ -1883,7 +1897,7 @@ a.button:not(.link):focus {
   /* animations */
 }
 .overlay .overlay-inner {
-  padding: 15px;
+  padding: 30px;
 }
 .overlay .overlay-content {
   background-color: #ffffff;
@@ -1894,7 +1908,7 @@ a.button:not(.link):focus {
 }
 .overlay .overlay-content {
   padding: 40px;
-  max-width: 930px;
+  max-width: 900px;
 }
 .overlay.full .overlay-content {
   padding: 40px;
@@ -1902,23 +1916,23 @@ a.button:not(.link):focus {
 }
 .overlay.tiny .overlay-content {
   padding: 40px;
-  max-width: 510px;
+  max-width: 480px;
 }
 .overlay.small .overlay-content {
   padding: 40px;
-  max-width: 690px;
+  max-width: 660px;
 }
 .overlay.medium .overlay-content {
   padding: 40px;
-  max-width: 930px;
+  max-width: 900px;
 }
 .overlay.large .overlay-content {
   padding: 40px;
-  max-width: 1110px;
+  max-width: 1080px;
 }
 .overlay.giant .overlay-content {
   padding: 40px;
-  max-width: 1370px;
+  max-width: 1340px;
 }
 .overlay .overlay-close {
   display: inline-block;

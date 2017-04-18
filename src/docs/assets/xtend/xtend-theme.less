@@ -366,6 +366,13 @@ a.button:not(.link) {
 .contain {
   padding-right: @contain-padding;
   padding-left: @contain-padding;
+  @media @max-sm {
+    padding-right: @contain-padding / 2;
+    padding-left: @contain-padding / 2;
+  }
+  &.full {
+    max-width: unit(@contain-xl, px);
+  }
 }
 .flex {
   /* alignment */
