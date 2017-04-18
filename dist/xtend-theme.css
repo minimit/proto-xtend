@@ -118,6 +118,16 @@ button {
 .spacer.stretch > * {
   align-self: stretch;
 }
+/* .xtcard */
+.xtcard {
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+}
+/* img.fluid */
+img.fluid {
+  max-width: 100%;
+  height: auto;
+}
 /* .flex-item */
 .flex-item {
   -ms-flex: 1 0 auto;
@@ -129,7 +139,7 @@ button {
   margin-left: auto;
   margin-right: auto;
 }
-.contain.full {
+.contain.fluid {
   width: auto !important;
 }
 /* .column */
@@ -1719,7 +1729,7 @@ a.button:not(.link):focus {
     padding-left: 15px;
   }
 }
-.contain.full {
+.contain.fluid {
   max-width: 1400px;
 }
 .flex {
@@ -1736,6 +1746,16 @@ a.button:not(.link):focus {
 .flex .column {
   padding-left: 1rem;
   padding-right: 1rem;
+}
+@media ( max-width: 767px ) {
+  .flex {
+    margin-left: -0.618rem;
+    margin-right: -0.618rem;
+  }
+  .flex .column {
+    padding-left: .618rem;
+    padding-right: .618rem;
+  }
 }
 .flex.tiny {
   margin-left: 0;
@@ -1910,10 +1930,6 @@ a.button:not(.link):focus {
   padding: 40px;
   max-width: 900px;
 }
-.overlay.full .overlay-content {
-  padding: 40px;
-  max-width: inherit;
-}
 .overlay.tiny .overlay-content {
   padding: 40px;
   max-width: 480px;
@@ -1933,6 +1949,10 @@ a.button:not(.link):focus {
 .overlay.giant .overlay-content {
   padding: 40px;
   max-width: 1340px;
+}
+.overlay.full .overlay-content {
+  padding: 40px;
+  max-width: inherit;
 }
 .overlay .overlay-close {
   display: inline-block;

@@ -367,10 +367,12 @@ a.button:not(.link) {
   padding-right: @contain-padding;
   padding-left: @contain-padding;
   @media @max-sm {
+    // less padding on mobile
     padding-right: @contain-padding / 2;
     padding-left: @contain-padding / 2;
   }
-  &.full {
+  &.fluid {
+    // max width .contain.fluid
     max-width: unit(@contain-xl, px);
   }
 }
@@ -381,6 +383,9 @@ a.button:not(.link) {
   .flex.left; // default
   /* spacing */
   .flex.medium; // default
+  @media @max-sm {
+    .flex.small; // default on mobile
+  }
   &.tiny {
     margin-left: 0;
     margin-right: 0;
@@ -521,13 +526,6 @@ a.button:not(.link) {
   }
   /* sizes */
   .overlay.medium; // default
-  &.full {
-    // default
-    .overlay-content {
-      padding: 40px;
-      max-width: inherit;
-    }
-  }
   &.tiny {
     .overlay-content {
       padding: 40px;
@@ -556,6 +554,12 @@ a.button:not(.link) {
     .overlay-content {
       padding: 40px;
       max-width: @contain-xl - @contain-padding * 2;
+    }
+  }
+  &.full {
+    .overlay-content {
+      padding: 40px;
+      max-width: inherit;
     }
   }
   /* .close */

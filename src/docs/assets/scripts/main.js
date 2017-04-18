@@ -25,10 +25,12 @@
       // multiple elements
       $container.prepend('<div class="box demo-tabs"><div class="box demo-tabs-inside"><div class="demo-tabs-left float-left"></div><div class="demo-code-tabs-right float-right"></div></div></div>');
       $container.find('.demo-code-tabs-right').append('<button type="button" class="button button__fullscreen" data-toggle="tooltip" data-placement="top" title="Open fullscreen"><span class="icon-enlarge2"></span></button>');
-      $container.find('.button__fullscreen').tooltip(/*{trigger: 'click'}*/)
+      /*
+      $container.find('.button__fullscreen'))
         .on('mouseleave', function(e) {
           $(this).attr('data-original-title', 'Open fullscreen').tooltip('hide');
         });
+      */
       // single element and no demo tabs
       if ($items.length === 1/* && !$items.hasClass('demo-preview') && !$items.attr('data-iframe')*/) {
         $items.css('display', 'block');
@@ -56,10 +58,12 @@
         var id = 'iframe' + i + k;
         $item.append('<div class="demo-code"><div class="box demo-code-tabs"><div class="box demo-code-tabs-inside"><div class="demo-code-tabs-left float-left"></div><div class="demo-code-tabs-right float-right"><button type="button" class="button button__clipboard" data-toggle="tooltip" data-placement="top" title="Copy to clipboard">copy</button></div></div></div><div class="box demo-code-body"></div></div>');
         // https://github.com/zenorocha/clipboard.js/
-        $item.find('.button__clipboard').tooltip(/*{trigger: 'click'}*/)
+        /*
+        $item.find('.button__clipboard').tooltip()
           .on('mouseleave', function(e) {
             $(this).attr('data-original-title', 'Copy to clipboard').tooltip('hide');
           });
+        */
         var clipboard = new Clipboard('.button__clipboard', {
           target: function(trigger) {
             return $(trigger).parents('.demo').find('.demo-item.active .demo-code-body-item.active .hljs')[0];
@@ -67,10 +71,10 @@
         });
         clipboard.on('success', function(e) {
           e.clearSelection();
-          $(e.trigger).attr('data-original-title', 'Done').tooltip('show');
+          //$(e.trigger).attr('data-original-title', 'Done').tooltip('show');
         });
         clipboard.on('error', function(e) {
-          $(e.trigger).attr('data-original-title', 'Error: copy manually').tooltip('show');
+          //$(e.trigger).attr('data-original-title', 'Error: copy manually').tooltip('show');
         });
         // inject iframe
         if ($item.attr('data-iframe')) {
@@ -234,7 +238,7 @@
     });
     
     // tooltips
-    $main.find('[data-toggle="tooltip"]').tooltip(/*{trigger: 'click'}*/);
+    //$main.find('[data-toggle="tooltip"]').tooltip(/*{trigger: 'click'}*/);
     
     // .site-aside-text
     $main.find('.site-aside-text > .button:not(.different)').each( function(i) {
