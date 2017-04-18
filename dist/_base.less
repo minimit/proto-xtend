@@ -168,6 +168,30 @@ a, button {
 /* .xtcard */
 .xtcard {
   .flex-item;
+  margin-bottom: @contain-padding;
+  border-radius: 2px;
+  border: 3px solid @color-grey;
+}
+.xtcard-item {
+  .xtcard-item.large; // default
+  &.tiny {
+    padding: 0;
+  }
+  &.small {
+    padding: .618rem;
+  }
+  &.medium {
+    padding: 1rem;
+  }
+  &.large {
+    padding: 1.238rem;
+  }
+  &.giant {
+    padding: 2.619rem;
+  }
+}
+.xtcard-item + .xtcard-item {
+  border-top: 3px solid @color-grey;
 }
 
 /* img.fluid */

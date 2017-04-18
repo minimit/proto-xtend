@@ -382,14 +382,14 @@ a.button:not(.link) {
   /* justification */
   .flex.left; // default
   /* spacing */
-  .flex.medium; // default
+  .flex.small; // default
   @media @max-sm {
     .flex.small; // default on mobile
   }
   &.tiny {
     margin-left: 0;
     margin-right: 0;
-    .column {
+    > .column {
       padding-left: 0;
       padding-right: 0;
     }
@@ -397,7 +397,7 @@ a.button:not(.link) {
   &.small {
     margin-left: -.618rem;
     margin-right: -.618rem;
-    .column {
+    > .column {
       padding-left: .618rem;
       padding-right: .618rem;
     }
@@ -405,7 +405,7 @@ a.button:not(.link) {
   &.medium {
     margin-left: -1rem;
     margin-right: -1rem;
-    .column {
+    > .column {
       padding-left: 1rem;
       padding-right: 1rem;
     }
@@ -413,7 +413,7 @@ a.button:not(.link) {
   &.large {
     margin-left: -1.238rem;
     margin-right: -1.238rem;
-    .column {
+    > .column {
       padding-left: 1.238rem;
       padding-right: 1.238rem;
     }
@@ -421,7 +421,7 @@ a.button:not(.link) {
   &.giant {
     margin-left: -2.619rem;
     margin-right: -2.619rem;
-    .column {
+    > .column {
       padding-left: 2.619rem;
       padding-right: 2.619rem;
     }

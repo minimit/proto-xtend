@@ -122,6 +122,30 @@ button {
 .xtcard {
   -ms-flex: 1 0 auto;
   flex: 1 0 auto;
+  margin-bottom: 30px;
+  border-radius: 2px;
+  border: 3px solid #f8f8f8;
+}
+.xtcard-item {
+  padding: 1.238rem;
+}
+.xtcard-item.tiny {
+  padding: 0;
+}
+.xtcard-item.small {
+  padding: .618rem;
+}
+.xtcard-item.medium {
+  padding: 1rem;
+}
+.xtcard-item.large {
+  padding: 1.238rem;
+}
+.xtcard-item.giant {
+  padding: 2.619rem;
+}
+.xtcard-item + .xtcard-item {
+  border-top: 3px solid #f8f8f8;
 }
 /* img.fluid */
 img.fluid {
@@ -1737,22 +1761,22 @@ a.button:not(.link):focus {
   /* justification */
   justify-content: flex-start;
   /* spacing */
-  margin-left: -1rem;
-  margin-right: -1rem;
+  margin-left: -0.618rem;
+  margin-right: -0.618rem;
 }
 .flex > * {
   align-self: flex-start;
 }
-.flex .column {
-  padding-left: 1rem;
-  padding-right: 1rem;
+.flex > .column {
+  padding-left: .618rem;
+  padding-right: .618rem;
 }
 @media ( max-width: 767px ) {
   .flex {
     margin-left: -0.618rem;
     margin-right: -0.618rem;
   }
-  .flex .column {
+  .flex > .column {
     padding-left: .618rem;
     padding-right: .618rem;
   }
@@ -1761,7 +1785,7 @@ a.button:not(.link):focus {
   margin-left: 0;
   margin-right: 0;
 }
-.flex.tiny .column {
+.flex.tiny > .column {
   padding-left: 0;
   padding-right: 0;
 }
@@ -1769,7 +1793,7 @@ a.button:not(.link):focus {
   margin-left: -0.618rem;
   margin-right: -0.618rem;
 }
-.flex.small .column {
+.flex.small > .column {
   padding-left: .618rem;
   padding-right: .618rem;
 }
@@ -1777,7 +1801,7 @@ a.button:not(.link):focus {
   margin-left: -1rem;
   margin-right: -1rem;
 }
-.flex.medium .column {
+.flex.medium > .column {
   padding-left: 1rem;
   padding-right: 1rem;
 }
@@ -1785,7 +1809,7 @@ a.button:not(.link):focus {
   margin-left: -1.238rem;
   margin-right: -1.238rem;
 }
-.flex.large .column {
+.flex.large > .column {
   padding-left: 1.238rem;
   padding-right: 1.238rem;
 }
@@ -1793,7 +1817,7 @@ a.button:not(.link):focus {
   margin-left: -2.619rem;
   margin-right: -2.619rem;
 }
-.flex.giant .column {
+.flex.giant > .column {
   padding-left: 2.619rem;
   padding-right: 2.619rem;
 }
