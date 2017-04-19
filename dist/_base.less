@@ -116,62 +116,18 @@ a, button {
 }
 
 //////////////////////
-// spacer
-//////////////////////
-
-.spacer {
-  display: flex;
-  flex-wrap: wrap;
-  /* justification */
-  &.left {
-    justify-content: flex-start;
-  }
-  &.right {
-    justify-content: flex-end;
-  }
-  &.center {
-    justify-content: center;
-  }
-  &.between {
-    justify-content: space-between;
-  }
-  &.around {
-    justify-content: space-around;
-  }
-  /* alignment */
-  &.top {
-    > * {
-      align-self: flex-start;
-    }
-  }
-  &.bottom {
-    > * {
-      align-self: flex-end;
-    }
-  }
-  &.middle {
-    > * {
-      align-self: center;
-    }
-  }
-  &.stretch {
-    > * {
-      align-self: stretch;
-    }
-  }
-}
-
-//////////////////////
 // xtcard
 //////////////////////
 
 /* .xtcard */
 .xtcard {
-  .flex-item;
   border-radius: 2px;
   border: 1px solid @color-grey;
   -webkit-box-shadow: 0 0px 5px rgba(0, 0, 0, 0.2);
   box-shadow: 0 0px 5px rgba(0, 0, 0, 0.2);
+  // flex item: flex-grow flex-shrink flex-basis
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
 }
 .xtcard-item {
   .xtcard-item.large; // default
@@ -202,17 +158,9 @@ img.fluid {
 }
 
 //////////////////////
-// grid
+// contain
 //////////////////////
 
-/* .flex-item */
-.flex-item {
-  // flex-grow flex-shrink flex-basis
-  -ms-flex: 1 0 auto;
-  flex: 1 0 auto;
-}
-
-/* .contain */
 .contain {
   max-width: 100%;
   margin-left: auto;
@@ -222,18 +170,28 @@ img.fluid {
   }
 }
 
-/* .column */
+//////////////////////
+// row and spacer
+//////////////////////
+
 .column {
   max-width: 100%;
-  .flex-item;
+  // flex item: flex-grow flex-shrink flex-basis
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
 }
-
-/* .flex */
-.flex {
+.group {
+  max-width: 100%;
+  // flex item: flex-grow flex-shrink flex-basis
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+}
+.grid,
+.spacer {
+  // flex container: flex-wrap flex-direction align-self justify-content
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  .flex-item;
   /* alignment */
   &.top {
     > * {
@@ -253,6 +211,9 @@ img.fluid {
   &.stretch {
     > * {
       align-self: stretch;
+      > * {
+        height: 100%;
+      }
     }
   }
   /* justification */
@@ -413,26 +374,31 @@ img.fluid {
   bottom: 0;
   /* styles */
   .overlay-inner {
-    display: flex;
     position: relative;
     z-index: 110;
+    min-height: 100vh;
+    // flex container: flex-wrap flex-direction align-self justify-content
+    display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
     justify-content: center;
-    min-height: 100vh;
   }
   .overlay-content {
     position: relative;
-    align-self: center;
     width: 100%;
+    // flex container: flex-wrap flex-direction align-self justify-content
+    align-self: center;
   }
   /* full */
   &.full {
     .overlay-content {
-      display: flex;
       position: static;
-      justify-content: center;
-      flex-direction: column;
       width: 100%;
+      // flex container: flex-wrap flex-direction align-self justify-content
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+      justify-content: center;
     }
     .overlay-content + .xt-backdrop {
       display: none;

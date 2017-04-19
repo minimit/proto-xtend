@@ -286,81 +286,7 @@ a.button:not(.link) {
 }
 
 //////////////////////
-// spacer
-//////////////////////
-
-.spacer {
-  /* alignment */
-  .spacer.middle; // default
-  /* spacing */
-  .spacer.medium; // default
-  &.tiny {
-    margin-left: 0;
-    margin-bottom: 0;
-    > * {
-      margin-left: 0;
-      margin-bottom: 0;
-    }
-  }
-  &.small {
-    margin-left: -.618rem;
-    &:last-child {
-      margin-bottom: -.618rem;
-    }
-    > * {
-      margin-left: .618rem;
-      margin-bottom: .618rem;
-    }
-  }
-  &.medium {
-    margin-left: -1rem;
-    &:last-child {
-      margin-bottom: -1rem;
-    }
-    > * {
-      margin-left: 1rem;
-      margin-bottom: 1rem;
-    }
-  }
-  &.large {
-    margin-left: -1.238rem;
-    &:last-child {
-      margin-bottom: -1.238rem;
-    }
-    > * {
-      margin-left: 1.238rem;
-      margin-bottom: 1.238rem;
-    }
-  }
-  &.giant {
-    margin-left: -2.619rem;
-    &:last-child {
-      margin-bottom: -2.619rem;
-    }
-    > * {
-      margin-left: 2.619rem;
-      margin-bottom: 2.619rem;
-    }
-  }
-  /* expand to .button sizes */
-  /*
-  &.expand {
-    margin-left: -10px;
-    margin-right: -10px;
-  }
-  &.expand-sm {
-    margin-left: -8px;
-    margin-right: -8px;
-  }
-  &.expand-md {
-    margin-left: -12px;
-    margin-right: -12px;
-  }
-  */
-}
-
-//////////////////////
-// grid
+// contain
 //////////////////////
 
 .contain {
@@ -376,43 +302,57 @@ a.button:not(.link) {
     max-width: unit(@contain-xl, px);
   }
 }
-.flex {
+
+//////////////////////
+// row and spacer
+//////////////////////
+
+.grid {
   /* alignment */
-  .flex.top; // default
+  .grid.top; // default
   /* justification */
-  .flex.left; // default
+  .grid.left; // default
   /* spacing */
-  .flex.small; // default
-  @media @max-sm {
-    .flex.small; // default on mobile
-  }
+  .grid.small; // default
+}
+.spacer {
+  /* alignment */
+  .spacer.middle; // default
+  /* justification */
+  .spacer.left; // default
+  /* spacing */
+  .spacer.small; // default
+}
+.grid,
+.spacer {
+  /* sizes */
   &.tiny {
     margin: 0;
-    > .column {
+    > * {
       padding: 0;
     }
   }
   &.small {
     margin: -.618rem;
-    > .column {
+    > * {
       padding: .618rem;
     }
   }
   &.medium {
     margin: -1rem;
-    > .column {
+    > * {
       padding: 1rem;
     }
   }
   &.large {
     margin: -1.238rem;
-    > .column {
+    > * {
       padding: 1.238rem;
     }
   }
   &.giant {
     margin: -2.619rem;
-    > .column {
+    > * {
       padding: 2.619rem;
     }
   }
