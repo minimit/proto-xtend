@@ -122,9 +122,10 @@ button {
 .xtcard {
   -ms-flex: 1 0 auto;
   flex: 1 0 auto;
-  margin-bottom: 30px;
   border-radius: 2px;
-  border: 3px solid #f8f8f8;
+  border: 1px solid #f8f8f8;
+  -webkit-box-shadow: 0 0px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0px 5px rgba(0, 0, 0, 0.2);
 }
 .xtcard-item {
   padding: 1.238rem;
@@ -1761,65 +1762,51 @@ a.button:not(.link):focus {
   /* justification */
   justify-content: flex-start;
   /* spacing */
-  margin-left: -0.618rem;
-  margin-right: -0.618rem;
+  margin: -0.618rem;
 }
 .flex > * {
   align-self: flex-start;
 }
 .flex > .column {
-  padding-left: .618rem;
-  padding-right: .618rem;
+  padding: .618rem;
 }
 @media ( max-width: 767px ) {
   .flex {
-    margin-left: -0.618rem;
-    margin-right: -0.618rem;
+    margin: -0.618rem;
   }
   .flex > .column {
-    padding-left: .618rem;
-    padding-right: .618rem;
+    padding: .618rem;
   }
 }
 .flex.tiny {
-  margin-left: 0;
-  margin-right: 0;
+  margin: 0;
 }
 .flex.tiny > .column {
-  padding-left: 0;
-  padding-right: 0;
+  padding: 0;
 }
 .flex.small {
-  margin-left: -0.618rem;
-  margin-right: -0.618rem;
+  margin: -0.618rem;
 }
 .flex.small > .column {
-  padding-left: .618rem;
-  padding-right: .618rem;
+  padding: .618rem;
 }
 .flex.medium {
-  margin-left: -1rem;
-  margin-right: -1rem;
+  margin: -1rem;
 }
 .flex.medium > .column {
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding: 1rem;
 }
 .flex.large {
-  margin-left: -1.238rem;
-  margin-right: -1.238rem;
+  margin: -1.238rem;
 }
 .flex.large > .column {
-  padding-left: 1.238rem;
-  padding-right: 1.238rem;
+  padding: 1.238rem;
 }
 .flex.giant {
-  margin-left: -2.619rem;
-  margin-right: -2.619rem;
+  margin: -2.619rem;
 }
 .flex.giant > .column {
-  padding-left: 2.619rem;
-  padding-right: 2.619rem;
+  padding: 2.619rem;
 }
 .drop {
   /* positions */
