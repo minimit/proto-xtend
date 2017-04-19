@@ -183,7 +183,7 @@
     object.setup();
     object.events();
   };
-  
+
   Xt.prototype.namespace = function() {
     var object = this;
     var settings = this.settings;

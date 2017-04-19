@@ -129,14 +129,20 @@ img.fluid {
   width: auto !important;
 }
 .column {
-  max-width: 100%;
   -ms-flex: 1 0 auto;
   flex: 1 0 auto;
 }
 .group {
-  max-width: 100%;
   -ms-flex: 0 0 auto;
   flex: 0 0 auto;
+}
+.column,
+.group {
+  max-width: 100%;
+}
+.column.full,
+.group.full {
+  width: 100%;
 }
 .grid,
 .spacer {
@@ -1772,9 +1778,6 @@ a.button:not(.link):focus {
 .drop.before,
 .drop.after {
   padding: .618rem;
-}
-.drop-outer.static .drop {
-  padding: 0;
 }
 .drop.max-height .drop-inner {
   max-height: 225px;

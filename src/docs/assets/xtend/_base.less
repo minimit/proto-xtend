@@ -175,16 +175,21 @@ img.fluid {
 //////////////////////
 
 .column {
-  max-width: 100%;
   // flex item: flex-grow flex-shrink flex-basis
   -ms-flex: 1 0 auto;
   flex: 1 0 auto;
 }
 .group {
-  max-width: 100%;
   // flex item: flex-grow flex-shrink flex-basis
   -ms-flex: 0 0 auto;
   flex: 0 0 auto;
+}
+.column,
+.group {
+  max-width: 100%;
+  &.full {
+    width: 100%;
+  }
 }
 .grid,
 .spacer {
