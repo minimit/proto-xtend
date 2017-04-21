@@ -21,7 +21,7 @@
   width: 100%;
 }
 .card-block {
-  .box;
+  .float;
   background-color: #ffffff;
 }
 .card-content {
@@ -141,10 +141,9 @@
 // sctructure
 //////////////////////
 
-
 .site-wrapper,
 .site-wrapper-inside {
-  .box;
+  .float;
 }
 
 // sticky footer
@@ -172,13 +171,13 @@
 
 /* .site-header */
 .site-header {
-  .box;
+  .float;
   background-color: @color-primary;
 }
 
 /* .logo */
 a.logo {
-  .box;
+  .float;
   margin: 11px 0 10px 0;
   .font-sans-medium();
   color: @color-white-75;
@@ -241,7 +240,7 @@ a.logo {
 
 /* .site-hero */
 .site-hero {
-  .box;
+  .float;
   color: @color-white;
   .media {
     min-height: 250px;
@@ -256,10 +255,10 @@ a.logo {
 
 /* .site-breadcrumbs */
 .site-breadcrumbs {
-  .box;
+  .float;
   cursor: default;
   .site-breadcrumbs-inside {
-    .box;
+    .float;
     padding-top: 5px;
     padding-bottom: 5px;
     background-color: @color-primary;
@@ -448,7 +447,7 @@ a.logo {
 
 /* .site-article */
 .site-article {
-  .box;
+  .float;
   margin-top: 2.619rem;
   margin-bottom: 2.619rem;
 }
@@ -573,6 +572,7 @@ a.logo {
 /* .site-article-anchor */
 .make-anchor {
   position: relative;
+  width: 100%;
   a {
     color: @color-text !important;
   }
@@ -716,11 +716,11 @@ p code,
   margin-bottom: 1.619rem;
   // code
   .demo-code {
-    .box;
+    .float;
   }
   .demo-item {
     line-height: 0;
-    .box;
+    .float;
     display: none;
     &.active {
       display: block;
@@ -783,7 +783,7 @@ pre {
     padding: 0 .382rem;
   }
   .demo-code-body-item {
-    .box;
+    .float;
     padding: 1rem;
   }
   .demo-text {

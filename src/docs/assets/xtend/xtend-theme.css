@@ -85,40 +85,79 @@ button {
   display: inline-block;
   overflow: hidden;
 }
-/* .xtcard */
-.xtcard {
+/* .box */
+.box {
+  /*
   border-radius: 2px;
-  border: 1px solid #f8f8f8;
+  border: 1px solid @color-grey;
   -webkit-box-shadow: 0 0px 5px rgba(0, 0, 0, 0.2);
   box-shadow: 0 0px 5px rgba(0, 0, 0, 0.2);
+  */
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
   -ms-flex: 1 0 auto;
   flex: 1 0 auto;
 }
-.xtcard-item {
+.box-item {
+  /* alignment */
+  /* justification */
+}
+.box-item.horizontal {
+  -ms-flex: 1 1 0;
+  flex: 1 1 0;
+}
+.box-item.top {
+  align-self: flex-start;
+}
+.box-item.bottom {
+  align-self: flex-end;
+}
+.box-item.middle {
+  align-self: center;
+}
+.box-item.stretch {
+  align-self: stretch;
+}
+.box-item.stretch > * {
+  height: 100%;
+}
+.box-item.left {
+  justify-content: flex-start;
+}
+.box-item.right {
+  justify-content: flex-end;
+}
+.box-item.center {
+  justify-content: center;
+}
+.box-item.between {
+  justify-content: space-between;
+}
+.box-item.around {
+  justify-content: space-around;
+}
+.box-item {
   padding: 1.238rem;
 }
-.xtcard-item.tiny {
+.box-item.tiny {
   padding: 0;
 }
-.xtcard-item.small {
+.box-item.small {
   padding: .618rem;
 }
-.xtcard-item.medium {
+.box-item.medium {
   padding: 1rem;
 }
-.xtcard-item.large {
+.box-item.large {
   padding: 1.238rem;
 }
-.xtcard-item.giant {
+.box-item.giant {
   padding: 2.619rem;
 }
-.xtcard-item + .xtcard-item {
+.box-item + .box-item {
   border-top: 3px solid #f8f8f8;
-}
-/* img.fluid */
-img.fluid {
-  max-width: 100%;
-  height: auto;
 }
 .contain {
   max-width: 100%;
@@ -404,19 +443,6 @@ html.xt-fixed-horizontal .overlay {
   animation: none !important;
   transition: none !important;
 }
-.box {
-  position: relative;
-  float: left;
-  width: 100%;
-}
-.box:before,
-.box:after {
-  content: " ";
-  display: table;
-}
-.box:after {
-  clear: both;
-}
 .clear:before,
 .clear:after {
   content: " ";
@@ -424,6 +450,31 @@ html.xt-fixed-horizontal .overlay {
 }
 .clear:after {
   clear: both;
+}
+.float {
+  position: relative;
+  float: left;
+  width: 100%;
+}
+.float:before,
+.float:after {
+  content: " ";
+  display: table;
+}
+.float:after {
+  clear: both;
+}
+.float-left {
+  float: left !important;
+  margin-right: auto !important;
+}
+.float-right {
+  float: right !important;
+  margin-left: auto !important;
+}
+img.fluid {
+  max-width: 100%;
+  height: auto;
 }
 .no-selection {
   -webkit-user-select: none;

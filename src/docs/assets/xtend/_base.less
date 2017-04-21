@@ -116,21 +116,67 @@ a, button {
 }
 
 //////////////////////
-// xtcard
+// box
 //////////////////////
 
-/* .xtcard */
-.xtcard {
+/* .box */
+.box {
+  /*
   border-radius: 2px;
   border: 1px solid @color-grey;
   -webkit-box-shadow: 0 0px 5px rgba(0, 0, 0, 0.2);
   box-shadow: 0 0px 5px rgba(0, 0, 0, 0.2);
+  */
+  width: 100%;
+  // flex container: flex-wrap flex-direction align-self justify-content
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
   // flex item: flex-grow flex-shrink flex-basis
   -ms-flex: 1 0 auto;
   flex: 1 0 auto;
 }
-.xtcard-item {
-  .xtcard-item.large; // default
+.box-item {
+  &.horizontal {
+    // flex item: flex-grow flex-shrink flex-basis
+    -ms-flex: 1 1 0;
+    flex: 1 1 0;
+  }
+  /* alignment */
+  &.top {
+    align-self: flex-start;
+  }
+  &.bottom {
+    align-self: flex-end;
+  }
+  &.middle {
+    align-self: center;
+  }
+  &.stretch {
+    align-self: stretch;
+    > * {
+      height: 100%;
+    }
+  }
+  /* justification */
+  &.left {
+    justify-content: flex-start;
+  }
+  &.right {
+    justify-content: flex-end;
+  }
+  &.center {
+    justify-content: center;
+  }
+  &.between {
+    justify-content: space-between;
+  }
+  &.around {
+    justify-content: space-around;
+  }
+}
+.box-item {
+  .box-item.large; // default
   &.tiny {
     padding: 0;
   }
@@ -147,14 +193,8 @@ a, button {
     padding: 2.619rem;
   }
 }
-.xtcard-item + .xtcard-item {
+.box-item + .box-item {
   border-top: 3px solid @color-grey;
-}
-
-/* img.fluid */
-img.fluid {
-  max-width: 100%;
-  height: auto;
 }
 
 //////////////////////
@@ -491,14 +531,6 @@ html.xt-fixed-horizontal {
 // utils
 //////////////////////
 
-// .box;
-.box {
-  .clear;
-  position: relative;
-  float: left;
-  width: 100%;
-}
-
 // .clear;
 .clear {
   &:before,
@@ -509,6 +541,28 @@ html.xt-fixed-horizontal {
   &:after {
     clear: both;
   }
+}
+
+// .float;
+.float {
+  .clear;
+  position: relative;
+  float: left;
+  width: 100%;
+}
+.float-left {
+  float: left !important;
+  margin-right: auto !important;
+}
+.float-right {
+  float: right !important;
+  margin-left: auto !important;
+}
+
+// img.fluid;
+img.fluid {
+  max-width: 100%;
+  height: auto;
 }
 
 // .no-selection;
