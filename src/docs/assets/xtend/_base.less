@@ -116,26 +116,23 @@ a, button {
 }
 
 //////////////////////
-// box
+// box and xtmedia
 //////////////////////
 
-.box {
+.box,
+.xtmedia {
   width: 100%;
   // flex container: flex-wrap flex-direction align-self justify-content
   display: flex;
   flex-wrap: wrap;
-  flex-direction: row;
+  flex-direction: column;
   // flex item: flex-grow flex-shrink flex-basis
   -ms-flex: 1 0 auto;
   flex: 1 0 auto;
 }
-.box-item {
-  /* horizontal */
-  &.horizontal {
-    // flex item: flex-grow flex-shrink flex-basis
-    -ms-flex: 1 1 0;
-    flex: 1 1 0;
-  }
+.box-item,
+.xtmedia-item {
+  position: relative;
   /* alignment */
   &.top {
     align-self: flex-start;
@@ -152,23 +149,59 @@ a, button {
       height: 100%;
     }
   }
-  /* justification */
-  &.left {
-    justify-content: flex-start;
+}
+.box.horizontal {
+  flex-wrap: nowrap;
+  flex-direction: row;
+  .box-item.fluid {
+    // flex item: flex-grow flex-shrink flex-basis
+    -ms-flex: 1 1 0;
+    flex: 1 1 0;
   }
-  &.right {
-    justify-content: flex-end;
-  }
-  &.center {
-    justify-content: center;
-  }
-  &.between {
-    justify-content: space-between;
-  }
-  &.around {
-    justify-content: space-around;
+  .box-item + .box-item {
+    padding-left: 0 !important;
+    border-top: 0 !important;
   }
 }
+
+// fixes
+/*
+.box.empty {
+  // vertical
+  &:not(.horizontal),
+  &:not([class*=" horizontal-"]) {
+    .box-item {
+      //.box-item.large; // default size
+      padding-left: 0;
+      padding-right: 0;
+      &:first-child {
+        padding-top: 0;
+      }
+      &:last-child {
+        padding-bottom: 0;
+      }
+    }
+    .box-item + .box-item {
+      border-top: 0;
+      padding-top: 0;
+    }
+  }
+  // horizontal
+  &.horizontal,
+  &[class*=" horizontal-"] {
+    .box-item {
+      padding-top: 0;
+      padding-bottom: 0;
+      &:first-child {
+        padding-left: 0;
+      }
+      &:last-child {
+        padding-right: 0;
+      }
+    }
+  }
+}
+*/
 
 //////////////////////
 // contain
@@ -187,23 +220,6 @@ a, button {
 // grid and spacer
 //////////////////////
 
-.column {
-  // flex item: flex-grow flex-shrink flex-basis
-  -ms-flex: 1 0 auto;
-  flex: 1 0 auto;
-}
-.group {
-  // flex item: flex-grow flex-shrink flex-basis
-  -ms-flex: 0 0 auto;
-  flex: 0 0 auto;
-}
-.column,
-.group {
-  max-width: 100%;
-  &.full {
-    width: 100%;
-  }
-}
 .grid,
 .spacer {
   // flex container: flex-wrap flex-direction align-self justify-content
@@ -250,6 +266,28 @@ a, button {
   &.around {
     justify-content: space-around;
   }
+}
+
+//////////////////////
+// column and group
+//////////////////////
+
+.column,
+.group {
+  max-width: 100%;
+  &.full {
+    width: 100%;
+  }
+}
+.column {
+  // flex item: flex-grow flex-shrink flex-basis
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+}
+.group {
+  // flex item: flex-grow flex-shrink flex-basis
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
 }
 
 //////////////////////
@@ -613,33 +651,41 @@ img.fluid {
 @min-xl: ~"( min-width:"(unit(@xl, px))~")";
 @max-xl: ~"( max-width:"(unit(@xl - 1, px))~")";
 
-// generate
+/* generate */
 .grid(cl; 12); // default grid
 .for(@breakpoints); .-each(@value) {
-  // responsive grid
   @name: extract(@value, 1);
   @query: "min-@{name}";
   @media @@query {
+    
+    // generate grid
     .grid(@name; @columns);
-  }
-  // -auto
-  @name: extract(@value, 1);
-  @query: "min-@{name}";
-  @media @@query {
+    // -auto
     .column.@{name}-auto {
       -ms-flex-preferred-size: auto;
       flex-basis: auto;
       max-width: none;
     }
-  }
-  // .contain
-  @name: extract(@value, 1);
-  @query: "min-@{name}";
-  @unit: "contain-@{name}";
-  @media @@query {
+    // .contain
+    @unit: "contain-@{name}";
     .contain {
       width: unit(@@unit, px);
     }
+    // .box.horizontal
+    .box.horizontal-@{name} {
+      flex-wrap: nowrap;
+      flex-direction: row;
+      .box-item.fluid {
+        // flex item: flex-grow flex-shrink flex-basis
+        -ms-flex: 1 1 0;
+        flex: 1 1 0;
+      }
+      .box-item + .box-item {
+        padding-left: 0 !important;
+        border-top: 0 !important;
+      }
+    }
+    
   }
 }
 .grid(@name; @columns; @index: 1) when (@index =< @columns) {
