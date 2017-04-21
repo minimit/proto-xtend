@@ -101,7 +101,7 @@ code {
   background-color: @color-grey;
   .font-monospace();
   font-size: .9em;
-  color: @color-red;
+  color: @color-secondary;
 }
 pre {
   font-size: 1rem;
@@ -205,7 +205,7 @@ a.button:not(.link) {
   letter-spacing: .5px;
   text-transform: uppercase;
   /* variants */
-  .button.secondary; // default variant
+  .button.grey; // default variant
   &.primary {
     background-color: @color-primary;
     color: @color-white;
@@ -216,6 +216,15 @@ a.button:not(.link) {
     }
   }
   &.secondary {
+    background-color: @color-secondary;
+    color: @color-white;
+    &:hover,
+    &:active, &.active {
+      background-color: darken(@color-secondary, 5%);
+      color: @color-white;
+    }
+  }
+  &.grey {
     background-color: darken(@color-white, 10%);
     color: @color-text;
     &:hover,
@@ -224,7 +233,7 @@ a.button:not(.link) {
       color: @color-text;
     }
   }
-  &.light {
+  &.white {
     background-color: transparent;
     color: @color-text;
     &:hover,
@@ -317,12 +326,16 @@ a.button:not(.link) {
     border-top: 1px solid @color-black-15;
   }
   /* variants */
-  .box.secondary; // default variant
+  .box.grey; // default variant
   &.primary {
     background-color: @color-primary;
     color: @color-white;
   }
   &.secondary {
+    background-color: @color-secondary;
+    color: @color-white;
+  }
+  &.grey {
     background-color: @color-white;
     color: @color-text;
   }
@@ -434,9 +447,9 @@ a.button:not(.link) {
     padding-right: 40px !important;
   }
   /* variants */
-  .drop.light; // default variant
+  .drop.white; // default variant
   &.primary {
-    .drop.right; // default position
+    .drop.left; // default position
     .drop.bottom; // default position
     .drop-inner {
       background-color: @color-primary;
@@ -447,17 +460,28 @@ a.button:not(.link) {
     }
   }
   &.secondary {
-    .drop.right; // default position
+    .drop.left; // default position
+    .drop.bottom; // default position
+    .drop-inner {
+      background-color: @color-secondary;
+      color: @color-white;
+    }
+    .button {
+      .button.secondary;
+    }
+  }
+  &.grey {
+    .drop.left; // default position
     .drop.bottom; // default position
     .drop-inner {
       background-color: darken(@color-white, 10%);
       color: @color-text;
     }
     .button {
-      .button.secondary;
+      .button.grey;
     }
   }
-  &.light {
+  &.white {
     .drop.left; // default position
     .drop.bottom; // default position
     .drop-inner {
@@ -465,7 +489,7 @@ a.button:not(.link) {
       color: @color-text;
     }
     .button {
-      .button.light;
+      .button.white;
     }
   }
   /* positions spacing */
@@ -519,7 +543,7 @@ a.button:not(.link) {
     }
   }
   /* variants */
-  .overlay.secondary; // default variant
+  .overlay.white; // default variant
   &.primary {
     .overlay-content {
       background-color: @color-primary;
@@ -537,6 +561,22 @@ a.button:not(.link) {
     }
   }
   &.secondary {
+    .overlay-content {
+      background-color: @color-secondary;
+      color: @color-white;
+    }
+    .overlay-close {
+      color: @color-white;
+    }
+    &.full {
+      .overlay-inner {
+        padding: 0;
+        background-color: @color-secondary;
+        color: @color-white;
+      }
+    }
+  }
+  &.white {
     .overlay-content {
       background-color: @color-white;
       color: @color-text;
