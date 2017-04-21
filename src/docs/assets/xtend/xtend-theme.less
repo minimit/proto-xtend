@@ -75,6 +75,12 @@ h6, .h6 {
   letter-spacing: 1px;
   text-transform: uppercase;
 }
+.font-tiny {
+  font-size: .618rem;
+}
+.font-small {
+  font-size: .809rem;
+}
 
 //////////////////////
 // typography
@@ -192,58 +198,6 @@ a.button:not(.link) {
 //////////////////////
 
 .button {
-  /* sizes */
-  .button.medium; // default
-  line-height: 1.25;
-  &.tiny {
-    font-size: .66rem;
-    padding: .625em .875em;
-  }
-  &.small {
-    font-size: .73rem;
-    padding: .625em .875em;
-  }
-  &.medium {
-    font-size: .8rem;
-    padding: .625em .875em;
-  }
-  &.large {
-    font-size: .86rem;
-    padding: .625em .875em;
-  }
-  &.giant {
-    font-size: 1rem;
-    padding: .625em .875em;
-  }
-  /*
-  &.tiny {
-    padding: 4px 8px;
-    font-size: 10px;
-  }
-  &.small {
-    padding: 6px 10px;
-    font-size: 11px;
-  }
-  &.medium {
-    padding: 8px 12px;
-    font-size: 12px;
-  }
-  &.large {
-    padding: 10px 14px;
-    font-size: 13px;
-  }
-  &.giant {
-    padding: 12px 16px;
-    font-size: 14px;
-  }*/
-  &.wide {
-    padding-left: 1.625em;
-    padding-right: 1.625em;
-  }
-  &.tall {
-    padding-top: 1em;
-    padding-bottom: 1em;
-  }
   /* styles */
   border: 0;
   border-radius: 0;
@@ -251,7 +205,7 @@ a.button:not(.link) {
   letter-spacing: .5px;
   text-transform: uppercase;
   /* variants */
-  .button.secondary; // default
+  .button.secondary; // default variant
   &.primary {
     background-color: @color-primary;
     color: @color-white;
@@ -279,9 +233,114 @@ a.button:not(.link) {
       color: @color-primary;
     }
   }
+  /* sizes */
+  .button.medium; // default size
+  line-height: 1.25;
+  &.tiny {
+    font-size: .66rem;
+    padding: .625em .875em;
+  }
+  &.small {
+    font-size: .73rem;
+    padding: .625em .875em;
+  }
+  &.medium {
+    font-size: .8rem;
+    padding: .625em .875em;
+  }
+  &.large {
+    font-size: .86rem;
+    padding: .625em .875em;
+  }
+  &.giant {
+    font-size: 1rem;
+    padding: .625em .875em;
+  }
+  &.wide {
+    padding-left: 1.625em;
+    padding-right: 1.625em;
+  }
+  &.tall {
+    padding-top: 1em;
+    padding-bottom: 1em;
+  }
   /* animations */
   &:not([class*=" anim-"]) {
     .transition-default;
+  }
+}
+
+//////////////////////
+// box
+//////////////////////
+
+.box {
+  /* variants */
+  .box.empty; // default variant
+  &.empty {
+    border-radius: 0;
+    border: 0;
+    background-color: transparent;
+    color: @color-text;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    .box-item {
+      .box-item.tiny; // default size
+    }
+    .box-item + .box-item {
+      padding-top: 1rem;
+      border-top: 0;
+    }
+  }
+  &.primary {
+    border-radius: 0;
+    border: 0;
+    background-color: @color-primary;
+    color: @color-white;
+    -webkit-box-shadow: 0 0px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0px 5px rgba(0, 0, 0, 0.2);
+    .box-item {
+      .box-item.large; // default size
+    }
+    .box-item + .box-item {
+      border-top: 3px solid @color-primary-25;
+    }
+  }
+  &.secondary {
+    border-radius: 2px;
+    border: 1px solid @color-grey;
+    background-color: @color-white;
+    color: @color-text;
+    -webkit-box-shadow: 0 0px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0px 5px rgba(0, 0, 0, 0.2);
+    .box-item {
+      .box-item.large; // default size
+    }
+    .box-item + .box-item {
+      border-top: 3px solid @color-grey;
+    }
+  }
+  /* horizontal */
+  .box-item.horizontal {
+    .box-item.large; // default size
+  }
+  /* sizes */
+  .box-item {
+    &.tiny {
+      padding: 0;
+    }
+    &.small {
+      padding: .618rem;
+    }
+    &.medium {
+      padding: 1rem;
+    }
+    &.large {
+      padding: 1.238rem;
+    }
+    &.giant {
+      padding: 2.619rem;
+    }
   }
 }
 
@@ -304,24 +363,18 @@ a.button:not(.link) {
 }
 
 //////////////////////
-// row and spacer
+// grid and spacer
 //////////////////////
 
 .grid {
-  /* alignment */
-  .grid.top; // default
-  /* justification */
-  .grid.left; // default
-  /* spacing */
-  .grid.small; // default
+  .grid.top; // default alignment
+  .grid.left; // default justification
+  .grid.small; // default spacing
 }
 .spacer {
-  /* alignment */
-  .spacer.middle; // default
-  /* justification */
-  .spacer.left; // default
-  /* spacing */
-  .spacer.small; // default
+  .spacer.middle; // default alignment
+  .spacer.left; // default justification
+  .spacer.small; // default spacing
 }
 .grid,
 .spacer {
@@ -363,10 +416,52 @@ a.button:not(.link) {
 //////////////////////
 
 .drop {
-  /* positions */
-  .drop.left; // default
-  .drop.bottom; // default
-  /* spacing */
+  /* styles */
+  .drop-inner {
+    padding: .618rem 0;
+    -webkit-box-shadow: 0 0 5px fade(@color-black, 20%);
+    box-shadow: 0 0 5px fade(@color-black, 20%);
+  }
+  .button {
+    .button.wide;
+    padding-right: 40px !important;
+  }
+  /* variants */
+  .drop.light; // default variant
+  &.primary {
+    .drop.right; // default position
+    .drop.bottom; // default position
+    .drop-inner {
+      background-color: @color-primary;
+      color: @color-white;
+    }
+    .button {
+      .button.primary;
+    }
+  }
+  &.secondary {
+    .drop.right; // default position
+    .drop.bottom; // default position
+    .drop-inner {
+      background-color: darken(@color-white, 10%);
+      color: @color-text;
+    }
+    .button {
+      .button.secondary;
+    }
+  }
+  &.light {
+    .drop.left; // default position
+    .drop.bottom; // default position
+    .drop-inner {
+      background-color: @color-white;
+      color: @color-text;
+    }
+    .button {
+      .button.light;
+    }
+  }
+  /* positions spacing */
   &.left,
   &.right,
   &.top,
@@ -388,45 +483,6 @@ a.button:not(.link) {
       max-width: 225px;
     }
   }
-  /* variants */
-  .drop.light; // default
-  &.primary {
-    .drop-inner {
-      background-color: @color-primary;
-      color: @color-white;
-    }
-    .button {
-      .button.primary;
-    }
-  }
-  &.secondary {
-    .drop-inner {
-      background-color: darken(@color-white, 10%);
-      color: @color-black;
-    }
-    .button {
-      .button.secondary;
-    }
-  }
-  &.light {
-    .drop-inner {
-      background-color: @color-white;
-      color: @color-black;
-    }
-    .button {
-      .button.light;
-    }
-  }
-  /* styles */
-  .drop-inner {
-    padding: .618rem 0;
-    -webkit-box-shadow: 0 0 5px fade(@color-black, 20%);
-    box-shadow: 0 0 5px fade(@color-black, 20%);
-  }
-  .button {
-    .button.wide;
-    padding-right: 40px !important;
-  }
   /* animations */
   &:not([class*=" anim-"]) {
     .anim-vertical-zoom;
@@ -442,17 +498,55 @@ a.button:not(.link) {
   .overlay-inner {
     padding: @contain-padding; // empty space outside overlay
   }
-  .overlay-content {
-    background-color: @color-white;
+  .overlay-close {
+    .button;
+    width: 50px;
+    height: 50px;
+    font-size: 12px;
+    background-color: transparent;
+    color: @color-text-75;
+    &:hover,
+    &:active, &.active {
+      background-color: transparent;
+      color: @color-primary;
+    }
   }
-  &.full {
-    .overlay-inner {
-      padding: 0;
+  /* variants */
+  .overlay.secondary; // default variant
+  &.primary {
+    .overlay-content {
+      background-color: @color-primary;
+      color: @color-white;
+    }
+    .overlay-close {
+      color: @color-white;
+    }
+    &.full {
+      .overlay-inner {
+        padding: 0;
+        background-color: @color-primary;
+        color: @color-white;
+      }
+    }
+  }
+  &.secondary {
+    .overlay-content {
       background-color: @color-white;
+      color: @color-text;
+    }
+    .overlay-close {
+      color: @color-text-75;
+    }
+    &.full {
+      .overlay-inner {
+        padding: 0;
+        background-color: @color-white;
+        color: @color-text;
+      }
     }
   }
   /* sizes */
-  .overlay.medium; // default
+  .overlay.medium; // default size
   &.tiny {
     .overlay-content {
       padding: 40px;
@@ -487,20 +581,6 @@ a.button:not(.link) {
     .overlay-content {
       padding: 40px;
       max-width: inherit;
-    }
-  }
-  /* .close */
-  .overlay-close {
-    .button;
-    width: 50px;
-    height: 50px;
-    font-size: 12px;
-    background-color: transparent;
-    color: @color-text-75;
-    &:hover,
-    &:active, &.active {
-      background-color: transparent;
-      color: @color-primary;
     }
   }
   /* animations */

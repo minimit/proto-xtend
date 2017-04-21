@@ -119,14 +119,7 @@ a, button {
 // box
 //////////////////////
 
-/* .box */
 .box {
-  /*
-  border-radius: 2px;
-  border: 1px solid @color-grey;
-  -webkit-box-shadow: 0 0px 5px rgba(0, 0, 0, 0.2);
-  box-shadow: 0 0px 5px rgba(0, 0, 0, 0.2);
-  */
   width: 100%;
   // flex container: flex-wrap flex-direction align-self justify-content
   display: flex;
@@ -137,6 +130,7 @@ a, button {
   flex: 1 0 auto;
 }
 .box-item {
+  /* horizontal */
   &.horizontal {
     // flex item: flex-grow flex-shrink flex-basis
     -ms-flex: 1 1 0;
@@ -175,27 +169,6 @@ a, button {
     justify-content: space-around;
   }
 }
-.box-item {
-  .box-item.large; // default
-  &.tiny {
-    padding: 0;
-  }
-  &.small {
-    padding: .618rem;
-  }
-  &.medium {
-    padding: 1rem;
-  }
-  &.large {
-    padding: 1.238rem;
-  }
-  &.giant {
-    padding: 2.619rem;
-  }
-}
-.box-item + .box-item {
-  border-top: 3px solid @color-grey;
-}
 
 //////////////////////
 // contain
@@ -211,7 +184,7 @@ a, button {
 }
 
 //////////////////////
-// row and spacer
+// grid and spacer
 //////////////////////
 
 .column {
