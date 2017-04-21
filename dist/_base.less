@@ -119,8 +119,7 @@ a, button {
 // box and xtmedia
 //////////////////////
 
-.box,
-.xtmedia {
+.box {
   width: 100%;
   // flex container: flex-wrap flex-direction align-self justify-content
   display: flex;
@@ -130,8 +129,7 @@ a, button {
   -ms-flex: 1 0 auto;
   flex: 1 0 auto;
 }
-.box-item,
-.xtmedia-item {
+.box-item {
   position: relative;
   /* alignment */
   &.top {
@@ -217,15 +215,19 @@ a, button {
 }
 
 //////////////////////
-// grid and spacer
+// grid and spacer and xt-media
 //////////////////////
 
 .grid,
-.spacer {
+.spacer,
+.xt-media {
   // flex container: flex-wrap flex-direction align-self justify-content
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
+  &.xt-media {
+    flex-wrap: nowrap;
+  }
   /* alignment */
   &.top {
     > * {

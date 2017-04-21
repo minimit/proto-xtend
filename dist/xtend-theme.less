@@ -280,39 +280,6 @@ a.button:not(.link) {
 }
 
 //////////////////////
-// xtmedia
-//////////////////////
-
-.xtmedia {
-  .xtmedia.large; // default size
-  &.tiny {
-    .xtmedia-item + .xtmedia-item {
-      margin-left: 0;
-    }
-  }
-  &.small {
-    .xtmedia-item + .xtmedia-item {
-      margin-left: .618rem;
-    }
-  }
-  &.medium {
-    .xtmedia-item + .xtmedia-item {
-      margin-left: 1rem;
-    }
-  }
-  &.large {
-    .xtmedia-item + .xtmedia-item {
-      margin-left: 1.238rem;
-    }
-  }
-  &.giant {
-    .xtmedia-item + .xtmedia-item {
-      margin-left: 2.619rem;
-    }
-  }
-}
-
-//////////////////////
 // box
 //////////////////////
 
@@ -326,7 +293,7 @@ a.button:not(.link) {
     border-top: 1px solid @color-black-15;
   }
   /* variants */
-  .box.grey; // default variant
+  .box.white; // default variant
   &.primary {
     background-color: @color-primary;
     color: @color-white;
@@ -335,7 +302,7 @@ a.button:not(.link) {
     background-color: @color-secondary;
     color: @color-white;
   }
-  &.grey {
+  &.white {
     background-color: @color-white;
     color: @color-text;
   }
@@ -383,7 +350,7 @@ a.button:not(.link) {
 }
 
 //////////////////////
-// grid and spacer
+// grid and spacer and xt-media
 //////////////////////
 
 .grid {
@@ -396,8 +363,14 @@ a.button:not(.link) {
   .spacer.left; // default justification
   .spacer.small; // default spacing
 }
+.xt-media {
+  .xt-media.middle; // default alignment
+  .xt-media.left; // default justification
+  .xt-media.small; // default spacing
+}
 .grid,
-.spacer {
+.spacer,
+.xt-media {
   /* sizes */
   &.tiny {
     margin: 0;

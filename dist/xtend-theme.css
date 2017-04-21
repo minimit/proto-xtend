@@ -85,8 +85,7 @@ button {
   display: inline-block;
   overflow: hidden;
 }
-.box,
-.xtmedia {
+.box {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -94,29 +93,23 @@ button {
   -ms-flex: 1 0 auto;
   flex: 1 0 auto;
 }
-.box-item,
-.xtmedia-item {
+.box-item {
   position: relative;
   /* alignment */
 }
-.box-item.top,
-.xtmedia-item.top {
+.box-item.top {
   align-self: flex-start;
 }
-.box-item.bottom,
-.xtmedia-item.bottom {
+.box-item.bottom {
   align-self: flex-end;
 }
-.box-item.middle,
-.xtmedia-item.middle {
+.box-item.middle {
   align-self: center;
 }
-.box-item.stretch,
-.xtmedia-item.stretch {
+.box-item.stretch {
   align-self: stretch;
 }
-.box-item.stretch > *,
-.xtmedia-item.stretch > * {
+.box-item.stretch > * {
   height: 100%;
 }
 .box.horizontal {
@@ -177,51 +170,67 @@ button {
   width: auto !important;
 }
 .grid,
-.spacer {
+.spacer,
+.xt-media {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
   /* alignment */
   /* justification */
 }
+.grid.xt-media,
+.spacer.xt-media,
+.xt-media.xt-media {
+  flex-wrap: nowrap;
+}
 .grid.top > *,
-.spacer.top > * {
+.spacer.top > *,
+.xt-media.top > * {
   align-self: flex-start;
 }
 .grid.bottom > *,
-.spacer.bottom > * {
+.spacer.bottom > *,
+.xt-media.bottom > * {
   align-self: flex-end;
 }
 .grid.middle > *,
-.spacer.middle > * {
+.spacer.middle > *,
+.xt-media.middle > * {
   align-self: center;
 }
 .grid.stretch > *,
-.spacer.stretch > * {
+.spacer.stretch > *,
+.xt-media.stretch > * {
   align-self: stretch;
 }
 .grid.stretch > * > *,
-.spacer.stretch > * > * {
+.spacer.stretch > * > *,
+.xt-media.stretch > * > * {
   height: 100%;
 }
 .grid.left,
-.spacer.left {
+.spacer.left,
+.xt-media.left {
   justify-content: flex-start;
 }
 .grid.right,
-.spacer.right {
+.spacer.right,
+.xt-media.right {
   justify-content: flex-end;
 }
 .grid.center,
-.spacer.center {
+.spacer.center,
+.xt-media.center {
   justify-content: center;
 }
 .grid.between,
-.spacer.between {
+.spacer.between,
+.xt-media.between {
   justify-content: space-between;
 }
 .grid.around,
-.spacer.around {
+.spacer.around,
+.xt-media.around {
   justify-content: space-around;
 }
 .column,
@@ -1769,24 +1778,6 @@ a.button:not(.link):focus {
 .button:not([class*=" anim-"]).fade-out {
   transition-timing-function: cubic-bezier(0.63, 0.36, 0, 0.97);
 }
-.xtmedia .xtmedia-item + .xtmedia-item {
-  margin-left: 1.238rem;
-}
-.xtmedia.tiny .xtmedia-item + .xtmedia-item {
-  margin-left: 0;
-}
-.xtmedia.small .xtmedia-item + .xtmedia-item {
-  margin-left: .618rem;
-}
-.xtmedia.medium .xtmedia-item + .xtmedia-item {
-  margin-left: 1rem;
-}
-.xtmedia.large .xtmedia-item + .xtmedia-item {
-  margin-left: 1.238rem;
-}
-.xtmedia.giant .xtmedia-item + .xtmedia-item {
-  margin-left: 2.619rem;
-}
 .box {
   /* styles */
   border-radius: 4px;
@@ -1810,7 +1801,7 @@ a.button:not(.link):focus {
   background-color: #d14;
   color: #ffffff;
 }
-.box.grey {
+.box.white {
   background-color: #ffffff;
   color: #000000;
 }
@@ -1868,48 +1859,69 @@ a.button:not(.link):focus {
 .spacer > * {
   padding: .618rem;
 }
+.xt-media {
+  justify-content: flex-start;
+  margin: -0.618rem;
+}
+.xt-media > * {
+  align-self: center;
+}
+.xt-media > * {
+  padding: .618rem;
+}
 .grid,
-.spacer {
+.spacer,
+.xt-media {
   /* sizes */
 }
 .grid.tiny,
-.spacer.tiny {
+.spacer.tiny,
+.xt-media.tiny {
   margin: 0;
 }
 .grid.tiny > *,
-.spacer.tiny > * {
+.spacer.tiny > *,
+.xt-media.tiny > * {
   padding: 0;
 }
 .grid.small,
-.spacer.small {
+.spacer.small,
+.xt-media.small {
   margin: -0.618rem;
 }
 .grid.small > *,
-.spacer.small > * {
+.spacer.small > *,
+.xt-media.small > * {
   padding: .618rem;
 }
 .grid.medium,
-.spacer.medium {
+.spacer.medium,
+.xt-media.medium {
   margin: -1rem;
 }
 .grid.medium > *,
-.spacer.medium > * {
+.spacer.medium > *,
+.xt-media.medium > * {
   padding: 1rem;
 }
 .grid.large,
-.spacer.large {
+.spacer.large,
+.xt-media.large {
   margin: -1.238rem;
 }
 .grid.large > *,
-.spacer.large > * {
+.spacer.large > *,
+.xt-media.large > * {
   padding: 1.238rem;
 }
 .grid.giant,
-.spacer.giant {
+.spacer.giant,
+.xt-media.giant {
   margin: -2.619rem;
 }
 .grid.giant > *,
-.spacer.giant > * {
+.spacer.giant > *,
+.xt-media.giant > * {
   padding: 2.619rem;
 }
 .drop {
