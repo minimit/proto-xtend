@@ -163,7 +163,7 @@ a, button {
 }
 
 //////////////////////
-// grid + spacer + xt-media + box
+// grid + spacer + media + box
 //////////////////////
 
 .grid,
@@ -176,8 +176,8 @@ a, button {
     flex-direction: row-reverse;
   }
 }
-.xt-media,
-.box {
+.media,
+.card {
   // flex container: flex-wrap flex-direction align-self justify-content
   display: flex;
   flex-wrap: wrap;
@@ -191,8 +191,8 @@ a, button {
 }
 .grid,
 .spacer,
-.xt-media,
-.box {
+.media,
+.card {
   /* alignment */
   &.middle {
     > * {
@@ -270,7 +270,7 @@ a, button {
 // box + horizontal
 //////////////////////
 
-.box {
+.card {
   width: 100%;
   margin: 0 !important; // no negative margin
   > *:not(.item) {
@@ -316,7 +316,7 @@ a, button {
     flex: 1 1 0;
   }
   // items styles for vertical + horizontal
-  &.box {
+  &.card {
     > .item {
       &:before {
         display: none;
@@ -710,7 +710,7 @@ img.fluid {
         flex: 1 1 0;
       }
       // items styles for vertical + horizontal
-      &.box {
+      &.card {
         > .item {
           &:before {
             display: none;

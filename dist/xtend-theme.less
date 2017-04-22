@@ -293,7 +293,7 @@ a.button:not(.link) {
 }
 
 //////////////////////
-// grid + spacer + xt-media + box
+// grid + spacer + media + box
 //////////////////////
 
 .grid {
@@ -306,20 +306,20 @@ a.button:not(.link) {
   .spacer.left; // default justification
   .spacer.small; // default spacing
 }
-.xt-media {
-  .xt-media.middle; // default alignment
-  .xt-media.left; // default justification
-  .xt-media.small; // default spacing
+.media {
+  .media.middle; // default alignment
+  .media.left; // default justification
+  .media.small; // default spacing
 }
-.box {
-  .box.middle; // default alignment
-  .box.center; // default justification
-  .box.large; // default spacing
+.card {
+  .card.middle; // default alignment
+  .card.center; // default justification
+  .card.large; // default spacing
 }
 .grid,
 .spacer,
-.xt-media,
-.box {
+.media,
+.card {
   /* sizes */
   &.tiny {
     margin: 0;
@@ -357,7 +357,7 @@ a.button:not(.link) {
 // box
 //////////////////////
 
-.box {
+.card {
   /* styles */
   overflow: hidden;
   border-radius: 4px;
@@ -383,7 +383,7 @@ a.button:not(.link) {
     background: @color-black-15;
   }
   /* variants */
-  .box.white; // default variant
+  .card.white; // default variant
   &.primary {
     background-color: @color-primary;
     color: @color-white;
