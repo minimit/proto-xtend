@@ -109,6 +109,9 @@ button {
   -ms-flex: 0 0 auto;
   flex: 0 0 auto;
 }
+.item {
+  position: relative;
+}
 .box .item {
   align-self: stretch !important;
   /* items styles for vertical and horizontal */
@@ -126,10 +129,6 @@ button {
 .box.reverse .item:first-child:before,
 .box.reverse .item:last-child:after {
   display: none !important;
-}
-.item,
-.xt-media-item {
-  position: relative;
 }
 .grid,
 .spacer {
@@ -172,8 +171,7 @@ button {
 .horizontal.reverse {
   flex-direction: row-reverse;
 }
-.horizontal .item.fluid,
-.horizontal .xt-media-item.fluid {
+.horizontal .item.fluid {
   -ms-flex: 1 1 0;
   flex: 1 1 0;
 }
@@ -674,8 +672,7 @@ img.fluid {
   .horizontal-xs.reverse {
     flex-direction: row-reverse;
   }
-  .horizontal-xs .item.fluid,
-  .horizontal-xs .xt-media-item.fluid {
+  .horizontal-xs .item.fluid {
     -ms-flex: 1 1 0;
     flex: 1 1 0;
   }
@@ -762,8 +759,7 @@ img.fluid {
   .horizontal-sm.reverse {
     flex-direction: row-reverse;
   }
-  .horizontal-sm .item.fluid,
-  .horizontal-sm .xt-media-item.fluid {
+  .horizontal-sm .item.fluid {
     -ms-flex: 1 1 0;
     flex: 1 1 0;
   }
@@ -850,8 +846,7 @@ img.fluid {
   .horizontal-md.reverse {
     flex-direction: row-reverse;
   }
-  .horizontal-md .item.fluid,
-  .horizontal-md .xt-media-item.fluid {
+  .horizontal-md .item.fluid {
     -ms-flex: 1 1 0;
     flex: 1 1 0;
   }
@@ -938,8 +933,7 @@ img.fluid {
   .horizontal-lg.reverse {
     flex-direction: row-reverse;
   }
-  .horizontal-lg .item.fluid,
-  .horizontal-lg .xt-media-item.fluid {
+  .horizontal-lg .item.fluid {
     -ms-flex: 1 1 0;
     flex: 1 1 0;
   }
@@ -1026,8 +1020,7 @@ img.fluid {
   .horizontal-xl.reverse {
     flex-direction: row-reverse;
   }
-  .horizontal-xl .item.fluid,
-  .horizontal-xl .xt-media-item.fluid {
+  .horizontal-xl .item.fluid {
     -ms-flex: 1 1 0;
     flex: 1 1 0;
   }
@@ -1963,8 +1956,6 @@ a.button:not(.link):focus {
   border: 0;
   -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
-  /* styles for vertical */
-  /* styles for horizontal */
   /* variants */
   background-color: #ffffff;
   color: #000000;

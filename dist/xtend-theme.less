@@ -370,8 +370,7 @@ a.button:not(.link) {
   border: 0;
   -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
-  /* styles for vertical */
-  > .item:before {
+  > .item:before { // styles .item vertical
     content: '';
     position: absolute;
     bottom: 0;
@@ -380,8 +379,7 @@ a.button:not(.link) {
     height: 1px;
     background: @color-black-15;
   }
-  /* styles for horizontal */
-  > .item:after {
+  > .item:after { // styles .item horizontal
     content: '';
     position: absolute;
     bottom: 0;

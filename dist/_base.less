@@ -149,6 +149,9 @@ a, button {
   -ms-flex: 0 0 auto;
   flex: 0 0 auto;
 }
+.item {
+  position: relative;
+}
 .box {
   .item {
     align-self: stretch !important;
@@ -176,10 +179,6 @@ a, button {
       }
     }
   }
-}
-.item,
-.xt-media-item {
-  position: relative;
 }
 
 //////////////////////
@@ -229,8 +228,7 @@ a, button {
   &.reverse {
     flex-direction: row-reverse;
   }
-  .item.fluid,
-  .xt-media-item.fluid {
+  .item.fluid {
     // flex item: flex-grow flex-shrink flex-basis
     -ms-flex: 1 1 0;
     flex: 1 1 0;
@@ -696,8 +694,7 @@ img.fluid {
       &.reverse {
         flex-direction: row-reverse;
       }
-      .item.fluid,
-      .xt-media-item.fluid {
+      .item.fluid {
         // flex item: flex-grow flex-shrink flex-basis
         -ms-flex: 1 1 0;
         flex: 1 1 0;
