@@ -125,21 +125,25 @@ a, button {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
+  &.reverse {
+    flex-direction: column-reverse;
+  }
   // flex item: flex-grow flex-shrink flex-basis
   -ms-flex: 1 0 auto;
   flex: 1 0 auto;
 }
 .box-item {
   position: relative;
+  width: 100%;
   /* alignment */
+  &.middle {
+    align-self: center;
+  }
   &.top {
     align-self: flex-start;
   }
   &.bottom {
     align-self: flex-end;
-  }
-  &.middle {
-    align-self: center;
   }
   &.stretch {
     align-self: stretch;
@@ -156,9 +160,18 @@ a, button {
     -ms-flex: 1 1 0;
     flex: 1 1 0;
   }
-  .box-item + .box-item {
-    padding-left: 0 !important;
-    border-top: 0 !important;
+  &:not(.reverse) {
+    .box-item + .box-item {
+      padding-left: 0 !important;
+      border: 0 !important;
+    }
+  }
+  &.reverse {
+    flex-direction: row-reverse;
+    .box-item + .box-item {
+      padding-right: 0 !important;
+      border: 0 !important;
+    }
   }
 }
 
@@ -225,10 +238,18 @@ a, button {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
+  &.reverse {
+    flex-direction: row-reverse;
+  }
   &.xt-media {
     flex-wrap: nowrap;
   }
   /* alignment */
+  &.middle {
+    > * {
+      align-self: center;
+    }
+  }
   &.top {
     > * {
       align-self: flex-start;
@@ -237,11 +258,6 @@ a, button {
   &.bottom {
     > * {
       align-self: flex-end;
-    }
-  }
-  &.middle {
-    > * {
-      align-self: center;
     }
   }
   &.stretch {
@@ -663,7 +679,7 @@ img.fluid {
     // generate grid
     .grid(@name; @columns);
     // -auto
-    .column.@{name}-auto {
+    .@{name}-auto {
       -ms-flex-preferred-size: auto;
       flex-basis: auto;
       max-width: none;
@@ -682,9 +698,18 @@ img.fluid {
         -ms-flex: 1 1 0;
         flex: 1 1 0;
       }
-      .box-item + .box-item {
-        padding-left: 0 !important;
-        border-top: 0 !important;
+      &:not(.reverse) {
+        .box-item + .box-item {
+          padding-left: 0 !important;
+          border: 0 !important;
+        }
+      }
+      &.reverse {
+        flex-direction: row-reverse;
+        .box-item + .box-item {
+          padding-right: 0 !important;
+          border: 0 !important;
+        }
       }
     }
     
@@ -692,7 +717,7 @@ img.fluid {
 }
 .grid(@name; @columns; @index: 1) when (@index =< @columns) {
   .grid(@name; @columns; (@index + 1));
-  .column.@{name}-@{index} {
+  .@{name}-@{index} {
     @val: (percentage(@index / @columns));
     -ms-flex-preferred-size: @val;
     flex-basis: @val;

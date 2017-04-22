@@ -289,8 +289,15 @@ a.button:not(.link) {
   border: 0;
   -webkit-box-shadow: 0 0px 5px rgba(0, 0, 0, 0.2);
   box-shadow: 0 0px 5px rgba(0, 0, 0, 0.2);
-  .box-item + .box-item {
-    border-top: 1px solid @color-black-15;
+  &:not(.reverse) {
+    .box-item + .box-item {
+      border-top: 1px solid @color-black-15;
+    }
+  }
+  &.reverse {
+    .box-item + .box-item {
+      border-bottom: 1px solid @color-black-15;
+    }
   }
   /* variants */
   .box.white; // default variant
