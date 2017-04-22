@@ -40,26 +40,38 @@
 //////////////////////
 
 @columns: 12;
-@contain-padding: 30px;
-@breakpoints: xs, sm, md, lg, xl;
+@breakpoints: xs, sm, md, lg, xl; // if you change this values change also the variable names below
 
-// media queries values
-// USAGE
-// @media @min-sm {}
-// @media @max-md {}
-// @media @min-sm and @max-md {}
+// @media sizes
 @xs: 576;
 @sm: 768;
 @md: 992;
 @lg: 1200;
 @xl: 1450;
 
-// .contain values
+// .contain sizes
 @contain-xs: 540;
 @contain-sm: 720;
 @contain-md: 960;
 @contain-lg: 1140;
 @contain-xl: 1400;
+@contain-spacing: 15px; // side paddings
+
+// @media queries
+// USAGE
+// @media @min-sm {}
+// @media @max-md {}
+// @media @min-sm and @max-md {}
+@min-xs: ~"( min-width:"(unit(@xs, px))~")";
+@max-xs: ~"( max-width:"(unit(@xs - 1, px))~")";
+@min-sm: ~"( min-width:"(unit(@sm, px))~")";
+@max-sm: ~"( max-width:"(unit(@sm - 1, px))~")";
+@min-md: ~"( min-width:"(unit(@md, px))~")";
+@max-md: ~"( max-width:"(unit(@md - 1, px))~")";
+@min-lg: ~"( min-width:"(unit(@lg, px))~")";
+@max-lg: ~"( max-width:"(unit(@lg - 1, px))~")";
+@min-xl: ~"( min-width:"(unit(@xl, px))~")";
+@max-xl: ~"( max-width:"(unit(@xl - 1, px))~")";
 
 //////////////////////
 // fonts

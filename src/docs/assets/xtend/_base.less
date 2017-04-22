@@ -129,11 +129,13 @@ a, button {
 }
 
 //////////////////////
-// column and group and item
+// column + group + item
 //////////////////////
 
 .column,
-.group {
+.group,
+.item {
+  position: relative;
   max-width: 100%;
   &.full {
     width: 100%;
@@ -149,40 +151,9 @@ a, button {
   -ms-flex: 0 0 auto;
   flex: 0 0 auto;
 }
-.item {
-  position: relative;
-}
-.box {
-  .item {
-    align-self: stretch !important;
-    /* items styles for vertical and horizontal */
-    &:before {
-      display: block;
-    }
-    &:after {
-      display: none;
-    }
-  }
-  &:not(.reverse) {
-    .item {
-      &:last-child:before,
-      &:first-child:after {
-        display: none !important;
-      }
-    }
-  }
-  &.reverse {
-    .item {
-      &:first-child:before,
-      &:last-child:after {
-        display: none !important;
-      }
-    }
-  }
-}
 
 //////////////////////
-// grid and spacer and xt-media
+// grid + spacer + box + xt-media
 //////////////////////
 
 .grid,
@@ -207,42 +178,6 @@ a, button {
   // flex item: flex-grow flex-shrink flex-basis
   -ms-flex: 1 0 auto;
   flex: 1 0 auto;
-}
-.grid {
-  > *:not(.column) {
-    padding: 0 !important;
-  }
-}
-.box {
-  width: 100%;
-  > * {
-    display: flex;
-  }
-  > *:not(.item) {
-    padding: 0 !important;
-  }
-}
-.horizontal {
-  flex-wrap: nowrap;
-  flex-direction: row;
-  &.reverse {
-    flex-direction: row-reverse;
-  }
-  .item.fluid {
-    // flex item: flex-grow flex-shrink flex-basis
-    -ms-flex: 1 1 0;
-    flex: 1 1 0;
-  }
-  &.box {
-    .item {
-      &:before {
-        display: none;
-      }
-      &:after {
-        display: block;
-      }
-    }
-  }
 }
 .grid,
 .spacer,
@@ -291,18 +226,95 @@ a, button {
   /* justification */
   &.left {
     justify-content: flex-start;
+    > .item {
+      justify-content: flex-start;
+    }
   }
   &.right {
     justify-content: flex-end;
+    > .item {
+      justify-content: flex-end;
+    }
   }
   &.center {
     justify-content: center;
+    > .item {
+      justify-content: center;
+    }
   }
   &.between {
     justify-content: space-between;
+    > .item {
+      justify-content: space-between;
+    }
   }
   &.around {
     justify-content: space-around;
+    > .item {
+      justify-content: space-around;
+    }
+  }
+}
+
+//////////////////////
+// box + horizontal
+//////////////////////
+
+.box {
+  width: 100%;
+  margin: 0 !important; // no negative margin
+  > *:not(.item) {
+    padding: 0 !important; // no padding
+  }
+  // items styles for vertical + horizontal
+  > .item {
+    display: flex;
+    align-self: stretch !important;
+    &:before {
+      display: block;
+    }
+    &:after {
+      display: none;
+    }
+  }
+  &:not(.reverse) {
+    > .item {
+      &:last-child:before,
+      &:first-child:after {
+        display: none !important;
+      }
+    }
+  }
+  &.reverse {
+    > .item {
+      &:first-child:before,
+      &:last-child:after {
+        display: none !important;
+      }
+    }
+  }
+}
+.horizontal {
+  flex-wrap: nowrap;
+  flex-direction: row;
+  &.reverse {
+    flex-direction: row-reverse;
+  }
+  > .item.fluid {
+    // flex item: flex-grow flex-shrink flex-basis
+    -ms-flex: 1 1 0;
+    flex: 1 1 0;
+  }
+  // items styles for vertical + horizontal
+  &.box {
+    > .item {
+      &:before {
+        display: none;
+      }
+      &:after {
+        display: block;
+      }
+    }
   }
 }
 
@@ -373,7 +385,7 @@ a, button {
     text-align: left;
     white-space: nowrap;
   }
-  /* before and after */
+  /* before + after */
   &.before {
     left: auto;
     right: 100%;
@@ -382,7 +394,7 @@ a, button {
     left: 100%;
     right: auto;
   }
-  /* left and right */
+  /* left + right */
   &.left {
     left: 0;
     right: auto;
@@ -391,7 +403,7 @@ a, button {
     left: auto;
     right: 0;
   }
-  /* bottom and top */
+  /* bottom + top */
   &.bottom {
     top: 100%;
     bottom: auto;
@@ -491,7 +503,7 @@ a, button {
 // plugin
 //////////////////////
 
-/* .xt-container and .xt-position */
+/* .xt-container + .xt-position */
 .xt-container {
   position: relative;
   width: 100%;
@@ -655,20 +667,8 @@ img.fluid {
 // utils
 //////////////////////
 
-// media queries
-@min-xs: ~"( min-width:"(unit(@xs, px))~")";
-@max-xs: ~"( max-width:"(unit(@xs - 1, px))~")";
-@min-sm: ~"( min-width:"(unit(@sm, px))~")";
-@max-sm: ~"( max-width:"(unit(@sm - 1, px))~")";
-@min-md: ~"( min-width:"(unit(@md, px))~")";
-@max-md: ~"( max-width:"(unit(@md - 1, px))~")";
-@min-lg: ~"( min-width:"(unit(@lg, px))~")";
-@max-lg: ~"( max-width:"(unit(@lg - 1, px))~")";
-@min-xl: ~"( min-width:"(unit(@xl, px))~")";
-@max-xl: ~"( max-width:"(unit(@xl - 1, px))~")";
-
 /* generate */
-.grid(cl; 12); // default grid
+.grid(cl; @columns); // default grid
 .for(@breakpoints); .-each(@value) {
   @name: extract(@value, 1);
   @query: "min-@{name}";
@@ -694,13 +694,14 @@ img.fluid {
       &.reverse {
         flex-direction: row-reverse;
       }
-      .item.fluid {
+      > .item.fluid {
         // flex item: flex-grow flex-shrink flex-basis
         -ms-flex: 1 1 0;
         flex: 1 1 0;
       }
+      // items styles for vertical + horizontal
       &.box {
-        .item {
+        > .item {
           &:before {
             display: none;
           }

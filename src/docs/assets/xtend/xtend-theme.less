@@ -284,13 +284,8 @@ a.button:not(.link) {
 //////////////////////
 
 .contain {
-  padding-right: @contain-padding;
-  padding-left: @contain-padding;
-  @media @max-sm {
-    // less padding on mobile
-    padding-right: @contain-padding / 2;
-    padding-left: @contain-padding / 2;
-  }
+  padding-right: @contain-spacing;
+  padding-left: @contain-spacing;
   &.fluid {
     // max width .contain.fluid
     max-width: unit(@contain-xl, px);
@@ -298,7 +293,7 @@ a.button:not(.link) {
 }
 
 //////////////////////
-// grid and spacer and xt-media
+// grid + spacer + box + xt-media
 //////////////////////
 
 .grid {
@@ -364,7 +359,6 @@ a.button:not(.link) {
 
 .box {
   /* styles */
-  margin: 0 !important; // no negative spacing
   overflow: hidden;
   border-radius: 4px;
   border: 0;
@@ -402,8 +396,8 @@ a.button:not(.link) {
     background-color: @color-white;
     color: @color-text;
   }
-  /* sizes */
-  .item {
+  /* internal sizes */
+  > .item {
     &.tiny {
       padding-top: 0;
       padding-bottom: 0;
@@ -523,7 +517,7 @@ a.button:not(.link) {
 .overlay {
   /* styles */
   .overlay-inner {
-    padding: @contain-padding; // empty space outside overlay
+    padding: @contain-spacing; // empty space outside overlay
   }
   .overlay-close {
     .button;
@@ -593,31 +587,31 @@ a.button:not(.link) {
   &.tiny {
     .overlay-content {
       padding: 40px;
-      max-width: @contain-xs - @contain-padding * 2;
+      max-width: @contain-xs - @contain-spacing * 2;
     }
   }
   &.small {
     .overlay-content {
       padding: 40px;
-      max-width: @contain-sm - @contain-padding * 2;
+      max-width: @contain-sm - @contain-spacing * 2;
     }
   }
   &.medium {
     .overlay-content {
       padding: 40px;
-      max-width: @contain-md - @contain-padding * 2;
+      max-width: @contain-md - @contain-spacing * 2;
     }
   }
   &.large {
     .overlay-content {
       padding: 40px;
-      max-width: @contain-lg - @contain-padding * 2;
+      max-width: @contain-lg - @contain-spacing * 2;
     }
   }
   &.giant {
     .overlay-content {
       padding: 40px;
-      max-width: @contain-xl - @contain-padding * 2;
+      max-width: @contain-xl - @contain-spacing * 2;
     }
   }
   &.full {
@@ -662,7 +656,7 @@ a.button:not(.link) {
 // icons
 //////////////////////
 
-/* swap-in and swap-out */
+/* swap-in + swap-out */
 .swap-in {
   display: none;
 }
