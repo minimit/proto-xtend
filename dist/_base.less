@@ -149,25 +149,9 @@ a, button {
   -ms-flex: 0 0 auto;
   flex: 0 0 auto;
 }
-.item {
+.item,
+.xt-media-item {
   position: relative;
-  width: 100%;
-  /* alignment */
-  &.middle {
-    align-self: center;
-  }
-  &.top {
-    align-self: flex-start;
-  }
-  &.bottom {
-    align-self: flex-end;
-  }
-  &.stretch {
-    align-self: stretch;
-    > * {
-      height: 100%;
-    }
-  }
 }
 
 //////////////////////
@@ -175,8 +159,7 @@ a, button {
 //////////////////////
 
 .grid,
-.spacer,
-.xt-media {
+.spacer {
   // flex container: flex-wrap flex-direction align-self justify-content
   display: flex;
   flex-wrap: wrap;
@@ -184,6 +167,63 @@ a, button {
   &.reverse {
     flex-direction: row-reverse;
   }
+}
+.box {
+  width: 100%;
+}
+.box,
+.xt-media {
+  // flex container: flex-wrap flex-direction align-self justify-content
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  &.reverse {
+    flex-direction: column-reverse;
+  }
+  // flex item: flex-grow flex-shrink flex-basis
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+}
+.grid {
+  > *:not(.column) {
+    padding: 0 !important;
+  }
+}
+.box {
+  > *:not(.item) {
+    padding: 0 !important;
+  }
+}
+.horizontal {
+  flex-wrap: nowrap;
+  flex-direction: row;
+  &.reverse {
+    flex-direction: row-reverse;
+  }
+  .item.fluid,
+  .xt-media-item.fluid {
+    // flex item: flex-grow flex-shrink flex-basis
+    -ms-flex: 1 1 0;
+    flex: 1 1 0;
+  }
+  // box padding spacing
+  &.box {
+    &:not(.reverse) {
+      .item + .item {
+        border: 0 !important;
+      }
+    }
+    &.reverse {
+      .item + .item {
+        border: 0 !important;
+      }
+    }
+  }
+}
+.grid,
+.spacer,
+.box,
+.xt-media {
   /* alignment */
   &.middle {
     > * {
@@ -203,9 +243,21 @@ a, button {
   &.stretch {
     > * {
       align-self: stretch;
-      > * {
-        height: 100%;
-      }
+    }
+  }
+  /* alignment */
+  > * {
+    &.middle {
+      align-self: center;
+    }
+    &.top {
+      align-self: flex-start;
+    }
+    &.bottom {
+      align-self: flex-end;
+    }
+    &.stretch {
+      align-self: stretch;
     }
   }
   /* justification */
@@ -223,46 +275,6 @@ a, button {
   }
   &.around {
     justify-content: space-around;
-  }
-}
-
-//////////////////////
-// box and xt-media
-//////////////////////
-
-.box {
-  width: 100%;
-  // flex container: flex-wrap flex-direction align-self justify-content
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  &.reverse {
-    flex-direction: column-reverse;
-  }
-  // flex item: flex-grow flex-shrink flex-basis
-  -ms-flex: 1 0 auto;
-  flex: 1 0 auto;
-}
-.horizontal {
-  flex-wrap: nowrap;
-  flex-direction: row;
-  .item.fluid {
-    // flex item: flex-grow flex-shrink flex-basis
-    -ms-flex: 1 1 0;
-    flex: 1 1 0;
-  }
-  &:not(.reverse) {
-    .item + .item {
-      padding-left: 0 !important;
-      border: 0 !important;
-    }
-  }
-  &.reverse {
-    flex-direction: row-reverse;
-    .item + .item {
-      padding-right: 0 !important;
-      border: 0 !important;
-    }
   }
 }
 
@@ -651,22 +663,28 @@ img.fluid {
     .horizontal-@{name} {
       flex-wrap: nowrap;
       flex-direction: row;
-      .item.fluid {
+      .item.fluid,
+      .xt-media-item.fluid {
         // flex item: flex-grow flex-shrink flex-basis
         -ms-flex: 1 1 0;
         flex: 1 1 0;
       }
-      &:not(.reverse) {
-        .item + .item {
-          padding-left: 0 !important;
-          border: 0 !important;
-        }
-      }
       &.reverse {
         flex-direction: row-reverse;
-        .item + .item {
-          padding-right: 0 !important;
-          border: 0 !important;
+      }
+      // padding spacing
+      &.box {
+        &:not(.reverse) {
+          .item + .item {
+            padding-left: 0 !important;
+            border: 0 !important;
+          }
+        }
+        &.reverse {
+          .item + .item {
+            padding-right: 0 !important;
+            border: 0 !important;
+          }
         }
       }
     }
