@@ -2,7 +2,6 @@
 // imports
 //////////////////////
 
-@import (less) "bootstrap.min.css";
 @import (less) "highlight/github.css";
 @import "../../../../dist/xtend-theme.less";
 
@@ -12,21 +11,6 @@
 
 //@color-primary: #ff00ff;
 @breakpoints: xs, sm, md, lg;
-
-//////////////////////
-// bootstrap
-//////////////////////
-
-.card {
-  width: 100%;
-}
-.card-block {
-  .float;
-  background-color: #ffffff;
-}
-.card-content {
-  padding: 1.25rem;
-}
 
 //////////////////////
 // custom theme
@@ -242,8 +226,8 @@ a.logo {
 .site-hero {
   .float;
   color: @color-white;
-  .media {
-    min-height: 250px;
+  .xt-media {
+    min-height: 270px;
   }
   .h1 {
     margin-top: -.4em !important;

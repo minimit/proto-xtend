@@ -1,6 +1,10 @@
 /*! xtend v0.0.6 (http://www.minimit.com/xtend/)
 @copyright (c) 2016 - 2017 Riccardo Caroli
 @license MIT (https://github.com/minimit/xtend/blob/master/LICENSE) */
+a,
+.button {
+  text-decoration: none;
+}
 a:focus,
 .button:focus {
   outline: 0;
@@ -10,14 +14,23 @@ body {
   height: 100%;
 }
 html {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
 }
 body {
+  margin: 0;
   overflow-x: hidden;
   overflow-y: scroll;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: inherit;
+  box-sizing: inherit;
 }
 .show {
   display: block !important;
@@ -122,136 +135,136 @@ button {
 .spacer.reverse {
   flex-direction: row-reverse;
 }
-.box,
-.xt-media {
+.xt-media,
+.box {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   -ms-flex: 1 0 auto;
   flex: 1 0 auto;
 }
-.box.reverse,
-.xt-media.reverse {
+.xt-media.reverse,
+.box.reverse {
   flex-direction: column-reverse;
 }
 .grid,
 .spacer,
-.box,
-.xt-media {
+.xt-media,
+.box {
   /* alignment */
   /* alignment */
   /* justification */
 }
 .grid.middle > *,
 .spacer.middle > *,
-.box.middle > *,
-.xt-media.middle > * {
+.xt-media.middle > *,
+.box.middle > * {
   align-self: center;
   align-items: center;
 }
 .grid.top > *,
 .spacer.top > *,
-.box.top > *,
-.xt-media.top > * {
+.xt-media.top > *,
+.box.top > * {
   align-self: flex-start;
   align-items: flex-start;
 }
 .grid.bottom > *,
 .spacer.bottom > *,
-.box.bottom > *,
-.xt-media.bottom > * {
+.xt-media.bottom > *,
+.box.bottom > * {
   align-self: flex-end;
   align-items: flex-end;
 }
 .grid.stretch > *,
 .spacer.stretch > *,
-.box.stretch > *,
-.xt-media.stretch > * {
+.xt-media.stretch > *,
+.box.stretch > * {
   align-self: stretch;
   align-items: stretch;
 }
 .grid > *.middle,
 .spacer > *.middle,
-.box > *.middle,
-.xt-media > *.middle {
+.xt-media > *.middle,
+.box > *.middle {
   align-self: center;
 }
 .grid > *.top,
 .spacer > *.top,
-.box > *.top,
-.xt-media > *.top {
+.xt-media > *.top,
+.box > *.top {
   align-self: flex-start;
 }
 .grid > *.bottom,
 .spacer > *.bottom,
-.box > *.bottom,
-.xt-media > *.bottom {
+.xt-media > *.bottom,
+.box > *.bottom {
   align-self: flex-end;
 }
 .grid > *.stretch,
 .spacer > *.stretch,
-.box > *.stretch,
-.xt-media > *.stretch {
+.xt-media > *.stretch,
+.box > *.stretch {
   align-self: stretch;
 }
 .grid.left,
 .spacer.left,
-.box.left,
-.xt-media.left {
+.xt-media.left,
+.box.left {
   justify-content: flex-start;
 }
 .grid.left > .item,
 .spacer.left > .item,
-.box.left > .item,
-.xt-media.left > .item {
+.xt-media.left > .item,
+.box.left > .item {
   justify-content: flex-start;
 }
 .grid.right,
 .spacer.right,
-.box.right,
-.xt-media.right {
+.xt-media.right,
+.box.right {
   justify-content: flex-end;
 }
 .grid.right > .item,
 .spacer.right > .item,
-.box.right > .item,
-.xt-media.right > .item {
+.xt-media.right > .item,
+.box.right > .item {
   justify-content: flex-end;
 }
 .grid.center,
 .spacer.center,
-.box.center,
-.xt-media.center {
+.xt-media.center,
+.box.center {
   justify-content: center;
 }
 .grid.center > .item,
 .spacer.center > .item,
-.box.center > .item,
-.xt-media.center > .item {
+.xt-media.center > .item,
+.box.center > .item {
   justify-content: center;
 }
 .grid.between,
 .spacer.between,
-.box.between,
-.xt-media.between {
+.xt-media.between,
+.box.between {
   justify-content: space-between;
 }
 .grid.between > .item,
 .spacer.between > .item,
-.box.between > .item,
-.xt-media.between > .item {
+.xt-media.between > .item,
+.box.between > .item {
   justify-content: space-between;
 }
 .grid.around,
 .spacer.around,
-.box.around,
-.xt-media.around {
+.xt-media.around,
+.box.around {
   justify-content: space-around;
 }
 .grid.around > .item,
 .spacer.around > .item,
-.box.around > .item,
-.xt-media.around > .item {
+.xt-media.around > .item,
+.box.around > .item {
   justify-content: space-around;
 }
 .box {
@@ -1885,20 +1898,6 @@ a.button:not(.link):focus {
 .spacer > * {
   padding: .618rem;
 }
-.box {
-  justify-content: center;
-  margin: -1.238rem;
-}
-.box > * {
-  align-self: center;
-  align-items: center;
-}
-.box > .item {
-  justify-content: center;
-}
-.box > * {
-  padding: 1.238rem;
-}
 .xt-media {
   justify-content: flex-start;
   margin: -0.618rem;
@@ -1913,70 +1912,84 @@ a.button:not(.link):focus {
 .xt-media > * {
   padding: .618rem;
 }
+.box {
+  justify-content: center;
+  margin: -1.238rem;
+}
+.box > * {
+  align-self: center;
+  align-items: center;
+}
+.box > .item {
+  justify-content: center;
+}
+.box > * {
+  padding: 1.238rem;
+}
 .grid,
 .spacer,
-.box,
-.xt-media {
+.xt-media,
+.box {
   /* sizes */
 }
 .grid.tiny,
 .spacer.tiny,
-.box.tiny,
-.xt-media.tiny {
+.xt-media.tiny,
+.box.tiny {
   margin: 0;
 }
 .grid.tiny > *,
 .spacer.tiny > *,
-.box.tiny > *,
-.xt-media.tiny > * {
+.xt-media.tiny > *,
+.box.tiny > * {
   padding: 0;
 }
 .grid.small,
 .spacer.small,
-.box.small,
-.xt-media.small {
+.xt-media.small,
+.box.small {
   margin: -0.618rem;
 }
 .grid.small > *,
 .spacer.small > *,
-.box.small > *,
-.xt-media.small > * {
+.xt-media.small > *,
+.box.small > * {
   padding: .618rem;
 }
 .grid.medium,
 .spacer.medium,
-.box.medium,
-.xt-media.medium {
+.xt-media.medium,
+.box.medium {
   margin: -1rem;
 }
 .grid.medium > *,
 .spacer.medium > *,
-.box.medium > *,
-.xt-media.medium > * {
+.xt-media.medium > *,
+.box.medium > * {
   padding: 1rem;
 }
 .grid.large,
 .spacer.large,
-.box.large,
-.xt-media.large {
+.xt-media.large,
+.box.large {
   margin: -1.238rem;
 }
 .grid.large > *,
 .spacer.large > *,
-.box.large > *,
-.xt-media.large > * {
+.xt-media.large > *,
+.box.large > * {
   padding: 1.238rem;
 }
 .grid.giant,
 .spacer.giant,
-.box.giant,
-.xt-media.giant {
+.xt-media.giant,
+.box.giant {
   margin: -2.619rem;
 }
 .grid.giant > *,
 .spacer.giant > *,
-.box.giant > *,
-.xt-media.giant > * {
+.xt-media.giant > *,
+.box.giant > * {
   padding: 2.619rem;
 }
 .box {
@@ -2202,6 +2215,7 @@ a.button:not(.link):focus {
   padding: 15px;
 }
 .overlay .overlay-close {
+  text-decoration: none;
   display: inline-block;
   position: relative;
   vertical-align: middle;

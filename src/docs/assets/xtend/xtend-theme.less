@@ -293,7 +293,7 @@ a.button:not(.link) {
 }
 
 //////////////////////
-// grid + spacer + box + xt-media
+// grid + spacer + xt-media + box
 //////////////////////
 
 .grid {
@@ -306,20 +306,20 @@ a.button:not(.link) {
   .spacer.left; // default justification
   .spacer.small; // default spacing
 }
-.box {
-  .box.middle; // default alignment
-  .box.center; // default justification
-  .box.large; // default spacing
-}
 .xt-media {
   .xt-media.middle; // default alignment
   .xt-media.left; // default justification
   .xt-media.small; // default spacing
 }
+.box {
+  .box.middle; // default alignment
+  .box.center; // default justification
+  .box.large; // default spacing
+}
 .grid,
 .spacer,
-.box,
-.xt-media {
+.xt-media,
+.box {
   /* sizes */
   &.tiny {
     margin: 0;
