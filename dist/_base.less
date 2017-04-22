@@ -149,6 +149,34 @@ a, button {
   -ms-flex: 0 0 auto;
   flex: 0 0 auto;
 }
+.box {
+  .item {
+    align-self: stretch !important;
+    /* items styles for vertical and horizontal */
+    &:before {
+      display: block;
+    }
+    &:after {
+      display: none;
+    }
+  }
+  &:not(.reverse) {
+    .item {
+      &:last-child:before,
+      &:first-child:after {
+        display: none !important;
+      }
+    }
+  }
+  &.reverse {
+    .item {
+      &:first-child:before,
+      &:last-child:after {
+        display: none !important;
+      }
+    }
+  }
+}
 .item,
 .xt-media-item {
   position: relative;
@@ -167,9 +195,6 @@ a, button {
   &.reverse {
     flex-direction: row-reverse;
   }
-}
-.box {
-  width: 100%;
 }
 .box,
 .xt-media {
@@ -190,6 +215,10 @@ a, button {
   }
 }
 .box {
+  width: 100%;
+  > * {
+    display: flex;
+  }
   > *:not(.item) {
     padding: 0 !important;
   }
@@ -206,16 +235,13 @@ a, button {
     -ms-flex: 1 1 0;
     flex: 1 1 0;
   }
-  // box padding spacing
   &.box {
-    &:not(.reverse) {
-      .item + .item {
-        border: 0 !important;
+    .item {
+      &:before {
+        display: none;
       }
-    }
-    &.reverse {
-      .item + .item {
-        border: 0 !important;
+      &:after {
+        display: block;
       }
     }
   }
@@ -228,21 +254,25 @@ a, button {
   &.middle {
     > * {
       align-self: center;
+      align-items: center;
     }
   }
   &.top {
     > * {
       align-self: flex-start;
+      align-items: flex-start;
     }
   }
   &.bottom {
     > * {
       align-self: flex-end;
+      align-items: flex-end;
     }
   }
   &.stretch {
     > * {
       align-self: stretch;
+      align-items: stretch;
     }
   }
   /* alignment */
@@ -663,27 +693,22 @@ img.fluid {
     .horizontal-@{name} {
       flex-wrap: nowrap;
       flex-direction: row;
+      &.reverse {
+        flex-direction: row-reverse;
+      }
       .item.fluid,
       .xt-media-item.fluid {
         // flex item: flex-grow flex-shrink flex-basis
         -ms-flex: 1 1 0;
         flex: 1 1 0;
       }
-      &.reverse {
-        flex-direction: row-reverse;
-      }
-      // padding spacing
       &.box {
-        &:not(.reverse) {
-          .item + .item {
-            padding-left: 0 !important;
-            border: 0 !important;
+        .item {
+          &:before {
+            display: none;
           }
-        }
-        &.reverse {
-          .item + .item {
-            padding-right: 0 !important;
-            border: 0 !important;
+          &:after {
+            display: block;
           }
         }
       }
