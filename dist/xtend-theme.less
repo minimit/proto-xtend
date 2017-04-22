@@ -280,65 +280,6 @@ a.button:not(.link) {
 }
 
 //////////////////////
-// box
-//////////////////////
-
-.box {
-  /* styles */
-  border-radius: 4px;
-  border: 0;
-  -webkit-box-shadow: 0 0px 5px rgba(0, 0, 0, 0.2);
-  box-shadow: 0 0px 5px rgba(0, 0, 0, 0.2);
-  &:not(.reverse) {
-    .box-item + .box-item {
-      border-top: 1px solid @color-black-15;
-    }
-  }
-  &.reverse {
-    .box-item + .box-item {
-      border-bottom: 1px solid @color-black-15;
-    }
-  }
-  /* variants */
-  .box.white; // default variant
-  &.primary {
-    background-color: @color-primary;
-    color: @color-white;
-  }
-  &.secondary {
-    background-color: @color-secondary;
-    color: @color-white;
-  }
-  &.white {
-    background-color: @color-white;
-    color: @color-text;
-  }
-  /* alignment */
-  > * {
-    .box-item.middle; // default alignment
-  }
-  /* sizes */
-  .box-item {
-    .box-item.large; // default size
-    &.tiny {
-      padding: 0;
-    }
-    &.small {
-      padding: .618rem;
-    }
-    &.medium {
-      padding: 1rem;
-    }
-    &.large {
-      padding: 1.238rem;
-    }
-    &.giant {
-      padding: 2.619rem;
-    }
-  }
-}
-
-//////////////////////
 // contain
 //////////////////////
 
@@ -406,6 +347,65 @@ a.button:not(.link) {
   &.giant {
     margin: -2.619rem;
     > * {
+      padding: 2.619rem;
+    }
+  }
+}
+
+//////////////////////
+// box
+//////////////////////
+
+.box {
+  /* styles */
+  border-radius: 4px;
+  border: 0;
+  -webkit-box-shadow: 0 0px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0px 5px rgba(0, 0, 0, 0.2);
+  &:not(.reverse) {
+    .item + .item {
+      border-top: 1px solid @color-black-15;
+    }
+  }
+  &.reverse {
+    .item + .item {
+      border-bottom: 1px solid @color-black-15;
+    }
+  }
+  /* variants */
+  .box.white; // default variant
+  &.primary {
+    background-color: @color-primary;
+    color: @color-white;
+  }
+  &.secondary {
+    background-color: @color-secondary;
+    color: @color-white;
+  }
+  &.white {
+    background-color: @color-white;
+    color: @color-text;
+  }
+  /* alignment */
+  > * {
+    .item.middle; // default alignment
+  }
+  /* sizes */
+  .item {
+    .item.large; // default size
+    &.tiny {
+      padding: 0;
+    }
+    &.small {
+      padding: .618rem;
+    }
+    &.medium {
+      padding: 1rem;
+    }
+    &.large {
+      padding: 1.238rem;
+    }
+    &.giant {
       padding: 2.619rem;
     }
   }

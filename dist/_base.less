@@ -116,23 +116,40 @@ a, button {
 }
 
 //////////////////////
-// box and xtmedia
+// contain
 //////////////////////
 
-.box {
-  width: 100%;
-  // flex container: flex-wrap flex-direction align-self justify-content
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  &.reverse {
-    flex-direction: column-reverse;
+.contain {
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  &.fluid {
+    width: auto !important;
   }
+}
+
+//////////////////////
+// column and group and item
+//////////////////////
+
+.column,
+.group {
+  max-width: 100%;
+  &.full {
+    width: 100%;
+  }
+}
+.column {
   // flex item: flex-grow flex-shrink flex-basis
   -ms-flex: 1 0 auto;
   flex: 1 0 auto;
 }
-.box-item {
+.group {
+  // flex item: flex-grow flex-shrink flex-basis
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+}
+.item {
   position: relative;
   width: 100%;
   /* alignment */
@@ -152,80 +169,6 @@ a, button {
     }
   }
 }
-.box.horizontal {
-  flex-wrap: nowrap;
-  flex-direction: row;
-  .box-item.fluid {
-    // flex item: flex-grow flex-shrink flex-basis
-    -ms-flex: 1 1 0;
-    flex: 1 1 0;
-  }
-  &:not(.reverse) {
-    .box-item + .box-item {
-      padding-left: 0 !important;
-      border: 0 !important;
-    }
-  }
-  &.reverse {
-    flex-direction: row-reverse;
-    .box-item + .box-item {
-      padding-right: 0 !important;
-      border: 0 !important;
-    }
-  }
-}
-
-// fixes
-/*
-.box.empty {
-  // vertical
-  &:not(.horizontal),
-  &:not([class*=" horizontal-"]) {
-    .box-item {
-      //.box-item.large; // default size
-      padding-left: 0;
-      padding-right: 0;
-      &:first-child {
-        padding-top: 0;
-      }
-      &:last-child {
-        padding-bottom: 0;
-      }
-    }
-    .box-item + .box-item {
-      border-top: 0;
-      padding-top: 0;
-    }
-  }
-  // horizontal
-  &.horizontal,
-  &[class*=" horizontal-"] {
-    .box-item {
-      padding-top: 0;
-      padding-bottom: 0;
-      &:first-child {
-        padding-left: 0;
-      }
-      &:last-child {
-        padding-right: 0;
-      }
-    }
-  }
-}
-*/
-
-//////////////////////
-// contain
-//////////////////////
-
-.contain {
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  &.fluid {
-    width: auto !important;
-  }
-}
 
 //////////////////////
 // grid and spacer and xt-media
@@ -240,9 +183,6 @@ a, button {
   flex-direction: row;
   &.reverse {
     flex-direction: row-reverse;
-  }
-  &.xt-media {
-    flex-wrap: nowrap;
   }
   /* alignment */
   &.middle {
@@ -287,25 +227,43 @@ a, button {
 }
 
 //////////////////////
-// column and group
+// box and xt-media
 //////////////////////
 
-.column,
-.group {
-  max-width: 100%;
-  &.full {
-    width: 100%;
+.box {
+  width: 100%;
+  // flex container: flex-wrap flex-direction align-self justify-content
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  &.reverse {
+    flex-direction: column-reverse;
   }
-}
-.column {
   // flex item: flex-grow flex-shrink flex-basis
   -ms-flex: 1 0 auto;
   flex: 1 0 auto;
 }
-.group {
-  // flex item: flex-grow flex-shrink flex-basis
-  -ms-flex: 0 0 auto;
-  flex: 0 0 auto;
+.horizontal {
+  flex-wrap: nowrap;
+  flex-direction: row;
+  .item.fluid {
+    // flex item: flex-grow flex-shrink flex-basis
+    -ms-flex: 1 1 0;
+    flex: 1 1 0;
+  }
+  &:not(.reverse) {
+    .item + .item {
+      padding-left: 0 !important;
+      border: 0 !important;
+    }
+  }
+  &.reverse {
+    flex-direction: row-reverse;
+    .item + .item {
+      padding-right: 0 !important;
+      border: 0 !important;
+    }
+  }
 }
 
 //////////////////////
@@ -689,24 +647,24 @@ img.fluid {
     .contain {
       width: unit(@@unit, px);
     }
-    // .box.horizontal
-    .box.horizontal-@{name} {
+    // .horizontal
+    .horizontal-@{name} {
       flex-wrap: nowrap;
       flex-direction: row;
-      .box-item.fluid {
+      .item.fluid {
         // flex item: flex-grow flex-shrink flex-basis
         -ms-flex: 1 1 0;
         flex: 1 1 0;
       }
       &:not(.reverse) {
-        .box-item + .box-item {
+        .item + .item {
           padding-left: 0 !important;
           border: 0 !important;
         }
       }
       &.reverse {
         flex-direction: row-reverse;
-        .box-item + .box-item {
+        .item + .item {
           padding-right: 0 !important;
           border: 0 !important;
         }
