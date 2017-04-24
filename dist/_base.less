@@ -5,11 +5,16 @@
 @import "_variables.less";
 
 //////////////////////
-// reset
+// normalize
 //////////////////////
 
+img {
+  display: block;
+}
 a,
+button,
 .button {
+  cursor: pointer;
   text-decoration: none;
   &:focus {
     outline: 0;
@@ -27,8 +32,8 @@ body {
 html {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
 }
 body {
   margin: 0;
@@ -100,9 +105,6 @@ body {
 // button
 //////////////////////
 
-a, button {
-  cursor: pointer;
-}
 .button {
   display: inline-block;
   position: relative;
@@ -316,8 +318,7 @@ a, button {
   // not separator
   &:not(.separator) {
     &:not(.reverse) {
-      &.horizontal,
-      &[class*=" horizontal-"] {
+      &.horizontal, &[class*=" horizontal-"] {
         > .item + .item {
           padding-left: 0;
         }
@@ -329,8 +330,7 @@ a, button {
       }
     }
     &.reverse {
-      &.horizontal,
-      &[class*=" horizontal-"] {
+      &.horizontal, &[class*=" horizontal-"] {
         > .item + .item {
           padding-right: 0;
         }

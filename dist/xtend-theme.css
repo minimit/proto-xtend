@@ -1,11 +1,17 @@
 /*! xtend v0.0.6 (http://www.minimit.com/xtend/)
 @copyright (c) 2016 - 2017 Riccardo Caroli
 @license MIT (https://github.com/minimit/xtend/blob/master/LICENSE) */
+img {
+  display: block;
+}
 a,
+button,
 .button {
+  cursor: pointer;
   text-decoration: none;
 }
 a:focus,
+button:focus,
 .button:focus {
   outline: 0;
 }
@@ -16,8 +22,8 @@ body {
 html {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
 }
 body {
   margin: 0;
@@ -73,10 +79,6 @@ body {
   border-style: solid;
   border-color: transparent;
   border-left-width: 0 !important;
-}
-a,
-button {
-  cursor: pointer;
 }
 .button {
   display: inline-block;
@@ -2238,6 +2240,7 @@ a.button:not(.link):focus {
   padding: 15px;
 }
 .overlay .overlay-close {
+  cursor: pointer;
   text-decoration: none;
   display: inline-block;
   position: relative;
