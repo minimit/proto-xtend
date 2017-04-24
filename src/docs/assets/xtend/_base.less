@@ -154,10 +154,13 @@ body {
   }
 }
 .column {
-  -ms-flex: 1 0 auto;
-  flex: 1 0 auto;
+  -ms-flex-preferred-size: 100%;
+  -ms-flex: 1 1 100%;
+  flex: 1 1 100%;
+  width: 100%;
 }
 .group {
+  -ms-flex-preferred-size: auto;
   -ms-flex: 0 0 auto;
   flex: 0 0 auto;
 }
@@ -191,6 +194,7 @@ body {
     -ms-flex-direction: column-reverse;
     flex-direction: column-reverse;
   }
+  -ms-flex-preferred-size: auto;
   -ms-flex: 1 0 auto;
   flex: 1 0 auto;
 }
@@ -748,11 +752,19 @@ img.fluid {
 }
 
 //////////////////////
-// utils
+// generate
 //////////////////////
 
-/* generate */
+/* default */
 .grid(cl; @columns); // default grid
+.cl-auto {
+  -ms-flex-preferred-size: auto;
+  flex-basis: auto;
+  max-width: none;
+  width: auto;
+}
+
+/* responsive */
 .for(@breakpoints); .-each(@value) {
   @name: extract(@value, 1);
   @query: "min-@{name}";
@@ -765,6 +777,7 @@ img.fluid {
       -ms-flex-preferred-size: auto;
       flex-basis: auto;
       max-width: none;
+      width: auto;
     }
     // .contain
     @unit: "contain-@{name}";
@@ -800,6 +813,8 @@ img.fluid {
     
   }
 }
+
+// .grid
 .grid(@name; @columns; @index: 1) when (@index =< @columns) {
   .grid(@name; @columns; (@index + 1));
   .@{name}-@{index} {
@@ -807,6 +822,7 @@ img.fluid {
     -ms-flex-preferred-size: @val;
     flex-basis: @val;
     max-width: @val;
+    width: @val;
   }
 }
 
