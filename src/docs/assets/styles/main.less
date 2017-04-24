@@ -139,20 +139,30 @@
 // sticky footer
 
 .site-wrapper {
+  display: -ms-flexbox;
+  -ms-flex-wrap: wrap;
+  -ms-flex-direction: column;
   display: flex;
+  flex-wrap: wrap;
   flex-flow: column;
   min-height: 100%;
 }
 .site-wrapper-inside {
+  display: -ms-flexbox;
+  -ms-flex-wrap: wrap;
+  -ms-flex-direction: column;
   display: flex;
+  flex-wrap: wrap;
   flex-flow: column;
-  flex: 1;
-  min-height: 100%;
   -ms-flex-preferred-size: auto; // ie11 fix
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  min-height: 100%;
 }
 .site-main {
-  flex: 1;
   -ms-flex-preferred-size: auto; // ie11 fix
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
 }
 
 //////////////////////
@@ -431,7 +441,8 @@ a.logo {
 // main
 //////////////////////
 
-.site-main {
+.site-main-inside {
+  .float();
   background-color: #ffffff;
 }
 
@@ -783,6 +794,7 @@ pre {
 //////////////////////
 
 // .site-footer
+
 .site-footer {
   .xt-scroll('bottom');
   z-index: 4 !important;
@@ -791,8 +803,12 @@ pre {
 .site-header {
   z-index: 6;
 }
-.site-main {
-  z-index: 5;
+.site-main,
+.site-main-inside {
+  z-index: 9;
+}
+.site-main + .xt-container.xt-position {
+  z-index: 4 !important; // ie10 fix
 }
 
 // .site-header-top

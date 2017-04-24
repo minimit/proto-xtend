@@ -154,12 +154,10 @@ body {
   }
 }
 .column {
-  // flex item: flex-grow flex-shrink flex-basis
   -ms-flex: 1 0 auto;
   flex: 1 0 auto;
 }
 .group {
-  // flex item: flex-grow flex-shrink flex-basis
   -ms-flex: 0 0 auto;
   flex: 0 0 auto;
 }
@@ -170,7 +168,6 @@ body {
 
 .grid,
 .spacer {
-  // flex container: flex-wrap flex-direction align-self justify-content
   display: -ms-flexbox;
   -ms-flex-wrap: wrap;
   -ms-flex-direction: row;
@@ -184,7 +181,6 @@ body {
 }
 .media,
 .card {
-  // flex container: flex-wrap flex-direction align-self justify-content
   display: -ms-flexbox;
   -ms-flex-wrap: wrap;
   -ms-flex-direction: column;
@@ -195,7 +191,6 @@ body {
     -ms-flex-direction: column-reverse;
     flex-direction: column-reverse;
   }
-  // flex item: flex-grow flex-shrink flex-basis
   -ms-flex: 1 0 auto;
   flex: 1 0 auto;
 }
@@ -307,7 +302,6 @@ body {
     flex-direction: row-reverse;
   }
   > .item.fluid {
-    // flex item: flex-grow flex-shrink flex-basis
     -ms-flex: 1 1 0%;
     flex: 1 1 0%;
   }
@@ -545,7 +539,6 @@ body {
     position: relative;
     z-index: 110;
     min-height: 100vh;
-    // flex container: flex-wrap flex-direction align-self justify-content
     display: -ms-flexbox;
     -ms-flex-wrap: wrap;
     -ms-flex-direction: row;
@@ -558,7 +551,6 @@ body {
   .overlay-content {
     position: relative;
     width: 100%;
-    // flex container: flex-wrap flex-direction align-self justify-content
     -ms-flex-item-align: center;
     align-self: center;
   }
@@ -567,7 +559,6 @@ body {
     .overlay-content {
       position: static;
       width: 100%;
-      // flex container: flex-wrap flex-direction align-self justify-content
       display: -ms-flexbox;
       -ms-flex-wrap: wrap;
       -ms-flex-direction: column;
@@ -791,7 +782,6 @@ img.fluid {
         flex-direction: row-reverse;
       }
       > .item.fluid {
-        // flex item: flex-grow flex-shrink flex-basis
         -ms-flex: 1 1 0%;
         flex: 1 1 0%;
       }
