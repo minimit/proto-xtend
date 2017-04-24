@@ -129,16 +129,23 @@ body {
 }
 .grid,
 .spacer {
+  display: -ms-flexbox;
+  -ms-flex-wrap: wrap;
+  -ms-flex-direction: row;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
 }
 .grid.reverse,
 .spacer.reverse {
+  -ms-flex-direction: row-reverse;
   flex-direction: row-reverse;
 }
 .media,
 .card {
+  display: -ms-flexbox;
+  -ms-flex-wrap: wrap;
+  -ms-flex-direction: column;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
@@ -147,6 +154,7 @@ body {
 }
 .media.reverse,
 .card.reverse {
+  -ms-flex-direction: column-reverse;
   flex-direction: column-reverse;
 }
 .grid,
@@ -161,113 +169,155 @@ body {
 .spacer.middle > *,
 .media.middle > *,
 .card.middle > * {
-  align-self: center;
+  -webkit-align-items: center;
+  -ms-flex-item-align: center;
   align-items: center;
+  align-self: center;
 }
 .grid.top > *,
 .spacer.top > *,
 .media.top > *,
 .card.top > * {
-  align-self: flex-start;
+  -webkit-align-items: start;
+  -ms-flex-item-align: start;
   align-items: flex-start;
+  align-self: flex-start;
 }
 .grid.bottom > *,
 .spacer.bottom > *,
 .media.bottom > *,
 .card.bottom > * {
-  align-self: flex-end;
+  -webkit-align-items: end;
+  -ms-flex-item-align: end;
   align-items: flex-end;
+  align-self: flex-end;
 }
 .grid.stretch > *,
 .spacer.stretch > *,
 .media.stretch > *,
 .card.stretch > * {
-  align-self: stretch;
+  -webkit-align-items: stretch;
+  -ms-flex-item-align: stretch;
   align-items: stretch;
+  align-self: stretch;
 }
 .grid > *.middle,
 .spacer > *.middle,
 .media > *.middle,
 .card > *.middle {
+  -ms-flex-item-align: center;
   align-self: center;
 }
 .grid > *.top,
 .spacer > *.top,
 .media > *.top,
 .card > *.top {
+  -ms-flex-item-align: flex-start;
   align-self: flex-start;
 }
 .grid > *.bottom,
 .spacer > *.bottom,
 .media > *.bottom,
 .card > *.bottom {
+  -ms-flex-item-align: flex-end;
   align-self: flex-end;
 }
 .grid > *.stretch,
 .spacer > *.stretch,
 .media > *.stretch,
 .card > *.stretch {
+  -ms-flex-item-align: stretch;
   align-self: stretch;
 }
 .grid.left,
 .spacer.left,
 .media.left,
 .card.left {
+  -ms-flex-pack: start;
   justify-content: flex-start;
 }
 .grid.left > .item,
 .spacer.left > .item,
 .media.left > .item,
 .card.left > .item {
+  -ms-flex-pack: start;
   justify-content: flex-start;
 }
 .grid.right,
 .spacer.right,
 .media.right,
 .card.right {
+  -ms-flex-pack: end;
   justify-content: flex-end;
 }
 .grid.right > .item,
 .spacer.right > .item,
 .media.right > .item,
 .card.right > .item {
+  -ms-flex-pack: end;
   justify-content: flex-end;
 }
 .grid.center,
 .spacer.center,
 .media.center,
 .card.center {
+  -ms-flex-pack: center;
   justify-content: center;
 }
 .grid.center > .item,
 .spacer.center > .item,
 .media.center > .item,
 .card.center > .item {
+  -ms-flex-pack: center;
   justify-content: center;
 }
 .grid.between,
 .spacer.between,
 .media.between,
 .card.between {
+  -ms-flex-pack: justify;
   justify-content: space-between;
 }
 .grid.between > .item,
 .spacer.between > .item,
 .media.between > .item,
 .card.between > .item {
+  -ms-flex-pack: justify;
   justify-content: space-between;
 }
 .grid.around,
 .spacer.around,
 .media.around,
 .card.around {
+  -ms-flex-pack: distribute;
   justify-content: space-around;
 }
 .grid.around > .item,
 .spacer.around > .item,
 .media.around > .item,
 .card.around > .item {
+  -ms-flex-pack: distribute;
   justify-content: space-around;
+}
+.horizontal {
+  -ms-flex-wrap: nowrap;
+  -ms-flex-direction: row;
+  flex-wrap: nowrap;
+  flex-direction: row;
+}
+.horizontal.reverse {
+  -ms-flex-direction: row-reverse;
+  flex-direction: row-reverse;
+}
+.horizontal > .item.fluid {
+  -ms-flex: 1 1 0%;
+  flex: 1 1 0%;
+}
+.horizontal.card > .item:before {
+  display: none;
+}
+.horizontal.card > .item:after {
+  display: block;
 }
 .card {
   width: 100%;
@@ -277,6 +327,8 @@ body {
   padding: 0 !important;
 }
 .card.separator > .item {
+  display: -ms-flexbox;
+  -ms-flex-item-align: stretch !important;
   display: flex;
   align-self: stretch !important;
 }
@@ -323,23 +375,6 @@ body {
 }
 .card:not(.separator).reverse:not(.horizontal):not([class*=" horizontal-"]) > .item + .item {
   padding-bottom: 0;
-}
-.horizontal {
-  flex-wrap: nowrap;
-  flex-direction: row;
-}
-.horizontal.reverse {
-  flex-direction: row-reverse;
-}
-.horizontal > .item.fluid {
-  -ms-flex: 1 1 0;
-  flex: 1 1 0;
-}
-.horizontal.card > .item:before {
-  display: none;
-}
-.horizontal.card > .item:after {
-  display: block;
 }
 .toggle-block {
   display: none !important;
@@ -475,6 +510,10 @@ body {
   position: relative;
   z-index: 110;
   min-height: 100vh;
+  display: -ms-flexbox;
+  -ms-flex-wrap: wrap;
+  -ms-flex-direction: row;
+  -ms-flex-pack: center;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
@@ -483,11 +522,16 @@ body {
 .overlay .overlay-content {
   position: relative;
   width: 100%;
+  -ms-flex-item-align: center;
   align-self: center;
 }
 .overlay.full .overlay-content {
   position: static;
   width: 100%;
+  display: -ms-flexbox;
+  -ms-flex-wrap: wrap;
+  -ms-flex-direction: column;
+  -ms-flex-pack: center;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
@@ -736,15 +780,18 @@ img.fluid {
     width: 540px;
   }
   .horizontal-xs {
+    -ms-flex-wrap: nowrap;
+    -ms-flex-direction: row;
     flex-wrap: nowrap;
     flex-direction: row;
   }
   .horizontal-xs.reverse {
+    -ms-flex-direction: row-reverse;
     flex-direction: row-reverse;
   }
   .horizontal-xs > .item.fluid {
-    -ms-flex: 1 1 0;
-    flex: 1 1 0;
+    -ms-flex: 1 1 0%;
+    flex: 1 1 0%;
   }
   .horizontal-xs.card > .item:before {
     display: none;
@@ -823,15 +870,18 @@ img.fluid {
     width: 720px;
   }
   .horizontal-sm {
+    -ms-flex-wrap: nowrap;
+    -ms-flex-direction: row;
     flex-wrap: nowrap;
     flex-direction: row;
   }
   .horizontal-sm.reverse {
+    -ms-flex-direction: row-reverse;
     flex-direction: row-reverse;
   }
   .horizontal-sm > .item.fluid {
-    -ms-flex: 1 1 0;
-    flex: 1 1 0;
+    -ms-flex: 1 1 0%;
+    flex: 1 1 0%;
   }
   .horizontal-sm.card > .item:before {
     display: none;
@@ -910,15 +960,18 @@ img.fluid {
     width: 960px;
   }
   .horizontal-md {
+    -ms-flex-wrap: nowrap;
+    -ms-flex-direction: row;
     flex-wrap: nowrap;
     flex-direction: row;
   }
   .horizontal-md.reverse {
+    -ms-flex-direction: row-reverse;
     flex-direction: row-reverse;
   }
   .horizontal-md > .item.fluid {
-    -ms-flex: 1 1 0;
-    flex: 1 1 0;
+    -ms-flex: 1 1 0%;
+    flex: 1 1 0%;
   }
   .horizontal-md.card > .item:before {
     display: none;
@@ -997,15 +1050,18 @@ img.fluid {
     width: 1140px;
   }
   .horizontal-lg {
+    -ms-flex-wrap: nowrap;
+    -ms-flex-direction: row;
     flex-wrap: nowrap;
     flex-direction: row;
   }
   .horizontal-lg.reverse {
+    -ms-flex-direction: row-reverse;
     flex-direction: row-reverse;
   }
   .horizontal-lg > .item.fluid {
-    -ms-flex: 1 1 0;
-    flex: 1 1 0;
+    -ms-flex: 1 1 0%;
+    flex: 1 1 0%;
   }
   .horizontal-lg.card > .item:before {
     display: none;
@@ -1084,15 +1140,18 @@ img.fluid {
     width: 1400px;
   }
   .horizontal-xl {
+    -ms-flex-wrap: nowrap;
+    -ms-flex-direction: row;
     flex-wrap: nowrap;
     flex-direction: row;
   }
   .horizontal-xl.reverse {
+    -ms-flex-direction: row-reverse;
     flex-direction: row-reverse;
   }
   .horizontal-xl > .item.fluid {
-    -ms-flex: 1 1 0;
-    flex: 1 1 0;
+    -ms-flex: 1 1 0%;
+    flex: 1 1 0%;
   }
   .horizontal-xl.card > .item:before {
     display: none;
@@ -1903,56 +1962,72 @@ a.button:not(.link):focus {
   max-width: 1400px;
 }
 .grid {
+  -ms-flex-pack: start;
   justify-content: flex-start;
   margin: -0.618rem;
 }
 .grid > * {
-  align-self: flex-start;
+  -webkit-align-items: start;
+  -ms-flex-item-align: start;
   align-items: flex-start;
+  align-self: flex-start;
 }
 .grid > .item {
+  -ms-flex-pack: start;
   justify-content: flex-start;
 }
 .grid > * {
   padding: .618rem;
 }
 .spacer {
+  -ms-flex-pack: start;
   justify-content: flex-start;
   margin: -0.618rem;
 }
 .spacer > * {
-  align-self: center;
+  -webkit-align-items: center;
+  -ms-flex-item-align: center;
   align-items: center;
+  align-self: center;
 }
 .spacer > .item {
+  -ms-flex-pack: start;
   justify-content: flex-start;
 }
 .spacer > * {
   padding: .618rem;
 }
 .media {
+  -ms-flex-pack: start;
   justify-content: flex-start;
   margin: -0.618rem;
 }
 .media > * {
-  align-self: center;
+  -webkit-align-items: center;
+  -ms-flex-item-align: center;
   align-items: center;
+  align-self: center;
 }
 .media > .item {
+  -ms-flex-pack: start;
   justify-content: flex-start;
 }
 .media > * {
   padding: .618rem;
 }
 .card {
+  -ms-flex-pack: center;
   justify-content: center;
   margin: -1.238rem;
 }
 .card > * {
-  align-self: center;
+  -webkit-align-items: center;
+  -ms-flex-item-align: center;
   align-items: center;
+  align-self: center;
 }
 .card > .item {
+  -ms-flex-pack: center;
   justify-content: center;
 }
 .card > * {
