@@ -543,6 +543,7 @@ body {
   right: 0;
   bottom: 0;
   /* styles */
+  display: -ms-flexbox;
   -ms-flex-wrap: nowrap;
   -ms-flex-direction: column;
   flex-wrap: nowrap;
@@ -557,21 +558,17 @@ body {
     display: -ms-flexbox;
     -ms-flex-wrap: nowrap;
     -ms-flex-direction: column;
-    -ms-flex-pack: center;
     display: flex;
     flex-wrap: nowrap;
     flex-direction: column;
+    -ms-flex-pack: center;
     justify-content: center;
-    -ms-align-items: center;
-    -ms-flex-item-align: center;
-    align-items: center;
-    align-self: center;
-    -ms-flex-preferred-size: 100%;
-    -ms-flex: 0 0 100%;
-    flex: 0 0 100%;
   }
   .overlay-content {
     position: relative;
+    width: 100%;
+    -ms-flex-item-align: center;
+    align-self: center;
   }
   /* full */
   &.full {

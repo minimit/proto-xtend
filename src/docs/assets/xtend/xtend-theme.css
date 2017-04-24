@@ -511,6 +511,7 @@ body {
   right: 0;
   bottom: 0;
   /* styles */
+  display: -ms-flexbox;
   -ms-flex-wrap: nowrap;
   -ms-flex-direction: column;
   flex-wrap: nowrap;
@@ -533,21 +534,17 @@ body {
   display: -ms-flexbox;
   -ms-flex-wrap: nowrap;
   -ms-flex-direction: column;
-  -ms-flex-pack: center;
   display: flex;
   flex-wrap: nowrap;
   flex-direction: column;
+  -ms-flex-pack: center;
   justify-content: center;
-  -ms-align-items: center;
-  -ms-flex-item-align: center;
-  align-items: center;
-  align-self: center;
-  -ms-flex-preferred-size: 100%;
-  -ms-flex: 0 0 100%;
-  flex: 0 0 100%;
 }
 .overlay .overlay-content {
   position: relative;
+  width: 100%;
+  -ms-flex-item-align: center;
+  align-self: center;
 }
 .overlay.full .overlay-content {
   position: static;
@@ -2670,33 +2667,28 @@ a.button:not(.link):focus {
   color: #bfbfbf;
 }
 .overlay .overlay-content {
-  padding: 40px;
   max-width: 930px;
 }
-.overlay.tiny .overlay-content {
+.overlay .overlay-content {
   padding: 40px;
+}
+.overlay.tiny .overlay-content {
   max-width: 510px;
 }
 .overlay.small .overlay-content {
-  padding: 40px;
   max-width: 690px;
 }
 .overlay.medium .overlay-content {
-  padding: 40px;
   max-width: 930px;
 }
 .overlay.large .overlay-content {
-  padding: 40px;
   max-width: 1110px;
 }
 .overlay.giant .overlay-content {
-  padding: 40px;
   max-width: 1370px;
 }
 .overlay.full .overlay-content {
-  padding: 40px;
   max-width: inherit;
-  width: 100%;
 }
 .overlay .overlay-inner:not([class*=" anim-"]) {
   animation-duration: 300ms;
