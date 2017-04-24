@@ -205,6 +205,12 @@ body {
   align-items: stretch;
   align-self: stretch;
 }
+.grid.stretch > * > *,
+.spacer.stretch > * > *,
+.media.stretch > * > *,
+.card.stretch > * > * {
+  height: 100%;
+}
 .grid > *.middle,
 .spacer > *.middle,
 .media > *.middle,
