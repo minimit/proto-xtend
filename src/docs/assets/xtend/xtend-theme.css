@@ -398,6 +398,7 @@ body {
 }
 .toggle-flex.active,
 .toggle-flex.fade-out {
+  display: -ms-flexbox !important;
   display: flex !important;
 }
 .toggle-inline {
@@ -444,6 +445,7 @@ body {
 }
 .drop.active,
 .drop.fade-out {
+  display: -ms-flexbox !important;
   display: flex !important;
 }
 .drop .button,
@@ -509,43 +511,46 @@ body {
   right: 0;
   bottom: 0;
   /* styles */
+  -ms-flex-wrap: nowrap;
+  -ms-flex-direction: column;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  -ms-flex-item-align: center;
+  align-self: center;
   /* full */
   /* close */
 }
 .overlay.active,
 .overlay.fade-out {
-  display: block !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
 }
 .overlay .overlay-inner {
   position: relative;
   z-index: 110;
+  width: 100%;
   min-height: 100vh;
   display: -ms-flexbox;
-  -ms-flex-wrap: wrap;
-  -ms-flex-direction: row;
-  -ms-flex-pack: center;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: center;
-}
-.overlay .overlay-content {
-  position: relative;
-  width: 100%;
-  -ms-flex-item-align: center;
-  align-self: center;
-}
-.overlay.full .overlay-content {
-  position: static;
-  width: 100%;
-  display: -ms-flexbox;
-  -ms-flex-wrap: wrap;
+  -ms-flex-wrap: nowrap;
   -ms-flex-direction: column;
   -ms-flex-pack: center;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   flex-direction: column;
   justify-content: center;
+  -ms-align-items: center;
+  -ms-flex-item-align: center;
+  align-items: center;
+  align-self: center;
+  -ms-flex-preferred-size: 100%;
+  -ms-flex: 0 0 100%;
+  flex: 0 0 100%;
+}
+.overlay .overlay-content {
+  position: relative;
+}
+.overlay.full .overlay-content {
+  position: static;
 }
 .overlay.full .overlay-content + .xt-backdrop {
   display: none;
@@ -2632,53 +2637,37 @@ a.button:not(.link):focus {
   background-color: transparent;
   color: #00B0FF;
 }
-.overlay .overlay-content {
+.overlay .overlay-content,
+.overlay.full .overlay-inner {
   background-color: #ffffff;
   color: #000000;
 }
 .overlay .overlay-close {
   color: #bfbfbf;
 }
-.overlay.full .overlay-inner {
-  padding: 0;
-  background-color: #ffffff;
-  color: #000000;
-}
-.overlay.primary .overlay-content {
+.overlay.primary .overlay-content,
+.overlay.primary.full .overlay-inner {
   background-color: #00B0FF;
   color: #ffffff;
 }
 .overlay.primary .overlay-close {
   color: #ffffff;
 }
-.overlay.primary.full .overlay-inner {
-  padding: 0;
-  background-color: #00B0FF;
-  color: #ffffff;
-}
-.overlay.secondary .overlay-content {
+.overlay.secondary .overlay-content,
+.overlay.secondary.full .overlay-inner {
   background-color: #d14;
   color: #ffffff;
 }
 .overlay.secondary .overlay-close {
   color: #ffffff;
 }
-.overlay.secondary.full .overlay-inner {
-  padding: 0;
-  background-color: #d14;
-  color: #ffffff;
-}
-.overlay.white .overlay-content {
+.overlay.white .overlay-content,
+.overlay.white.full .overlay-inner {
   background-color: #ffffff;
   color: #000000;
 }
 .overlay.white .overlay-close {
   color: #bfbfbf;
-}
-.overlay.white.full .overlay-inner {
-  padding: 0;
-  background-color: #ffffff;
-  color: #000000;
 }
 .overlay .overlay-content {
   padding: 40px;
@@ -2707,6 +2696,7 @@ a.button:not(.link):focus {
 .overlay.full .overlay-content {
   padding: 40px;
   max-width: inherit;
+  width: 100%;
 }
 .overlay .overlay-inner:not([class*=" anim-"]) {
   animation-duration: 300ms;

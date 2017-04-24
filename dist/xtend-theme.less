@@ -530,51 +530,33 @@ a.button:not(.link) {
   /* variants */
   .overlay.white; // default variant
   &.primary {
-    .overlay-content {
+    .overlay-content,
+    &.full .overlay-inner {
       background-color: @color-primary;
       color: @color-white;
     }
     .overlay-close {
       color: @color-white;
     }
-    &.full {
-      .overlay-inner {
-        padding: 0;
-        background-color: @color-primary;
-        color: @color-white;
-      }
-    }
   }
   &.secondary {
-    .overlay-content {
+    .overlay-content,
+    &.full .overlay-inner {
       background-color: @color-secondary;
       color: @color-white;
     }
     .overlay-close {
       color: @color-white;
     }
-    &.full {
-      .overlay-inner {
-        padding: 0;
-        background-color: @color-secondary;
-        color: @color-white;
-      }
-    }
   }
   &.white {
-    .overlay-content {
+    .overlay-content,
+    &.full .overlay-inner {
       background-color: @color-white;
       color: @color-text;
     }
     .overlay-close {
       color: @color-text-75;
-    }
-    &.full {
-      .overlay-inner {
-        padding: 0;
-        background-color: @color-white;
-        color: @color-text;
-      }
     }
   }
   /* sizes */
@@ -613,6 +595,7 @@ a.button:not(.link) {
     .overlay-content {
       padding: 40px;
       max-width: inherit;
+      width: 100%;
     }
   }
   /* animations */
