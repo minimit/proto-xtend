@@ -276,30 +276,69 @@ a, button {
   > *:not(.item) {
     padding: 0 !important; // no padding
   }
-  // items styles for vertical + horizontal
-  > .item {
-    display: flex;
-    align-self: stretch !important;
-    &:before {
-      display: block;
-    }
-    &:after {
-      display: none;
-    }
-  }
-  &:not(.reverse) {
+  // separator
+  &.separator {
     > .item {
-      &:last-child:before,
+      display: flex;
+      align-self: stretch !important;
+      &:first-child:before,
       &:first-child:after {
         display: none !important;
       }
     }
+    > .item:before { // separator for .item vertical
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      .reverse& {
+        top: auto;
+        bottom: 0;
+        left: auto;
+        right: 0;
+      }
+    }
+    > .item:after { // separator for .item horizontal
+      content: '';
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      .reverse& {
+        top: auto;
+        bottom: 0;
+        left: auto;
+        right: 0;
+      }
+    }
   }
-  &.reverse {
-    > .item {
-      &:first-child:before,
-      &:last-child:after {
-        display: none !important;
+  // not separator
+  &:not(.separator) {
+    &:not(.reverse) {
+      &.horizontal,
+      &[class*=" horizontal-"] {
+        > .item + .item {
+          padding-left: 0;
+        }
+      }
+      &:not(.horizontal):not([class*=" horizontal-"]) {
+        > .item + .item {
+          padding-top: 0;
+        }
+      }
+    }
+    &.reverse {
+      &.horizontal,
+      &[class*=" horizontal-"] {
+        > .item + .item {
+          padding-right: 0;
+        }
+      }
+      &:not(.horizontal):not([class*=" horizontal-"]) {
+        > .item + .item {
+          padding-bottom: 0;
+        }
       }
     }
   }

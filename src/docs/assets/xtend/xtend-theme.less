@@ -364,24 +364,6 @@ a.button:not(.link) {
   border: 0;
   -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
-  > .item:before { // styles .item vertical
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    background: @color-black-15;
-  }
-  > .item:after { // styles .item horizontal
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 1px;
-    height: 100%;
-    background: @color-black-15;
-  }
   /* variants */
   .card.white; // default variant
   &.primary {
@@ -417,6 +399,19 @@ a.button:not(.link) {
     &.giant {
       padding-top: 2.619rem;
       padding-bottom: 2.619rem;
+    }
+  }
+  /* separator */
+  &.separator {
+    > .item:before { // separator for .item vertical
+      width: 100%;
+      height: 1px;
+      background: @color-black-15;
+    }
+    > .item:after { // separator for .item horizontal
+      width: 1px;
+      height: 100%;
+      background: @color-black-15;
     }
   }
 }

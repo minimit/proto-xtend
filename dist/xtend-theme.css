@@ -274,23 +274,53 @@ button {
 .card > *:not(.item) {
   padding: 0 !important;
 }
-.card > .item {
+.card.separator > .item {
   display: flex;
   align-self: stretch !important;
 }
-.card > .item:before {
+.card.separator > .item:first-child:before,
+.card.separator > .item:first-child:after {
+  display: none !important;
+}
+.card.separator > .item:before {
+  content: '';
   display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
-.card > .item:after {
+.reverse.card.separator > .item:before {
+  top: auto;
+  bottom: 0;
+  left: auto;
+  right: 0;
+}
+.card.separator > .item:after {
+  content: '';
   display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
-.card:not(.reverse) > .item:last-child:before,
-.card:not(.reverse) > .item:first-child:after {
-  display: none !important;
+.reverse.card.separator > .item:after {
+  top: auto;
+  bottom: 0;
+  left: auto;
+  right: 0;
 }
-.card.reverse > .item:first-child:before,
-.card.reverse > .item:last-child:after {
-  display: none !important;
+.card:not(.separator):not(.reverse).horizontal > .item + .item,
+.card:not(.separator):not(.reverse)[class*=" horizontal-"] > .item + .item {
+  padding-left: 0;
+}
+.card:not(.separator):not(.reverse):not(.horizontal):not([class*=" horizontal-"]) > .item + .item {
+  padding-top: 0;
+}
+.card:not(.separator).reverse.horizontal > .item + .item,
+.card:not(.separator).reverse[class*=" horizontal-"] > .item + .item {
+  padding-right: 0;
+}
+.card:not(.separator).reverse:not(.horizontal):not([class*=" horizontal-"]) > .item + .item {
+  padding-bottom: 0;
 }
 .horizontal {
   flex-wrap: nowrap;
@@ -2003,24 +2033,7 @@ a.button:not(.link):focus {
   background-color: #ffffff;
   color: #000000;
   /* internal sizes */
-}
-.card > .item:before {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background: rgba(0, 0, 0, 0.15);
-}
-.card > .item:after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 1px;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.15);
+  /* separator */
 }
 .card.primary {
   background-color: #00B0FF;
@@ -2053,6 +2066,16 @@ a.button:not(.link):focus {
 .card > .item.giant {
   padding-top: 2.619rem;
   padding-bottom: 2.619rem;
+}
+.card.separator > .item:before {
+  width: 100%;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.15);
+}
+.card.separator > .item:after {
+  width: 1px;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.15);
 }
 .drop {
   /* styles */
