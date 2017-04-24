@@ -338,8 +338,10 @@ body {
   // separator
   &.separator {
     > .item {
+      /* BUG ie10 breaks layout
       display: -ms-flexbox;
       -ms-flex-item-align: stretch !important;
+      */
       display: flex;
       align-self: stretch !important;
       &:first-child:before,

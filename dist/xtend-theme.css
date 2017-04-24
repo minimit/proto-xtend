@@ -337,8 +337,10 @@ body {
   padding: 0 !important;
 }
 .card.separator > .item {
-  display: -ms-flexbox;
-  -ms-flex-item-align: stretch !important;
+  /* BUG ie10 breaks layout
+      display: -ms-flexbox;
+      -ms-flex-item-align: stretch !important;
+      */
   display: flex;
   align-self: stretch !important;
 }
@@ -2112,8 +2114,8 @@ a.button:not(.link):focus {
   padding: .618rem;
 }
 .card {
-  -ms-flex-pack: center;
-  justify-content: center;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
   margin: -1.238rem;
 }
 .card > * {
@@ -2123,8 +2125,8 @@ a.button:not(.link):focus {
   align-self: center;
 }
 .card > .item {
-  -ms-flex-pack: center;
-  justify-content: center;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
 }
 .card > * {
   padding: 1.238rem;
