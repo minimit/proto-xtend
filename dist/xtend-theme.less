@@ -293,13 +293,13 @@ a.button:not(.link) {
 }
 
 //////////////////////
-// grid + spacer + media + box
+// flex + spacer + media + card
 //////////////////////
 
-.grid {
-  .grid.top; // default alignment
-  .grid.left; // default justification
-  .grid.small; // default spacing
+.flex {
+  .flex.top; // default alignment
+  .flex.left; // default justification
+  .flex.small; // default spacing
 }
 .spacer {
   .spacer.middle; // default alignment
@@ -316,7 +316,7 @@ a.button:not(.link) {
   .card.left; // default justification
   .card.large; // default spacing
 }
-.grid,
+.flex,
 .spacer,
 .media,
 .card {
@@ -354,7 +354,7 @@ a.button:not(.link) {
 }
 
 //////////////////////
-// box
+// card
 //////////////////////
 
 .card {
@@ -379,7 +379,7 @@ a.button:not(.link) {
     color: @color-text;
   }
   /* internal sizes */
-  > .block {
+  > .item {
     &.tiny {
       padding-top: 0;
       padding-bottom: 0;
@@ -403,12 +403,12 @@ a.button:not(.link) {
   }
   /* separator */
   &.separator {
-    > .block:before { // separator for .block vertical
+    > .item:before { // separator for .item vertical
       width: 100%;
       height: 1px;
       background: @color-black-15;
     }
-    > .block:after { // separator for .block horizontal
+    > .item:after { // separator for .item horizontal
       width: 1px;
       height: 100%;
       background: @color-black-15;
