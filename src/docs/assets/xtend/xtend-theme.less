@@ -379,7 +379,7 @@ a.button:not(.link) {
     color: @color-text;
   }
   /* internal sizes */
-  > .item {
+  > .block {
     &.tiny {
       padding-top: 0;
       padding-bottom: 0;
@@ -403,12 +403,12 @@ a.button:not(.link) {
   }
   /* separator */
   &.separator {
-    > .item:before { // separator for .item vertical
+    > .block:before { // separator for .block vertical
       width: 100%;
       height: 1px;
       background: @color-black-15;
     }
-    > .item:after { // separator for .item horizontal
+    > .block:after { // separator for .block horizontal
       width: 1px;
       height: 100%;
       background: @color-black-15;

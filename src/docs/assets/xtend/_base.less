@@ -146,7 +146,7 @@ body {
 
 .column,
 .group,
-.item {
+.block {
   position: relative;
   max-width: 100%;
   &.full {
@@ -282,7 +282,7 @@ body {
     -webkit-justify-content: flex-start;
     -ms-flex-pack: start;
     justify-content: flex-start;
-    > .item {
+    > .block {
       -webkit-justify-content: flex-start;
       -ms-flex-pack: start;
       justify-content: flex-start;
@@ -292,7 +292,7 @@ body {
     -webkit-justify-content: flex-end;
     -ms-flex-pack: end;
     justify-content: flex-end;
-    > .item {
+    > .block {
       -webkit-justify-content: flex-end;
       -ms-flex-pack: end;
       justify-content: flex-end;
@@ -302,7 +302,7 @@ body {
     -webkit-justify-content: center;
     -ms-flex-pack: center;
     justify-content: center;
-    > .item {
+    > .block {
       -webkit-justify-content: center;
       -ms-flex-pack: center;
       justify-content: center;
@@ -312,7 +312,7 @@ body {
     -webkit-justify-content: space-between;
     -ms-flex-pack: justify;
     justify-content: space-between;
-    > .item {
+    > .block {
       -webkit-justify-content: space-between;
       -ms-flex-pack: justify;
       justify-content: space-between;
@@ -322,7 +322,7 @@ body {
     -webkit-justify-content: space-around;
     -ms-flex-pack: distribute;
     justify-content: space-around;
-    > .item {
+    > .block {
       -webkit-justify-content: space-around;
       -ms-flex-pack: distribute;
       justify-content: space-around;
@@ -341,14 +341,14 @@ body {
     -ms-flex-direction: row-reverse;
     flex-direction: row-reverse;
   }
-  > .item.fluid {
+  > .block.fluid {
     -webkit-flex: 1 1 0%;
     -ms-flex: 1 1 0%;
     flex: 1 1 0%;
   }
   // items styles for vertical + horizontal
   &.card {
-    > .item {
+    > .block {
       &:before {
         display: none;
       }
@@ -366,12 +366,12 @@ body {
 .card {
   width: 100%;
   margin: 0 !important; // no negative margin
-  > *:not(.item) {
+  > *:not(.block) {
     padding: 0 !important; // no padding
   }
   // separator
   &.separator {
-    > .item {
+    > .block {
       display: -webkit-flex;
       /* display: -ms-flexbox; // BUG ie10 breaks layout */
       display: flex;
@@ -383,7 +383,7 @@ body {
         display: none !important;
       }
     }
-    > .item:before { // separator for .item vertical
+    > .block:before { // separator for .block vertical
       content: '';
       display: block;
       position: absolute;
@@ -396,7 +396,7 @@ body {
         right: 0;
       }
     }
-    > .item:after { // separator for .item horizontal
+    > .block:after { // separator for .block horizontal
       content: '';
       display: none;
       position: absolute;
@@ -414,24 +414,24 @@ body {
   &:not(.separator) {
     &:not(.reverse) {
       &.horizontal, &[class*=" horizontal-"] {
-        > .item + .item {
+        > .block + .block {
           padding-left: 0;
         }
       }
       &:not(.horizontal):not([class*=" horizontal-"]) {
-        > .item + .item {
+        > .block + .block {
           padding-top: 0;
         }
       }
     }
     &.reverse {
       &.horizontal, &[class*=" horizontal-"] {
-        > .item + .item {
+        > .block + .block {
           padding-right: 0;
         }
       }
       &:not(.horizontal):not([class*=" horizontal-"]) {
-        > .item + .item {
+        > .block + .block {
           padding-bottom: 0;
         }
       }
@@ -849,14 +849,14 @@ img.fluid {
         -ms-flex-direction: row-reverse;
         flex-direction: row-reverse;
       }
-      > .item.fluid {
+      > .block.fluid {
         -webkit-flex: 1 1 0%;
         -ms-flex: 1 1 0%;
         flex: 1 1 0%;
       }
       // items styles for vertical + horizontal
       &.card {
-        > .item {
+        > .block {
           &:before {
             display: none;
           }
