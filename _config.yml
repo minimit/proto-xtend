@@ -8,14 +8,14 @@ twitter: "https://twitter.com/beaver82minimit"
 google: "https://plus.google.com/+Minimit"
 
 # settings
-port: 4000
-host: 192.168.1.183
 source: "src/docs/"
 destination: "docs/"
 baseurl: "/"
 exclude:
   - "*.psd"
   - "*.scss"
+port: 4000
+host: 192.168.1.183
   
 # collections
 collections:

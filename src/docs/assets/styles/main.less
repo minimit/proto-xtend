@@ -139,28 +139,38 @@
 // sticky footer
 
 .site-wrapper {
+  display: -webkit-box;
+  display: -webkit-flex;
   display: -ms-flexbox;
-  -ms-flex-wrap: wrap;
-  -ms-flex-direction: column;
   display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
   flex-flow: column;
   min-height: 100%;
 }
 .site-wrapper-inside {
+  display: -webkit-box;
+  display: -webkit-flex;
   display: -ms-flexbox;
-  -ms-flex-wrap: wrap;
-  -ms-flex-direction: column;
   display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
   flex-flow: column;
-  -ms-flex-preferred-size: auto; // ie11 fix
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 0 auto;
   -ms-flex: 1 1 auto;
   flex: 1 1 auto;
   min-height: 100%;
 }
 .site-main {
-  -ms-flex-preferred-size: auto; // ie11 fix
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 1 auto;
   -ms-flex: 1 1 auto;
   flex: 1 1 auto;
 }
@@ -243,12 +253,16 @@ a.logo {
   .float;
   color: @color-white;
   > .contain {
-    // required for min-height ie10
+    // flex parent required for min-height ie10
+    display: -webkit-box;
+    display: -webkit-flex;
     display: -ms-flexbox;
-    -ms-flex-wrap: wrap;
-    -ms-flex-direction: row;
     display: flex;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
     flex-wrap: wrap;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
     flex-direction: row;
     > .media {
       min-height: 270px;
