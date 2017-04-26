@@ -108,18 +108,18 @@ body {
 .contain.fluid {
   width: auto !important;
 }
-.column,
+.item,
 .group,
 .block {
   position: relative;
   max-width: 100%;
 }
-.column.full,
+.item.full,
 .group.full,
 .block.full {
   width: 100%;
 }
-.column {
+.item {
   -webkit-flex: 1 1 100%;
   -ms-flex: 1 1 100%;
   flex: 1 1 100%;
@@ -159,6 +159,7 @@ body {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+  -ms-flex-preferred-size: auto;
   -webkit-flex: 1 0 auto;
   -ms-flex: 1 0 auto;
   flex: 1 0 auto;
@@ -711,91 +712,91 @@ img.fluid {
   transform: translateZ(0);
 }
 /* default */
-.cl-12 {
+.size-12 {
   -webkit-flex-basis: 100%;
   -ms-flex-preferred-size: 100%;
   flex-basis: 100%;
   max-width: 100%;
   width: 100%;
 }
-.cl-11 {
+.size-11 {
   -webkit-flex-basis: 91.66666667%;
   -ms-flex-preferred-size: 91.66666667%;
   flex-basis: 91.66666667%;
   max-width: 91.66666667%;
   width: 91.66666667%;
 }
-.cl-10 {
+.size-10 {
   -webkit-flex-basis: 83.33333333%;
   -ms-flex-preferred-size: 83.33333333%;
   flex-basis: 83.33333333%;
   max-width: 83.33333333%;
   width: 83.33333333%;
 }
-.cl-9 {
+.size-9 {
   -webkit-flex-basis: 75%;
   -ms-flex-preferred-size: 75%;
   flex-basis: 75%;
   max-width: 75%;
   width: 75%;
 }
-.cl-8 {
+.size-8 {
   -webkit-flex-basis: 66.66666667%;
   -ms-flex-preferred-size: 66.66666667%;
   flex-basis: 66.66666667%;
   max-width: 66.66666667%;
   width: 66.66666667%;
 }
-.cl-7 {
+.size-7 {
   -webkit-flex-basis: 58.33333333%;
   -ms-flex-preferred-size: 58.33333333%;
   flex-basis: 58.33333333%;
   max-width: 58.33333333%;
   width: 58.33333333%;
 }
-.cl-6 {
+.size-6 {
   -webkit-flex-basis: 50%;
   -ms-flex-preferred-size: 50%;
   flex-basis: 50%;
   max-width: 50%;
   width: 50%;
 }
-.cl-5 {
+.size-5 {
   -webkit-flex-basis: 41.66666667%;
   -ms-flex-preferred-size: 41.66666667%;
   flex-basis: 41.66666667%;
   max-width: 41.66666667%;
   width: 41.66666667%;
 }
-.cl-4 {
+.size-4 {
   -webkit-flex-basis: 33.33333333%;
   -ms-flex-preferred-size: 33.33333333%;
   flex-basis: 33.33333333%;
   max-width: 33.33333333%;
   width: 33.33333333%;
 }
-.cl-3 {
+.size-3 {
   -webkit-flex-basis: 25%;
   -ms-flex-preferred-size: 25%;
   flex-basis: 25%;
   max-width: 25%;
   width: 25%;
 }
-.cl-2 {
+.size-2 {
   -webkit-flex-basis: 16.66666667%;
   -ms-flex-preferred-size: 16.66666667%;
   flex-basis: 16.66666667%;
   max-width: 16.66666667%;
   width: 16.66666667%;
 }
-.cl-1 {
+.size-1 {
   -webkit-flex-basis: 8.33333333%;
   -ms-flex-preferred-size: 8.33333333%;
   flex-basis: 8.33333333%;
   max-width: 8.33333333%;
   width: 8.33333333%;
 }
-.cl-auto {
+.size-auto {
   -webkit-flex-basis: auto;
   -ms-flex-preferred-size: auto;
   flex-basis: auto;

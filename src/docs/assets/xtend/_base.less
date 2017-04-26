@@ -141,10 +141,10 @@ body {
 }
 
 //////////////////////
-// column + group + item
+// item + group + block
 //////////////////////
 
-.column,
+.item,
 .group,
 .block {
   position: relative;
@@ -153,7 +153,7 @@ body {
     width: 100%;
   }
 }
-.column {
+.item {
   -webkit-flex: 1 1 100%;
   -ms-flex: 1 1 100%;
   flex: 1 1 100%;
@@ -202,6 +202,7 @@ body {
     -ms-flex-direction: column-reverse;
     flex-direction: column-reverse;
   }
+  -ms-flex-preferred-size: auto;
   -webkit-flex: 1 0 auto;
   -ms-flex: 1 0 auto;
   flex: 1 0 auto;
@@ -806,8 +807,8 @@ img.fluid {
 //////////////////////
 
 /* default */
-.grid(cl; @columns); // default grid
-.cl-auto {
+.grid(size; @columns); // default grid
+.size-auto {
   -webkit-flex-basis: auto;
   -ms-flex-preferred-size: auto;
   flex-basis: auto;
