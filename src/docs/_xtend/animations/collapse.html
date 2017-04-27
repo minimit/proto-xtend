@@ -26,8 +26,8 @@ order: 10
   <button type="button" class="button">
     Toggle
   </button>
-  <div class="toggle-block collapse-width">
-    <div class="card card-block">
+  <div class="card toggle-flex collapse-width">
+    <div class="item">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam aliquet turpis lacinia, efficitur leo vel, commodo leo. In eleifend mi et est fermentum elementum.
     </div>
   </div>
@@ -41,8 +41,8 @@ order: 10
   <div class="button">
     Toggle
   </div>
-  <div class="toggle-block collapse-width">
-    <div class="card card-block">
+  <div class="card toggle-flex collapse-width">
+    <div class="item">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam aliquet turpis lacinia, efficitur leo vel, commodo leo. In eleifend mi et est fermentum elementum.
     </div>
   </div>
@@ -56,8 +56,8 @@ order: 10
   <button type="button" class="button">
     Toggle
   </button>
-  <div class="toggle-block collapse-width anim-horizontal">
-    <div class="card card-block">
+  <div class="card toggle-flex collapse-width anim-horizontal">
+    <div class="item">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam aliquet turpis lacinia, efficitur leo vel, commodo leo. In eleifend mi et est fermentum elementum.
     </div>
   </div>
@@ -68,12 +68,14 @@ order: 10
     <div class="demo-text"><code>.card</code>.</div>
     <div class="demo-source" data-lang="html">
 <div data-xt-toggle='{"elements": ".card", "on": "mouseenter", "off": "mouseleave"}'>
-  <div class="card">
-    <img class="fluid" src="https://placehold.it/600x200/808080/ffffff/?text=Image" />
-    <div class="card-block">
-      <h5 class="card-title">Card title</h5>
+  <div class="card separator">
+    <div class="item">
+      <img class="fluid" src="https://placehold.it/600x200/808080/ffffff/?text=Image" />
+    </div>
+    <div class="item">
+      <h5>Card title</h5>
       <div class="toggle-block collapse-width">
-        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam aliquet turpis lacinia, efficitur leo vel, commodo leo. In eleifend mi et est fermentum elementum.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam aliquet turpis lacinia, efficitur leo vel, commodo leo. In eleifend mi et est fermentum elementum.</p>
       </div>
     </div>
   </div>
@@ -84,23 +86,16 @@ order: 10
     <div class="demo-text"><code>.collapse-height-left</code> or <code>.collapse-height-right</code>.</div>
     <div class="demo-source" data-lang="html">
 <div data-xt-toggle='{"elements": ".card", "on": "mouseenter", "off": "mouseleave"}'>
-  <div class="card">
-    <img class="fluid" src="https://placehold.it/600x200/808080/ffffff/?text=Image" />
-    <div class="card-block collapse-height-left">
-      <h5 class="card-title">Card title</h5>
+  <div class="card separator">
+    <div class="item">
+      <img class="fluid" src="https://placehold.it/600x200/808080/ffffff/?text=Image" />
+    </div>
+    <div class="item collapse-height-left">
+      <h5>Card title</h5>
       <div class="toggle-block collapse-width">
-        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam aliquet turpis lacinia, efficitur leo vel, commodo leo. In eleifend mi et est fermentum elementum.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam aliquet turpis lacinia, efficitur leo vel, commodo leo. In eleifend mi et est fermentum elementum.</p>
       </div>
     </div>
-  </div>
-  <div class="card">
-    <div class="card-block collapse-height-right">
-      <h5 class="card-title">Card title</h5>
-      <div class="toggle-block collapse-width">
-        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam aliquet turpis lacinia, efficitur leo vel, commodo leo. In eleifend mi et est fermentum elementum.</p>
-      </div>
-    </div>
-    <img class="fluid" src="https://placehold.it/600x200/808080/ffffff/?text=Image" />
   </div>
 </div>
     </div>
@@ -121,8 +116,8 @@ order: 10
   <button type="button" class="button">
     Toggle
   </button>
-  <div class="toggle-block collapse-height">
-    <div class="card card-block">
+  <div class="card toggle-flex collapse-height">
+    <div class="item">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam aliquet turpis lacinia, efficitur leo vel, commodo leo. In eleifend mi et est fermentum elementum.
     </div>
   </div>
@@ -136,8 +131,8 @@ order: 10
   <div class="button">
     Toggle
   </div>
-  <div class="toggle-block collapse-height">
-    <div class="card card-block">
+  <div class="card toggle-flex collapse-height">
+    <div class="item">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam aliquet turpis lacinia, efficitur leo vel, commodo leo. In eleifend mi et est fermentum elementum.
     </div>
   </div>
@@ -151,8 +146,8 @@ order: 10
   <button type="button" class="button">
     Toggle
   </button>
-  <div class="toggle-block collapse-height anim-vertical">
-    <div class="card card-block">
+  <div class="card toggle-flex collapse-height anim-vertical">
+    <div class="item">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam aliquet turpis lacinia, efficitur leo vel, commodo leo. In eleifend mi et est fermentum elementum.
     </div>
   </div>
@@ -164,11 +159,13 @@ order: 10
     <div class="demo-source" data-lang="html">
 <div data-xt-toggle='{"elements": ".card", "on": "mouseenter", "off": "mouseleave"}'>
   <div class="card">
-    <img class="fluid" src="https://placehold.it/600x200/808080/ffffff/?text=Image" />
-    <div class="card-block">
-      <h5 class="card-title">Card title</h5>
+    <div class="item">
+      <img class="fluid" src="https://placehold.it/600x200/808080/ffffff/?text=Image" />
+    </div>
+    <div class="item">
+      <h5>Card title</h5>
       <div class="toggle-block collapse-height">
-        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam aliquet turpis lacinia, efficitur leo vel, commodo leo. In eleifend mi et est fermentum elementum.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam aliquet turpis lacinia, efficitur leo vel, commodo leo. In eleifend mi et est fermentum elementum.</p>
       </div>
     </div>
   </div>
@@ -179,24 +176,31 @@ order: 10
     <div class="demo-text"><code>.collapse-height-top</code> or <code>.collapse-height-bottom</code>.</div>
     <div class="demo-source" data-lang="html">
 <div data-xt-toggle='{"elements": ".card", "on": "mouseenter", "off": "mouseleave"}'>
+  
   <div class="card">
-    <img class="fluid" src="https://placehold.it/600x200/808080/ffffff/?text=Image" />
-    <div class="card-block collapse-height-top">
-      <h5 class="card-title">Card title</h5>
+    <div class="item">
+      <img class="fluid" src="https://placehold.it/600x200/808080/ffffff/?text=Image" />
+    </div>
+    <div class="item collapse-height-top">
+      <h5>Card title</h5>
       <div class="toggle-block collapse-height">
-        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam aliquet turpis lacinia, efficitur leo vel, commodo leo. In eleifend mi et est fermentum elementum.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam aliquet turpis lacinia, efficitur leo vel, commodo leo. In eleifend mi et est fermentum elementum.</p>
       </div>
     </div>
   </div>
+  
   <div class="card">
-    <div class="card-block collapse-height-bottom">
-      <h5 class="card-title">Card title</h5>
+    <div class="item collapse-height-bottom">
+      <h5>Card title</h5>
       <div class="toggle-block collapse-height">
-        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam aliquet turpis lacinia, efficitur leo vel, commodo leo. In eleifend mi et est fermentum elementum.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam aliquet turpis lacinia, efficitur leo vel, commodo leo. In eleifend mi et est fermentum elementum.</p>
       </div>
     </div>
-    <img class="fluid" src="https://placehold.it/600x200/808080/ffffff/?text=Image" />
+    <div class="item">
+      <img class="fluid" src="https://placehold.it/600x200/808080/ffffff/?text=Image" />
+    </div>
   </div>
+  
 </div>
     </div>
   </div>
@@ -216,8 +220,8 @@ order: 10
   <button type="button" class="button">
     Toggle
   </button>
-  <div class="toggle-block collapse-width collapse-height">
-    <div class="card card-block">
+  <div class="card toggle-flex collapse-width collapse-height">
+    <div class="item">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam aliquet turpis lacinia, efficitur leo vel, commodo leo. In eleifend mi et est fermentum elementum.
     </div>
   </div>
@@ -231,8 +235,8 @@ order: 10
   <div class="button">
     Toggle
   </div>
-  <div class="toggle-block collapse-width collapse-height">
-    <div class="card card-block">
+  <div class="card toggle-flex collapse-width collapse-height">
+    <div class="item">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam aliquet turpis lacinia, efficitur leo vel, commodo leo. In eleifend mi et est fermentum elementum.
     </div>
   </div>
@@ -246,8 +250,8 @@ order: 10
   <button type="button" class="button">
     Toggle
   </button>
-  <div class="toggle-block collapse-width collapse-height anim-diagonal">
-    <div class="card card-block">
+  <div class="card toggle-flex collapse-width collapse-height anim-diagonal">
+    <div class="item">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam aliquet turpis lacinia, efficitur leo vel, commodo leo. In eleifend mi et est fermentum elementum.
     </div>
   </div>
@@ -259,11 +263,13 @@ order: 10
     <div class="demo-source" data-lang="html">
 <div data-xt-toggle='{"elements": ".card", "on": "mouseenter", "off": "mouseleave"}'>
   <div class="card">
-    <img class="fluid" src="https://placehold.it/600x200/808080/ffffff/?text=Image" />
-    <div class="card-block">
-      <h5 class="card-title">Card title</h5>
+    <div class="item">
+      <img class="fluid" src="https://placehold.it/600x200/808080/ffffff/?text=Image" />
+    </div>
+    <div class="item">
+      <h5>Card title</h5>
       <div class="toggle-block collapse-width collapse-height">
-        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam aliquet turpis lacinia, efficitur leo vel, commodo leo. In eleifend mi et est fermentum elementum.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam aliquet turpis lacinia, efficitur leo vel, commodo leo. In eleifend mi et est fermentum elementum.</p>
       </div>
     </div>
   </div>
@@ -275,22 +281,26 @@ order: 10
     <div class="demo-source" data-lang="html">
 <div data-xt-toggle='{"elements": ".card", "on": "mouseenter", "off": "mouseleave"}'>
   <div class="card">
-    <img class="fluid" src="https://placehold.it/600x200/808080/ffffff/?text=Image" />
-    <div class="card-block collapse-height-top">
-      <h5 class="card-title">Card title</h5>
+    <div class="item">
+      <img class="fluid" src="https://placehold.it/600x200/808080/ffffff/?text=Image" />
+    </div>
+    <div class="item collapse-height-top">
+      <h5>Card title</h5>
       <div class="toggle-block collapse-width collapse-height">
-        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam aliquet turpis lacinia, efficitur leo vel, commodo leo. In eleifend mi et est fermentum elementum.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam aliquet turpis lacinia, efficitur leo vel, commodo leo. In eleifend mi et est fermentum elementum.</p>
       </div>
     </div>
   </div>
   <div class="card">
-    <div class="card-block collapse-height-bottom">
-      <h5 class="card-title">Card title</h5>
+    <div class="item collapse-height-bottom">
+      <h5>Card title</h5>
       <div class="toggle-block collapse-width collapse-height">
-        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam aliquet turpis lacinia, efficitur leo vel, commodo leo. In eleifend mi et est fermentum elementum.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam aliquet turpis lacinia, efficitur leo vel, commodo leo. In eleifend mi et est fermentum elementum.</p>
       </div>
     </div>
-    <img class="fluid" src="https://placehold.it/600x200/808080/ffffff/?text=Image" />
+    <div class="item">
+      <img class="fluid" src="https://placehold.it/600x200/808080/ffffff/?text=Image" />
+    </div>
   </div>
 </div>
     </div>

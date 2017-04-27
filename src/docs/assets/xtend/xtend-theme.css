@@ -130,6 +130,9 @@ body {
   -ms-flex: 0 0 auto;
   flex: 0 0 auto;
 }
+.item {
+  width: 100%;
+}
 .flex,
 .spacer {
   display: -webkit-flex;
@@ -358,6 +361,9 @@ body {
   -ms-flex-direction: row-reverse;
   flex-direction: row-reverse;
 }
+.horizontal > .item {
+  width: auto;
+}
 .horizontal > .item.fluid {
   -webkit-flex: 1 1 0%;
   -ms-flex: 1 1 0%;
@@ -376,12 +382,12 @@ body {
 .card > *:not(.item) {
   padding: 0 !important;
 }
-.card.separator > .item {
+.card.separator.horizontal > .item {
   display: -webkit-flex;
-  /* display: -ms-flexbox; // BUG ie10 breaks layout */
+  display: -ms-flexbox;
   display: flex;
   -webkit-align-self: stretch !important;
-  /*-ms-flex-item-align: stretch !important; // BUG ie10 breaks layout */
+  -ms-flex-item-align: stretch !important;
   align-self: stretch !important;
 }
 .card.separator > .item:first-child:before,
@@ -917,6 +923,15 @@ img.fluid {
     -ms-flex-direction: row-reverse;
     flex-direction: row-reverse;
   }
+  .horizontal-xs > .item {
+    width: auto;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-self: stretch !important;
+    -ms-flex-item-align: stretch !important;
+    align-self: stretch !important;
+  }
   .horizontal-xs > .item.fluid {
     -webkit-flex: 1 1 0%;
     -ms-flex: 1 1 0%;
@@ -1036,6 +1051,15 @@ img.fluid {
     -webkit-flex-direction: row-reverse;
     -ms-flex-direction: row-reverse;
     flex-direction: row-reverse;
+  }
+  .horizontal-sm > .item {
+    width: auto;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-self: stretch !important;
+    -ms-flex-item-align: stretch !important;
+    align-self: stretch !important;
   }
   .horizontal-sm > .item.fluid {
     -webkit-flex: 1 1 0%;
@@ -1157,6 +1181,15 @@ img.fluid {
     -ms-flex-direction: row-reverse;
     flex-direction: row-reverse;
   }
+  .horizontal-md > .item {
+    width: auto;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-self: stretch !important;
+    -ms-flex-item-align: stretch !important;
+    align-self: stretch !important;
+  }
   .horizontal-md > .item.fluid {
     -webkit-flex: 1 1 0%;
     -ms-flex: 1 1 0%;
@@ -1276,6 +1309,15 @@ img.fluid {
     -webkit-flex-direction: row-reverse;
     -ms-flex-direction: row-reverse;
     flex-direction: row-reverse;
+  }
+  .horizontal-lg > .item {
+    width: auto;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-self: stretch !important;
+    -ms-flex-item-align: stretch !important;
+    align-self: stretch !important;
   }
   .horizontal-lg > .item.fluid {
     -webkit-flex: 1 1 0%;
@@ -1397,6 +1439,15 @@ img.fluid {
     -ms-flex-direction: row-reverse;
     flex-direction: row-reverse;
   }
+  .horizontal-xl > .item {
+    width: auto;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-self: stretch !important;
+    -ms-flex-item-align: stretch !important;
+    align-self: stretch !important;
+  }
   .horizontal-xl > .item.fluid {
     -webkit-flex: 1 1 0%;
     -ms-flex: 1 1 0%;
@@ -1434,6 +1485,7 @@ img.fluid {
 }
 .collapse-height,
 .collapse-width {
+  z-index: 10;
   transition-property: all;
   transition-duration: 300ms;
   transition-timing-function: cubic-bezier(0.63, 0.36, 0, 0.97);
@@ -1446,6 +1498,7 @@ img.fluid {
 .collapse-width-right,
 .collapse-height-top,
 .collapse-height-bottom {
+  z-index: 10;
   transition-property: all;
   transition-duration: 300ms;
   transition-timing-function: cubic-bezier(0.63, 0.36, 0, 0.97);
@@ -2372,22 +2425,30 @@ a.button:not(.link):focus {
   -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
   /* variants */
-  background-color: #ffffff;
   color: #000000;
   /* internal sizes */
   /* separator */
 }
+.card > .item {
+  background-color: #ffffff;
+}
 .card.primary {
-  background-color: #00B0FF;
   color: #ffffff;
+}
+.card.primary > .item {
+  background-color: #00B0FF;
 }
 .card.secondary {
-  background-color: #d14;
   color: #ffffff;
 }
+.card.secondary > .item {
+  background-color: #d14;
+}
 .card.white {
-  background-color: #ffffff;
   color: #000000;
+}
+.card.white > .item {
+  background-color: #ffffff;
 }
 .card > .item.tiny {
   padding-top: 0;

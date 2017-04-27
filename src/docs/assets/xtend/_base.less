@@ -164,6 +164,9 @@ body {
   -ms-flex: 0 0 auto;
   flex: 0 0 auto;
 }
+.item {
+  width: 100%;
+}
 
 //////////////////////
 // flex + spacer + media + card
@@ -346,6 +349,9 @@ body {
     -ms-flex-direction: row-reverse;
     flex-direction: row-reverse;
   }
+  > .item {
+    width: auto;
+  }
   > .item.fluid {
     -webkit-flex: 1 1 0%;
     -ms-flex: 1 1 0%;
@@ -376,13 +382,17 @@ body {
   }
   // separator
   &.separator {
+    &.horizontal {
+      > .item {
+        display: -webkit-flex;
+        display: -ms-flexbox; // BUG ie10 breaks layout
+        display: flex;
+        -webkit-align-self: stretch !important;
+        -ms-flex-item-align: stretch !important; // BUG ie10 breaks layout
+        align-self: stretch !important;
+      }
+    }
     > .item {
-      display: -webkit-flex;
-      /* display: -ms-flexbox; // BUG ie10 breaks layout */
-      display: flex;
-      -webkit-align-self: stretch !important;
-      /*-ms-flex-item-align: stretch !important; // BUG ie10 breaks layout */
-      align-self: stretch !important;
       &:first-child:before,
       &:first-child:after {
         display: none !important;
@@ -415,7 +425,7 @@ body {
       }
     }
   }
-  // not separator
+  // items styles for paddings
   &:not(.separator) {
     &:not(.reverse) {
       &.horizontal, &[class*=" horizontal-"] {
@@ -853,6 +863,15 @@ img.fluid {
         -webkit-flex-direction: row-reverse;
         -ms-flex-direction: row-reverse;
         flex-direction: row-reverse;
+      }
+      > .item {
+        width: auto;
+        display: -webkit-flex;
+        display: -ms-flexbox; // BUG ie10 breaks layout
+        display: flex;
+        -webkit-align-self: stretch !important;
+        -ms-flex-item-align: stretch !important; // BUG ie10 breaks layout
+        align-self: stretch !important;
       }
       > .item.fluid {
         -webkit-flex: 1 1 0%;

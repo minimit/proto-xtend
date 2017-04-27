@@ -367,16 +367,22 @@ a.button:not(.link) {
   /* variants */
   .card.white; // default variant
   &.primary {
-    background-color: @color-primary;
     color: @color-white;
+    > .item {
+      background-color: @color-primary;
+    }
   }
   &.secondary {
-    background-color: @color-secondary;
     color: @color-white;
+    > .item {
+      background-color: @color-secondary;
+    }
   }
   &.white {
-    background-color: @color-white;
     color: @color-text;
+    > .item {
+      background-color: @color-white;
+    }
   }
   /* internal sizes */
   > .item {

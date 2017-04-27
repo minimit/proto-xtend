@@ -65,11 +65,15 @@ $('div').xtToggle({"elements": ".element"});
 <button type="button" class="button" data-xt-toggle='{"targets": "#card-unique-1"}'>
   Toggle 1
 </button>
-<div class="card card-content toggle-block" id="card-unique-0">
-  Target 0
+<div class="card toggle-flex" id="card-unique-0">
+  <div class="item">
+    Target 0
+  </div>
 </div>
-<div class="card card-content toggle-block" id="card-unique-1">
-  Target 1
+<div class="card toggle-flex" id="card-unique-1">
+  <div class="item">
+    Target 1
+  </div>
 </div>
     </div>
   </div>
@@ -82,8 +86,10 @@ $('div').xtToggle({"elements": ".element"});
 <button type="button" class="button" data-xt-toggle='{"targets": "#card-unique"}'>
   Toggle
 </button>
-<div class="card card-content toggle-block" id="card-unique">
-  Target
+<div class="card toggle-flex" id="card-unique">
+  <div class="item">
+    Target
+  </div>
 </div>
     </div>
   </div>
@@ -110,22 +116,34 @@ $('div').xtToggle({"elements": ".element"});
   <button type="button" class="button">
     Toggle 2
   </button>
-  <div class="card card-content toggle-block">
-    Target 0
-    <div class="card card-content toggle-block">
-      Nested not toggled
+  <div class="card toggle-flex">
+    <div class="item">
+      Target 0
+      <div class="card toggle-flex">
+        <div class="item">
+          Nested not toggled
+        </div>
+      </div>
     </div>
   </div>
-  <div class="card card-content toggle-block">
-    Target 1
-    <div class="card card-content toggle-block">
-      Nested not toggled
+  <div class="card toggle-flex">
+    <div class="item">
+      Target 1
+      <div class="card toggle-flex">
+        <div class="item">
+          Nested not toggled
+        </div>
+      </div>
     </div>
   </div>
-  <div class="card card-content toggle-block">
-    Target 2
-    <div class="card card-content toggle-block">
-      Nested not toggled
+  <div class="card toggle-flex">
+    <div class="item">
+      Target 2
+      <div class="card toggle-flex">
+        <div class="item">
+          Nested not toggled
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -145,14 +163,20 @@ $('div').xtToggle({"elements": ".element"});
     <button type="button" class="button">
       Toggle 2
     </button>
-    <div class="card card-content toggle-block">
-      Target 0
+    <div class="card toggle-flex">
+      <div class="item">
+        Target 0
+      </div>
     </div>
-    <div class="card card-content toggle-block">
-      Target 1
+    <div class="card toggle-flex">
+      <div class="item">
+        Target 1
+      </div>
     </div>
-    <div class="card card-content toggle-block">
-      Target 2
+    <div class="card toggle-flex">
+      <div class="item">
+        Target 2
+      </div>
     </div>
   </div>
 </div>
@@ -171,14 +195,20 @@ $('div').xtToggle({"elements": ".element"});
   <button type="button" class="button">
     Toggle 2
   </button>
-  <div class="card card-content example-target">
-    Target 0
+  <div class="card example-target">
+    <div class="item">
+      Target 0
+    </div>
   </div>
-  <div class="card card-content example-target">
-    Target 1
+  <div class="card example-target">
+    <div class="item">
+      Target 1
+    </div>
   </div>
-  <div class="card card-content example-target">
-    Target 2
+  <div class="card example-target">
+    <div class="item">
+      Target 2
+    </div>
   </div>
 </div>
     </div>
@@ -188,7 +218,7 @@ $('div').xtToggle({"elements": ".element"});
   display: none;
 }
 .example-target.active {
-  display: block;
+  display: flex;
 }
 </style>
     </div>
@@ -206,14 +236,20 @@ $('div').xtToggle({"elements": ".element"});
   <button type="button" class="button">
     Toggle 2
   </button>
-  <div class="card card-content toggle-custom">
-    Target 0
+  <div class="card toggle-custom">
+    <div class="item">
+      Target 0
+    </div>
   </div>
-  <div class="card card-content toggle-custom">
-    Target 1
+  <div class="card toggle-custom">
+    <div class="item">
+      Target 1
+    </div>
   </div>
-  <div class="card card-content toggle-custom">
-    Target 2
+  <div class="card toggle-custom">
+    <div class="item">
+      Target 2
+    </div>
   </div>
 </div>
     </div>
@@ -223,7 +259,7 @@ $('div').xtToggle({"elements": ".element"});
   display: none;
 }
 .toggle-custom.active {
-  display: block;
+  display: flex;
 }
 </style>
     </div>
@@ -258,20 +294,30 @@ $('div').xtToggle({"elements": ".element"});
   <button type="button" class="button" data-group="1">
     Group 1
   </button>
-  <div class="card card-content toggle-block">
-    Target 0
+  <div class="card toggle-flex">
+    <div class="item">
+      Target 0
+    </div>
   </div>
-  <div class="card card-content toggle-block" data-group="0">
-    Group 0
+  <div class="card toggle-flex" data-group="0">
+    <div class="item">
+      Group 0
+    </div>
   </div>
-  <div class="card card-content toggle-block" data-group="1">
-    Group 1
+  <div class="card toggle-flex" data-group="1">
+    <div class="item">
+      Group 1
+    </div>
   </div>
-  <div class="card card-content toggle-block" data-group="0">
-    Group 0
+  <div class="card toggle-flex" data-group="0">
+    <div class="item">
+      Group 0
+    </div>
   </div>
-  <div class="card card-content toggle-block">
-    Target 1
+  <div class="card toggle-flex">
+    <div class="item">
+      Target 1
+    </div>
   </div>
 </div>
     </div>
@@ -290,8 +336,10 @@ $('div').xtToggle({"elements": ".element"});
   <button type="button" class="button">
     Toggle
   </button>
-  <div class="card card-content toggle-block" id="card-example">
-    Target
+  <div class="card toggle-flex" id="card-example">
+    <div class="item">
+      Target
+    </div>
   </div>
 </div>
     </div>
@@ -331,20 +379,30 @@ $('div').xtToggle({"elements": ".element"});
   <button type="button" class="button" data-group="1">
     Group 1
   </button>
-  <div class="card card-content toggle-block">
-    Target 0
+  <div class="card toggle-flex">
+    <div class="item">
+      Target 0
+    </div>
   </div>
-  <div class="card card-content toggle-block" data-group="0">
-    Group 0
+  <div class="card toggle-flex" data-group="0">
+    <div class="item">
+      Group 0
+    </div>
   </div>
-  <div class="card card-content toggle-block" data-group="1">
-    Group 1
+  <div class="card toggle-flex" data-group="1">
+    <div class="item">
+      Group 1
+    </div>
   </div>
-  <div class="card card-content toggle-block" data-group="0">
-    Group 0
+  <div class="card toggle-flex" data-group="0">
+    <div class="item">
+      Group 0
+    </div>
   </div>
-  <div class="card card-content toggle-block">
-    Target 1
+  <div class="card toggle-flex">
+    <div class="item">
+      Target 1
+    </div>
   </div>
 </div>
     </div>
@@ -388,17 +446,25 @@ $('div').xtToggle({"elements": ".element"});
   <button type="button" class="button">
     Toggle 3
   </button>
-  <div class="card card-content toggle-block">
-    Target 0
+  <div class="card toggle-flex">
+    <div class="item">
+      Target 0
+    </div>
   </div>
-  <div class="card card-content toggle-block">
-    Target 1
+  <div class="card toggle-flex">
+    <div class="item">
+      Target 1
+    </div>
   </div>
-  <div class="card card-content toggle-block">
-    Target 2
+  <div class="card toggle-flex">
+    <div class="item">
+      Target 2
+    </div>
   </div>
-  <div class="card card-content toggle-block">
-    Target 3
+  <div class="card toggle-flex">
+    <div class="item">
+      Target 3
+    </div>
   </div>
 </div>
     </div>
@@ -417,8 +483,10 @@ $('div').xtToggle({"elements": ".element"});
   <button type="button" class="button">
     Toggle
   </button>
-  <div class="card card-content toggle-block">
-    Target
+  <div class="card toggle-flex">
+    <div class="item">
+      Target
+    </div>
   </div>
 </div>
     </div>
@@ -449,17 +517,25 @@ $('div').xtToggle({"elements": ".element"});
   <button type="button" class="button">
     no-anim
   </button>
-  <div class="card card-content toggle-block anim-horizontal">
-    Target 0
+  <div class="card toggle-flex anim-horizontal">
+    <div class="item">
+      Target 0
+    </div>
   </div>
-  <div class="card card-content toggle-block anim-vertical">
-    Target 1
+  <div class="card toggle-flex anim-vertical">
+    <div class="item">
+      Target 1
+    </div>
   </div>
-  <div class="card card-content toggle-block anim-diagonal">
-    Target 2
+  <div class="card toggle-flex anim-diagonal">
+    <div class="item">
+      Target 2
+    </div>
   </div>
-  <div class="card card-content toggle-block no-anim">
-    Target 3
+  <div class="card toggle-flex no-anim">
+    <div class="item">
+      Target 3
+    </div>
   </div>
 </div>
     </div>
@@ -487,18 +563,24 @@ $('div').xtToggle({"elements": ".element"});
     collapse-width collapse-height
   </button>
   <div class="toggle-block collapse-width">
-    <div class="card card-block">
-      Target 0
+    <div class="card">
+      <div class="item">
+        Target 0
+      </div>
     </div>
   </div>
   <div class="toggle-block collapse-height">
-    <div class="card card-block">
-      Target 1
+    <div class="card">
+      <div class="item">
+        Target 1
+      </div>
     </div>
   </div>
   <div class="toggle-block collapse-width collapse-height">
-    <div class="card card-block">
-      Target 2
+    <div class="card">
+      <div class="item">
+        Target 2
+      </div>
     </div>
   </div>
 </div>
