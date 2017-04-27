@@ -197,12 +197,6 @@ body {
 .vertical > .item {
   width: 100%;
 }
-.vertical.card > .item:before {
-  display: none !important;
-}
-.vertical.card > .item:after {
-  display: block !important;
-}
 .flex,
 .spacer,
 .media,
@@ -376,33 +370,6 @@ body {
 .card {
   width: 100%;
   margin: 0 !important;
-  /*
-  &:not(.separator) {
-    &:not(.reverse) {
-      &.vertical, &[class*=" vertical-"] {
-        > .item + .item {
-          padding-left: 0;
-        }
-      }
-      &:not(.vertical):not([class*=" vertical-"]) {
-        > .item + .item {
-          padding-top: 0;
-        }
-      }
-    }
-    &.reverse {
-      &.vertical, &[class*=" vertical-"] {
-        > .item + .item {
-          padding-right: 0;
-        }
-      }
-      &:not(.vertical):not([class*=" vertical-"]) {
-        > .item + .item {
-          padding-bottom: 0;
-        }
-      }
-    }
-  }*/
 }
 .card > *:not(.item) {
   padding: 0 !important;
@@ -434,6 +401,24 @@ body {
 }
 .card.separator > .item:after {
   display: none;
+}
+.card.vertical > .item:before {
+  display: none !important;
+}
+.card.vertical > .item:after {
+  display: block !important;
+}
+.card:not(.vertical):not([class*=" vertical-"]):not(.separator):not(.reverse) > .item + .item {
+  padding-left: 0;
+}
+.card:not(.vertical):not([class*=" vertical-"]):not(.separator).reverse > .item + .item {
+  padding-right: 0;
+}
+.card.vertical:not(.separator):not(.reverse) > .item + .item {
+  padding-top: 0;
+}
+.card.vertical:not(.separator).reverse > .item + .item {
+  padding-bottom: 0;
 }
 .toggle-block {
   display: none !important;
@@ -911,6 +896,12 @@ img.fluid {
   .contain {
     width: 540px;
   }
+  .vertical-xs.card:not(.separator):not(.reverse) > .item + .item {
+    padding-left: 0;
+  }
+  .vertical-xs.card:not(.separator).reverse > .item + .item {
+    padding-right: 0;
+  }
 }
 @media ( max-width: 575px ) {
   .vertical-xs {
@@ -931,6 +922,12 @@ img.fluid {
   }
   .vertical-xs.card > .item:after {
     display: block;
+  }
+  .vertical-xs:not(.separator):not(.reverse) > .item + .item {
+    padding-top: 0;
+  }
+  .vertical-xs:not(.separator).reverse > .item + .item {
+    padding-bottom: 0;
   }
 }
 @media ( min-width: 768px ) {
@@ -1028,6 +1025,12 @@ img.fluid {
   .contain {
     width: 720px;
   }
+  .vertical-sm.card:not(.separator):not(.reverse) > .item + .item {
+    padding-left: 0;
+  }
+  .vertical-sm.card:not(.separator).reverse > .item + .item {
+    padding-right: 0;
+  }
 }
 @media ( max-width: 767px ) {
   .vertical-sm {
@@ -1048,6 +1051,12 @@ img.fluid {
   }
   .vertical-sm.card > .item:after {
     display: block;
+  }
+  .vertical-sm:not(.separator):not(.reverse) > .item + .item {
+    padding-top: 0;
+  }
+  .vertical-sm:not(.separator).reverse > .item + .item {
+    padding-bottom: 0;
   }
 }
 @media ( min-width: 992px ) {
@@ -1145,6 +1154,12 @@ img.fluid {
   .contain {
     width: 960px;
   }
+  .vertical-md.card:not(.separator):not(.reverse) > .item + .item {
+    padding-left: 0;
+  }
+  .vertical-md.card:not(.separator).reverse > .item + .item {
+    padding-right: 0;
+  }
 }
 @media ( max-width: 991px ) {
   .vertical-md {
@@ -1165,6 +1180,12 @@ img.fluid {
   }
   .vertical-md.card > .item:after {
     display: block;
+  }
+  .vertical-md:not(.separator):not(.reverse) > .item + .item {
+    padding-top: 0;
+  }
+  .vertical-md:not(.separator).reverse > .item + .item {
+    padding-bottom: 0;
   }
 }
 @media ( min-width: 1200px ) {
@@ -1262,6 +1283,12 @@ img.fluid {
   .contain {
     width: 1140px;
   }
+  .vertical-lg.card:not(.separator):not(.reverse) > .item + .item {
+    padding-left: 0;
+  }
+  .vertical-lg.card:not(.separator).reverse > .item + .item {
+    padding-right: 0;
+  }
 }
 @media ( max-width: 1199px ) {
   .vertical-lg {
@@ -1282,6 +1309,12 @@ img.fluid {
   }
   .vertical-lg.card > .item:after {
     display: block;
+  }
+  .vertical-lg:not(.separator):not(.reverse) > .item + .item {
+    padding-top: 0;
+  }
+  .vertical-lg:not(.separator).reverse > .item + .item {
+    padding-bottom: 0;
   }
 }
 @media ( min-width: 1450px ) {
@@ -1379,6 +1412,12 @@ img.fluid {
   .contain {
     width: 1400px;
   }
+  .vertical-xl.card:not(.separator):not(.reverse) > .item + .item {
+    padding-left: 0;
+  }
+  .vertical-xl.card:not(.separator).reverse > .item + .item {
+    padding-right: 0;
+  }
 }
 @media ( max-width: 1449px ) {
   .vertical-xl {
@@ -1399,6 +1438,12 @@ img.fluid {
   }
   .vertical-xl.card > .item:after {
     display: block;
+  }
+  .vertical-xl:not(.separator):not(.reverse) > .item + .item {
+    padding-top: 0;
+  }
+  .vertical-xl:not(.separator).reverse > .item + .item {
+    padding-bottom: 0;
   }
 }
 /* ratios
