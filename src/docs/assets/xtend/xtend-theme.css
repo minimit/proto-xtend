@@ -142,6 +142,12 @@ body {
   -ms-flex-direction: row;
   flex-direction: row;
 }
+.flex.wrap-reverse,
+.spacer.wrap-reverse {
+  -webkit-flex-wrap: wrap-reverse;
+  -ms-flex-wrap: wrap-reverse;
+  flex-wrap: wrap-reverse;
+}
 .flex.reverse,
 .spacer.reverse {
   -webkit-flex-direction: row-reverse;
