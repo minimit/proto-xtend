@@ -375,18 +375,52 @@ order: 30
     </div>
   </div>
     
-  <div class="column sm-6">
-    <div class="media reverse">
-      <img class="fluid" src="https://placehold.it/400x120/808080/ffffff/?text=Image">
+  <div class="column full">
+    <div class="media horizontal-md reverse">
       <div class="item">
+        <img class="fluid" src="https://placehold.it/150x100/808080/ffffff/?text=Image">
+      </div>
+      <div class="item fluid">
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam aliquet turpis lacinia, efficitur leo vel, commodo leo. In eleifend mi et est fermentum elementum.</p>
       </div>
     </div>
   </div>
 
-  <div class="column full">
-    <div class="media horizontal-md reverse">
+</div>
+    </div>
+  </div>
+</div>
+
+<h3>Order</h3>
+
+<p>Custom styles for order, can be a negative number, put inside media queries if you need reponsive order.</p>
+<p>@TODO link to media query</p>
+
+<pre><code class="less">
+-webkit-order: 1;
+-ms-flex-order: 1;
+order: 1;
+</code></pre>
+
+<div class="demo">
+  <div class="demo-item demo-preview" data-name="order">
+    <div class="demo-source" data-lang="html">
+<div class="flex">
+  
+  <div class="column sm-6">
+    <div class="media">
+      <div class="item" style="-webkit-order: 1; -ms-flex-order: 1; order: 1;">
+        <img class="fluid" src="https://placehold.it/400x120/808080/ffffff/?text=Image">
+      </div>
       <div class="item">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam aliquet turpis lacinia, efficitur leo vel, commodo leo. In eleifend mi et est fermentum elementum.</p>
+      </div>
+    </div>
+  </div>
+    
+  <div class="column full">
+    <div class="media horizontal-md">
+      <div class="item" style="-webkit-order: 1; -ms-flex-order: 1; order: 1;">
         <img class="fluid" src="https://placehold.it/150x100/808080/ffffff/?text=Image">
       </div>
       <div class="item fluid">

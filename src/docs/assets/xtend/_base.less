@@ -878,8 +878,8 @@ img.fluid {
 // grid generator
 .grid(@name; @columns; @index: 1) when (@index =< @columns) {
   .grid(@name; @columns; (@index + 1));
+  @val: (percentage(@index / @columns));
   .@{name}-@{index} {
-    @val: (percentage(@index / @columns));
     -webkit-flex-basis: @val;
     -ms-flex-preferred-size: @val;
     flex-basis: @val;

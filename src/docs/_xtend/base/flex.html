@@ -279,3 +279,30 @@ order: 10
     </div>
   </div>
 </div>
+
+<h3>Order</h3>
+
+<p>Custom styles for order, can be a negative number, put inside media queries if you need reponsive order.</p>
+<p>@TODO link to media query</p>
+
+<pre><code class="less">
+-webkit-order: 1;
+-ms-flex-order: 1;
+order: 1;
+</code></pre>
+
+<div class="demo">
+  <div class="demo-item demo-preview" data-name="order">
+    <div class="demo-source demo-highlight" data-lang="html">
+<div class="flex">
+  <div class="column size-4"></div>
+  <div class="column size-8" style="-webkit-order: -1; -ms-flex-order: -1; order: -1;"></div>
+  <div class="column size-8"></div>
+  <div class="column size-4"></div>
+  <div class="column size-auto sm-2"></div>
+  <div class="column size-auto" style="-webkit-order: 1; -ms-flex-order: 1; order: 1;"></div>
+  <div class="column size-auto md-2 lg-auto"></div>
+</div>
+    </div>
+  </div>
+</div>
