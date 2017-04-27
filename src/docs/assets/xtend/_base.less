@@ -164,9 +164,6 @@ body {
   -ms-flex: 0 0 auto;
   flex: 0 0 auto;
 }
-.item {
-  width: 100%;
-}
 
 //////////////////////
 // flex + spacer + media + card
@@ -199,6 +196,27 @@ body {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  &.reverse {
+    -webkit-flex-direction: row-reverse;
+    -ms-flex-direction: row-reverse;
+    flex-direction: row-reverse;
+  }
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  > .item.fluid {
+    -webkit-flex: 1 1 0%;
+    -ms-flex: 1 1 0%;
+    flex: 1 1 0%;
+  }
+}
+.vertical {
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
@@ -210,9 +228,20 @@ body {
     -ms-flex-direction: column-reverse;
     flex-direction: column-reverse;
   }
-  -webkit-flex: 1 0 auto;
-  -ms-flex: 1 0 auto;
-  flex: 1 0 auto;
+  > .item {
+    width: 100%;
+  }
+  // items styles for horizontal + vertical
+  &.card {
+    > .item {
+      &:before {
+        display: none !important;
+      }
+      &:after {
+        display: block !important;
+      }
+    }
+  }
 }
 .flex,
 .spacer,
@@ -337,38 +366,6 @@ body {
     }
   }
 }
-.horizontal {
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  &.reverse {
-    -webkit-flex-direction: row-reverse;
-    -ms-flex-direction: row-reverse;
-    flex-direction: row-reverse;
-  }
-  > .item {
-    width: auto;
-  }
-  > .item.fluid {
-    -webkit-flex: 1 1 0%;
-    -ms-flex: 1 1 0%;
-    flex: 1 1 0%;
-  }
-  // items styles for vertical + horizontal
-  &.card {
-    > .item {
-      &:before {
-        display: none;
-      }
-      &:after {
-        display: block;
-      }
-    }
-  }
-}
 
 //////////////////////
 // card
@@ -382,15 +379,13 @@ body {
   }
   // separator
   &.separator {
-    &.horizontal {
-      > .item {
-        display: -webkit-flex;
-        display: -ms-flexbox; // BUG ie10 breaks layout
-        display: flex;
-        -webkit-align-self: stretch !important;
-        -ms-flex-item-align: stretch !important; // BUG ie10 breaks layout
-        align-self: stretch !important;
-      }
+    > .item {
+      display: -webkit-flex;
+      //display: -ms-flexbox; // BUG ie10 breaks layout
+      display: flex;
+      -webkit-align-self: stretch;
+      //-ms-flex-item-align: stretch; // BUG ie10 breaks layout
+      align-self: stretch;
     }
     > .item {
       &:first-child:before,
@@ -398,7 +393,8 @@ body {
         display: none !important;
       }
     }
-    > .item:before { // separator for .item vertical
+    > .item:before,
+    > .item:after {
       content: '';
       display: block;
       position: absolute;
@@ -411,47 +407,38 @@ body {
         right: 0;
       }
     }
-    > .item:after { // separator for .item horizontal
-      content: '';
+    > .item:after {
       display: none;
-      position: absolute;
-      top: 0;
-      left: 0;
-      .reverse& {
-        top: auto;
-        bottom: 0;
-        left: auto;
-        right: 0;
-      }
     }
   }
   // items styles for paddings
+  /*
   &:not(.separator) {
     &:not(.reverse) {
-      &.horizontal, &[class*=" horizontal-"] {
+      &.vertical, &[class*=" vertical-"] {
         > .item + .item {
           padding-left: 0;
         }
       }
-      &:not(.horizontal):not([class*=" horizontal-"]) {
+      &:not(.vertical):not([class*=" vertical-"]) {
         > .item + .item {
           padding-top: 0;
         }
       }
     }
     &.reverse {
-      &.horizontal, &[class*=" horizontal-"] {
+      &.vertical, &[class*=" vertical-"] {
         > .item + .item {
           padding-right: 0;
         }
       }
-      &:not(.horizontal):not([class*=" horizontal-"]) {
+      &:not(.vertical):not([class*=" vertical-"]) {
         > .item + .item {
           padding-bottom: 0;
         }
       }
     }
-  }
+  }*/
 }
 
 //////////////////////
@@ -833,8 +820,8 @@ img.fluid {
 /* responsive */
 .for(@breakpoints); .-each(@value) {
   @name: extract(@value, 1);
-  @query: "min-@{name}";
-  @media @@query {
+  @query-min: "min-@{name}";
+  @media @@query-min {
     
     // generate flex grid
     .grid(@name; @columns);
@@ -851,34 +838,23 @@ img.fluid {
     .contain {
       width: unit(@@unit, px);
     }
-    // .horizontal
-    .horizontal-@{name} {
-      -webkit-flex-wrap: nowrap;
-      -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap;
-      -webkit-flex-direction: row;
-      -ms-flex-direction: row;
-      flex-direction: row;
+  }
+  @query-max: "max-@{name}";
+  @media @@query-max {
+    // .vertical
+    .vertical-@{name} {
+      -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+      -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+      flex-direction: column;
       &.reverse {
-        -webkit-flex-direction: row-reverse;
-        -ms-flex-direction: row-reverse;
-        flex-direction: row-reverse;
+        -webkit-flex-direction: column-reverse;
+        -ms-flex-direction: column-reverse;
+        flex-direction: column-reverse;
       }
-      > .item {
-        width: auto;
-        display: -webkit-flex;
-        display: -ms-flexbox; // BUG ie10 breaks layout
-        display: flex;
-        -webkit-align-self: stretch !important;
-        -ms-flex-item-align: stretch !important; // BUG ie10 breaks layout
-        align-self: stretch !important;
-      }
-      > .item.fluid {
-        -webkit-flex: 1 1 0%;
-        -ms-flex: 1 1 0%;
-        flex: 1 1 0%;
-      }
-      // items styles for vertical + horizontal
+      // items styles for horizontal + vertical
       &.card {
         > .item {
           &:before {
@@ -890,7 +866,6 @@ img.fluid {
         }
       }
     }
-    
   }
 }
 
