@@ -49,6 +49,12 @@ body {
 // utils
 //////////////////////
 
+// img.fluid;
+img.fluid {
+  max-width: 100%;
+  height: auto;
+}
+
 // .clear;
 .clear {
   &:before,
@@ -63,7 +69,6 @@ body {
 
 // .float;
 .float {
-  .clear;
   position: relative;
   float: left;
   width: 100%;
@@ -75,12 +80,6 @@ body {
 .float-right {
   float: right !important;
   margin-left: auto !important;
-}
-
-// img.fluid;
-img.fluid {
-  max-width: 100%;
-  height: auto;
 }
 
 // .no-selection;
@@ -108,65 +107,12 @@ img.fluid {
   transform: translateZ(0);
 }
 
-// toggle
-.toggle-block {
-  display: none !important;
-  &.active,
-  &.fade-out {
-    display: block !important;
-  }
-}
-.toggle-flex {
-  display: none !important;
-  &.active,
-  &.fade-out {
-    display: -webkit-flex;
-    display: -ms-flexbox !important;
-    display: flex !important;
-  }
-}
-.toggle-inline {
-  display: none !important;
-  &.active,
-  &.fade-out {
-    display: inline !important;
-  }
-}
-.toggle-inline-block {
-  display: none !important;
-  &.active,
-  &.fade-out {
-    display: inline-block !important;
-  }
-}
-.toggle-none {
-  &.active,
-  &.fade-out {
-    display: none !important;
-  }
-}
-
 // show + hide
 .show {
   display: block !important;
 }
 .hide {
   display: none !important;
-}
-
-// animations
-.collapse-height {
-  overflow: hidden;
-  height: 0;
-}
-.collapse-width {
-  overflow: hidden;
-  width: 0;
-}
-.no-anim,
-.no-anim .xt-backdrop {
-  animation: none !important;
-  transition: none !important;
 }
 
 // others
@@ -736,6 +682,59 @@ img.fluid {
 .xt-position {
   float: left;
   width: 100%;
+}
+
+// toggle
+.toggle-block {
+  display: none !important;
+  &.active,
+  &.fade-out {
+    display: block !important;
+  }
+}
+.toggle-flex {
+  display: none !important;
+  &.active,
+  &.fade-out {
+    display: -webkit-flex;
+    display: -ms-flexbox !important;
+    display: flex !important;
+  }
+}
+.toggle-inline {
+  display: none !important;
+  &.active,
+  &.fade-out {
+    display: inline !important;
+  }
+}
+.toggle-inline-block {
+  display: none !important;
+  &.active,
+  &.fade-out {
+    display: inline-block !important;
+  }
+}
+.toggle-none {
+  &.active,
+  &.fade-out {
+    display: none !important;
+  }
+}
+
+// animations
+.collapse-height {
+  overflow: hidden;
+  height: 0;
+}
+.collapse-width {
+  overflow: hidden;
+  width: 0;
+}
+.no-anim,
+.no-anim .xt-backdrop {
+  animation: none !important;
+  transition: none !important;
 }
 
 // .xt-backdrop

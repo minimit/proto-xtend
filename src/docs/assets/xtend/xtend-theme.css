@@ -45,6 +45,10 @@ body {
   -webkit-box-sizing: inherit;
   box-sizing: inherit;
 }
+img.fluid {
+  max-width: 100%;
+  height: auto;
+}
 .clear:before,
 .clear:after {
   content: " ";
@@ -58,14 +62,6 @@ body {
   float: left;
   width: 100%;
 }
-.float:before,
-.float:after {
-  content: " ";
-  display: table;
-}
-.float:after {
-  clear: both;
-}
 .float-left {
   float: left !important;
   margin-right: auto !important;
@@ -73,10 +69,6 @@ body {
 .float-right {
   float: right !important;
   margin-left: auto !important;
-}
-img.fluid {
-  max-width: 100%;
-  height: auto;
 }
 .no-selection {
   -webkit-user-select: none;
@@ -97,58 +89,11 @@ img.fluid {
   perspective: 1000;
   transform: translateZ(0);
 }
-.toggle-block {
-  display: none !important;
-}
-.toggle-block.active,
-.toggle-block.fade-out {
-  display: block !important;
-}
-.toggle-flex {
-  display: none !important;
-}
-.toggle-flex.active,
-.toggle-flex.fade-out {
-  display: -webkit-flex;
-  display: -ms-flexbox !important;
-  display: flex !important;
-}
-.toggle-inline {
-  display: none !important;
-}
-.toggle-inline.active,
-.toggle-inline.fade-out {
-  display: inline !important;
-}
-.toggle-inline-block {
-  display: none !important;
-}
-.toggle-inline-block.active,
-.toggle-inline-block.fade-out {
-  display: inline-block !important;
-}
-.toggle-none.active,
-.toggle-none.fade-out {
-  display: none !important;
-}
 .show {
   display: block !important;
 }
 .hide {
   display: none !important;
-}
-.collapse-height {
-  overflow: hidden;
-  height: 0;
-}
-.collapse-width {
-  overflow: hidden;
-  width: 0;
-}
-.no-anim,
-.no-anim .xt-backdrop {
-  animation: none !important;
-  transition: none !important;
 }
 .nowrap {
   white-space: nowrap;
@@ -702,6 +647,53 @@ img.fluid {
 .xt-position {
   float: left;
   width: 100%;
+}
+.toggle-block {
+  display: none !important;
+}
+.toggle-block.active,
+.toggle-block.fade-out {
+  display: block !important;
+}
+.toggle-flex {
+  display: none !important;
+}
+.toggle-flex.active,
+.toggle-flex.fade-out {
+  display: -webkit-flex;
+  display: -ms-flexbox !important;
+  display: flex !important;
+}
+.toggle-inline {
+  display: none !important;
+}
+.toggle-inline.active,
+.toggle-inline.fade-out {
+  display: inline !important;
+}
+.toggle-inline-block {
+  display: none !important;
+}
+.toggle-inline-block.active,
+.toggle-inline-block.fade-out {
+  display: inline-block !important;
+}
+.toggle-none.active,
+.toggle-none.fade-out {
+  display: none !important;
+}
+.collapse-height {
+  overflow: hidden;
+  height: 0;
+}
+.collapse-width {
+  overflow: hidden;
+  width: 0;
+}
+.no-anim,
+.no-anim .xt-backdrop {
+  animation: none !important;
+  transition: none !important;
 }
 .xt-backdrop {
   position: fixed;
