@@ -49,19 +49,59 @@ body {
 // utils
 //////////////////////
 
-// img.fluid;
+/* float */
+.float {
+  position: relative;
+  float: left;
+  width: 100%;
+}
+.float-left {
+  float: left !important;
+}
+.float-right {
+  float: right !important;
+}
+
+/* img */
 img.fluid {
   max-width: 100%;
   height: auto;
 }
-
-// img.center;
 img.center {
   margin-left: auto;
   margin-right: auto;
 }
 
-// .clear;
+/* text */
+.text-center {
+  text-align: center;
+}
+.text-left {
+  text-align: left;
+}
+.text-right {
+  text-align: right;
+}
+.nowrap {
+  white-space: nowrap;
+}
+
+/* show + hide */
+.show {
+  display: block !important;
+}
+.hide {
+  display: none !important;
+}
+
+/* disabled */
+[disabled] {
+  cursor: default;
+  opacity: 0.75;
+  pointer-events: none;
+}
+
+/* others */
 .clear {
   &:before,
   &:after {
@@ -72,63 +112,24 @@ img.center {
     clear: both;
   }
 }
-
-// .float;
-.float {
-  position: relative;
-  float: left;
-  width: 100%;
-}
-.float-left {
-  float: left !important;
-  margin-right: auto !important;
-}
-.float-right {
-  float: right !important;
-  margin-left: auto !important;
-}
-
-// .no-selection;
 .no-selection {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
 }
-
-// .text-selection;
 .text-selection {
   -webkit-user-select: text;
   -moz-user-select: text;
   -ms-user-select: text;
   user-select: text;
 }
-
-// .accelerate;
 .accelerate {
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   -webkit-perspective: 1000;
   perspective: 1000;
   transform: translateZ(0);
-}
-
-// show + hide
-.show {
-  display: block !important;
-}
-.hide {
-  display: none !important;
-}
-
-// others
-.nowrap {
-  white-space: nowrap;
-}
-[disabled] {
-  cursor: default;
-  opacity: 0.75;
-  pointer-events: none;
 }
 
 //////////////////////
@@ -677,7 +678,7 @@ img.center {
 // plugins
 //////////////////////
 
-// .xt-container + .xt-position
+/* xt-container + xt-position */
 .xt-container {
   position: relative;
   width: 100%;
@@ -687,7 +688,7 @@ img.center {
   width: 100%;
 }
 
-// toggle
+/* toggle */
 .toggle-block {
   display: none !important;
   &.active,
@@ -725,7 +726,7 @@ img.center {
   }
 }
 
-// animations
+/* animations */
 .collapse-height {
   overflow: hidden;
   height: 0;
@@ -740,7 +741,7 @@ img.center {
   transition: none !important;
 }
 
-// .xt-backdrop
+/* xt-backdrop */
 .xt-backdrop {
   position: fixed;
   z-index: 100;
@@ -757,7 +758,7 @@ img.center {
   }
 }
 
-// .xt-fixed
+/* xt-fixed */
 html.xt-fixed-vertical {
   body {
     overflow-y: hidden;
@@ -774,6 +775,10 @@ html.xt-fixed-horizontal {
     overflow-x: scroll;
   }
 }
+
+//////////////////////
+// mixins
+//////////////////////
 
 // .xt-scroll();
 .xt-scroll(@position:'top', @pos:0) {
