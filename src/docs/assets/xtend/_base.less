@@ -8,12 +8,14 @@
 // normalize
 //////////////////////
 
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+}
 img {
   display: block;
 }
 a,
-button,
-.button {
+button {
   cursor: pointer;
   text-decoration: none;
   &:focus {
@@ -207,9 +209,9 @@ body {
     -ms-flex-direction: row-reverse;
     flex-direction: row-reverse;
   }
-  -webkit-flex: 1 0 auto;
-  -ms-flex: 1 0 auto;
-  flex: 1 0 auto;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
   > .item.fluid {
     -webkit-flex: 1 1 0%;
     -ms-flex: 1 1 0%;
@@ -230,6 +232,25 @@ body {
   }
   > .item {
     width: 100%;
+  }
+}
+.flex,
+.spacer,
+.media {
+  /* spacing */
+  &:not(:first-child) {
+    margin-top: 0 !important;
+  }
+  &:not(:last-child) {
+    margin-bottom: 0 !important;
+  }
+}
+.card {
+  width: 100%;
+  /* spacing */
+  margin: 0 !important;
+  > *:not(.item) {
+    padding: 0 !important;
   }
 }
 .flex,
@@ -361,11 +382,6 @@ body {
 //////////////////////
 
 .card {
-  width: 100%;
-  margin: 0 !important; // no negative margin
-  > *:not(.item) {
-    padding: 0 !important; // no padding
-  }
   // separator
   &.separator {
     > .item {

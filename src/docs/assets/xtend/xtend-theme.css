@@ -1,18 +1,25 @@
 /*! xtend v0.0.6 (http://www.minimit.com/xtend/)
 @copyright (c) 2016 - 2017 Riccardo Caroli
 @license MIT (https://github.com/minimit/xtend/blob/master/LICENSE) */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
 img {
   display: block;
 }
 a,
-button,
-.button {
+button {
   cursor: pointer;
   text-decoration: none;
 }
 a:focus,
-button:focus,
-.button:focus {
+button:focus {
   outline: 0;
 }
 html,
@@ -165,9 +172,9 @@ body {
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-flex: 1 0 auto;
-  -ms-flex: 1 0 auto;
-  flex: 1 0 auto;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
 }
 .media.reverse,
 .card.reverse {
@@ -196,6 +203,29 @@ body {
 }
 .vertical > .item {
   width: 100%;
+}
+.flex,
+.spacer,
+.media {
+  /* spacing */
+}
+.flex:not(:first-child),
+.spacer:not(:first-child),
+.media:not(:first-child) {
+  margin-top: 0 !important;
+}
+.flex:not(:last-child),
+.spacer:not(:last-child),
+.media:not(:last-child) {
+  margin-bottom: 0 !important;
+}
+.card {
+  width: 100%;
+  /* spacing */
+  margin: 0 !important;
+}
+.card > *:not(.item) {
+  padding: 0 !important;
 }
 .flex,
 .spacer,
@@ -366,13 +396,6 @@ body {
   -webkit-justify-content: space-around;
   -ms-flex-pack: distribute;
   justify-content: space-around;
-}
-.card {
-  width: 100%;
-  margin: 0 !important;
-}
-.card > *:not(.item) {
-  padding: 0 !important;
 }
 .card.separator > .item {
   display: -webkit-flex;
@@ -1454,6 +1477,38 @@ img.fluid {
 2.619
 3.224
 */
+/*
+.spacing-headers() {
+  margin-top: 2.619rem !important;
+  margin-bottom: 1.238rem !important;
+  &:first-child {
+    margin-top: 0 !important;
+  }
+  &:last-child {
+    margin-bottom: 0 !important;
+  }
+}
+.spacing-headers-small() {
+  margin-top: 1.238rem !important;
+  margin-bottom: 1rem !important;
+  &:first-child {
+    margin-top: 0 !important;
+  }
+  &:last-child {
+    margin-bottom: 0 !important;
+  }
+}
+.spacing-text() {
+  margin-top: 1rem !important;
+  margin-bottom: 1rem !important;
+  &:first-child {
+    margin-top: 0 !important;
+  }
+  &:last-child {
+    margin-bottom: 0 !important;
+  }
+}
+*/
 .animation-default {
   animation-duration: 300ms;
   animation-timing-function: cubic-bezier(0.63, 0.36, 0, 0.97);
@@ -1859,8 +1914,7 @@ h2,
 .h2,
 h3,
 .h3 {
-  margin-top: 2.619rem;
-  margin-bottom: 1.238rem;
+  margin-top: 2.619rem !important;
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 600;
   font-style: normal;
@@ -1872,15 +1926,7 @@ h2:first-child,
 .h2:first-child,
 h3:first-child,
 .h3:first-child {
-  margin-top: 0;
-}
-h1:last-child,
-.h1:last-child,
-h2:last-child,
-.h2:last-child,
-h3:last-child,
-.h3:last-child {
-  margin-bottom: 0;
+  margin-top: 0 !important;
 }
 h1 + h1,
 h1 + .h1,
@@ -1926,8 +1972,7 @@ h5,
 .h5,
 h6,
 .h6 {
-  margin-top: 1.238rem;
-  margin-bottom: 1rem;
+  margin-top: 1.238rem !important;
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 300;
   font-style: normal;
@@ -1939,15 +1984,7 @@ h5:first-child,
 .h5:first-child,
 h6:first-child,
 .h6:first-child {
-  margin-top: 0;
-}
-h4:last-child,
-.h4:last-child,
-h5:last-child,
-.h5:last-child,
-h6:last-child,
-.h6:last-child {
-  margin-bottom: 0;
+  margin-top: 0 !important;
 }
 h4 + h4,
 h4 + .h4,
@@ -2020,8 +2057,7 @@ h6,
   font-size: .809rem;
 }
 .lead {
-  margin-top: 1.238rem;
-  margin-bottom: 1rem;
+  margin-top: 1.238rem !important;
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 300;
   font-style: normal;
@@ -2029,23 +2065,16 @@ h6,
   font-size: 1.238rem;
 }
 .lead:first-child {
-  margin-top: 0;
-}
-.lead:last-child {
-  margin-bottom: 0;
+  margin-top: 0 !important;
 }
 .lead + .lead {
   margin-top: 1rem;
 }
 p {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin-top: 1rem !important;
 }
 p:first-child {
-  margin-top: 0;
-}
-p:last-child {
-  margin-bottom: 0;
+  margin-top: 0 !important;
 }
 strong {
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -2404,6 +2433,8 @@ a.button:not(.link):focus {
   padding: 2.619rem;
 }
 .card {
+  /* spacing */
+  margin-top: 1rem !important;
   /* styles */
   overflow: hidden;
   border-radius: 4px;
@@ -2414,6 +2445,9 @@ a.button:not(.link):focus {
   color: #000000;
   /* internal sizes */
   /* separator */
+}
+.card:first-child {
+  margin-top: 0 !important;
 }
 .card,
 .card > .item {
@@ -2631,8 +2665,6 @@ a.button:not(.link):focus {
   padding: 15px;
 }
 .overlay .overlay-close {
-  cursor: pointer;
-  text-decoration: none;
   display: inline-block;
   position: relative;
   vertical-align: middle;
@@ -2668,9 +2700,6 @@ a.button:not(.link):focus {
   font-size: 12px;
   background-color: transparent;
   color: #bfbfbf;
-}
-.overlay .overlay-close:focus {
-  outline: 0;
 }
 .overlay .overlay-close .text {
   display: inline-block;
