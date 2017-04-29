@@ -55,6 +55,12 @@ img.fluid {
   height: auto;
 }
 
+// img.center;
+img.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 // .clear;
 .clear {
   &:before,
@@ -874,6 +880,9 @@ html.xt-fixed-horizontal {
         -webkit-flex-direction: column-reverse;
         -ms-flex-direction: column-reverse;
         flex-direction: column-reverse;
+      }
+      > .item {
+        width: 100%;
       }
       // card styles for separator
       &.card {

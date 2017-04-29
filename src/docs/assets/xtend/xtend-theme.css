@@ -49,6 +49,10 @@ img.fluid {
   max-width: 100%;
   height: auto;
 }
+img.center {
+  margin-left: auto;
+  margin-right: auto;
+}
 .clear:before,
 .clear:after {
   content: " ";
@@ -924,6 +928,9 @@ html.xt-fixed-horizontal .overlay {
     -ms-flex-direction: column-reverse;
     flex-direction: column-reverse;
   }
+  .vertical-xs > .item {
+    width: 100%;
+  }
   .vertical-xs.card > .item:before {
     display: none;
   }
@@ -1052,6 +1059,9 @@ html.xt-fixed-horizontal .overlay {
     -webkit-flex-direction: column-reverse;
     -ms-flex-direction: column-reverse;
     flex-direction: column-reverse;
+  }
+  .vertical-sm > .item {
+    width: 100%;
   }
   .vertical-sm.card > .item:before {
     display: none;
@@ -1182,6 +1192,9 @@ html.xt-fixed-horizontal .overlay {
     -ms-flex-direction: column-reverse;
     flex-direction: column-reverse;
   }
+  .vertical-md > .item {
+    width: 100%;
+  }
   .vertical-md.card > .item:before {
     display: none;
   }
@@ -1311,6 +1324,9 @@ html.xt-fixed-horizontal .overlay {
     -ms-flex-direction: column-reverse;
     flex-direction: column-reverse;
   }
+  .vertical-lg > .item {
+    width: 100%;
+  }
   .vertical-lg.card > .item:before {
     display: none;
   }
@@ -1439,6 +1455,9 @@ html.xt-fixed-horizontal .overlay {
     -webkit-flex-direction: column-reverse;
     -ms-flex-direction: column-reverse;
     flex-direction: column-reverse;
+  }
+  .vertical-xl > .item {
+    width: 100%;
   }
   .vertical-xl.card > .item:before {
     display: none;
