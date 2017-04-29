@@ -1,0 +1,405 @@
+//////////////////////
+// button
+//////////////////////
+
+.button {
+  /* styles */
+  border: 0;
+  border-radius: 0;
+  .font-sans-regular();
+  letter-spacing: .5px;
+  text-transform: uppercase;
+  /* variants */
+  .button.grey; // default variant
+  &.primary {
+    background-color: @color-primary;
+    color: @color-white;
+    &:hover,
+    &:active, &.active {
+      background-color: darken(@color-primary, 5%);
+      color: @color-white;
+    }
+  }
+  &.secondary {
+    background-color: @color-secondary;
+    color: @color-white;
+    &:hover,
+    &:active, &.active {
+      background-color: darken(@color-secondary, 5%);
+      color: @color-white;
+    }
+  }
+  &.grey {
+    background-color: darken(@color-white, 10%);
+    color: @color-text;
+    &:hover,
+    &:active, &.active {
+      background-color: darken(@color-white, 15%);
+      color: @color-text;
+    }
+  }
+  &.white {
+    background-color: transparent;
+    color: @color-text;
+    &:hover,
+    &:active, &.active {
+      background-color: fade(@color-primary, 10%);
+      color: @color-primary;
+    }
+  }
+  /* sizes */
+  .button.medium; // default size
+  line-height: 1.25;
+  &.tiny {
+    font-size: .66rem;
+    padding: .625em .875em;
+  }
+  &.small {
+    font-size: .73rem;
+    padding: .625em .875em;
+  }
+  &.medium {
+    font-size: .8rem;
+    padding: .625em .875em;
+  }
+  &.large {
+    font-size: .86rem;
+    padding: .625em .875em;
+  }
+  &.giant {
+    font-size: 1rem;
+    padding: .625em .875em;
+  }
+  &.wide {
+    padding-left: 1.625em;
+    padding-right: 1.625em;
+  }
+  &.tall {
+    padding-top: 1em;
+    padding-bottom: 1em;
+  }
+  /* animations */
+  &:not([class*=" anim-"]) {
+    .transition-default;
+  }
+}
+
+//////////////////////
+// drop
+//////////////////////
+
+.drop {
+  /* styles */
+  .drop-inner {
+    padding: .618rem 0;
+    -webkit-box-shadow: 0 0 5px fade(@color-black, 20%);
+    box-shadow: 0 0 5px fade(@color-black, 20%);
+  }
+  .button {
+    .button.wide;
+    padding-right: 40px !important;
+  }
+  /* variants */
+  .drop.white; // default variant
+  &.primary {
+    .drop.left; // default position
+    .drop.bottom; // default position
+    .drop-inner {
+      background-color: @color-primary;
+      color: @color-white;
+    }
+    .button {
+      .button.primary;
+    }
+  }
+  &.secondary {
+    .drop.left; // default position
+    .drop.bottom; // default position
+    .drop-inner {
+      background-color: @color-secondary;
+      color: @color-white;
+    }
+    .button {
+      .button.secondary;
+    }
+  }
+  &.grey {
+    .drop.left; // default position
+    .drop.bottom; // default position
+    .drop-inner {
+      background-color: darken(@color-white, 10%);
+      color: @color-text;
+    }
+    .button {
+      .button.grey;
+    }
+  }
+  &.white {
+    .drop.left; // default position
+    .drop.bottom; // default position
+    .drop-inner {
+      background-color: @color-white;
+      color: @color-text;
+    }
+    .button {
+      .button.white;
+    }
+  }
+  /* positions spacing */
+  &.left,
+  &.right,
+  &.top,
+  &.bottom {
+    padding: .618rem 0;
+  }
+  &.before,
+  &.after {
+    padding: .618rem;
+  }
+  /* dimensions */
+  &.max-height {
+    .drop-inner {
+      max-height: 225px;
+    }
+  }
+  &.max-width {
+    .drop-inner {
+      max-width: 225px;
+    }
+  }
+  /* animations */
+  &:not([class*=" anim-"]) {
+    .anim-vertical-zoom;
+  }
+}
+
+//////////////////////
+// overlay
+//////////////////////
+
+.overlay {
+  /* styles */
+  .overlay-inner {
+    padding: @contain-spacing; // empty space outside overlay
+  }
+  .overlay-close {
+    .button;
+    width: 50px;
+    height: 50px;
+    font-size: 12px;
+    background-color: transparent;
+    color: @color-text-75;
+    &:hover,
+    &:active, &.active {
+      background-color: transparent;
+      color: @color-primary;
+    }
+  }
+  /* variants */
+  .overlay.white; // default variant
+  &.primary {
+    .overlay-content,
+    &.full .overlay-inner {
+      background-color: @color-primary;
+      color: @color-white;
+    }
+    .overlay-close {
+      color: @color-white;
+    }
+  }
+  &.secondary {
+    .overlay-content,
+    &.full .overlay-inner {
+      background-color: @color-secondary;
+      color: @color-white;
+    }
+    .overlay-close {
+      color: @color-white;
+    }
+  }
+  &.white {
+    .overlay-content,
+    &.full .overlay-inner {
+      background-color: @color-white;
+      color: @color-text;
+    }
+    .overlay-close {
+      color: @color-text-75;
+    }
+  }
+  /* sizes */
+  .overlay.medium; // default size
+  .overlay-content {
+    padding: 40px;
+  }
+  &.tiny {
+    .overlay-content {
+      max-width: @contain-xs - @contain-spacing * 2;
+    }
+  }
+  &.small {
+    .overlay-content {
+      max-width: @contain-sm - @contain-spacing * 2;
+    }
+  }
+  &.medium {
+    .overlay-content {
+      max-width: @contain-md - @contain-spacing * 2;
+    }
+  }
+  &.large {
+    .overlay-content {
+      max-width: @contain-lg - @contain-spacing * 2;
+    }
+  }
+  &.giant {
+    .overlay-content {
+      max-width: @contain-xl - @contain-spacing * 2;
+    }
+  }
+  &.full {
+    .overlay-content {
+      max-width: inherit;
+    }
+  }
+  /* animations */
+  .overlay-inner:not([class*=" anim-"]) {
+    .anim-vertical-zoom;
+  }
+  &.full {
+    .overlay-inner:not([class*=" anim-"]) {
+      .anim-vertical;
+    }
+  }
+}
+
+//////////////////////
+// Others
+//////////////////////
+
+/* .xt-backdrop */
+.xt-backdrop {
+  /* styles */
+  background-color: @color-black;
+  /* animations */
+  &:not([class*=" anim-"]) {
+    .transition-default;
+    opacity: 0;
+    &.fade-in {
+      opacity: .2;
+    }
+    &.fade-out {
+      opacity: 0;
+    }
+  }
+}
+
+//////////////////////
+// icons
+//////////////////////
+
+/* .icon- */
+.icon {
+  display: inline-block;
+  position: relative;
+  /* alignment */
+  &.left {
+    margin-right: .35em;
+  }
+  &.right {
+    margin-left: .35em;
+  }
+  /* sizes */
+  /*
+  .tiny {
+    font-size: .5em;
+  }
+  .small {
+    font-size: .75em;
+  }
+  .medium {
+    font-size: 1em;
+  }
+  .large {
+    font-size: 1.5em;
+  }
+  .giant {
+    font-size: 2em;
+  }
+  */
+}
+
+/* caret */
+.caret-down,
+.caret-up,
+.caret-right,
+.caret-left {
+  border-width: .3em;
+}
+.caret-down {
+  border-top-color: @color-text;
+}
+.caret-up {
+  border-bottom-color: @color-text;
+}
+.caret-right {
+  border-left-color: @color-text;
+}
+.caret-left {
+  border-right-color: @color-text;
+}
+
+/* swap-in + swap-out */
+.swap-in {
+  display: none;
+}
+.button {
+  &:hover,
+  &:active, &.active {
+    .swap-in {
+      display: inline-block;
+    }
+    .swap-out {
+      display: none !important;
+    }
+  }
+}
+
+/* swap */
+.button {
+  .swap-out.swap-bottom {
+    .animation-default;
+    .anim-bottom.fade-in;
+  }
+  .swap-out.swap-top {
+    .animation-default;
+    .anim-top.fade-in;
+  }
+  .swap-out.swap-left {
+    .animation-default;
+    .anim-left.fade-in;
+  }
+  .swap-out.swap-right {
+    .animation-default;
+    .anim-right.fade-in;
+  }
+  &:hover,
+  &:active, &.active {
+    .swap-bottom {
+      .animation-default;
+      .anim-bottom.fade-in;
+    }
+    .swap-top {
+      .animation-default;
+      .anim-top.fade-in;
+    }
+    .swap-left {
+      .animation-default;
+      .anim-left.fade-in;
+    }
+    .swap-right {
+      .animation-default;
+      .anim-right.fade-in;
+    }
+  }
+}

@@ -1,10 +1,4 @@
 //////////////////////
-// imports
-//////////////////////
-
-@import "_variables.less";
-
-//////////////////////
 // normalize
 //////////////////////
 
@@ -24,7 +18,7 @@ button {
 }
 
 //////////////////////
-// structure
+// document
 //////////////////////
 
 html,
@@ -55,12 +49,127 @@ body {
 // utils
 //////////////////////
 
+// .clear;
+.clear {
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+// .float;
+.float {
+  .clear;
+  position: relative;
+  float: left;
+  width: 100%;
+}
+.float-left {
+  float: left !important;
+  margin-right: auto !important;
+}
+.float-right {
+  float: right !important;
+  margin-left: auto !important;
+}
+
+// img.fluid;
+img.fluid {
+  max-width: 100%;
+  height: auto;
+}
+
+// .no-selection;
+.no-selection {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+// .text-selection;
+.text-selection {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+
+// .accelerate;
+.accelerate {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-perspective: 1000;
+  perspective: 1000;
+  transform: translateZ(0);
+}
+
+// toggle
+.toggle-block {
+  display: none !important;
+  &.active,
+  &.fade-out {
+    display: block !important;
+  }
+}
+.toggle-flex {
+  display: none !important;
+  &.active,
+  &.fade-out {
+    display: -webkit-flex;
+    display: -ms-flexbox !important;
+    display: flex !important;
+  }
+}
+.toggle-inline {
+  display: none !important;
+  &.active,
+  &.fade-out {
+    display: inline !important;
+  }
+}
+.toggle-inline-block {
+  display: none !important;
+  &.active,
+  &.fade-out {
+    display: inline-block !important;
+  }
+}
+.toggle-none {
+  &.active,
+  &.fade-out {
+    display: none !important;
+  }
+}
+
+// show + hide
 .show {
   display: block !important;
 }
 .hide {
   display: none !important;
 }
+
+// animations
+.collapse-height {
+  overflow: hidden;
+  height: 0;
+}
+.collapse-width {
+  overflow: hidden;
+  width: 0;
+}
+.no-anim,
+.no-anim .xt-backdrop {
+  animation: none !important;
+  transition: none !important;
+}
+
+// others
 .nowrap {
   white-space: nowrap;
 }
@@ -68,103 +177,6 @@ body {
   cursor: default;
   opacity: 0.75;
   pointer-events: none;
-}
-
-//////////////////////
-// icons
-//////////////////////
-
-/* caret */
-.caret-down,
-.caret-up,
-.caret-right,
-.caret-left {
-  vertical-align: middle;
-  top: -.08em;
-}
-.caret-down {
-  border-style: solid;
-  border-color: transparent;
-  border-bottom-width: 0 !important; 
-}
-.caret-up {
-  border-style: solid;
-  border-color: transparent;
-  border-top-width: 0 !important; 
-}
-.caret-right {
-  border-style: solid;
-  border-color: transparent;
-  border-right-width: 0 !important; 
-}
-.caret-left {
-  border-style: solid;
-  border-color: transparent;
-  border-left-width: 0 !important; 
-}
-
-//////////////////////
-// button
-//////////////////////
-
-.button {
-  display: inline-block;
-  position: relative;
-  vertical-align: middle;
-  text-align: center;
-  // content
-  /*
-  .left {
-    float: left;
-    top: .1em; // vertical fix
-  }
-  .right {
-    float: right;
-    top: .1em; // vertical fix
-  }
-  */
-  .text {
-    display: inline-block;
-    overflow: hidden;
-  }
-}
-
-//////////////////////
-// contain
-//////////////////////
-
-.contain {
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  &.fluid {
-    width: auto !important;
-  }
-}
-
-//////////////////////
-// column + group + item
-//////////////////////
-
-.column,
-.group,
-.item {
-  position: relative;
-  max-width: 100%;
-  &.full {
-    width: 100%;
-  }
-}
-.column {
-  -webkit-flex: 1 1 100%;
-  -ms-flex: 1 1 100%;
-  flex: 1 1 100%;
-  width: 100%;
-}
-.group {
-  -webkit-flex: 0 0 auto;
-  -ms-flex: 0 0 auto;
-  flex: 0 0 auto;
 }
 
 //////////////////////
@@ -459,44 +471,100 @@ body {
 }
 
 //////////////////////
-// toggle
+// button
 //////////////////////
 
-.toggle-block {
-  display: none !important;
-  &.active,
-  &.fade-out {
-    display: block !important;
+.button {
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+  text-align: center;
+  // content
+  /*
+  .left {
+    float: left;
+    top: .1em; // vertical fix
+  }
+  .right {
+    float: right;
+    top: .1em; // vertical fix
+  }
+  */
+  .text {
+    display: inline-block;
+    overflow: hidden;
   }
 }
-.toggle-flex {
-  display: none !important;
-  &.active,
-  &.fade-out {
-    display: -webkit-flex;
-    display: -ms-flexbox !important;
-    display: flex !important;
+
+//////////////////////
+// contain
+//////////////////////
+
+.contain {
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  &.fluid {
+    width: auto !important;
   }
 }
-.toggle-inline {
-  display: none !important;
-  &.active,
-  &.fade-out {
-    display: inline !important;
+
+//////////////////////
+// column + group + item
+//////////////////////
+
+.column,
+.group,
+.item {
+  position: relative;
+  max-width: 100%;
+  &.full {
+    width: 100%;
   }
 }
-.toggle-inline-block {
-  display: none !important;
-  &.active,
-  &.fade-out {
-    display: inline-block !important;
-  }
+.column {
+  -webkit-flex: 1 1 100%;
+  -ms-flex: 1 1 100%;
+  flex: 1 1 100%;
+  width: 100%;
 }
-.toggle-none {
-  &.active,
-  &.fade-out {
-    display: none !important;
-  }
+.group {
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+}
+
+//////////////////////
+// icons
+//////////////////////
+
+/* caret */
+.caret-down,
+.caret-up,
+.caret-right,
+.caret-left {
+  vertical-align: middle;
+  top: -.08em;
+}
+.caret-down {
+  border-style: solid;
+  border-color: transparent;
+  border-bottom-width: 0 !important; 
+}
+.caret-up {
+  border-style: solid;
+  border-color: transparent;
+  border-top-width: 0 !important; 
+}
+.caret-right {
+  border-style: solid;
+  border-color: transparent;
+  border-right-width: 0 !important; 
+}
+.caret-left {
+  border-style: solid;
+  border-color: transparent;
+  border-left-width: 0 !important; 
 }
 
 //////////////////////
@@ -657,10 +725,10 @@ body {
 }
 
 //////////////////////
-// plugin
+// plugins
 //////////////////////
 
-/* .xt-container + .xt-position */
+// .xt-container + .xt-position
 .xt-container {
   position: relative;
   width: 100%;
@@ -670,7 +738,7 @@ body {
   width: 100%;
 }
 
-/* .xt-backdrop */
+// .xt-backdrop
 .xt-backdrop {
   position: fixed;
   z-index: 100;
@@ -687,7 +755,7 @@ body {
   }
 }
 
-/* .xt-fixed */
+// .xt-fixed
 html.xt-fixed-vertical {
   body {
     overflow-y: hidden;
@@ -704,91 +772,6 @@ html.xt-fixed-horizontal {
     overflow-x: scroll;
   }
 }
-
-//////////////////////
-// animations
-//////////////////////
-
-.collapse-height {
-  overflow: hidden;
-  height: 0;
-}
-.collapse-width {
-  overflow: hidden;
-  width: 0;
-}
-.no-anim,
-.no-anim .xt-backdrop {
-  animation: none !important;
-  transition: none !important;
-}
-
-//////////////////////
-// utils
-//////////////////////
-
-// .clear;
-.clear {
-  &:before,
-  &:after {
-    content: " ";
-    display: table;
-  }
-  &:after {
-    clear: both;
-  }
-}
-
-// .float;
-.float {
-  .clear;
-  position: relative;
-  float: left;
-  width: 100%;
-}
-.float-left {
-  float: left !important;
-  margin-right: auto !important;
-}
-.float-right {
-  float: right !important;
-  margin-left: auto !important;
-}
-
-// img.fluid;
-img.fluid {
-  max-width: 100%;
-  height: auto;
-}
-
-// .no-selection;
-.no-selection {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-// .text-selection;
-.text-selection {
-  -webkit-user-select: text;
-  -moz-user-select: text;
-  -ms-user-select: text;
-  user-select: text;
-}
-
-// .accelerate;
-.accelerate {
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  -webkit-perspective: 1000;
-  perspective: 1000;
-  transform: translateZ(0);
-}
-
-//////////////////////
-// plugins
-//////////////////////
 
 // .xt-scroll();
 .xt-scroll(@position:'top', @pos:0) {
