@@ -6,9 +6,25 @@ categories: [Structure]
 order: 10
 ---
 
+<h2>Contain</h2>
+
+<p>You can set <code>.contain</code> sizes and spacing inside the .less file.</p>
+
+<pre><code class="html">
+&lt;!-- contain inside responsive sizes --&gt;
+&lt;div class="contain"&gt;
+  &lt;!-- content --&gt;
+&lt;/div&gt;
+
+&lt;!-- fluid size contain --&gt;
+&lt;div class="contain fluid"&gt;
+  &lt;!-- content --&gt;
+&lt;/div&gt;
+</code></pre>
+
 <h2>Flex and Columns</h2>
 
-<p>@TODO table sizes + .-auto + .contain.fluid</p>
+<p>@TODO table column sizes with .-auto</p>
 
 <p><code>.flex</code> and <code>.column</code>.</p>
   
@@ -18,11 +34,11 @@ order: 10
 <div class="flex">
   <div class="column size-4"></div>
   <div class="column size-8"></div>
-  <div class="column size-8"></div>
-  <div class="column size-4"></div>
+  <div class="column sm-8"></div>
+  <div class="column sm-4"></div>
   <div class="column size-auto sm-2"></div>
   <div class="column size-auto"></div>
-  <div class="column size-auto md-2 lg-auto"></div>
+  <div class="column size-auto sm-2 lg-auto"></div>
 </div>
     </div>
   </div>
@@ -63,11 +79,11 @@ order: 10
 <div class="flex">
   <div class="column size-4"></div>
   <div class="column size-8"></div>
-  <div class="column size-8"></div>
-  <div class="column size-4"></div>
+  <div class="column sm-8"></div>
+  <div class="column sm-4"></div>
   <div class="column size-auto sm-2"></div>
   <div class="column size-auto"></div>
-  <div class="column size-auto md-2 lg-auto"></div>
+  <div class="column size-auto sm-2 lg-auto"></div>
 </div>
 <p class="font-small">* Automatic spacing<p>
     </div>
@@ -78,11 +94,11 @@ order: 10
 <div class="flex tiny">
   <div class="column size-4"></div>
   <div class="column size-8"></div>
-  <div class="column size-8"></div>
-  <div class="column size-4"></div>
+  <div class="column sm-8"></div>
+  <div class="column sm-4"></div>
   <div class="column size-auto sm-2"></div>
   <div class="column size-auto"></div>
-  <div class="column size-auto md-2 lg-auto"></div>
+  <div class="column size-auto sm-2 lg-auto"></div>
 </div>
 <p class="font-small">* Automatic spacing<p>
     </div>
@@ -93,11 +109,11 @@ order: 10
 <div class="flex small">
   <div class="column size-4"></div>
   <div class="column size-8"></div>
-  <div class="column size-8"></div>
-  <div class="column size-4"></div>
+  <div class="column sm-8"></div>
+  <div class="column sm-4"></div>
   <div class="column size-auto sm-2"></div>
   <div class="column size-auto"></div>
-  <div class="column size-auto md-2 lg-auto"></div>
+  <div class="column size-auto sm-2 lg-auto"></div>
 </div>
 <p class="font-small">* Automatic spacing<p>
     </div>
@@ -108,11 +124,11 @@ order: 10
 <div class="flex medium">
   <div class="column size-4"></div>
   <div class="column size-8"></div>
-  <div class="column size-8"></div>
-  <div class="column size-4"></div>
+  <div class="column sm-8"></div>
+  <div class="column sm-4"></div>
   <div class="column size-auto sm-2"></div>
   <div class="column size-auto"></div>
-  <div class="column size-auto md-2 lg-auto"></div>
+  <div class="column size-auto sm-2 lg-auto"></div>
 </div>
 <p class="font-small">* Automatic spacing<p>
     </div>
@@ -123,11 +139,11 @@ order: 10
 <div class="flex large">
   <div class="column size-4"></div>
   <div class="column size-8"></div>
-  <div class="column size-8"></div>
-  <div class="column size-4"></div>
+  <div class="column sm-8"></div>
+  <div class="column sm-4"></div>
   <div class="column size-auto sm-2"></div>
   <div class="column size-auto"></div>
-  <div class="column size-auto md-2 lg-auto"></div>
+  <div class="column size-auto sm-2 lg-auto"></div>
 </div>
 <p class="font-small">* Automatic spacing<p>
     </div>
@@ -138,11 +154,11 @@ order: 10
 <div class="flex giant">
   <div class="column size-4"></div>
   <div class="column size-8"></div>
-  <div class="column size-8"></div>
-  <div class="column size-4"></div>
+  <div class="column sm-8"></div>
+  <div class="column sm-4"></div>
   <div class="column size-auto sm-2"></div>
   <div class="column size-auto"></div>
-  <div class="column size-auto md-2 lg-auto"></div>
+  <div class="column size-auto sm-2 lg-auto"></div>
 </div>
 <p class="font-small">* Automatic spacing<p>
     </div>
@@ -278,11 +294,11 @@ order: 10
 <div class="flex wrap-reverse">
   <div class="column size-4"></div>
   <div class="column size-8"></div>
-  <div class="column size-8"></div>
-  <div class="column size-4"></div>
+  <div class="column sm-8"></div>
+  <div class="column sm-4"></div>
   <div class="column size-auto sm-2"></div>
   <div class="column size-auto"></div>
-  <div class="column size-auto md-2 lg-auto"></div>
+  <div class="column size-auto sm-2 lg-auto"></div>
 </div>
     </div>
   </div>
@@ -305,11 +321,11 @@ order: 1;
 <div class="flex">
   <div class="column size-4"></div>
   <div class="column size-8" style="-webkit-order: -1; -ms-flex-order: -1; order: -1;"></div>
-  <div class="column size-8"></div>
-  <div class="column size-4"></div>
+  <div class="column sm-8"></div>
+  <div class="column sm-4"></div>
   <div class="column size-auto sm-2"></div>
-  <div class="column size-auto" style="-webkit-order: 1; -ms-flex-order: 1; order: 1;"></div>
-  <div class="column size-auto md-2 lg-auto"></div>
+  <div class="column size-auto" style="-webkit-order: -1; -ms-flex-order: -1; order: -1;"></div>
+  <div class="column size-auto sm-2 lg-auto"></div>
 </div>
     </div>
   </div>

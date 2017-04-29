@@ -443,11 +443,6 @@ img.fluid {
   position: relative;
   max-width: 100%;
 }
-.column.full,
-.group.full,
-.item.full {
-  width: 100%;
-}
 .column {
   -webkit-flex: 1 1 100%;
   -ms-flex: 1 1 100%;
