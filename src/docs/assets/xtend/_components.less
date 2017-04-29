@@ -199,7 +199,7 @@
   .overlay.white; // default variant
   &.primary {
     .overlay-content,
-    &.full .overlay-inner {
+    &.screen .overlay-inner {
       background-color: @color-primary;
       color: @color-white;
     }
@@ -209,7 +209,7 @@
   }
   &.secondary {
     .overlay-content,
-    &.full .overlay-inner {
+    &.screen .overlay-inner {
       background-color: @color-secondary;
       color: @color-white;
     }
@@ -219,7 +219,7 @@
   }
   &.white {
     .overlay-content,
-    &.full .overlay-inner {
+    &.screen .overlay-inner {
       background-color: @color-white;
       color: @color-text;
     }
@@ -231,6 +231,9 @@
   .overlay.medium; // default size
   .overlay-content {
     padding: 40px;
+  }
+  &.screen {
+    .overlay.full; // default size
   }
   &.tiny {
     .overlay-content {
@@ -266,7 +269,7 @@
   .overlay-inner:not([class*=" anim-"]) {
     .anim-vertical-zoom;
   }
-  &.full {
+  &.screen {
     .overlay-inner:not([class*=" anim-"]) {
       .anim-vertical;
     }

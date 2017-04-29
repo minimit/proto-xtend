@@ -704,12 +704,12 @@ img.fluid {
     -ms-flex-item-align: center;
     align-self: center;
   }
-  /* full */
-  &.full {
+  /* screen */
+  &.screen {
     .overlay-content {
       position: static;
     }
-    .overlay-content + .xt-backdrop {
+    .overlay-inner + .xt-backdrop {
       display: none;
     }
   }
@@ -720,7 +720,7 @@ img.fluid {
     right: 0;
   }
   .overlay-close + * {
-    margin-top: 0;
+    margin-top: 0 !important;
   }
 }
 
