@@ -1,5 +1,5 @@
 # project
-title: Minimit
+title: Xtend
 description: 
 authors: Riccardo Caroli
 url: "http://www.minimit.com"
@@ -19,7 +19,7 @@ exclude:
   
 # collections
 collections:
-  xtend:
+  docs:
     output: true
     permalink: '/:collection/:path/'
     links:
@@ -28,7 +28,7 @@ collections:
 defaults:
   - scope:
       path: ""
-      type: xtend
+      type: docs
     values:
       layout: sidebar
       
