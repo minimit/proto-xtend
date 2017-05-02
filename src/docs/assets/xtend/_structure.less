@@ -9,7 +9,7 @@ body {
   background-color: @color-background;
   .font-sans-regular();
   font-size: @size-text;
-  line-height: 1.8;
+  line-height: 1.6;
   color: @color-text;
 }
 
@@ -20,30 +20,20 @@ body {
 /* spacing */
 .spacing-tiny {
   margin-top: @size-tiny !important;
-  &:first-child {
-    margin-top: 0 !important;
-  }
 }
 .spacing-small {
   margin-top: @size-small !important;
-  &:first-child {
-    margin-top: 0 !important;
-  }
 }
 .spacing-medium {
   margin-top: @size-medium !important;
-  &:first-child {
-    margin-top: 0 !important;
-  }
 }
 .spacing-large {
   margin-top: @size-large !important;
-  &:first-child {
-    margin-top: 0 !important;
-  }
 }
 .spacing-giant {
   margin-top: @size-giant !important;
+}
+.spacing-notfirst {
   &:first-child {
     margin-top: 0 !important;
   }
@@ -54,15 +44,17 @@ h1, .h1,
 h2, .h2,
 h3, .h3 {
   .spacing-large;
+  .spacing-notfirst;
   .font-sans-medium();
-  line-height: 1.3;
+  line-height: 1.4;
 }
 h4, .h4,
 h5, .h5,
 h6, .h6 {
   .spacing-medium;
+  .spacing-notfirst;
   .font-sans-light();
-  line-height: 1.3;
+  line-height: 1.6;
 }
 h6, .h6 {
   letter-spacing: .05em;
@@ -75,6 +67,7 @@ h6, .h6 {
 }
 p {
   .spacing-small;
+  .spacing-notfirst;
 }
 strong {
   .font-sans-medium();
@@ -89,6 +82,7 @@ code {
 }
 pre code {
   .spacing-small;
+  .spacing-notfirst;
   font-size: 13px;
   line-height: 1.6;
 }
@@ -170,6 +164,7 @@ a:not(.button),
   }
   /* spacing */
   .spacing-small;
+  .spacing-notfirst;
   /* variants */
   .card.white; // default variant
   &.primary {
