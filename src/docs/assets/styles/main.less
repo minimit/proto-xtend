@@ -22,7 +22,7 @@
   border-radius: 0;
   background-color: @color-primary;
   .font-sans-light();
-  font-size: .809rem;
+  font-size: @size-tiny;
   color: @color-white;
   text-align: center;
   letter-spacing: .5px;
@@ -46,7 +46,7 @@
   position: relative;
   width: 100%;
   .spacing-text();
-  padding: .618rem .809rem;
+  padding: @size-tiny @size-tiny;
   border: 0;
   border-radius: 0;
   font-size: 14px;
@@ -219,10 +219,10 @@ a.logo {
   }
   // content
   .button {
-    padding: .618rem 0;
+    padding: @size-tiny 0;
     width: 100%;
     .font-sans-light();
-    font-size: 2.619rem;
+    font-size: @size-large;
     color: @color-white;
     text-align: left;
     text-transform: capitalize;
@@ -299,7 +299,7 @@ a.logo {
         padding-top: 0;
       }
       &:last-child {
-        padding-bottom: 1rem;
+        padding-bottom: @size-small;
       }
     }
   }
@@ -389,7 +389,7 @@ a.logo {
 //////////////////////
 
 .site-footer {
-  padding-bottom: 2rem;
+  padding-bottom: @size-medium;
   background-color: @color-primary;
   .separator {
     margin-left: 5px;
@@ -447,7 +447,7 @@ a.logo {
     .site-breadcrumbs-body-sub {
       .button {
         &:last-child {
-          padding-bottom: 2rem;
+          padding-bottom: @size-medium;
         }
       }
     }
@@ -467,15 +467,15 @@ a.logo {
 /* .site-article */
 .site-article {
   .float;
-  margin-top: 2.619rem;
-  margin-bottom: 2.619rem;
+  margin-top: @size-large;
+  margin-bottom: @size-large;
 }
 
 /* .site-aside */
 
 .site-aside {
-  margin-top: 2.619rem;
-  margin-bottom: 2.619rem;
+  margin-top: @size-large;
+  margin-bottom: @size-large;
 }
 .site-aside-text {
   line-height: 0;
@@ -496,20 +496,18 @@ a.logo {
   }
   > .button:not(.site-aside-sub) {
     margin-bottom: 8px;
-    font-size: 1.238rem;
+    font-size: @size-medium;
     &.different {
       display: none;
     }
   }
   > .button.site-aside-sub {
-    //margin-top: .309rem;
     padding-top: 8px;
     padding-bottom: 2px;
     font-size: 13px;
   }
   .site-aside-subsub {
     > .button {
-      //margin-top: .309rem;
       padding-left: 8px;
       font-size: 13px;
     }
@@ -644,10 +642,8 @@ pre {
   position: relative;
   width: 100%;
   line-height: 0;
-  margin-bottom: 1.238rem;
   .demo & {
     margin-top: 0;
-    margin-bottom: 0;
   }
 }
 
@@ -674,8 +670,8 @@ pre {
 }
 .hljs,
 pre code {
-  padding: 0 1rem;
-  padding-bottom: 1rem;
+  padding: 0 @size-small;
+  padding-bottom: @size-small;
 }
 .demo-text {
   background-color: @color-grey;
@@ -692,8 +688,7 @@ pre code {
   display: block;
   position: relative;
   width: 100%;
-  margin-top: 1.619rem;
-  margin-bottom: 1.619rem;
+  .spacing-medium;
   // code
   .demo-code {
     .float;
@@ -726,7 +721,7 @@ pre code {
   }
   iframe,
   .demo-source {
-    padding: 1rem;
+    padding: @size-small;
   }
   .demo-source {
     &:not([data-lang="html"]) {
@@ -765,10 +760,10 @@ pre {
   }
   .demo-code-body-item {
     .float;
-    padding: 1rem;
+    padding: @size-small;
   }
   .demo-text {
-    padding: .809rem 1rem;
+    padding: @size-tiny @size-small;
   }
 }
 
@@ -781,7 +776,7 @@ pre {
       float: left;
       width: 100%;
       height: 100%;
-      min-height: 1rem;
+      min-height: @size-small;
       background-color: lighten(@color-primary, 25%);
     }
     .column {
@@ -799,9 +794,9 @@ pre {
   .column {
     padding-top: 0 !important;
     padding-bottom: 0 !important;
-    margin-top: .618rem;
-    margin-bottom: .618rem;
-    min-height: 1rem;
+    margin-top: @size-tiny;
+    margin-bottom: @size-tiny;
+    min-height: @size-small;
     background-color: lighten(@color-primary, 25%);
     background-clip: content-box !important;
     .column {
@@ -984,7 +979,7 @@ pre {
 @keyframes top-in {
   0% {
     opacity: 0;
-    transform: translateY(-.618rem);
+    transform: translateY(-@size-tiny);
   }
   100% {
     opacity: 1;
@@ -994,7 +989,7 @@ pre {
 @keyframes left-in {
   0% {
     opacity: 0;
-    transform: translateX(-.618rem);
+    transform: translateX(-@size-tiny);
   }
   100% {
     opacity: 1;
@@ -1004,7 +999,7 @@ pre {
 @keyframes right-in {
   0% {
     opacity: 0;
-    transform: translateX(.618rem);
+    transform: translateX(@size-tiny);
   }
   100% {
     opacity: 1;
@@ -1018,6 +1013,6 @@ pre {
   }
   100% {
     opacity: 0;
-    transform: translateX(.618rem);
+    transform: translateX(@size-tiny);
   }
 }

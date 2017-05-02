@@ -36,62 +36,37 @@
 @color-black-15: fade(@color-black, 15%);
 
 //////////////////////
-// ratios
+// sizes
 //////////////////////
 
-/* ratios
-.618
-.809
-1
-1.238
-2.619
-3.224
-*/
+@size-tiny: .618rem;
+@size-small: 1rem;
+@size-medium: 1.618rem;
+@size-large: 2.618rem;
+@size-giant: 3.236rem;
 
-//////////////////////
-// responsive
-//////////////////////
+// h1-h6
+@size-h6: 1rem;
+@size-h5: 1.238rem;
+@size-h4: 1.618rem;
+@size-h3: 1.618rem;
+@size-h2: 2.618rem;
+@size-h1: 3.236rem;
 
-@columns: 12; // remove or add columns
-@breakpoints: xs, sm, md, lg, xl; // remove or add breaktpoints, if you change this values change also the variable names below
+// text
+@size-text: 1rem;
+@size-text-tiny: .618rem;
+@size-text-small: .809rem;
 
-// @media sizes
-@xs: 576;
-@sm: 768;
-@md: 992;
-@lg: 1200;
-@xl: 1450;
-
-// .contain sizes
-@contain-xs: 540;
-@contain-sm: 720;
-@contain-md: 960;
-@contain-lg: 1140;
-@contain-xl: 1400;
-@contain-spacing: 15px; // side paddings
-
-// @media queries
-// USAGE
-// @media @min-sm {}
-// @media @max-md {}
-// @media @min-sm and @max-md {}
-@min-xs: ~"( min-width:"(unit(@xs, px))~")";
-@max-xs: ~"( max-width:"(unit(@xs - 1, px))~")";
-@min-sm: ~"( min-width:"(unit(@sm, px))~")";
-@max-sm: ~"( max-width:"(unit(@sm - 1, px))~")";
-@min-md: ~"( min-width:"(unit(@md, px))~")";
-@max-md: ~"( max-width:"(unit(@md - 1, px))~")";
-@min-lg: ~"( min-width:"(unit(@lg, px))~")";
-@max-lg: ~"( max-width:"(unit(@lg - 1, px))~")";
-@min-xl: ~"( min-width:"(unit(@xl, px))~")";
-@max-xl: ~"( max-width:"(unit(@xl - 1, px))~")";
+// others
+@drop-spacing: .618rem;
+@contain-spacing: 15px;
 
 //////////////////////
 // fonts
 //////////////////////
 
 // USAGE
-// .font-sans-light();
 // .font-sans-regular();
 .font-sans-light() {
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -115,28 +90,38 @@
 }
 
 //////////////////////
-// spacing
+// responsive
 //////////////////////
 
+@columns: 12; // remove or add columns
+@breakpoints: xs, sm, md, lg, xl; // remove or add breaktpoints, if you change this values change also the variable names below
+
+// @media sizes
+@xs: 576;
+@sm: 768;
+@md: 992;
+@lg: 1200;
+@xl: 1450;
+
+// .contain sizes
+@contain-xs: 540;
+@contain-sm: 720;
+@contain-md: 960;
+@contain-lg: 1140;
+@contain-xl: 1400;
+
+// @media queries
 // USAGE
-// .spacing-headers();
-// .spacing-headers-small();
-// .spacing-text();
-.spacing-headers() {
-  margin-top: 2.619rem !important;
-  &:first-child {
-    margin-top: 0 !important;
-  }
-}
-.spacing-headers-small() {
-  margin-top: 1.238rem !important;
-  &:first-child {
-    margin-top: 0 !important;
-  }
-}
-.spacing-text() {
-  margin-top: 1rem !important;
-  &:first-child {
-    margin-top: 0 !important;
-  }
-}
+// @media @min-sm {}
+// @media @max-md {}
+// @media @min-sm and @max-md {}
+@min-xs: ~"( min-width:"(unit(@xs, px))~")";
+@max-xs: ~"( max-width:"(unit(@xs - 1, px))~")";
+@min-sm: ~"( min-width:"(unit(@sm, px))~")";
+@max-sm: ~"( max-width:"(unit(@sm - 1, px))~")";
+@min-md: ~"( min-width:"(unit(@md, px))~")";
+@max-md: ~"( max-width:"(unit(@md - 1, px))~")";
+@min-lg: ~"( min-width:"(unit(@lg, px))~")";
+@max-lg: ~"( max-width:"(unit(@lg - 1, px))~")";
+@min-xl: ~"( min-width:"(unit(@xl, px))~")";
+@max-xl: ~"( max-width:"(unit(@xl - 1, px))~")";
