@@ -177,6 +177,7 @@ img.center {
 // flex + spacer + media + card
 //////////////////////
 
+/* structure */
 .flex,
 .spacer {
   display: -webkit-flex;
@@ -236,31 +237,49 @@ img.center {
     -ms-flex-direction: column-reverse;
     flex-direction: column-reverse;
   }
-  > .item {
-    width: 100%;
-  }
-}
-.flex,
-.spacer,
-.media {
-  /* spacing */
-  &:not(:first-child) {
-    margin-top: 0 !important;
-  }
-  &:not(:last-child) {
-    margin-bottom: 0 !important;
-  }
-}
-.card {
-  width: 100%;
-  /* spacing */
-  margin: 0 !important;
-  > *:not(.item) {
-    padding: 0 !important;
-  }
 }
 
 /* sizes*/
+.flex,
+.spacer,
+.media {
+  &.none {
+    margin: 0;
+    > * {
+      padding: 0;
+    }
+  }
+  &.tiny {
+    margin: -@size-tiny / 2;
+    > * {
+      padding: @size-tiny / 2;
+    }
+  }
+  &.small {
+    margin: -@size-small / 2;
+    > * {
+      padding: @size-small / 2;
+    }
+  }
+  &.medium {
+    margin: -@size-medium / 2;
+    > * {
+      padding: @size-medium / 2;
+    }
+  }
+  &.large {
+    margin: -@size-large / 2;
+    > * {
+      padding: @size-large / 2;
+    }
+  }
+  &.giant {
+    margin: -@size-giant / 2;
+    > * {
+      padding: @size-giant / 2;
+    }
+  }
+}
 .card {
   &.none {
     margin: 0;
@@ -323,46 +342,6 @@ img.center {
     &.giant {
       padding-top: @size-giant;
       padding-bottom: @size-giant;
-    }
-  }
-}
-.flex,
-.spacer,
-.media {
-  &.none {
-    margin: 0;
-    > * {
-      padding: 0;
-    }
-  }
-  &.tiny {
-    margin: -@size-tiny / 2;
-    > * {
-      padding: @size-tiny / 2;
-    }
-  }
-  &.small {
-    margin: -@size-small / 2;
-    > * {
-      padding: @size-small / 2;
-    }
-  }
-  &.medium {
-    margin: -@size-medium / 2;
-    > * {
-      padding: @size-medium / 2;
-    }
-  }
-  &.large {
-    margin: -@size-large / 2;
-    > * {
-      padding: @size-large / 2;
-    }
-  }
-  &.giant {
-    margin: -@size-giant / 2;
-    > * {
-      padding: @size-giant / 2;
     }
   }
 }
@@ -492,29 +471,50 @@ img.center {
   }
 }
 
+/* spacing */
+.flex,
+.spacer,
+.media {
+  /* spacing */
+  &:not(:first-child) {
+    margin-top: 0 !important;
+  }
+  &:not(:last-child) {
+    margin-bottom: 0 !important;
+  }
+}
+.card {
+  /* spacing */
+  margin: 0 !important;
+  > *:not(.item) {
+    padding: 0 !important;
+  }
+}
+
 //////////////////////
 // card
 //////////////////////
 
 .card {
+  width: 100%;
   // separator
-  &.separator {
-    > .item {
-      display: -webkit-flex;
-      //display: -ms-flexbox; // BUG ie10 breaks layout
-      display: flex;
-      -webkit-align-self: stretch;
-      //-ms-flex-item-align: stretch; // BUG ie10 breaks layout
-      align-self: stretch;
-    }
-    > .item {
-      &:first-child:before,
-      &:first-child:after {
+  > .item {
+    display: -webkit-flex;
+    //display: -ms-flexbox; // BUG ie10 breaks layout
+    display: flex;
+    -webkit-align-self: stretch;
+    //-ms-flex-item-align: stretch; // BUG ie10 breaks layout
+    align-self: stretch;
+  }
+  > .item {
+    &:first-child {
+      &:before,
+      &:after {
         display: none !important;
       }
     }
-    > .item:before,
-    > .item:after {
+    &:before,
+    &:after {
       content: '';
       display: block;
       position: absolute;
@@ -527,47 +527,22 @@ img.center {
         right: 0;
       }
     }
-    > .item:after {
+    &:after {
       display: none;
     }
   }
-  // card styles for separator
+  // vertical
   &.vertical {
     > .item {
+      width: 100%;
+    }
+    // separator
+    > .item {
       &:before {
-        display: none !important;
+        display: none;
       }
       &:after {
-        display: block !important;
-      }
-    }
-  }
-  // card styles for paddings
-  &:not(.vertical):not([class*=" vertical-"]) {
-    &:not(.separator) {
-      &:not(.reverse) {
-        > .item + .item {
-          padding-left: 0;
-        }
-      }
-      &.reverse {
-        > .item + .item {
-          padding-right: 0;
-        }
-      }
-    }
-  }
-  &.vertical {
-    &:not(.separator) {
-      &:not(.reverse) {
-        > .item + .item {
-          padding-top: 0;
-        }
-      }
-      &.reverse {
-        > .item + .item {
-          padding-bottom: 0;
-        }
+        display: block;
       }
     }
   }
@@ -1045,29 +1020,35 @@ html.xt-fixed-horizontal {
       width: unit(@@unit, px);
     }
     
-    // .vertical
-    .vertical-@{name} {
+    // .horizontal
+    .horizontal-@{name} {
+      -webkit-flex-wrap: nowrap;
+      -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+      -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+      flex-direction: row;
+      &.reverse {
+        -webkit-flex-direction: row-reverse;
+        -ms-flex-direction: row-reverse;
+        flex-direction: row-reverse;
+      }
+      // card
       &.card {
-        // card styles for paddings
-        &:not(.separator) {
-          &:not(.reverse) {
-            > .item + .item {
-              padding-left: 0;
-            }
+        > .item {
+          width: auto;
+        }
+        // separator
+        > .item {
+          &:before {
+            display: block;
           }
-          &.reverse {
-            > .item + .item {
-              padding-right: 0;
-            }
+          &:after {
+            display: none;
           }
         }
       }
     }
-    
-  }
-  
-  @query-max: "max-@{name}";
-  @media @@query-max {
     
     // .vertical
     .vertical-@{name} {
@@ -1082,30 +1063,18 @@ html.xt-fixed-horizontal {
         -ms-flex-direction: column-reverse;
         flex-direction: column-reverse;
       }
-      > .item {
-        width: 100%;
-      }
-      // card styles for separator
+      // card
       &.card {
+        > .item {
+          width: 100%;
+        }
+        // separator
         > .item {
           &:before {
             display: none;
           }
           &:after {
             display: block;
-          }
-        }
-      }
-      // card styles for paddings
-      &:not(.separator) {
-        &:not(.reverse) {
-          > .item + .item {
-            padding-top: 0;
-          }
-        }
-        &.reverse {
-          > .item + .item {
-            padding-bottom: 0;
           }
         }
       }
