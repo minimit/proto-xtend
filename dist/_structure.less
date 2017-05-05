@@ -8,7 +8,7 @@ html {
 body {
   background-color: @color-background;
   .font-sans-regular();
-  font-size: @size-text;
+  font-size: 1rem;
   line-height: 1.6;
   color: @color-text;
 }
@@ -17,60 +17,61 @@ body {
 // typography
 //////////////////////
 
-/* spacing */
-.spacing-tiny {
-  margin-top: @size-tiny !important;
-}
-.spacing-small {
-  margin-top: @size-small !important;
-}
-.spacing-medium {
-  margin-top: @size-medium !important;
-}
-.spacing-large {
-  margin-top: @size-large !important;
-}
-.spacing-giant {
-  margin-top: @size-giant !important;
-}
-.spacing-notfirst {
-  &:first-child {
-    margin-top: 0 !important;
-  }
-}
-
 /* headers */
 h1, .h1,
 h2, .h2,
 h3, .h3 {
   .spacing-large;
-  .spacing-notfirst;
   .font-sans-medium();
   line-height: 1.4;
+  // small spacing when sequential
+  & + & {
+    .spacing-small;
+  }
 }
 h4, .h4,
 h5, .h5,
 h6, .h6 {
-  .spacing-medium;
-  .spacing-notfirst;
+  .spacing-small;
   .font-sans-light();
   line-height: 1.6;
 }
+h1, .h1 {
+  font-size: 3.236rem;
+}
+h2, .h2 {
+  font-size: 2.618rem;
+}
+h3, .h3 {
+  font-size: 1.618rem;
+}
+h4, .h4 {
+  font-size: 1.618rem;
+}
+h5, .h5 {
+  font-size: 1.238rem;
+}
 h6, .h6 {
+  font-size: 1rem;
   letter-spacing: .05em;
   text-transform: uppercase;
 }
 
 /* text */
-.lead {
-  .h5;
-}
 p {
   .spacing-small;
-  .spacing-notfirst;
 }
 strong {
   .font-sans-medium();
+}
+small {
+  font-size: 0.8em;
+}
+.lead {
+  .h5;
+}
+.muted {
+  color: @color-text-75 !important;
 }
 
 /* code */
@@ -82,7 +83,6 @@ code {
 }
 pre code {
   .spacing-small;
-  .spacing-notfirst;
   font-size: 13px;
   line-height: 1.6;
 }
@@ -163,7 +163,6 @@ a:not(.button),
   }
   /* spacing */
   .spacing-small;
-  .spacing-notfirst;
   /* variants */
   .card.white; // default variant
   &.primary {
@@ -186,5 +185,24 @@ a:not(.button),
     > .item {
       background-color: @color-white;
     }
+  }
+}
+
+//////////////////////
+// others
+//////////////////////
+
+// remove vertical space for first occurrence
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6,
+p,
+pre code,
+.card {
+  &:first-child {
+    margin-top: 0 !important;
   }
 }

@@ -49,32 +49,21 @@ body {
 // typography
 //////////////////////
 
-/* headers */
-h1, .h1 {
-  font-size: @size-h1;
+/* spacing */
+.spacing-tiny {
+  margin-top: @spacing-tiny !important;
 }
-h2, .h2 {
-  font-size: @size-h2;
+.spacing-small {
+  margin-top: @spacing-small !important;
 }
-h3, .h3 {
-  font-size: @size-h3;
+.spacing-medium {
+  margin-top: @spacing-medium !important;
 }
-h4, .h4 {
-  font-size: @size-h4;
+.spacing-large {
+  margin-top: @spacing-large !important;
 }
-h5, .h5 {
-  font-size: @size-h5;
-}
-h6, .h6 {
-  font-size: @size-h6;
-}
-
-/* text */
-.font-tiny {
-  font-size: @size-text-tiny;
-}
-.font-small {
-  font-size: @size-text-small;
+.spacing-giant {
+  margin-top: @spacing-giant !important;
 }
 
 /* code */
@@ -239,10 +228,18 @@ img.center {
   }
 }
 
-/* sizes*/
+/* sizes + spacing */
 .flex,
 .spacer,
 .media {
+  /* spacing */
+  &:not(:first-child) {
+    margin-top: 0 !important;
+  }
+  &:not(:last-child) {
+    margin-bottom: 0 !important;
+  }
+  /* sizes */
   &.none {
     margin: 0;
     > * {
@@ -281,6 +278,12 @@ img.center {
   }
 }
 .card {
+  /* spacing */
+  margin: 0 !important;
+  > *:not(.item) {
+    padding: 0 !important;
+  }
+  /* sizes */
   &.none {
     margin: 0;
     > * {
@@ -468,26 +471,6 @@ img.center {
       -ms-flex-pack: distribute;
       justify-content: space-around;
     }
-  }
-}
-
-/* spacing */
-.flex,
-.spacer,
-.media {
-  /* spacing */
-  &:not(:first-child) {
-    margin-top: 0 !important;
-  }
-  &:not(:last-child) {
-    margin-bottom: 0 !important;
-  }
-}
-.card {
-  /* spacing */
-  margin: 0 !important;
-  > *:not(.item) {
-    padding: 0 !important;
   }
 }
 
