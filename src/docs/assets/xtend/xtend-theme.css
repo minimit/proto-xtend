@@ -1743,7 +1743,33 @@ html.xt-fixed-horizontal .overlay {
   }
 }
 html {
-  font-size: 15px;
+  font-size: 14px;
+}
+@media ( min-width: 992px ) {
+  html {
+    font-size: 15px;
+    /* ratios
+    0.533rem = 8px
+    0.6rem = 9px
+    0.666rem = 10px
+    0.733rem = 11px
+    0.8rem = 12px
+    0.866rem = 13px
+    0.933rem = 14px
+    1rem = 15px
+    1.06rem = 16px
+    */
+  }
+}
+@media ( min-width: 1200px ) {
+  html {
+    font-size: 16px;
+  }
+}
+@media ( min-width: 1450px ) {
+  html {
+    font-size: 17px;
+  }
 }
 body {
   background-color: #ffffff;
@@ -1866,6 +1892,7 @@ small {
 .lead:first-child {
   margin-top: 0 !important;
 }
+/* colors */
 .muted {
   color: #bfbfbf !important;
 }
@@ -2068,7 +2095,7 @@ pre code:first-child,
   letter-spacing: .05em;
   text-transform: uppercase;
   /* sizes */
-  font-size: 12px;
+  font-size: 0.8rem;
   line-height: 1.25;
   /* spacing */
   padding: .618em 1em;
@@ -2078,19 +2105,19 @@ pre code:first-child,
   /* animations */
 }
 .button.tiny {
-  font-size: 9px;
+  font-size: 0.6rem;
 }
 .button.small {
-  font-size: 11px;
+  font-size: 0.733px;
 }
 .button.medium {
-  font-size: 12px;
+  font-size: 0.8rem;
 }
 .button.large {
-  font-size: 13px;
+  font-size: 0.866rem;
 }
 .button.giant {
-  font-size: 15px;
+  font-size: 1rem;
 }
 .button.wide {
   padding-left: 1.618em;
@@ -2304,6 +2331,7 @@ pre code:first-child,
   letter-spacing: .05em;
   text-transform: uppercase;
   /* sizes */
+  font-size: 0.8rem;
   line-height: 1.25;
   /* spacing */
   padding: .618em 1em;
@@ -2322,19 +2350,19 @@ pre code:first-child,
   overflow: hidden;
 }
 .overlay .overlay-close.tiny {
-  font-size: 9px;
+  font-size: 0.6rem;
 }
 .overlay .overlay-close.small {
-  font-size: 11px;
+  font-size: 0.733px;
 }
 .overlay .overlay-close.medium {
-  font-size: 12px;
+  font-size: 0.8rem;
 }
 .overlay .overlay-close.large {
-  font-size: 13px;
+  font-size: 0.866rem;
 }
 .overlay .overlay-close.giant {
-  font-size: 15px;
+  font-size: 1rem;
 }
 .overlay .overlay-close.wide {
   padding-left: 1.618em;

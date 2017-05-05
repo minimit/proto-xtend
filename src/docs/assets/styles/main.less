@@ -10,7 +10,7 @@
 //////////////////////
 
 //@color-primary: #ff00ff;
-@breakpoints: xs, sm, md, lg;
+//@breakpoints: xs, sm, md, lg;
 
 //////////////////////
 // bootstrap
@@ -61,8 +61,8 @@
 /* spacer */
 .spacer {
   &.site-breadcrumbs-body {
-    margin-left: -12px;
-    margin-right: -12px;
+    margin-left: -0.8rem;
+    margin-right: -0.8rem;
     margin-bottom: 0;
     > * {
       margin-left: 0;
@@ -70,8 +70,8 @@
     }
   }
   &.site-breadcrumbs-meta {
-    margin-left: -8px;
-    margin-right: -8px;
+    margin-left: -0.533rem;
+    margin-right: -0.533rem;
     margin-bottom: 0;
     > * {
       margin-left: 0;
@@ -91,16 +91,28 @@
   /* sizes */
   .demo-tabs &,
   .demo-code-tabs & {
+    /*
     padding: 16px 12px 14px 12px;
+    font-size: 12px;
+    */
+    padding: 1.06rem 0.8rem 0.933rem 0.8rem;
     font-size: 12px;
   }
   .site-breadcrumbs-body & {
+    /*
     padding: 15px 12px;
     font-size: 13px;
+    */
+    padding: 1rem 0.8rem;
+    font-size: 0.8rem;
   }
   .site-breadcrumbs-meta & {
+    /*
     padding: 14px 8px 13px 8px;
     font-size: 16px;
+    */
+    padding: 0.933rem 0.533rem 0.866rem 0.533rem;
+    font-size: 1.06rem;
   }
   /* color-white */
   .site-menu &,
@@ -184,10 +196,10 @@
 /* .logo */
 a.logo {
   .float;
-  margin: 11px 0 10px 0;
+  margin: 0.733rem 0 0.666rem 0;
   .font-sans-medium();
   color: @color-white-75;
-  font-size: 19px;
+  font-size: 1.266rem;
   text-decoration: none !important;
   &:hover,
   &:active, &.active {
@@ -260,7 +272,7 @@ a.logo {
     -ms-flex-direction: row;
     flex-direction: row;
     > .media {
-      min-height: 270px;
+      min-height: 18rem;
     }
   }
   .h1 {
@@ -399,20 +411,20 @@ a.logo {
 
 /* .site-footer-top */
 .site-footer-top {
-  margin-left: -12px;
-  margin-right: -12px;
+  margin-left: -0.8rem;
+  margin-right: -0.8rem;
   padding-top: 5px;
   padding-bottom: 5px;
   font-size: 0;
   .button {
-    padding: 18px 12px;
-    font-size: 13px;
+    padding: 1.2rem 0.8rem;
+    font-size: 0.866rem;
   }
 }
 
 /* .site-footer-bottom */
 .site-footer-bottom {
-  font-size: 13px;
+  font-size: 0.866rem;
   color: @color-white-75;
   a {
     color: @color-white;
