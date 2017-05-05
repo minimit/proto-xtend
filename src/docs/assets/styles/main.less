@@ -111,7 +111,7 @@
     padding: 14px 8px 13px 8px;
     font-size: 16px;
     */
-    padding: .875rem .5rem .812rem .5rem;
+    padding: .812rem .5rem .812rem .5rem;
     font-size: 1rem;
   }
   /* color-white */
@@ -230,7 +230,7 @@ a.logo {
     background-color: @color-primary;
   }
   // content
-  .button {
+  .site-menu-content .button {
     padding: @size-tiny 0;
     width: 100%;
     .font-sans-light();
@@ -289,8 +289,8 @@ a.logo {
   cursor: default;
   .site-breadcrumbs-inside {
     .float;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-top: .312rem;
+    padding-bottom: .312rem;
     background-color: @color-primary;
     color: @color-white;
   }
@@ -322,20 +322,20 @@ a.logo {
 .button__menu {
   .font-sans-light();
   //font-size: 19px !important;
-  font-size: 1.187rem !important;
+  font-size: 1.062rem !important;
   line-height: 1.2;
   text-transform: none !important;
   .site-header-top & {
-    width: auto !important;
-    margin-top: 1px;
-    margin-bottom: 1px;
+    margin-top: .312rem;
+    margin-bottom: .312rem;
     padding-left: 0;
     padding-right: 0;
+    width: auto !important;
   }
   .site-breadcrumbs & {
-    margin-left: 8px;
-    margin-top: -.25rem;
-    margin-bottom: -.25rem;
+    margin-left: .5rem;
+    margin-top: -.075rem;
+    margin-bottom: -.075rem;
   }
   /* .icon-menu-custom */
   .icon-menu-custom {
@@ -343,8 +343,14 @@ a.logo {
     vertical-align: top;
     width: 1em;
     height: .75em;
-    top: .2em;
+    /*
+    top: .3em;
+    font-size: 1rem;*/
+    top: .15em;
     font-size: 1.25rem;
+    @media @min-lg {
+      font-size: 1.2rem;
+    }
     span {
       display: block;
       position: absolute;
@@ -414,8 +420,8 @@ a.logo {
 .site-footer-top {
   margin-left: -.75rem;
   margin-right: -.75rem;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding-top: .625rem;
+  padding-bottom: .625rem;
   font-size: 0;
   .button {
     padding: 1.2rem .75rem;
