@@ -115,7 +115,7 @@ img.center {
 /* disabled */
 [disabled] {
   cursor: default;
-  opacity: 0.75;
+  opacity: .75;
   pointer-events: none;
 }
 /* others */
@@ -1748,31 +1748,20 @@ html {
 @media ( min-width: 992px ) {
   html {
     font-size: 15px;
-    /* ratios: px / 15 = rem
-    8px = 0.533rem
-    9px = 0.6rem
-    10px = 0.666rem
-    11px = 0.733rem
-    12px = 0.8rem
-    13px = 0.866rem
-    14px = 0.933rem
-    15px = 1rem
-    16px = 1.06rem
-    */
   }
 }
 @media ( min-width: 1200px ) {
   html {
     font-size: 16px;
     /* ratios: px / 15 = rem
-    8px = 0.5rem
-    9px = 0.562rem
-    10px = 0.625rem
-    11px = 0.687rem
-    12px = 0.75rem
-    13px = 0.812rem
-    14px = 0.875rem
-    15px = 0.937rem
+    8px = .5rem
+    9px = .562rem
+    10px = .625rem
+    11px = .687rem
+    12px = .75rem
+    13px = .812rem
+    14px = .875rem
+    15px = .937rem
     16px = 1rem
     */
   }
@@ -1890,7 +1879,7 @@ strong {
   font-style: normal;
 }
 small {
-  font-size: 0.8em;
+  font-size: .8em;
 }
 .lead {
   margin-top: 1rem !important;
@@ -2106,7 +2095,7 @@ pre code:first-child,
   letter-spacing: .05em;
   text-transform: uppercase;
   /* sizes */
-  font-size: 0.8rem;
+  font-size: .8rem;
   line-height: 1.25;
   /* spacing */
   padding: .618em 1em;
@@ -2116,16 +2105,16 @@ pre code:first-child,
   /* animations */
 }
 .button.tiny {
-  font-size: 0.6rem;
+  font-size: .6rem;
 }
 .button.small {
-  font-size: 0.733px;
+  font-size: .733px;
 }
 .button.medium {
-  font-size: 0.8rem;
+  font-size: .8rem;
 }
 .button.large {
-  font-size: 0.866rem;
+  font-size: .866rem;
 }
 .button.giant {
   font-size: 1rem;
@@ -2342,7 +2331,7 @@ pre code:first-child,
   letter-spacing: .05em;
   text-transform: uppercase;
   /* sizes */
-  font-size: 0.8rem;
+  font-size: .8rem;
   line-height: 1.25;
   /* spacing */
   padding: .618em 1em;
@@ -2361,16 +2350,16 @@ pre code:first-child,
   overflow: hidden;
 }
 .overlay .overlay-close.tiny {
-  font-size: 0.6rem;
+  font-size: .6rem;
 }
 .overlay .overlay-close.small {
-  font-size: 0.733px;
+  font-size: .733px;
 }
 .overlay .overlay-close.medium {
-  font-size: 0.8rem;
+  font-size: .8rem;
 }
 .overlay .overlay-close.large {
-  font-size: 0.866rem;
+  font-size: .866rem;
 }
 .overlay .overlay-close.giant {
   font-size: 1rem;
