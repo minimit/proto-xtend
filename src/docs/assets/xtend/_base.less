@@ -775,6 +775,9 @@ img.center {
   }
   /* screen */
   &.screen {
+    .overlay-inner {
+      padding: 0;
+    }
     .overlay-content {
       position: static;
     }
@@ -793,7 +796,10 @@ img.center {
   }
   /* spacing */
   .overlay-inner {
-    padding: @contain-spacing; // empty space outside overlay
+    padding: @contain-spacing; // spacing outside overlay
+    @media @max-sm {
+      padding: 0;
+    }
   }
   /* sizes */
   &.tiny {

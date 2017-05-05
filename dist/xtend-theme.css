@@ -793,6 +793,9 @@ img.center {
   -ms-flex-item-align: center;
   align-self: center;
 }
+.overlay.screen .overlay-inner {
+  padding: 0;
+}
 .overlay.screen .overlay-content {
   position: static;
 }
@@ -809,6 +812,11 @@ img.center {
 }
 .overlay .overlay-inner {
   padding: 15px;
+}
+@media ( max-width: 767px ) {
+  .overlay .overlay-inner {
+    padding: 0;
+  }
 }
 .overlay.tiny .overlay-content {
   max-width: 510px;
@@ -1791,7 +1799,7 @@ h3,
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 600;
   font-style: normal;
-  line-height: 1.4;
+  line-height: 1.3;
 }
 h1 + h1,
 h1 + .h1,
@@ -1841,15 +1849,27 @@ h6,
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 300;
   font-style: normal;
-  line-height: 1.6;
+  line-height: 1.4;
 }
 h1,
 .h1 {
   font-size: 3.236rem;
 }
+@media ( max-width: 767px ) {
+  h1,
+  .h1 {
+    font-size: 2.618rem;
+  }
+}
 h2,
 .h2 {
   font-size: 2.618rem;
+}
+@media ( max-width: 767px ) {
+  h2,
+  .h2 {
+    font-size: 1.618rem;
+  }
 }
 h3,
 .h3 {
@@ -1886,7 +1906,7 @@ small {
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 300;
   font-style: normal;
-  line-height: 1.6;
+  line-height: 1.4;
   font-size: 1.238rem;
 }
 .lead:first-child {
@@ -1898,14 +1918,14 @@ small {
 }
 /* code */
 code {
-  padding: 3px 6px;
+  padding: .187rem .375rem;
   background-color: #f8f8f8;
   color: #d14;
   font-size: .9em;
 }
 pre code {
   margin-top: 1rem !important;
-  font-size: 13px;
+  font-size: .812rem;
   line-height: 1.6;
 }
 /* links */
@@ -2026,8 +2046,8 @@ a:not(.button):focus,
   overflow: hidden;
   border-radius: 4px;
   border: 0;
-  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 0.15rem 0.625rem rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0.15rem 0.625rem rgba(0, 0, 0, 0.1);
   /* spacing */
   margin-top: 1rem !important;
   /* variants */
@@ -2036,12 +2056,12 @@ a:not(.button):focus,
 .card > .item:before {
   width: 1px;
   height: 100%;
-  background: rgba(0, 0, 0, 0.15);
+  background: rgba(0, 0, 0, 0.1);
 }
 .card > .item:after {
   width: 100%;
   height: 1px;
-  background: rgba(0, 0, 0, 0.15);
+  background: rgba(0, 0, 0, 0.1);
 }
 .card,
 .card > .item {
@@ -2108,7 +2128,7 @@ pre code:first-child,
   font-size: .6rem;
 }
 .button.small {
-  font-size: .733px;
+  font-size: .733rem;
 }
 .button.medium {
   font-size: .8rem;
@@ -2194,25 +2214,25 @@ pre code:first-child,
 }
 .drop .drop-inner {
   padding: .618rem 0;
-  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 0.15rem 0.625rem rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0.15rem 0.625rem rgba(0, 0, 0, 0.1);
 }
-.drop .drop-inner > .button {
+.drop .button {
   padding-left: 1.618em;
   padding-right: 1.618em;
-  padding-right: 40px !important;
+  padding-right: 3rem !important;
 }
 .drop .drop-inner {
   background-color: #ffffff;
   color: #000000;
 }
-.drop .drop-inner > .button {
+.drop .button {
   background-color: transparent;
   color: #000000;
 }
-.drop .drop-inner > .button:hover,
-.drop .drop-inner > .button:active,
-.drop .drop-inner > .button.active {
+.drop .button:hover,
+.drop .button:active,
+.drop .button.active {
   background-color: rgba(0, 176, 255, 0.1);
   color: #00B0FF;
 }
@@ -2220,13 +2240,13 @@ pre code:first-child,
   background-color: #00B0FF;
   color: #ffffff;
 }
-.drop.primary .drop-inner > .button {
+.drop.primary .button {
   background-color: #00B0FF;
   color: #ffffff;
 }
-.drop.primary .drop-inner > .button:hover,
-.drop.primary .drop-inner > .button:active,
-.drop.primary .drop-inner > .button.active {
+.drop.primary .button:hover,
+.drop.primary .button:active,
+.drop.primary .button.active {
   background-color: #009ee6;
   color: #ffffff;
 }
@@ -2234,13 +2254,13 @@ pre code:first-child,
   background-color: #d14;
   color: #ffffff;
 }
-.drop.secondary .drop-inner > .button {
+.drop.secondary .button {
   background-color: #d14;
   color: #ffffff;
 }
-.drop.secondary .drop-inner > .button:hover,
-.drop.secondary .drop-inner > .button:active,
-.drop.secondary .drop-inner > .button.active {
+.drop.secondary .button:hover,
+.drop.secondary .button:active,
+.drop.secondary .button.active {
   background-color: #c50f3d;
   color: #ffffff;
 }
@@ -2248,13 +2268,13 @@ pre code:first-child,
   background-color: #e6e6e6;
   color: #000000;
 }
-.drop.grey .drop-inner > .button {
+.drop.grey .button {
   background-color: #e6e6e6;
   color: #000000;
 }
-.drop.grey .drop-inner > .button:hover,
-.drop.grey .drop-inner > .button:active,
-.drop.grey .drop-inner > .button.active {
+.drop.grey .button:hover,
+.drop.grey .button:active,
+.drop.grey .button.active {
   background-color: #d9d9d9;
   color: #000000;
 }
@@ -2262,13 +2282,13 @@ pre code:first-child,
   background-color: #ffffff;
   color: #000000;
 }
-.drop.white .drop-inner > .button {
+.drop.white .button {
   background-color: transparent;
   color: #000000;
 }
-.drop.white .drop-inner > .button:hover,
-.drop.white .drop-inner > .button:active,
-.drop.white .drop-inner > .button.active {
+.drop.white .button:hover,
+.drop.white .button:active,
+.drop.white .button.active {
   background-color: rgba(0, 176, 255, 0.1);
   color: #00B0FF;
 }
@@ -2300,11 +2320,11 @@ pre code:first-child,
   /* animations */
 }
 .overlay .overlay-content {
-  padding: 30px;
+  padding: 2rem;
 }
 @media ( min-width: 768px ) {
   .overlay .overlay-content {
-    padding: 40px;
+    padding: 3rem;
   }
 }
 .overlay .overlay-close {
@@ -2339,9 +2359,9 @@ pre code:first-child,
   background-color: #e6e6e6;
   color: #000000;
   /* animations */
-  width: 50px;
-  height: 50px;
-  font-size: 12px;
+  width: 3rem;
+  height: 3rem;
+  font-size: .75rem;
   background-color: transparent;
   color: #bfbfbf;
 }
@@ -2353,7 +2373,7 @@ pre code:first-child,
   font-size: .6rem;
 }
 .overlay .overlay-close.small {
-  font-size: .733px;
+  font-size: .733rem;
 }
 .overlay .overlay-close.medium {
   font-size: .8rem;
@@ -2524,9 +2544,6 @@ pre code:first-child,
 }
 .overlay .overlay-content {
   max-width: 930px;
-}
-.overlay.screen .overlay-content {
-  max-width: inherit;
 }
 .overlay .overlay-content,
 .overlay.screen .overlay-inner {

@@ -16,7 +16,7 @@
     font-size: .6rem;
   }
   &.small {
-    font-size: .733px;
+    font-size: .733rem;
   }
   &.medium {
     font-size: .8rem;
@@ -89,12 +89,12 @@
   /* styles */
   .drop-inner {
     padding: .618rem 0; // vertical spacing
-    -webkit-box-shadow: 0 0 5px fade(@color-black, 20%);
-    box-shadow: 0 0 5px fade(@color-black, 20%);
+    -webkit-box-shadow: 0 .15rem .625rem @color-black-10;
+    box-shadow: 0 .15rem .625rem @color-black-10;
   }
-  .drop-inner > .button {
+  .button {
     .button.wide; // default button
-    padding-right: 40px !important;
+    padding-right: 3rem !important;
   }
   /* variants */
   .drop.white; // default variant
@@ -105,7 +105,7 @@
       background-color: @color-primary;
       color: @color-white;
     }
-    .drop-inner > .button {
+    .button {
       .button.primary;
     }
   }
@@ -114,7 +114,7 @@
       background-color: @color-secondary;
       color: @color-white;
     }
-    .drop-inner > .button {
+    .button {
       .button.secondary;
     }
   }
@@ -123,7 +123,7 @@
       background-color: darken(@color-white, 10%);
       color: @color-text;
     }
-    .drop-inner > .button {
+    .button {
       .button.grey;
     }
   }
@@ -132,7 +132,7 @@
       background-color: @color-white;
       color: @color-text;
     }
-    .drop-inner > .button {
+    .button {
       .button.white;
     }
   }
@@ -160,16 +160,16 @@
 .overlay {
   /* styles */
   .overlay-content {
-    padding: 30px;
+    padding: 2rem;
     @media @min-sm {
-      padding: 40px;
+      padding: 3rem;
     }
   }
   .overlay-close {
     .button;
-    width: 50px;
-    height: 50px;
-    font-size: 12px;
+    width: 3rem;
+    height: 3rem;
+    font-size: .75rem;
     background-color: transparent;
     color: @color-text-75;
     &:hover,
@@ -180,9 +180,6 @@
   }
   /* sizes */
   .overlay.medium; // default size
-  &.screen {
-    .overlay.full; // default size
-  }
   /* variants */
   .overlay.white; // default variant
   &.primary {
