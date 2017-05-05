@@ -994,6 +994,12 @@ html.xt-fixed-horizontal {
   max-width: none;
   width: auto;
 }
+.hide {
+  display: none !important;
+}
+.show {
+  display: block !important;
+}
 
 /* responsive */
 .for(@breakpoints); .-each(@value) {
@@ -1014,13 +1020,21 @@ html.xt-fixed-horizontal {
       width: auto;
     }
     
-    // .contain
+    // contain
     @unit: "contain-@{name}";
     .contain {
       width: unit(@@unit, px);
     }
     
-    // .horizontal
+    // show + hide
+    .hide-@{name} {
+      display: none !important;
+    }
+    .show-@{name} {
+      display: block !important;
+    }
+    
+    // horizontal
     .horizontal-@{name} {
       -webkit-flex-wrap: nowrap;
       -ms-flex-wrap: nowrap;
@@ -1050,7 +1064,7 @@ html.xt-fixed-horizontal {
       }
     }
     
-    // .vertical
+    // vertical
     .vertical-@{name} {
       -webkit-flex-wrap: wrap;
       -ms-flex-wrap: wrap;

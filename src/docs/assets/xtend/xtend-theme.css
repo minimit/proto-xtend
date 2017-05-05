@@ -1022,6 +1022,12 @@ html.xt-fixed-horizontal .overlay {
   max-width: none;
   width: auto;
 }
+.hide {
+  display: none !important;
+}
+.show {
+  display: block !important;
+}
 /* responsive */
 @media ( min-width: 576px ) {
   .xs-12 {
@@ -1117,6 +1123,12 @@ html.xt-fixed-horizontal .overlay {
   }
   .contain {
     width: 540px;
+  }
+  .hide-xs {
+    display: none !important;
+  }
+  .show-xs {
+    display: block !important;
   }
   .horizontal-xs {
     -webkit-flex-wrap: nowrap;
@@ -1258,6 +1270,12 @@ html.xt-fixed-horizontal .overlay {
   .contain {
     width: 720px;
   }
+  .hide-sm {
+    display: none !important;
+  }
+  .show-sm {
+    display: block !important;
+  }
   .horizontal-sm {
     -webkit-flex-wrap: nowrap;
     -ms-flex-wrap: nowrap;
@@ -1397,6 +1415,12 @@ html.xt-fixed-horizontal .overlay {
   }
   .contain {
     width: 960px;
+  }
+  .hide-md {
+    display: none !important;
+  }
+  .show-md {
+    display: block !important;
   }
   .horizontal-md {
     -webkit-flex-wrap: nowrap;
@@ -1538,6 +1562,12 @@ html.xt-fixed-horizontal .overlay {
   .contain {
     width: 1140px;
   }
+  .hide-lg {
+    display: none !important;
+  }
+  .show-lg {
+    display: block !important;
+  }
   .horizontal-lg {
     -webkit-flex-wrap: nowrap;
     -ms-flex-wrap: nowrap;
@@ -1677,6 +1707,12 @@ html.xt-fixed-horizontal .overlay {
   }
   .contain {
     width: 1400px;
+  }
+  .hide-xl {
+    display: none !important;
+  }
+  .show-xl {
+    display: block !important;
   }
   .horizontal-xl {
     -webkit-flex-wrap: nowrap;
