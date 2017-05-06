@@ -689,8 +689,9 @@
     object.animationMultiple($el, triggered, object.onDone, 'fade-in');
     // animations
     object.onBackdrop($el, triggered);
-    object.onWidth($el, triggered);
-    object.onHeight($el, triggered);
+    window.xtRequestAnimationFrame( function() {
+      object.onCollapse($el, triggered);
+    });
     object.onMiddle($el, triggered);
     object.onCenter($el, triggered);
     // events
@@ -719,7 +720,6 @@
     var settings = this.settings;
     var group = this.group;
     var $group = $(this.group);
-    // when animation is done
     // collapse-width and collapse-height
     if ($el.hasClass('collapse-height')) {
       $el.css('height', 'auto');
@@ -752,11 +752,8 @@
     object.animationMultiple($el, triggered, object.offDone);
     // animations
     object.offBackdrop($el, triggered);
-    object.onWidth($el, triggered);
-    object.onHeight($el, triggered);
     window.xtRequestAnimationFrame( function() {
-      object.offWidth($el, triggered);
-      object.offHeight($el, triggered);
+      object.offCollapse($el, triggered);
     });
     // close on document click
     if (settings.name === 'xt-drop') {
@@ -773,8 +770,11 @@
     // when animation is done
     $el.removeClass('fade-out');
     // collapse-width and collapse-height
-    if ($el.hasClass('collapse-height') || $el.hasClass('collapse-width')) {
-      object.removeWrap($el);
+    if ($el.hasClass('collapse-height')) {
+      $el.css('height', 'auto');
+    }
+    if ($el.hasClass('collapse-width')) {
+      $el.css('width', 'auto');
     }
     // api
     if (!triggered) {
@@ -902,60 +902,86 @@
       }
     }
   };
-    
-  Xt.prototype.onWidth = function($el) {
-    var object = this;
-    // animation in
-    $el.each( function() {
-      var $single = $(this);
-      if ($single.hasClass('collapse-width')) {
-        object.addWrap($single);
-        var $outside = $single.parent('.xt-container');
-        var $inside = $single.find('> .xt-position');
-        var w = $outside.outerWidth();
-        $inside.css('width', w);
-        $single.css('width', w);
-        $single.parents('.collapse-width-left').css('margin-left', -w);
-        $single.parents('.collapse-width-right').css('margin-right', -w);
-      }
-    });
-  };
-  Xt.prototype.offWidth = function($el) {
-    // animation out
-    $el.each( function() {
-      var $single = $(this);
-      if ($single.hasClass('collapse-width')) {
-        $single.css('width', 0);
-        $single.parents('.collapse-width-left').css('margin-left', 0);
-        $single.parents('.collapse-width-right').css('margin-right', 0);
-      }
-    });
-  };
   
-  Xt.prototype.onHeight = function($el) {
+  Xt.prototype.onCollapse = function($el) {
     var object = this;
     // animation in
     $el.each( function() {
       var $single = $(this);
       if ($single.hasClass('collapse-height')) {
-        object.addWrap($single);
-        var $inside = $single.find('> .xt-position');
-        var h = $inside.outerHeight();
-        $single.css('height', h);
-        $single.parents('.collapse-height-top').css('margin-top', -h);
-        $single.parents('.collapse-height-bottom').css('margin-bottom', -h);
+        $single.addClass('no-transition').css('height', '').css('padding-top', '').css('padding-bottom', '');
+        var h = $single.outerHeight();
+        var pt = $single.css('padding-top');
+        var pb = $single.css('padding-bottom');
+        $single.css('height', 0).css('padding-top', 0).css('padding-bottom', 0);
       }
+      if ($single.hasClass('collapse-width')) {
+        $single.addClass('no-transition').css('width', '').css('padding-left', '').css('padding-right', '');
+        var w = $single.outerWidth();
+        var pl = $single.css('padding-left');
+        var pr = $single.css('padding-right');
+        $single.css('width', 0).css('padding-left', 0).css('padding-right', 0);
+      }
+      window.xtRequestAnimationFrame( function() {
+        if ($single.hasClass('collapse-height')) {
+          $single.removeClass('no-transition').css('height', h).css('padding-top', pt).css('padding-bottom', pb);
+        }
+        if ($single.hasClass('collapse-width')) {
+          $single.removeClass('no-transition').css('width', w).css('padding-left', pl).css('padding-right', pr);
+        }
+        if ($single.hasClass('collapse-top')) {
+          $single.css('margin-top', -h);
+        }
+        if ($single.hasClass('collapse-bottom')) {
+          $single.css('margin-bottom', -h);
+        }
+        if ($single.hasClass('collapse-left')) {
+          $single.css('margin-left', -w);
+        }
+        if ($single.hasClass('collapse-right')) {
+          $single.css('margin-right', -w);
+        }
+      });
     });
   };
-  Xt.prototype.offHeight = function($el) {
+  Xt.prototype.offCollapse = function($el) {
     // animation out
     $el.each( function() {
       var $single = $(this);
       if ($single.hasClass('collapse-height')) {
-        $single.css('height', 0);
-        $single.parents('.collapse-height-top').css('margin-top', 0);
-        $single.parents('.collapse-height-bottom').css('margin-bottom', 0);
+        $single.addClass('no-transition').css('height', '').css('padding-top', '').css('padding-bottom', '');
+        var h = $single.outerHeight();
+        var pt = $single.css('padding-top');
+        var pb = $single.css('padding-bottom');
+        $single.css('height', h).css('padding-top', pt).css('padding-bottom', pb);
       }
+      if ($single.hasClass('collapse-width')) {
+        $single.addClass('no-transition').css('width', '').css('padding-left', '').css('padding-right', '');
+        var w = $single.outerWidth();
+        var pl = $single.css('padding-left');
+        var pr = $single.css('padding-right');
+        $single.css('width', w).css('padding-left', pl).css('padding-right', pr);
+      }
+      window.xtRequestAnimationFrame( function() {
+        if ($single.hasClass('collapse-height')) {
+          $single.removeClass('no-transition').css('height', 0).css('padding-top', 0).css('padding-bottom', 0);
+        }
+        if ($single.hasClass('collapse-width')) {
+          $single.removeClass('no-transition').css('width', 0).css('padding-left', 0).css('padding-right', 0);
+        }
+        if ($single.hasClass('collapse-top')) {
+          $single.css('margin-top', 0);
+        }
+        if ($single.hasClass('collapse-bottom')) {
+          $single.css('margin-bottom', 0);
+        }
+        if ($single.hasClass('collapse-left')) {
+          $single.css('margin-left', 0);
+        }
+        if ($single.hasClass('collapse-right')) {
+          $single.css('margin-right', 0);
+        }
+      });
     });
   };
   
@@ -982,27 +1008,6 @@
         $single.attr('center.done', true).css('left', add - remove);
       }
     });
-  };
-  
-  Xt.prototype.addWrap = function($el) {
-    var $outside = $el.parent('.xt-container');
-    if (!$outside.length) {
-      $el.wrap('<div class="xt-container"></div>');
-    }
-    var $inside = $el.find('> .xt-position');
-    if (!$inside.length) {
-      $el.wrapInner('<div class="xt-position"></div>');
-    }
-  };
-  Xt.prototype.removeWrap = function($el) {
-    var $outside = $el.parent('.xt-container');
-    if ($outside.length) {
-      $outside.contents().unwrap();
-    }
-    var $inside = $el.find('> .xt-position');
-    if ($inside.length) {
-      $inside.contents().unwrap();
-    }
   };
   
   //////////////////////

@@ -116,14 +116,6 @@ img.center {
   white-space: nowrap;
 }
 
-/* show + hide */
-.show {
-  display: block !important;
-}
-.hide {
-  display: none !important;
-}
-
 /* disabled */
 [disabled] {
   cursor: default;
@@ -860,7 +852,7 @@ img.center {
   display: none !important;
   &.active,
   &.fade-out {
-    display: -webkit-flex;
+    display: -webkit-flex !important;
     display: -ms-flexbox !important;
     display: flex !important;
   }
@@ -887,17 +879,20 @@ img.center {
 }
 
 /* animations */
-.collapse-height {
-  overflow: hidden;
-  height: 0;
-}
+.collapse-height,
 .collapse-width {
+  z-index: 10;
   overflow: hidden;
-  width: 0;
 }
 .no-anim,
 .no-anim .xt-backdrop {
   animation: none !important;
+  transition: none !important;
+}
+.no-animation {
+  animation: none !important;
+}
+.no-transition {
   transition: none !important;
 }
 

@@ -154,7 +154,7 @@
                           <a href="{{ p.url }}" class="button">
                             {{ p.title }}
                           </a>
-                          <div class="site-breadcrumbs-body-sub collapse-height">
+                          <div class="site-breadcrumbs-body-sub toggle-flex collapse-height">
                             {% assign subsorted = site.[collection.label] | where: 'categories', p.title | sort: 'order' %}
                             {% for pa in subsorted %}
                             <a href="{{ pa.url }}" class="button">
