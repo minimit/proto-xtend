@@ -113,9 +113,6 @@
                 <a href="{{ site.baseurl }}faq/" class="button make-line">
                   Faq
                 </a>
-                <a href="{{ site.baseurl }}tests/" class="button make-line developer">
-                  Tests
-                </a>
                     
               </div>
             
@@ -126,13 +123,13 @@
         <div class="site-hero">
                 
           <div class="contain">
-            <div class="media">
+            <div class="media large vertical horizontal-sm">
               <div class="item fluid">
                 <h1 class="h1">{{ page.title }}</h1>
                 <p class="lead">{{ page.description }}</p>
               </div>
               <div class="item">
-                <img src="https://placehold.it/330x132/ffffff/00B0FF/?text=ads" />
+                <img class="fluid" src="https://placehold.it/330x132/ffffff/00B0FF/?text=ads" />
               </div>
             </div>
           </div>
@@ -154,7 +151,7 @@
                           <a href="{{ p.url }}" class="button">
                             {{ p.title }}
                           </a>
-                          <div class="site-breadcrumbs-body-sub toggle-flex collapse-height">
+                          <div class="site-breadcrumbs-body-sub toggle-block collapse-height">
                             {% assign subsorted = site.[collection.label] | where: 'categories', p.title | sort: 'order' %}
                             {% for pa in subsorted %}
                             <a href="{{ pa.url }}" class="button">
@@ -170,7 +167,7 @@
                 {% endfor %}
               </div>
 
-              <div class="site-breadcrumbs-meta float-right spacer none top">
+              <div class="site-breadcrumbs-meta float-right spacer none top hide show-sm">
                 
                 {% if page.collection == null %}
                   <a href="{{ site.twitter }}" target="_blank" class="button">
