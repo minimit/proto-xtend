@@ -55,7 +55,7 @@ body {
 .spacing-medium {
   margin-top: 1.618rem !important;
 }
-.spacing-large {
+.spacing-big {
   margin-top: 2.618rem !important;
 }
 .spacing-giant {
@@ -264,14 +264,14 @@ img.center {
 .media.medium > * {
   padding: 0.809rem;
 }
-.flex.large,
-.spacer.large,
-.media.large {
+.flex.big,
+.spacer.big,
+.media.big {
   margin: -1.309rem;
 }
-.flex.large > *,
-.spacer.large > *,
-.media.large > * {
+.flex.big > *,
+.spacer.big > *,
+.media.big > * {
   padding: 1.309rem;
 }
 .flex.giant,
@@ -317,10 +317,10 @@ img.center {
 .card.medium > * {
   padding: 1.618rem;
 }
-.card.large {
+.card.big {
   margin: -2.618rem;
 }
-.card.large > * {
+.card.big > * {
   padding: 2.618rem;
 }
 .card.giant {
@@ -345,7 +345,7 @@ img.center {
   padding-top: 1.618rem;
   padding-bottom: 1.618rem;
 }
-.card > .item.large {
+.card > .item.big {
   padding-top: 2.618rem;
   padding-bottom: 2.618rem;
 }
@@ -820,7 +820,7 @@ img.center {
 .overlay.medium .overlay-content {
   max-width: 930px;
 }
-.overlay.large .overlay-content {
+.overlay.big .overlay-content {
   max-width: 1110px;
 }
 .overlay.giant .overlay-content {
@@ -2152,7 +2152,7 @@ pre code:first-child,
 .button.medium {
   font-size: .8rem;
 }
-.button.large {
+.button.big {
   font-size: .866rem;
 }
 .button.giant {
@@ -2397,7 +2397,7 @@ pre code:first-child,
 .overlay .overlay-close.medium {
   font-size: .8rem;
 }
-.overlay .overlay-close.large {
+.overlay .overlay-close.big {
   font-size: .866rem;
 }
 .overlay .overlay-close.giant {
@@ -2663,7 +2663,7 @@ pre code:first-child,
   .medium {
     font-size: 1em;
   }
-  .large {
+  .big {
     font-size: 1.5em;
   }
   .giant {
