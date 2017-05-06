@@ -376,9 +376,6 @@ img.center {
 .spacer.middle > *,
 .media.middle > *,
 .card.middle > * {
-  -webkit-align-items: center;
-  -ms-align-items: center;
-  align-items: center;
   -webkit-align-self: center;
   -ms-flex-item-align: center;
   align-self: center;
@@ -387,9 +384,6 @@ img.center {
 .spacer.top > *,
 .media.top > *,
 .card.top > * {
-  -webkit-align-items: flex-start;
-  -ms-align-items: start;
-  align-items: flex-start;
   -webkit-align-self: flex-start;
   -ms-flex-item-align: start;
   align-self: flex-start;
@@ -398,9 +392,6 @@ img.center {
 .spacer.bottom > *,
 .media.bottom > *,
 .card.bottom > * {
-  -webkit-align-items: flex-end;
-  -ms-align-items: end;
-  align-items: flex-end;
   -webkit-align-self: flex-end;
   -ms-flex-item-align: end;
   align-self: flex-end;
@@ -409,9 +400,6 @@ img.center {
 .spacer.stretch > *,
 .media.stretch > *,
 .card.stretch > * {
-  -webkit-align-items: stretch;
-  -ms-align-items: stretch;
-  align-items: stretch;
   -webkit-align-self: stretch;
   -ms-flex-item-align: stretch;
   align-self: stretch;
@@ -2031,9 +2019,6 @@ a:not(.button):focus,
   margin: -0.809rem;
 }
 .flex > * {
-  -webkit-align-items: flex-start;
-  -ms-align-items: start;
-  align-items: flex-start;
   -webkit-align-self: flex-start;
   -ms-flex-item-align: start;
   align-self: flex-start;
@@ -2053,9 +2038,6 @@ a:not(.button):focus,
   margin: -0.809rem;
 }
 .spacer > * {
-  -webkit-align-items: center;
-  -ms-align-items: center;
-  align-items: center;
   -webkit-align-self: center;
   -ms-flex-item-align: center;
   align-self: center;
@@ -2075,9 +2057,6 @@ a:not(.button):focus,
   margin: -0.809rem;
 }
 .media > * {
-  -webkit-align-items: center;
-  -ms-align-items: center;
-  align-items: center;
   -webkit-align-self: center;
   -ms-flex-item-align: center;
   align-self: center;
@@ -2097,9 +2076,6 @@ a:not(.button):focus,
   margin: -1.618rem;
 }
 .card > * {
-  -webkit-align-items: center;
-  -ms-align-items: center;
-  align-items: center;
   -webkit-align-self: center;
   -ms-flex-item-align: center;
   align-self: center;
