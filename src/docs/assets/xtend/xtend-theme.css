@@ -442,18 +442,16 @@ img.center {
   -ms-flex-item-align: stretch;
   align-self: stretch;
 }
+.flex > *.stretch > *,
+.spacer > *.stretch > *,
+.media > *.stretch > *,
+.card > *.stretch > * {
+  height: 100%;
+}
 .flex.left,
 .spacer.left,
 .media.left,
 .card.left {
-  -webkit-justify-content: flex-start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
-}
-.flex.left > .item,
-.spacer.left > .item,
-.media.left > .item,
-.card.left > .item {
   -webkit-justify-content: flex-start;
   -ms-flex-pack: start;
   justify-content: flex-start;
@@ -466,26 +464,10 @@ img.center {
   -ms-flex-pack: end;
   justify-content: flex-end;
 }
-.flex.right > .item,
-.spacer.right > .item,
-.media.right > .item,
-.card.right > .item {
-  -webkit-justify-content: flex-end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
-}
 .flex.center,
 .spacer.center,
 .media.center,
 .card.center {
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-}
-.flex.center > .item,
-.spacer.center > .item,
-.media.center > .item,
-.card.center > .item {
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
@@ -498,26 +480,10 @@ img.center {
   -ms-flex-pack: justify;
   justify-content: space-between;
 }
-.flex.between > .item,
-.spacer.between > .item,
-.media.between > .item,
-.card.between > .item {
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-}
 .flex.around,
 .spacer.around,
 .media.around,
 .card.around {
-  -webkit-justify-content: space-around;
-  -ms-flex-pack: distribute;
-  justify-content: space-around;
-}
-.flex.around > .item,
-.spacer.around > .item,
-.media.around > .item,
-.card.around > .item {
   -webkit-justify-content: space-around;
   -ms-flex-pack: distribute;
   justify-content: space-around;
@@ -2023,11 +1989,6 @@ a:not(.button):focus,
   -ms-flex-item-align: start;
   align-self: flex-start;
 }
-.flex > .item {
-  -webkit-justify-content: flex-start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
-}
 .flex > * {
   padding: 0.809rem;
 }
@@ -2041,11 +2002,6 @@ a:not(.button):focus,
   -webkit-align-self: center;
   -ms-flex-item-align: center;
   align-self: center;
-}
-.spacer > .item {
-  -webkit-justify-content: flex-start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
 }
 .spacer > * {
   padding: 0.809rem;
@@ -2061,11 +2017,6 @@ a:not(.button):focus,
   -ms-flex-item-align: center;
   align-self: center;
 }
-.media > .item {
-  -webkit-justify-content: flex-start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
-}
 .media > * {
   padding: 0.809rem;
 }
@@ -2079,11 +2030,6 @@ a:not(.button):focus,
   -webkit-align-self: center;
   -ms-flex-item-align: center;
   align-self: center;
-}
-.card > .item {
-  -webkit-justify-content: flex-start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
 }
 .card > * {
   padding: 1.618rem;

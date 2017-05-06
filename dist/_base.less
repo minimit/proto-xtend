@@ -411,6 +411,9 @@ img.center {
       -webkit-align-self: stretch;
       -ms-flex-item-align: stretch;
       align-self: stretch;
+      > * {
+        height: 100%;
+      }
     }
   }
   /* justification */
@@ -418,51 +421,26 @@ img.center {
     -webkit-justify-content: flex-start;
     -ms-flex-pack: start;
     justify-content: flex-start;
-    > .item {
-      -webkit-justify-content: flex-start;
-      -ms-flex-pack: start;
-      justify-content: flex-start;
-    }
   }
   &.right {
     -webkit-justify-content: flex-end;
     -ms-flex-pack: end;
     justify-content: flex-end;
-    > .item {
-      -webkit-justify-content: flex-end;
-      -ms-flex-pack: end;
-      justify-content: flex-end;
-    }
   }
   &.center {
     -webkit-justify-content: center;
     -ms-flex-pack: center;
     justify-content: center;
-    > .item {
-      -webkit-justify-content: center;
-      -ms-flex-pack: center;
-      justify-content: center;
-    }
   }
   &.between {
     -webkit-justify-content: space-between;
     -ms-flex-pack: justify;
     justify-content: space-between;
-    > .item {
-      -webkit-justify-content: space-between;
-      -ms-flex-pack: justify;
-      justify-content: space-between;
-    }
   }
   &.around {
     -webkit-justify-content: space-around;
     -ms-flex-pack: distribute;
     justify-content: space-around;
-    > .item {
-      -webkit-justify-content: space-around;
-      -ms-flex-pack: distribute;
-      justify-content: space-around;
-    }
   }
 }
 
