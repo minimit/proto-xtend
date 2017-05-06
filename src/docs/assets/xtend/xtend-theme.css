@@ -179,13 +179,6 @@ img.center {
   -webkit-flex: 1 1 auto;
   -ms-flex: 1 1 auto;
   flex: 1 1 auto;
-  /*
-  > .item > img.fluid {
-    -webkit-flex: none;
-    -ms-flex: none;
-    flex: none;
-  }
-  */
 }
 .media.reverse,
 .card.reverse {
@@ -193,15 +186,15 @@ img.center {
   -ms-flex-direction: row-reverse;
   flex-direction: row-reverse;
 }
+.media > .item,
+.card > .item {
+  min-height: 1px;
+}
 .media > .item.fluid,
 .card > .item.fluid {
   -webkit-flex: 1 1 0%;
   -ms-flex: 1 1 0%;
   flex: 1 1 0%;
-}
-.media > .item,
-.card > .item {
-  min-height: 1px;
 }
 .vertical {
   -webkit-flex-wrap: wrap;
@@ -210,13 +203,6 @@ img.center {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  /*
-  > .item > img.fluid {
-    -webkit-flex: 1 1 100%;
-    -ms-flex: 1 1 100%;
-    flex: 1 1 100%;
-  }
-  */
 }
 .vertical.reverse {
   -webkit-flex-direction: column-reverse;
@@ -551,17 +537,6 @@ img.center {
 .card {
   width: 100%;
 }
-.card > .item {
-  /*
-    // BUG ie10 breaks layout and ie11 breaks img.fluid
-    display: -webkit-flex;
-    //display: -ms-flexbox;
-    display: flex;
-    -webkit-align-self: stretch;
-    //-ms-flex-item-align: stretch;
-    align-self: stretch;
-    */
-}
 .card > .item:first-child:before,
 .card > .item:first-child:after {
   display: none !important;
@@ -571,7 +546,7 @@ img.center {
   content: '';
   display: block;
   position: absolute;
-  top: -5555px;
+  top: 0;
   left: 0;
 }
 .card > .item:after {
@@ -1139,13 +1114,6 @@ html.xt-fixed-horizontal .overlay {
     -webkit-flex-direction: row;
     -ms-flex-direction: row;
     flex-direction: row;
-    /*
-      > .item > img.fluid {
-        -webkit-flex: none;
-        -ms-flex: none;
-        flex: none;
-      }
-      */
   }
   .horizontal-xs.reverse {
     -webkit-flex-direction: row-reverse;
@@ -1192,11 +1160,6 @@ html.xt-fixed-horizontal .overlay {
   }
   .vertical-xs.card > .item:after {
     display: block;
-  }
-  .vertical-xs > .item > img.fluid {
-    -webkit-flex: 1 1 100%;
-    -ms-flex: 1 1 100%;
-    flex: 1 1 100%;
   }
 }
 @media ( min-width: 768px ) {
@@ -1310,13 +1273,6 @@ html.xt-fixed-horizontal .overlay {
     -webkit-flex-direction: row;
     -ms-flex-direction: row;
     flex-direction: row;
-    /*
-      > .item > img.fluid {
-        -webkit-flex: none;
-        -ms-flex: none;
-        flex: none;
-      }
-      */
   }
   .horizontal-sm.reverse {
     -webkit-flex-direction: row-reverse;
@@ -1363,11 +1319,6 @@ html.xt-fixed-horizontal .overlay {
   }
   .vertical-sm.card > .item:after {
     display: block;
-  }
-  .vertical-sm > .item > img.fluid {
-    -webkit-flex: 1 1 100%;
-    -ms-flex: 1 1 100%;
-    flex: 1 1 100%;
   }
 }
 @media ( min-width: 992px ) {
@@ -1481,13 +1432,6 @@ html.xt-fixed-horizontal .overlay {
     -webkit-flex-direction: row;
     -ms-flex-direction: row;
     flex-direction: row;
-    /*
-      > .item > img.fluid {
-        -webkit-flex: none;
-        -ms-flex: none;
-        flex: none;
-      }
-      */
   }
   .horizontal-md.reverse {
     -webkit-flex-direction: row-reverse;
@@ -1534,11 +1478,6 @@ html.xt-fixed-horizontal .overlay {
   }
   .vertical-md.card > .item:after {
     display: block;
-  }
-  .vertical-md > .item > img.fluid {
-    -webkit-flex: 1 1 100%;
-    -ms-flex: 1 1 100%;
-    flex: 1 1 100%;
   }
 }
 @media ( min-width: 1200px ) {
@@ -1652,13 +1591,6 @@ html.xt-fixed-horizontal .overlay {
     -webkit-flex-direction: row;
     -ms-flex-direction: row;
     flex-direction: row;
-    /*
-      > .item > img.fluid {
-        -webkit-flex: none;
-        -ms-flex: none;
-        flex: none;
-      }
-      */
   }
   .horizontal-lg.reverse {
     -webkit-flex-direction: row-reverse;
@@ -1705,11 +1637,6 @@ html.xt-fixed-horizontal .overlay {
   }
   .vertical-lg.card > .item:after {
     display: block;
-  }
-  .vertical-lg > .item > img.fluid {
-    -webkit-flex: 1 1 100%;
-    -ms-flex: 1 1 100%;
-    flex: 1 1 100%;
   }
 }
 @media ( min-width: 1450px ) {
@@ -1823,13 +1750,6 @@ html.xt-fixed-horizontal .overlay {
     -webkit-flex-direction: row;
     -ms-flex-direction: row;
     flex-direction: row;
-    /*
-      > .item > img.fluid {
-        -webkit-flex: none;
-        -ms-flex: none;
-        flex: none;
-      }
-      */
   }
   .horizontal-xl.reverse {
     -webkit-flex-direction: row-reverse;
@@ -1876,11 +1796,6 @@ html.xt-fixed-horizontal .overlay {
   }
   .vertical-xl.card > .item:after {
     display: block;
-  }
-  .vertical-xl > .item > img.fluid {
-    -webkit-flex: 1 1 100%;
-    -ms-flex: 1 1 100%;
-    flex: 1 1 100%;
   }
 }
 html {
@@ -2210,8 +2125,9 @@ a:not(.button):focus,
   color: #000000;
 }
 .card > .item:before {
+  top: -33333px;
   width: 1px;
-  height: 9999px;
+  height: 99999px;
   background: rgba(0, 0, 0, 0.1);
 }
 .card > .item:after {

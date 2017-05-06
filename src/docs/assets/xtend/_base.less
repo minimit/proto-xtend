@@ -96,8 +96,7 @@ pre code {
 img.fluid {
   max-width: 100%;
   height: auto;
-  // fix ie11 image responsive
-  min-height: 1px;
+  min-height: 1px; // fix ie11 responsive
 }
 img.center {
   margin-left: auto;
@@ -202,22 +201,14 @@ img.center {
   -webkit-flex: 1 1 auto;
   -ms-flex: 1 1 auto;
   flex: 1 1 auto;
+  > .item {
+    min-height: 1px; // fix ie11 responsive
+  }
   > .item.fluid {
     -webkit-flex: 1 1 0%;
     -ms-flex: 1 1 0%;
     flex: 1 1 0%;
   }
-  // fix ie11 image responsive
-  > .item {
-    min-height: 1px;
-  }
-  /*
-  > .item > img.fluid {
-    -webkit-flex: none;
-    -ms-flex: none;
-    flex: none;
-  }
-  */
 }
 .vertical {
   -webkit-flex-wrap: wrap;
@@ -239,14 +230,6 @@ img.center {
     -ms-flex: 1 1 auto;
     flex: 1 1 auto;
   }
-  // fix ie11 image responsive
-  /*
-  > .item > img.fluid {
-    -webkit-flex: 1 1 100%;
-    -ms-flex: 1 1 100%;
-    flex: 1 1 100%;
-  }
-  */
 }
 
 /* sizes + spacing */
@@ -503,17 +486,6 @@ img.center {
   width: 100%;
   // separator
   > .item {
-    /*
-    // BUG ie10 breaks layout and ie11 breaks img.fluid
-    display: -webkit-flex;
-    //display: -ms-flexbox;
-    display: flex;
-    -webkit-align-self: stretch;
-    //-ms-flex-item-align: stretch;
-    align-self: stretch;
-    */
-  }
-  > .item {
     &:first-child {
       &:before,
       &:after {
@@ -525,7 +497,7 @@ img.center {
       content: '';
       display: block;
       position: absolute;
-      top: -5555px;
+      top: 0;
       left: 0;
     }
     &:after {
@@ -1065,14 +1037,6 @@ html.xt-fixed-horizontal {
           }
         }
       }
-      // fix ie11 image responsive
-      /*
-      > .item > img.fluid {
-        -webkit-flex: none;
-        -ms-flex: none;
-        flex: none;
-      }
-      */
     }
     
     // vertical
@@ -1106,12 +1070,6 @@ html.xt-fixed-horizontal {
             display: block;
           }
         }
-      }
-      // fix ie11 image responsive
-      > .item > img.fluid {
-        -webkit-flex: 1 1 100%;
-        -ms-flex: 1 1 100%;
-        flex: 1 1 100%;
       }
     }
     
