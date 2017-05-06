@@ -87,6 +87,7 @@ pre code {
 img.fluid {
   max-width: 100%;
   height: auto;
+  min-height: 1px;
 }
 img.center {
   margin-left: auto;
@@ -178,6 +179,13 @@ img.center {
   -webkit-flex: 1 1 auto;
   -ms-flex: 1 1 auto;
   flex: 1 1 auto;
+  /*
+  > .item > img.fluid {
+    -webkit-flex: none;
+    -ms-flex: none;
+    flex: none;
+  }
+  */
 }
 .media.reverse,
 .card.reverse {
@@ -191,6 +199,10 @@ img.center {
   -ms-flex: 1 1 0%;
   flex: 1 1 0%;
 }
+.media > .item,
+.card > .item {
+  min-height: 1px;
+}
 .vertical {
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
@@ -198,6 +210,13 @@ img.center {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+  /*
+  > .item > img.fluid {
+    -webkit-flex: 1 1 100%;
+    -ms-flex: 1 1 100%;
+    flex: 1 1 100%;
+  }
+  */
 }
 .vertical.reverse {
   -webkit-flex-direction: column-reverse;
@@ -206,6 +225,11 @@ img.center {
 }
 .vertical > .item {
   width: 100%;
+}
+.vertical > .item.fluid {
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
 }
 /* sizes + spacing */
 .flex,
@@ -528,10 +552,15 @@ img.center {
   width: 100%;
 }
 .card > .item {
-  display: -webkit-flex;
-  display: flex;
-  -webkit-align-self: stretch;
-  align-self: stretch;
+  /*
+    // BUG ie10 breaks layout and ie11 breaks img.fluid
+    display: -webkit-flex;
+    //display: -ms-flexbox;
+    display: flex;
+    -webkit-align-self: stretch;
+    //-ms-flex-item-align: stretch;
+    align-self: stretch;
+    */
 }
 .card > .item:first-child:before,
 .card > .item:first-child:after {
@@ -542,15 +571,8 @@ img.center {
   content: '';
   display: block;
   position: absolute;
-  top: 0;
+  top: -5555px;
   left: 0;
-}
-.reverse.card > .item:before,
-.reverse.card > .item:after {
-  top: auto;
-  bottom: 0;
-  left: auto;
-  right: 0;
 }
 .card > .item:after {
   display: none;
@@ -560,6 +582,7 @@ img.center {
 }
 .card.vertical > .item:after {
   display: block;
+  top: 0;
 }
 .button {
   display: inline-block;
@@ -1116,6 +1139,13 @@ html.xt-fixed-horizontal .overlay {
     -webkit-flex-direction: row;
     -ms-flex-direction: row;
     flex-direction: row;
+    /*
+      > .item > img.fluid {
+        -webkit-flex: none;
+        -ms-flex: none;
+        flex: none;
+      }
+      */
   }
   .horizontal-xs.reverse {
     -webkit-flex-direction: row-reverse;
@@ -1124,6 +1154,11 @@ html.xt-fixed-horizontal .overlay {
   }
   .horizontal-xs > .item {
     width: auto;
+  }
+  .horizontal-xs > .item.fluid {
+    -webkit-flex: 1 1 0%;
+    -ms-flex: 1 1 0%;
+    flex: 1 1 0%;
   }
   .horizontal-xs.card > .item:before {
     display: block;
@@ -1147,11 +1182,21 @@ html.xt-fixed-horizontal .overlay {
   .vertical-xs > .item {
     width: 100%;
   }
+  .vertical-xs > .item.fluid {
+    -webkit-flex: 1 1 auto;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+  }
   .vertical-xs.card > .item:before {
     display: none;
   }
   .vertical-xs.card > .item:after {
     display: block;
+  }
+  .vertical-xs > .item > img.fluid {
+    -webkit-flex: 1 1 100%;
+    -ms-flex: 1 1 100%;
+    flex: 1 1 100%;
   }
 }
 @media ( min-width: 768px ) {
@@ -1265,6 +1310,13 @@ html.xt-fixed-horizontal .overlay {
     -webkit-flex-direction: row;
     -ms-flex-direction: row;
     flex-direction: row;
+    /*
+      > .item > img.fluid {
+        -webkit-flex: none;
+        -ms-flex: none;
+        flex: none;
+      }
+      */
   }
   .horizontal-sm.reverse {
     -webkit-flex-direction: row-reverse;
@@ -1273,6 +1325,11 @@ html.xt-fixed-horizontal .overlay {
   }
   .horizontal-sm > .item {
     width: auto;
+  }
+  .horizontal-sm > .item.fluid {
+    -webkit-flex: 1 1 0%;
+    -ms-flex: 1 1 0%;
+    flex: 1 1 0%;
   }
   .horizontal-sm.card > .item:before {
     display: block;
@@ -1296,11 +1353,21 @@ html.xt-fixed-horizontal .overlay {
   .vertical-sm > .item {
     width: 100%;
   }
+  .vertical-sm > .item.fluid {
+    -webkit-flex: 1 1 auto;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+  }
   .vertical-sm.card > .item:before {
     display: none;
   }
   .vertical-sm.card > .item:after {
     display: block;
+  }
+  .vertical-sm > .item > img.fluid {
+    -webkit-flex: 1 1 100%;
+    -ms-flex: 1 1 100%;
+    flex: 1 1 100%;
   }
 }
 @media ( min-width: 992px ) {
@@ -1414,6 +1481,13 @@ html.xt-fixed-horizontal .overlay {
     -webkit-flex-direction: row;
     -ms-flex-direction: row;
     flex-direction: row;
+    /*
+      > .item > img.fluid {
+        -webkit-flex: none;
+        -ms-flex: none;
+        flex: none;
+      }
+      */
   }
   .horizontal-md.reverse {
     -webkit-flex-direction: row-reverse;
@@ -1422,6 +1496,11 @@ html.xt-fixed-horizontal .overlay {
   }
   .horizontal-md > .item {
     width: auto;
+  }
+  .horizontal-md > .item.fluid {
+    -webkit-flex: 1 1 0%;
+    -ms-flex: 1 1 0%;
+    flex: 1 1 0%;
   }
   .horizontal-md.card > .item:before {
     display: block;
@@ -1445,11 +1524,21 @@ html.xt-fixed-horizontal .overlay {
   .vertical-md > .item {
     width: 100%;
   }
+  .vertical-md > .item.fluid {
+    -webkit-flex: 1 1 auto;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+  }
   .vertical-md.card > .item:before {
     display: none;
   }
   .vertical-md.card > .item:after {
     display: block;
+  }
+  .vertical-md > .item > img.fluid {
+    -webkit-flex: 1 1 100%;
+    -ms-flex: 1 1 100%;
+    flex: 1 1 100%;
   }
 }
 @media ( min-width: 1200px ) {
@@ -1563,6 +1652,13 @@ html.xt-fixed-horizontal .overlay {
     -webkit-flex-direction: row;
     -ms-flex-direction: row;
     flex-direction: row;
+    /*
+      > .item > img.fluid {
+        -webkit-flex: none;
+        -ms-flex: none;
+        flex: none;
+      }
+      */
   }
   .horizontal-lg.reverse {
     -webkit-flex-direction: row-reverse;
@@ -1571,6 +1667,11 @@ html.xt-fixed-horizontal .overlay {
   }
   .horizontal-lg > .item {
     width: auto;
+  }
+  .horizontal-lg > .item.fluid {
+    -webkit-flex: 1 1 0%;
+    -ms-flex: 1 1 0%;
+    flex: 1 1 0%;
   }
   .horizontal-lg.card > .item:before {
     display: block;
@@ -1594,11 +1695,21 @@ html.xt-fixed-horizontal .overlay {
   .vertical-lg > .item {
     width: 100%;
   }
+  .vertical-lg > .item.fluid {
+    -webkit-flex: 1 1 auto;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+  }
   .vertical-lg.card > .item:before {
     display: none;
   }
   .vertical-lg.card > .item:after {
     display: block;
+  }
+  .vertical-lg > .item > img.fluid {
+    -webkit-flex: 1 1 100%;
+    -ms-flex: 1 1 100%;
+    flex: 1 1 100%;
   }
 }
 @media ( min-width: 1450px ) {
@@ -1712,6 +1823,13 @@ html.xt-fixed-horizontal .overlay {
     -webkit-flex-direction: row;
     -ms-flex-direction: row;
     flex-direction: row;
+    /*
+      > .item > img.fluid {
+        -webkit-flex: none;
+        -ms-flex: none;
+        flex: none;
+      }
+      */
   }
   .horizontal-xl.reverse {
     -webkit-flex-direction: row-reverse;
@@ -1720,6 +1838,11 @@ html.xt-fixed-horizontal .overlay {
   }
   .horizontal-xl > .item {
     width: auto;
+  }
+  .horizontal-xl > .item.fluid {
+    -webkit-flex: 1 1 0%;
+    -ms-flex: 1 1 0%;
+    flex: 1 1 0%;
   }
   .horizontal-xl.card > .item:before {
     display: block;
@@ -1743,11 +1866,21 @@ html.xt-fixed-horizontal .overlay {
   .vertical-xl > .item {
     width: 100%;
   }
+  .vertical-xl > .item.fluid {
+    -webkit-flex: 1 1 auto;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+  }
   .vertical-xl.card > .item:before {
     display: none;
   }
   .vertical-xl.card > .item:after {
     display: block;
+  }
+  .vertical-xl > .item > img.fluid {
+    -webkit-flex: 1 1 100%;
+    -ms-flex: 1 1 100%;
+    flex: 1 1 100%;
   }
 }
 html {
@@ -2078,7 +2211,7 @@ a:not(.button):focus,
 }
 .card > .item:before {
   width: 1px;
-  height: 100%;
+  height: 9999px;
   background: rgba(0, 0, 0, 0.1);
 }
 .card > .item:after {

@@ -96,6 +96,8 @@ pre code {
 img.fluid {
   max-width: 100%;
   height: auto;
+  // fix ie11 image responsive
+  min-height: 1px;
 }
 img.center {
   margin-left: auto;
@@ -205,6 +207,17 @@ img.center {
     -ms-flex: 1 1 0%;
     flex: 1 1 0%;
   }
+  // fix ie11 image responsive
+  > .item {
+    min-height: 1px;
+  }
+  /*
+  > .item > img.fluid {
+    -webkit-flex: none;
+    -ms-flex: none;
+    flex: none;
+  }
+  */
 }
 .vertical {
   -webkit-flex-wrap: wrap;
@@ -221,6 +234,19 @@ img.center {
   > .item {
     width: 100%;
   }
+  > .item.fluid {
+    -webkit-flex: 1 1 auto;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+  }
+  // fix ie11 image responsive
+  /*
+  > .item > img.fluid {
+    -webkit-flex: 1 1 100%;
+    -ms-flex: 1 1 100%;
+    flex: 1 1 100%;
+  }
+  */
 }
 
 /* sizes + spacing */
@@ -477,12 +503,15 @@ img.center {
   width: 100%;
   // separator
   > .item {
+    /*
+    // BUG ie10 breaks layout and ie11 breaks img.fluid
     display: -webkit-flex;
-    //display: -ms-flexbox; // BUG ie10 breaks layout
+    //display: -ms-flexbox;
     display: flex;
     -webkit-align-self: stretch;
-    //-ms-flex-item-align: stretch; // BUG ie10 breaks layout
+    //-ms-flex-item-align: stretch;
     align-self: stretch;
+    */
   }
   > .item {
     &:first-child {
@@ -496,14 +525,8 @@ img.center {
       content: '';
       display: block;
       position: absolute;
-      top: 0;
+      top: -5555px;
       left: 0;
-      .reverse& {
-        top: auto;
-        bottom: 0;
-        left: auto;
-        right: 0;
-      }
     }
     &:after {
       display: none;
@@ -517,6 +540,7 @@ img.center {
       }
       &:after {
         display: block;
+        top: 0;
       }
     }
   }
@@ -1025,6 +1049,11 @@ html.xt-fixed-horizontal {
       > .item {
         width: auto;
       }
+      > .item.fluid {
+        -webkit-flex: 1 1 0%;
+        -ms-flex: 1 1 0%;
+        flex: 1 1 0%;
+      }
       // separator
       &.card {
         > .item {
@@ -1036,6 +1065,14 @@ html.xt-fixed-horizontal {
           }
         }
       }
+      // fix ie11 image responsive
+      /*
+      > .item > img.fluid {
+        -webkit-flex: none;
+        -ms-flex: none;
+        flex: none;
+      }
+      */
     }
     
     // vertical
@@ -1054,6 +1091,11 @@ html.xt-fixed-horizontal {
       > .item {
         width: 100%;
       }
+      > .item.fluid {
+        -webkit-flex: 1 1 auto;
+        -ms-flex: 1 1 auto;
+        flex: 1 1 auto;
+      }
       // separator
       &.card {
         > .item {
@@ -1064,6 +1106,12 @@ html.xt-fixed-horizontal {
             display: block;
           }
         }
+      }
+      // fix ie11 image responsive
+      > .item > img.fluid {
+        -webkit-flex: 1 1 100%;
+        -ms-flex: 1 1 100%;
+        flex: 1 1 100%;
       }
     }
     
