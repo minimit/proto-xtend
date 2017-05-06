@@ -726,19 +726,6 @@ img.center {
   left: 0;
   right: 0;
   bottom: 0;
-  /* styles */
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
   .overlay-inner {
     position: relative;
     z-index: 110;
@@ -763,6 +750,10 @@ img.center {
     -webkit-align-self: center;
     -ms-flex-item-align: center;
     align-self: center;
+    max-height: 100vh; // fix flex height and alignment
+    @media @max-xs {
+      max-width: 100%;
+    }
   }
   /* screen */
   &.screen {
@@ -788,39 +779,37 @@ img.center {
   /* spacing */
   .overlay-inner {
     padding: @contain-spacing; // spacing outside overlay
-    @media @max-sm {
-      padding: 0;
-    }
   }
   /* sizes */
   &.tiny {
     .overlay-content {
-      max-width: @contain-xs - @contain-spacing * 2;
+      width: @contain-xs - @contain-spacing * 2;
     }
   }
   &.small {
     .overlay-content {
-      max-width: @contain-sm - @contain-spacing * 2;
+      width: @contain-sm - @contain-spacing * 2;
     }
   }
   &.medium {
     .overlay-content {
-      max-width: @contain-md - @contain-spacing * 2;
+      width: @contain-md - @contain-spacing * 2;
     }
   }
   &.big {
     .overlay-content {
-      max-width: @contain-lg - @contain-spacing * 2;
+      width: @contain-lg - @contain-spacing * 2;
     }
   }
   &.giant {
     .overlay-content {
-      max-width: @contain-xl - @contain-spacing * 2;
+      width: @contain-xl - @contain-spacing * 2;
     }
   }
   &.full {
     .overlay-content {
-      max-width: inherit;
+      width: 100%;
+      max-width: 100%;
     }
   }
 }
@@ -1007,6 +996,9 @@ html.xt-fixed-horizontal {
     @unit: "contain-@{name}";
     .contain {
       width: unit(@@unit, px);
+    }
+    .overlay-content {
+      max-width: unit(@@unit - @contain-spacing * 2, px);
     }
     
     // show + hide

@@ -218,18 +218,16 @@ a.logo {
 
 /*.site-menu */
 .site-menu.overlay {
-  .overlay-inner {
-    background-color: @color-primary;
-    color: @color-white;
+  @media @min-xs {
+    .overlay-content {
+      padding-left: 0;
+      padding-right: 0;
+    }
   }
-  .overlay-content {
+  .site-menu-content {
     padding-top: 100px;
     padding-bottom: 60px;
-    padding-left: 0;
-    padding-right: 0;
-    background-color: @color-primary;
   }
-  // content
   .site-menu-content .button {
     padding: @size-tiny 0;
     width: 100%;

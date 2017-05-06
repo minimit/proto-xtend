@@ -737,19 +737,6 @@ img.center {
   left: 0;
   right: 0;
   bottom: 0;
-  /* styles */
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
   /* screen */
   /* close */
   /* spacing */
@@ -785,6 +772,12 @@ img.center {
   -webkit-align-self: center;
   -ms-flex-item-align: center;
   align-self: center;
+  max-height: 100vh;
+}
+@media ( max-width: 575px ) {
+  .overlay .overlay-content {
+    max-width: 100%;
+  }
 }
 .overlay.screen .overlay-inner {
   padding: 0;
@@ -806,28 +799,24 @@ img.center {
 .overlay .overlay-inner {
   padding: 15px;
 }
-@media ( max-width: 767px ) {
-  .overlay .overlay-inner {
-    padding: 0;
-  }
-}
 .overlay.tiny .overlay-content {
-  max-width: 510px;
+  width: 510px;
 }
 .overlay.small .overlay-content {
-  max-width: 690px;
+  width: 690px;
 }
 .overlay.medium .overlay-content {
-  max-width: 930px;
+  width: 930px;
 }
 .overlay.big .overlay-content {
-  max-width: 1110px;
+  width: 1110px;
 }
 .overlay.giant .overlay-content {
-  max-width: 1370px;
+  width: 1370px;
 }
 .overlay.full .overlay-content {
-  max-width: inherit;
+  width: 100%;
+  max-width: 100%;
 }
 /* xt-container + xt-position */
 .xt-container {
@@ -1111,6 +1100,9 @@ html.xt-fixed-horizontal .overlay {
   .contain {
     width: 540px;
   }
+  .overlay-content {
+    max-width: 510px;
+  }
   .hide-xs {
     display: none !important;
   }
@@ -1256,6 +1248,9 @@ html.xt-fixed-horizontal .overlay {
   }
   .contain {
     width: 720px;
+  }
+  .overlay-content {
+    max-width: 690px;
   }
   .hide-sm {
     display: none !important;
@@ -1403,6 +1398,9 @@ html.xt-fixed-horizontal .overlay {
   .contain {
     width: 960px;
   }
+  .overlay-content {
+    max-width: 930px;
+  }
   .hide-md {
     display: none !important;
   }
@@ -1549,6 +1547,9 @@ html.xt-fixed-horizontal .overlay {
   .contain {
     width: 1140px;
   }
+  .overlay-content {
+    max-width: 1110px;
+  }
   .hide-lg {
     display: none !important;
   }
@@ -1694,6 +1695,9 @@ html.xt-fixed-horizontal .overlay {
   }
   .contain {
     width: 1400px;
+  }
+  .overlay-content {
+    max-width: 1370px;
   }
   .hide-xl {
     display: none !important;
@@ -2562,10 +2566,10 @@ pre code:first-child,
   color: #00B0FF;
 }
 .overlay .overlay-content {
-  max-width: 930px;
+  width: 930px;
 }
 .overlay .overlay-content,
-.overlay.screen .overlay-inner {
+.overlay.screen {
   background-color: #ffffff;
   color: #000000;
 }
@@ -2573,7 +2577,7 @@ pre code:first-child,
   color: #bfbfbf;
 }
 .overlay.primary .overlay-content,
-.overlay.primary.screen .overlay-inner {
+.overlay.primary.screen {
   background-color: #00B0FF;
   color: #ffffff;
 }
@@ -2581,7 +2585,7 @@ pre code:first-child,
   color: #ffffff;
 }
 .overlay.secondary .overlay-content,
-.overlay.secondary.screen .overlay-inner {
+.overlay.secondary.screen {
   background-color: #d14;
   color: #ffffff;
 }
@@ -2589,7 +2593,7 @@ pre code:first-child,
   color: #ffffff;
 }
 .overlay.white .overlay-content,
-.overlay.white.screen .overlay-inner {
+.overlay.white.screen {
   background-color: #ffffff;
   color: #000000;
 }
