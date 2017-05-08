@@ -230,6 +230,48 @@
 }
 
 //////////////////////
+// icons
+//////////////////////
+
+/* .icon- */
+.icon {
+  display: inline-block;
+  position: relative;
+  /* alignment */
+  &.left {
+    margin-right: .35em;
+  }
+  &.right {
+    margin-left: .35em;
+  }
+  /* sizes */
+  .icon.medium; // default size
+  &.tiny {
+    font-size: .5em;
+  }
+  &.small {
+    font-size: .75em;
+  }
+  &.medium {
+    font-size: 1em;
+  }
+  &.big {
+    font-size: 1.5em;
+  }
+  &.giant {
+    font-size: 2em;
+  }
+}
+
+/* caret */
+.caret-down,
+.caret-up,
+.caret-right,
+.caret-left {
+  border-width: .35em;
+}
+
+//////////////////////
 // Others
 //////////////////////
 
@@ -246,116 +288,6 @@
     }
     &.fade-out {
       opacity: 0;
-    }
-  }
-}
-
-//////////////////////
-// icons
-//////////////////////
-
-/* .icon- */
-.icon {
-  display: inline-block;
-  position: relative;
-  /* alignment */
-  &.left {
-    margin-right: .35em;
-  }
-  &.right {
-    margin-left: .35em;
-  }
-  /* sizes */
-  /*
-  .tiny {
-    font-size: .5em;
-  }
-  .small {
-    font-size: .75em;
-  }
-  .medium {
-    font-size: 1em;
-  }
-  .big {
-    font-size: 1.5em;
-  }
-  .giant {
-    font-size: 2em;
-  }
-  */
-}
-
-/* caret */
-.caret-down,
-.caret-up,
-.caret-right,
-.caret-left {
-  border-width: .3em;
-}
-.caret-down {
-  border-top-color: @color-text;
-}
-.caret-up {
-  border-bottom-color: @color-text;
-}
-.caret-right {
-  border-left-color: @color-text;
-}
-.caret-left {
-  border-right-color: @color-text;
-}
-
-/* swap-in + swap-out */
-.swap-in {
-  display: none;
-}
-.button {
-  &:hover,
-  &:active, &.active {
-    .swap-in {
-      display: inline-block;
-    }
-    .swap-out {
-      display: none !important;
-    }
-  }
-}
-
-/* swap */
-.button {
-  .swap-out.swap-bottom {
-    .animation-default;
-    .anim-bottom.fade-in;
-  }
-  .swap-out.swap-top {
-    .animation-default;
-    .anim-top.fade-in;
-  }
-  .swap-out.swap-left {
-    .animation-default;
-    .anim-left.fade-in;
-  }
-  .swap-out.swap-right {
-    .animation-default;
-    .anim-right.fade-in;
-  }
-  &:hover,
-  &:active, &.active {
-    .swap-bottom {
-      .animation-default;
-      .anim-bottom.fade-in;
-    }
-    .swap-top {
-      .animation-default;
-      .anim-top.fade-in;
-    }
-    .swap-left {
-      .animation-default;
-      .anim-left.fade-in;
-    }
-    .swap-right {
-      .animation-default;
-      .anim-right.fade-in;
     }
   }
 }

@@ -2,6 +2,39 @@
 // document
 //////////////////////
 
+body {
+  background-color: @color-background;
+}
+
+/* contain */
+.contain {
+  padding-right: @contain-spacing;
+  padding-left: @contain-spacing;
+  // max width .contain.fluid
+  &.fluid {
+    max-width: unit(@contain-xl, px);
+  }
+}
+
+/* links */
+a:not(.button),
+.button.link {
+  background-color: transparent;
+  color: @color-primary;
+  &:hover,
+  &:active, &.active,
+  &:focus {
+    background-color: transparent;
+    color: @color-primary;
+    text-decoration: underline;
+  }
+}
+
+//////////////////////
+// typography
+//////////////////////
+
+/* document */
 html {
   font-size: 14px;
   @media @min-md {
@@ -9,7 +42,7 @@ html {
   }
   @media @min-lg {
     font-size: 16px;
-    /* ratios: px / 15 = rem
+    /* ratios: px / 16 = rem
     8px = .5rem
     9px = .562rem
     10px = .625rem
@@ -26,16 +59,11 @@ html {
   }
 }
 body {
-  background-color: @color-background;
   .font-sans-regular();
   font-size: 1rem;
   line-height: 1.6;
   color: @color-text;
 }
-
-//////////////////////
-// typography
-//////////////////////
 
 /* headers */
 h1, .h1,
@@ -124,30 +152,18 @@ pre code {
   line-height: 1.6;
 }
 
-/* links */
-a:not(.button),
-.button.link {
-  background-color: transparent;
-  color: @color-primary;
-  &:hover,
-  &:active, &.active,
-  &:focus {
-    background-color: transparent;
-    color: @color-primary;
-    text-decoration: underline;
-  }
-}
-
-//////////////////////
-// contain
-//////////////////////
-
-.contain {
-  padding-right: @contain-spacing;
-  padding-left: @contain-spacing;
-  &.fluid {
-    // max width .contain.fluid
-    max-width: unit(@contain-xl, px);
+/* remove vertical space for first occurrence */
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6,
+p,
+pre code,
+.card {
+  &:first-child {
+    margin-top: 0 !important;
   }
 }
 
@@ -223,24 +239,5 @@ a:not(.button),
     > .item {
       background-color: @color-white;
     }
-  }
-}
-
-//////////////////////
-// others
-//////////////////////
-
-// remove vertical space for first occurrence
-h1, .h1,
-h2, .h2,
-h3, .h3,
-h4, .h4,
-h5, .h5,
-h6, .h6,
-p,
-pre code,
-.card {
-  &:first-child {
-    margin-top: 0 !important;
   }
 }

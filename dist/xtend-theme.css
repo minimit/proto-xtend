@@ -569,21 +569,25 @@ img.center {
 .caret-down {
   border-style: solid;
   border-color: transparent;
+  border-top-color: inherit;
   border-bottom-width: 0 !important;
 }
 .caret-up {
   border-style: solid;
   border-color: transparent;
+  border-bottom-color: inherit;
   border-top-width: 0 !important;
 }
 .caret-right {
   border-style: solid;
   border-color: transparent;
+  border-left-color: inherit;
   border-right-width: 0 !important;
 }
 .caret-left {
   border-style: solid;
   border-color: transparent;
+  border-right-color: inherit;
   border-left-width: 0 !important;
 }
 .drop-outer {
@@ -1750,6 +1754,36 @@ html.xt-fixed-horizontal .overlay {
     display: block;
   }
 }
+body {
+  background-color: #ffffff;
+}
+/* contain */
+.contain {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+.contain.fluid {
+  max-width: 1400px;
+}
+/* links */
+a:not(.button),
+.button.link {
+  background-color: transparent;
+  color: #00B0FF;
+}
+a:not(.button):hover,
+.button.link:hover,
+a:not(.button):active,
+.button.link:active,
+a:not(.button).active,
+.button.link.active,
+a:not(.button):focus,
+.button.link:focus {
+  background-color: transparent;
+  color: #00B0FF;
+  text-decoration: underline;
+}
+/* document */
 html {
   font-size: 14px;
 }
@@ -1761,7 +1795,7 @@ html {
 @media ( min-width: 1200px ) {
   html {
     font-size: 16px;
-    /* ratios: px / 15 = rem
+    /* ratios: px / 16 = rem
     8px = .5rem
     9px = .562rem
     10px = .625rem
@@ -1780,7 +1814,6 @@ html {
   }
 }
 body {
-  background-color: #ffffff;
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 400;
   font-style: normal;
@@ -1951,30 +1984,23 @@ pre code {
   font-size: .812rem;
   line-height: 1.6;
 }
-/* links */
-a:not(.button),
-.button.link {
-  background-color: transparent;
-  color: #00B0FF;
-}
-a:not(.button):hover,
-.button.link:hover,
-a:not(.button):active,
-.button.link:active,
-a:not(.button).active,
-.button.link.active,
-a:not(.button):focus,
-.button.link:focus {
-  background-color: transparent;
-  color: #00B0FF;
-  text-decoration: underline;
-}
-.contain {
-  padding-right: 15px;
-  padding-left: 15px;
-}
-.contain.fluid {
-  max-width: 1400px;
+/* remove vertical space for first occurrence */
+h1:first-child,
+.h1:first-child,
+h2:first-child,
+.h2:first-child,
+h3:first-child,
+.h3:first-child,
+h4:first-child,
+.h4:first-child,
+h5:first-child,
+.h5:first-child,
+h6:first-child,
+.h6:first-child,
+p:first-child,
+pre code:first-child,
+.card:first-child {
+  margin-top: 0 !important;
 }
 .flex {
   -webkit-justify-content: flex-start;
@@ -2079,23 +2105,6 @@ a:not(.button):focus,
 .card.white,
 .card.white > .item {
   background-color: #ffffff;
-}
-h1:first-child,
-.h1:first-child,
-h2:first-child,
-.h2:first-child,
-h3:first-child,
-.h3:first-child,
-h4:first-child,
-.h4:first-child,
-h5:first-child,
-.h5:first-child,
-h6:first-child,
-.h6:first-child,
-p:first-child,
-pre code:first-child,
-.card:first-child {
-  margin-top: 0 !important;
 }
 .button {
   /* styles */
@@ -2430,96 +2439,6 @@ pre code:first-child,
 .overlay .overlay-close:not([class*=" anim-"]).fade-out {
   transition-timing-function: cubic-bezier(0.63, 0.36, 0, 0.97);
 }
-.overlay .overlay-close:hover .swap-in,
-.overlay .overlay-close:active .swap-in,
-.overlay .overlay-close.active .swap-in {
-  display: inline-block;
-}
-.overlay .overlay-close:hover .swap-out,
-.overlay .overlay-close:active .swap-out,
-.overlay .overlay-close.active .swap-out {
-  display: none !important;
-}
-.overlay .overlay-close .swap-out.swap-bottom {
-  animation-duration: 300ms;
-  animation-timing-function: cubic-bezier(0.63, 0.36, 0, 0.97);
-  animation-name: anim-bottom-in;
-}
-.overlay .overlay-close .swap-out.swap-bottom.fade-out {
-  animation-timing-function: cubic-bezier(0.63, 0.36, 0, 0.97);
-}
-.overlay .overlay-close .swap-out.swap-top {
-  animation-duration: 300ms;
-  animation-timing-function: cubic-bezier(0.63, 0.36, 0, 0.97);
-  animation-name: anim-top-in;
-}
-.overlay .overlay-close .swap-out.swap-top.fade-out {
-  animation-timing-function: cubic-bezier(0.63, 0.36, 0, 0.97);
-}
-.overlay .overlay-close .swap-out.swap-left {
-  animation-duration: 300ms;
-  animation-timing-function: cubic-bezier(0.63, 0.36, 0, 0.97);
-  animation-name: anim-left-in;
-}
-.overlay .overlay-close .swap-out.swap-left.fade-out {
-  animation-timing-function: cubic-bezier(0.63, 0.36, 0, 0.97);
-}
-.overlay .overlay-close .swap-out.swap-right {
-  animation-duration: 300ms;
-  animation-timing-function: cubic-bezier(0.63, 0.36, 0, 0.97);
-  animation-name: anim-right-in;
-}
-.overlay .overlay-close .swap-out.swap-right.fade-out {
-  animation-timing-function: cubic-bezier(0.63, 0.36, 0, 0.97);
-}
-.overlay .overlay-close:hover .swap-bottom,
-.overlay .overlay-close:active .swap-bottom,
-.overlay .overlay-close.active .swap-bottom {
-  animation-duration: 300ms;
-  animation-timing-function: cubic-bezier(0.63, 0.36, 0, 0.97);
-  animation-name: anim-bottom-in;
-}
-.overlay .overlay-close:hover .swap-bottom.fade-out,
-.overlay .overlay-close:active .swap-bottom.fade-out,
-.overlay .overlay-close.active .swap-bottom.fade-out {
-  animation-timing-function: cubic-bezier(0.63, 0.36, 0, 0.97);
-}
-.overlay .overlay-close:hover .swap-top,
-.overlay .overlay-close:active .swap-top,
-.overlay .overlay-close.active .swap-top {
-  animation-duration: 300ms;
-  animation-timing-function: cubic-bezier(0.63, 0.36, 0, 0.97);
-  animation-name: anim-top-in;
-}
-.overlay .overlay-close:hover .swap-top.fade-out,
-.overlay .overlay-close:active .swap-top.fade-out,
-.overlay .overlay-close.active .swap-top.fade-out {
-  animation-timing-function: cubic-bezier(0.63, 0.36, 0, 0.97);
-}
-.overlay .overlay-close:hover .swap-left,
-.overlay .overlay-close:active .swap-left,
-.overlay .overlay-close.active .swap-left {
-  animation-duration: 300ms;
-  animation-timing-function: cubic-bezier(0.63, 0.36, 0, 0.97);
-  animation-name: anim-left-in;
-}
-.overlay .overlay-close:hover .swap-left.fade-out,
-.overlay .overlay-close:active .swap-left.fade-out,
-.overlay .overlay-close.active .swap-left.fade-out {
-  animation-timing-function: cubic-bezier(0.63, 0.36, 0, 0.97);
-}
-.overlay .overlay-close:hover .swap-right,
-.overlay .overlay-close:active .swap-right,
-.overlay .overlay-close.active .swap-right {
-  animation-duration: 300ms;
-  animation-timing-function: cubic-bezier(0.63, 0.36, 0, 0.97);
-  animation-name: anim-right-in;
-}
-.overlay .overlay-close:hover .swap-right.fade-out,
-.overlay .overlay-close:active .swap-right.fade-out,
-.overlay .overlay-close.active .swap-right.fade-out {
-  animation-timing-function: cubic-bezier(0.63, 0.36, 0, 0.97);
-}
 .overlay .overlay-close:hover,
 .overlay .overlay-close:active,
 .overlay .overlay-close.active {
@@ -2603,6 +2522,42 @@ pre code:first-child,
   opacity: 0;
   animation-name: anim-vertical-out;
 }
+/* .icon- */
+.icon {
+  display: inline-block;
+  position: relative;
+  /* alignment */
+  /* sizes */
+  font-size: 1em;
+}
+.icon.left {
+  margin-right: .35em;
+}
+.icon.right {
+  margin-left: .35em;
+}
+.icon.tiny {
+  font-size: .5em;
+}
+.icon.small {
+  font-size: .75em;
+}
+.icon.medium {
+  font-size: 1em;
+}
+.icon.big {
+  font-size: 1.5em;
+}
+.icon.giant {
+  font-size: 2em;
+}
+/* caret */
+.caret-down,
+.caret-up,
+.caret-right,
+.caret-left {
+  border-width: .35em;
+}
 /* .xt-backdrop */
 .xt-backdrop {
   /* styles */
@@ -2624,150 +2579,6 @@ pre code:first-child,
 .xt-backdrop:not([class*=" anim-"]).fade-out {
   opacity: 0;
 }
-/* .icon- */
-.icon {
-  display: inline-block;
-  position: relative;
-  /* alignment */
-  /* sizes */
-  /*
-  .tiny {
-    font-size: .5em;
-  }
-  .small {
-    font-size: .75em;
-  }
-  .medium {
-    font-size: 1em;
-  }
-  .big {
-    font-size: 1.5em;
-  }
-  .giant {
-    font-size: 2em;
-  }
-  */
-}
-.icon.left {
-  margin-right: .35em;
-}
-.icon.right {
-  margin-left: .35em;
-}
-/* caret */
-.caret-down,
-.caret-up,
-.caret-right,
-.caret-left {
-  border-width: .3em;
-}
-.caret-down {
-  border-top-color: #000000;
-}
-.caret-up {
-  border-bottom-color: #000000;
-}
-.caret-right {
-  border-left-color: #000000;
-}
-.caret-left {
-  border-right-color: #000000;
-}
-/* swap-in + swap-out */
-.swap-in {
-  display: none;
-}
-.button:hover .swap-in,
-.button:active .swap-in,
-.button.active .swap-in {
-  display: inline-block;
-}
-.button:hover .swap-out,
-.button:active .swap-out,
-.button.active .swap-out {
-  display: none !important;
-}
-/* swap */
-.button .swap-out.swap-bottom {
-  animation-duration: 300ms;
-  animation-timing-function: cubic-bezier(0.63, 0.36, 0, 0.97);
-  animation-name: anim-bottom-in;
-}
-.button .swap-out.swap-bottom.fade-out {
-  animation-timing-function: cubic-bezier(0.63, 0.36, 0, 0.97);
-}
-.button .swap-out.swap-top {
-  animation-duration: 300ms;
-  animation-timing-function: cubic-bezier(0.63, 0.36, 0, 0.97);
-  animation-name: anim-top-in;
-}
-.button .swap-out.swap-top.fade-out {
-  animation-timing-function: cubic-bezier(0.63, 0.36, 0, 0.97);
-}
-.button .swap-out.swap-left {
-  animation-duration: 300ms;
-  animation-timing-function: cubic-bezier(0.63, 0.36, 0, 0.97);
-  animation-name: anim-left-in;
-}
-.button .swap-out.swap-left.fade-out {
-  animation-timing-function: cubic-bezier(0.63, 0.36, 0, 0.97);
-}
-.button .swap-out.swap-right {
-  animation-duration: 300ms;
-  animation-timing-function: cubic-bezier(0.63, 0.36, 0, 0.97);
-  animation-name: anim-right-in;
-}
-.button .swap-out.swap-right.fade-out {
-  animation-timing-function: cubic-bezier(0.63, 0.36, 0, 0.97);
-}
-.button:hover .swap-bottom,
-.button:active .swap-bottom,
-.button.active .swap-bottom {
-  animation-duration: 300ms;
-  animation-timing-function: cubic-bezier(0.63, 0.36, 0, 0.97);
-  animation-name: anim-bottom-in;
-}
-.button:hover .swap-bottom.fade-out,
-.button:active .swap-bottom.fade-out,
-.button.active .swap-bottom.fade-out {
-  animation-timing-function: cubic-bezier(0.63, 0.36, 0, 0.97);
-}
-.button:hover .swap-top,
-.button:active .swap-top,
-.button.active .swap-top {
-  animation-duration: 300ms;
-  animation-timing-function: cubic-bezier(0.63, 0.36, 0, 0.97);
-  animation-name: anim-top-in;
-}
-.button:hover .swap-top.fade-out,
-.button:active .swap-top.fade-out,
-.button.active .swap-top.fade-out {
-  animation-timing-function: cubic-bezier(0.63, 0.36, 0, 0.97);
-}
-.button:hover .swap-left,
-.button:active .swap-left,
-.button.active .swap-left {
-  animation-duration: 300ms;
-  animation-timing-function: cubic-bezier(0.63, 0.36, 0, 0.97);
-  animation-name: anim-left-in;
-}
-.button:hover .swap-left.fade-out,
-.button:active .swap-left.fade-out,
-.button.active .swap-left.fade-out {
-  animation-timing-function: cubic-bezier(0.63, 0.36, 0, 0.97);
-}
-.button:hover .swap-right,
-.button:active .swap-right,
-.button.active .swap-right {
-  animation-duration: 300ms;
-  animation-timing-function: cubic-bezier(0.63, 0.36, 0, 0.97);
-  animation-name: anim-right-in;
-}
-.button:hover .swap-right.fade-out,
-.button:active .swap-right.fade-out,
-.button.active .swap-right.fade-out {
-  animation-timing-function: cubic-bezier(0.63, 0.36, 0, 0.97);
-}
 .animation-default {
   animation-duration: 300ms;
   animation-timing-function: cubic-bezier(0.63, 0.36, 0, 0.97);
@@ -2781,24 +2592,6 @@ pre code:first-child,
   transition-timing-function: cubic-bezier(0.63, 0.36, 0, 0.97);
 }
 .transition-default.fade-out {
-  transition-timing-function: cubic-bezier(0.63, 0.36, 0, 0.97);
-}
-.collapse-height,
-.collapse-width,
-.collapse-top,
-.collapse-bottom,
-.collapse-left,
-.collapse-right {
-  transition-property: all;
-  transition-duration: 300ms;
-  transition-timing-function: cubic-bezier(0.63, 0.36, 0, 0.97);
-}
-.collapse-height.fade-out,
-.collapse-width.fade-out,
-.collapse-top.fade-out,
-.collapse-bottom.fade-out,
-.collapse-left.fade-out,
-.collapse-right.fade-out {
   transition-timing-function: cubic-bezier(0.63, 0.36, 0, 0.97);
 }
 .anim-opacity {
@@ -3146,4 +2939,23 @@ pre code:first-child,
     opacity: 0;
     transform: translateY(0.618rem);
   }
+}
+/* collapse */
+.collapse-height,
+.collapse-width,
+.collapse-top,
+.collapse-bottom,
+.collapse-left,
+.collapse-right {
+  transition-property: all;
+  transition-duration: 300ms;
+  transition-timing-function: cubic-bezier(0.63, 0.36, 0, 0.97);
+}
+.collapse-height.fade-out,
+.collapse-width.fade-out,
+.collapse-top.fade-out,
+.collapse-bottom.fade-out,
+.collapse-left.fade-out,
+.collapse-right.fade-out {
+  transition-timing-function: cubic-bezier(0.63, 0.36, 0, 0.97);
 }
