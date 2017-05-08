@@ -342,7 +342,7 @@
     if ($eventTarget) {
       // on off events
       if (settings.on) {
-        $eventTarget.off(settings.on).on(settings.on, function(e) {
+        $eventTarget.off(settings.on + '.xt').on(settings.on + '.xt', function(e) {
           var $t = $eventElement ? $eventElement : $(this);
           object.toggle($t);
           if (settings.name === 'xt-ajax') {
@@ -351,7 +351,7 @@
         });
       }
       if (settings.off) {
-        $eventTarget.off(settings.off).on(settings.off, function(e) {
+        $eventTarget.off(settings.off + '.xt').on(settings.off + '.xt', function(e) {
           var $t = $eventElement ? $eventElement : $(this);
           object.toggle($t);
         });
@@ -370,13 +370,13 @@
         }
       });
       // api
-      $eventTarget.off('on.xt').on('on.xt', function(e, obj, triggered) {
-        if (!triggered && e.target === this) {
+      $eventTarget.off('on.xt').on('on.xt', function(e, obj) {
+        if (e.target === this) {
           object.on($(this), true);
         }
       });
-      $eventTarget.off('off.xt').on('off.xt', function(e, obj, triggered) {
-        if (!triggered && e.target === this) {
+      $eventTarget.off('off.xt').on('off.xt', function(e, obj) {
+        if (e.target === this) {
           object.off($(this), true);
         }
       });
@@ -695,7 +695,9 @@
     }
     // api
     if (!triggered) {
-      $el.trigger('on.xt', [object, true]);
+      window.xtRequestAnimationFrame( function() {
+        $el.trigger('on', [object]);
+      });
     }
   };
   Xt.prototype.onDone = function($el, triggered) {
@@ -712,7 +714,9 @@
     }
     // api
     if (!triggered) {
-      $el.trigger('fadein.xt.done', [object, true]);
+      window.xtRequestAnimationFrame( function() {
+        $el.trigger('fadein.xt', [object]);
+      });
     }
   };
   
@@ -744,7 +748,9 @@
     }
     // api
     if (!triggered) {
-      $el.trigger('off.xt', [object, true]);
+      window.xtRequestAnimationFrame( function() {
+        $el.trigger('off', [object]);
+      });
     }
   };
   Xt.prototype.offDone = function($el, triggered) {
@@ -770,7 +776,7 @@
         /*
         $additional.removeClass('fade-in');
         $additional.addClass('fade-out');
-        settings.$targets.off('off.xt.done.additional').one('off.xt.done.additional', function() {
+        settings.$targets.off('off.xt.additional').one('off.xt.additional', function() {
           $additional.removeClass('fade-out');
         });
         */
@@ -778,7 +784,9 @@
     }
     // api
     if (!triggered) {
-      $el.trigger('fadeout.xt', [object, true]);
+      window.xtRequestAnimationFrame( function() {
+        $el.trigger('fadeout.xt', [object]);
+      });
     }
   };
   

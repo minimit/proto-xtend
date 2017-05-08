@@ -23,8 +23,8 @@
     function populateDemo($container, i) {
       var $items = $container.find('> .demo-item');
       // multiple elements
-      $container.prepend('<div class="demo-tabs"><div class="demo-tabs-inside"><div class="demo-tabs-left float-left"></div><div class="demo-code-tabs-right float-right"></div></div></div>');
-      $container.find('.demo-code-tabs-right').append('<button type="button" class="button button__fullscreen" data-toggle="tooltip" data-placement="top" title="Open fullscreen"><span class="icon-enlarge2"></span></button>');
+      $container.prepend('<div class="demo-tabs"><div class="demo-tabs-inside"><div class="demo-tabs-left float-left"></div><div class="demo-tabs-right float-right"></div></div></div>');
+      $container.find('.demo-tabs-right').append('<button type="button" class="button button__fullscreen" data-toggle="tooltip" data-placement="top" title="Open fullscreen"><span class="icon-enlarge2"></span></button>');
       /*
       $container.find('.button__fullscreen'))
         .on('mouseleave', function(e) {
@@ -99,7 +99,7 @@
             initIframe();
           }
           // iframe resize on show
-          $item.on('on.xt', function(e, obj) {
+          $item.on('on', function(e, obj) {
             if (e.target === this) {
               window.resizeIframe(id);
               if (k !== 0) {
@@ -198,7 +198,9 @@
       var $demo = $(this);
       populateDemo($demo, i);
       // enable fullscreen
-      $demo.find('.demo-tabs-left .button').on('on.xt', function(e, obj) {
+      $demo.find('.demo-tabs-left .button').on('on', function(e, obj) {
+        console.log($(this).text());
+        console.log($(this).parents('.demo').find('.demo-item.active').length);
         var $fullscreen = $(this).parents('.demo').find('.button__fullscreen');
         var iframe = $(this).parents('.demo').find('.demo-item.active').attr('data-iframe');
         if (iframe) {
@@ -207,8 +209,6 @@
           $fullscreen.on('click', function() {
             window.open(iframe, '_blank');
           });
-        } else {
-          $fullscreen.css('display', 'none');
         }
       });
       // demo tabs
@@ -308,10 +308,10 @@
         $('.developer').addClass('developer-show');
       }
       // init
-      $('.button__developer').xtToggle().on('on.xt', function(e) {
+      $('.button__developer').xtToggle().on('on', function(e) {
         window.developer = true;
         $('.developer').addClass('developer-show');
-      }).on('off.xt', function(e) {
+      }).on('off', function(e) {
         window.developer = false;
         $('.developer').removeClass('developer-show');
       });
@@ -349,7 +349,7 @@
   window.onbeforeunload = unloadPage;
   */
   /*
-  $('.button__menu').filter(':parents(.xt-ignore)').on('on.xt', function(e, obj, triggered, isSync) {
+  $('.button__menu').filter(':parents(.xt-ignore)').on('on', function(e, obj) {
     console.log(triggered, $('.button__menu').filter(':parents(.xt-ignore)').length, $('.button__menu').filter(':parents(.xt-ignore)').not(this).length);
     if (!triggered && e.target === this) {
       $('.button__menu').filter(':parents(.xt-ignore)').not(this).trigger('on.xt', [true, true]);
@@ -357,14 +357,14 @@
   });
   */
   /*
-  $('.button__menu').on('off.xt', function(e) {
-    $('.button__menu').not(this).trigger('off.xt', [true]);
+  $('.button__menu').on('off', function(e) {
+    $('.button__menu').not(this).trigger('off', [true]);
   });
   */
   
   /*
   // tests
-  $('button').on('on.xt', function(e, obj, $data) {
+  $('button').on('on', function(e, obj, $data) {
     console.log($(this));
   });
   */
@@ -373,7 +373,7 @@
     //$('.site-breadcrumbs-body-main').trigger('on.xt');
     //$('a[href="/"]').filter(':parents(.xt-ignore)').trigger('on.xt');
     //if ($('html').atr('id') === 'test-0.html') { console.log(this.settings); }
-    //$('.demo-item').on('on.xt', function(e, obj) { console.log($(e.target)); });
+    //$('.demo-item').on('on', function(e, obj) { console.log($(e.target)); });
   });
   
   
