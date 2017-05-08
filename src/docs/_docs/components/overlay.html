@@ -320,11 +320,11 @@ order: 60
 
 <h3>Animations</h3>
 
-<p>You can set <strong>default animation</strong> inside the scss with <code>@include</code>.</p>
-<p>@TODO link animations.</p>
+<p>Assign animations to <code>.overlay-inner</code>. You can set <strong>default animation</strong> inside the .less file. @TODO link animations.</p>
+<p>For collapse animations assign them to <code>.overlay</code>. @TODO link collapse.</p>
 
 <div class="demo">
-  <div class="demo-item demo-preview" data-name="">
+  <div class="demo-item demo-preview" data-name="custom">
     <div class="demo-text"><code>.anim-diagonal</code>.</div>
     <div class="demo-source" data-lang="html">
 <button type="button" class="button" data-xt-overlay='{"targets": "#overlay-diagonal"}'>
@@ -347,6 +347,21 @@ order: 60
 </button>
 <div class="overlay screen" id="overlay-screen-diagonal">
   <div class="overlay-inner anim-diagonal">
+    <div class="overlay-content">
+      <button type="button" class="overlay-close"><span class="icon-cross"></span></button>
+      <h2>Lorem ipsum</h2>
+      <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed cursus, lectus quis ornare volutpat, ligula nulla sollicitudin nunc, ut commodo nulla enim nec nisi.</p>
+      <p>Morbi sodales, dolor a iaculis ornare, velit justo lacinia erat, pretium sollicitudin dui sem id justo.</p>
+    </div>
+  </div>
+</div>
+
+<button type="button" class="button" data-xt-overlay='{"targets": "#overlay-screen-collapse"}'>
+  screen collapse-height anim-horizontal
+</button>
+<div class="overlay screen collapse-height" id="overlay-screen-collapse">
+  <div class="overlay-inner anim-horizontal">
     <div class="overlay-content">
       <button type="button" class="overlay-close"><span class="icon-cross"></span></button>
       <h2>Lorem ipsum</h2>
