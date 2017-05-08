@@ -548,17 +548,11 @@
         object.onAfter($target, triggered);
         // overlay html
         if (settings.name === 'xt-overlay') {
-          // add paddings
-          object.onFixed($('html, .xt-backdrop')); // @TODO $('*:fixed').not($target).add('html')
-          // on $additional with $group time
           var $additional = $('html');
           if (!$additional.hasClass(object.defaultClass)) {
             $additional.addClass(settings.class);
-            /*
-            window.xtRequestAnimationFrame( function() {
-              $additional.addClass('fade-in');
-            });
-            */
+            // add paddings
+            object.onFixed($('html, .xt-backdrop')); // use this for all position fixed $('*:fixed').not($target);
           }
         }
       }
@@ -767,19 +761,11 @@
     }
     // overlay html
     if (settings.name === 'xt-overlay') {
-      // remove paddings
-      object.offFixed($('.xt-fixed-vertical'));
-      // off $additional with $group time
       var $additional = $('html');
       if ($additional.hasClass(object.defaultClass)) {
         $additional.removeClass(settings.class);
-        /*
-        $additional.removeClass('fade-in');
-        $additional.addClass('fade-out');
-        settings.$targets.off('off.xt.additional').one('off.xt.additional', function() {
-          $additional.removeClass('fade-out');
-        });
-        */
+        // remove paddings
+        object.offFixed($('.xt-fixed-vertical')); // use this for all position fixed $('*:fixed').not($target);
       }
     }
     // api
