@@ -14,9 +14,9 @@ baseurl: "/"
 exclude:
   - "*.psd"
   - "*.scss"
-#port: 4000
-#host: 192.168.1.183
-  
+host: 192.168.1.183
+port: 4000
+
 # collections
 collections:
   docs:

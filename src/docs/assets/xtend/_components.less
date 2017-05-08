@@ -159,12 +159,6 @@
 
 .overlay {
   /* styles */
-  .overlay-content {
-    padding: 2rem;
-    @media @min-sm {
-      padding: 3rem;
-    }
-  }
   .overlay-close {
     .button;
     width: 3rem;
@@ -180,6 +174,18 @@
   }
   /* sizes */
   .overlay.medium; // default size
+  .overlay-content {
+    padding: 2rem;
+    @media @min-sm {
+      padding: 3rem;
+    }
+  }
+  &.screen {
+    .overlay-content {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
   /* variants */
   .overlay.white; // default variant
   &.primary {

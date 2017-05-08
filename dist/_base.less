@@ -688,6 +688,7 @@ img.center {
   left: 0;
   right: 0;
   bottom: 0;
+  overflow: hidden;
   .overlay-inner {
     position: relative;
     z-index: 110;
@@ -705,6 +706,7 @@ img.center {
     -webkit-justify-content: center;
     -ms-flex-pack: center;
     justify-content: center;
+    margin: auto; // fix http://stackoverflow.com/questions/33454533/cant-scroll-to-top-of-flex-item-that-is-overflowing-container
   }
   .overlay-content {
     position: relative;
@@ -712,16 +714,12 @@ img.center {
     -webkit-align-self: center;
     -ms-flex-item-align: center;
     align-self: center;
-    max-height: 100vh; // fix flex height and alignment
     @media @max-xs {
       max-width: 100%;
     }
   }
   /* screen */
   &.screen {
-    .overlay-inner {
-      padding: 0;
-    }
     .overlay-content {
       position: static;
     }
@@ -740,32 +738,32 @@ img.center {
   }
   /* spacing */
   .overlay-inner {
-    padding: @contain-spacing; // spacing outside overlay
+    padding: @overlay-spacing; // spacing outside overlay
   }
   /* sizes */
   &.tiny {
     .overlay-content {
-      width: @contain-xs - @contain-spacing * 2;
+      width: @contain-xs - @overlay-spacing * 2;
     }
   }
   &.small {
     .overlay-content {
-      width: @contain-sm - @contain-spacing * 2;
+      width: @contain-sm - @overlay-spacing * 2;
     }
   }
   &.medium {
     .overlay-content {
-      width: @contain-md - @contain-spacing * 2;
+      width: @contain-md - @overlay-spacing * 2;
     }
   }
   &.big {
     .overlay-content {
-      width: @contain-lg - @contain-spacing * 2;
+      width: @contain-lg - @overlay-spacing * 2;
     }
   }
   &.giant {
     .overlay-content {
-      width: @contain-xl - @contain-spacing * 2;
+      width: @contain-xl - @overlay-spacing * 2;
     }
   }
   &.full {
@@ -851,7 +849,7 @@ img.center {
   position: fixed;
   z-index: 100;
   top: 0;
-  left: 0;
+  right: 0;
   width: 100%;
   height: 100%;
 }
@@ -960,7 +958,7 @@ html.xt-fixed-horizontal {
       width: unit(@@unit, px);
     }
     .overlay-content {
-      max-width: unit(@@unit - @contain-spacing * 2, px);
+      max-width: unit(@@unit - @overlay-spacing * 2, px);
     }
     
     // show + hide

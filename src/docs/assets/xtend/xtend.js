@@ -546,7 +546,7 @@
       var $target = object.getIndexed(settings.$elements, $el, settings.$targets);
       if (!$target.hasClass(object.defaultClass)) {
         object.onAfter($target, triggered);
-        // stuff
+        // overlay html
         if (settings.name === 'xt-overlay') {
           // add paddings
           object.onFixed($('html, .xt-backdrop')); // @TODO $('*:fixed').not($target).add('html')
@@ -606,23 +606,6 @@
       var $target = object.getIndexed(settings.$elements, $el, settings.$targets);
       if ($target.hasClass(object.defaultClass)) {
         object.offAfter($target, triggered);
-        // stuff
-        if (settings.name === 'xt-overlay') {
-          // remove paddings
-          object.offFixed($('.xt-fixed-vertical'));
-          // off $additional with $group time
-          var $additional = $('html');
-          if ($additional.hasClass(object.defaultClass)) {
-            $additional.removeClass(settings.class);
-            /*
-            $additional.removeClass('fade-in');
-            $additional.addClass('fade-out');
-            settings.$targets.off('off.xt.done.additional').one('off.xt.done.additional', function() {
-              $additional.removeClass('fade-out');
-            });
-            */
-          }
-        }
       }
     }
   };
@@ -775,6 +758,23 @@
     }
     if ($el.hasClass('collapse-width')) {
       $el.css('width', 'auto');
+    }
+    // overlay html
+    if (settings.name === 'xt-overlay') {
+      // remove paddings
+      object.offFixed($('.xt-fixed-vertical'));
+      // off $additional with $group time
+      var $additional = $('html');
+      if ($additional.hasClass(object.defaultClass)) {
+        $additional.removeClass(settings.class);
+        /*
+        $additional.removeClass('fade-in');
+        $additional.addClass('fade-out');
+        settings.$targets.off('off.xt.done.additional').one('off.xt.done.additional', function() {
+          $additional.removeClass('fade-out');
+        });
+        */
+      }
     }
     // api
     if (!triggered) {
@@ -1064,7 +1064,7 @@
     // add scrollbar padding
     var w = object.scrollbarWidth($el);
     w = $el.css('overflow-y') === 'hidden' ? 0 : w;
-    $el.addClass('xt-fixed-vertical').css('padding-right', w).css('background-clip', 'content-box');
+    $el.addClass('xt-fixed-vertical').css('right', w).css('padding-right', w);
   };
   
   Xt.prototype.offFixed = function($el) {
@@ -1073,7 +1073,7 @@
     var group = this.group;
     var $group = $(this.group);
     // remove scrollbar padding
-    $el.removeClass('xt-fixed-vertical').css('padding-right', 0).css('background-clip', '');
+    $el.removeClass('xt-fixed-vertical').css('right', 0).css('padding-right', 0);
   };
   
   Xt.prototype.getIndex = function($elements, $el) {

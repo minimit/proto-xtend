@@ -689,6 +689,7 @@ img.center {
   left: 0;
   right: 0;
   bottom: 0;
+  overflow: hidden;
   /* screen */
   /* close */
   /* spacing */
@@ -717,6 +718,7 @@ img.center {
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  margin: auto;
 }
 .overlay .overlay-content {
   position: relative;
@@ -724,15 +726,11 @@ img.center {
   -webkit-align-self: center;
   -ms-flex-item-align: center;
   align-self: center;
-  max-height: 100vh;
 }
 @media ( max-width: 575px ) {
   .overlay .overlay-content {
     max-width: 100%;
   }
-}
-.overlay.screen .overlay-inner {
-  padding: 0;
 }
 .overlay.screen .overlay-content {
   position: static;
@@ -836,7 +834,7 @@ img.center {
   position: fixed;
   z-index: 100;
   top: 0;
-  left: 0;
+  right: 0;
   width: 100%;
   height: 100%;
 }
@@ -2313,14 +2311,6 @@ pre code:first-child,
   /* variants */
   /* animations */
 }
-.overlay .overlay-content {
-  padding: 2rem;
-}
-@media ( min-width: 768px ) {
-  .overlay .overlay-content {
-    padding: 3rem;
-  }
-}
 .overlay .overlay-close {
   display: inline-block;
   position: relative;
@@ -2538,6 +2528,18 @@ pre code:first-child,
 }
 .overlay .overlay-content {
   width: 930px;
+}
+.overlay .overlay-content {
+  padding: 2rem;
+}
+@media ( min-width: 768px ) {
+  .overlay .overlay-content {
+    padding: 3rem;
+  }
+}
+.overlay.screen .overlay-content {
+  padding-left: 0;
+  padding-right: 0;
 }
 .overlay .overlay-content,
 .overlay.screen {
