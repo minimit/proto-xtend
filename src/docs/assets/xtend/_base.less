@@ -877,45 +877,11 @@ html.xt-fixed {
 }
 
 //////////////////////
-// mixins
-//////////////////////
-
-// .xt-scroll();
-.xt-scroll(@position:'top', @pos:0) {
-  .show-scroll {
-    display: none;
-  }
-  .hide-scroll {
-    display: block;
-  }
-  &.active.xt-clone {
-    display: block !important;
-  }
-  &.active:not(.xt-clone) {
-    position: fixed !important;
-    width: inherit; // fix fixed width
-    z-index: 70;
-    & when (@position = 'top') {
-      top: @pos;
-    }
-    & when (@position = 'bottom') {
-      bottom: @pos;
-    }
-    .show-scroll {
-      display: block;
-    }
-    .hide-scroll {
-      display: none;
-    }
-  }
-}
-
-//////////////////////
 // generate
 //////////////////////
 
 /* default */
-.grid(size; @columns); // default flex grid
+.grid(size; @columns); // grid generator
 .size-auto {
   -webkit-flex-basis: auto;
   -ms-flex-preferred-size: auto;
@@ -937,7 +903,7 @@ html.xt-fixed {
   @query-min: "min-@{name}";
   @media @@query-min {
     
-    // generate flex grid
+    // grid generator
     .grid(@name; @columns);
     
     // -auto
@@ -1038,11 +1004,74 @@ html.xt-fixed {
   
 }
 
-// grid generator
+//////////////////////
+// mixins
+//////////////////////
+
+// .xt-scroll();
+.xt-scroll(@position:'top', @pos:0) {
+  .show-scroll {
+    display: none;
+  }
+  .hide-scroll {
+    display: block;
+  }
+  &.active.xt-clone {
+    display: block !important;
+  }
+  &.active:not(.xt-clone) {
+    position: fixed !important;
+    width: inherit; // fix fixed width
+    z-index: 70;
+    & when (@position = 'top') {
+      top: @pos;
+    }
+    & when (@position = 'bottom') {
+      bottom: @pos;
+    }
+    .show-scroll {
+      display: block;
+    }
+    .hide-scroll {
+      display: none;
+    }
+  }
+}
+
+// grid classes generator
 .grid(@name; @columns; @index: 1) when (@index =< @columns) {
   .grid(@name; @columns; (@index + 1));
   @val: (percentage(@index / @columns));
+  //(~".@{name}-@{index}") {
   .@{name}-@{index} {
+    -webkit-flex-basis: @val;
+    -ms-flex-preferred-size: @val;
+    flex-basis: @val;
+    max-width: @val;
+    width: @val;
+  }
+}
+
+// mixin single grid responsive min
+// USAGE: .min(lg, 4);
+.min(@name, @index) {
+  @query-min: "min-@{name}";
+  @media @@query-min {
+    @val: (percentage(@index / @columns));
+    -webkit-flex-basis: @val;
+    -ms-flex-preferred-size: @val;
+    flex-basis: @val;
+    max-width: @val;
+    width: @val;
+  }
+}
+
+// mixin single grid responsive max
+// USAGE: .max(xs, 6);
+.max(@name, @index) {
+  @query-max: "max-@{name}";
+  @media @@query-max {
+    @val: (percentage(@index / @columns));
     -webkit-flex-basis: @val;
     -ms-flex-preferred-size: @val;
     flex-basis: @val;

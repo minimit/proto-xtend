@@ -48,6 +48,7 @@ gulp.task('less', ['less-demos'], function() {
   return gulp.src(['src/docs/assets/styles/*.less', '!src/docs/assets/styles/_*.less'])
     .pipe(sourcemaps.init())
     .pipe(less())
+    .pipe(gulp.dest('src/docs/assets/styles/'))
     .pipe(cleanCSS())
     .pipe(rename({
       suffix: '.min'
