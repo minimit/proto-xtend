@@ -690,7 +690,7 @@ pre code {
     }
   }
   .demo-source {
-    position: relative;
+    .float;
     line-height: 1.8;
   }
   .demo-item.populated .demo-code-body-item {
@@ -707,7 +707,6 @@ pre code {
     width: 100%;
     height: 370px;
   }
-  iframe,
   .demo-source {
     padding: @size-small;
   }
@@ -748,7 +747,10 @@ pre {
   }
   .demo-code-body-item {
     .float;
-    padding: @size-small;
+    pre {
+      padding: @size-small;
+      .float;
+    }
   }
   .demo-text {
     padding: @size-tiny @size-small;

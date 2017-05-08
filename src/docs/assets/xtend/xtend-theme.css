@@ -489,6 +489,7 @@ img.center {
   justify-content: space-around;
 }
 .card {
+  float: left;
   width: 100%;
 }
 .card > .item:first-child:before,

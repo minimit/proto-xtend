@@ -199,8 +199,6 @@
       populateDemo($demo, i);
       // enable fullscreen
       $demo.find('.demo-tabs-left .button').on('on', function(e, obj) {
-        console.log($(this).text());
-        console.log($(this).parents('.demo').find('.demo-item.active').length);
         var $fullscreen = $(this).parents('.demo').find('.button__fullscreen');
         var iframe = $(this).parents('.demo').find('.demo-item.active').attr('data-iframe');
         if (iframe) {
