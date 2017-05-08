@@ -849,17 +849,11 @@ img.center {
   z-index: 110;
 }
 /* xt-fixed */
-html.xt-fixed-vertical body {
+html.xt-fixed body {
   overflow-y: hidden;
 }
-html.xt-fixed-vertical .overlay {
+html.xt-fixed .overlay {
   overflow-y: scroll;
-}
-html.xt-fixed-horizontal body {
-  overflow-x: hidden;
-}
-html.xt-fixed-horizontal .overlay {
-  overflow-x: scroll;
 }
 /* default */
 .size-12 {

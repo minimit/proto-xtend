@@ -765,7 +765,7 @@
       if ($additional.hasClass(object.defaultClass)) {
         $additional.removeClass(settings.class);
         // remove paddings
-        object.offFixed($('.xt-fixed-vertical')); // use this for all position fixed $('*:fixed').not($target);
+        object.offFixed($('.xt-fixed')); // use this for all position fixed $('*:fixed').not($target);
       }
     }
     // api
@@ -1058,7 +1058,7 @@
     // add scrollbar padding
     var w = object.scrollbarWidth($el);
     w = $el.css('overflow-y') === 'hidden' ? 0 : w;
-    $el.addClass('xt-fixed-vertical').css('right', w).css('padding-right', w);
+    $el.addClass('xt-fixed').css('right', w).css('padding-right', w);
   };
   
   Xt.prototype.offFixed = function($el) {
@@ -1067,7 +1067,7 @@
     var group = this.group;
     var $group = $(this.group);
     // remove scrollbar padding
-    $el.removeClass('xt-fixed-vertical').css('right', 0).css('padding-right', 0);
+    $el.removeClass('xt-fixed').css('right', 0).css('padding-right', 0);
   };
   
   Xt.prototype.getIndex = function($elements, $el) {
