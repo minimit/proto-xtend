@@ -1095,8 +1095,19 @@ html.xt-fixed {
   }
 }
 
+// mixin single grid responsive all
+// USAGE: .all(6);
+.all(@index) {
+  @val: (percentage(@index / @columns));
+  -webkit-flex-basis: @val;
+  -ms-flex-preferred-size: @val;
+  flex-basis: @val;
+  max-width: @val;
+  width: @val;
+}
+
 // mixin single grid responsive min
-// USAGE: .min(lg, 4);
+// USAGE: .min(lg, 6);
 .min(@name, @index) {
   @query-min: "min-@{name}";
   @media @@query-min {
