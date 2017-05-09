@@ -492,27 +492,21 @@ img.center {
   float: left;
   width: 100%;
 }
-.card > .item:first-child:before,
-.card > .item:first-child:after {
-  display: none !important;
-}
-.card > .item:before,
-.card > .item:after {
+.card > .item + .item:before {
   content: '';
   display: block;
   position: absolute;
-  top: 0;
-  left: 0;
 }
-.card > .item:after {
+.card > .item + .item:after {
+  content: '';
   display: none;
+  position: absolute;
 }
 .card.vertical > .item:before {
   display: none;
 }
 .card.vertical > .item:after {
   display: block;
-  top: 0;
 }
 .button {
   display: inline-block;
@@ -2066,12 +2060,15 @@ pre code:first-child,
   color: #000000;
 }
 .card > .item:before {
-  top: -33333px;
+  top: -100vh;
+  left: 0;
   width: 1px;
-  height: 99999px;
+  height: 200vh;
   background: rgba(0, 0, 0, 0.1);
 }
 .card > .item:after {
+  top: 0;
+  left: 0;
   width: 100%;
   height: 1px;
   background: rgba(0, 0, 0, 0.1);

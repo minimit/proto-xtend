@@ -452,23 +452,16 @@ img.center {
   float: left;
   width: 100%;
   // separator
-  > .item {
-    &:first-child {
-      &:before,
-      &:after {
-        display: none !important;
-      }
-    }
-    &:before,
-    &:after {
+  > .item + .item {
+    &:before {
       content: '';
       display: block;
       position: absolute;
-      top: 0;
-      left: 0;
     }
     &:after {
+      content: '';
       display: none;
+      position: absolute;
     }
   }
   // separator
@@ -479,7 +472,6 @@ img.center {
       }
       &:after {
         display: block;
-        top: 0;
       }
     }
   }
