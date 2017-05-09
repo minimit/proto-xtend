@@ -524,8 +524,6 @@
         }
         // control over ond
         if (settings.name === 'xt-ajax') {
-          // [disabled]
-          object.checkDisabled($el, 'disable');
           // ajax
           object.ajax($el.attr('href'));
         } else {

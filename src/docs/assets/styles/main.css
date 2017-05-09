@@ -2147,6 +2147,7 @@ pre code:first-child,
   width: 1px;
   height: 200vh;
   background: rgba(0, 0, 0, 0.1);
+  background: #d14;
 }
 .card > .item:after {
   top: 0;
@@ -2154,6 +2155,7 @@ pre code:first-child,
   width: 100%;
   height: 1px;
   background: rgba(0, 0, 0, 0.1);
+  background: #d14;
 }
 .card,
 .card > .item {
