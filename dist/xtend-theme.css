@@ -87,7 +87,7 @@ pre code {
 img.responsive {
   max-width: 100%;
   height: auto;
-  min-height: 1px;
+  min-height: 2px;
   -webkit-align-self: center;
   -ms-flex-item-align: center;
   align-self: center;
@@ -182,7 +182,7 @@ img.center {
 }
 .media > .item,
 .card > .item {
-  min-height: 1px;
+  min-height: 2px;
 }
 .media > .fluid,
 .card > .fluid {
