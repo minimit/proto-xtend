@@ -901,25 +901,21 @@
     $el.each( function() {
       var $single = $(this);
       if ($single.hasClass('collapse-height')) {
-        $single.addClass('no-transition').css('height', '').css('padding-top', '').css('padding-bottom', '');
+        $single.addClass('no-transition').css('height', 'auto');
         var h = $single.outerHeight();
-        var pt = $single.css('padding-top');
-        var pb = $single.css('padding-bottom');
-        $single.css('height', 0).css('padding-top', 0).css('padding-bottom', 0);
+        $single.outerHeight(0);
       }
       if ($single.hasClass('collapse-width')) {
-        $single.addClass('no-transition').css('width', '').css('padding-left', '').css('padding-right', '');
+        $single.addClass('no-transition').css('width', 'auto');
         var w = $single.outerWidth();
-        var pl = $single.css('padding-left');
-        var pr = $single.css('padding-right');
-        $single.css('width', 0).css('padding-left', 0).css('padding-right', 0);
+        $single.outerWidth(0);
       }
       window.xtRequestAnimationFrame( function() {
         if ($single.hasClass('collapse-height')) {
-          $single.removeClass('no-transition').css('height', h).css('padding-top', pt).css('padding-bottom', pb);
+          $single.removeClass('no-transition').outerHeight(h);
         }
         if ($single.hasClass('collapse-width')) {
-          $single.removeClass('no-transition').css('width', w).css('padding-left', pl).css('padding-right', pr);
+          $single.removeClass('no-transition').outerWidth(w);
         }
         if ($single.hasClass('collapse-top')) {
           $single.css('margin-top', -h);

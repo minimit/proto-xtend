@@ -844,6 +844,12 @@ img.center {
   display: none !important;
 }
 /* animations */
+.collapse-height {
+  height: 0;
+}
+.collapse-width {
+  width: 0;
+}
 .collapse-height,
 .collapse-width {
   z-index: 10;
