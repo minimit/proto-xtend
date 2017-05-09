@@ -133,12 +133,12 @@ gulp.task('version', function() {
 // site
 
 gulp.task('site', function() {
-  require('child_process').exec('jekyll build', function(err, stdout, stderr) {
+  require('child_process').exec('bundle exec jekyll build', function(err, stdout, stderr) {
     console.log(stdout);
   });
 });
 gulp.task('site-serve', function() {
-  require('child_process').exec('jekyll serve', function(err, stdout, stderr) {
+  require('child_process').exec('bundle exec jekyll s', function(err, stdout, stderr) {
     console.log(stdout);
   });
 });
