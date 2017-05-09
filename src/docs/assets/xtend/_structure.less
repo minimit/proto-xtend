@@ -191,6 +191,9 @@ pre code,
   .card.left; // default justification
   .card.medium; // default spacing
 }
+.card > .media {
+  .card.medium; // default spacing
+}
 
 //////////////////////
 // card
@@ -198,7 +201,6 @@ pre code,
 
 .card {
   /* styles */
-  overflow: hidden;
   border-radius: 4px;
   border: 0;
   -webkit-box-shadow: 0 .15rem .625rem @color-black-10;
@@ -230,42 +232,25 @@ pre code,
   }
 }
 
-/* separator */
-.media,
-.card {
+//////////////////////
+// separator
+//////////////////////
+
+.card,
+.card > .media {
   > .item,
   > .media {
-    &:before { // for .item horizontal
-      top: -100vh;
-      left: 0;
+    &:before { // vertical
       width: 1px;
-      height: 200vh;
       background: @color-black-10;
-      background: @color-secondary;
+      -webkit-box-shadow: 0 .15rem .625rem @color-black-10;
+      box-shadow: 0 .15rem .625rem @color-black-10;
     }
-    &:after { // for .item vertical
-      top: 0;
-      left: 0;
-      width: 100%;
+    &:after { // horizontal
       height: 1px;
       background: @color-black-10;
-      background: @color-secondary;
-    }
-  }
-  &.reverse {
-    > .item,
-    > .media {
-      &:before {
-        left: auto;
-        right: 0;
-      }
-    }
-    > .item,
-    > .media {
-      &:after {
-        top: auto;
-        bottom: 0;
-      }
+      -webkit-box-shadow: 0 .15rem .625rem @color-black-10;
+      box-shadow: 0 .15rem .625rem @color-black-10;
     }
   }
 }
