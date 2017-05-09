@@ -217,11 +217,11 @@ img.center {
   }
 }
 
-/* sizes + spacing */
+/* sizes */
 .flex,
 .spacer,
 .media {
-  /* spacing */
+  /* automatic spacing */
   &:not(:first-child) {
     margin-top: 0 !important;
   }
@@ -427,7 +427,12 @@ img.center {
 .card > .media {
   .float;
   overflow: hidden;
+}
+.card > .media {
   margin: 0 !important;
+  > *:not(.item) {
+    padding: 0 !important;
+  }
 }
 
 /* separator */
@@ -893,7 +898,7 @@ html.xt-fixed {
 .grid(all; @columns); // grid generator
 .all-auto {
   -webkit-flex-basis: auto;
-  -ms-flex-preferred-size: auto;
+  -ms-flex-preferred-size: 100%; // fix ie10 overflow
   flex-basis: auto;
   max-width: none;
   width: auto;
@@ -918,7 +923,7 @@ html.xt-fixed {
     // -auto
     .@{name}-auto {
       -webkit-flex-basis: auto;
-      -ms-flex-preferred-size: auto;
+      -ms-flex-preferred-size: 100%; // fix ie10 overflow
       flex-basis: auto;
       max-width: none;
       width: auto;

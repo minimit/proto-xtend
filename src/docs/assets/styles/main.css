@@ -287,11 +287,11 @@ img.center {
   -ms-flex: 1 1 auto;
   flex: 1 1 auto;
 }
-/* sizes + spacing */
+/* sizes */
 .flex,
 .spacer,
 .media {
-  /* spacing */
+  /* automatic spacing */
   /* sizes */
 }
 .flex:not(:first-child),
@@ -554,7 +554,12 @@ img.center {
   float: left;
   width: 100%;
   overflow: hidden;
+}
+.card > .media {
   margin: 0 !important;
+}
+.card > .media > *:not(.item) {
+  padding: 0 !important;
 }
 /* separator */
 .card > .item:before,
@@ -1045,7 +1050,7 @@ html.xt-fixed .overlay {
 }
 .all-auto {
   -webkit-flex-basis: auto;
-  -ms-flex-preferred-size: auto;
+  -ms-flex-preferred-size: 100%;
   flex-basis: auto;
   max-width: none;
   width: auto;
@@ -1144,7 +1149,7 @@ html.xt-fixed .overlay {
   }
   .xs-auto {
     -webkit-flex-basis: auto;
-    -ms-flex-preferred-size: auto;
+    -ms-flex-preferred-size: 100%;
     flex-basis: auto;
     max-width: none;
     width: auto;
@@ -1331,7 +1336,7 @@ html.xt-fixed .overlay {
   }
   .sm-auto {
     -webkit-flex-basis: auto;
-    -ms-flex-preferred-size: auto;
+    -ms-flex-preferred-size: 100%;
     flex-basis: auto;
     max-width: none;
     width: auto;
@@ -1518,7 +1523,7 @@ html.xt-fixed .overlay {
   }
   .md-auto {
     -webkit-flex-basis: auto;
-    -ms-flex-preferred-size: auto;
+    -ms-flex-preferred-size: 100%;
     flex-basis: auto;
     max-width: none;
     width: auto;
@@ -1705,7 +1710,7 @@ html.xt-fixed .overlay {
   }
   .lg-auto {
     -webkit-flex-basis: auto;
-    -ms-flex-preferred-size: auto;
+    -ms-flex-preferred-size: 100%;
     flex-basis: auto;
     max-width: none;
     width: auto;
@@ -1892,7 +1897,7 @@ html.xt-fixed .overlay {
   }
   .xl-auto {
     -webkit-flex-basis: auto;
-    -ms-flex-preferred-size: auto;
+    -ms-flex-preferred-size: 100%;
     flex-basis: auto;
     max-width: none;
     width: auto;
