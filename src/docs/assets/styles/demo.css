@@ -88,6 +88,9 @@ img.responsive {
   max-width: 100%;
   height: auto;
   min-height: 1px;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
 }
 img.center {
   margin-left: auto;

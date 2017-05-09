@@ -752,10 +752,10 @@
     $el.removeClass('fade-out');
     // collapse-width and collapse-height
     if ($el.hasClass('collapse-height')) {
-      $el.css('height', 'auto');
+      $el.css('height', '0');
     }
     if ($el.hasClass('collapse-width')) {
-      $el.css('width', 'auto');
+      $el.css('width', '0');
     }
     // overlay html
     if (settings.name === 'xt-overlay') {
@@ -938,22 +938,18 @@
       var $single = $(this);
       if ($single.hasClass('collapse-height')) {
         var h = $single.outerHeight();
-        var pt = $single.css('padding-top');
-        var pb = $single.css('padding-bottom');
-        $single.css('height', h).css('padding-top', pt).css('padding-bottom', pb);
+        $single.outerHeight(h);
       }
       if ($single.hasClass('collapse-width')) {
         var w = $single.outerWidth();
-        var pl = $single.css('padding-left');
-        var pr = $single.css('padding-right');
-        $single.css('width', w).css('padding-left', pl).css('padding-right', pr);
+        $single.outerWidth(w);
       }
       window.xtRequestAnimationFrame( function() {
         if ($single.hasClass('collapse-height')) {
-          $single.css('height', 0).css('padding-top', 0).css('padding-bottom', 0);
+          $single.outerHeight(0);
         }
         if ($single.hasClass('collapse-width')) {
-          $single.css('width', 0).css('padding-left', 0).css('padding-right', 0);
+          $single.outerWidth(0);
         }
         if ($single.hasClass('collapse-top')) {
           $single.css('margin-top', 0);

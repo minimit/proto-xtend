@@ -96,7 +96,12 @@ pre code {
 img.responsive {
   max-width: 100%;
   height: auto;
-  min-height: 1px; // fix ie11 responsive
+  // fix ie11 bug responsive
+  min-height: 1px;
+  // fix chrome bug responsive
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
 }
 img.center {
   margin-left: auto;
@@ -190,7 +195,8 @@ img.center {
   -ms-flex: 1 1 auto;
   flex: 1 1 auto;
   > .item {
-    min-height: 1px; // fix ie11 responsive
+    // fix ie11 bug responsive
+    min-height: 1px;
   }
   > .fluid {
     -webkit-flex: 1 1 0%;
@@ -725,7 +731,8 @@ img.center {
     -webkit-justify-content: center;
     -ms-flex-pack: center;
     justify-content: center;
-    margin: auto; // fix http://stackoverflow.com/questions/33454533/cant-scroll-to-top-of-flex-item-that-is-overflowing-container
+    // fix http://stackoverflow.com/questions/33454533/cant-scroll-to-top-of-flex-item-that-is-overflowing-container
+    margin: auto;
   }
   .overlay-content {
     position: relative;
