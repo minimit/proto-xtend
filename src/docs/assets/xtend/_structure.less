@@ -172,24 +172,22 @@ pre code,
 //////////////////////
 
 .flex {
+  .flex.medium; // default spacing
   .flex.top; // default alignment
   .flex.left; // default justification
-  .flex.medium; // default spacing
 }
 .spacer {
+  .spacer.medium; // default spacing
   .spacer.middle; // default alignment
   .spacer.left; // default justification
-  .spacer.medium; // default spacing
 }
 .media {
-  .media.middle; // default alignment
-  .media.left; // default justification
   .media.medium; // default spacing
+  .media.middle; // default alignment
 }
 .card {
-  .card.middle; // default alignment
-  .card.left; // default justification
   .card.medium; // default spacing
+  .card.middle; // default alignment
 }
 .card > .media {
   .card.medium; // default spacing
@@ -211,24 +209,15 @@ pre code,
   .card.white; // default variant
   &.primary {
     color: @color-white;
-    &,
-    > .item {
-      background-color: @color-primary;
-    }
+    background-color: @color-primary;
   }
   &.secondary {
     color: @color-white;
-    &,
-    > .item {
-      background-color: @color-secondary;
-    }
+    background-color: @color-secondary;
   }
   &.white {
     color: @color-text;
-    &,
-    > .item {
-      background-color: @color-white;
-    }
+    background-color: @color-white;
   }
 }
 

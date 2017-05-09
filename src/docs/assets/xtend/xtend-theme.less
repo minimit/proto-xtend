@@ -32,8 +32,8 @@
 @color-text-75: lighten(@color-text, 75%);
 @color-white-75: fade(@color-white, 75%);
 @color-white-50: fade(@color-white, 50%);
-@color-black-25: fade(@color-black, 25%);
-@color-black-10: fade(@color-black, 10%);
+@color-black-25: lighten(@color-black, 75%);
+@color-black-10: lighten(@color-black, 90%);
 
 //////////////////////
 // sizes
@@ -56,9 +56,9 @@
 @size-giant: 3.236rem;
 
 // others
-@drop-spacing: .618rem;
-@overlay-spacing: 15px;
 @contain-spacing: 15px;
+@overlay-spacing: 15px;
+@drop-spacing: .618rem;
 
 //////////////////////
 // fonts
