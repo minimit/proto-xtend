@@ -272,13 +272,12 @@ img.center {
 }
 .card,
 .card > .media {
-  /* sizes */
+  /* sizes and  */
   margin: 0;
   &.none {
     > .item {
       padding: 0;
     }
-    // special paddings
     > .item + .item,
     > .item + .media,
     > .media + .item {
@@ -292,7 +291,6 @@ img.center {
     > .item {
       padding: @size-tiny;
     }
-    // special paddings
     > .item + .item,
     > .item + .media,
     > .media + .item {
@@ -306,7 +304,6 @@ img.center {
     > .item {
       padding: @size-small;
     }
-    // special paddings
     > .item + .item,
     > .item + .media,
     > .media + .item {
@@ -320,7 +317,6 @@ img.center {
     > .item {
       padding: @size-medium;
     }
-    // special paddings
     > .item + .item,
     > .item + .media,
     > .media + .item {
@@ -334,7 +330,6 @@ img.center {
     > .item {
       padding: @size-big;
     }
-    // special paddings
     > .item + .item,
     > .item + .media,
     > .media + .item {
@@ -348,7 +343,6 @@ img.center {
     > .item {
       padding: @size-giant;
     }
-    // special paddings
     > .item + .item,
     > .item + .media,
     > .media + .item {
@@ -493,8 +487,8 @@ img.center {
 }
 
 /* special paddings */
-.card:not(.vertical),
-.card:not(.vertical) > .media {
+.card,
+.card > .media {
   > .item + .item,
   > .item + .media,
   > .media + .item {
@@ -1058,15 +1052,6 @@ html.xt-fixed {
         -ms-flex: 1 1 0%;
         flex: 1 1 0%;
       }
-      // special paddings horizontal
-      &.card,
-      &.media {
-        > .item + .item,
-        > .item + .media,
-        > .media + .item {
-          margin-top: 0 !important;
-        }
-      }
     }
     
     // separator horizontal
@@ -1085,6 +1070,49 @@ html.xt-fixed {
             }
           }
         }
+      }
+    }
+    
+    // special paddings horizontal
+    .card,
+    .card > .media {
+      &.horizontal-@{name} {
+        > .item + .item,
+        > .item + .media,
+        > .media + .item {
+          margin-top: 0 !important;
+        }
+        /*
+        &.none {
+          > .item + .item {
+            margin-left: 0 !important;
+          }
+        }
+        &.tiny {
+          > .item + .item {
+            margin-left: -@size-tiny !important;
+          }
+        }
+        &.small {
+          > .item + .item {
+            margin-left: -@size-small !important;
+          }
+        }
+        &.medium {
+          > .item + .item {
+            margin-left: -@size-medium !important;
+          }
+        }
+        &.big {
+          > .item + .item {
+            margin-left: -@size-big !important;
+          }
+        }
+        &.giant {
+          > .item + .item {
+            margin-left: -@size-giant !important;
+          }
+        }*/
       }
     }
     
@@ -1109,13 +1137,6 @@ html.xt-fixed {
         -ms-flex: 1 1 auto;
         flex: 1 1 auto;
       }
-      // special paddings vertical
-      &.card,
-      &.media {
-        > .item + .item {
-          margin-left: 0 !important;
-        }
-      }
     }
     
     // separator vertical
@@ -1134,6 +1155,59 @@ html.xt-fixed {
             }
           }
         }
+      }
+    }
+    
+    // special paddings vertical
+    .card,
+    .card > .media {
+      &.vertical-@{name} {
+        > .item + .item {
+          margin-left: 0 !important;
+        }
+        /*
+        &.none {
+          > .item + .item,
+          > .item + .media,
+          > .media + .item {
+            margin-top: 0 !important;
+          }
+        }
+        &.tiny {
+          > .item + .item,
+          > .item + .media,
+          > .media + .item {
+            margin-top: -@size-tiny !important;
+          }
+        }
+        &.small {
+          > .item + .item,
+          > .item + .media,
+          > .media + .item {
+            margin-top: -@size-small !important;
+          }
+        }
+        &.medium {
+          > .item + .item,
+          > .item + .media,
+          > .media + .item {
+            margin-top: -@size-medium !important;
+          }
+        }
+        &.big {
+          > .item + .item,
+          > .item + .media,
+          > .media + .item {
+            margin-top: -@size-big !important;
+          }
+        }
+        &.giant {
+          > .item + .item,
+          > .item + .media,
+          > .media + .item {
+            margin-top: -@size-giant !important;
+          }
+        }*/
       }
     }
     
