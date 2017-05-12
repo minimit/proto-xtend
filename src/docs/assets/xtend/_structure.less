@@ -165,6 +165,9 @@ pre code,
   &:first-child {
     margin-top: 0 !important;
   }
+  &:last-child {
+    margin-bottom: 0 !important;
+  }
 }
 
 //////////////////////
@@ -191,6 +194,7 @@ pre code,
 }
 .card > .media {
   .card.medium; // default spacing
+  .card.middle; // default alignment
 }
 
 //////////////////////
@@ -198,13 +202,13 @@ pre code,
 //////////////////////
 
 .card {
+  /* spacing */
+  .spacing-small;
   /* styles */
   border-radius: 4px;
   border: 0;
-  -webkit-box-shadow: 0 .15rem .625rem @color-black-10;
-  box-shadow: 0 .15rem .625rem @color-black-10;
-  /* spacing */
-  .spacing-small;
+  -webkit-box-shadow: 0 .15rem .625rem fade(@color-black, 10%);
+  box-shadow: 0 .15rem .625rem fade(@color-black, 10%);
   /* variants */
   .card.white; // default variant
   &.primary {
@@ -232,14 +236,14 @@ pre code,
     &:before { // vertical
       width: 1px;
       background: @color-black-10;
-      -webkit-box-shadow: 0 .15rem .625rem @color-black-10;
-      box-shadow: 0 .15rem .625rem @color-black-10;
+      -webkit-box-shadow: 0 .15rem .625rem fade(@color-black, 10%);
+      box-shadow: 0 .15rem .625rem fade(@color-black, 10%);
     }
     &:after { // horizontal
       height: 1px;
       background: @color-black-10;
-      -webkit-box-shadow: 0 .15rem .625rem @color-black-10;
-      box-shadow: 0 .15rem .625rem @color-black-10;
+      -webkit-box-shadow: 0 .15rem .625rem fade(@color-black, 10%);
+      box-shadow: 0 .15rem .625rem fade(@color-black, 10%);
     }
   }
 }

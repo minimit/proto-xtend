@@ -52,18 +52,23 @@ body {
 /* spacing */
 .spacing-tiny {
   margin-top: @spacing-tiny !important;
+  margin-bottom: @spacing-tiny !important;
 }
 .spacing-small {
   margin-top: @spacing-small !important;
+  margin-bottom: @spacing-small !important;
 }
 .spacing-medium {
   margin-top: @spacing-medium !important;
+  margin-bottom: @spacing-medium !important;
 }
 .spacing-big {
   margin-top: @spacing-big !important;
+  margin-bottom: @spacing-big !important;
 }
 .spacing-giant {
   margin-top: @spacing-giant !important;
+  margin-bottom: @spacing-giant !important;
 }
 
 /* code */
@@ -227,13 +232,6 @@ img.center {
 .flex,
 .spacer,
 .media {
-  /* automatic spacing */
-  &:not(:first-child) {
-    margin-top: 0 !important;
-  }
-  &:not(:last-child) {
-    margin-bottom: 0 !important;
-  }
   /* sizes */
   &.none {
     margin: 0;
@@ -275,34 +273,89 @@ img.center {
 .card,
 .card > .media {
   /* sizes */
+  margin: 0;
   &.none {
     > .item {
       padding: 0;
+    }
+    // special paddings
+    > .item + .item,
+    > .item + .media,
+    > .media + .item {
+      margin-top: 0;
+    }
+    > .item + .item {
+      margin-left: 0;
     }
   }
   &.tiny {
     > .item {
       padding: @size-tiny;
     }
+    // special paddings
+    > .item + .item,
+    > .item + .media,
+    > .media + .item {
+      margin-top: -@size-tiny;
+    }
+    > .item + .item {
+      margin-left: -@size-tiny;
+    }
   }
   &.small {
     > .item {
       padding: @size-small;
+    }
+    // special paddings
+    > .item + .item,
+    > .item + .media,
+    > .media + .item {
+      margin-top: -@size-small;
+    }
+    > .item + .item {
+      margin-left: -@size-small;
     }
   }
   &.medium {
     > .item {
       padding: @size-medium;
     }
+    // special paddings
+    > .item + .item,
+    > .item + .media,
+    > .media + .item {
+      margin-top: -@size-medium;
+    }
+    > .item + .item {
+      margin-left: -@size-medium;
+    }
   }
   &.big {
     > .item {
       padding: @size-big;
     }
+    // special paddings
+    > .item + .item,
+    > .item + .media,
+    > .media + .item {
+      margin-top: -@size-big;
+    }
+    > .item + .item {
+      margin-left: -@size-big;
+    }
   }
   &.giant {
     > .item {
       padding: @size-giant;
+    }
+    // special paddings
+    > .item + .item,
+    > .item + .media,
+    > .media + .item {
+      margin-top: -@size-giant;
+    }
+    > .item + .item {
+      margin-left: -@size-giant;
     }
   }
   /* internal sizes */
@@ -432,18 +485,43 @@ img.center {
 .card,
 .card > .media {
   .float;
-  overflow: hidden;
 }
 .card > .media {
-  margin: 0 !important;
   > *:not(.item) {
     padding: 0 !important;
   }
 }
 
+/* special paddings */
+.card:not(.vertical),
+.card:not(.vertical) > .media {
+  > .item + .item,
+  > .item + .media,
+  > .media + .item {
+    margin-top: 0 !important;
+  }
+}
+.card.vertical,
+.card.vertical > .media {
+  > .item + .item {
+    margin-left: 0 !important;
+  }
+}
+.card.separator,
+.card.separator > .media {
+  > .item + .item,
+  > .item + .media,
+  > .media + .item {
+    margin-top: 0 !important;
+  }
+  > .item + .item {
+    margin-left: 0 !important;
+  }
+}
+
 /* separator */
-.card,
-.card > .media {
+.card.separator,
+.card.separator > .media {
   // position
   > .item,
   > .media {
@@ -451,10 +529,10 @@ img.center {
       content: '';
       display: block;
       position: absolute;
-      top: -100vh;
+      top: 0;
       left: 0;
       width: 1px;
-      height: 200vh;
+      height: 100%;
     }
     &:after { // vertical
       content: '';
@@ -980,11 +1058,20 @@ html.xt-fixed {
         -ms-flex: 1 1 0%;
         flex: 1 1 0%;
       }
+      // special paddings horizontal
+      &.card,
+      &.media {
+        > .item + .item,
+        > .item + .media,
+        > .media + .item {
+          margin-top: 0 !important;
+        }
+      }
     }
     
-    // horizontal separator
-    .card,
-    .card > .media {
+    // separator horizontal
+    &.card.separator,
+    &.card.separator > .media {
       &.horizontal-@{name} {
         &.media,
         &.card {
@@ -1022,11 +1109,18 @@ html.xt-fixed {
         -ms-flex: 1 1 auto;
         flex: 1 1 auto;
       }
+      // special paddings vertical
+      &.card,
+      &.media {
+        > .item + .item {
+          margin-left: 0 !important;
+        }
+      }
     }
-      
-    // vertical separator
-    .card,
-    .card > .media {
+    
+    // separator vertical
+    &.card.separator,
+    &.card.separator > .media {
       &.vertical-@{name} {
         &.media,
         &.card {
