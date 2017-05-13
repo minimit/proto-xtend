@@ -172,9 +172,9 @@ img.center {
 .show {
   display: block !important;
 }
-.loop-show-hide-responsive();
-.loop-show-hide-responsive(@i: length(@breakpoints)) when (@i > 0) {
-  .loop-show-hide-responsive(@i - 1);
+.loop-show-hide();
+.loop-show-hide(@i: length(@breakpoints)) when (@i > 0) {
+  .loop-show-hide(@i - 1);
   @name: extract(@breakpoints, @i);
   @query-min: "min-@{name}";
   @media @@query-min {
@@ -547,8 +547,8 @@ img.center {
 }
 
 /* responsive */
-.loop-card-responsive();
-.loop-card-responsive(@i: length(@breakpoints)) when (@i > 0) {
+.loop-card();
+.loop-card(@i: length(@breakpoints)) when (@i > 0) {
   @name: extract(@breakpoints, @i);
   @query-max: "max-@{name}";
   @media @@query-max {
@@ -667,7 +667,7 @@ img.center {
     }
 
   }
-  .loop-card-responsive(@i - 1);
+  .loop-card(@i - 1);
 }
 
 //////////////////////
@@ -710,9 +710,9 @@ img.center {
 }
 
 /* responsive */
-.loop-contain-responsive();
-.loop-contain-responsive(@i: length(@breakpoints)) when (@i > 0) {
-  .loop-contain-responsive(@i - 1);
+.loop-contain();
+.loop-contain(@i: length(@breakpoints)) when (@i > 0) {
+  .loop-contain(@i - 1);
   @name: extract(@breakpoints, @i);
   @query-min: "min-@{name}";
   @media @@query-min {
@@ -765,9 +765,9 @@ img.center {
 }
 
 /* responsive */
-.loop-grid-responsive();
-.loop-grid-responsive(@i: length(@breakpoints)) when (@i > 0) {
-  .loop-grid-responsive(@i - 1);
+.loop-grid();
+.loop-grid(@i: length(@breakpoints)) when (@i > 0) {
+  .loop-grid(@i - 1);
   @name: extract(@breakpoints, @i);
   @query-min: "min-@{name}";
   @media @@query-min {
