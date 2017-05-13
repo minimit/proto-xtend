@@ -46,24 +46,40 @@ body {
   box-sizing: inherit;
 }
 /* spacing */
-.spacing-tiny {
+.spacing-top-none {
+  margin-top: 0 !important;
+}
+.spacing-top-tiny {
   margin-top: 0.618rem !important;
+}
+.spacing-top-small {
+  margin-top: 1rem !important;
+}
+.spacing-top-medium {
+  margin-top: 1.618rem !important;
+}
+.spacing-top-big {
+  margin-top: 2.618rem !important;
+}
+.spacing-top-giant {
+  margin-top: 3.236rem !important;
+}
+.spacing-bottom-none {
+  margin-bottom: 0 !important;
+}
+.spacing-bottom-tiny {
   margin-bottom: 0.618rem !important;
 }
-.spacing-small {
-  margin-top: 1rem !important;
+.spacing-bottom-small {
   margin-bottom: 1rem !important;
 }
-.spacing-medium {
-  margin-top: 1.618rem !important;
+.spacing-bottom-medium {
   margin-bottom: 1.618rem !important;
 }
-.spacing-big {
-  margin-top: 2.618rem !important;
+.spacing-bottom-big {
   margin-bottom: 2.618rem !important;
 }
-.spacing-giant {
-  margin-top: 3.236rem !important;
+.spacing-bottom-giant {
   margin-bottom: 3.236rem !important;
 }
 /* code */
@@ -2207,7 +2223,6 @@ h2,
 h3,
 .h3 {
   margin-top: 2.618rem !important;
-  margin-bottom: 2.618rem !important;
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 600;
   font-style: normal;
@@ -2250,7 +2265,6 @@ h3 + .h3,
 .h3 + h3,
 .h3 + .h3 {
   margin-top: 1rem !important;
-  margin-bottom: 1rem !important;
 }
 h4,
 .h4,
@@ -2259,7 +2273,6 @@ h5,
 h6,
 .h6 {
   margin-top: 1rem !important;
-  margin-bottom: 1rem !important;
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 300;
   font-style: normal;
@@ -2324,7 +2337,6 @@ h6,
 /* text */
 p {
   margin-top: 1rem !important;
-  margin-bottom: 1rem !important;
 }
 strong {
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -2336,7 +2348,6 @@ small {
 }
 .lead {
   margin-top: 1rem !important;
-  margin-bottom: 1rem !important;
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 300;
   font-style: normal;
@@ -2367,7 +2378,6 @@ code {
 }
 pre code {
   margin-top: 1rem !important;
-  margin-bottom: 1rem !important;
   font-size: .812rem;
   line-height: 1.6;
 }
@@ -2454,7 +2464,6 @@ pre code:last-child,
 .card {
   /* spacing */
   margin-top: 1rem !important;
-  margin-bottom: 1rem !important;
   /* styles */
   -webkit-box-shadow: 0 0.15rem 0.625rem rgba(0, 0, 0, 0.1);
   box-shadow: 0 0.15rem 0.625rem rgba(0, 0, 0, 0.1);
