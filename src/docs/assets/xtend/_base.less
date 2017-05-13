@@ -165,6 +165,31 @@ img.center {
   transform: translateZ(0);
 }
 
+/* show + hide */
+.hide {
+  display: none !important;
+}
+.show {
+  display: block !important;
+}
+.loop-show-hide-responsive();
+.loop-show-hide-responsive(@i: length(@breakpoints)) when (@i > 0) {
+  .loop-show-hide-responsive(@i - 1);
+  @name: extract(@breakpoints, @i);
+  @query-min: "min-@{name}";
+  @media @@query-min {
+    
+    // show + hide
+    .hide-@{name} {
+      display: none !important;
+    }
+    .show-@{name} {
+      display: block !important;
+    }
+    
+  }
+}
+
 //////////////////////
 // flex + spacer + media + card
 //////////////////////
@@ -232,6 +257,14 @@ img.center {
 .flex,
 .spacer,
 .media {
+  /* automatic spacing
+  &:not(:first-child) {
+    margin-top: 0 !important;
+  }
+  &:not(:last-child) {
+    margin-bottom: 0 !important;
+  }
+  */
   /* sizes */
   &.none {
     margin: 0;
@@ -278,13 +311,15 @@ img.center {
     padding: @card-size;
   }
   /* special paddings */
-  > .item + .item,
-  > .item + .media,
-  > .media + .item {
-    margin-top: -@card-size;
-  }
-  > .item + .item {
-    margin-left: -@card-size;
+  &:not(.separator) {
+    > .item + .item,
+    > .item + .media,
+    > .media + .item {
+      margin-top: -@card-size;
+    }
+    > .item + .item {
+      margin-left: -@card-size;
+    }
   }
   /* internal sizes */
   > .item {
@@ -511,6 +546,130 @@ img.center {
   }
 }
 
+/* responsive */
+.loop-card-responsive();
+.loop-card-responsive(@i: length(@breakpoints)) when (@i > 0) {
+  @name: extract(@breakpoints, @i);
+  @query-max: "max-@{name}";
+  @media @@query-max {
+    
+    // horizontal
+    .horizontal-@{name} {
+      -webkit-flex-wrap: nowrap;
+      -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+      -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+      flex-direction: row;
+      &.reverse {
+        -webkit-flex-direction: row-reverse;
+        -ms-flex-direction: row-reverse;
+        flex-direction: row-reverse;
+      }
+      > .item {
+        width: auto;
+      }
+      > .fluid {
+        -webkit-flex: 1 1 0%;
+        -ms-flex: 1 1 0%;
+        flex: 1 1 0%;
+      }
+    }
+    // separator horizontal
+    &.card.separator,
+    &.card > .media.separator {
+      &.horizontal-@{name} {
+        &.media,
+        &.card {
+          > .item,
+          > .media {
+            &:before {
+              display: block;
+            }
+            &:after {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+    // special paddings horizontal
+    .card,
+    .card > .media {
+      &.horizontal-@{name} {
+        > .item + .item,
+        > .item + .media,
+        > .media + .item {
+          margin-top: 0 !important;
+        }
+        &:not(.separator) {
+          > .item + .item {
+            margin-left: -@card-size !important;
+          }
+        }
+      }
+    }
+    // vertical
+    .vertical-@{name} {
+      -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+      -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      &.reverse {
+        -webkit-flex-direction: column-reverse;
+        -ms-flex-direction: column-reverse;
+        flex-direction: column-reverse;
+      }
+      > .item {
+        width: 100%;
+      }
+      > .fluid {
+        -webkit-flex: 1 1 auto;
+        -ms-flex: 1 1 auto;
+        flex: 1 1 auto;
+      }
+    }
+    // separator vertical
+    &.card.separator,
+    &.card > .media.separator {
+      &.vertical-@{name} {
+        &.media,
+        &.card {
+          > .item,
+          > .media {
+            &:before {
+              display: none;
+            }
+            &:after {
+              display: block;
+            }
+          }
+        }
+      }
+    }
+    // special paddings vertical
+    .card,
+    .card > .media {
+      &.vertical-@{name} {
+        > .item + .item {
+          margin-left: 0 !important;
+        }
+        &:not(.separator) {
+          > .item + .item,
+          > .item + .media,
+          > .media + .item {
+            margin-top: -@card-size !important;
+          }
+        }
+      }
+    }
+
+  }
+  .loop-card-responsive(@i - 1);
+}
+
 //////////////////////
 // button
 //////////////////////
@@ -550,6 +709,25 @@ img.center {
   }
 }
 
+/* responsive */
+.loop-contain-responsive();
+.loop-contain-responsive(@i: length(@breakpoints)) when (@i > 0) {
+  .loop-contain-responsive(@i - 1);
+  @name: extract(@breakpoints, @i);
+  @query-min: "min-@{name}";
+  @media @@query-min {
+    
+    @unit: "contain-@{name}";
+    .contain {
+      width: unit(@@unit, px);
+    }
+    .overlay-content {
+      max-width: unit(@@unit - @overlay-spacing * 2, px);
+    }
+    
+  }
+}
+
 //////////////////////
 // column + group + item
 //////////////////////
@@ -570,6 +748,95 @@ img.center {
   -webkit-flex: 0 0 auto;
   -ms-flex: 0 0 auto;
   flex: 0 0 auto;
+}
+
+//////////////////////
+// grid
+//////////////////////
+
+/* all */
+.grid(all; @columns); // grid generator
+.all-auto {
+  -webkit-flex-basis: auto;
+  -ms-flex-preferred-size: 100%; // fix ie10 overflow
+  flex-basis: auto;
+  max-width: none;
+  width: auto;
+}
+
+/* responsive */
+.loop-grid-responsive();
+.loop-grid-responsive(@i: length(@breakpoints)) when (@i > 0) {
+  .loop-grid-responsive(@i - 1);
+  @name: extract(@breakpoints, @i);
+  @query-min: "min-@{name}";
+  @media @@query-min {
+    
+    // grid generator
+    .grid(@name; @columns);
+    // -auto
+    .@{name}-auto {
+      -webkit-flex-basis: auto;
+      -ms-flex-preferred-size: 100%; // fix ie10 overflow
+      flex-basis: auto;
+      max-width: none;
+      width: auto;
+    }
+    
+  }
+}
+
+// grid classes generator
+.grid(@name; @columns; @index: 1) when (@index =< @columns) {
+  .grid(@name; @columns; (@index + 1));
+  @val: (percentage(@index / @columns));
+  //(~".@{name}-@{index}") {
+  .@{name}-@{index} {
+    -webkit-flex-basis: @val;
+    -ms-flex-preferred-size: @val;
+    flex-basis: @val;
+    max-width: @val;
+    width: @val;
+  }
+}
+
+// mixin single grid responsive all
+// USAGE: .all(6);
+.all(@index) {
+  @val: (percentage(@index / @columns));
+  -webkit-flex-basis: @val;
+  -ms-flex-preferred-size: @val;
+  flex-basis: @val;
+  max-width: @val;
+  width: @val;
+}
+
+// mixin single grid responsive min
+// USAGE: .min(lg, 6);
+.min(@name, @index) {
+  @query-min: "min-@{name}";
+  @media @@query-min {
+    @val: (percentage(@index / @columns));
+    -webkit-flex-basis: @val;
+    -ms-flex-preferred-size: @val;
+    flex-basis: @val;
+    max-width: @val;
+    width: @val;
+  }
+}
+
+// mixin single grid responsive max
+// USAGE: .max(xs, 6);
+.max(@name, @index) {
+  @query-max: "max-@{name}";
+  @media @@query-max {
+    @val: (percentage(@index / @columns));
+    -webkit-flex-basis: @val;
+    -ms-flex-preferred-size: @val;
+    flex-basis: @val;
+    max-width: @val;
+    width: @val;
+  }
 }
 
 //////////////////////
@@ -909,189 +1176,6 @@ html.xt-fixed {
   }
 }
 
-//////////////////////
-// generate
-//////////////////////
-
-/* default */
-.grid(all; @columns); // grid generator
-.all-auto {
-  -webkit-flex-basis: auto;
-  -ms-flex-preferred-size: 100%; // fix ie10 overflow
-  flex-basis: auto;
-  max-width: none;
-  width: auto;
-}
-.hide {
-  display: none !important;
-}
-.show {
-  display: block !important;
-}
-
-/* responsive */
-.for(@breakpoints); .-each(@value) {
-  @name: extract(@value, 1);
-  
-  @query-min: "min-@{name}";
-  @media @@query-min {
-    
-    // grid generator
-    .grid(@name; @columns);
-    
-    // -auto
-    .@{name}-auto {
-      -webkit-flex-basis: auto;
-      -ms-flex-preferred-size: 100%; // fix ie10 overflow
-      flex-basis: auto;
-      max-width: none;
-      width: auto;
-    }
-    
-    // contain
-    @unit: "contain-@{name}";
-    .contain {
-      width: unit(@@unit, px);
-    }
-    .overlay-content {
-      max-width: unit(@@unit - @overlay-spacing * 2, px);
-    }
-    
-    // show + hide
-    .hide-@{name} {
-      display: none !important;
-    }
-    .show-@{name} {
-      display: block !important;
-    }
-    
-  }
-  
-  @query-max: "max-@{name}";
-  @media @@query-max {
-    
-    // horizontal
-    .horizontal-@{name} {
-      -webkit-flex-wrap: nowrap;
-      -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap;
-      -webkit-flex-direction: row;
-      -ms-flex-direction: row;
-      flex-direction: row;
-      &.reverse {
-        -webkit-flex-direction: row-reverse;
-        -ms-flex-direction: row-reverse;
-        flex-direction: row-reverse;
-      }
-      > .item {
-        width: auto;
-      }
-      > .fluid {
-        -webkit-flex: 1 1 0%;
-        -ms-flex: 1 1 0%;
-        flex: 1 1 0%;
-      }
-    }
-    
-    // separator horizontal
-    &.card.separator,
-    &.card > .media.separator {
-      &.horizontal-@{name} {
-        &.media,
-        &.card {
-          > .item,
-          > .media {
-            &:before {
-              display: block;
-            }
-            &:after {
-              display: none;
-            }
-          }
-        }
-      }
-    }
-    
-    // special paddings horizontal
-    .card,
-    .card > .media {
-      &.horizontal-@{name} {
-        > .item + .item,
-        > .item + .media,
-        > .media + .item {
-          margin-top: 0 !important;
-        }
-        > .item + .item {
-          margin-left: -@card-size !important;
-        }
-      }
-    }
-    
-    // vertical
-    .vertical-@{name} {
-      -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-      -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-      flex-direction: column;
-      &.reverse {
-        -webkit-flex-direction: column-reverse;
-        -ms-flex-direction: column-reverse;
-        flex-direction: column-reverse;
-      }
-      > .item {
-        width: 100%;
-      }
-      > .fluid {
-        -webkit-flex: 1 1 auto;
-        -ms-flex: 1 1 auto;
-        flex: 1 1 auto;
-      }
-    }
-    
-    // separator vertical
-    &.card.separator,
-    &.card > .media.separator {
-      &.vertical-@{name} {
-        &.media,
-        &.card {
-          > .item,
-          > .media {
-            &:before {
-              display: none;
-            }
-            &:after {
-              display: block;
-            }
-          }
-        }
-      }
-    }
-
-    // special paddings vertical
-    .card,
-    .card > .media {
-      &.vertical-@{name} {
-        > .item + .item {
-          margin-left: 0 !important;
-        }
-        > .item + .item,
-        > .item + .media,
-        > .media + .item {
-          margin-top: -@card-size !important;
-        }
-      }
-    }
-
-  }
-
-}
-
-//////////////////////
-// mixins
-//////////////////////
-
 // .xt-scroll();
 .xt-scroll(@position:'top', @pos:0) {
   .show-scroll {
@@ -1121,68 +1205,3 @@ html.xt-fixed {
     }
   }
 }
-
-// grid classes generator
-.grid(@name; @columns; @index: 1) when (@index =< @columns) {
-  .grid(@name; @columns; (@index + 1));
-  @val: (percentage(@index / @columns));
-  //(~".@{name}-@{index}") {
-  .@{name}-@{index} {
-    -webkit-flex-basis: @val;
-    -ms-flex-preferred-size: @val;
-    flex-basis: @val;
-    max-width: @val;
-    width: @val;
-  }
-}
-
-// mixin single grid responsive all
-// USAGE: .all(6);
-.all(@index) {
-  @val: (percentage(@index / @columns));
-  -webkit-flex-basis: @val;
-  -ms-flex-preferred-size: @val;
-  flex-basis: @val;
-  max-width: @val;
-  width: @val;
-}
-
-// mixin single grid responsive min
-// USAGE: .min(lg, 6);
-.min(@name, @index) {
-  @query-min: "min-@{name}";
-  @media @@query-min {
-    @val: (percentage(@index / @columns));
-    -webkit-flex-basis: @val;
-    -ms-flex-preferred-size: @val;
-    flex-basis: @val;
-    max-width: @val;
-    width: @val;
-  }
-}
-
-// mixin single grid responsive max
-// USAGE: .max(xs, 6);
-.max(@name, @index) {
-  @query-max: "max-@{name}";
-  @media @@query-max {
-    @val: (percentage(@index / @columns));
-    -webkit-flex-basis: @val;
-    -ms-flex-preferred-size: @val;
-    flex-basis: @val;
-    max-width: @val;
-    width: @val;
-  }
-}
-
-// .for loop
-.for(@i, @n) {.-each(@i)}
-.for(@n)     when (isnumber(@n)) {.for(1, @n)}
-.for(@i, @n) when not (@i = @n)  {
-  .for((@i + (@n - @i) / abs(@n - @i)), @n);
-}
-
-// .for-each loop
-.for(@array)   when (default()) {.for-impl_(length(@array))}
-.for-impl_(@i) when (@i > 1)    {.for-impl_((@i - 1))}
-.for-impl_(@i) when (@i > 0)    {.-each(extract(@array, @i))}
