@@ -664,9 +664,7 @@
     object.animationMultiple($el, triggered, object.onDone, 'fade-in');
     // animations
     object.onBackdrop($el, triggered);
-    window.xtRequestAnimationFrame( function() {
-      object.onCollapse($el, triggered);
-    });
+    object.onCollapse($el, triggered);
     object.onMiddle($el, triggered);
     object.onCenter($el, triggered);
     // events
@@ -914,7 +912,8 @@
         var pr = $single.css('padding-right');
         $single.css('width', 0).css('padding-left', 0).css('padding-right', 0);
       }
-      window.xtRequestAnimationFrame( function() {
+      window.xtCancelAnimationFrame($single.data('frame.collapse'));
+      var frame = window.xtRequestAnimationFrame( function() {
         if ($single.hasClass('collapse-height')) {
           $single.removeClass('no-transition').css('height', h).css('padding-top', pt).css('padding-bottom', pb);
         }
@@ -934,6 +933,7 @@
           $single.css('margin-right', -w);
         }
       });
+      $single.data('frame.collapse', frame);
     });
   };
   Xt.prototype.offCollapse = function($el) {
@@ -952,7 +952,8 @@
         var pr = $single.css('padding-right');
         $single.css('width', w).css('padding-left', pl).css('padding-right', pr);
       }
-      window.xtRequestAnimationFrame( function() {
+      window.xtCancelAnimationFrame($single.data('frame.collapse'));
+      var frame = window.xtRequestAnimationFrame( function() {
         if ($single.hasClass('collapse-height')) {
           $single.css('height', 0).css('padding-top', 0).css('padding-bottom', 0);
         }
@@ -972,6 +973,7 @@
           $single.css('margin-right', 0);
         }
       });
+      $single.data('frame.collapse', frame);
     });
   };
   
