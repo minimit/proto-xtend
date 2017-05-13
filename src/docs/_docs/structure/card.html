@@ -362,13 +362,13 @@ order: 40
 <p>@TODO vertical responsive classes.</p>
 
 <div class="demo">
-  <div class="demo-item demo-preview" data-name="vertical">
+  <div class="demo-item demo-preview" data-name="responsive">
     <div class="demo-text">Use responsive show and hide (@TODO link to utils) to define visible content.</div>
     <div class="demo-source" data-lang="html">
 <div class="flex">
     
-  <div class="column">
-    <div class="card vertical horizontal-md">
+  <div class="column sm-6 md-12">
+    <div class="card vertical-md">
       <img class="responsive center hide show-md" src="https://placehold.it/150x130/808080/ffffff/?text=Image">
       <img class="responsive center hide-md" src="https://placehold.it/750x250/808080/ffffff/?text=Image">
       <div class="item fluid">
@@ -377,8 +377,8 @@ order: 40
     </div>
   </div>
   
-  <div class="column">
-    <div class="card vertical horizontal-md">
+  <div class="column sm-6 md-12">
+    <div class="card vertical-md">
       <div class="item">
         <img class="responsive center hide show-md" src="https://placehold.it/150x130/808080/ffffff/?text=Image">
         <img class="responsive center hide-md" src="https://placehold.it/750x250/808080/ffffff/?text=Image">
@@ -398,7 +398,7 @@ order: 40
 <div class="flex">
   
   <div class="column">
-    <div class="card vertical horizontal-md">
+    <div class="card vertical-md">
       <img class="responsive center md-4 lg-3" src="https://placehold.it/750x250/808080/ffffff/?text=Image">
       <div class="item fluid">
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam aliquet turpis lacinia, efficitur leo vel, commodo leo.</p>
@@ -407,9 +407,39 @@ order: 40
   </div>
   
   <div class="column">
-    <div class="card vertical horizontal-md">
+    <div class="card vertical-md">
       <div class="item md-4 lg-3">
         <img class="responsive center" src="https://placehold.it/750x250/808080/ffffff/?text=Image">
+      </div>
+      <div class="item fluid">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam aliquet turpis lacinia, efficitur leo vel, commodo leo.</p>
+      </div>
+    </div>
+  </div>
+  
+</div>
+    </div>
+  </div>
+  <div class="demo-item demo-preview" data-name="multiple">
+    <div class="demo-text">Responsive example at each breakpoint.</div>
+    <div class="demo-source" data-lang="html">
+<div class="flex">
+    
+  <div class="column md-6 lg-12 xl-6">
+    <div class="card vertical vertical-sm horizontal-md vertical-lg horizontal-xl">
+      <img class="responsive center hide show-sm hide-md show-lg hide-xl" src="https://placehold.it/150x130/808080/ffffff/?text=Image">
+      <img class="responsive center hide-sm show-md hide-lg show-xl" src="https://placehold.it/750x250/808080/ffffff/?text=Image">
+      <div class="item fluid">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam aliquet turpis lacinia, efficitur leo vel, commodo leo.</p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="column md-6 lg-12 xl-6">
+    <div class="card vertical vertical-sm horizontal-md vertical-lg horizontal-xl">
+      <div class="item">
+        <img class="responsive center hide show-sm hide-md show-lg hide-xl" src="https://placehold.it/150x130/808080/ffffff/?text=Image">
+        <img class="responsive center hide-sm show-md hide-lg show-xl" src="https://placehold.it/750x250/808080/ffffff/?text=Image">
       </div>
       <div class="item fluid">
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam aliquet turpis lacinia, efficitur leo vel, commodo leo.</p>
