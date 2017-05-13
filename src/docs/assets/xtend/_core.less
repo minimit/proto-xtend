@@ -492,16 +492,20 @@ img.center {
 /* special paddings */
 .card:not(.vertical),
 .card > .media:not(.vertical) {
-  > .item + .item,
-  > .item + .media,
-  > .media + .item {
-    margin-top: 0 !important;
+  &:not(.separator) {
+    > .item + .item,
+    > .item + .media,
+    > .media + .item {
+      margin-top: 0 !important;
+    }
   }
 }
 .card.vertical,
 .card > .media.vertical {
-  > .item + .item {
-    margin-left: 0 !important;
+  &:not(.separator) {
+    > .item + .item {
+      margin-left: 0 !important;
+    }
   }
 }
 .card.separator,
@@ -638,10 +642,12 @@ img.center {
     .card,
     .card > .media {
       &.horizontal-@{name} {
-        > .item + .item,
-        > .item + .media,
-        > .media + .item {
-          margin-top: 0 !important;
+        &:not(.separator) {
+          > .item + .item,
+          > .item + .media,
+          > .media + .item {
+            margin-top: 0 !important;
+          }
         }
         &:not(.separator) {
           > .item + .item {
@@ -709,8 +715,10 @@ img.center {
     .card,
     .card > .media {
       &.vertical-@{name} {
-        > .item + .item {
-          margin-left: 0 !important;
+        &:not(.separator) {
+          > .item + .item {
+            margin-left: 0 !important;
+          }
         }
         &:not(.separator) {
           > .item + .item,

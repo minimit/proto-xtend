@@ -632,16 +632,16 @@ img.center {
   border-top-right-radius: 0;
 }
 /* special paddings */
-.card:not(.vertical) > .item + .item,
-.card > .media:not(.vertical) > .item + .item,
-.card:not(.vertical) > .item + .media,
-.card > .media:not(.vertical) > .item + .media,
-.card:not(.vertical) > .media + .item,
-.card > .media:not(.vertical) > .media + .item {
+.card:not(.vertical):not(.separator) > .item + .item,
+.card > .media:not(.vertical):not(.separator) > .item + .item,
+.card:not(.vertical):not(.separator) > .item + .media,
+.card > .media:not(.vertical):not(.separator) > .item + .media,
+.card:not(.vertical):not(.separator) > .media + .item,
+.card > .media:not(.vertical):not(.separator) > .media + .item {
   margin-top: 0 !important;
 }
-.card.vertical > .item + .item,
-.card > .media.vertical > .item + .item {
+.card.vertical:not(.separator) > .item + .item,
+.card > .media.vertical:not(.separator) > .item + .item {
   margin-left: 0 !important;
 }
 .card.separator > .item + .item,
@@ -757,12 +757,12 @@ img.center {
   .card.horizontal-xl > * {
     border-radius: 0;
   }
-  .card.horizontal-xl > .item + .item,
-  .card > .media.horizontal-xl > .item + .item,
-  .card.horizontal-xl > .item + .media,
-  .card > .media.horizontal-xl > .item + .media,
-  .card.horizontal-xl > .media + .item,
-  .card > .media.horizontal-xl > .media + .item {
+  .card.horizontal-xl:not(.separator) > .item + .item,
+  .card > .media.horizontal-xl:not(.separator) > .item + .item,
+  .card.horizontal-xl:not(.separator) > .item + .media,
+  .card > .media.horizontal-xl:not(.separator) > .item + .media,
+  .card.horizontal-xl:not(.separator) > .media + .item,
+  .card > .media.horizontal-xl:not(.separator) > .media + .item {
     margin-top: 0 !important;
   }
   .card.horizontal-xl:not(.separator) > .item + .item,
@@ -813,8 +813,8 @@ img.center {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
   }
-  .card.vertical-xl > .item + .item,
-  .card > .media.vertical-xl > .item + .item {
+  .card.vertical-xl:not(.separator) > .item + .item,
+  .card > .media.vertical-xl:not(.separator) > .item + .item {
     margin-left: 0 !important;
   }
   .card.vertical-xl:not(.separator) > .item + .item,
@@ -863,12 +863,12 @@ img.center {
   .card.horizontal-lg > * {
     border-radius: 0;
   }
-  .card.horizontal-lg > .item + .item,
-  .card > .media.horizontal-lg > .item + .item,
-  .card.horizontal-lg > .item + .media,
-  .card > .media.horizontal-lg > .item + .media,
-  .card.horizontal-lg > .media + .item,
-  .card > .media.horizontal-lg > .media + .item {
+  .card.horizontal-lg:not(.separator) > .item + .item,
+  .card > .media.horizontal-lg:not(.separator) > .item + .item,
+  .card.horizontal-lg:not(.separator) > .item + .media,
+  .card > .media.horizontal-lg:not(.separator) > .item + .media,
+  .card.horizontal-lg:not(.separator) > .media + .item,
+  .card > .media.horizontal-lg:not(.separator) > .media + .item {
     margin-top: 0 !important;
   }
   .card.horizontal-lg:not(.separator) > .item + .item,
@@ -919,8 +919,8 @@ img.center {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
   }
-  .card.vertical-lg > .item + .item,
-  .card > .media.vertical-lg > .item + .item {
+  .card.vertical-lg:not(.separator) > .item + .item,
+  .card > .media.vertical-lg:not(.separator) > .item + .item {
     margin-left: 0 !important;
   }
   .card.vertical-lg:not(.separator) > .item + .item,
@@ -969,12 +969,12 @@ img.center {
   .card.horizontal-md > * {
     border-radius: 0;
   }
-  .card.horizontal-md > .item + .item,
-  .card > .media.horizontal-md > .item + .item,
-  .card.horizontal-md > .item + .media,
-  .card > .media.horizontal-md > .item + .media,
-  .card.horizontal-md > .media + .item,
-  .card > .media.horizontal-md > .media + .item {
+  .card.horizontal-md:not(.separator) > .item + .item,
+  .card > .media.horizontal-md:not(.separator) > .item + .item,
+  .card.horizontal-md:not(.separator) > .item + .media,
+  .card > .media.horizontal-md:not(.separator) > .item + .media,
+  .card.horizontal-md:not(.separator) > .media + .item,
+  .card > .media.horizontal-md:not(.separator) > .media + .item {
     margin-top: 0 !important;
   }
   .card.horizontal-md:not(.separator) > .item + .item,
@@ -1025,8 +1025,8 @@ img.center {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
   }
-  .card.vertical-md > .item + .item,
-  .card > .media.vertical-md > .item + .item {
+  .card.vertical-md:not(.separator) > .item + .item,
+  .card > .media.vertical-md:not(.separator) > .item + .item {
     margin-left: 0 !important;
   }
   .card.vertical-md:not(.separator) > .item + .item,
@@ -1075,12 +1075,12 @@ img.center {
   .card.horizontal-sm > * {
     border-radius: 0;
   }
-  .card.horizontal-sm > .item + .item,
-  .card > .media.horizontal-sm > .item + .item,
-  .card.horizontal-sm > .item + .media,
-  .card > .media.horizontal-sm > .item + .media,
-  .card.horizontal-sm > .media + .item,
-  .card > .media.horizontal-sm > .media + .item {
+  .card.horizontal-sm:not(.separator) > .item + .item,
+  .card > .media.horizontal-sm:not(.separator) > .item + .item,
+  .card.horizontal-sm:not(.separator) > .item + .media,
+  .card > .media.horizontal-sm:not(.separator) > .item + .media,
+  .card.horizontal-sm:not(.separator) > .media + .item,
+  .card > .media.horizontal-sm:not(.separator) > .media + .item {
     margin-top: 0 !important;
   }
   .card.horizontal-sm:not(.separator) > .item + .item,
@@ -1131,8 +1131,8 @@ img.center {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
   }
-  .card.vertical-sm > .item + .item,
-  .card > .media.vertical-sm > .item + .item {
+  .card.vertical-sm:not(.separator) > .item + .item,
+  .card > .media.vertical-sm:not(.separator) > .item + .item {
     margin-left: 0 !important;
   }
   .card.vertical-sm:not(.separator) > .item + .item,
@@ -1181,12 +1181,12 @@ img.center {
   .card.horizontal-xs > * {
     border-radius: 0;
   }
-  .card.horizontal-xs > .item + .item,
-  .card > .media.horizontal-xs > .item + .item,
-  .card.horizontal-xs > .item + .media,
-  .card > .media.horizontal-xs > .item + .media,
-  .card.horizontal-xs > .media + .item,
-  .card > .media.horizontal-xs > .media + .item {
+  .card.horizontal-xs:not(.separator) > .item + .item,
+  .card > .media.horizontal-xs:not(.separator) > .item + .item,
+  .card.horizontal-xs:not(.separator) > .item + .media,
+  .card > .media.horizontal-xs:not(.separator) > .item + .media,
+  .card.horizontal-xs:not(.separator) > .media + .item,
+  .card > .media.horizontal-xs:not(.separator) > .media + .item {
     margin-top: 0 !important;
   }
   .card.horizontal-xs:not(.separator) > .item + .item,
@@ -1237,8 +1237,8 @@ img.center {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
   }
-  .card.vertical-xs > .item + .item,
-  .card > .media.vertical-xs > .item + .item {
+  .card.vertical-xs:not(.separator) > .item + .item,
+  .card > .media.vertical-xs:not(.separator) > .item + .item {
     margin-left: 0 !important;
   }
   .card.vertical-xs:not(.separator) > .item + .item,
