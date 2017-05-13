@@ -188,9 +188,7 @@ pre code,
   .media.medium; // default spacing
   .media.middle; // default alignment
 }
-.card {
-  .card.middle; // default alignment
-}
+.card,
 .card > .media {
   .card.middle; // default alignment
 }
@@ -199,31 +197,6 @@ pre code,
 // card
 //////////////////////
 
-/* separator */
-.card.separator,
-.media.separator {
-  > .item,
-  > .media {
-    &:before { // horizontal
-      content: '';
-      display: block;
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 1px;
-      height: 100%;
-    }
-    &:after { // vertical
-      content: '';
-      display: none;
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 1px;
-    }
-  }
-}
 .card {
   /* spacing */
   .spacing-small;
@@ -252,17 +225,19 @@ pre code,
 // separator
 //////////////////////
 
-.card,
-.card > .media {
+.card.separator,
+.media.separator {
   > .item,
   > .media {
     &:before { // vertical
       width: 1px;
+      height: 100%;
       background: @color-black-10;
       -webkit-box-shadow: 0 .15rem .625rem fade(@color-black, 10%);
       box-shadow: 0 .15rem .625rem fade(@color-black, 10%);
     }
     &:after { // horizontal
+      width: 100%;
       height: 1px;
       background: @color-black-10;
       -webkit-box-shadow: 0 .15rem .625rem fade(@color-black, 10%);

@@ -260,18 +260,31 @@ img.center {
   -ms-flex: 1 1 auto;
   flex: 1 1 auto;
 }
+/* spacing */
+.flex.spacing-top,
+.spacer.spacing-top,
+.media.spacing-top {
+  margin-top: 0 !important;
+}
+.flex.spacing-bottom,
+.spacer.spacing-bottom,
+.media.spacing-bottom {
+  margin-bottom: 0 !important;
+}
+.flex.spacing-auto:not(:first-child),
+.spacer.spacing-auto:not(:first-child),
+.media.spacing-auto:not(:first-child) {
+  margin-top: 0 !important;
+}
+.flex.spacing-auto:not(:last-child),
+.spacer.spacing-auto:not(:last-child),
+.media.spacing-auto:not(:last-child) {
+  margin-bottom: 0 !important;
+}
 /* sizes */
 .flex,
 .spacer,
 .media {
-  /* automatic spacing
-  &:not(:first-child) {
-    margin-top: 0 !important;
-  }
-  &:not(:last-child) {
-    margin-bottom: 0 !important;
-  }
-  */
   /* sizes */
 }
 .flex.none,
@@ -555,9 +568,10 @@ img.center {
   display: block;
   position: absolute;
   top: 0;
+  bottom: 0;
   left: 0;
-  width: 1px;
-  height: 100%;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 .card.separator > .item:after,
 .media.separator > .item:after,
@@ -568,8 +582,9 @@ img.center {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 1px;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
 }
 .card.separator.reverse > .item:before,
 .media.separator.reverse > .item:before,
@@ -2327,40 +2342,11 @@ pre code:last-child,
   -ms-flex-item-align: center;
   align-self: center;
 }
-.card > * {
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
-}
+.card > *,
 .card > .media > * {
   -webkit-align-self: center;
   -ms-flex-item-align: center;
   align-self: center;
-}
-/* separator */
-.card.separator > .item:before,
-.media.separator > .item:before,
-.card.separator > .media:before,
-.media.separator > .media:before {
-  content: '';
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 1px;
-  height: 100%;
-}
-.card.separator > .item:after,
-.media.separator > .item:after,
-.card.separator > .media:after,
-.media.separator > .media:after {
-  content: '';
-  display: none;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 1px;
 }
 .card {
   /* spacing */
@@ -2387,19 +2373,21 @@ pre code:last-child,
   color: #000000;
   background-color: #ffffff;
 }
-.card > .item:before,
-.card > .media > .item:before,
-.card > .media:before,
-.card > .media > .media:before {
+.card.separator > .item:before,
+.media.separator > .item:before,
+.card.separator > .media:before,
+.media.separator > .media:before {
   width: 1px;
+  height: 100%;
   background: #e6e6e6;
   -webkit-box-shadow: 0 0.15rem 0.625rem rgba(0, 0, 0, 0.1);
   box-shadow: 0 0.15rem 0.625rem rgba(0, 0, 0, 0.1);
 }
-.card > .item:after,
-.card > .media > .item:after,
-.card > .media:after,
-.card > .media > .media:after {
+.card.separator > .item:after,
+.media.separator > .item:after,
+.card.separator > .media:after,
+.media.separator > .media:after {
+  width: 100%;
   height: 1px;
   background: #e6e6e6;
   -webkit-box-shadow: 0 0.15rem 0.625rem rgba(0, 0, 0, 0.1);
