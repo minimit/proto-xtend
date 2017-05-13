@@ -300,19 +300,18 @@ a.logo {
     position: relative;
     z-index: 1;
     background-color: @color-primary;
+    padding-bottom: @size-small;
     .button {
       float: left;
       clear: both;
       padding-top: .25rem;
       padding-bottom: .25rem;
       font-size: .625rem;
-      &:first-child {
-        padding-top: 0;
-      }
-      &:last-child {
-        padding-bottom: @size-small;
-      }
     }
+    // fix focus
+    margin-top: 1px;
+    padding-top: 1px;
+    padding-left: 1px;
   }
 }
 
@@ -320,21 +319,22 @@ a.logo {
 @button__menu_pixels: 1px;
 .button__menu {
   .font-sans-light();
+  padding: .618em 1em !important;
   //font-size: 19px !important;
   font-size: 1.062rem !important;
-  line-height: 1.2;
+  line-height: 1.2 !important;
   text-transform: none !important;
   .site-header-top & {
     margin-top: .312rem;
     margin-bottom: .312rem;
-    padding-left: 0;
-    padding-right: 0;
+    margin-right: -1rem;
     width: auto !important;
   }
   .site-breadcrumbs & {
-    margin-left: .5rem;
-    margin-top: -.075rem;
-    margin-bottom: -.075rem;
+    //padding: .718em 1em !important;
+    margin-top: .06rem;
+    margin-bottom: .06rem;
+    margin-right: -.5rem;
   }
   /* .icon-menu-custom */
   .icon-menu-custom {
@@ -342,14 +342,8 @@ a.logo {
     vertical-align: top;
     width: 1em;
     height: .75em;
-    /*
-    top: .3em;
-    font-size: 1rem;*/
     top: .15em;
-    font-size: 1.25rem;
-    @media @min-lg {
-      font-size: 1.2rem;
-    }
+    font-size: 1.2rem;
     span {
       display: block;
       position: absolute;

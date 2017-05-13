@@ -2070,6 +2070,17 @@ img.center {
 .toggle-none.fade-out {
   display: none !important;
 }
+.toggle-visible {
+  visibility: hidden !important;
+}
+.toggle-visible.active,
+.toggle-visible.fade-out {
+  visibility: visible !important;
+}
+.toggle-hidden.active,
+.toggle-hidden.fade-out {
+  visibility: hidden !important;
+}
 /* animations */
 .collapse-height {
   height: 0;
@@ -2136,12 +2147,19 @@ a:not(.button):hover,
 a:not(.button):active,
 .button.link:active,
 a:not(.button).active,
-.button.link.active,
-a:not(.button):focus,
-.button.link:focus {
+.button.link.active {
   background-color: transparent;
   color: #00B0FF;
   text-decoration: underline;
+}
+/* focus*/
+a:focus,
+button:focus,
+.button:focus,
+a.active:focus,
+button.active:focus,
+.button.active:focus {
+  outline: thin dotted !important;
 }
 /* document */
 html {
@@ -2736,6 +2754,10 @@ pre code:last-child,
 .overlay .overlay-close .text {
   display: inline-block;
   overflow: hidden;
+}
+.overlay .overlay-close:focus,
+.overlay .overlay-close.active:focus {
+  outline: thin dotted !important;
 }
 .overlay .overlay-close.tiny {
   font-size: .6rem;

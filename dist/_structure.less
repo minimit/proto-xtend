@@ -22,11 +22,19 @@ a:not(.button),
   background-color: transparent;
   color: @color-primary;
   &:hover,
-  &:active, &.active,
-  &:focus {
+  &:active, &.active {
     background-color: transparent;
     color: @color-primary;
     text-decoration: underline;
+  }
+}
+
+/* focus*/
+a,
+button,
+.button {
+  &:focus, &.active:focus {
+    outline: thin dotted !important;
   }
 }
 

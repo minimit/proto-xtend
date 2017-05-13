@@ -2152,6 +2152,17 @@ img.center {
 .toggle-none.fade-out {
   display: none !important;
 }
+.toggle-visible {
+  visibility: hidden !important;
+}
+.toggle-visible.active,
+.toggle-visible.fade-out {
+  visibility: visible !important;
+}
+.toggle-hidden.active,
+.toggle-hidden.fade-out {
+  visibility: hidden !important;
+}
 /* animations */
 .collapse-height {
   height: 0;
@@ -2218,12 +2229,19 @@ a:not(.button):hover,
 a:not(.button):active,
 .button.link:active,
 a:not(.button).active,
-.button.link.active,
-a:not(.button):focus,
-.button.link:focus {
+.button.link.active {
   background-color: transparent;
   color: #00B0FF;
   text-decoration: underline;
+}
+/* focus*/
+a:focus,
+button:focus,
+.button:focus,
+a.active:focus,
+button.active:focus,
+.button.active:focus {
+  outline: thin dotted !important;
 }
 /* document */
 html {
@@ -2822,6 +2840,10 @@ pre code:last-child,
 .overlay .overlay-close .text {
   display: inline-block;
   overflow: hidden;
+}
+.overlay .overlay-close:focus,
+.overlay .overlay-close.active:focus {
+  outline: thin dotted !important;
 }
 .overlay .overlay-close.tiny {
   font-size: .6rem;
@@ -3761,6 +3783,10 @@ a.logo:focus {
   position: relative;
   z-index: 1;
   background-color: #00B0FF;
+  padding-bottom: 1rem;
+  margin-top: 1px;
+  padding-top: 1px;
+  padding-left: 1px;
 }
 .site-breadcrumbs-body-main .site-breadcrumbs-body-sub .button {
   float: left;
@@ -3769,49 +3795,35 @@ a.logo:focus {
   padding-bottom: .25rem;
   font-size: .625rem;
 }
-.site-breadcrumbs-body-main .site-breadcrumbs-body-sub .button:first-child {
-  padding-top: 0;
-}
-.site-breadcrumbs-body-main .site-breadcrumbs-body-sub .button:last-child {
-  padding-bottom: 1rem;
-}
 /* .button__menu */
 .button__menu {
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 300;
   font-style: normal;
+  padding: .618em 1em !important;
   font-size: 1.062rem !important;
-  line-height: 1.2;
+  line-height: 1.2 !important;
   text-transform: none !important;
   /* .icon-menu-custom */
 }
 .site-header-top .button__menu {
   margin-top: .312rem;
   margin-bottom: .312rem;
-  padding-left: 0;
-  padding-right: 0;
+  margin-right: -1rem;
   width: auto !important;
 }
 .site-breadcrumbs .button__menu {
-  margin-left: .5rem;
-  margin-top: -0.075rem;
-  margin-bottom: -0.075rem;
+  margin-top: .06rem;
+  margin-bottom: .06rem;
+  margin-right: -0.5rem;
 }
 .button__menu .icon-menu-custom {
   position: relative;
   vertical-align: top;
   width: 1em;
   height: .75em;
-  /*
-    top: .3em;
-    font-size: 1rem;*/
   top: .15em;
-  font-size: 1.25rem;
-}
-@media ( min-width: 1200px ) {
-  .button__menu .icon-menu-custom {
-    font-size: 1.2rem;
-  }
+  font-size: 1.2rem;
 }
 .button__menu .icon-menu-custom span {
   display: block;

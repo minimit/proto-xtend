@@ -1180,6 +1180,19 @@ img.center {
     display: none !important;
   }
 }
+.toggle-visible {
+  visibility: hidden !important;
+  &.active,
+  &.fade-out {
+    visibility: visible !important;
+  }
+}
+.toggle-hidden {
+  &.active,
+  &.fade-out {
+    visibility: hidden !important;
+  }
+}
 
 /* animations */
 .collapse-height {
