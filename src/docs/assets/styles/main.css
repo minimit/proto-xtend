@@ -3925,8 +3925,7 @@ a.logo:focus {
   line-height: 0;
 }
 .site-aside-text .button {
-  padding: 0;
-  padding-top: 6px;
+  padding: 3px 0;
   width: 100%;
   background-color: transparent !important;
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -3950,8 +3949,7 @@ a.logo:focus {
   display: none;
 }
 .site-aside-text > .button.site-aside-sub {
-  padding-top: 8px;
-  padding-bottom: 2px;
+  margin-top: 3px;
   font-size: 13px;
 }
 .site-aside-text .site-aside-subsub > .button {
