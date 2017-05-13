@@ -201,10 +201,12 @@ pre code,
   /* spacing */
   .spacing-small;
   /* styles */
-  border-radius: 4px;
-  border: 0;
   -webkit-box-shadow: 0 .15rem .625rem fade(@color-black, 10%);
   box-shadow: 0 .15rem .625rem fade(@color-black, 10%);
+  /* border-radius */
+  &, & > * {
+    border-radius: 4px;
+  }
   /* variants */
   .card.white; // default variant
   &.primary {
