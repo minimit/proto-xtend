@@ -2446,7 +2446,7 @@ pre code:last-child,
   background-color: #ffffff;
 }
 .card,
-.card > * {
+.card > img {
   border-radius: 4px;
 }
 .card.primary {
