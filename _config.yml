@@ -1,6 +1,6 @@
 # project
 title: Xtend
-description: 
+description:
 authors: Riccardo Caroli
 url: "http://www.minimit.com"
 version: 0.0.6
@@ -14,8 +14,8 @@ baseurl: "/"
 exclude:
   - "*.psd"
   - "*.scss"
-host: 192.168.1.183
-port: 4000
+#host: 192.168.1.183
+#port: 4000
 
 # collections
 collections:
@@ -31,4 +31,3 @@ defaults:
       type: docs
     values:
       layout: sidebar
-      
