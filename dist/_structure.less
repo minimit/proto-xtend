@@ -205,53 +205,61 @@ pre code,
 // card
 //////////////////////
 
-.card {
-  /* spacing */
-  .spacing-top-small;
-  /* styles */
-  -webkit-box-shadow: 0 .15rem .625rem fade(@color-black, 10%);
-  box-shadow: 0 .15rem .625rem fade(@color-black, 10%);
-  /* border-radius */
-  &, & > img {
-    border-radius: 4px;
+& when (@use-cards-media = true) {
+  
+  .card {
+    /* spacing */
+    .spacing-top-small;
+    /* styles */
+    -webkit-box-shadow: 0 .15rem .625rem fade(@color-black, 10%);
+    box-shadow: 0 .15rem .625rem fade(@color-black, 10%);
+    /* border-radius */
+    &, & > img {
+      border-radius: 4px;
+    }
+    /* variants */
+    .card.white; // default variant
+    &.primary {
+      color: @color-white;
+      background-color: @color-primary;
+    }
+    &.secondary {
+      color: @color-white;
+      background-color: @color-secondary;
+    }
+    &.white {
+      color: @color-text;
+      background-color: @color-white;
+    }
   }
-  /* variants */
-  .card.white; // default variant
-  &.primary {
-    color: @color-white;
-    background-color: @color-primary;
-  }
-  &.secondary {
-    color: @color-white;
-    background-color: @color-secondary;
-  }
-  &.white {
-    color: @color-text;
-    background-color: @color-white;
-  }
+
 }
 
 //////////////////////
 // separator
 //////////////////////
 
-.card.separator,
-.media.separator {
-  > .item,
-  > .media {
-    &:before { // vertical
-      width: 1px;
-      height: 100%;
-      background: @color-black-10;
-      -webkit-box-shadow: 0 .15rem .625rem fade(@color-black, 10%);
-      box-shadow: 0 .15rem .625rem fade(@color-black, 10%);
-    }
-    &:after { // horizontal
-      width: 100%;
-      height: 1px;
-      background: @color-black-10;
-      -webkit-box-shadow: 0 .15rem .625rem fade(@color-black, 10%);
-      box-shadow: 0 .15rem .625rem fade(@color-black, 10%);
+& when (@use-cards-media = true) {
+  
+  .card.separator,
+  .media.separator {
+    > .item,
+    > .media {
+      &:before { // vertical
+        width: 1px;
+        height: 100%;
+        background: @color-black-10;
+        -webkit-box-shadow: 0 .15rem .625rem fade(@color-black, 10%);
+        box-shadow: 0 .15rem .625rem fade(@color-black, 10%);
+      }
+      &:after { // horizontal
+        width: 100%;
+        height: 1px;
+        background: @color-black-10;
+        -webkit-box-shadow: 0 .15rem .625rem fade(@color-black, 10%);
+        box-shadow: 0 .15rem .625rem fade(@color-black, 10%);
+      }
     }
   }
+
 }
