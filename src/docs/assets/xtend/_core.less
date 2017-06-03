@@ -605,9 +605,10 @@ img.center {
 /* responsive */
 .loop-card();
 .loop-card(@i: length(@breakpoints)) when (@i > 0) {
+  .loop-card(@i - 1);
   @name: extract(@breakpoints, @i);
-  @query-max: "max-@{name}";
-  @media @@query-max {
+  @query-min: "min-@{name}";
+  @media @@query-min {
     
     // horizontal
     .horizontal-@{name} {
@@ -747,7 +748,6 @@ img.center {
     }
 
   }
-  .loop-card(@i - 1);
 }
 
 //////////////////////

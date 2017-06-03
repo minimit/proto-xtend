@@ -19,7 +19,7 @@
     "url": ""
   },
   "moduleType": "globals",
-  "main": ["/dist/_animations.less", "/dist/_components.less", "/dist/_core.less", "/dist/_structure.less", "/dist/xtend-theme.less", "/dist/xtend-theme.css", "/dist/xtend-theme.min.css", "/dist/xtend.js", "/dist/xtend.min.js"],
+  "main": ["/dist/xtend-theme.less", "/dist/_animations.less", "/dist/_components.less", "/dist/_core.less", "/dist/_structure.less", "/dist/xtend-theme.css", "/dist/xtend-theme.min.css", "/dist/xtend.js", "/dist/xtend.min.js"],
   "dependencies": {
     "jquery": "^3"
   },
