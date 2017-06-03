@@ -12,7 +12,7 @@
       var $iframe = $('#' + id);
       var $target = $iframe.contents().find('#body-inside');
       $target.hide().show(0); // fix scrollbars disappearing
-      var h = $target.height();
+      var h = $target.outerHeight();
       if (h !== $iframe.data('iframeHeight')) {
         $iframe.height(h);
         $iframe.data('iframeHeight', h);
