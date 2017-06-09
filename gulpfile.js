@@ -80,14 +80,14 @@ gulp.task('js:watch', function() {
 });
 gulp.task('js', function() {
   return gulp.src(['src/docs/assets/scripts/main.js', '!src/docs/assets/scripts/*.min.js'])
-    .pipe(sourcemaps.init())
+    //.pipe(sourcemaps.init())
     .pipe(uglify({
       preserveComments: 'license'
     }))
     .pipe(rename({
       suffix: '.min'
     }))
-    .pipe(sourcemaps.write(''))
+    //.pipe(sourcemaps.write(''))
     .pipe(gulp.dest('src/docs/assets/scripts/'));
 });
 

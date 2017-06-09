@@ -192,22 +192,54 @@ pre code,
   .spacer.middle; // default alignment
   .spacer.left; // default justification
 }
-.media {
-  .media.medium; // default spacing
-  .media.middle; // default alignment
-}
-.card,
-.card > .media {
-  .card.middle; // default alignment
+
+//////////////////////
+// media
+//////////////////////
+
+@include-media: true;
+& when (@include-media = true) {
+  
+  .media {
+    .media.medium; // default spacing
+    .media.middle; // default alignment
+    /* separator */
+    &.separator {
+      > .item,
+      > .media {
+        &:before { // vertical
+          width: 1px;
+          height: 100%;
+          background: @color-black-10;
+          -webkit-box-shadow: 0 .15rem .625rem fade(@color-black, 10%);
+          box-shadow: 0 .15rem .625rem fade(@color-black, 10%);
+        }
+        &:after { // horizontal
+          width: 100%;
+          height: 1px;
+          background: @color-black-10;
+          -webkit-box-shadow: 0 .15rem .625rem fade(@color-black, 10%);
+          box-shadow: 0 .15rem .625rem fade(@color-black, 10%);
+        }
+      }
+    }
+  }
+  
 }
 
 //////////////////////
 // card
 //////////////////////
 
-& when (@use-cards-media = true) {
+@include-card: true;
+@card-size: 1.618rem;
+& when (@include-card = true) {
   
   .card {
+    .card.middle; // default alignment
+    > .media {
+      .card.middle; // default alignment
+    }
     /* spacing */
     .spacing-top-small;
     /* styles */
@@ -231,33 +263,24 @@ pre code,
       color: @color-text;
       background-color: @color-white;
     }
-  }
-
-}
-
-//////////////////////
-// separator
-//////////////////////
-
-& when (@use-cards-media = true) {
-  
-  .card.separator,
-  .media.separator {
-    > .item,
-    > .media {
-      &:before { // vertical
-        width: 1px;
-        height: 100%;
-        background: @color-black-10;
-        -webkit-box-shadow: 0 .15rem .625rem fade(@color-black, 10%);
-        box-shadow: 0 .15rem .625rem fade(@color-black, 10%);
-      }
-      &:after { // horizontal
-        width: 100%;
-        height: 1px;
-        background: @color-black-10;
-        -webkit-box-shadow: 0 .15rem .625rem fade(@color-black, 10%);
-        box-shadow: 0 .15rem .625rem fade(@color-black, 10%);
+    /* separator */
+    &.separator {
+      > .item,
+      > .media {
+        &:before { // vertical
+          width: 1px;
+          height: 100%;
+          background: @color-black-10;
+          -webkit-box-shadow: 0 .15rem .625rem fade(@color-black, 10%);
+          box-shadow: 0 .15rem .625rem fade(@color-black, 10%);
+        }
+        &:after { // horizontal
+          width: 100%;
+          height: 1px;
+          background: @color-black-10;
+          -webkit-box-shadow: 0 .15rem .625rem fade(@color-black, 10%);
+          box-shadow: 0 .15rem .625rem fade(@color-black, 10%);
+        }
       }
     }
   }
