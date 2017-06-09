@@ -3032,7 +3032,7 @@ pre code:last-child,
   padding-right: 0;
 }
 .overlay .overlay-content,
-.overlay.screen {
+.overlay.screen .overlay-inner {
   background-color: #ffffff;
   color: #000000;
 }
@@ -3040,7 +3040,7 @@ pre code:last-child,
   color: #bfbfbf;
 }
 .overlay.primary .overlay-content,
-.overlay.primary.screen {
+.overlay.primary.screen .overlay-inner {
   background-color: #00B0FF;
   color: #ffffff;
 }
@@ -3048,7 +3048,7 @@ pre code:last-child,
   color: #ffffff;
 }
 .overlay.secondary .overlay-content,
-.overlay.secondary.screen {
+.overlay.secondary.screen .overlay-inner {
   background-color: #d14;
   color: #ffffff;
 }
@@ -3056,7 +3056,7 @@ pre code:last-child,
   color: #ffffff;
 }
 .overlay.white .overlay-content,
-.overlay.white.screen {
+.overlay.white.screen .overlay-inner {
   background-color: #ffffff;
   color: #000000;
 }
