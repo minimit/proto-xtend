@@ -12,7 +12,7 @@ bundle install
 
 jekyll serve
 ```
-bundle exec jekyll
+bundle exec jekyll s
 ```
 
 compile
