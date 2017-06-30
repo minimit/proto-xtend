@@ -1,4 +1,5 @@
 /.idea
+/docs
 .DS_store
 Thumbs.db
 Gemfile.lock

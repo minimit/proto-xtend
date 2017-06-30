@@ -125,7 +125,7 @@ gulp.task('version', function() {
     .pipe(gulp.dest(''));
   // inject styles and js
   var banner = "/*! xtend v" + version + " (http://www.minimit.com/xtend/)\n" + "@copyright (c) 2016 - 2017 Riccardo Caroli\n" + "@license MIT (https://github.com/minimit/xtend/blob/master/LICENSE) */";
-  return gulp.src(['src/docs/assets/xtend/**/*.less', 'src/docs/assets/xtend/**/*.js'])
+  return gulp.src(['dist/*.less', 'dist/*.js'])
     .pipe(injectString.replace(/\/\*\![^\*]+\*\//, banner))
     .pipe(gulp.dest('src/docs/assets/xtend/'));
 });
