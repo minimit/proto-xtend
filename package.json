@@ -22,7 +22,7 @@
   "scripts": {
     "build": "gulp build",
     "watch": "gulp watch",
-    "serve": "bundle exec jekyll s"
+    "serve": "bundle exec jekyll serve"
   },
   "dependencies": {},
   "devDependencies": {
